@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search-foundation",
+      "settings": {
+        "search_label": "Search Preview",
+        "search_title": "Search",
+        "search_accent": "Results",
+        "search_intro": "This static-safe search foundation keeps the approved Mzansi Select rhythm, premium-practical typography, and commerce-card consistency in place while real search wiring remains deferred.",
+        "query_label": "Example query",
+        "query_value": "wireless headphones",
+        "summary_copy": "Showing a curated placeholder layout for a product-led results page. Final query handling, live results, and search behaviours remain deferred to a later approved slice.",
+        "results_heading": "Popular matches",
+        "view_state": "filled",
+        "empty_badge": "Search Preview",
+        "empty_title": "No products found yet",
+        "empty_description": "The no-results experience is now in place, but live search terms, product results, and browse recovery behaviour remain intentionally deferred.",
+        "empty_action_label": "Continue browsing",
+        "browse_title": "Still exploring?",
+        "browse_copy": "Browse the same trusted departments already established across the homepage and collection foundations while live search data and ranking remain out of scope for this slice."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

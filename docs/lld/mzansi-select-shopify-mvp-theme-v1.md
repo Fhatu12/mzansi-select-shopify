@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 5.6 docs-only PDP QA closure  
-**Status:** Slice 5.5 PDP QA accepted as PASS WITH NOTES  
+**Owner:** Slice 6.6 docs-only search/results QA closure  
+**Status:** Slice 6.5 search/results QA accepted as PASS WITH NOTES  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -222,6 +222,35 @@ Slice 5.5 PDP QA closure note:
 - `23` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, and `snippets/static-product-card.liquid`.
 - No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live product/cart wiring was introduced during the accepted review pass.
 
+## Slice 6 search/results foundation responsibilities
+
+Slice 6 introduces the first native search/results page foundation while keeping search content static-safe and implementation-light.
+
+Slice 6 scope includes:
+
+- `templates/search.json` creation for search routing
+- search heading and query/result summary shell
+- static-safe product results grid placeholder
+- no-results state and browse/support prompt foundation
+- search-only CSS extraction aligned to accepted homepage, collection, and PDP card/typography rhythm
+
+Slice 6 explicitly defers:
+
+- live Shopify search object wiring
+- real query terms, result ranking, predictive search, or search result loops
+- product import or search merchandising operations
+- cart, support, legal, or 404 template implementation
+
+Slice 6.5 search/results QA closure note:
+
+- The uncommitted Slice 6 search/results foundation was reviewed and accepted as PASS WITH NOTES.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, and `templates/search.json`.
+- `shopify theme check --path . --fail-level error` passed with zero blocking errors.
+- `23` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, and `snippets/static-product-card.liquid`.
+- The existing `sections/site-header.liquid` `search.terms` binding was identified as pre-existing and unchanged.
+- No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live search/product/cart wiring was introduced during the accepted review pass.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -229,13 +258,13 @@ Slice 5.5 PDP QA closure note:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json`, `collection.json`, and `product.json` for approved homepage, collection, and PDP foundations.
+  - Contains `index.json`, `collection.json`, `product.json`, and `search.json` for approved homepage, collection, PDP, and search/results foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage, collection, and PDP composition sections.
+  - Contains global shell placeholders plus homepage, collection, PDP, and search/results composition sections.
 - `snippets/`
-  - Contains reusable shell fragments plus homepage, collection, and PDP utility snippets.
+  - Contains reusable shell fragments plus homepage, collection, PDP, and search/results utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage, collection, and PDP foundation styling.
+  - Contains extracted global/base shell CSS plus homepage, collection, PDP, and search/results foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -302,6 +331,11 @@ Slice 5 addition:
 - `assets/theme.css` now includes product detail page foundation styling for gallery, summary, option-shell, quantity shell, support panels, and related placeholder area.
 - PDP CSS remains source-aligned and reuses the same pricing, CTA, and product-card design language already accepted on homepage and collection foundations.
 
+Slice 6 addition:
+
+- `assets/theme.css` now includes search/results foundation styling for the search hero, query summary shell, browse/support prompt, and results-page spacing.
+- Search/results CSS remains source-aligned and reuses the same heading, CTA, empty-state, and product-card language already accepted on homepage, collection, and PDP foundations.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -360,6 +394,11 @@ Slice 5 addition:
 
 - `sections/main-product-foundation.liquid`
   - Carries PDP gallery, summary, pricing, option-shell, quantity shell, support notes, detail content, and related placeholder presentation.
+
+Slice 6 addition:
+
+- `sections/main-search-foundation.liquid`
+  - Carries search heading, query/result summary shell, static-safe results grid, no-results state, and browse/support prompt presentation.
 
 ### Sections
 
@@ -449,6 +488,11 @@ Slice 5 note:
 
 - `templates/product.json` is now implemented to represent a static-safe product detail page foundation only.
 - No live product-object JavaScript or Shopify product/cart wiring was added for PDP content sections.
+
+Slice 6 note:
+
+- `templates/search.json` is now implemented to represent a static-safe search/results foundation only.
+- No live search-object JavaScript, query loops, predictive search, or product/cart wiring was added for search content sections.
 
 ### Settings
 
@@ -555,6 +599,11 @@ Unknown / requires implementation confirmation:
 Constraint for implementation:
 
 - Search results pages must feel like an extension of the homepage rather than a utility-only layout.
+
+Slice 6 implementation note:
+
+- The search/results foundation uses a cream intro shell, a static query summary, the accepted product-card grid rhythm, a reusable empty-state surface, and a browse/support recovery prompt.
+- Search content remains static-safe placeholders until live Shopify search wiring is explicitly approved.
 
 ## Cart drawer / cart page pattern
 
@@ -819,6 +868,21 @@ Slice 5 testing and preview expectations:
 - Verify no `product.title`, `product.price`, `product.variants`, `product.media`, `product.images`, `form 'product'`, `routes.cart_add_url`, or checkout/cart wiring was introduced.
 - Verify no Shopify push, publish, login, theme list, or product import activity occurred.
 
+Slice 6 testing and preview expectations:
+
+- Verify `templates/search.json` parses as valid JSON.
+- Verify `sections/main-search-foundation.liquid` renders search title, query summary shell, static-safe results grid, no-results state, and browse/support prompt.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `search.results`, `search.terms`, `item.title`, `item.price`, `product.title`, `product.price`, `form 'product'`, `routes.cart_add_url`, `paginate search`, or loop-based search/product wiring was introduced.
+- Verify no Shopify push, publish, login, theme list, or product import activity occurred.
+
+Slice 6.5 QA acceptance note:
+
+- Search heading, query/result summary shell, static-safe results grid, no-results state, and browse/support prompt were accepted for this slice.
+- Accepted global chrome remained unchanged through the reviewed Slice 6 worktree.
+- Search/results content remains static-safe and visual-only until a later approved live search/product wiring pass.
+- The existing `site-header` `search.terms` binding remains outside Slice 6 implementation scope and was not changed.
+
 Slice 5.5 QA acceptance note:
 
 - PDP layout structure, media/gallery placeholder, title/type/badge/rating area, price stack, option-shell, quantity/add-to-cart shell, description/spec blocks, trust/support notes, and related placeholder area were accepted for this slice.
@@ -847,6 +911,7 @@ Theme Check blocker-fix validation state:
 - Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
 - RemoteAsset warnings remain open after blocker-fix validation and require separate Product Owner approval before cleanup.
 - PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
+- Search placeholder queries, result ranking, browse recovery behaviours, and no-results merchandising still need an approved strategy for later Shopify search data replacement without changing the approved visual contract.
 
 ## Acceptance checklist
 
@@ -859,8 +924,8 @@ Theme Check blocker-fix validation state:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 5 changes stay limited to PDP foundation scope with static-safe placeholder behaviour.
+- [ ] Approved source HTML remains untouched while Slice 6 changes stay limited to search/results foundation scope with static-safe placeholder behaviour.
 
 ---
 
-**Footer Standard For This Pass:** Slice 5 product detail page template foundation implemented. Approved source HTML unchanged. Theme changes remain limited to PDP structure, product-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 6 search/results template foundation implemented. Approved source HTML unchanged. Theme changes remain limited to search/results structure, search-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.

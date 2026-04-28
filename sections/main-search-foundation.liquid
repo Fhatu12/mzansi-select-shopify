@@ -1,0 +1,214 @@
+<section class="search-main-shell">
+  <div class="section-inner">
+    <div class="search-hero">
+      <div class="search-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ section.settings.search_label }}
+      </div>
+      <h1 class="search-title">
+        {{ section.settings.search_title }}
+        {% if section.settings.search_accent != blank %}
+          <span class="gold">{{ section.settings.search_accent }}</span>
+        {% endif %}
+      </h1>
+      <p class="search-intro">{{ section.settings.search_intro }}</p>
+
+      <div class="search-utility">
+        <div class="search-field-shell">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" value="{{ section.settings.query_value }}" aria-label="Search preview query" readonly>
+        </div>
+        <button class="btn-dark search-button-shell" type="button">Search</button>
+      </div>
+    </div>
+
+    <div class="search-summary-card">
+      <div class="search-summary-label">{{ section.settings.query_label }}</div>
+      <p class="search-summary-copy">{{ section.settings.summary_copy }}</p>
+    </div>
+
+    {% if section.settings.view_state == 'empty' %}
+      {% render 'empty-state',
+        badge: section.settings.empty_badge,
+        title: section.settings.empty_title,
+        description: section.settings.empty_description,
+        action_label: section.settings.empty_action_label,
+        action_url: routes.root_url
+      %}
+    {% else %}
+      {% render 'section-heading', title: section.settings.results_heading %}
+      <div class="products-grid">
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Headphones',
+          badge_label: 'Sale',
+          badge_tone: 'sale',
+          product_type: 'Tech Accessories',
+          product_name: 'Premium Over-Ear Headphones',
+          stars: '★★★★★',
+          reviews: '(128)',
+          price_now: 'R 899',
+          price_was: 'R 1 199',
+          price_save: '25% off'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Watch',
+          product_type: 'Tech Accessories',
+          product_name: 'Smart Watch – Black Edition',
+          stars: '★★★★★',
+          reviews: '(211)',
+          price_now: 'R 1 249',
+          price_was: 'R 1 599',
+          price_save: '22% off'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Storage',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Bamboo Lid Storage Container Set',
+          stars: '★★★★☆',
+          reviews: '(64)',
+          price_now: 'R 349'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Bottle',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Insulated Vacuum Flask 500ml',
+          stars: '★★★★☆',
+          reviews: '(93)',
+          price_now: 'R 189'
+        %}
+      </div>
+    {% endif %}
+
+    <div class="search-browse-prompt">
+      <div class="search-browse-title">{{ section.settings.browse_title }}</div>
+      <p class="search-browse-copy">{{ section.settings.browse_copy }}</p>
+      <div class="search-browse-links">
+        <a class="search-browse-link" href="{{ routes.root_url }}">Home & Living</a>
+        <a class="search-browse-link" href="{{ routes.root_url }}">Kitchen & Storage</a>
+        <a class="search-browse-link" href="{{ routes.root_url }}">Office & Desk</a>
+        <a class="search-browse-link" href="{{ routes.root_url }}">Tech Accessories</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "search_label",
+      "label": "Search label",
+      "default": "Search Preview"
+    },
+    {
+      "type": "text",
+      "id": "search_title",
+      "label": "Search title",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "search_accent",
+      "label": "Search accent",
+      "default": "Results"
+    },
+    {
+      "type": "textarea",
+      "id": "search_intro",
+      "label": "Search intro",
+      "default": "This static-safe search foundation keeps the approved Mzansi Select rhythm, premium-practical typography, and commerce-card consistency in place while real search wiring remains deferred."
+    },
+    {
+      "type": "text",
+      "id": "query_label",
+      "label": "Query label",
+      "default": "Example query"
+    },
+    {
+      "type": "text",
+      "id": "query_value",
+      "label": "Query value",
+      "default": "wireless headphones"
+    },
+    {
+      "type": "textarea",
+      "id": "summary_copy",
+      "label": "Summary copy",
+      "default": "Showing a curated placeholder layout for a product-led results page. Final query handling, live results, and search behaviours remain deferred to a later approved slice."
+    },
+    {
+      "type": "text",
+      "id": "results_heading",
+      "label": "Results heading",
+      "default": "Popular matches"
+    },
+    {
+      "type": "select",
+      "id": "view_state",
+      "label": "View state",
+      "default": "filled",
+      "options": [
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "empty",
+          "label": "Empty"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "empty_badge",
+      "label": "Empty badge",
+      "default": "Search Preview"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty title",
+      "default": "No products found yet"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_description",
+      "label": "Empty description",
+      "default": "The no-results experience is now in place, but live search terms, product results, and browse recovery behaviour remain intentionally deferred."
+    },
+    {
+      "type": "text",
+      "id": "empty_action_label",
+      "label": "Empty action label",
+      "default": "Continue browsing"
+    },
+    {
+      "type": "text",
+      "id": "browse_title",
+      "label": "Browse title",
+      "default": "Still exploring?"
+    },
+    {
+      "type": "textarea",
+      "id": "browse_copy",
+      "label": "Browse copy",
+      "default": "Browse the same trusted departments already established across the homepage and collection foundations while live search data and ranking remain out of scope for this slice."
+    }
+  ]
+}
+{% endschema %}
