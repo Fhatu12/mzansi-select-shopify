@@ -1,0 +1,34 @@
+<div class="cart-line-card">
+  <div class="cart-line-media">
+    <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" width="{{ image_width | default: 360 }}" height="{{ image_height | default: 360 }}">
+  </div>
+  <div class="cart-line-content">
+    <div class="cart-line-top">
+      <div>
+        <div class="cart-line-badges">
+          {% render 'product-badge', label: badge_label, tone: badge_tone %}
+        </div>
+        <div class="p-type">{{ product_type }}</div>
+        <div class="cart-line-title">{{ product_name }}</div>
+        {% if option_summary != blank %}
+          <div class="cart-line-options">{{ option_summary }}</div>
+        {% endif %}
+      </div>
+      <div class="cart-line-total">{{ line_total }}</div>
+    </div>
+
+    <div class="cart-line-bottom">
+      <div class="cart-line-price">
+        {% render 'price-stack', price_now: price_now, price_was: price_was, price_save: price_save %}
+      </div>
+      <div class="cart-line-controls">
+        <div class="cart-line-qty" aria-label="Quantity shell">
+          <button class="cart-line-qty-btn" type="button" aria-label="Decrease quantity">−</button>
+          <div class="cart-line-qty-value">{{ quantity_value }}</div>
+          <button class="cart-line-qty-btn" type="button" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="cart-line-remove" type="button">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>

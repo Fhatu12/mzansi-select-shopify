@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 6.6 docs-only search/results QA closure  
-**Status:** Slice 6.5 search/results QA accepted as PASS WITH NOTES  
+**Owner:** Slice 7.6 docs-only cart QA closure  
+**Status:** Slice 7.5 cart QA accepted as PASS WITH NOTES  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -251,6 +251,37 @@ Slice 6.5 search/results QA closure note:
 - The existing `sections/site-header.liquid` `search.terms` binding was identified as pre-existing and unchanged.
 - No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live search/product/cart wiring was introduced during the accepted review pass.
 
+## Slice 7 cart page/drawer foundation responsibilities
+
+Slice 7 introduces the first native cart page foundation while keeping cart content static-safe and implementation-light.
+
+Slice 7 scope includes:
+
+- `templates/cart.json` creation for cart routing
+- cart heading and intro foundation
+- static-safe line-item row/card placeholder foundation
+- quantity shell, subtotal summary, and checkout CTA visual shell
+- support/trust note and empty-cart state foundation
+- cart-only CSS extraction aligned to accepted homepage, collection, PDP, and search card/typography rhythm
+
+Slice 7 explicitly defers:
+
+- live Shopify cart item wiring
+- cart update, remove, quantity-change, or checkout actions
+- cart drawer interactivity beyond the shared accepted shell language
+- product import or live cart merchandising operations
+- support, legal, or 404 template implementation
+
+Slice 7.5 cart QA closure note:
+
+- The uncommitted Slice 7 cart foundation was reviewed and accepted as PASS WITH NOTES.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, and `templates/cart.json`.
+- `shopify theme check --path . --fail-level error` passed with zero blocking errors.
+- `24` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, `snippets/cart-line-item.liquid`, and `snippets/static-product-card.liquid`.
+- The existing `sections/site-header.liquid` cart route link was identified as pre-existing and unchanged.
+- No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live cart/checkout wiring was introduced during the accepted review pass.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -258,13 +289,13 @@ Slice 6.5 search/results QA closure note:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json`, `collection.json`, `product.json`, and `search.json` for approved homepage, collection, PDP, and search/results foundations.
+  - Contains `index.json`, `collection.json`, `product.json`, `search.json`, and `cart.json` for approved homepage, collection, PDP, search/results, and cart foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage, collection, PDP, and search/results composition sections.
+  - Contains global shell placeholders plus homepage, collection, PDP, search/results, and cart composition sections.
 - `snippets/`
-  - Contains reusable shell fragments plus homepage, collection, PDP, and search/results utility snippets.
+  - Contains reusable shell fragments plus homepage, collection, PDP, search/results, and cart utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage, collection, PDP, and search/results foundation styling.
+  - Contains extracted global/base shell CSS plus homepage, collection, PDP, search/results, and cart foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -336,6 +367,11 @@ Slice 6 addition:
 - `assets/theme.css` now includes search/results foundation styling for the search hero, query summary shell, browse/support prompt, and results-page spacing.
 - Search/results CSS remains source-aligned and reuses the same heading, CTA, empty-state, and product-card language already accepted on homepage, collection, and PDP foundations.
 
+Slice 7 addition:
+
+- `assets/theme.css` now includes cart foundation styling for the cart hero, line-item shells, order-summary shell, support prompt, and empty-cart spacing.
+- Cart CSS remains source-aligned and reuses the same heading, CTA, price-stack, and cream/white card language already accepted on homepage, collection, PDP, and search/results foundations.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -399,6 +435,13 @@ Slice 6 addition:
 
 - `sections/main-search-foundation.liquid`
   - Carries search heading, query/result summary shell, static-safe results grid, no-results state, and browse/support prompt presentation.
+
+Slice 7 addition:
+
+- `sections/main-cart-foundation.liquid`
+  - Carries cart heading, static-safe line-item list, subtotal summary shell, checkout CTA shell, support note, and empty-cart presentation.
+- `snippets/cart-line-item.liquid`
+  - Carries reusable static-safe cart row presentation including image, badges, pricing, quantity shell, and remove action shell.
 
 ### Sections
 
@@ -493,6 +536,11 @@ Slice 6 note:
 
 - `templates/search.json` is now implemented to represent a static-safe search/results foundation only.
 - No live search-object JavaScript, query loops, predictive search, or product/cart wiring was added for search content sections.
+
+Slice 7 note:
+
+- `templates/cart.json` is now implemented to represent a static-safe cart foundation only.
+- No live cart object JavaScript, cart forms, quantity updates, cart routes, or checkout wiring was added for cart content sections.
 
 ### Settings
 
@@ -604,6 +652,18 @@ Slice 6 implementation note:
 
 - The search/results foundation uses a cream intro shell, a static query summary, the accepted product-card grid rhythm, a reusable empty-state surface, and a browse/support recovery prompt.
 - Search content remains static-safe placeholders until live Shopify search wiring is explicitly approved.
+
+## Cart page / drawer pattern
+
+Known from source:
+
+- Cart presence is communicated through the header cart icon, numeric count badge, add-to-cart button feedback, and compact toast confirmation.
+- Cart trust and support language should stay consistent with the top bar, nav badges, trust bar, and footer reassurance patterns.
+
+Slice 7 implementation note:
+
+- The cart foundation uses a cream intro shell, static-safe line-item cards, a calm order-summary panel, support reassurance, and a reusable empty-state surface.
+- Cart content remains static-safe placeholders until live Shopify cart and checkout wiring is explicitly approved.
 
 ## Cart drawer / cart page pattern
 
@@ -883,6 +943,22 @@ Slice 6.5 QA acceptance note:
 - Search/results content remains static-safe and visual-only until a later approved live search/product wiring pass.
 - The existing `site-header` `search.terms` binding remains outside Slice 6 implementation scope and was not changed.
 
+Slice 7 testing and preview expectations:
+
+- Verify `templates/cart.json` parses as valid JSON.
+- Verify `sections/main-cart-foundation.liquid` renders cart title, line-item shells, order-summary shell, support note, and empty-cart state.
+- Verify `snippets/cart-line-item.liquid` renders placeholder media, price stack, quantity shell, and remove-action shell without introducing live cart behaviour.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `cart.items`, `item.product`, `item.title`, `item.price`, `item.quantity`, `routes.cart_url`, `routes.cart_change_url`, `routes.cart_update_url`, `routes.cart_add_url`, `checkout_url`, or `form 'cart'` wiring was introduced.
+- Verify no Shopify push, publish, login, theme list, or product import activity occurred.
+
+Slice 7.5 QA acceptance note:
+
+- Cart heading and intro, filled-cart line-item shell, quantity shell, subtotal/summary shell, checkout CTA visual shell, support/trust note, and empty-cart state were accepted for this slice.
+- Accepted global chrome remained unchanged through the reviewed Slice 7 worktree.
+- Cart content remains static-safe and visual-only until a later approved live cart/checkout wiring pass.
+- The existing `site-header` cart route link remains outside Slice 7 implementation scope and was not changed.
+
 Slice 5.5 QA acceptance note:
 
 - PDP layout structure, media/gallery placeholder, title/type/badge/rating area, price stack, option-shell, quantity/add-to-cart shell, description/spec blocks, trust/support notes, and related placeholder area were accepted for this slice.
@@ -912,6 +988,7 @@ Theme Check blocker-fix validation state:
 - RemoteAsset warnings remain open after blocker-fix validation and require separate Product Owner approval before cleanup.
 - PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
 - Search placeholder queries, result ranking, browse recovery behaviours, and no-results merchandising still need an approved strategy for later Shopify search data replacement without changing the approved visual contract.
+- Cart placeholder line items, subtotal logic, drawer behaviour, checkout actions, and recovery/upsell behaviours still need an approved strategy for later Shopify cart data replacement without changing the approved visual contract.
 
 ## Acceptance checklist
 
@@ -924,8 +1001,8 @@ Theme Check blocker-fix validation state:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 6 changes stay limited to search/results foundation scope with static-safe placeholder behaviour.
+- [ ] Approved source HTML remains untouched while Slice 7 changes stay limited to cart foundation scope with static-safe placeholder behaviour.
 
 ---
 
-**Footer Standard For This Pass:** Slice 6 search/results template foundation implemented. Approved source HTML unchanged. Theme changes remain limited to search/results structure, search-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 7 cart page/drawer foundation implemented. Approved source HTML unchanged. Theme changes remain limited to cart structure, cart-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.

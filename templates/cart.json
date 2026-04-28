@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart-foundation",
+      "settings": {
+        "cart_label": "Cart Preview",
+        "cart_title": "Your",
+        "cart_accent": "Basket",
+        "cart_intro": "This static-safe cart foundation keeps the approved Mzansi Select premium-practical tone in place with clear line items, a calm order summary, and supportive reassurance while live cart and checkout wiring remain deferred.",
+        "summary_label": "Order summary",
+        "view_state": "filled",
+        "empty_badge": "Cart Preview",
+        "empty_title": "Your basket is still empty",
+        "empty_description": "The empty-cart experience is now in place, but live cart items, totals, and checkout behaviour remain intentionally deferred until a later approved slice.",
+        "empty_action_label": "Continue browsing",
+        "support_title": "Need a hand before checkout?",
+        "support_copy": "Our team is available seven days a week to help with delivery timing, returns, and choosing practical everyday essentials."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

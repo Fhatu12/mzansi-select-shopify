@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 6.6 docs-only search/results QA closure  
-**Status:** Slice 6.5 search/results QA accepted as PASS WITH NOTES  
+**Owner:** Slice 7.6 docs-only cart QA closure  
+**Status:** Slice 7.5 cart QA accepted as PASS WITH NOTES  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 6.6 docs-only search/results QA closure documentation
+Slice 7.6 docs-only cart QA closure documentation
 
 ## Source of truth
 
@@ -59,6 +59,12 @@ Slice 6 search/results template foundation completed.
 
 Slice 6.5 search/results design/QA fidelity review completed and accepted as PASS WITH NOTES.
 
+Slice 6.6 docs-only search/results QA closure documentation completed and committed.
+
+Slice 7 cart page/drawer foundation implementation started.
+
+Slice 7.5 cart page/drawer design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -81,6 +87,8 @@ Current repo inspection indicates:
 - Slice 5.5 confirmed the PDP foundation is visually acceptable for this slice and remains static-safe/visual-only.
 - Slice 6 adds a static-safe search/results foundation without introducing live search queries, result loops, or product/cart behaviour.
 - Slice 6.5 confirmed the search/results foundation is visually acceptable for this slice and remains static-safe/visual-only.
+- Slice 7 adds a static-safe cart foundation without introducing live cart items, cart updates, checkout actions, or product import behaviour.
+- Slice 7.5 confirmed the cart foundation is visually acceptable for this slice and remains static-safe/visual-only.
 
 ## Scope completed
 
@@ -129,6 +137,12 @@ Current repo inspection indicates:
 - Extended `assets/theme.css` with search/results foundation styling only.
 - Kept search/results content static-safe and did not introduce live search terms, search results, product loops, or cart behaviour.
 - Recorded Slice 6.5 acceptance as PASS WITH NOTES for the uncommitted search/results foundation review.
+- Added `templates/cart.json` for native Shopify cart routing.
+- Added `sections/main-cart-foundation.liquid` for cart heading, line-item shell, order-summary shell, support note, and empty-cart coverage.
+- Added `snippets/cart-line-item.liquid` for reusable static-safe cart row rendering.
+- Extended `assets/theme.css` with cart foundation styling only.
+- Kept cart content static-safe and did not introduce live cart items, cart routes, checkout actions, or real cart update behaviour.
+- Recorded Slice 7.5 acceptance as PASS WITH NOTES for the uncommitted cart foundation review.
 
 ## What must not change
 
@@ -157,6 +171,7 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - collection/category foundation implemented in Shopify sections and `templates/collection.json`
 - product detail page foundation implemented in Shopify sections and `templates/product.json`
 - search/results foundation implemented in Shopify sections and `templates/search.json`
+- cart page foundation implemented in Shopify sections and `templates/cart.json`
 - Theme Check preview blockers remediated locally for the affected homepage and collection files only
 - no dynamic product data wiring
 - no Shopify deployment activity
@@ -166,22 +181,23 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted Slice 3.6 closure recorded at commit `0044634b469b1b39bcc85e0064536abdbb64f248`
 - accepted unpublished preview recorded against preview theme `151207542967`
 - accepted Slice 5.5 PDP QA review results recorded at commit `eef7878ed57a307e18c5f15586de074bbf76684e`
-- accepted Slice 6.5 search/results QA review results recorded against the current uncommitted Slice 6 worktree
+- accepted Slice 6.5 search/results QA review results recorded at commit `325e1acdd9448c90923170938ce1a8f85f61d490`
+- accepted Slice 7.5 cart QA review results recorded against the current uncommitted Slice 7 worktree
 
 ## Preview workflow status
 
 - Slice 4 unpublished preview remains accepted by the user against theme `151207542967`.
 - Dynamic product wiring remains deferred after the accepted preview.
-- Shopify push/publish remains unapproved in the current Slice 6 state.
+- Shopify push/publish remains unapproved in the current Slice 7.6 state.
 - `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Approved scope
 
-Slice 6.6 scope is limited to:
+Slice 7.6 scope is limited to:
 
-- documentation-only closure of the accepted Slice 6.5 search/results QA review
-- recording the accepted search/results QA result and current safety state
-- confirming that non-doc Slice 6 implementation files remain outside the scope of this pass
+- documentation-only closure of the accepted Slice 7.5 cart QA review
+- recording the accepted cart QA result and current safety state
+- confirming that non-doc Slice 7 implementation files remain outside the scope of this pass
 
 ## Critical constraints
 
@@ -239,6 +255,15 @@ Slice 6.6 scope is limited to:
 - Slice 6.5 confirmed Shopify Theme Check passes with zero blocking errors while `23` non-blocking `RemoteAsset` warnings remain open.
 - Slice 6.5 confirmed no Shopify login, theme list, push, publish, checkout change, product import, or live-store action occurred.
 - Slice 6.5 confirmed the existing `sections/site-header.liquid` `search.terms` binding is pre-existing and unchanged.
+- Slice 7 uses `templates/cart.json` plus a single main section to introduce the cart page foundation.
+- Cart content remains static-safe and does not use live cart items, cart routes, cart forms, checkout URLs, or checkout behaviour.
+- Existing snippets for section headings and empty states are reused to preserve the accepted visual language.
+- A dedicated cart line-item snippet is introduced only for static-safe row reuse inside the cart foundation.
+- Slice 7.5 QA accepted the cart page/drawer foundation as PASS WITH NOTES.
+- Slice 7.5 confirmed `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, and `templates/cart.json` all parse successfully.
+- Slice 7.5 confirmed Shopify Theme Check passes with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open.
+- Slice 7.5 confirmed no Shopify login, theme list, push, publish, checkout change, product import, or live-store action occurred.
+- Slice 7.5 confirmed the existing `sections/site-header.liquid` cart route link is pre-existing and unchanged.
 
 ## Next recommended owner
 
@@ -267,18 +292,19 @@ Product Owner
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 - Live product media, variants, pricing, stock state, and transactional add-to-cart wiring remain deferred for PDP work.
 - Live search terms, result ranking, predictive suggestions, and recovery behaviours remain deferred for search/results work.
-- The current Slice 6 implementation files remain uncommitted pending Product Owner approval of the final Slice 6 commit scope.
+- Live cart items, totals, update actions, drawer behaviour, and checkout actions remain deferred for cart work.
+- The current Slice 7 implementation files remain uncommitted pending Product Owner approval of the final Slice 7 commit scope.
 
 ## Handoff queue
 
-- Decide the final accepted Slice 6 commit scope for implementation plus docs only.
-- Keep `artifacts/` excluded from any Slice 6 commit.
-- Keep product import, Shopify publish, RemoteAsset cleanup, live search/product wiring, and broader responsive QA deferred until explicitly approved.
+- Decide the final accepted Slice 7 commit scope for implementation plus docs only.
+- Keep `artifacts/` excluded from any Slice 7 commit.
+- Keep product import, Shopify publish, RemoteAsset cleanup, live cart/checkout wiring, and broader responsive QA deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass records the accepted Slice 6.5 search/results QA closure in documentation only. The approved HTML remains unchanged, the search/results foundation remains static-safe and visual-only, Theme Check still passes with zero blocking errors, `23` non-blocking `RemoteAsset` warnings remain deferred, the pre-existing `site-header` `search.terms` binding remains unchanged, no Shopify push/publish/product import/checkout or live-store action occurred, and `artifacts/` remains untracked pending any separate approval.
+This pass records the accepted Slice 7.5 cart QA closure in documentation only. The approved HTML remains unchanged, the cart foundation remains static-safe and visual-only, Theme Check still passes with zero blocking errors, `24` non-blocking `RemoteAsset` warnings remain deferred, the pre-existing header cart route link remains unchanged, no Shopify push/publish/product import/checkout or live-store action occurred, and `artifacts/` remains untracked pending any separate approval.
 
 ---
 
-**Footer Standard For This Pass:** Slice 6.5 search/results QA accepted as PASS WITH NOTES. Approved source HTML unchanged. This pass is documentation-only and records accepted search/results QA state, deferred live wiring, deferred product import, deferred Shopify publish, the unchanged pre-existing `site-header` `search.terms` binding, and untracked `artifacts/` handling within the agreed scope.
+**Footer Standard For This Pass:** Slice 7.5 cart QA accepted as PASS WITH NOTES. Approved source HTML unchanged. This pass is documentation-only and records accepted cart QA state, deferred live cart/checkout wiring, deferred product import, deferred Shopify publish, the unchanged pre-existing header cart route link, and untracked `artifacts/` handling within the agreed scope.

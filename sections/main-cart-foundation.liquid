@@ -1,0 +1,212 @@
+<section class="cart-main-shell">
+  <div class="section-inner">
+    <div class="cart-hero">
+      <div class="cart-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ section.settings.cart_label }}
+      </div>
+      <h1 class="cart-title">
+        {{ section.settings.cart_title }}
+        {% if section.settings.cart_accent != blank %}
+          <span class="gold">{{ section.settings.cart_accent }}</span>
+        {% endif %}
+      </h1>
+      <p class="cart-intro">{{ section.settings.cart_intro }}</p>
+    </div>
+
+    {% if section.settings.view_state == 'empty' %}
+      <div class="cart-empty-wrap">
+        {% render 'empty-state',
+          badge: section.settings.empty_badge,
+          title: section.settings.empty_title,
+          description: section.settings.empty_description,
+          action_label: section.settings.empty_action_label,
+          action_url: routes.root_url
+        %}
+      </div>
+    {% else %}
+      <div class="cart-layout">
+        <div class="cart-lines-card">
+          {% render 'section-heading', title: 'Items in your bag', link_label: 'Continue shopping', link_url: routes.root_url %}
+
+          <div class="cart-lines-list">
+            {% render 'cart-line-item',
+              image_src: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=360&q=80&auto=format&fit=crop',
+              image_alt: 'Premium headphones',
+              badge_label: 'Sale',
+              badge_tone: 'sale',
+              product_type: 'Tech Accessories',
+              product_name: 'Premium Over-Ear Headphones',
+              option_summary: 'Matte Black · Headphones only',
+              price_now: 'R 899',
+              price_was: 'R 1 199',
+              price_save: '25% off',
+              quantity_value: '1',
+              line_total: 'R 899'
+            %}
+            {% render 'cart-line-item',
+              image_src: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=360&q=80&auto=format&fit=crop',
+              image_alt: 'Storage containers',
+              badge_label: 'New',
+              badge_tone: 'new',
+              product_type: 'Kitchen & Storage',
+              product_name: 'Bamboo Lid Storage Container Set',
+              option_summary: 'Set of 3 · Natural finish',
+              price_now: 'R 349',
+              quantity_value: '2',
+              line_total: 'R 698'
+            %}
+          </div>
+        </div>
+
+        <aside class="cart-summary-card">
+          <div class="cart-summary-label">{{ section.settings.summary_label }}</div>
+          <div class="cart-summary-stack">
+            <div class="cart-summary-row">
+              <span>Subtotal</span>
+              <strong>R 1 597</strong>
+            </div>
+            <div class="cart-summary-row">
+              <span>Delivery</span>
+              <span>Calculated later</span>
+            </div>
+            <div class="cart-summary-row">
+              <span>Returns</span>
+              <span>7-day window</span>
+            </div>
+          </div>
+
+          <div class="cart-summary-total">
+            <span>Estimated total</span>
+            <strong>R 1 597</strong>
+          </div>
+
+          <div class="cart-summary-actions">
+            <button class="btn-dark cart-checkout-shell" type="button">Proceed to Checkout</button>
+            <button class="btn-ghost cart-secondary-shell" type="button">Save for Later</button>
+          </div>
+
+          <div class="cart-summary-notes">
+            <div class="cart-summary-note">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Secure payment methods are shown before live checkout wiring is approved.
+            </div>
+            <div class="cart-summary-note">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+                <path d="M16 8h5l2 5v4h-7V8z"></path>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              Delivery timelines stay aligned to the accepted trust language across the storefront.
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="cart-support-banner">
+        <div class="cart-support-title">{{ section.settings.support_title }}</div>
+        <p class="cart-support-copy">{{ section.settings.support_copy }}</p>
+        <div class="cart-support-pills">
+          <span class="cart-support-pill">Fast fulfilment</span>
+          <span class="cart-support-pill">Secure payments</span>
+          <span class="cart-support-pill">Easy returns</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cart_label",
+      "label": "Cart label",
+      "default": "Cart Preview"
+    },
+    {
+      "type": "text",
+      "id": "cart_title",
+      "label": "Cart title",
+      "default": "Your"
+    },
+    {
+      "type": "text",
+      "id": "cart_accent",
+      "label": "Cart accent",
+      "default": "Basket"
+    },
+    {
+      "type": "textarea",
+      "id": "cart_intro",
+      "label": "Cart intro",
+      "default": "This static-safe cart foundation keeps the approved Mzansi Select premium-practical tone in place with clear line items, a calm order summary, and supportive reassurance while live cart and checkout wiring remain deferred."
+    },
+    {
+      "type": "text",
+      "id": "summary_label",
+      "label": "Summary label",
+      "default": "Order summary"
+    },
+    {
+      "type": "select",
+      "id": "view_state",
+      "label": "View state",
+      "default": "filled",
+      "options": [
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "empty",
+          "label": "Empty"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "empty_badge",
+      "label": "Empty badge",
+      "default": "Cart Preview"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty title",
+      "default": "Your basket is still empty"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_description",
+      "label": "Empty description",
+      "default": "The empty-cart experience is now in place, but live cart items, totals, and checkout behaviour remain intentionally deferred until a later approved slice."
+    },
+    {
+      "type": "text",
+      "id": "empty_action_label",
+      "label": "Empty action label",
+      "default": "Continue browsing"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Support title",
+      "default": "Need a hand before checkout?"
+    },
+    {
+      "type": "textarea",
+      "id": "support_copy",
+      "label": "Support copy",
+      "default": "Our team is available seven days a week to help with delivery timing, returns, and choosing practical everyday essentials."
+    }
+  ]
+}
+{% endschema %}
