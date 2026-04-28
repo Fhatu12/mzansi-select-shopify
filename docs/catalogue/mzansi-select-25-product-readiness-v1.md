@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11D first product verification batch plan completed pending Product Owner acceptance or correction  
-**Version:** 1.2  
+**Status:** Slice 11E first product verification batch research outcome recorded pending Product Owner acceptance or correction  
+**Version:** 1.3  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11D planning-only first product verification batch plan for the approved `25`-product launch catalogue.
+This document records the Slice 11E docs-only first product verification batch research outcome for the approved `25`-product launch catalogue.
 
 This pass is planning only:
 
@@ -21,7 +21,7 @@ This pass is planning only:
 - No dynamic product/catalogue wiring is approved.
 
 This pass does not verify suppliers, landed cost, South Africa shipping, margin, image pack quality, or import readiness. Unknown values remain `Unconfirmed` rather than inferred.
-No actual supplier verification or product import has occurred in this pass.
+No actual logged-in supplier verification or product import has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -128,7 +128,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - `Phone / Tablet Desk Stand`
 
 All six first-batch products remain `Candidate` in this pass.
-No actual supplier/source verification, cost validation, shipping validation, image approval, content approval, or import readiness movement has occurred.
+No actual logged-in supplier/source verification, cost validation, shipping validation, image approval, content approval, or import readiness movement has occurred.
 
 ## Candidate -> Supplier verified requirements
 
@@ -291,6 +291,138 @@ No actual supplier/source verification, cost validation, shipping validation, im
   - compatibility, hinge quality, and finish consistency need evidence
   - comparable listings may differ enough that manual comparison is required
   - no actual supplier verification has occurred
+
+## First-batch research outcome
+
+No first-batch item moves beyond `Candidate` in this pass.
+Public research found viable source candidates for five products, but South Africa shipping expectation and landed cost were not fully verified.
+`Cable Management Sleeve` still needs a cleaner `DSers` / `AliExpress` / `CJdropshipping` source match.
+No actual logged-in supplier verification, import, or readiness movement occurred.
+
+### Desk Cable Clips Set
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: public `CJdropshipping` close match found
+- Missing data:
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: price range appears wide in public browsing, so landed-cost confidence is not yet strong
+
+### Cable Management Sleeve
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: no clean dropshipping source verified in public research
+- Missing data:
+  - cleaner `DSers` / `AliExpress` / `CJdropshipping` source match
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: requires manual logged-in `DSers` / `AliExpress` search before it can be judged against the rest of the first batch
+
+### Screen Cleaning Kit
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: public `CJdropshipping` strong match found
+- Missing data:
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: leakage risk, consumable contents, and claim wording still need logged-in review
+
+### Adhesive Wall Hooks Pack
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: public `CJdropshipping` close match found
+- Missing data:
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: any future content pass must avoid exaggerated adhesive or load-capacity claims
+
+### Sink Drain Basket / Strainer
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: public `CJdropshipping` strong match found
+- Missing data:
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: sink-fit dimensions and shipping expectation still need logged-in confirmation
+
+### Phone / Tablet Desk Stand
+
+- Recommended status: `Remain Candidate`
+- Source candidate note: public `CJdropshipping` strong match found
+- Missing data:
+  - supplier/source link or internal reference
+  - South Africa shipping expectation
+  - estimated product cost
+  - estimated shipping cost
+  - estimated landed cost
+  - variants/options
+  - image suitability
+  - description facts
+  - margin risk
+  - return/quality risk
+  - decision note
+- Research note: stability and device compatibility still need logged-in confirmation
+
+## Next logged-in verification step
+
+Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
+
+- supplier/source link or internal reference
+- South Africa shipping expectation
+- estimated product cost
+- estimated shipping cost
+- estimated landed cost
+- variants/options
+- image suitability
+- description facts
+- margin risk
+- return/quality risk
+- decision note
 
 ## Recommended supplier/source path
 
@@ -730,4 +862,4 @@ Catalogue readiness planning does not remove the existing storefront blocker:
 - `/pages/contact` and `/pages/about` previously rendered `404`.
 - Publish consideration remains blocked until those page resources are created in Shopify or their handles, visibility, and template assignment are verified.
 
-**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, documents priority verification order and sourcing path, updates durable readiness rules elsewhere in the doc set, preserves the Contact/About blocker, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11E first-batch research outcome recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records public source-candidate notes for the first batch without logged-in verification, preserves the Contact/About blocker, leaves theme/code unchanged, and does not approve product import.
