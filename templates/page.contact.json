@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "support-page-foundation",
+      "settings": {
+        "support_label": "Support Preview",
+        "support_title": "Contact",
+        "support_accent": "Us",
+        "support_intro": "This static-safe support foundation keeps the approved Mzansi Select rhythm in place with clear help pathways, South Africa-first delivery guidance, and honest placeholder messaging while live contact handling remains deferred."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

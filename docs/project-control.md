@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 7.6 docs-only cart QA closure  
-**Status:** Slice 7.5 cart QA accepted as PASS WITH NOTES  
+**Owner:** Slice 8.6 docs-only legal/support QA closure  
+**Status:** Slice 8.6 docs-only legal/support QA closure completed  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 7.6 docs-only cart QA closure documentation
+Slice 8.6 docs-only legal/support QA closure documentation
 
 ## Source of truth
 
@@ -61,9 +61,17 @@ Slice 6.5 search/results design/QA fidelity review completed and accepted as PAS
 
 Slice 6.6 docs-only search/results QA closure documentation completed and committed.
 
-Slice 7 cart page/drawer foundation implementation started.
+Slice 7 cart page/drawer foundation implementation completed.
 
 Slice 7.5 cart page/drawer design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
+Slice 7.6 docs-only cart QA closure documentation completed and committed.
+
+Slice 8 legal/support page foundation completed.
+
+Slice 8.5 legal/support page design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
+Slice 8.6 docs-only legal/support QA closure documentation completed.
 
 Current repo inspection indicates:
 
@@ -89,6 +97,11 @@ Current repo inspection indicates:
 - Slice 6.5 confirmed the search/results foundation is visually acceptable for this slice and remains static-safe/visual-only.
 - Slice 7 adds a static-safe cart foundation without introducing live cart items, cart updates, checkout actions, or product import behaviour.
 - Slice 7.5 confirmed the cart foundation is visually acceptable for this slice and remains static-safe/visual-only.
+- Slice 8 adds static-safe legal/support page foundations without introducing live contact handling, customer accounts, or final legal publication.
+- Slice 8.5 confirmed the legal/support foundations are acceptable as launch-direction placeholder content, global chrome remained unchanged, and the approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- Slice 8.5 confirmed JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, and `templates/page.contact.json`.
+- Slice 8.5 confirmed Shopify Theme Check passed with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open across `8` files.
+- Slice 8.5 confirmed no Shopify push, publish, product import, checkout customization, live-store action, final legal sign-off, live policy publication, or customer account/auth/contact backend wiring occurred.
 
 ## Scope completed
 
@@ -143,6 +156,14 @@ Current repo inspection indicates:
 - Extended `assets/theme.css` with cart foundation styling only.
 - Kept cart content static-safe and did not introduce live cart items, cart routes, checkout actions, or real cart update behaviour.
 - Recorded Slice 7.5 acceptance as PASS WITH NOTES for the uncommitted cart foundation review.
+- Added `templates/page.json` for native Shopify legal/about/support routing.
+- Added `sections/main-page-foundation.liquid` for About, Shipping, Returns, Privacy, Terms, and FAQ/support placeholder coverage.
+- Added `templates/page.contact.json` for dedicated support/contact routing.
+- Added `sections/support-page-foundation.liquid` for support contact, shipping/returns guidance, FAQ, and policy placeholder coverage.
+- Extended `assets/theme.css` with legal/support foundation styling only.
+- Kept legal/support content structurally ready but clearly non-final, with no live contact backend wiring, no customer account/auth work, and no final legal sign-off implied.
+- Recorded Slice 8.5 legal/support QA acceptance as PASS WITH NOTES.
+- Recorded Slice 8.6 as a docs-only QA closure pass without expanding the non-doc Slice 8 implementation scope.
 
 ## What must not change
 
@@ -172,9 +193,18 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - product detail page foundation implemented in Shopify sections and `templates/product.json`
 - search/results foundation implemented in Shopify sections and `templates/search.json`
 - cart page foundation implemented in Shopify sections and `templates/cart.json`
+- legal/support page foundations implemented in Shopify sections and `templates/page.json` plus `templates/page.contact.json`
+- accepted Slice 8.5 legal/support QA review results recorded as PASS WITH NOTES
+- legal/support page, support/contact page, About/store promise, shipping/delivery, returns/refunds, privacy/terms placeholder labeling, FAQ/support blocks, and deferred policy-publication notice were accepted as foundation-only launch-direction content
 - Theme Check preview blockers remediated locally for the affected homepage and collection files only
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, and `templates/page.contact.json`
+- Shopify Theme Check passes with zero blocking errors
+- `24` non-blocking `RemoteAsset` warnings remain open across `8` files
 - no dynamic product data wiring
-- no Shopify deployment activity
+- no real customer account, auth, or backend contact-form wiring
+- no Shopify deployment activity or live-store action
+- no final legal sign-off or live policy publication
+- legal/support content remains foundation-only and not final legal sign-off
 - accepted Slice 2.5 QA review results recorded against commit `63dc32dd20ef921d92dff993f83071a4d3666de6`
 - accepted Slice 2.6 closure recorded at commit `3a540ebdab2db093ed5cd76def4f7ca3e3878a3a`
 - accepted Slice 3.5 homepage QA review results recorded against commit `9066067d8699dfadfb0b012a8f038a34c6537fb5`
@@ -182,22 +212,28 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted unpublished preview recorded against preview theme `151207542967`
 - accepted Slice 5.5 PDP QA review results recorded at commit `eef7878ed57a307e18c5f15586de074bbf76684e`
 - accepted Slice 6.5 search/results QA review results recorded at commit `325e1acdd9448c90923170938ce1a8f85f61d490`
-- accepted Slice 7.5 cart QA review results recorded against the current uncommitted Slice 7 worktree
+- accepted Slice 7 final foundation committed at `43812244c756fc86d31f1f53952e3d666f72511b`
+- `artifacts/` remains untracked and must not be committed unless separately approved
+- next Product Owner decision pending: final Slice 8 implementation commit decision
 
 ## Preview workflow status
 
 - Slice 4 unpublished preview remains accepted by the user against theme `151207542967`.
 - Dynamic product wiring remains deferred after the accepted preview.
-- Shopify push/publish remains unapproved in the current Slice 7.6 state.
+- Shopify push/publish remains unapproved in the current Slice 8 state.
+- Product import, checkout customization, final legal sign-off, live policy publication, and customer account/auth/contact backend wiring remain deferred in the current Slice 8 state.
+- No Shopify push, publish, product import, checkout customization, or live-store action occurred during the accepted Slice 8.5 review.
 - `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Approved scope
 
-Slice 7.6 scope is limited to:
+Slice 8 scope is limited to:
 
-- documentation-only closure of the accepted Slice 7.5 cart QA review
-- recording the accepted cart QA result and current safety state
-- confirming that non-doc Slice 7 implementation files remain outside the scope of this pass
+- native Shopify legal/support page foundations
+- static-safe About, Contact, Shipping, Returns, Privacy, Terms, and FAQ/support structures
+- legal/support-only CSS extraction
+- documentation updates for Slice 8 implementation state
+- documentation updates for Slice 8.5 QA closure state
 
 ## Critical constraints
 
@@ -206,6 +242,8 @@ Slice 7.6 scope is limited to:
 - No product import, Shopify push, publish, checkout customization, multi-country logic, advanced personalization, or supplier integration is allowed in this pass.
 - No Shopify push, publish, login, theme list, or preview theme creation is allowed in this pass.
 - No dynamic product wiring is included in this pass.
+- No real customer account/auth work or backend contact-form handling is included in this pass.
+- No final legal sign-off or live policy publication is included in this pass.
 - No RemoteAsset cleanup or broad lint cleanup is included in this pass.
 - No unnecessary tooling or package/build system has been introduced.
 
@@ -264,6 +302,12 @@ Slice 7.6 scope is limited to:
 - Slice 7.5 confirmed Shopify Theme Check passes with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open.
 - Slice 7.5 confirmed no Shopify login, theme list, push, publish, checkout change, product import, or live-store action occurred.
 - Slice 7.5 confirmed the existing `sections/site-header.liquid` cart route link is pre-existing and unchanged.
+- Slice 8 uses `templates/page.json` and `templates/page.contact.json` plus two main sections to introduce generic legal/support and dedicated contact/support page foundations.
+- Legal/support content remains static-safe, South Africa-first, and clearly marked as structurally ready rather than legally final.
+- Slice 8 does not introduce live contact handling, customer accounts, checkout customization, or policy publication.
+- Slice 8.5 QA accepted the legal/support foundation review as PASS WITH NOTES.
+- Slice 8.5 confirmed global chrome remained unchanged, placeholder legal/support content remained non-final, and live policy/contact/account behaviour stayed deferred.
+- Slice 8.6 records the QA closure only and does not alter theme implementation or `artifacts/` handling.
 
 ## Next recommended owner
 
@@ -280,11 +324,11 @@ Product Owner
 - Chrome responsiveness beyond the approved desktop-first source remains deferred until broader template/page implementation decisions are made.
 - Font hosting remains deferred pending implementation approval.
 - Toast, cart, and newsletter wiring remain deferred pending later implementation slices.
-- Homepage is now implemented as a static-safe composition foundation, but collection, PDP, search, cart, and support template implementation remain deferred.
+- Homepage is now implemented as a static-safe composition foundation, but 404 implementation remains deferred.
 - Homepage product cards, arrivals, and promo surfaces currently rely on static-safe source-derived content and still require later approval before dynamic data wiring.
 - Dynamic product wiring remains deferred.
 - Product import remains deferred.
-- PDP, search, cart, legal/support, and 404 templates remain deferred.
+- 404 template implementation remains deferred.
 - Broader responsive QA remains pending.
 - Shopify preview and publish remain unapproved.
 - Real collection product data wiring, sorting, filtering, and pagination remain deferred.
@@ -293,18 +337,18 @@ Product Owner
 - Live product media, variants, pricing, stock state, and transactional add-to-cart wiring remain deferred for PDP work.
 - Live search terms, result ranking, predictive suggestions, and recovery behaviours remain deferred for search/results work.
 - Live cart items, totals, update actions, drawer behaviour, and checkout actions remain deferred for cart work.
-- The current Slice 7 implementation files remain uncommitted pending Product Owner approval of the final Slice 7 commit scope.
+- Legal/support foundations are structurally ready, but final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, and customer account/auth/contact backend wiring remain deferred.
 
 ## Handoff queue
 
-- Decide the final accepted Slice 7 commit scope for implementation plus docs only.
-- Keep `artifacts/` excluded from any Slice 7 commit.
-- Keep product import, Shopify publish, RemoteAsset cleanup, live cart/checkout wiring, and broader responsive QA deferred until explicitly approved.
+- Product Owner decision pending on the final Slice 8 implementation commit scope and timing.
+- Keep `artifacts/` excluded from any Slice 8 commit.
+- Keep product import, Shopify push/publish, checkout customization, RemoteAsset cleanup, live contact/backend wiring, final legal sign-off, live policy publication, and broader responsive QA deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass records the accepted Slice 7.5 cart QA closure in documentation only. The approved HTML remains unchanged, the cart foundation remains static-safe and visual-only, Theme Check still passes with zero blocking errors, `24` non-blocking `RemoteAsset` warnings remain deferred, the pre-existing header cart route link remains unchanged, no Shopify push/publish/product import/checkout or live-store action occurred, and `artifacts/` remains untracked pending any separate approval.
+This pass records Slice 8.5 legal/support QA closure as PASS WITH NOTES in documentation only. The approved HTML remains unchanged, legal/support content remains foundation-only and not final legal sign-off, Shopify Theme Check is confirmed at zero blocking errors with `24` non-blocking `RemoteAsset` warnings still open across `8` files, no Shopify push/publish/product import/checkout or live-store action occurred, no final legal or backend support/account wiring was introduced, and `artifacts/` remains untracked pending any separate approval.
 
 ---
 
-**Footer Standard For This Pass:** Slice 7.5 cart QA accepted as PASS WITH NOTES. Approved source HTML unchanged. This pass is documentation-only and records accepted cart QA state, deferred live cart/checkout wiring, deferred product import, deferred Shopify publish, the unchanged pre-existing header cart route link, and untracked `artifacts/` handling within the agreed scope.
+**Footer Standard For This Pass:** Slice 8.5 legal/support QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted legal/support QA, keeps final legal sign-off and live contact handling deferred, and preserves untracked `artifacts/` handling within the agreed scope.

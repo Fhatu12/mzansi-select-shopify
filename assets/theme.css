@@ -1831,6 +1831,187 @@ nav {
   margin-top: 8px;
 }
 
+.page-main-shell,
+.support-main-shell {
+  padding: 52px 0 64px;
+  background: var(--white);
+}
+
+.page-hero,
+.support-hero {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 44px;
+  margin-bottom: 28px;
+}
+
+.page-kicker,
+.support-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.page-title,
+.support-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.page-title .gold,
+.support-title .gold {
+  color: var(--gold);
+}
+
+.page-intro,
+.support-intro {
+  max-width: 760px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.page-content-grid,
+.support-channel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.page-card,
+.support-card,
+.page-policy-card,
+.support-detail-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 28px 30px;
+}
+
+.page-card,
+.support-card {
+  background: var(--cream);
+}
+
+.page-card-label {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 10px;
+}
+
+.page-card-title,
+.page-policy-title,
+.support-card-title,
+.support-policy-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.page-card-copy,
+.support-card-copy,
+.support-detail-copy,
+.support-policy-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.page-policy-shell,
+.page-faq-shell {
+  margin-top: 6px;
+}
+
+.page-policy-grid,
+.page-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.page-policy-grid {
+  margin-bottom: 18px;
+}
+
+.page-policy-note {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cream);
+  padding: 20px 24px;
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+.page-faq-shell {
+  margin-top: 30px;
+}
+
+.page-faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 24px 26px;
+}
+
+.page-faq-title,
+.support-detail-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.page-faq-copy {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.support-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.support-detail-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.support-detail-item + .support-detail-item {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.support-policy-band {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cream);
+  padding: 28px 30px;
+}
+
 .empty-state {
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -2137,7 +2318,10 @@ footer {
   .product-main,
   .product-detail-grid,
   .cart-layout,
-  .cart-line-card {
+  .cart-line-card,
+  .page-policy-grid,
+  .page-faq-grid,
+  .support-layout {
     grid-template-columns: 1fr;
   }
 
@@ -2158,7 +2342,9 @@ footer {
   }
 
   .product-purchase-shell,
-  .product-support-band {
+  .product-support-band,
+  .page-content-grid,
+  .support-channel-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2225,13 +2411,24 @@ footer {
   .search-summary-card,
   .search-browse-prompt,
   .cart-hero,
-  .cart-support-banner {
+  .cart-support-banner,
+  .page-hero,
+  .support-hero,
+  .page-card,
+  .support-card,
+  .page-policy-card,
+  .support-detail-card,
+  .support-policy-band,
+  .page-faq-item,
+  .page-policy-note {
     padding: 30px 24px;
   }
 
   .collection-title,
   .search-title,
-  .cart-title {
+  .cart-title,
+  .page-title,
+  .support-title {
     font-size: 28px;
   }
 

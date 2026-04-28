@@ -1,0 +1,116 @@
+<section class="page-main-shell">
+  <div class="section-inner">
+    <div class="page-hero">
+      <div class="page-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ section.settings.page_label }}
+      </div>
+      <h1 class="page-title">
+        {{ section.settings.page_title }}
+        {% if section.settings.page_accent != blank %}
+          <span class="gold">{{ section.settings.page_accent }}</span>
+        {% endif %}
+      </h1>
+      <p class="page-intro">{{ section.settings.page_intro }}</p>
+    </div>
+
+    <div class="page-content-grid">
+      <article class="page-card" id="about-us">
+        <div class="page-card-label">About Mzansi Select</div>
+        <h2 class="page-card-title">Everyday essentials with a practical premium touch</h2>
+        <p class="page-card-copy">Mzansi Select is being structured around clear value, dependable service, and useful home, kitchen, and tech finds for South African households. Final merchandising, supplier, and launch-copy details remain subject to later approval.</p>
+      </article>
+
+      <article class="page-card" id="shipping">
+        <div class="page-card-label">Shipping &amp; Delivery</div>
+        <h2 class="page-card-title">South Africa-first fulfilment guidance</h2>
+        <p class="page-card-copy">Delivery guidance is framed around major metros, regional addresses, and practical order updates. Final service levels, courier partners, lead times, and surcharges must still be confirmed before launch.</p>
+      </article>
+
+      <article class="page-card" id="returns">
+        <div class="page-card-label">Returns &amp; Refunds</div>
+        <h2 class="page-card-title">Straightforward returns, pending final policy sign-off</h2>
+        <p class="page-card-copy">The current structure supports a simple returns story with item-condition expectations and a short review window. Final refund timing, exclusions, and approval wording must be confirmed before publication.</p>
+      </article>
+    </div>
+
+    <div class="page-policy-shell">
+      {% render 'section-heading', title: 'Policies &', accent: 'FAQs' %}
+
+      <div class="page-policy-grid">
+        <article class="page-policy-card" id="privacy-policy">
+          <div class="page-card-label">Privacy Policy</div>
+          <h3 class="page-policy-title">Privacy details to be confirmed before launch</h3>
+          <p class="page-card-copy">This placeholder reserves space for customer-data, communications, order-processing, and POPIA-aligned privacy language. Legal review and final operational details are still required.</p>
+        </article>
+
+        <article class="page-policy-card" id="terms">
+          <div class="page-card-label">Terms &amp; Conditions</div>
+          <h3 class="page-policy-title">Terms remain a pre-launch legal placeholder</h3>
+          <p class="page-card-copy">This placeholder reserves space for order acceptance, payment, delivery, returns, and general site-use terms. It should not be treated as final legal approval for launch.</p>
+        </article>
+      </div>
+
+      <div class="page-policy-note">
+        Policy details to be confirmed before launch. This slice establishes structure only and does not represent final legal sign-off or live publication readiness.
+      </div>
+    </div>
+
+    <div class="page-faq-shell" id="faq">
+      {% render 'section-heading', title: 'Support', accent: 'Questions' %}
+
+      <div class="page-faq-grid">
+        <article class="page-faq-item">
+          <h3 class="page-faq-title">Do you deliver nationwide?</h3>
+          <p class="page-faq-copy">The approved foundation assumes nationwide South African support, with final courier coverage, timing, and surcharge details to be confirmed before launch.</p>
+        </article>
+        <article class="page-faq-item">
+          <h3 class="page-faq-title">How will returns work?</h3>
+          <p class="page-faq-copy">Returns guidance is intentionally simple in this slice, with final eligibility, process, and refund timing to be confirmed once policy review is complete.</p>
+        </article>
+        <article class="page-faq-item">
+          <h3 class="page-faq-title">Can support help with product questions?</h3>
+          <p class="page-faq-copy">Yes, the structure anticipates pre-purchase help and post-order support, but live service channels and response SLAs are still being prepared.</p>
+        </article>
+        <article class="page-faq-item">
+          <h3 class="page-faq-title">Are policy pages ready for publication?</h3>
+          <p class="page-faq-copy">Not yet. This pass creates the page foundation only. Final legal copy and launch approval remain explicitly deferred.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_label",
+      "label": "Page label",
+      "default": "Store Guide"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title",
+      "default": "Helpful"
+    },
+    {
+      "type": "text",
+      "id": "page_accent",
+      "label": "Page accent",
+      "default": "Info"
+    },
+    {
+      "type": "textarea",
+      "id": "page_intro",
+      "label": "Page intro",
+      "default": "This legal and support foundation keeps the accepted Mzansi Select tone in place with clear guidance, honest placeholder policy language, and South Africa-first support context while final legal sign-off remains deferred."
+    }
+  ]
+}
+{% endschema %}

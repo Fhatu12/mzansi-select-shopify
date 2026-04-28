@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-foundation",
+      "settings": {
+        "page_label": "Store Guide",
+        "page_title": "Helpful",
+        "page_accent": "Info",
+        "page_intro": "This legal and support foundation keeps the accepted Mzansi Select tone in place with clear guidance, honest placeholder policy language, and South Africa-first support context while final legal sign-off remains deferred."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

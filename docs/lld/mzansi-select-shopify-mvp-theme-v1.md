@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 7.6 docs-only cart QA closure  
-**Status:** Slice 7.5 cart QA accepted as PASS WITH NOTES  
+**Owner:** Slice 8.6 docs-only legal/support QA closure  
+**Status:** Slice 8.6 docs-only legal/support QA closure completed  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -282,6 +282,42 @@ Slice 7.5 cart QA closure note:
 - The existing `sections/site-header.liquid` cart route link was identified as pre-existing and unchanged.
 - No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live cart/checkout wiring was introduced during the accepted review pass.
 
+## Slice 8 legal/support foundation responsibilities
+
+Slice 8 introduces the first native legal/support page foundations while keeping page content static-safe, South Africa-first, and implementation-light.
+
+Slice 8 scope includes:
+
+- `templates/page.json` creation for general legal/about/support page routing
+- `sections/main-page-foundation.liquid` for About, Shipping, Returns, Privacy, Terms, and FAQ/support placeholder coverage
+- `templates/page.contact.json` creation for dedicated support/contact routing
+- `sections/support-page-foundation.liquid` for contact/support, shipping/returns guidance, FAQ, and policy-publication placeholder coverage
+- legal/support-only CSS extraction aligned to accepted collection, PDP, search, and cart intro/card rhythm
+
+Slice 8 explicitly defers:
+
+- final legal wording/sign-off and live policy publication
+- live support/contact/legal-policy behaviour beyond placeholder rendering
+- live contact form or backend support handling
+- customer accounts, authentication, or address-management flows
+- Shopify push, publish, checkout customization, product import, or 404 template implementation
+
+Slice 8.5 legal/support QA closure note:
+
+- The uncommitted Slice 8 legal/support foundation was reviewed and accepted as PASS WITH NOTES.
+- Legal/support page foundations exist and remain acceptable as foundation-only launch-direction content.
+- Generic page foundation structure and dedicated contact/support page structure were accepted for this slice.
+- About/store promise content was accepted as restrained and suitable for launch-direction placeholder use.
+- Contact/support guidance, South Africa-first shipping/delivery guidance, cautious returns/refunds guidance, and readable FAQ/support blocks were accepted for this slice.
+- Privacy and Terms sections were accepted as clearly marked placeholder content pending legal review.
+- Policy-publication placeholder notice was accepted as clearly confirming that final legal publication remains deferred.
+- Visual rhythm remained consistent with the accepted homepage, collection, PDP, search, and cart foundations, and global chrome remained unchanged.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, and `templates/page.contact.json`.
+- `shopify theme check --path . --fail-level error` passed with zero blocking errors.
+- `24` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, `snippets/cart-line-item.liquid`, and `snippets/static-product-card.liquid`.
+- No product import, Shopify login, theme list, push, preview/store action, publish, checkout customization, final legal sign-off, live policy publication, or customer account/auth/contact backend wiring was introduced during the accepted review pass.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -289,13 +325,13 @@ Slice 7.5 cart QA closure note:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json`, `collection.json`, `product.json`, `search.json`, and `cart.json` for approved homepage, collection, PDP, search/results, and cart foundations.
+  - Contains `index.json`, `collection.json`, `product.json`, `search.json`, `cart.json`, `page.json`, and `page.contact.json` for approved homepage, collection, PDP, search/results, cart, and legal/support foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage, collection, PDP, search/results, and cart composition sections.
+  - Contains global shell placeholders plus homepage, collection, PDP, search/results, cart, and legal/support composition sections.
 - `snippets/`
   - Contains reusable shell fragments plus homepage, collection, PDP, search/results, and cart utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage, collection, PDP, search/results, and cart foundation styling.
+  - Contains extracted global/base shell CSS plus homepage, collection, PDP, search/results, cart, and legal/support foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -372,6 +408,11 @@ Slice 7 addition:
 - `assets/theme.css` now includes cart foundation styling for the cart hero, line-item shells, order-summary shell, support prompt, and empty-cart spacing.
 - Cart CSS remains source-aligned and reuses the same heading, CTA, price-stack, and cream/white card language already accepted on homepage, collection, PDP, and search/results foundations.
 
+Slice 8 addition:
+
+- `assets/theme.css` now includes legal/support foundation styling for generic page heroes, support-page heroes, legal/policy cards, FAQ blocks, and support guidance panels.
+- Legal/support CSS remains source-aligned and reuses the same heading, card, and cream/white rhythm already accepted on collection, PDP, search/results, and cart foundations.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -442,6 +483,13 @@ Slice 7 addition:
   - Carries cart heading, static-safe line-item list, subtotal summary shell, checkout CTA shell, support note, and empty-cart presentation.
 - `snippets/cart-line-item.liquid`
   - Carries reusable static-safe cart row presentation including image, badges, pricing, quantity shell, and remove action shell.
+
+Slice 8 addition:
+
+- `sections/main-page-foundation.liquid`
+  - Carries About, Shipping, Returns, Privacy, Terms, and FAQ/support placeholder presentation.
+- `sections/support-page-foundation.liquid`
+  - Carries support intro, contact/support guidance cards, shipping/returns guidance, FAQ, and policy-publication placeholder presentation.
 
 ### Sections
 
@@ -541,6 +589,11 @@ Slice 7 note:
 
 - `templates/cart.json` is now implemented to represent a static-safe cart foundation only.
 - No live cart object JavaScript, cart forms, quantity updates, cart routes, or checkout wiring was added for cart content sections.
+
+Slice 8 note:
+
+- `templates/page.json` and `templates/page.contact.json` are now implemented to represent static-safe legal/support foundations only.
+- No live contact-form JavaScript, customer account/auth wiring, or policy-publication workflow was added for legal/support content sections.
 
 ### Settings
 
@@ -689,13 +742,15 @@ Known from source:
 
 - Help, Shipping, Returns, FAQ, Contact Us, Privacy Policy, and Terms & Conditions are present in the navigation ecosystem and footer link structure.
 
-Unknown / requires implementation confirmation:
+Slice 8 implementation decision:
 
-- Exact page-body layout for legal/support content
+- Use a general page template plus a dedicated contact/support template to establish static-safe legal/support structure without implying final legal approval.
+- Keep copy clear, honest, South Africa-first, and explicitly marked as placeholder where policy or operational details still need confirmation.
+- Avoid live contact forms, customer account flows, or backend support handling in this slice.
 
 Constraint for implementation:
 
-- Legal and support pages must retain the same header, navigation, footer, typography, container width, and muted body-copy styling as the homepage.
+- Legal and support pages must retain the same header, navigation, footer, typography, container width, muted body-copy styling, and premium-practical tone already accepted across the storefront.
 
 ## 404 page pattern
 
@@ -952,6 +1007,23 @@ Slice 7 testing and preview expectations:
 - Verify no `cart.items`, `item.product`, `item.title`, `item.price`, `item.quantity`, `routes.cart_url`, `routes.cart_change_url`, `routes.cart_update_url`, `routes.cart_add_url`, `checkout_url`, or `form 'cart'` wiring was introduced.
 - Verify no Shopify push, publish, login, theme list, or product import activity occurred.
 
+Slice 8 testing and preview expectations:
+
+- Verify `templates/page.json` parses as valid JSON.
+- Verify `templates/page.contact.json` parses as valid JSON when present.
+- Verify `sections/main-page-foundation.liquid` renders About, Shipping, Returns, Privacy, Terms, and FAQ/support placeholder structure.
+- Verify `sections/support-page-foundation.liquid` renders support intro, contact/support guidance cards, shipping/returns guidance, FAQ coverage, and policy-publication placeholder language.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `form 'contact'`, `customer_login`, `customer_register`, `customer_address`, `checkout`, `cart.items`, `product.title`, `product.price`, `collection.products`, or `search.results` wiring was introduced.
+- Verify no Shopify push, publish, login, theme list, or product import activity occurred.
+
+Slice 8.5 QA acceptance note:
+
+- Generic legal/support foundation structure, dedicated support/contact structure, About/store promise block, shipping/delivery guidance, returns/refunds guidance, privacy/terms placeholder state, FAQ/support readability, and deferred policy-publication messaging were accepted for this slice.
+- Accepted global chrome remained unchanged through the reviewed Slice 8 worktree.
+- Legal/support content remains static-safe, South Africa-first, and visual/content-direction only until later approved live legal/support behaviour.
+- Final legal wording/sign-off, live policy publication, customer account/auth/contact backend wiring, product import, Shopify push/publish, checkout customization, and broader live support/contact/legal-policy behaviour remain deferred.
+
 Slice 7.5 QA acceptance note:
 
 - Cart heading and intro, filled-cart line-item shell, quantity shell, subtotal/summary shell, checkout CTA visual shell, support/trust note, and empty-cart state were accepted for this slice.
@@ -979,16 +1051,17 @@ Theme Check blocker-fix validation state:
 - Product ratings, wishlist flows, and review counts shown in cards require data-source decisions.
 - Font hosting strategy for `DM Sans` and `Playfair Display` requires implementation choice compatible with Shopify.
 - Sample imagery currently references external Unsplash URLs and needs approved asset ownership/hosting decisions.
-- Homepage is now implemented as a static-safe foundation, but product, collection, search, cart, and support template implementation remain deferred beyond Slice 3.
+- Homepage is now implemented as a static-safe foundation, but 404 template implementation remains deferred beyond the current slices.
 - Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 - Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
 - Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
 - Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
-- RemoteAsset warnings remain open after blocker-fix validation and require separate Product Owner approval before cleanup.
+- `24` non-blocking `RemoteAsset` warnings remain open after Slice 8.5 QA validation and require separate Product Owner approval before cleanup.
 - PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
 - Search placeholder queries, result ranking, browse recovery behaviours, and no-results merchandising still need an approved strategy for later Shopify search data replacement without changing the approved visual contract.
 - Cart placeholder line items, subtotal logic, drawer behaviour, checkout actions, and recovery/upsell behaviours still need an approved strategy for later Shopify cart data replacement without changing the approved visual contract.
+- Legal/support placeholder policy wording, final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, live contact details, backend support handling, and publication readiness still need explicit approval before launch use.
 
 ## Acceptance checklist
 
@@ -1001,8 +1074,8 @@ Theme Check blocker-fix validation state:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 7 changes stay limited to cart foundation scope with static-safe placeholder behaviour.
+- [ ] Approved source HTML remains untouched while Slice 8 changes stay limited to legal/support foundation scope with static-safe placeholder behaviour.
 
 ---
 
-**Footer Standard For This Pass:** Slice 7 cart page/drawer foundation implemented. Approved source HTML unchanged. Theme changes remain limited to cart structure, cart-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 8.5 legal/support QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted legal/support QA, preserves the existing implementation scope, and keeps live legal/support behaviour deferred within the agreed slice scope.

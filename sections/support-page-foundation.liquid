@@ -1,0 +1,104 @@
+<section class="support-main-shell">
+  <div class="section-inner">
+    <div class="support-hero" id="contact">
+      <div class="support-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ section.settings.support_label }}
+      </div>
+      <h1 class="support-title">
+        {{ section.settings.support_title }}
+        {% if section.settings.support_accent != blank %}
+          <span class="gold">{{ section.settings.support_accent }}</span>
+        {% endif %}
+      </h1>
+      <p class="support-intro">{{ section.settings.support_intro }}</p>
+    </div>
+
+    <div class="support-channel-grid">
+      <article class="support-card">
+        <div class="page-card-label">General Support</div>
+        <h2 class="support-card-title">Contact details to be confirmed before launch</h2>
+        <p class="support-card-copy">This foundation reserves space for email, messaging, and service-hour details once approved support operations are finalized.</p>
+      </article>
+      <article class="support-card">
+        <div class="page-card-label">Order Guidance</div>
+        <h2 class="support-card-title">Delivery and returns help stays front and centre</h2>
+        <p class="support-card-copy">The support page keeps delivery timing, regional expectations, and returns guidance easy to find for South African shoppers.</p>
+      </article>
+      <article class="support-card">
+        <div class="page-card-label">Launch Safety</div>
+        <h2 class="support-card-title">No live contact form in this slice</h2>
+        <p class="support-card-copy">This section is visual-only for now. Native or backend contact handling remains deferred until explicitly approved.</p>
+      </article>
+    </div>
+
+    <div class="support-layout">
+      <div class="support-detail-card">
+        {% render 'section-heading', title: 'Shipping &', accent: 'Returns' %}
+        <div class="support-detail-stack">
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Shipping guidance</h3>
+            <p class="support-detail-copy">Expected service language supports metro and regional delivery expectations, with final timelines and courier details to be confirmed before launch.</p>
+          </div>
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Returns guidance</h3>
+            <p class="support-detail-copy">A simple returns structure is in place, but final refund processing, exclusions, and approval wording remain pending legal and operational review.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-detail-card">
+        {% render 'section-heading', title: 'Support', accent: 'FAQs' %}
+        <div class="support-detail-stack">
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">When will contact details go live?</h3>
+            <p class="support-detail-copy">Once the launch support workflow is approved, the visual placeholders on this page can be replaced with live contact details and service commitments.</p>
+          </div>
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Can customers check out from here?</h3>
+            <p class="support-detail-copy">No. This slice does not add live contact handling, live basket behavior, or transactional purchase flow wiring. It only establishes the approved support-page structure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-policy-band">
+      <div class="support-policy-title">Policy publication remains deferred</div>
+      <p class="support-policy-copy">Privacy, terms, shipping, and returns content shown in this slice should be treated as launch-structure placeholders only. Final wording and legal sign-off are still required before any live publication.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Support main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "support_label",
+      "label": "Support label",
+      "default": "Support Preview"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Support title",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "support_accent",
+      "label": "Support accent",
+      "default": "Us"
+    },
+    {
+      "type": "textarea",
+      "id": "support_intro",
+      "label": "Support intro",
+      "default": "This static-safe support foundation keeps the approved Mzansi Select rhythm in place with clear help pathways, South Africa-first delivery guidance, and honest placeholder messaging while live contact handling remains deferred."
+    }
+  ]
+}
+{% endschema %}
