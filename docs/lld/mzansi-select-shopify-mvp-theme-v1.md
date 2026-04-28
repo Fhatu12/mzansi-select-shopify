@@ -1,10 +1,10 @@
 # Mzansi Select Shopify MVP Theme V1
 
 **Document Type:** Low-Level Design / Technical Specification  
-**Prepared:** 2026-04-28  
+**Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11A storefront department/category scan and Shopify collection taxonomy recommendation completed pending Product Owner acceptance or correction  
-**Version:** 1.1  
+**Status:** Slice 11B docs-only 25-product launch catalogue readiness matrix update completed pending Product Owner acceptance or correction  
+**Version:** 1.2  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -764,6 +764,51 @@ Launch catalogue readiness criteria affected by taxonomy:
 - The readiness matrix must score stable departments separately from merchandising rails and separately from informational pages.
 - Launch-readiness remains blocked even with approved taxonomy until Contact/About page resources are created or verified in Shopify.
 
+## Launch catalogue planning rules
+
+Approved launch departments and coverage counts:
+
+- `Home & Living` — `6` product slots
+- `Kitchen & Storage` — `7` product slots
+- `Office & Desk` — `5` product slots
+- `Tech Accessories` — `7` product slots
+- Total approved launch planning coverage: `25` product slots
+
+Expansion-ready only:
+
+- `Garden & Outdoor`
+- `Bath & Bedroom`
+- `Cleaning & Laundry`
+
+Merchandising rails remain distinct from departments:
+
+- `Shop All`
+- `Best Sellers`
+- `Deals`
+- `New In`
+- `New Arrivals`
+- `Featured`
+- `Trending`
+- `Seasonal`
+
+These may drive homepage merchandising, manual collections, or smart collections later, but they must not replace or dilute the stable department-led browse taxonomy.
+
+Catalogue readiness statuses for planning:
+
+- `Candidate`
+- `Supplier verified`
+- `Content ready`
+- `Import ready`
+- `Rejected`
+
+Readiness-rule constraints:
+
+- Unknown product titles, supplier details, cost, target selling price, margin, and shipping assumptions must remain `TBD` or `Unconfirmed` until verified.
+- Confirmed product names may be carried into readiness planning only when they exist in the approved source HTML or accepted project documentation.
+- Product import remains unapproved in this slice even where planning records a product slot.
+- No slot should be treated as launch-ready for import until supplier, content, and import-field verification are complete.
+- Contact/About route availability remains a launch-readiness blocker independent of catalogue completeness.
+
 ## Product detail page pattern
 
 Known from source:
@@ -1183,7 +1228,7 @@ Theme Check blocker-fix validation state:
 - Broader empty-state coverage beyond the current collection, search, cart, and 404 foundations still needs explicit approval where live data and merchandising logic are involved.
 - Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
 - Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
-- Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, but the final 25-product readiness matrix remains deferred.
+- Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, and Slice 11B now records the approved `25`-slot planning matrix without approving import or live catalogue operations.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1224,4 +1269,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11A taxonomy recommendation recorded. Approved source HTML unchanged. This docs-only pass updates durable department taxonomy guidance, preserves the Contact/About blocker, leaves theme/code unchanged, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 11B catalogue readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates durable launch catalogue rules, preserves the Contact/About blocker, leaves theme/code unchanged, and keeps live catalogue/support behaviour deferred within the agreed scope.
