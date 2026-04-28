@@ -977,6 +977,100 @@ nav {
   color: var(--white);
 }
 
+.collection-shell {
+  padding: 52px 0 64px;
+  background: var(--white);
+}
+
+.collection-hero {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 44px;
+  margin-bottom: 28px;
+}
+
+.collection-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.collection-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.collection-title .gold {
+  color: var(--gold);
+}
+
+.collection-intro {
+  max-width: 760px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.collection-body {
+  background: var(--white);
+}
+
+.collection-empty-wrap {
+  margin-top: 8px;
+}
+
+.empty-state {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cream);
+  padding: 44px 36px;
+  text-align: center;
+}
+
+.empty-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.empty-state-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.empty-state-desc {
+  max-width: 560px;
+  margin: 0 auto 22px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
 .trust-bar {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -1255,6 +1349,10 @@ footer {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .collection-hero {
+    padding: 34px 32px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1294,5 +1392,22 @@ footer {
   .promo-text,
   .arr-overlay {
     padding: 28px 24px;
+  }
+
+  .collection-shell {
+    padding: 40px 0 48px;
+  }
+
+  .collection-hero,
+  .empty-state {
+    padding: 30px 24px;
+  }
+
+  .collection-title {
+    font-size: 28px;
+  }
+
+  .empty-state-title {
+    font-size: 24px;
   }
 }

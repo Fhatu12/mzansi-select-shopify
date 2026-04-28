@@ -1,6 +1,6 @@
 <div class="product-card">
   <div class="prod-img">
-    <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy">
+    <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" width="{{ image_width | default: 600 }}" height="{{ image_height | default: 600 }}">
     {% render 'product-badge', label: badge_label, tone: badge_tone %}
     <button class="p-wish" type="button" aria-label="Save {{ product_name }} to wishlist">
       <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">

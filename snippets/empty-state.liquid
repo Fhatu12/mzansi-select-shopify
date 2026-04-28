@@ -1,0 +1,15 @@
+<div class="empty-state">
+  {% if badge != blank %}
+    <div class="empty-state-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      {{ badge }}
+    </div>
+  {% endif %}
+  <div class="empty-state-title">{{ title }}</div>
+  <p class="empty-state-desc">{{ description }}</p>
+  {% if action_label != blank %}
+    <a class="btn-dark" href="{{ action_url | default: routes.root_url }}">{{ action_label }}</a>
+  {% endif %}
+</div>

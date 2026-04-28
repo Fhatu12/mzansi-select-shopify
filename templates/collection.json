@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection-foundation",
+      "settings": {
+        "collection_label": "Browse by Category",
+        "collection_title": "Everyday",
+        "collection_accent": "Essentials",
+        "collection_intro": "Explore a collection-led layout that follows the approved Mzansi Select grid rhythm, premium-practical typography, and straightforward browse flow while real catalogue wiring remains deferred.",
+        "grid_heading": "Featured in this category",
+        "view_state": "filled",
+        "empty_badge": "Collection Preview",
+        "empty_title": "This category is being prepared",
+        "empty_description": "We have approved the collection layout foundation first. Real products and category-specific wiring will follow in a later approved slice.",
+        "empty_action_label": "Continue browsing"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

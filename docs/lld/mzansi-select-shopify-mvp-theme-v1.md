@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 3.6 documentation closure pass  
-**Status:** Slice 3.5 homepage QA review accepted - PASS WITH NOTES  
+**Owner:** Theme Check blocker fix pass  
+**Status:** Theme Check blocker fix implemented for preview readiness  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -168,6 +168,31 @@ Slice 3 explicitly defers:
 - collection, PDP, search, cart, support, legal, or 404 template implementation
 - add-to-cart, toast, wishlist, newsletter, or cart behavior wiring beyond the accepted chrome shell
 
+## Slice 4 collection/category foundation responsibilities
+
+Slice 4 introduces the first native collection/category template foundation while keeping listing content static-safe and implementation-light.
+
+Slice 4 scope includes:
+
+- `templates/collection.json` creation for collection/category routing
+- collection heading and intro foundation
+- collection listing foundation using accepted static product-card placeholders
+- empty collection/no-results state foundation
+- collection/category CSS extraction that stays aligned to homepage card and heading rhythm
+- a reusable empty-state snippet
+
+Slice 4 explicitly defers:
+
+- dynamic Shopify collection product wiring
+- product import or catalogue setup
+- sorting, filtering, pagination, or richer browse controls
+- PDP, search, cart, support, legal, or 404 template implementation
+
+Theme Check blocker-fix note:
+
+- The collection/homepage preview blocker pass is limited to adding required image `width` and `height` attributes to placeholder images and shortening the collection section schema name to `Collection main`.
+- RemoteAsset warnings remain intentionally deferred because they were not blocking unpublished preview safety.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -175,13 +200,13 @@ Slice 3 explicitly defers:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json` for Slice 3 homepage composition foundation.
+  - Contains `index.json` and `collection.json` for approved homepage and collection foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage composition sections.
+  - Contains global shell placeholders plus homepage and collection composition sections.
 - `snippets/`
-  - Contains reusable shell fragments plus homepage utility snippets.
+  - Contains reusable shell fragments plus homepage and collection utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage foundation styling for Slice 3.
+  - Contains extracted global/base shell CSS plus homepage and collection foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -238,6 +263,11 @@ Slice 3 addition:
 - `assets/theme.css` now includes homepage module styling for hero, category strip, section headings, product-card placeholders, promo banner, and arrivals tiles.
 - Homepage CSS remains source-derived and does not introduce Shopify product-loop styling differences.
 
+Slice 4 addition:
+
+- `assets/theme.css` now includes collection/category foundation styling for intro, collection listing wrapper, and empty-state presentation.
+- Collection CSS remains source-aligned and reuses existing grid/card language rather than inventing a new browsing treatment.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -277,6 +307,20 @@ Slice 3 addition:
   - Reuses sale/new badge rendering.
 - `snippets/price-stack.liquid`
   - Reuses the approved price hierarchy pattern.
+
+Slice 4 addition:
+
+- `sections/main-collection-foundation.liquid`
+  - Carries collection/category intro, listing foundation, and empty/no-results state switching.
+- `snippets/empty-state.liquid`
+  - Carries reusable empty collection/no-results presentation aligned to the approved design language.
+
+Theme Check blocker-fix addition:
+
+- `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/promo-banner-split.liquid`, and `snippets/static-product-card.liquid`
+  - Now include explicit image `width` and `height` attributes to satisfy Shopify Theme Check without changing sources, wrappers, classes, or layout intent.
+- `sections/main-collection-foundation.liquid`
+  - Schema name shortened from `Main collection foundation` to `Collection main` to satisfy Shopify Theme Check name-length rules.
 
 ### Sections
 
@@ -357,6 +401,11 @@ Slice 3 note:
 - `templates/index.json` is now implemented to represent the approved homepage order only.
 - No product-loop JavaScript or Shopify storefront data wiring was added for homepage content sections.
 
+Slice 4 note:
+
+- `templates/collection.json` is now implemented to represent a static-safe collection/category page foundation only.
+- No product-loop JavaScript, sorting, filtering, or Shopify collection data wiring was added for collection content sections.
+
 ### Settings
 
 - Brand colour tokens with approved defaults matching source values
@@ -415,6 +464,11 @@ Unknown / requires implementation confirmation:
 Constraint for implementation:
 
 - If a collection intro is added, it must reuse the homepage design language: cream/white background banding, Playfair section headline styling, muted support copy, gold-accent CTA language, and the same `1280px` container rhythm.
+
+Slice 4 implementation note:
+
+- The collection foundation now uses a cream intro panel, a homepage-aligned listing heading, the shared product-card snippet, and a reusable empty-state surface.
+- Listing content remains static-safe placeholders until dynamic collection data wiring is explicitly approved.
 
 ## Product detail page pattern
 
@@ -698,6 +752,21 @@ Slice 3.5 homepage QA closure note:
 - Accepted global chrome remained unchanged through the reviewed Slice 3 commit.
 - Dynamic product wiring, product import, collection/PDP/search/cart/legal-support/404 templates, broader responsive QA, and Shopify preview/publish remain deferred.
 
+Slice 4 testing and preview expectations:
+
+- Verify `templates/collection.json` parses as valid JSON.
+- Verify `sections/main-collection-foundation.liquid` renders collection intro, listing foundation, and empty-state foundation.
+- Verify the listing foundation reuses the accepted product-card, badge, and price snippets.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `collection.products`, `product.title`, `product.price`, `paginate collection`, `for product in`, `sort_by`, or `filter` wiring was introduced.
+- Verify no Shopify push, publish, or product import activity occurred.
+
+Theme Check blocker-fix validation state:
+
+- `shopify theme check --path . --fail-level error` must return zero blocking errors after this pass.
+- RemoteAsset warnings for Google Fonts and remote image URLs may remain and should be reported, not cleaned up, unless separately approved.
+- No Shopify login, theme list, theme push, preview theme creation, publish, product import, or checkout change should occur during this blocker-fix pass.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -711,6 +780,8 @@ Slice 3.5 homepage QA closure note:
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 - Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
 - Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
+- Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
+- RemoteAsset warnings remain open after blocker-fix validation and require separate Product Owner approval before cleanup.
 
 ## Acceptance checklist
 
@@ -723,8 +794,8 @@ Slice 3.5 homepage QA closure note:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 3 changes stay limited to homepage composition foundation scope.
+- [ ] Approved source HTML remains untouched while Slice 4 changes plus the narrow Theme Check blocker-fix remain limited to agreed scope.
 
 ---
 
-**Footer Standard For This Pass:** Slice 3.5 homepage QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 3.6 updates are documentation-only and preserve the existing Slice 3 implementation scope.
+**Footer Standard For This Pass:** Theme Check blocker fix implemented for preview readiness. Approved source HTML unchanged. Theme changes remain limited to required image dimensions, collection schema-name remediation, and documentation within the agreed blocker-fix scope.
