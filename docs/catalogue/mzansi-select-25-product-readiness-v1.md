@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11C sourcing/readiness planning draft completed pending Product Owner acceptance or correction  
-**Version:** 1.1  
+**Status:** Slice 11D first product verification batch plan completed pending Product Owner acceptance or correction  
+**Version:** 1.2  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11C planning-only catalogue sourcing and readiness-gap closure plan for the approved `25`-product launch catalogue.
+This document records the Slice 11D planning-only first product verification batch plan for the approved `25`-product launch catalogue.
 
 This pass is planning only:
 
@@ -21,6 +21,7 @@ This pass is planning only:
 - No dynamic product/catalogue wiring is approved.
 
 This pass does not verify suppliers, landed cost, South Africa shipping, margin, image pack quality, or import readiness. Unknown values remain `Unconfirmed` rather than inferred.
+No actual supplier verification or product import has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -117,6 +118,180 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - `Airtight Food Storage Container Set`
 - `Foldable Storage Crate`
 
+## First verification batch
+
+- `Desk Cable Clips Set`
+- `Cable Management Sleeve`
+- `Screen Cleaning Kit`
+- `Adhesive Wall Hooks Pack`
+- `Sink Drain Basket / Strainer`
+- `Phone / Tablet Desk Stand`
+
+All six first-batch products remain `Candidate` in this pass.
+No actual supplier/source verification, cost validation, shipping validation, image approval, content approval, or import readiness movement has occurred.
+
+## Candidate -> Supplier verified requirements
+
+- Supplier/source confirmed
+- Supplier link or internal reference captured
+- Landed cost estimated
+- South Africa shipping expectation checked
+- Variant/options checked
+- Minimum image quality checked
+- Basic description facts available
+- Margin risk reviewed
+- Return/quality risk reviewed
+- Decision note recorded
+
+## Required evidence fields for each first-batch product
+
+- Supplier/source
+- Supplier link or internal reference
+- Landed cost estimate
+- South Africa shipping expectation
+- Variant/options summary
+- Minimum image quality check result
+- Basic description facts
+- Margin-risk note
+- Return/quality-risk note
+- Decision note
+
+## First-batch risks and blockers
+
+- All six products remain blocked at `Candidate` until the full evidence set is captured.
+- No first-batch product may move to `Supplier verified` based on product title fit alone.
+- No first-batch product may move forward based on assumed shipping, assumed margin, or assumed supplier quality.
+- Contact/About route availability remains a separate launch-readiness blocker before publish consideration.
+- Product import remains unapproved even if future supplier evidence is captured.
+
+## First verification batch checklist by product
+
+### Desk Cable Clips Set
+
+- Department/collection: `Office & Desk`
+- Recommended verification path: `DSers first + manual matrix`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - adhesive quality and count-per-pack may vary by listing
+  - weak imagery could make low-ticket positioning less credible
+  - no actual supplier verification has occurred
+
+### Cable Management Sleeve
+
+- Department/collection: `Office & Desk`
+- Recommended verification path: `DSers first + manual matrix`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - material quality and size clarity may differ materially by listing
+  - option count and install method need evidence, not assumption
+  - no actual supplier verification has occurred
+
+### Screen Cleaning Kit
+
+- Department/collection: `Tech Accessories`
+- Recommended verification path: `DSers + CJ compare`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - consumable or liquid components may change shipping and compliance viability
+  - weak claims or unclear kit contents raise return and trust risk
+  - no actual supplier verification has occurred
+
+### Adhesive Wall Hooks Pack
+
+- Department/collection: `Home & Living`
+- Recommended verification path: `DSers first + manual matrix`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - adhesive and load-capacity claims are high-return-risk if overstated
+  - imagery must make pack contents and use case obvious
+  - no actual supplier verification has occurred
+
+### Sink Drain Basket / Strainer
+
+- Department/collection: `Kitchen & Storage`
+- Recommended verification path: `DSers first, CJ fallback`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - sink-fit and dimensions must be explicit to avoid avoidable returns
+  - material quality and drainage claims require evidence
+  - no actual supplier verification has occurred
+
+### Phone / Tablet Desk Stand
+
+- Department/collection: `Office & Desk`
+- Recommended verification path: `DSers + CJ compare`
+- Current status: `Candidate`
+- Required evidence fields:
+  - supplier/source confirmed
+  - supplier link or internal reference captured
+  - landed cost estimated
+  - South Africa shipping expectation checked
+  - variant/options checked
+  - minimum image quality checked
+  - basic description facts available
+  - margin risk reviewed
+  - return/quality risk reviewed
+  - decision note recorded
+- Batch-specific risks/blockers:
+  - compatibility, hinge quality, and finish consistency need evidence
+  - comparable listings may differ enough that manual comparison is required
+  - no actual supplier verification has occurred
+
 ## Recommended supplier/source path
 
 - `DSers first`: lightweight AliExpress-backed clips, hooks, cable items, small stands, strainers, and simple accessories.
@@ -172,7 +347,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Adhesive Wall Hooks Pack`
 - Department/collection: `Home & Living`
 - Merchandising rail fit, if any: `Best Sellers`; `Shop All`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
@@ -238,7 +413,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Sink Drain Basket / Strainer`
 - Department/collection: `Kitchen & Storage`
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` first; `CJdropshipping` fallback
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
@@ -352,7 +527,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Desk Cable Clips Set`
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
@@ -368,7 +543,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Cable Management Sleeve`
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Shop All`; `New In`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
@@ -384,7 +559,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Phone / Tablet Desk Stand`
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Best Sellers`; `Featured`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` + `CJdropshipping` compare
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
@@ -434,7 +609,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - Product title or TBD: `Screen Cleaning Kit`
 - Department/collection: `Tech Accessories`
 - Merchandising rail fit, if any: `Deals`; `Best Sellers`
-- Supplier/source recommendation: `DSers` first
+- Supplier/source recommendation: `DSers` + `CJdropshipping` compare
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`

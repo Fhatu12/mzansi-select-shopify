@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11C docs-only catalogue sourcing and readiness gap closure plan completed pending Product Owner acceptance or correction  
-**Version:** 1.4  
+**Status:** Slice 11D docs-only first product verification batch plan completed pending Product Owner acceptance or correction  
+**Version:** 1.5  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,11 +13,11 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11C docs-only catalogue sourcing and readiness gap closure plan
+- Active slice: Slice 11D docs-only first product verification batch plan
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 11B docs-only 25-product launch catalogue readiness matrix update
-- Last committed slice: Slice 11B docs-only 25-product launch catalogue readiness matrix update (`a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`)
+- Last accepted slice: Slice 11C docs-only catalogue sourcing and readiness gap closure plan
+- Last committed slice: Slice 11C docs-only catalogue sourcing readiness plan (`c88024b5a8544421b114bb9eaaeac1d136405de6`)
 - Current blockers:
   - Contact/About route availability remains unresolved
   - `/pages/contact` and `/pages/about` rendered HTTP `404` in authenticated unpublished-preview evidence
@@ -33,13 +33,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11C docs-only sourcing/readiness planning
+- Last tracker update: 2026-04-29 during Slice 11D docs-only first verification-batch planning
 - Tracker status: Updated
-- LLD status: Updated — 4-stage readiness movement rules and rejection rules now form durable launch-readiness criteria
+- LLD status: Updated — Candidate -> Supplier verified evidence fields now form durable catalogue-readiness criteria
 
 ## Current active pass
 
-Slice 11C docs-only catalogue sourcing and readiness gap closure plan
+Slice 11D docs-only first product verification batch plan
 
 ## Source of truth
 
@@ -64,7 +64,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - `docs/project-control.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
-- Existing approved Slice 11B commit history
+- Existing approved Slice 11C commit history
 
 ## Current status
 
@@ -76,7 +76,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 10.9 tracker correction remains committed at `5e2ea07`.
 - Slice 11A storefront taxonomy recommendation remains committed at `662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`.
 - Slice 11B catalogue readiness matrix remains committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
-- Slice 11C records sourcing order, readiness-gap closure planning, and durable movement/rejection rules without changing theme/code files, product data, or Shopify state.
+- Slice 11C sourcing/readiness planning remains committed at `c88024b5a8544421b114bb9eaaeac1d136405de6`.
+- Slice 11D records the first product verification batch plan and durable Candidate -> Supplier verified evidence fields without changing theme/code files, product data, or Shopify state.
 
 ## Current readiness summary
 
@@ -85,14 +86,37 @@ All future Shopify implementation work must preserve the approved visual design 
 - TBD: `0`
 - Unconfirmed: `25`
 
-## Slice 11C planning status
+## Slice 11D planning status
 
 - Planning scope only: accepted.
 - Product import approval: not granted.
 - Shopify push/publish approval: not granted.
 - Dynamic catalogue wiring approval: not granted.
 - Checkout customization approval: not granted.
+- Actual supplier verification approval: not granted.
 - Contact/About blocker: preserved and still unresolved.
+
+## First verification batch
+
+- `Desk Cable Clips Set`
+- `Cable Management Sleeve`
+- `Screen Cleaning Kit`
+- `Adhesive Wall Hooks Pack`
+- `Sink Drain Basket / Strainer`
+- `Phone / Tablet Desk Stand`
+
+## Current six-product batch status
+
+- All six first-batch products remain `Candidate`.
+- No actual supplier/source verification has occurred in this pass.
+- No landed-cost estimate has been validated in this pass.
+- No South Africa shipping expectation has been validated in this pass.
+- No variant/options check has been completed in this pass.
+- No image-suitability check has been completed in this pass.
+- No description-fact check has been completed in this pass.
+- No margin-risk review has been completed in this pass.
+- No return/quality-risk review has been completed in this pass.
+- No product import or import-readiness movement has occurred in this pass.
 
 ## Approved launch catalogue structure
 
@@ -123,6 +147,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - No slot is yet `Content ready`.
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
+- The first six-product verification batch is now documented as the next planned evidence-capture sequence only.
 
 ## Current product state
 
@@ -130,7 +155,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11C adds planning documentation only. It does not change collection wiring, product data, or visual implementation.
+- Slice 11D adds planning documentation only. It does not change collection wiring, product data, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -164,20 +189,22 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11C sourcing/readiness gap closure plan before any later supplier-check or import-planning slice is accepted.
+Product Owner acceptance or correction of the Slice 11D first verification batch plan before any later supplier-check or import-planning slice is accepted.
 
 ## Decisions made
 
-- Slice 11B is treated as accepted and committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
-- Slice 11C is limited to sourcing/readiness planning and documentation only.
+- Slice 11C is treated as accepted and committed at `c88024b5a8544421b114bb9eaaeac1d136405de6`.
+- Slice 11D is limited to verification planning and documentation only.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
+- Candidate -> Supplier verified evidence fields are now treated as durable catalogue launch-readiness criteria.
 - Rejection rules are now durable launch-readiness criteria.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
-- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, and Contact/About route remediation remain out of scope for this pass.
+- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, and actual supplier verification remain out of scope for this pass.
 
 ## Risks / unknowns
 
 - All `25` product slots still require supplier/source checking before any movement beyond `Candidate`.
+- The first six-product verification batch still lacks supplier/source evidence, landed-cost evidence, shipping checks, variant checks, image checks, description facts, margin-risk review, and return/quality-risk review.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
 - Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
 - Contact/About route availability still cannot be fully resolved from theme files alone.
@@ -188,13 +215,13 @@ Product Owner acceptance or correction of the Slice 11C sourcing/readiness gap c
 - Keep `artifacts/` excluded from any commit unless separately approved.
 - Preserve the unresolved Contact/About route blocker until store-content setup or verification is completed.
 - Do not treat launch-readiness or publish as eligible until Contact/About page resources are created or verified.
-- Use the new Slice 11C sourcing order and movement rules as planning input only until Product Owner acceptance and later supplier checks exist.
+- Use the new Slice 11D first-batch evidence checklist as planning input only until Product Owner acceptance and later supplier checks exist.
 - Record `Tracker status` and `LLD status` in every handoff.
 
 ## Final handoff summary
 
-This Slice 11C docs-only pass records the accepted Slice 11B baseline, updates the catalogue matrix from mixed readiness assumptions to a uniform `25`-candidate / `25`-unconfirmed planning state, documents sourcing priority order and supplier-path guidance, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11D docs-only pass records the accepted Slice 11C baseline, defines the first six-product verification batch, keeps all six products at `Candidate`, documents the required Candidate -> Supplier verified evidence fields and product-by-product verification path, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, records durable movement/rejection criteria, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11D first verification-batch planning recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, records durable Candidate -> Supplier verified evidence criteria, and keeps `artifacts/` untracked and uncommitted.

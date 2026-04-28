@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11C docs-only catalogue sourcing and readiness gap closure plan completed pending Product Owner acceptance or correction  
-**Version:** 1.3  
+**Status:** Slice 11D docs-only first product verification batch plan completed pending Product Owner acceptance or correction  
+**Version:** 1.4  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -816,6 +816,19 @@ Durable 4-stage readiness movement rules:
 - `Content ready` -> `Import ready` only when margin, shipping, supplier, content, image, and risk checks are complete.
 - No product may be considered `Import ready` unless all required supplier, cost, margin, shipping, content, image, and risk checks are complete.
 
+Durable Candidate -> Supplier verified evidence fields:
+
+- Supplier/source confirmed
+- Supplier link or internal reference captured
+- Landed cost estimated
+- South Africa shipping expectation checked
+- Variant/options checked
+- Minimum image quality checked
+- Basic description facts available
+- Margin risk reviewed
+- Return/quality risk reviewed
+- Decision note recorded
+
 Durable rejection rules:
 
 - Reject products with poor or unreliable South Africa shipping.
@@ -1284,4 +1297,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates durable launch catalogue readiness movement and rejection rules, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 11D first verification-batch planning recorded. Approved source HTML unchanged. This docs-only pass minimally updates durable Candidate -> Supplier verified evidence criteria, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
