@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 9.6 docs-only 404/generic empty-state QA closure  
-**Status:** Slice 9.6 docs-only 404/generic empty-state QA closure completed  
+**Owner:** Slice 10 full foundation unpublished preview refresh  
+**Status:** Slice 10 full foundation unpublished preview refresh completed  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 9.6 docs-only 404/generic empty-state QA closure documentation
+Slice 10 full foundation unpublished preview refresh
 
 ## Source of truth
 
@@ -79,6 +79,8 @@ Slice 9.5 404 / generic empty-state design/QA fidelity review completed and acce
 
 Slice 9.6 docs-only 404 / generic empty-state QA closure documentation completed.
 
+Slice 10 full foundation unpublished preview refresh completed.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -113,6 +115,11 @@ Current repo inspection indicates:
 - Slice 9.5 confirmed JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, `templates/page.contact.json`, and `templates/404.json`.
 - Slice 9.5 confirmed Shopify Theme Check passed with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open across `8` files.
 - Slice 9.5 confirmed no Shopify push, publish, login, theme-list, checkout customization, store action, product import, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, or dynamic product/catalogue wiring occurred in the Slice 9 files under review.
+- Slice 10 validated final Slice 9 commit `1d9a289b1c5027e22b6ea1a28fbcc04b1c98a95b` with expected subject `feat: add 404 and empty-state foundation` before any Shopify store action.
+- Slice 10 confirmed Shopify CLI `3.92.1`, JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, `templates/page.contact.json`, and `templates/404.json`, and Shopify Theme Check passed with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain intentionally deferred.
+- Slice 10 refreshed the existing unpublished preview theme `Mzansi Select MVP Preview` (`151207542967`) without changing its `unpublished` role, refreshed preview URL `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`, and admin editor URL `https://dropshippoc.myshopify.com/admin/themes/151207542967/editor`.
+- Slice 10 confirmed the live theme remained untouched, no publish occurred, no product import occurred, no checkout change occurred, no design changes or dynamic product/catalogue wiring occurred, no final legal publication occurred, and `mzansi-select-theme.html` remained unchanged at SHA-256 `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- Slice 10 evidence was captured in `artifacts/platform/shopify-preview-refresh-slice-10-20260428-203727`, and `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Scope completed
 
@@ -237,15 +244,19 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted Slice 7 final foundation committed at `43812244c756fc86d31f1f53952e3d666f72511b`
 - `artifacts/` remains untracked and must not be committed unless separately approved
 - final Slice 8 implementation commit accepted at `cd276714e7dc5aa53ce966a7dc3c2f1e3a1699b6`
-- next Product Owner decision pending: final Slice 9 implementation commit decision
+- final Slice 9 implementation commit accepted at `1d9a289b1c5027e22b6ea1a28fbcc04b1c98a95b`
+- Slice 10 unpublished preview refresh completed against theme `151207542967`
+- next Product Owner decision pending: review refreshed unpublished preview state and confirm next release/deployment instruction
 
 ## Preview workflow status
 
 - Slice 4 unpublished preview remains accepted by the user against theme `151207542967`.
 - Dynamic product wiring remains deferred after the accepted preview.
-- Shopify push/publish remains unapproved in the current Slice 9 state.
-- Product import, checkout customization, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, and dynamic product/catalogue wiring remain deferred in the current Slice 9 state.
-- No Shopify push, publish, login, theme-list, product import, checkout customization, or live-store action occurred during the accepted Slice 9.5 review.
+- Slice 10 refreshed the existing unpublished preview theme `Mzansi Select MVP Preview` (`151207542967`) at `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`.
+- Slice 10 confirmed the live theme remained untouched and the refreshed preview theme remained `unpublished`.
+- Shopify publish remains unapproved; no publish or live overwrite occurred during Slice 10 preview refresh.
+- Product import, checkout customization, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, and dynamic product/catalogue wiring remain deferred after Slice 10 preview refresh.
+- No product import, checkout change, final legal publication, or live-store overwrite occurred during the Slice 10 preview refresh.
 - `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Approved scope
