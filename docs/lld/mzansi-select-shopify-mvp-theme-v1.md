@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 3 implementation pass  
-**Status:** Slice 3 homepage composition foundation implemented  
+**Owner:** Slice 3.6 documentation closure pass  
+**Status:** Slice 3.5 homepage QA review accepted - PASS WITH NOTES  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -687,6 +687,17 @@ Slice 3 testing and preview expectations:
 - Verify no `collection.products`, `product.title`, `product.price`, `for product in`, or `paginate collection` wiring was introduced.
 - Verify no Shopify push, publish, or product import activity occurred.
 
+Slice 3.5 homepage QA closure note:
+
+- Reviewed commit: `9066067d8699dfadfb0b012a8f038a34c6537fb5`
+- Reviewed commit message: `feat: add Shopify homepage composition foundation`
+- QA result accepted as PASS WITH NOTES.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- Homepage section order, hero collage, category strip, featured product grids, promo split, feature tile grid, section headings, static product cards, badges, and price stack were accepted for this slice.
+- Placeholder/static-safe homepage content remains acceptable because dynamic product wiring is still deferred.
+- Accepted global chrome remained unchanged through the reviewed Slice 3 commit.
+- Dynamic product wiring, product import, collection/PDP/search/cart/legal-support/404 templates, broader responsive QA, and Shopify preview/publish remain deferred.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -699,6 +710,7 @@ Slice 3 testing and preview expectations:
 - Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 - Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
+- Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
 
 ## Acceptance checklist
 
@@ -715,4 +727,4 @@ Slice 3 testing and preview expectations:
 
 ---
 
-**Footer Standard For This Pass:** Slice 3 homepage composition foundation implemented. Approved source HTML unchanged. Theme changes remain limited to homepage structure, homepage-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 3.5 homepage QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 3.6 updates are documentation-only and preserve the existing Slice 3 implementation scope.
