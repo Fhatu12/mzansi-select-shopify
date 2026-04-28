@@ -2,9 +2,9 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 10.6 docs-only authenticated preview QA closure (Slice 10.5 / 10.5B)  
-**Status:** Slice 10.6 docs-only authenticated preview QA closure in progress  
-**Version:** 1.0  
+**Owner:** Product Owner  
+**Status:** Slice 11A storefront department/category scan and Shopify collection taxonomy recommendation completed pending Product Owner acceptance or correction  
+**Version:** 1.1  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -711,6 +711,59 @@ Slice 5 implementation note:
 - The PDP foundation uses a gallery-first layout, accepted price hierarchy, trusted-support cues, and related placeholder cards aligned to the homepage and collection visual language.
 - PDP content remains static-safe placeholders until dynamic product data wiring is explicitly approved.
 
+## Durable Shopify collection taxonomy
+
+Strongest department evidence from the approved source:
+
+- `Home & Living`
+- `Kitchen & Storage`
+- `Office & Desk`
+- `Tech Accessories`
+
+These four departments are reinforced by the department dropdown, the category strip, the search category selector, and the product-card type labels shown in the approved storefront. They should be treated as the launch-stable Shopify browse taxonomy for the future catalogue plan.
+
+Expansion-ready department candidates from the approved source:
+
+- `Garden & Outdoor`
+- `Bath & Bedroom`
+- `Cleaning & Laundry`
+
+These appear in the approved department dropdown and fit the accepted storefront feel, but they are not reinforced by the category strip or search selector. They may become live Shopify department collections only when launch product density is strong enough to avoid thin collection pages or navigation bloat.
+
+Department versus merchandising-rail distinction:
+
+- Treat `Shop All` as an umbrella browse collection rather than a department.
+- Treat `Best Sellers`, `Deals`, `New In`, and `New Arrivals` as merchandising rails or manual/smart collections rather than stable departments.
+- Treat any future `Featured`, `Trending`, or `Seasonal` surfaces the same way unless later approved source changes establish them as true browse departments.
+- Treat the homepage `Kitchen & Storage` product grid as a featured department rail that reuses the real `Kitchen & Storage` collection, not as a separate taxonomy node.
+
+Non-collection informational paths from the approved source:
+
+- `Shipping`
+- `Returns`
+- `FAQ`
+- `Contact Us`
+- `About Us`
+- `Track Order`
+- `Privacy Policy`
+- `Terms & Conditions`
+
+These are part of the help/company page ecosystem and must not be implemented as Shopify catalogue departments.
+
+Category addition rules:
+
+- New top-level departments may be recommended only when they reuse the existing department-led browse structure, card rhythm, and navigation feel already approved in the source.
+- New top-level departments must not be introduced solely to support a short-term promotion, new-arrivals rail, or deal campaign.
+- If a category idea is primarily time-bound, trend-led, promotional, or editorial, it should default to a merchandising collection or homepage rail rather than to permanent taxonomy.
+- Expansion-ready departments already present in the approved source are preferred over inventing net-new top-level taxonomy.
+
+Launch catalogue readiness criteria affected by taxonomy:
+
+- The future 25-product readiness matrix should be built around the four launch-stable departments first.
+- Additional departments should only enter launch scope once they can support a credible collection landing page and at least one reused merchandising surface without looking sparse.
+- The readiness matrix must score stable departments separately from merchandising rails and separately from informational pages.
+- Launch-readiness remains blocked even with approved taxonomy until Contact/About page resources are created or verified in Shopify.
+
 ## Product detail page pattern
 
 Known from source:
@@ -1130,6 +1183,7 @@ Theme Check blocker-fix validation state:
 - Broader empty-state coverage beyond the current collection, search, cart, and 404 foundations still needs explicit approval where live data and merchandising logic are involved.
 - Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
 - Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
+- Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, but the final 25-product readiness matrix remains deferred.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1170,4 +1224,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 9.5 404/generic empty-state QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted 404/empty-state QA, preserves the existing implementation scope, and keeps live catalogue/support behaviour deferred within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 11A taxonomy recommendation recorded. Approved source HTML unchanged. This docs-only pass updates durable department taxonomy guidance, preserves the Contact/About blocker, leaves theme/code unchanged, and keeps live catalogue/support behaviour deferred within the agreed scope.
