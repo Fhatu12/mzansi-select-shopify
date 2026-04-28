@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Theme Check blocker fix pass  
-**Status:** Theme Check blocker fix implemented for preview readiness  
+**Owner:** Slice 4.7 docs-only unpublished preview acceptance closure  
+**Status:** Slice 4 unpublished preview accepted by user  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Theme Check blocker fix pass for safe unpublished Shopify preview readiness
+Slice 4.7 docs-only unpublished preview acceptance closure
 
 ## Source of truth
 
@@ -47,6 +47,10 @@ DevOps safe Shopify preview workflow attempted and correctly blocked before Shop
 
 Theme Check blocker fix pass completed.
 
+DevOps Shopify unpublished preview retry completed.
+
+Slice 4.7 unpublished preview acceptance closure completed.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -64,6 +68,7 @@ Current repo inspection indicates:
 - Slice 4 adds the collection/category template foundation with static-safe listing and empty-state coverage, without introducing product import or dynamic product wiring.
 - DevOps preview workflow confirmed Shopify CLI availability, required theme-file presence, valid JSON, unchanged source HTML, and no store-side actions before Theme Check blocking.
 - Theme Check blocking errors were limited to missing `width` and `height` attributes on approved placeholder images plus one overlong collection section schema name.
+- The unpublished Shopify preview was reviewed by the user and accepted.
 
 ## Scope completed
 
@@ -101,6 +106,7 @@ Current repo inspection indicates:
 - Kept collection/category cards static-safe and did not introduce product import, real product loops, sorting, filtering, or cart wiring.
 - Added only the `width` and `height` attributes required to clear Shopify Theme Check blocking image errors.
 - Shortened the collection section schema name to `Collection main` to satisfy Shopify Theme Check schema-name limits.
+- Recorded user acceptance of the unpublished Shopify preview and current safety state in documentation only.
 
 ## What must not change
 
@@ -134,22 +140,50 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted Slice 2.6 closure recorded at commit `3a540ebdab2db093ed5cd76def4f7ca3e3878a3a`
 - accepted Slice 3.5 homepage QA review results recorded against commit `9066067d8699dfadfb0b012a8f038a34c6537fb5`
 - accepted Slice 3.6 closure recorded at commit `0044634b469b1b39bcc85e0064536abdbb64f248`
+- accepted unpublished preview recorded against preview theme `151207542967`
+
+## Preview workflow status
+
+- Date/time: 2026-04-28 15:40:53 Africa/Johannesburg
+- Store: `dropshippoc.myshopify.com`
+- Commit validated: `e4e5f3b432120df041bc4ce45c3192a3ec6f32d5`
+- Shopify CLI version: `3.92.1`
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, and `templates/collection.json`
+- Theme Check passed with zero blocking errors
+- `18` `RemoteAsset` warnings remain intentionally deferred
+- Preview theme name: `Mzansi Select MVP Preview`
+- Preview theme ID: `151207542967`
+- Preview theme role: `unpublished`
+- Preview URL: `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`
+- Admin editor URL: `https://dropshippoc.myshopify.com/admin/themes/151207542967/editor`
+- Evidence folder: `D:\dev\mzansi-select-shopify\artifacts\platform\shopify-preview-retry-20260428-154053`
+- Safety confirmations:
+  - no publish
+  - live theme untouched
+  - no product import
+  - checkout untouched
+  - no design changes
+  - no dynamic product wiring
+  - `mzansi-select-theme.html` unchanged
+- Slice 4.7 acceptance closure:
+  - user reviewed the unpublished preview and confirmed acceptance
+  - dynamic product wiring remains deferred
+  - `artifacts/` remains untracked and must not be committed unless separately approved
 
 ## Approved scope
 
 This pass is limited to:
 
-- fixing only Shopify Theme Check blocking errors
-- adding image `width` and `height` attributes to the affected placeholder images
-- shortening the collection section schema name to a valid value
-- documenting the accepted DevOps block state and blocker-fix status
+- recording acceptance of the unpublished Shopify preview in documentation only
+- confirming current safety state and deferred dynamic product wiring
+- keeping `artifacts/` untracked and uncommitted
 
 ## Critical constraints
 
 - `mzansi-select-theme.html` remains the approved frontend source of truth.
 - No redesign is allowed.
 - No product import, Shopify push, publish, checkout customization, multi-country logic, advanced personalization, or supplier integration is allowed in this pass.
-- No Shopify login, theme list, or preview theme creation is allowed in this pass.
+- No Shopify push, publish, login, theme list, or preview theme creation is allowed in this pass.
 - No dynamic product wiring is included in this pass.
 - No RemoteAsset cleanup or broad lint cleanup is included in this pass.
 - No unnecessary tooling or package/build system has been introduced.
@@ -182,8 +216,9 @@ This pass is limited to:
 - Empty and filled collection states are both represented through section settings and a reusable empty-state snippet.
 - Accepted global chrome files were left unchanged during Slice 4 because no blocking integration fix was required.
 - DevOps preview workflow was accepted as correctly blocked before any Shopify store interaction because Theme Check returned errors.
-- Theme Check remediation in this pass is limited to image dimension attributes and the shortened collection schema name.
-- RemoteAsset warnings remain deferred and were not broadened or cleaned up in this pass.
+- Theme Check remediation remained limited to image dimension attributes and the shortened collection schema name.
+- RemoteAsset warnings remain deferred and were not broadened or cleaned up.
+- The unpublished Shopify preview was subsequently created safely as an unpublished theme and accepted by the user.
 
 ## Next recommended owner
 
@@ -209,17 +244,17 @@ Product Owner
 - Shopify preview and publish remain unapproved.
 - Real collection product data wiring, sorting, filtering, and pagination remain deferred.
 - RemoteAsset warnings for Google Fonts and remote image URLs remain open by design.
+- `artifacts/` remains untracked and should not be committed unless separately approved.
 
 ## Handoff queue
 
-- Review the Theme Check blocker-fix result against the allowed narrow scope.
-- Approve whether the combined Slice 4 plus blocker-fix worktree should be committed together before returning to DevOps for a new unpublished preview attempt.
-- Keep product import, broader responsive QA, Shopify preview/publish, RemoteAsset cleanup, and richer collection behaviors deferred until explicitly approved.
+- Sequence the next approved implementation slice after the accepted unpublished preview.
+- Keep product import, broader responsive QA, Shopify publish, RemoteAsset cleanup, dynamic product wiring, and richer collection behaviors deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass keeps the accepted Slice 4 foundation intact and applies only the Theme Check blocker fixes required for a later safe unpublished preview attempt. The approved HTML remains unchanged, no store-side Shopify action occurred, blocking image-dimension and schema-name issues were remediated, and RemoteAsset warnings plus broader implementation work remain deferred.
+This pass records that the safe unpublished Shopify preview was created, reviewed, and accepted by the user. The approved HTML remains unchanged, the live theme remains untouched, no publish or product import occurred, checkout remained untouched, dynamic product wiring remains deferred, and `artifacts/` stays untracked pending any separate approval.
 
 ---
 
-**Footer Standard For This Pass:** Theme Check blocker fix implemented for preview readiness. Approved source HTML unchanged. Changes remain limited to required image dimensions, collection schema-name remediation, and documentation within the agreed blocker-fix scope.
+**Footer Standard For This Pass:** Slice 4 unpublished preview accepted by user. Approved source HTML unchanged. Changes remain documentation-only, with no publish, no product import, no checkout change, no dynamic product wiring, and `artifacts/` left untracked.
