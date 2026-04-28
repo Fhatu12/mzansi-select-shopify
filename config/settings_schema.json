@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Slice 1 shell",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Brand tagline",
+        "default": "Home · Life · Everyday"
+      },
+      {
+        "type": "text",
+        "id": "search_placeholder",
+        "label": "Search placeholder",
+        "default": "Search products, departments or brands..."
+      },
+      {
+        "type": "text",
+        "id": "footer_country_label",
+        "label": "Footer country label",
+        "default": "Proudly South African"
+      }
+    ]
+  }
+]

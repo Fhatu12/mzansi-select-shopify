@@ -1,0 +1,57 @@
+<nav>
+  <div class="nav-inner">
+    <div class="dept-wrap">
+      <button class="dept-btn" type="button" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        Shop by Department
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="dept-menu">
+        <a class="dept-item" href="#home-living"><span class="dept-item-icon">🛋️</span> Home &amp; Living</a>
+        <a class="dept-item" href="#kitchen-storage"><span class="dept-item-icon">🍳</span> Kitchen &amp; Storage</a>
+        <a class="dept-item" href="#office-desk"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
+        <a class="dept-item" href="#tech-accessories"><span class="dept-item-icon">🎧</span> Tech Accessories</a>
+        <a class="dept-item" href="#garden-outdoor"><span class="dept-item-icon">🌿</span> Garden &amp; Outdoor</a>
+        <a class="dept-item" href="#bath-bedroom"><span class="dept-item-icon">🛁</span> Bath &amp; Bedroom</a>
+        <a class="dept-item" href="#cleaning-laundry"><span class="dept-item-icon">🧹</span> Cleaning &amp; Laundry</a>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{{ routes.root_url }}" class="active">Home</a></li>
+      <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
+      <li><a href="#new-in">New In</a></li>
+      <li><a href="#best-sellers">Best Sellers</a></li>
+      <li><a href="#deals">Deals</a></li>
+      <li><a href="#brands">Brands</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="nav-badge">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+          <path d="M16 8h5l2 5v4h-7V8z"></path>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        Fast Delivery
+      </div>
+      <div class="nav-badge">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        South Africa Wide
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Primary navigation",
+  "settings": []
+}
+{% endschema %}

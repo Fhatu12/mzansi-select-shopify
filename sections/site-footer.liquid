@@ -1,0 +1,107 @@
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-logo-row">Mzansi <em>Select</em></div>
+      <div class="f-logo-tag">{{ settings.brand_tagline }}</div>
+      <p class="f-desc">Your one-stop store for practical home, everyday essentials and more. Carefully chosen. Fairly priced. Delivered across South Africa.</p>
+      <div class="f-socials">
+        <a class="f-social" href="#facebook" aria-label="Facebook">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a class="f-social" href="#instagram" aria-label="Instagram">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a class="f-social" href="#tiktok" aria-label="TikTok">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"></path>
+          </svg>
+        </a>
+        <a class="f-social" href="#youtube" aria-label="YouTube">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
+            <polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="f-col-title">Shop</div>
+      <ul class="f-links">
+        <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
+        <li><a href="#new-in">New In</a></li>
+        <li><a href="#best-sellers">Best Sellers</a></li>
+        <li><a href="#deals">Deals</a></li>
+        <li><a href="#gift-cards">Gift Cards</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="f-col-title">Help</div>
+      <ul class="f-links">
+        <li><a href="#shipping">Shipping</a></li>
+        <li><a href="#returns">Returns</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#track-order">Track Order</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="f-col-title">Account</div>
+      <ul class="f-links">
+        <li><a href="{{ routes.account_url }}">My Account</a></li>
+        <li><a href="{{ routes.account_url }}">Orders</a></li>
+        <li><a href="#wishlist">Wishlist</a></li>
+        <li><a href="#saved-addresses">Saved Addresses</a></li>
+        <li><a href="{{ routes.account_login_url }}">Login / Register</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="f-col-title">Company</div>
+      <ul class="f-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#terms-conditions">Terms &amp; Conditions</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#affiliates">Affiliates</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="f-col-title">Stay in the Loop</div>
+      <p class="nl-desc">Get exclusive offers, new arrivals and helpful updates.</p>
+      <div class="nl-row">
+        <input class="nl-input" type="email" placeholder="Enter your email">
+        <button class="nl-btn" type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="f-copy">&copy; {{ 'now' | date: '%Y' }} Mzansi Select. All rights reserved.</div>
+    <div class="pay-methods">
+      <span class="pay-pill">VISA</span>
+      <span class="pay-pill">Mastercard</span>
+      <span class="pay-pill">Instant EFT</span>
+      <span class="pay-pill">Zapper</span>
+      <span class="pay-pill">Mobicred</span>
+      <span class="pay-pill">PayFlex</span>
+    </div>
+    <div class="f-sa">{{ settings.footer_country_label }}</div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Site footer",
+  "settings": []
+}
+{% endschema %}

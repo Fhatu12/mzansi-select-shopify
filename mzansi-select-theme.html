@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mzansi Select – Home · Life · Everyday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--gold:#C8973A;--gold-light:#E8B85A;--cream:#FAF8F4;--white:#FFFFFF;--border:#E5E0D8;--text-muted:#888880;--text-body:#333330;--green-dark:#1A2818;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:14px;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-body);line-height:1.5;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+button{cursor:pointer;font-family:inherit;}
+
+/* TOP BAR */
+.topbar{background:var(--black);color:#c8c8c8;font-size:11.5px;padding:9px 0;letter-spacing:.02em;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:center;gap:28px;}
+.tb-item{display:flex;align-items:center;gap:7px;}
+.tb-item svg{opacity:.7;flex-shrink:0;}
+.tb-sep{color:#444;}
+
+/* HEADER */
+header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06);}
+.header-inner{max-width:1280px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:24px;}
+.logo{display:flex;flex-direction:column;line-height:1;flex-shrink:0;}
+.logo-top{font-size:26px;font-weight:700;color:var(--black);letter-spacing:-.03em;display:flex;align-items:baseline;gap:6px;}
+.logo-top em{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold);}
+.logo-tag{font-size:9px;letter-spacing:.25em;color:var(--text-muted);text-transform:uppercase;margin-top:3px;}
+.search-wrap{flex:1;max-width:580px;display:flex;border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color .2s;}
+.search-wrap:focus-within{border-color:var(--gold);}
+.search-input{flex:1;border:none;outline:none;padding:10px 16px;font-family:inherit;font-size:13px;color:var(--text-body);background:transparent;}
+.search-input::placeholder{color:#bbb;}
+.search-cat{border:none;border-left:1px solid var(--border);background:#f6f3ee;padding:0 14px;font-family:inherit;font-size:12px;color:var(--text-body);outline:none;white-space:nowrap;}
+.search-btn{background:var(--black);border:none;padding:0 18px;display:flex;align-items:center;justify-content:center;transition:background .2s;min-width:48px;}
+.search-btn:hover{background:var(--gold);}
+.search-btn svg{color:white;}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:28px;flex-shrink:0;}
+.hdr-action{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--text-body);text-decoration:none;transition:color .2s;position:relative;}
+.hdr-action:hover{color:var(--gold);}
+.cart-dot{position:absolute;top:-4px;right:-6px;background:var(--gold);color:white;font-size:8.5px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:stretch;position:relative;}
+.dept-wrap{position:relative;}
+.dept-btn{background:var(--green-dark);color:white;border:none;padding:0 20px;height:100%;font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px;white-space:nowrap;transition:background .2s;cursor:pointer;}
+.dept-btn:hover{background:#253d22;}
+.hamburger{display:flex;flex-direction:column;gap:4px;}
+.hamburger span{display:block;width:15px;height:1.5px;background:currentColor;}
+.dept-menu{display:none;position:absolute;top:100%;left:0;width:240px;background:white;border:1px solid var(--border);border-top:2px solid var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:300;}
+.dept-wrap:hover .dept-menu,.dept-btn:focus+.dept-menu{display:block;}
+.dept-item{display:flex;align-items:center;gap:12px;padding:11px 20px;font-size:13px;color:var(--text-body);transition:background .15s,color .15s;border-left:3px solid transparent;text-decoration:none;}
+.dept-item:hover{background:var(--cream);color:var(--gold);border-left-color:var(--gold);}
+.dept-item-icon{font-size:17px;width:24px;text-align:center;}
+.nav-links{display:flex;align-items:center;list-style:none;}
+.nav-links a{display:block;padding:13px 17px;font-size:13.5px;color:var(--text-body);position:relative;transition:color .2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a.active{color:var(--gold);}
+.nav-links a.active::after{content:'';position:absolute;bottom:0;left:17px;right:17px;height:2px;background:var(--gold);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:24px;padding-right:4px;}
+.nav-badge{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-muted);}
+
+/* HERO */
+.hero{background:var(--cream);overflow:hidden;}
+.hero-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:440px;}
+.hero-text{padding:56px 48px 56px 0;animation:fadeUp .6s ease both;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:22px;}
+.hero-h1{font-size:42px;font-weight:700;color:var(--black);line-height:1.13;letter-spacing:-.025em;margin-bottom:18px;}
+.hero-h1 .gold{color:var(--gold);}
+.hero-desc{font-size:14px;color:var(--text-muted);line-height:1.7;max-width:390px;margin-bottom:32px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-dark{background:var(--green-dark);color:white;border:none;padding:13px 26px;font-family:inherit;font-size:13.5px;font-weight:500;border-radius:3px;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .15s;cursor:pointer;}
+.btn-dark:hover{background:#253d22;transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--text-body);border:1.5px solid var(--border);padding:12px 22px;font-family:inherit;font-size:13.5px;font-weight:400;border-radius:3px;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,color .2s;cursor:pointer;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Hero collage */
+.hero-visual{position:relative;height:440px;animation:fadeUp .6s .12s ease both;}
+.collage-grid{position:absolute;inset:0;padding:24px 16px 24px 28px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:10px;}
+.cg-item{border-radius:10px;overflow:hidden;background:#e8e2d8;box-shadow:0 3px 14px rgba(0,0,0,.1);position:relative;}
+.cg-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.cg-item:hover img{transform:scale(1.07);}
+.cg-wide{grid-column:span 2;}
+.hero-badge-corner{position:absolute;bottom:32px;right:20px;background:var(--green-dark);color:white;padding:16px 18px;border-radius:8px;text-align:center;font-size:11.5px;font-weight:500;line-height:1.4;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.22);}
+.hero-badge-corner svg{display:block;margin:0 auto 6px;}
+
+/* CATEGORY STRIP */
+.cat-strip{background:white;border-bottom:1px solid var(--border);}
+.cat-strip-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.cat-strip-inner::-webkit-scrollbar{display:none;}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 22px;flex-shrink:0;border-right:1px solid var(--border);text-decoration:none;color:var(--text-body);min-width:118px;transition:color .2s;cursor:pointer;}
+.cat-item:last-child{border-right:none;}
+.cat-icon{width:56px;height:56px;border-radius:50%;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:box-shadow .2s,transform .2s;}
+.cat-icon img{width:100%;height:100%;object-fit:cover;}
+.cat-icon.svg-only{background:#f0ede7;}
+.cat-item:hover .cat-icon{box-shadow:0 4px 16px rgba(200,151,58,.3);transform:translateY(-2px);}
+.cat-item:hover .cat-name{color:var(--gold);}
+.cat-name{font-size:12.5px;font-weight:500;text-align:center;line-height:1.3;}
+.cat-sub{font-size:10.5px;color:var(--gold);}
+
+/* SECTIONS */
+.section{padding:52px 0;}
+.section-inner{max-width:1280px;margin:0 auto;padding:0 32px;}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:var(--black);line-height:1.2;}
+.section-title .gold{color:var(--gold);}
+.section-link{font-size:13px;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:5px;transition:gap .2s;}
+.section-link:hover{gap:9px;}
+
+/* PRODUCT CARDS */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.product-card{background:white;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:box-shadow .25s,transform .25s;cursor:pointer;}
+.product-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.11);transform:translateY(-4px);}
+.prod-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cream);}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.product-card:hover .prod-img img{transform:scale(1.06);}
+.p-badge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;z-index:1;}
+.p-badge.sale{background:var(--gold);color:white;}
+.p-badge.new{background:var(--green-dark);color:white;}
+.p-wish{position:absolute;top:10px;right:10px;background:white;border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.12);opacity:0;transition:opacity .2s;z-index:1;cursor:pointer;}
+.product-card:hover .p-wish{opacity:1;}
+.p-wish:hover svg{stroke:var(--gold);}
+.prod-info{padding:14px 16px 16px;}
+.p-type{font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.p-name{font-size:14px;font-weight:500;color:var(--black);margin-bottom:8px;line-height:1.35;}
+.p-stars{display:flex;align-items:center;gap:5px;margin-bottom:9px;color:var(--gold);font-size:13px;}
+.p-rev{font-size:11px;color:var(--text-muted);}
+.p-price{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.p-now{font-size:16px;font-weight:700;color:var(--black);}
+.p-was{font-size:12.5px;color:var(--text-muted);text-decoration:line-through;}
+.p-save{font-size:10.5px;background:#f0f9f1;color:#2a7a3a;padding:2px 7px;border-radius:3px;font-weight:600;}
+.add-btn{width:100%;background:var(--green-dark);color:white;border:none;padding:10px;font-family:inherit;font-size:12.5px;font-weight:500;border-radius:4px;transition:background .2s;}
+.add-btn:hover{background:var(--gold);}
+
+/* PROMO BANNER */
+.promo-banner{border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:210px;background:var(--green-dark);}
+.promo-text{padding:44px 48px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.promo-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.promo-h{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:white;line-height:1.2;}
+.promo-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;}
+.promo-cta{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:white;border:none;padding:11px 22px;font-family:inherit;font-size:13px;font-weight:600;border-radius:3px;margin-top:4px;align-self:flex-start;transition:background .2s;cursor:pointer;}
+.promo-cta:hover{background:var(--gold-light);}
+.promo-visual{overflow:hidden;}
+.promo-visual img{width:100%;height:100%;object-fit:cover;}
+
+/* ARRIVALS */
+.arrivals-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.arr-card{border-radius:10px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:16/9;}
+.arr-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.arr-card:hover img{transform:scale(1.05);}
+.arr-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.62) 0%,rgba(0,0,0,.1) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:26px;}
+.arr-cat{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:5px;}
+.arr-name{font-size:19px;font-weight:600;color:white;margin-bottom:14px;font-family:'Playfair Display',serif;line-height:1.2;}
+.arr-link{display:inline-flex;align-items:center;gap:6px;background:white;color:var(--black);font-size:12px;font-weight:600;padding:8px 16px;border-radius:3px;transition:background .2s,color .2s;}
+.arr-link:hover{background:var(--gold);color:white;}
+
+/* TRUST BAR */
+.trust-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:white;padding:28px 0;}
+.trust-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.trust-item{background:white;padding:22px 24px;display:flex;align-items:center;gap:16px;}
+.trust-icon{width:46px;height:46px;background:var(--green-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.trust-title{font-size:13px;font-weight:600;color:var(--black);margin-bottom:3px;}
+.trust-desc{font-size:11.5px;color:var(--text-muted);line-height:1.45;}
+
+/* FOOTER */
+footer{background:white;border-top:1px solid var(--border);padding:56px 0 0;}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:260px 1fr 1fr 1fr 1fr 1fr;gap:28px;}
+.f-logo-row{font-size:22px;font-weight:700;color:var(--black);letter-spacing:-.02em;display:flex;align-items:baseline;gap:5px;margin-bottom:3px;}
+.f-logo-row em{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold);}
+.f-logo-tag{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;}
+.f-desc{font-size:12.5px;color:var(--text-muted);line-height:1.65;margin-bottom:20px;}
+.f-socials{display:flex;gap:8px;}
+.f-social{width:32px;height:32px;border:1.5px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:border-color .2s,background .2s,color .2s;cursor:pointer;}
+.f-social:hover{border-color:var(--gold);background:var(--gold);color:white;}
+.f-col-title{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--black);margin-bottom:16px;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-links a{font-size:12.5px;color:var(--text-muted);transition:color .2s;}
+.f-links a:hover{color:var(--gold);}
+.nl-desc{font-size:12px;color:var(--text-muted);line-height:1.55;margin-bottom:12px;}
+.nl-row{display:flex;flex-direction:column;gap:8px;}
+.nl-input{border:1.5px solid var(--border);border-radius:3px;padding:10px 14px;font-family:inherit;font-size:12.5px;outline:none;transition:border-color .2s;}
+.nl-input:focus{border-color:var(--gold);}
+.nl-btn{background:var(--black);color:white;border:none;padding:11px;font-family:inherit;font-size:13px;font-weight:500;border-radius:3px;transition:background .2s;cursor:pointer;}
+.nl-btn:hover{background:var(--gold);}
+.footer-bottom{max-width:1280px;margin:40px auto 0;padding:18px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.f-copy{font-size:11.5px;color:var(--text-muted);}
+.pay-methods{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.pay-pill{background:#f5f3ef;border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-size:10px;font-weight:700;color:var(--text-body);letter-spacing:.03em;}
+.f-sa{font-size:11.5px;color:var(--text-muted);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--green-dark);color:white;padding:14px 20px;border-radius:6px;font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 6px 24px rgba(0,0,0,.18);transform:translateX(120%);transition:transform .35s cubic-bezier(.22,1,.36,1);z-index:500;}
+.toast.show{transform:translateX(0);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="tb-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fast Fulfilment &amp; Tracked Delivery Across All Provinces in South Africa.</div>
+    <span class="tb-sep">|</span>
+    <div class="tb-item"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Secure Checkout</div>
+    <span class="tb-sep">|</span>
+    <div class="tb-item"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg> Easy Returns – 7 Days</div>
+    <span class="tb-sep">|</span>
+    <div class="tb-item"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Local Support, 7 Days a Week</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-top">Mzansi <em>Select</em></div>
+      <div class="logo-tag">Home &bull; Life &bull; Everyday</div>
+    </a>
+    <div class="search-wrap">
+      <input class="search-input" type="text" placeholder="Search products, departments or brands...">
+      <select class="search-cat">
+        <option>All categories</option>
+        <option>Home &amp; Living</option>
+        <option>Kitchen &amp; Storage</option>
+        <option>Office &amp; Desk</option>
+        <option>Tech Accessories</option>
+      </select>
+      <button class="search-btn"><svg width="16" height="16" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    </div>
+    <div class="hdr-actions">
+      <a class="hdr-action" href="#">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Account
+      </a>
+      <a class="hdr-action" href="#">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Wishlist
+      </a>
+      <a class="hdr-action" href="#" style="position:relative;">
+        <span class="cart-dot" id="cart-count">0</span>
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Cart
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="dept-wrap">
+      <button class="dept-btn">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        Shop by Department
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="dept-menu">
+        <a class="dept-item" href="#"><span class="dept-item-icon">🛋️</span> Home &amp; Living</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">🍳</span> Kitchen &amp; Storage</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">🎧</span> Tech Accessories</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">🌿</span> Garden &amp; Outdoor</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">🛁</span> Bath &amp; Bedroom</a>
+        <a class="dept-item" href="#"><span class="dept-item-icon">🧹</span> Cleaning &amp; Laundry</a>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Shop All</a></li>
+      <li><a href="#">New In</a></li>
+      <li><a href="#">Best Sellers</a></li>
+      <li><a href="#">Deals</a></li>
+      <li><a href="#">Brands</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-badge"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fast Delivery</div>
+      <div class="nav-badge"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> South Africa Wide</div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Shop with Confidence
+      </div>
+      <h1 class="hero-h1">Practical home and<br>everyday finds for<br><span class="gold">South African</span> shoppers</h1>
+      <p class="hero-desc">Start with clear department-led browse paths, then move into curated picks with straightforward pricing and support.</p>
+      <div class="hero-btns">
+        <button class="btn-dark">Browse all products <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <button class="btn-ghost"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Shipping info</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="collage-grid">
+        <div class="cg-item cg-wide"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80&auto=format&fit=crop" alt="Headphones" loading="eager"></div>
+        <div class="cg-item"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80&auto=format&fit=crop" alt="Watch" loading="eager"></div>
+        <div class="cg-item"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80&auto=format&fit=crop" alt="Bottle" loading="eager"></div>
+        <div class="cg-item" style="grid-row:span 2;"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop" alt="Storage box" loading="eager"></div>
+        <div class="cg-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" alt="Charger" loading="eager"></div>
+        <div class="cg-item"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80&auto=format&fit=crop" alt="Plant" loading="eager"></div>
+        <div class="cg-item"><img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&q=80&auto=format&fit=crop" alt="Lamp" loading="eager"></div>
+      </div>
+      <div class="hero-badge-corner">
+        <svg width="20" height="20" fill="none" stroke="#C8973A" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Carefully chosen.<br>Fairly priced.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY STRIP -->
+<div class="cat-strip">
+  <div class="cat-strip-inner">
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&q=80&auto=format&fit=crop" alt="Home"></div>
+      <div class="cat-name">Home &amp;<br>Living</div><div class="cat-sub">Shop now →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=120&q=80&auto=format&fit=crop" alt="Kitchen"></div>
+      <div class="cat-name">Kitchen &amp;<br>Storage</div><div class="cat-sub">Shop now →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=120&q=80&auto=format&fit=crop" alt="Office"></div>
+      <div class="cat-name">Office &amp;<br>Desk</div><div class="cat-sub">Shop now →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&q=80&auto=format&fit=crop" alt="Tech"></div>
+      <div class="cat-name">Tech<br>Accessories</div><div class="cat-sub">Shop now →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon svg-only"><svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div class="cat-name">Shipping</div><div class="cat-sub">Info &amp; rates →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon svg-only"><svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
+      <div class="cat-name">Returns</div><div class="cat-sub">Easy returns →</div>
+    </a>
+    <a class="cat-item" href="#" style="border-right:none;">
+      <div class="cat-icon svg-only"><svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="cat-name">FAQ</div><div class="cat-sub">Get answers →</div>
+    </a>
+  </div>
+</div>
+
+<!-- BEST SELLERS -->
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">Best <span class="gold">Sellers</span></h2>
+      <a class="section-link" href="#">View all products <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop" alt="Headphones" loading="lazy">
+          <span class="p-badge sale">Sale</span>
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Tech Accessories</div>
+          <div class="p-name">Premium Over-Ear Headphones</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(128)</span></div>
+          <div class="p-price"><span class="p-now">R 899</span><span class="p-was">R 1 199</span><span class="p-save">25% off</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=600&q=80&auto=format&fit=crop" alt="Storage" loading="lazy">
+          <span class="p-badge new">New</span>
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Kitchen &amp; Storage</div>
+          <div class="p-name">Bamboo Lid Storage Container Set</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(64)</span></div>
+          <div class="p-price"><span class="p-now">R 349</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop" alt="Watch" loading="lazy">
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Tech Accessories</div>
+          <div class="p-name">Smart Watch – Black Edition</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(211)</span></div>
+          <div class="p-price"><span class="p-now">R 1 249</span><span class="p-was">R 1 599</span><span class="p-save">22% off</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop" alt="Lamp" loading="lazy">
+          <span class="p-badge sale">Sale</span>
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Home &amp; Living</div>
+          <div class="p-name">Touch Lamp – Warm LED Dimmable</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(89)</span></div>
+          <div class="p-price"><span class="p-now">R 229</span><span class="p-was">R 299</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="promo-banner">
+      <div class="promo-text">
+        <div class="promo-eyebrow">Limited Time Offer</div>
+        <div class="promo-h">Up to 30% off<br>Tech &amp; Home Bundles</div>
+        <div class="promo-sub">Curated deals on the products you actually need — hand-picked for South African homes.</div>
+        <button class="promo-cta">Shop the Sale <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+      <div class="promo-visual">
+        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=900&q=80&auto=format&fit=crop" alt="Sale banner" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section" style="padding-top:0;background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">New <span class="gold">Arrivals</span></h2>
+      <a class="section-link" href="#">View all new in <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="arrivals-grid">
+      <div class="arr-card">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80&auto=format&fit=crop" alt="Living room" loading="lazy">
+        <div class="arr-overlay">
+          <div class="arr-cat">Home &amp; Living</div>
+          <div class="arr-name">Modern Living Room Collection</div>
+          <a class="arr-link" href="#">Explore now <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <div class="arr-card">
+        <img src="https://images.unsplash.com/photo-1593642632633-c56c686f7a33?w=900&q=80&auto=format&fit=crop" alt="Tech" loading="lazy">
+        <div class="arr-overlay">
+          <div class="arr-cat">Tech Accessories</div>
+          <div class="arr-name">New Tech Essentials Drop</div>
+          <a class="arr-link" href="#">Explore now <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KITCHEN & STORAGE GRID -->
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">Kitchen &amp; <span class="gold">Storage</span></h2>
+      <a class="section-link" href="#">View all <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop" alt="Kitchen" loading="lazy">
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Kitchen &amp; Storage</div>
+          <div class="p-name">Stainless Steel French Press</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(57)</span></div>
+          <div class="p-price"><span class="p-now">R 299</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80&auto=format&fit=crop" alt="Bottle" loading="lazy">
+          <span class="p-badge new">New</span>
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Kitchen &amp; Storage</div>
+          <div class="p-name">Insulated Vacuum Flask 500ml</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(93)</span></div>
+          <div class="p-price"><span class="p-now">R 189</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format&fit=crop" alt="Storage box" loading="lazy">
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Kitchen &amp; Storage</div>
+          <div class="p-name">Fabric Storage Cube Organiser</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(34)</span></div>
+          <div class="p-price"><span class="p-now">R 149</span><span class="p-was">R 199</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop" alt="Plant" loading="lazy">
+          <button class="p-wish"><svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Home &amp; Living</div>
+          <div class="p-name">Indoor Plant Pot Set – Terracotta</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(48)</span></div>
+          <div class="p-price"><span class="p-now">R 179</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="section-inner">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div><div class="trust-title">Fast &amp; Reliable Delivery</div><div class="trust-desc">Tracked delivery to all provinces in South Africa.</div></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><div class="trust-title">Secure Payments</div><div class="trust-desc">Safe, encrypted checkout you can trust.</div></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
+        <div><div class="trust-title">Easy Returns</div><div class="trust-desc">Simple returns within 7 days. T&amp;Cs apply.</div></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="trust-title">Local Support</div><div class="trust-desc">Real people, ready to help 7 days a week.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-logo-row">Mzansi <em>Select</em></div>
+      <div class="f-logo-tag">Home &bull; Life &bull; Everyday</div>
+      <p class="f-desc">Your one-stop store for practical home, everyday essentials and more. Carefully chosen. Fairly priced. Delivered across South Africa.</p>
+      <div class="f-socials">
+        <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+        <div class="f-social"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"/></svg></div>
+        <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div>
+      </div>
+    </div>
+    <div><div class="f-col-title">Shop</div><ul class="f-links"><li><a href="#">Shop All</a></li><li><a href="#">New In</a></li><li><a href="#">Best Sellers</a></li><li><a href="#">Deals</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+    <div><div class="f-col-title">Help</div><ul class="f-links"><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Track Order</a></li></ul></div>
+    <div><div class="f-col-title">Account</div><ul class="f-links"><li><a href="#">My Account</a></li><li><a href="#">Orders</a></li><li><a href="#">Wishlist</a></li><li><a href="#">Saved Addresses</a></li><li><a href="#">Login / Register</a></li></ul></div>
+    <div><div class="f-col-title">Company</div><ul class="f-links"><li><a href="#">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Careers</a></li><li><a href="#">Affiliates</a></li></ul></div>
+    <div>
+      <div class="f-col-title">Stay in the Loop</div>
+      <p class="nl-desc">Get exclusive offers, new arrivals and helpful updates.</p>
+      <div class="nl-row">
+        <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email">
+        <button class="nl-btn" onclick="subscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© 2025 Mzansi Select. All rights reserved.</div>
+    <div class="pay-methods">
+      <span class="pay-pill">VISA</span><span class="pay-pill">Mastercard</span><span class="pay-pill">Instant EFT</span><span class="pay-pill">Zapper</span><span class="pay-pill">Mobicred</span><span class="pay-pill">PayFlex</span>
+    </div>
+    <div class="f-sa">Proudly South African 🇿🇦</div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<script>
+  let cartCount = 0;
+  function addToCart(btn) {
+    cartCount++;
+    document.getElementById('cart-count').textContent = cartCount;
+    const name = btn.closest('.product-card').querySelector('.p-name').textContent;
+    document.getElementById('toastMsg').textContent = '"' + name.slice(0,30) + (name.length>30?'…':'') + '" added to cart';
+    btn.textContent = '✓ Added!';
+    btn.style.background = '#2a7a3a';
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => { btn.textContent = 'Add to Cart'; btn.style.background = ''; }, 1600);
+    setTimeout(() => t.classList.remove('show'), 3200);
+  }
+  function subscribe() {
+    const e = document.getElementById('nlEmail');
+    const b = document.querySelector('.nl-btn');
+    if (e.value.includes('@')) {
+      b.textContent = '✓ You\'re in!'; b.style.background='#2a7a3a'; e.value='';
+      setTimeout(()=>{ b.textContent='Subscribe'; b.style.background=''; }, 3000);
+    } else { e.style.borderColor='#e05050'; setTimeout(()=>e.style.borderColor='',1500); }
+  }
+</script>
+</body>
+</html>
