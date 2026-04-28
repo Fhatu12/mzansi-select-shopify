@@ -83,6 +83,8 @@ Slice 10 full foundation unpublished preview refresh completed.
 
 Slice 10.5 / 10.5B authenticated Shopify preview QA evidence capture completed and accepted as PASS WITH NOTES.
 
+Slice 10.7 Contact/About route availability diagnosis completed (2026-04-28, run stamp `20260428-212823`).
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -134,6 +136,10 @@ Current repo inspection indicates:
   - `/404-check-missing-page?preview_theme_id=151207542967` rendered HTTP `404` as expected for a missing route check
 - Slice 10.5B confirmed no Shopify push occurred, no Shopify publish occurred, no live theme overwrite occurred, no product import occurred, no checkout customization occurred, no dynamic product/catalogue wiring occurred, and no defect-fix pass occurred.
 - Slice 10.5B confirmed no tracked code/theme/docs files changed during evidence capture, and `artifacts/` remains untracked and must not be committed unless separately approved.
+- Slice 10.7 confirmed `templates/page.json` and `templates/page.contact.json` exist locally and were pulled read-only from the unpublished preview theme into `artifacts/platform/slice-10-7-contact-about-route-diagnosis-20260428-212823/remote-theme-files/`.
+- Slice 10.7 could not confirm Shopify Online Store page existence/handles/template assignment via Admin GraphQL because no existing Admin access token was present in the environment.
+- Slice 10.7 diagnosis is therefore limited; given Slice 10.5B authenticated evidence rendered `404` for `/pages/contact` and `/pages/about`, the most likely root cause is a store-content setup gap (missing pages, mismatched handles, or Online Store visibility), to be resolved in a separately approved store-content setup pass.
+- Slice 10.7 evidence captured in `artifacts/platform/slice-10-7-contact-about-route-diagnosis-20260428-212823/` and remains untracked.
 
 ## Scope completed
 
