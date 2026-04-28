@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 2 implementation pass  
-**Status:** Slice 2 global chrome refinement implemented  
+**Owner:** Slice 2.6 documentation closure pass  
+**Status:** Slice 2.5 QA review accepted - PASS WITH NOTES  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -608,6 +608,16 @@ Slice 2 testing and preview expectations:
 - Verify no homepage content modules were introduced.
 - Verify no product, collection, cart, or search template/data wiring was introduced beyond chrome-level native references.
 
+Slice 2.5 QA closure note:
+
+- Reviewed commit: `63dc32dd20ef921d92dff993f83071a4d3666de6`
+- Reviewed commit message: `feat: refine Shopify global chrome foundation`
+- QA result accepted as PASS WITH NOTES.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- Global chrome fidelity for the top bar, header, navigation, trust bar, footer, cart badge shell, toast shell, and global layout shell was accepted for this slice.
+- One `rg` evidence command failed due to PowerShell quoting, so exact output for that individual check was not captured in the review record.
+- Responsive behaviour, font hosting strategy, toast/cart/newsletter wiring, and homepage/product/collection/search/cart/support template implementation remain deferred.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -618,6 +628,7 @@ Slice 2 testing and preview expectations:
 - Sample imagery currently references external Unsplash URLs and needs approved asset ownership/hosting decisions.
 - Homepage, product, collection, search, cart, and support template implementation remain deferred beyond Slice 2.
 - Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
+- QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 
 ## Acceptance checklist
 
@@ -634,4 +645,4 @@ Slice 2 testing and preview expectations:
 
 ---
 
-**Footer Standard For This Pass:** Slice 2 chrome refinement implemented. Approved source HTML unchanged. Layout, asset, section, snippet, and documentation changes remain limited to the agreed global chrome scope.
+**Footer Standard For This Pass:** Slice 2.5 QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 2.6 updates are documentation-only and preserve the existing Slice 2 implementation scope.

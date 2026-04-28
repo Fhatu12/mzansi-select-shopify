@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 2 implementation pass  
-**Status:** Slice 2 global chrome refinement implemented  
+**Owner:** Slice 2.6 documentation closure pass  
+**Status:** Slice 2.5 QA review accepted - PASS WITH NOTES  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 2 - global chrome refinement
+Slice 2.6 - docs-only QA closure documentation for Slice 2.5
 
 ## Source of truth
 
@@ -31,13 +31,17 @@ Slice 1 foundation implementation completed.
 
 Slice 2 global chrome refinement completed.
 
+Slice 2.5 global chrome design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
 - Git is now initialized in `D:\dev\mzansi-select-shopify`.
 - Accepted Slice 1 baseline commit is `19fe316baad455220ab7d9a1305d2ba5a8bc7715`.
+- Accepted Slice 2 reviewed commit is `63dc32dd20ef921d92dff993f83071a4d3666de6` with message `feat: refine Shopify global chrome foundation`.
 - Native Shopify theme folders now exist: `layout`, `config`, `templates`, `sections`, `snippets`, `assets`, and `locales`.
-- Slice 2 remains limited to refinement of global chrome only and does not perform homepage section conversion.
+- Slice 2.5 confirmed the approved HTML remained unchanged and the repo ended clean on `master`.
+- No Shopify push, publish, product import, homepage conversion, or product/data wiring was introduced during Slice 2.5 review.
 
 ## Scope completed
 
@@ -57,6 +61,8 @@ Current repo inspection indicates:
 - Added `assets/theme.css` containing approved global tokens, base rules, and shell styling extracted from the approved HTML.
 - Added structural placeholder shell files in `sections/` and `snippets/`.
 - Refined the global chrome to more closely match approved source details including shell IDs, exact chrome text treatment, footer fidelity, and toast shell compatibility.
+- Completed Slice 2.5 read-only QA fidelity review against `mzansi-select-theme.html`.
+- Recorded Slice 2.5 acceptance as PASS WITH NOTES for the reviewed Slice 2 commit.
 
 ## What must not change
 
@@ -84,15 +90,17 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - no homepage Liquid conversion yet
 - no product data wiring
 - no Shopify deployment activity
+- accepted Slice 2.5 QA review results recorded against commit `63dc32dd20ef921d92dff993f83071a4d3666de6`
+- clean `master` state after the accepted QA review
 
 ## Approved scope
 
-Slice 2 scope is limited to:
+Slice 2.6 scope is limited to:
 
-- refinement of the existing global chrome only
-- tighter fidelity for top bar, header, navigation, trust bar, footer, and toast shell
-- chrome-only CSS extraction updates
-- documentation updates
+- recording the accepted Slice 2.5 QA outcome in documentation only
+- documenting the reviewed commit and source-hash confirmation
+- documenting deferred items and unresolved review notes
+- leaving theme implementation unchanged
 
 ## Critical constraints
 
@@ -113,10 +121,14 @@ Slice 2 scope is limited to:
 - Slice 2 refinement keeps native Shopify route/cart usage limited to chrome-level behaviour only and does not introduce homepage, product, collection, or cart template implementation.
 - Toast, footer, and cart-badge shell identifiers were aligned more closely with the approved HTML to reduce friction for later implementation slices.
 - Locale JSON was deferred because Slice 1 does not require it for validity.
+- Slice 2.5 QA accepted the reviewed Slice 2 commit as PASS WITH NOTES.
+- The approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F` through the accepted QA review.
+- One `rg` evidence command failed because of PowerShell quoting, so that exact command output was not captured during Slice 2.5 review.
+- Slice 2.6 records the QA closure only and does not alter theme implementation.
 
 ## Next recommended owner
 
-Senior Full-Stack Software Architect
+Product Owner
 
 ## Risks / unknowns
 
@@ -127,18 +139,22 @@ Senior Full-Stack Software Architect
 - The source contains simulated cart and newsletter interactions only, not production Shopify data wiring.
 - `templates/` and `locales/` exist but remain intentionally unimplemented pending later slices.
 - Chrome responsiveness beyond the approved desktop-first source remains deferred until broader template/page implementation decisions are made.
+- Font hosting remains deferred pending implementation approval.
+- Toast, cart, and newsletter wiring remain deferred pending later implementation slices.
+- Homepage, collection, PDP, search, cart, and support template implementation remain deferred.
 
 ## Handoff queue
 
-- Review Slice 2 chrome fidelity against the approved HTML.
+- Review and approve the recorded Slice 2.5 PASS WITH NOTES closure.
+- Decide whether to authorize the next implementation slice after documentation closure.
 - Decide whether fonts remain remote-hosted or move into managed theme assets.
-- Decide the minimal template set to add in Slice 3 before homepage composition work begins.
-- Approve the first homepage conversion slice: hero, category strip, and reusable section-heading/product-card foundations.
+- Decide the minimal template set to add before homepage composition work begins.
+- Keep responsive behaviour, toast/cart/newsletter wiring, and secondary template rollout deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass now includes the accepted Slice 1 baseline plus Slice 2 chrome refinement. The approved HTML remains unchanged, the global shell more closely matches the approved storefront source, and homepage conversion, product/collection implementation, data wiring, and secondary template implementation remain deferred.
+This pass now records the accepted Slice 2.5 QA closure for the Slice 2 chrome refinement commit. The approved HTML remains unchanged, no homepage conversion or product/data wiring was introduced, no Shopify push/publish/product import occurred, and the next decision remains pending Product Owner approval.
 
 ---
 
-**Footer Standard For This Pass:** Slice 2 chrome refinement completed. Approved source HTML unchanged. Changes remain limited to global shell refinement and documentation within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 2.5 QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 2.6 changes are documentation-only and record no implementation, deployment, or data-wiring expansion beyond the agreed chrome scope.
