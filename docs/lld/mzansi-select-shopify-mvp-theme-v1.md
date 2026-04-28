@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11D docs-only first product verification batch plan completed pending Product Owner acceptance or correction  
-**Version:** 1.4  
+**Status:** Slice 11F docs-only logged-in supplier verification checklist and manual execution guide completed pending Product Owner acceptance or correction  
+**Version:** 1.5  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -820,14 +820,24 @@ Durable Candidate -> Supplier verified evidence fields:
 
 - Supplier/source confirmed
 - Supplier link or internal reference captured
+- Supplier SKU/SPU/reference captured
+- Product cost captured
 - Landed cost estimated
+- South Africa shipping option checked
+- Shipping cost captured
 - South Africa shipping expectation checked
+- Delivery expectation captured
 - Variant/options checked
 - Minimum image quality checked
 - Basic description facts available
+- Target selling price recorded
+- Estimated gross margin recorded
 - Margin risk reviewed
 - Return/quality risk reviewed
+- Compliance/claim risk reviewed
 - Decision note recorded
+- Recommended status recorded: `Candidate` / `Supplier verified` / `Rejected`
+- Next action recorded
 
 Durable rejection rules:
 
@@ -1297,4 +1307,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11D first verification-batch planning recorded. Approved source HTML unchanged. This docs-only pass minimally updates durable Candidate -> Supplier verified evidence criteria, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 11F supplier-verification guide recorded. Approved source HTML unchanged. This docs-only pass minimally updates durable supplier-verification evidence format, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.

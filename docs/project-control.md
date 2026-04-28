@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11E docs-only first product verification batch research outcome update completed pending Product Owner acceptance or correction  
-**Version:** 1.6  
+**Status:** Slice 11F docs-only logged-in supplier verification checklist and manual execution guide completed pending Product Owner acceptance or correction  
+**Version:** 1.7  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,11 +13,11 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11E docs-only first product verification batch research outcome update
+- Active slice: Slice 11F docs-only logged-in supplier verification checklist and manual execution guide
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 11D docs-only first product verification batch plan
-- Last committed slice: Slice 11D docs-only first product verification batch plan (`ee410452e1651a6b9d8df71e99d2b34e8e2d1851`)
+- Last accepted slice: Slice 11E docs-only first product verification batch research outcome
+- Last committed slice: Slice 11E docs-only first product research outcome (`73144cc2db1eaade777355612d09c91002546710`)
 - Current blockers:
   - Contact/About route availability remains unresolved
   - `/pages/contact` and `/pages/about` rendered HTTP `404` in authenticated unpublished-preview evidence
@@ -33,13 +33,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11E docs-only first-batch research outcome recording
+- Last tracker update: 2026-04-29 during Slice 11F docs-only supplier-verification guide setup
 - Tracker status: Updated
-- LLD status: Unchanged with reason — Slice 11E records product-specific research outcomes only and does not change durable catalogue-readiness criteria
+- LLD status: Updated
 
 ## Current active pass
 
-Slice 11E docs-only first product verification batch research outcome update
+Slice 11F docs-only logged-in supplier verification checklist and manual execution guide
 
 ## Source of truth
 
@@ -64,7 +64,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - `docs/project-control.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
-- Existing approved Slice 11D commit history
+- Existing approved Slice 11E commit history
 
 ## Current status
 
@@ -78,7 +78,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 11B catalogue readiness matrix remains committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
 - Slice 11C sourcing/readiness planning remains committed at `c88024b5a8544421b114bb9eaaeac1d136405de6`.
 - Slice 11D first product verification batch plan remains committed at `ee410452e1651a6b9d8df71e99d2b34e8e2d1851`.
-- Slice 11E records first-batch public research outcomes without changing theme/code files, product data, or Shopify state.
+- Slice 11E first product research outcome remains committed at `73144cc2db1eaade777355612d09c91002546710`.
+- Slice 11F records the manual logged-in supplier-verification guide and durable evidence format without changing theme/code files, product data, or Shopify state.
 
 ## Current readiness summary
 
@@ -87,14 +88,15 @@ All future Shopify implementation work must preserve the approved visual design 
 - TBD: `0`
 - Unconfirmed: `25`
 
-## Slice 11E research status
+## Slice 11F guide status
 
 - Planning scope only: accepted.
 - Product import approval: not granted.
 - Shopify push/publish approval: not granted.
 - Dynamic catalogue wiring approval: not granted.
 - Checkout customization approval: not granted.
-- Logged-in supplier verification approval: not granted in this pass.
+- Actual supplier verification approval: not granted in this pass.
+- Supplier credential storage approval: not granted in this pass.
 - Contact/About blocker: preserved and still unresolved.
 
 ## First verification batch
@@ -109,41 +111,46 @@ All future Shopify implementation work must preserve the approved visual design 
 ## Current six-product batch status
 
 - All six first-batch products remain `Candidate`.
-- Five products have public source candidates that still require logged-in verification.
-- `Cable Management Sleeve` still needs a cleaner `DSers` / `AliExpress` / `CJdropshipping` source match.
-- No actual logged-in supplier/source verification has occurred in this pass.
-- No landed-cost estimate has been fully validated in this pass.
-- No South Africa shipping expectation has been fully validated in this pass.
-- No variant/options check has been fully completed in this pass.
-- No image-suitability check has been fully completed in this pass.
-- No description-fact check has been fully completed in this pass.
-- No margin-risk review has been fully completed in this pass.
-- No return/quality-risk review has been fully completed in this pass.
+- No actual supplier/source verification has occurred in this pass.
+- No supplier credential storage has occurred in this pass.
+- All cost, shipping, margin, image, and readiness evidence remains unverified until a later logged-in execution pass.
 - No product import or import-readiness movement has occurred in this pass.
 
-## First-batch research outcome
+## Manual supplier verification guide added
 
-- `Desk Cable Clips Set`: public `CJdropshipping` close match found, but price range is wide and shipping is not verified; recommended status remains `Candidate`.
-- `Cable Management Sleeve`: no clean dropshipping source verified; requires manual `DSers` / `AliExpress` search; recommended status remains `Candidate`.
-- `Screen Cleaning Kit`: public `CJdropshipping` strong match found; shipping and leakage/claim risk still need verification; recommended status remains `Candidate`.
-- `Adhesive Wall Hooks Pack`: public `CJdropshipping` close match found; exaggerated adhesive/load claims must be avoided; recommended status remains `Candidate`.
-- `Sink Drain Basket / Strainer`: public `CJdropshipping` strong match found; shipping and sink-fit dimensions still need verification; recommended status remains `Candidate`.
-- `Phone / Tablet Desk Stand`: public `CJdropshipping` strong match found; shipping, stability, and device compatibility still need verification; recommended status remains `Candidate`.
+- A manual logged-in verification guide is now recorded for the full first batch.
+- All six products remain `Candidate` until logged-in `DSers`, `CJdropshipping`, and/or `AliExpress` evidence confirms supplier/source, cost, shipping, variants, image suitability, description facts, margin risk, return/quality risk, compliance/claim risk, and decision note.
+- The guide preserves the accepted product-specific route:
+  - `Desk Cable Clips Set`: `CJ` candidate + `DSers` / `AliExpress` comparison if available
+  - `Cable Management Sleeve`: manual `DSers` / `AliExpress` / `CJ` source matching required
+  - `Screen Cleaning Kit`: `CJ` candidate + leakage/claim-risk check
+  - `Adhesive Wall Hooks Pack`: `CJ` candidate + adhesive/load-claim check
+  - `Sink Drain Basket / Strainer`: `CJ` candidate + sink-fit/dimension check
+  - `Phone / Tablet Desk Stand`: `CJ` candidate + stability/device-compatibility check
 
 ## Required next verification step
 
 Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 
 - supplier/source link or internal reference
+- supplier SKU/SPU/reference
+- product cost
 - South Africa shipping expectation
-- estimated product cost
+- South Africa shipping option
 - estimated shipping cost
 - estimated landed cost
+- delivery expectation
 - variants/options
+- minimum image quality
 - image suitability
 - description facts
+- target selling price
+- estimated gross margin
 - margin risk
 - return/quality risk
+- compliance/claim risk
+- recommended status: `Candidate` / `Supplier verified` / `Rejected`
+- next action
 - decision note
 
 ## Approved launch catalogue structure
@@ -175,7 +182,7 @@ Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 - No slot is yet `Content ready`.
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
-- The first six-product verification batch now has a recorded public-research outcome, but no item moves beyond `Candidate`.
+- The first six-product verification batch now has both a public-research outcome and a manual execution guide, but no item moves beyond `Candidate`.
 
 ## Current product state
 
@@ -183,7 +190,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11E adds research-outcome documentation only. It does not change collection wiring, product data, or visual implementation.
+- Slice 11F adds manual-verification guide documentation only. It does not change collection wiring, product data, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -217,23 +224,24 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11E first-batch research outcome before any later logged-in supplier-check or import-planning slice is accepted.
+Product Owner acceptance or correction of the Slice 11F supplier-verification guide before any later logged-in supplier-check or import-planning slice is accepted.
 
 ## Decisions made
 
-- Slice 11D is treated as accepted and committed at `ee410452e1651a6b9d8df71e99d2b34e8e2d1851`.
-- Slice 11E is limited to research-outcome recording and documentation only.
+- Slice 11E is treated as accepted and committed at `73144cc2db1eaade777355612d09c91002546710`.
+- Slice 11F is limited to manual supplier-verification guide setup and documentation only.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
 - Candidate -> Supplier verified evidence fields remain durable catalogue launch-readiness criteria.
+- Supplier-verification evidence format is now treated as a durable catalogue launch-readiness rule.
 - Rejection rules are now durable launch-readiness criteria.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
-- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, and logged-in supplier verification remain out of scope for this pass.
+- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, actual supplier verification, and supplier credential storage remain out of scope for this pass.
 
 ## Risks / unknowns
 
 - All `25` product slots still require supplier/source checking before any movement beyond `Candidate`.
-- Five of the six first-batch products now have public source-candidate notes, but still lack logged-in source references, landed-cost evidence, shipping checks, variant checks, image checks, description facts, margin-risk review, and return/quality-risk review.
-- `Cable Management Sleeve` remains the weakest first-batch candidate because it still lacks a clean public `DSers` / `AliExpress` / `CJdropshipping` match.
+- The first six-product verification batch still requires manual logged-in execution to populate the full evidence format.
+- The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
 - Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
 - Contact/About route availability still cannot be fully resolved from theme files alone.
@@ -244,13 +252,13 @@ Product Owner acceptance or correction of the Slice 11E first-batch research out
 - Keep `artifacts/` excluded from any commit unless separately approved.
 - Preserve the unresolved Contact/About route blocker until store-content setup or verification is completed.
 - Do not treat launch-readiness or publish as eligible until Contact/About page resources are created or verified.
-- Use the new Slice 11E research outcome as planning input only until Product Owner acceptance and later logged-in supplier checks exist.
+- Use the new Slice 11F manual guide as execution input only after Product Owner acceptance and only in a later approved logged-in supplier-check pass.
 - Record `Tracker status` and `LLD status` in every handoff.
 
 ## Final handoff summary
 
-This Slice 11E docs-only pass records the accepted Slice 11D baseline, captures the first-batch public research outcome, keeps all six products at `Candidate`, records five public source-candidate findings plus the unresolved `Cable Management Sleeve` sourcing gap, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11F docs-only pass records the accepted Slice 11E baseline, adds a manual logged-in supplier-verification checklist and execution guide for the first batch, keeps all six products at `Candidate`, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, stores no supplier credentials, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11E first-batch research outcome recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, keeps the LLD unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11F supplier-verification guide recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, records the manual execution guide, and keeps `artifacts/` untracked and uncommitted.

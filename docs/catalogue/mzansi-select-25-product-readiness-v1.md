@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11E first product verification batch research outcome recorded pending Product Owner acceptance or correction  
-**Version:** 1.3  
+**Status:** Slice 11F logged-in supplier verification checklist and manual execution guide completed pending Product Owner acceptance or correction  
+**Version:** 1.4  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11E docs-only first product verification batch research outcome for the approved `25`-product launch catalogue.
+This document records the Slice 11F docs-only logged-in supplier verification checklist and manual execution guide for the approved `25`-product launch catalogue.
 
 This pass is planning only:
 
@@ -21,7 +21,7 @@ This pass is planning only:
 - No dynamic product/catalogue wiring is approved.
 
 This pass does not verify suppliers, landed cost, South Africa shipping, margin, image pack quality, or import readiness. Unknown values remain `Unconfirmed` rather than inferred.
-No actual logged-in supplier verification or product import has occurred in this pass.
+No actual supplier verification, product import, readiness movement, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -128,7 +128,7 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - `Phone / Tablet Desk Stand`
 
 All six first-batch products remain `Candidate` in this pass.
-No actual logged-in supplier/source verification, cost validation, shipping validation, image approval, content approval, or import readiness movement has occurred.
+No actual supplier/source verification, cost validation, shipping validation, image approval, content approval, import readiness movement, or supplier credential storage has occurred.
 
 ## Candidate -> Supplier verified requirements
 
@@ -147,13 +147,23 @@ No actual logged-in supplier/source verification, cost validation, shipping vali
 
 - Supplier/source
 - Supplier link or internal reference
+- Supplier SKU/SPU/reference
+- Product cost
 - Landed cost estimate
 - South Africa shipping expectation
+- South Africa shipping option
+- Shipping cost
+- Delivery expectation
 - Variant/options summary
 - Minimum image quality check result
 - Basic description facts
+- Target selling price
+- Estimated gross margin
 - Margin-risk note
 - Return/quality-risk note
+- Compliance/claim-risk note
+- Recommended status: `Candidate` / `Supplier verified` / `Rejected`
+- Next action
 - Decision note
 
 ## First-batch risks and blockers
@@ -292,137 +302,97 @@ No actual logged-in supplier/source verification, cost validation, shipping vali
   - comparable listings may differ enough that manual comparison is required
   - no actual supplier verification has occurred
 
-## First-batch research outcome
+## Manual logged-in verification guide
 
-No first-batch item moves beyond `Candidate` in this pass.
-Public research found viable source candidates for five products, but South Africa shipping expectation and landed cost were not fully verified.
-`Cable Management Sleeve` still needs a cleaner `DSers` / `AliExpress` / `CJdropshipping` source match.
-No actual logged-in supplier verification, import, or readiness movement occurred.
+All six first-batch products remain `Candidate`.
+No actual supplier verification, product import, readiness movement, or supplier credential storage has occurred in this pass.
+This guide is preparation for a later approved manual logged-in verification pass only.
 
-### Desk Cable Clips Set
+### Guide rules
 
-- Recommended status: `Remain Candidate`
-- Source candidate note: public `CJdropshipping` close match found
-- Missing data:
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: price range appears wide in public browsing, so landed-cost confidence is not yet strong
+- Do not store supplier account credentials in the repo, docs, notes, screenshots, or `artifacts/`.
+- Do not treat any product as `Supplier verified` until every required evidence field is captured.
+- Use `Unconfirmed` where a field cannot be proven during the later execution pass.
+- If a listing creates clear shipping, compatibility, image, compliance, or margin concern, record that directly instead of forcing promotion.
 
-### Cable Management Sleeve
+### Status decision rules
 
-- Recommended status: `Remain Candidate`
-- Source candidate note: no clean dropshipping source verified in public research
-- Missing data:
-  - cleaner `DSers` / `AliExpress` / `CJdropshipping` source match
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: requires manual logged-in `DSers` / `AliExpress` search before it can be judged against the rest of the first batch
+- Keep `Candidate` when any required field is still missing or unclear.
+- Move to `Supplier verified` only when the full required evidence format is completed and the product still looks commercially viable.
+- Mark `Rejected` when shipping is poor, variants are unclear, claims are risky, imagery is weak, or return/quality risk is too high for the likely margin.
 
-### Screen Cleaning Kit
+### Evidence update format
 
-- Recommended status: `Remain Candidate`
-- Source candidate note: public `CJdropshipping` strong match found
-- Missing data:
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: leakage risk, consumable contents, and claim wording still need logged-in review
-
-### Adhesive Wall Hooks Pack
-
-- Recommended status: `Remain Candidate`
-- Source candidate note: public `CJdropshipping` close match found
-- Missing data:
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: any future content pass must avoid exaggerated adhesive or load-capacity claims
-
-### Sink Drain Basket / Strainer
-
-- Recommended status: `Remain Candidate`
-- Source candidate note: public `CJdropshipping` strong match found
-- Missing data:
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: sink-fit dimensions and shipping expectation still need logged-in confirmation
-
-### Phone / Tablet Desk Stand
-
-- Recommended status: `Remain Candidate`
-- Source candidate note: public `CJdropshipping` strong match found
-- Missing data:
-  - supplier/source link or internal reference
-  - South Africa shipping expectation
-  - estimated product cost
-  - estimated shipping cost
-  - estimated landed cost
-  - variants/options
-  - image suitability
-  - description facts
-  - margin risk
-  - return/quality risk
-  - decision note
-- Research note: stability and device compatibility still need logged-in confirmation
-
-## Next logged-in verification step
-
-Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
+For each product, update the future execution record with:
 
 - supplier/source link or internal reference
-- South Africa shipping expectation
-- estimated product cost
-- estimated shipping cost
+- supplier SKU/SPU/reference
+- product cost
+- South Africa shipping option
+- shipping cost
 - estimated landed cost
+- delivery expectation
 - variants/options
-- image suitability
+- minimum image quality
 - description facts
+- target selling price
+- estimated gross margin
 - margin risk
 - return/quality risk
+- compliance/claim risk
 - decision note
+- recommended status: `Candidate` / `Supplier verified` / `Rejected`
+- next action
+
+### Per-product verification route
+
+#### Desk Cable Clips Set
+
+- Manual route: `CJ` candidate + `DSers` / `AliExpress` comparison if available
+- Focus checks:
+  - compare similar pack sizes and adhesive claims
+  - confirm South Africa shipping option and delivery expectation
+  - test whether likely landed cost still leaves room for a low-ticket margin
+
+#### Cable Management Sleeve
+
+- Manual route: manual `DSers` / `AliExpress` / `CJ` source matching required
+- Focus checks:
+  - find a cleaner source match before any cost or margin assumption is trusted
+  - compare sleeve size, material, and closure/fit differences
+  - reject weak or ambiguous listings early if no reliable match appears
+
+#### Screen Cleaning Kit
+
+- Manual route: `CJ` candidate + leakage/claim-risk check
+- Focus checks:
+  - verify whether liquid or consumable contents affect shipping feasibility
+  - review description claims for device-safety, streak-free, or chemical-risk language
+  - confirm minimum image quality shows full kit contents clearly
+
+#### Adhesive Wall Hooks Pack
+
+- Manual route: `CJ` candidate + adhesive/load-claim check
+- Focus checks:
+  - verify pack count and hook style against imagery
+  - avoid unsupported adhesive strength or load-capacity claims
+  - review return risk if surface compatibility is unclear
+
+#### Sink Drain Basket / Strainer
+
+- Manual route: `CJ` candidate + sink-fit/dimension check
+- Focus checks:
+  - confirm sink-fit dimensions and material specs
+  - verify South Africa shipping option and delivery expectation
+  - review whether form factor creates avoidable returns from poor fit assumptions
+
+#### Phone / Tablet Desk Stand
+
+- Manual route: `CJ` candidate + stability/device-compatibility check
+- Focus checks:
+  - confirm size/device compatibility and hinge or base stability
+  - compare listing imagery for quality and consistency
+  - test whether likely landed cost still leaves workable gross-margin room
 
 ## Recommended supplier/source path
 
