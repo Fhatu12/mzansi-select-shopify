@@ -1832,13 +1832,15 @@ nav {
 }
 
 .page-main-shell,
-.support-main-shell {
+.support-main-shell,
+.not-found-main-shell {
   padding: 52px 0 64px;
   background: var(--white);
 }
 
 .page-hero,
-.support-hero {
+.support-hero,
+.not-found-hero {
   background: var(--cream);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -1847,7 +1849,8 @@ nav {
 }
 
 .page-kicker,
-.support-kicker {
+.support-kicker,
+.not-found-kicker {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1862,7 +1865,8 @@ nav {
 }
 
 .page-title,
-.support-title {
+.support-title,
+.not-found-title {
   font-family: 'Playfair Display', serif;
   font-size: 34px;
   font-weight: 600;
@@ -1872,16 +1876,75 @@ nav {
 }
 
 .page-title .gold,
-.support-title .gold {
+.support-title .gold,
+.not-found-title .gold {
   color: var(--gold);
 }
 
 .page-intro,
-.support-intro {
+.support-intro,
+.not-found-intro {
   max-width: 760px;
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.7;
+}
+
+.not-found-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(320px, .7fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.not-found-recovery-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 28px 30px;
+}
+
+.not-found-recovery-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.not-found-recovery-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.not-found-recovery-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cream);
+  padding: 16px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+  transition: border-color .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.not-found-recovery-link::after {
+  content: "→";
+  color: var(--gold);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.not-found-recovery-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.06);
 }
 
 .page-content-grid,
@@ -2319,6 +2382,7 @@ footer {
   .product-detail-grid,
   .cart-layout,
   .cart-line-card,
+  .not-found-layout,
   .page-policy-grid,
   .page-faq-grid,
   .support-layout {
@@ -2414,11 +2478,13 @@ footer {
   .cart-support-banner,
   .page-hero,
   .support-hero,
+  .not-found-hero,
   .page-card,
   .support-card,
   .page-policy-card,
   .support-detail-card,
   .support-policy-band,
+  .not-found-recovery-card,
   .page-faq-item,
   .page-policy-note {
     padding: 30px 24px;
@@ -2428,7 +2494,8 @@ footer {
   .search-title,
   .cart-title,
   .page-title,
-  .support-title {
+  .support-title,
+  .not-found-title {
     font-size: 28px;
   }
 

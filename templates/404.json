@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404-foundation",
+      "settings": {
+        "status_label": "404 Preview",
+        "page_title": "Page",
+        "page_accent": "Missing",
+        "page_intro": "This static-safe 404 foundation keeps the accepted Mzansi Select tone in place with calm reassurance, clear recovery paths, and no live catalogue or support wiring.",
+        "empty_badge": "Not Found",
+        "empty_title": "We could not find that page",
+        "empty_description": "The route you followed is not available in this preview theme foundation. Use the recovery links below to continue browsing, return home, or reach the support page structure added in the previous slice.",
+        "primary_action_label": "Continue shopping",
+        "recovery_title": "Where to next",
+        "recovery_copy": "Choose a simple recovery path that keeps shoppers close to the approved browse, support, and homepage foundations while live routing and broader content rollout continue in later approved slices."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

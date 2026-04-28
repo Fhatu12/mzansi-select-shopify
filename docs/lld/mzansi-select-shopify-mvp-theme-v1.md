@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 8.6 docs-only legal/support QA closure  
-**Status:** Slice 8.6 docs-only legal/support QA closure completed  
+**Owner:** Slice 9.6 docs-only 404/generic empty-state QA closure  
+**Status:** Slice 9.6 docs-only 404/generic empty-state QA closure completed  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -318,6 +318,38 @@ Slice 8.5 legal/support QA closure note:
 - `24` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, `snippets/cart-line-item.liquid`, and `snippets/static-product-card.liquid`.
 - No product import, Shopify login, theme list, push, preview/store action, publish, checkout customization, final legal sign-off, live policy publication, or customer account/auth/contact backend wiring was introduced during the accepted review pass.
 
+## Slice 9 404 / generic empty-state foundation responsibilities
+
+Slice 9 introduces the first native 404 foundation while keeping recovery content static-safe, helpful, and implementation-light.
+
+Slice 9 scope includes:
+
+- `templates/404.json` creation for native Shopify 404 routing
+- `sections/main-404-foundation.liquid` for 404 hero, generic empty-state reuse, and recovery-path coverage
+- 404-only CSS extraction aligned to accepted search, cart, and legal/support empty-state rhythm
+- safe recovery links for continue shopping, browse categories, contact support, and return home
+
+Slice 9 explicitly defers:
+
+- live routing analytics, search suggestions, or auto-recovery behaviour
+- live support/contact backend handling
+- customer accounts, authentication, or address-management flows
+- Shopify push, publish, checkout customization, product import, or broader live catalogue wiring
+
+Slice 9.5 404/generic empty-state QA closure note:
+
+- The uncommitted Slice 9 404/generic empty-state foundation was reviewed and accepted as PASS WITH NOTES.
+- The 404 template foundation exists and is structurally valid.
+- The generic empty-state pattern remains reusable and visually consistent with the accepted storefront foundations.
+- Recovery links for continue shopping, browse categories, contact support, and return home were all present in the reviewed Slice 9 files.
+- Tone remained clear, helpful, and consistent with the accepted Mzansi Select direction.
+- Visual rhythm remained aligned with the accepted homepage, collection, PDP, search, cart, and support foundations, and global chrome remained unchanged.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, `templates/page.contact.json`, and `templates/404.json`.
+- `shopify theme check --path . --fail-level error` passed with zero blocking errors.
+- `24` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, `snippets/cart-line-item.liquid`, and `snippets/static-product-card.liquid`.
+- No product import, Shopify push, publish, login, theme-list, checkout customization, store action, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, or dynamic product/catalogue wiring was introduced during the accepted review pass.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -325,13 +357,13 @@ Slice 8.5 legal/support QA closure note:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json`, `collection.json`, `product.json`, `search.json`, `cart.json`, `page.json`, and `page.contact.json` for approved homepage, collection, PDP, search/results, cart, and legal/support foundations.
+  - Contains `index.json`, `collection.json`, `product.json`, `search.json`, `cart.json`, `page.json`, `page.contact.json`, and `404.json` for approved homepage, collection, PDP, search/results, cart, legal/support, and 404 foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage, collection, PDP, search/results, cart, and legal/support composition sections.
+  - Contains global shell placeholders plus homepage, collection, PDP, search/results, cart, legal/support, and 404 composition sections.
 - `snippets/`
-  - Contains reusable shell fragments plus homepage, collection, PDP, search/results, and cart utility snippets.
+  - Contains reusable shell fragments plus homepage, collection, PDP, search/results, cart, and 404 utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage, collection, PDP, search/results, cart, and legal/support foundation styling.
+  - Contains extracted global/base shell CSS plus homepage, collection, PDP, search/results, cart, legal/support, and 404 foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -413,6 +445,11 @@ Slice 8 addition:
 - `assets/theme.css` now includes legal/support foundation styling for generic page heroes, support-page heroes, legal/policy cards, FAQ blocks, and support guidance panels.
 - Legal/support CSS remains source-aligned and reuses the same heading, card, and cream/white rhythm already accepted on collection, PDP, search/results, and cart foundations.
 
+Slice 9 addition:
+
+- `assets/theme.css` now includes 404 foundation styling for the hero shell, recovery-card layout, and recovery-link treatment.
+- 404 CSS remains source-aligned and reuses the same empty-state surface, heading hierarchy, spacing rhythm, and premium-practical recovery tone already accepted across search, cart, and legal/support foundations.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -490,6 +527,11 @@ Slice 8 addition:
   - Carries About, Shipping, Returns, Privacy, Terms, and FAQ/support placeholder presentation.
 - `sections/support-page-foundation.liquid`
   - Carries support intro, contact/support guidance cards, shipping/returns guidance, FAQ, and policy-publication placeholder presentation.
+
+Slice 9 addition:
+
+- `sections/main-404-foundation.liquid`
+  - Carries 404 hero messaging, generic empty-state reuse, and safe recovery links for shopping, categories, support, and home.
 
 ### Sections
 
@@ -594,6 +636,11 @@ Slice 8 note:
 
 - `templates/page.json` and `templates/page.contact.json` are now implemented to represent static-safe legal/support foundations only.
 - No live contact-form JavaScript, customer account/auth wiring, or policy-publication workflow was added for legal/support content sections.
+
+Slice 9 note:
+
+- `templates/404.json` is now implemented to represent a static-safe 404 recovery foundation only.
+- No live routing analytics, search recovery, support backend handling, or catalogue loops were added for 404 content sections.
 
 ### Settings
 
@@ -754,13 +801,15 @@ Constraint for implementation:
 
 ## 404 page pattern
 
-Unknown / requires implementation confirmation:
+Slice 9 implementation decision:
 
-- No explicit 404 layout exists in the approved HTML.
+- Use a single 404 template plus one main section to establish a calm recovery-oriented empty-state page without inventing a novelty error layout.
+- Reuse the existing empty-state surface and section-heading language where practical so the 404 page feels native to the same storefront system.
+- Provide simple recovery links back to shopping, categories, support, and home while keeping all behaviour static-safe.
 
 Constraint for implementation:
 
-- 404 should reuse the approved hero typography language, practical supportive copy tone, and existing dark/ghost CTA pattern instead of introducing a novelty error page design.
+- 404 must reuse the approved hero typography language, practical supportive copy tone, and existing dark/ghost CTA pattern instead of introducing a novelty error page design.
 
 ## Empty states pattern
 
@@ -770,10 +819,11 @@ Known from source:
 
 Unknown / requires implementation confirmation:
 
-- Empty collection
-- Empty search results
-- Empty cart messaging
 - Empty wishlist messaging
+
+Slice 9 implementation note:
+
+- The current foundation set now covers empty collection, empty search, empty cart, and 404 recovery states through a shared empty-state visual pattern.
 
 Constraint for implementation:
 
@@ -1017,6 +1067,21 @@ Slice 8 testing and preview expectations:
 - Verify no `form 'contact'`, `customer_login`, `customer_register`, `customer_address`, `checkout`, `cart.items`, `product.title`, `product.price`, `collection.products`, or `search.results` wiring was introduced.
 - Verify no Shopify push, publish, login, theme list, or product import activity occurred.
 
+Slice 9 testing and preview expectations:
+
+- Verify `templates/404.json` parses as valid JSON.
+- Verify `sections/main-404-foundation.liquid` renders the 404 hero, shared empty-state surface, and recovery links for continue shopping, browse categories, contact support, and return home.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `collection.products`, `search.results`, `product.title`, `product.price`, `cart.items`, `customer_login`, `customer_register`, `form 'contact'`, or `checkout` wiring was introduced in the 404 foundation.
+- Verify no Shopify push, publish, login, theme list, or product import activity occurred.
+
+Slice 9.5 QA acceptance note:
+
+- 404 foundation structure, shared empty-state reuse, recovery links, tone clarity, and visual rhythm were accepted for this slice.
+- Accepted global chrome remained unchanged through the reviewed Slice 9 worktree.
+- The approved source HTML remained unchanged through the reviewed Slice 9 worktree.
+- Product import, Shopify push/publish, checkout customization, final legal wording/sign-off, live policy publication, customer account/auth/contact backend wiring, dynamic product/catalogue wiring, and broader live-store behaviour remain deferred.
+
 Slice 8.5 QA acceptance note:
 
 - Generic legal/support foundation structure, dedicated support/contact structure, About/store promise block, shipping/delivery guidance, returns/refunds guidance, privacy/terms placeholder state, FAQ/support readability, and deferred policy-publication messaging were accepted for this slice.
@@ -1051,17 +1116,19 @@ Theme Check blocker-fix validation state:
 - Product ratings, wishlist flows, and review counts shown in cards require data-source decisions.
 - Font hosting strategy for `DM Sans` and `Playfair Display` requires implementation choice compatible with Shopify.
 - Sample imagery currently references external Unsplash URLs and needs approved asset ownership/hosting decisions.
-- Homepage is now implemented as a static-safe foundation, but 404 template implementation remains deferred beyond the current slices.
+- Homepage is now implemented as a static-safe foundation, and 404 template implementation now exists as a static-safe recovery foundation.
 - Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 - Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
 - Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
 - Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
-- `24` non-blocking `RemoteAsset` warnings remain open after Slice 8.5 QA validation and require separate Product Owner approval before cleanup.
+- `24` non-blocking `RemoteAsset` warnings remain open after Slice 9.5 QA validation and require separate Product Owner approval before cleanup.
 - PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
 - Search placeholder queries, result ranking, browse recovery behaviours, and no-results merchandising still need an approved strategy for later Shopify search data replacement without changing the approved visual contract.
 - Cart placeholder line items, subtotal logic, drawer behaviour, checkout actions, and recovery/upsell behaviours still need an approved strategy for later Shopify cart data replacement without changing the approved visual contract.
 - Legal/support placeholder policy wording, final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, live contact details, backend support handling, and publication readiness still need explicit approval before launch use.
+- Broader empty-state coverage beyond the current collection, search, cart, and 404 foundations still needs explicit approval where live data and merchandising logic are involved.
+- Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
 
 ## Acceptance checklist
 
@@ -1074,8 +1141,8 @@ Theme Check blocker-fix validation state:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 8 changes stay limited to legal/support foundation scope with static-safe placeholder behaviour.
+- [ ] Approved source HTML remains untouched while Slice 9 changes stay limited to 404/generic empty-state foundation scope with static-safe placeholder behaviour.
 
 ---
 
-**Footer Standard For This Pass:** Slice 8.5 legal/support QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted legal/support QA, preserves the existing implementation scope, and keeps live legal/support behaviour deferred within the agreed slice scope.
+**Footer Standard For This Pass:** Slice 9.5 404/generic empty-state QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted 404/empty-state QA, preserves the existing implementation scope, and keeps live catalogue/support behaviour deferred within the agreed slice scope.

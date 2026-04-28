@@ -1,0 +1,110 @@
+<section class="not-found-main-shell">
+  <div class="section-inner">
+    <div class="not-found-hero">
+      <div class="not-found-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {{ section.settings.status_label }}
+      </div>
+      <h1 class="not-found-title">
+        {{ section.settings.page_title }}
+        {% if section.settings.page_accent != blank %}
+          <span class="gold">{{ section.settings.page_accent }}</span>
+        {% endif %}
+      </h1>
+      <p class="not-found-intro">{{ section.settings.page_intro }}</p>
+    </div>
+
+    <div class="not-found-layout">
+      <div class="not-found-empty-wrap" aria-label="continue shopping">
+        {% render 'empty-state',
+          badge: section.settings.empty_badge,
+          title: section.settings.empty_title,
+          description: section.settings.empty_description,
+          action_label: section.settings.primary_action_label,
+          action_url: routes.all_products_collection_url
+        %}
+      </div>
+
+      <aside class="not-found-recovery-card">
+        {% render 'section-heading', title: section.settings.recovery_title %}
+        <p class="not-found-recovery-copy">{{ section.settings.recovery_copy }}</p>
+
+        <div class="not-found-recovery-links">
+          <a class="not-found-recovery-link" href="{{ routes.all_products_collection_url }}" aria-label="browse categories">Browse categories</a>
+          <a class="not-found-recovery-link" href="/pages/contact" aria-label="contact support">Contact support</a>
+          <a class="not-found-recovery-link" href="{{ routes.root_url }}" aria-label="return home">Return home</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "status_label",
+      "label": "Status label",
+      "default": "404 Preview"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title",
+      "default": "Page"
+    },
+    {
+      "type": "text",
+      "id": "page_accent",
+      "label": "Page accent",
+      "default": "Missing"
+    },
+    {
+      "type": "textarea",
+      "id": "page_intro",
+      "label": "Page intro",
+      "default": "This static-safe 404 foundation keeps the accepted Mzansi Select tone in place with calm reassurance, clear recovery paths, and no live catalogue or support wiring."
+    },
+    {
+      "type": "text",
+      "id": "empty_badge",
+      "label": "Empty badge",
+      "default": "Not Found"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty title",
+      "default": "We could not find that page"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_description",
+      "label": "Empty description",
+      "default": "The route you followed is not available in this preview theme foundation. Use the recovery links below to continue browsing, return home, or reach the support page structure added in the previous slice."
+    },
+    {
+      "type": "text",
+      "id": "primary_action_label",
+      "label": "Primary action label",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "text",
+      "id": "recovery_title",
+      "label": "Recovery title",
+      "default": "Where to next"
+    },
+    {
+      "type": "textarea",
+      "id": "recovery_copy",
+      "label": "Recovery copy",
+      "default": "Choose a simple recovery path that keeps shoppers close to the approved browse, support, and homepage foundations while live routing and broader content rollout continue in later approved slices."
+    }
+  ]
+}
+{% endschema %}

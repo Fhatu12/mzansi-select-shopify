@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 8.6 docs-only legal/support QA closure  
-**Status:** Slice 8.6 docs-only legal/support QA closure completed  
+**Owner:** Slice 9.6 docs-only 404/generic empty-state QA closure  
+**Status:** Slice 9.6 docs-only 404/generic empty-state QA closure completed  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 8.6 docs-only legal/support QA closure documentation
+Slice 9.6 docs-only 404/generic empty-state QA closure documentation
 
 ## Source of truth
 
@@ -73,6 +73,12 @@ Slice 8.5 legal/support page design/QA fidelity review completed and accepted as
 
 Slice 8.6 docs-only legal/support QA closure documentation completed.
 
+Slice 9 404 / generic empty-state foundation completed.
+
+Slice 9.5 404 / generic empty-state design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
+Slice 9.6 docs-only 404 / generic empty-state QA closure documentation completed.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -102,6 +108,11 @@ Current repo inspection indicates:
 - Slice 8.5 confirmed JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, and `templates/page.contact.json`.
 - Slice 8.5 confirmed Shopify Theme Check passed with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open across `8` files.
 - Slice 8.5 confirmed no Shopify push, publish, product import, checkout customization, live-store action, final legal sign-off, live policy publication, or customer account/auth/contact backend wiring occurred.
+- Slice 9 adds a static-safe 404 page foundation with reusable empty-state presentation and clear recovery links back to shopping, categories, support, and home.
+- Slice 9.5 confirmed the 404 template foundation is structurally valid, the generic empty-state pattern remains reusable and visually consistent, recovery links are present, and the approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- Slice 9.5 confirmed JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, `templates/page.contact.json`, and `templates/404.json`.
+- Slice 9.5 confirmed Shopify Theme Check passed with zero blocking errors while `24` non-blocking `RemoteAsset` warnings remain open across `8` files.
+- Slice 9.5 confirmed no Shopify push, publish, login, theme-list, checkout customization, store action, product import, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, or dynamic product/catalogue wiring occurred in the Slice 9 files under review.
 
 ## Scope completed
 
@@ -164,6 +175,12 @@ Current repo inspection indicates:
 - Kept legal/support content structurally ready but clearly non-final, with no live contact backend wiring, no customer account/auth work, and no final legal sign-off implied.
 - Recorded Slice 8.5 legal/support QA acceptance as PASS WITH NOTES.
 - Recorded Slice 8.6 as a docs-only QA closure pass without expanding the non-doc Slice 8 implementation scope.
+- Added `templates/404.json` for native Shopify 404 routing.
+- Added `sections/main-404-foundation.liquid` for 404 hero, generic empty-state reuse, and safe recovery-link coverage.
+- Extended `assets/theme.css` with 404/generic empty-state foundation styling only.
+- Kept 404 content static-safe and did not introduce live catalogue, support backend, checkout, or customer account wiring.
+- Recorded Slice 9.5 404/generic empty-state QA acceptance as PASS WITH NOTES.
+- Recorded Slice 9.6 as a docs-only QA closure pass without expanding the non-doc Slice 9 implementation scope.
 
 ## What must not change
 
@@ -194,17 +211,22 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - search/results foundation implemented in Shopify sections and `templates/search.json`
 - cart page foundation implemented in Shopify sections and `templates/cart.json`
 - legal/support page foundations implemented in Shopify sections and `templates/page.json` plus `templates/page.contact.json`
+- 404 page foundation implemented in Shopify sections and `templates/404.json`
+- accepted Slice 9.5 404/generic empty-state QA review results recorded as PASS WITH NOTES
+- 404 foundation structure, shared empty-state reuse, recovery links, tone clarity, and visual rhythm were accepted as aligned with the approved storefront direction
 - accepted Slice 8.5 legal/support QA review results recorded as PASS WITH NOTES
 - legal/support page, support/contact page, About/store promise, shipping/delivery, returns/refunds, privacy/terms placeholder labeling, FAQ/support blocks, and deferred policy-publication notice were accepted as foundation-only launch-direction content
 - Theme Check preview blockers remediated locally for the affected homepage and collection files only
-- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, and `templates/page.contact.json`
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, `templates/product.json`, `templates/search.json`, `templates/cart.json`, `templates/page.json`, `templates/page.contact.json`, and `templates/404.json`
 - Shopify Theme Check passes with zero blocking errors
 - `24` non-blocking `RemoteAsset` warnings remain open across `8` files
 - no dynamic product data wiring
 - no real customer account, auth, or backend contact-form wiring
 - no Shopify deployment activity or live-store action
 - no final legal sign-off or live policy publication
+- no product import or checkout customization
 - legal/support content remains foundation-only and not final legal sign-off
+- 404 recovery paths remain static-safe and do not introduce dynamic product/catalogue or support backend behaviour
 - accepted Slice 2.5 QA review results recorded against commit `63dc32dd20ef921d92dff993f83071a4d3666de6`
 - accepted Slice 2.6 closure recorded at commit `3a540ebdab2db093ed5cd76def4f7ca3e3878a3a`
 - accepted Slice 3.5 homepage QA review results recorded against commit `9066067d8699dfadfb0b012a8f038a34c6537fb5`
@@ -214,26 +236,28 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted Slice 6.5 search/results QA review results recorded at commit `325e1acdd9448c90923170938ce1a8f85f61d490`
 - accepted Slice 7 final foundation committed at `43812244c756fc86d31f1f53952e3d666f72511b`
 - `artifacts/` remains untracked and must not be committed unless separately approved
-- next Product Owner decision pending: final Slice 8 implementation commit decision
+- final Slice 8 implementation commit accepted at `cd276714e7dc5aa53ce966a7dc3c2f1e3a1699b6`
+- next Product Owner decision pending: final Slice 9 implementation commit decision
 
 ## Preview workflow status
 
 - Slice 4 unpublished preview remains accepted by the user against theme `151207542967`.
 - Dynamic product wiring remains deferred after the accepted preview.
-- Shopify push/publish remains unapproved in the current Slice 8 state.
-- Product import, checkout customization, final legal sign-off, live policy publication, and customer account/auth/contact backend wiring remain deferred in the current Slice 8 state.
-- No Shopify push, publish, product import, checkout customization, or live-store action occurred during the accepted Slice 8.5 review.
+- Shopify push/publish remains unapproved in the current Slice 9 state.
+- Product import, checkout customization, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, and dynamic product/catalogue wiring remain deferred in the current Slice 9 state.
+- No Shopify push, publish, login, theme-list, product import, checkout customization, or live-store action occurred during the accepted Slice 9.5 review.
 - `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Approved scope
 
-Slice 8 scope is limited to:
+Slice 9 scope is limited to:
 
-- native Shopify legal/support page foundations
-- static-safe About, Contact, Shipping, Returns, Privacy, Terms, and FAQ/support structures
-- legal/support-only CSS extraction
-- documentation updates for Slice 8 implementation state
-- documentation updates for Slice 8.5 QA closure state
+- native Shopify 404 foundation
+- reusable generic empty-state presentation for 404 recovery
+- safe recovery links for shopping, categories, support, and home
+- 404-only CSS extraction
+- documentation updates for Slice 9 implementation state
+- documentation updates for Slice 9.5 QA closure state
 
 ## Critical constraints
 
@@ -308,10 +332,16 @@ Slice 8 scope is limited to:
 - Slice 8.5 QA accepted the legal/support foundation review as PASS WITH NOTES.
 - Slice 8.5 confirmed global chrome remained unchanged, placeholder legal/support content remained non-final, and live policy/contact/account behaviour stayed deferred.
 - Slice 8.6 records the QA closure only and does not alter theme implementation or `artifacts/` handling.
+- Slice 9 uses `templates/404.json` plus a single main section to introduce a calm, recovery-oriented 404 foundation.
+- Slice 9 reuses the accepted empty-state surface and preserves the same premium-practical tone, typography, spacing rhythm, and recovery-path clarity already established in collection, search, cart, and legal/support work.
+- Slice 9 does not introduce live catalogue loops, support backend wiring, checkout actions, or Shopify deployment activity.
+- Slice 9.5 QA accepted the 404/generic empty-state foundation review as PASS WITH NOTES.
+- Slice 9.5 confirmed global chrome remained unchanged, the approved source HTML remained unchanged, and no dynamic product/catalogue or support/account backend wiring was introduced in the Slice 9 files.
+- Slice 9.6 records the QA closure only and does not alter theme implementation or `artifacts/` handling.
 
 ## Next recommended owner
 
-Product Owner
+QA / Test Engineer
 
 ## Risks / unknowns
 
@@ -324,11 +354,10 @@ Product Owner
 - Chrome responsiveness beyond the approved desktop-first source remains deferred until broader template/page implementation decisions are made.
 - Font hosting remains deferred pending implementation approval.
 - Toast, cart, and newsletter wiring remain deferred pending later implementation slices.
-- Homepage is now implemented as a static-safe composition foundation, but 404 implementation remains deferred.
+- Homepage is now implemented as a static-safe composition foundation, and 404 foundation coverage now exists as a static-safe recovery page.
 - Homepage product cards, arrivals, and promo surfaces currently rely on static-safe source-derived content and still require later approval before dynamic data wiring.
 - Dynamic product wiring remains deferred.
 - Product import remains deferred.
-- 404 template implementation remains deferred.
 - Broader responsive QA remains pending.
 - Shopify preview and publish remain unapproved.
 - Real collection product data wiring, sorting, filtering, and pagination remain deferred.
@@ -338,17 +367,19 @@ Product Owner
 - Live search terms, result ranking, predictive suggestions, and recovery behaviours remain deferred for search/results work.
 - Live cart items, totals, update actions, drawer behaviour, and checkout actions remain deferred for cart work.
 - Legal/support foundations are structurally ready, but final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, and customer account/auth/contact backend wiring remain deferred.
+- Broader empty-state behaviour beyond the current collection, search, cart, and 404 foundations still needs later approval where live data states are involved.
+- Dynamic product/catalogue wiring remains deferred for the Slice 9 404 recovery paths.
 
 ## Handoff queue
 
-- Product Owner decision pending on the final Slice 8 implementation commit scope and timing.
-- Keep `artifacts/` excluded from any Slice 8 commit.
-- Keep product import, Shopify push/publish, checkout customization, RemoteAsset cleanup, live contact/backend wiring, final legal sign-off, live policy publication, and broader responsive QA deferred until explicitly approved.
+- Product Owner decision pending on the final Slice 9 implementation commit scope and timing.
+- Keep `artifacts/` excluded from any Slice 9 commit.
+- Keep product import, Shopify push/publish, checkout customization, RemoteAsset cleanup, live contact/backend wiring, final legal sign-off, live policy publication, dynamic product/catalogue wiring, and broader responsive QA deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass records Slice 8.5 legal/support QA closure as PASS WITH NOTES in documentation only. The approved HTML remains unchanged, legal/support content remains foundation-only and not final legal sign-off, Shopify Theme Check is confirmed at zero blocking errors with `24` non-blocking `RemoteAsset` warnings still open across `8` files, no Shopify push/publish/product import/checkout or live-store action occurred, no final legal or backend support/account wiring was introduced, and `artifacts/` remains untracked pending any separate approval.
+This pass records Slice 9.5 404 / generic empty-state QA closure as PASS WITH NOTES in documentation only. The approved HTML remains unchanged, the 404 foundation remains static-safe and visually aligned to the accepted storefront language, Shopify Theme Check is confirmed at zero blocking errors with `24` non-blocking `RemoteAsset` warnings still open across `8` files, no Shopify push/publish/login/theme-list/product import/checkout or live-store action occurred, no final legal or backend support/account wiring was introduced, no dynamic product/catalogue wiring was introduced in the Slice 9 files, and `artifacts/` remains untracked pending any separate approval.
 
 ---
 
-**Footer Standard For This Pass:** Slice 8.5 legal/support QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted legal/support QA, keeps final legal sign-off and live contact handling deferred, and preserves untracked `artifacts/` handling within the agreed scope.
+**Footer Standard For This Pass:** Slice 9.5 404/generic empty-state QA closure recorded. Approved source HTML unchanged. This docs-only pass records accepted 404/empty-state QA, keeps live catalogue/support behaviour deferred, and preserves untracked `artifacts/` handling within the agreed scope.
