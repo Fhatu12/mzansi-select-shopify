@@ -69,7 +69,6 @@ button {
   align-items: center;
   justify-content: center;
   gap: 28px;
-  flex-wrap: wrap;
 }
 
 .tb-item {
@@ -192,6 +191,10 @@ header {
   background: var(--gold);
 }
 
+.search-btn svg {
+  color: var(--white);
+}
+
 .hdr-actions {
   margin-left: auto;
   display: flex;
@@ -263,6 +266,7 @@ nav {
   gap: 9px;
   white-space: nowrap;
   transition: background .2s;
+  cursor: pointer;
 }
 
 .dept-btn:hover {
@@ -491,6 +495,7 @@ footer {
   justify-content: center;
   color: var(--text-muted);
   transition: border-color .2s, background .2s, color .2s;
+  cursor: pointer;
 }
 
 .f-social:hover {
@@ -560,6 +565,7 @@ footer {
   font-weight: 500;
   border-radius: 3px;
   transition: background .2s;
+  cursor: pointer;
 }
 
 .nl-btn:hover {
@@ -619,4 +625,8 @@ footer {
   transform: translateX(120%);
   transition: transform .35s cubic-bezier(.22, 1, .36, 1);
   z-index: 500;
+}
+
+.toast.show {
+  transform: translateX(0);
 }

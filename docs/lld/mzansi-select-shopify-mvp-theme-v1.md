@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 1 implementation pass  
-**Status:** Slice 1 foundation implemented  
+**Owner:** Slice 2 implementation pass  
+**Status:** Slice 2 global chrome refinement implemented  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -122,6 +122,30 @@ Deferred beyond Slice 1:
 - section settings beyond minimal shell needs
 - locale abstraction beyond what is necessary for validity
 
+## Slice 2 chrome responsibilities
+
+Slice 2 refines the accepted global shell baseline without converting homepage content modules.
+
+Slice 2 scope includes:
+
+- top bar fidelity refinement
+- header fidelity refinement
+- navigation fidelity refinement
+- trust bar fidelity refinement
+- footer fidelity refinement
+- toast/cart feedback shell fidelity refinement
+- chrome-only CSS alignment to the approved HTML
+
+Slice 2 explicitly defers:
+
+- homepage content section conversion
+- category strip conversion
+- product grid or product-card conversion
+- promo banner conversion
+- arrivals conversion
+- collection, product, cart, search, page, or 404 template implementation
+- product or collection data wiring beyond native chrome-level route/cart references
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -155,7 +179,7 @@ Deferred beyond Slice 1:
   - trust bar
   - site footer
   - toast/cart feedback container
-- Does not convert homepage content sections in Slice 1.
+- Continues to exclude homepage content section conversion in Slice 2.
 
 ### `config/settings_schema.json`
 
@@ -182,6 +206,11 @@ Deferred beyond Slice 1:
   - toast styling
 - Excludes full homepage section conversion such as hero, category strip, product grids, promo modules, and arrivals modules.
 
+Slice 2 refinement note:
+
+- Chrome/base CSS may be refined where needed for closer fidelity to the approved source.
+- Homepage module CSS remains deferred.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -196,6 +225,10 @@ Deferred beyond Slice 1:
   - Carries the approved footer information architecture shell.
 - `snippets/toast-feedback.liquid`
   - Carries the structural toast/cart feedback container only.
+
+Slice 2 refinement note:
+
+- These shell files now prioritize closer alignment to the approved HTML's structure, identifiers, and chrome-level copy while remaining implementation-light.
 
 ### Sections
 
@@ -265,6 +298,11 @@ Slice 1 note:
 
 - Only the shell/base subset of global storefront CSS is implemented in `assets/theme.css`.
 - JavaScript remains deferred because mock storefront interactions have not yet been replaced with Shopify data wiring.
+
+Slice 2 note:
+
+- No JavaScript wiring was added in this slice.
+- Toast and cart shell identifiers were refined only to support later implementation compatibility.
 
 ### Settings
 
@@ -555,6 +593,21 @@ Slice 1 completion note:
 - The foundation now exists for the global shell only.
 - Homepage content modules, JSON templates, and real storefront data wiring remain deferred to later slices.
 
+Slice 2 testing and preview expectations:
+
+- Verify the rendered global shell against the approved HTML for:
+  - top bar copy and separators
+  - logo lockup treatment
+  - search shell proportions
+  - account/wishlist/cart action rhythm
+  - nav active treatment and department shell
+  - trust bar block styling
+  - footer grid, payment pills, and country marker
+  - toast shell structure and hidden state styling
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no homepage content modules were introduced.
+- Verify no product, collection, cart, or search template/data wiring was introduced beyond chrome-level native references.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -563,8 +616,8 @@ Slice 1 completion note:
 - Product ratings, wishlist flows, and review counts shown in cards require data-source decisions.
 - Font hosting strategy for `DM Sans` and `Playfair Display` requires implementation choice compatible with Shopify.
 - Sample imagery currently references external Unsplash URLs and needs approved asset ownership/hosting decisions.
-- Slice 1 provides only the global shell foundation; templates and homepage content modules remain deferred.
-- Git is now initialized locally, but there are still no commits yet in the repository.
+- Homepage, product, collection, search, cart, and support template implementation remain deferred beyond Slice 2.
+- Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
 
 ## Acceptance checklist
 
@@ -577,8 +630,8 @@ Slice 1 completion note:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 1 foundation files stay limited to the agreed scope.
+- [ ] Approved source HTML remains untouched while Slice 2 changes stay limited to global chrome refinement scope.
 
 ---
 
-**Footer Standard For This Pass:** Slice 1 foundation implemented. Approved source HTML unchanged. Layout, config, asset, section, snippet, and documentation files were added only within the agreed Slice 1 scope.
+**Footer Standard For This Pass:** Slice 2 chrome refinement implemented. Approved source HTML unchanged. Layout, asset, section, snippet, and documentation changes remain limited to the agreed global chrome scope.
