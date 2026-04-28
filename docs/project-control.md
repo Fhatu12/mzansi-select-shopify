@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11B docs-only 25-product launch catalogue readiness matrix update completed pending Product Owner acceptance or correction  
-**Version:** 1.3  
+**Status:** Slice 11C docs-only catalogue sourcing and readiness gap closure plan completed pending Product Owner acceptance or correction  
+**Version:** 1.4  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,11 +13,11 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11B docs-only 25-product launch catalogue readiness matrix update
+- Active slice: Slice 11C docs-only catalogue sourcing and readiness gap closure plan
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 11A storefront department/category scan and Shopify collection taxonomy recommendation
-- Last committed slice: Slice 11A storefront taxonomy recommendation (`662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`)
+- Last accepted slice: Slice 11B docs-only 25-product launch catalogue readiness matrix update
+- Last committed slice: Slice 11B docs-only 25-product launch catalogue readiness matrix update (`a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`)
 - Current blockers:
   - Contact/About route availability remains unresolved
   - `/pages/contact` and `/pages/about` rendered HTTP `404` in authenticated unpublished-preview evidence
@@ -29,17 +29,17 @@ Mzansi Select Shopify MVP Theme Conversion
   - Dynamic product/catalogue wiring remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Blocked by unresolved Contact/About route availability and by incomplete catalogue supplier/import readiness
+- Launch readiness: Blocked by unresolved Contact/About route availability and by unresolved supplier/cost/shipping/content readiness across the planned catalogue
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11B docs-only catalogue readiness planning
+- Last tracker update: 2026-04-29 during Slice 11C docs-only sourcing/readiness planning
 - Tracker status: Updated
-- LLD status: Updated — durable launch department counts, readiness statuses, merchandising-rail rules, and catalogue-linked launch criteria were clarified in Slice 11B
+- LLD status: Updated — 4-stage readiness movement rules and rejection rules now form durable launch-readiness criteria
 
 ## Current active pass
 
-Slice 11B docs-only 25-product launch catalogue readiness matrix update
+Slice 11C docs-only catalogue sourcing and readiness gap closure plan
 
 ## Source of truth
 
@@ -62,9 +62,9 @@ All future Shopify implementation work must preserve the approved visual design 
 
 - `mzansi-select-theme.html`
 - `docs/project-control.md`
+- `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
-- Existing approved Slice 11A commit history
-- No pre-existing `docs/catalogue/` planning file was present before this pass
+- Existing approved Slice 11B commit history
 
 ## Current status
 
@@ -74,10 +74,18 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 10.7 Contact/About route availability diagnosis remains committed at `ae9ac7d`.
 - Slice 10.8 Contact/About store-content setup and preview verification remains deferred/incomplete.
 - Slice 10.9 tracker correction remains committed at `5e2ea07`.
-- Slice 11A storefront taxonomy recommendation was accepted and committed at `662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`.
-- Slice 11B creates a docs-only 25-product launch catalogue readiness matrix and does not change theme/code files, product data, or Shopify state.
+- Slice 11A storefront taxonomy recommendation remains committed at `662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`.
+- Slice 11B catalogue readiness matrix remains committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
+- Slice 11C records sourcing order, readiness-gap closure planning, and durable movement/rejection rules without changing theme/code files, product data, or Shopify state.
 
-## Slice 11B planning status
+## Current readiness summary
+
+- Confirmed: `0`
+- Candidate: `25`
+- TBD: `0`
+- Unconfirmed: `25`
+
+## Slice 11C planning status
 
 - Planning scope only: accepted.
 - Product import approval: not granted.
@@ -108,14 +116,13 @@ All future Shopify implementation work must preserve the approved visual design 
   - `Trending`
   - `Seasonal`
 
-## Catalogue readiness summary
+## Sourcing/readiness gap summary
 
-- New planning document created: `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
-- Confirmed product-name evidence remains limited to source-approved storefront examples and the existing preview-route record.
-- The matrix therefore mixes:
-  - confirmed source-backed product slots marked conservatively as `Content ready`
-  - clearly labeled `TBD candidate` slots marked `Candidate`
-- No slot is marked `Supplier verified` or `Import ready` in this pass because supplier, import, cost, margin, and shipping data remain unconfirmed.
+- The catalogue now has `25` named candidate slots and no `TBD` slot names.
+- No slot is yet `Supplier verified`.
+- No slot is yet `Content ready`.
+- No slot is yet `Import ready`.
+- All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
 
 ## Current product state
 
@@ -123,7 +130,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11B adds planning documentation only. It does not change collection wiring, product data, or visual implementation.
+- Slice 11C adds planning documentation only. It does not change collection wiring, product data, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -136,7 +143,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - Launch-readiness and publish consideration cannot proceed until Contact/About page resources are created or verified in Shopify.
 - Required verification still includes page existence, page handles, Online Store visibility, and template assignment for the Contact/About resources.
 - Slice 10.8 store-content setup and preview verification remains deferred/incomplete, so this blocker remains open.
-- Catalogue planning now exists for 25 slots, but launch-readiness still requires later supplier verification, content completion, and import preparation before any import approval can be considered.
+- No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
 
 ## Approved execution constraints
 
@@ -157,21 +164,22 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11B catalogue readiness matrix before any later import-planning or execution slice is accepted.
+Product Owner acceptance or correction of the Slice 11C sourcing/readiness gap closure plan before any later supplier-check or import-planning slice is accepted.
 
 ## Decisions made
 
-- Slice 11A is treated as accepted and committed at `662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`.
-- Slice 11B is limited to planning and documentation only.
-- The approved launch department coverage counts are now recorded as a durable catalogue-planning rule.
-- Unknown catalogue values stay `TBD` or `Unconfirmed`; unsupported supplier, cost, margin, shipping, or import details were not invented.
+- Slice 11B is treated as accepted and committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
+- Slice 11C is limited to sourcing/readiness planning and documentation only.
+- The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
+- Rejection rules are now durable launch-readiness criteria.
+- Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, and Contact/About route remediation remain out of scope for this pass.
 
 ## Risks / unknowns
 
-- Office & Desk has the largest source-content gap and currently relies heavily on `TBD candidate` planning slots.
-- Supplier verification, landed cost, final selling price, margin, shipping fit, and import mapping remain unconfirmed across the matrix.
-- The preview evidence references `/products/adjustable-laptop-stand`, but the approved display title is still unconfirmed, so that signal could only be used as a candidate hint rather than as a confirmed product name.
+- All `25` product slots still require supplier/source checking before any movement beyond `Candidate`.
+- Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
+- Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
 - Contact/About route availability still cannot be fully resolved from theme files alone.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 
@@ -180,13 +188,13 @@ Product Owner acceptance or correction of the Slice 11B catalogue readiness matr
 - Keep `artifacts/` excluded from any commit unless separately approved.
 - Preserve the unresolved Contact/About route blocker until store-content setup or verification is completed.
 - Do not treat launch-readiness or publish as eligible until Contact/About page resources are created or verified.
-- Use the new Slice 11B matrix as planning input only until Product Owner acceptance and later supplier/import decisions exist.
+- Use the new Slice 11C sourcing order and movement rules as planning input only until Product Owner acceptance and later supplier checks exist.
 - Record `Tracker status` and `LLD status` in every handoff.
 
 ## Final handoff summary
 
-This Slice 11B docs-only pass records the accepted Slice 11A baseline, adds a 25-slot launch catalogue planning matrix grouped across the four approved launch departments, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11C docs-only pass records the accepted Slice 11B baseline, updates the catalogue matrix from mixed readiness assumptions to a uniform `25`-candidate / `25`-unconfirmed planning state, documents sourcing priority order and supplier-path guidance, preserves the Contact/About `404` blocker, keeps product import and Shopify publish activity unapproved, avoids all theme/code and Shopify-state changes, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11B catalogue readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, records the 25-slot planning matrix, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates live execution state, preserves the Contact/About blocker, records durable movement/rejection criteria, and keeps `artifacts/` untracked and uncommitted.

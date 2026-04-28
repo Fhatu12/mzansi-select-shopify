@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11B docs-only 25-product launch catalogue readiness matrix update completed pending Product Owner acceptance or correction  
-**Version:** 1.2  
+**Status:** Slice 11C docs-only catalogue sourcing and readiness gap closure plan completed pending Product Owner acceptance or correction  
+**Version:** 1.3  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -806,8 +806,23 @@ Readiness-rule constraints:
 - Unknown product titles, supplier details, cost, target selling price, margin, and shipping assumptions must remain `TBD` or `Unconfirmed` until verified.
 - Confirmed product names may be carried into readiness planning only when they exist in the approved source HTML or accepted project documentation.
 - Product import remains unapproved in this slice even where planning records a product slot.
-- No slot should be treated as launch-ready for import until supplier, content, and import-field verification are complete.
+- No slot should be treated as launch-ready for import until supplier, cost, margin, shipping, content, image, and risk verification are complete.
 - Contact/About route availability remains a launch-readiness blocker independent of catalogue completeness.
+
+Durable 4-stage readiness movement rules:
+
+- `Candidate` -> `Supplier verified` only when supplier/source, landed cost, and South Africa shipping are checked.
+- `Supplier verified` -> `Content ready` only when product title, description, images, variants, and risk notes are ready.
+- `Content ready` -> `Import ready` only when margin, shipping, supplier, content, image, and risk checks are complete.
+- No product may be considered `Import ready` unless all required supplier, cost, margin, shipping, content, image, and risk checks are complete.
+
+Durable rejection rules:
+
+- Reject products with poor or unreliable South Africa shipping.
+- Reject products with unclear variants or compatibility.
+- Reject products with weak margin once verified.
+- Reject products with bad images or unsupported claims.
+- Reject products with high breakage, return, or support risk when the value case is weak.
 
 ## Product detail page pattern
 
@@ -1269,4 +1284,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11B catalogue readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates durable launch catalogue rules, preserves the Contact/About blocker, leaves theme/code unchanged, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. Approved source HTML unchanged. This docs-only pass updates durable launch catalogue readiness movement and rejection rules, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.

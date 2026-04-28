@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11B planning draft completed pending Product Owner acceptance or correction  
-**Version:** 1.0  
+**Status:** Slice 11C sourcing/readiness planning draft completed pending Product Owner acceptance or correction  
+**Version:** 1.1  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11B planning-only 25-product launch catalogue readiness matrix for Mzansi Select.
+This document records the Slice 11C planning-only catalogue sourcing and readiness-gap closure plan for the approved `25`-product launch catalogue.
 
 This pass is planning only:
 
@@ -20,7 +20,7 @@ This pass is planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-The goal is to turn the accepted Slice 11A taxonomy into a department-balanced planning matrix without inventing unsupported supplier, cost, price, margin, shipping, or import data.
+This pass does not verify suppliers, landed cost, South Africa shipping, margin, image pack quality, or import readiness. Unknown values remain `Unconfirmed` rather than inferred.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -51,20 +51,86 @@ The goal is to turn the accepted Slice 11A taxonomy into a department-balanced p
 - `Tech Accessories`: `7` product slots
 - Total: `25` product slots
 
+## Current readiness summary
+
+- Confirmed: `0`
+- Candidate: `25`
+- TBD: `0`
+- Unconfirmed: `25`
+
+All `25` slots are planning candidates only. None may be treated as supplier-verified, content-ready, or import-ready in this pass.
+
 ## Readiness statuses
 
-- `Candidate`: slot reserved, but supplier/content/import evidence is incomplete
-- `Supplier verified`: supplier/source validated, but content/import evidence is incomplete
-- `Content ready`: title/image/merchandising direction is confirmed in the approved source or accepted docs, but supplier/import evidence is incomplete
-- `Import ready`: supplier, content, pricing, and import fields are all verified and approved for import preparation
-- `Rejected`: slot removed from launch scope
+- `Candidate`
+- `Supplier verified`
+- `Content ready`
+- `Import ready`
+- `Rejected`
 
-## Data-handling rules for this matrix
+## Readiness movement rules
 
-- Use confirmed product names only when they exist in `mzansi-select-theme.html` or accepted docs.
-- For unsupported product titles, use `TBD candidate`.
-- For unsupported cost, selling price, margin, shipping, supplier, or import values, use `Unconfirmed` or `TBD`.
-- This matrix does not approve import. It only shows readiness planning gaps.
+- `Candidate` -> `Supplier verified` only when supplier/source, landed cost, and South Africa shipping are checked.
+- `Supplier verified` -> `Content ready` only when product title, description, images, variants, and risk notes are ready.
+- `Content ready` -> `Import ready` only when margin, shipping, supplier, content, image, and risk checks are complete.
+- `Rejected` should be used for products with poor shipping, unclear variants, weak margin, bad images, unsupported claims, or high return risk.
+
+## Rejection rules
+
+- Reject products with poor or unreliable South Africa shipping.
+- Reject products with unclear variants or compatibility.
+- Reject products with weak or unworkable margin assumptions once verified.
+- Reject products with weak imagery or unsupported product claims.
+- Reject products with high breakage, return, or support risk if the value case is weak.
+
+## Priority verification order
+
+### 1. Low-risk lightweight products first
+
+- `Desk Cable Clips Set`
+- `Cable Management Sleeve`
+- `Screen Cleaning Kit`
+- `Adhesive Wall Hooks Pack`
+- `Sink Drain Basket / Strainer`
+- `Phone / Tablet Desk Stand`
+
+### 2. Known storefront-fit products
+
+- `Multi-Use Storage Organiser Bin`
+- `Under-Cabinet Paper Towel Holder`
+- `Adjustable Laptop Stand`
+
+### 3. Strong catalogue builders
+
+- `Reusable Food Storage Bag Set`
+- `Silicone Dish Drying Mat`
+- `Magnetic / Air-Vent Phone Holder`
+- `Space-Saving Hanger Set`
+- `Sofa / Bedside Pocket Organiser`
+
+### 4. Higher-risk products needing stricter checks
+
+- `USB-C Hub / Card Reader`
+- `3-in-1 Charging Cable`
+- `Phone Tripod / Selfie Stand`
+- `Stackable Fridge Organiser Bins`
+- `Airtight Food Storage Container Set`
+- `Foldable Storage Crate`
+
+## Recommended supplier/source path
+
+- `DSers first`: lightweight AliExpress-backed clips, hooks, cable items, small stands, strainers, and simple accessories.
+- `CJdropshipping first`: bulkier storage, kitchen organisers, trays, and products needing shipping-cost comparison.
+- `Mixed DSers + CJ comparison`: tech accessories with compatibility, quality, or return-risk exposure.
+- `Manual/CSV readiness tracking only`: continue until the Product Owner explicitly approves actual product import.
+
+## Missing-data summary by group
+
+- All slots still require verified supplier/source selection.
+- All slots still require landed-cost and South Africa shipping checks.
+- All slots still require margin validation.
+- All slots still require import-field preparation and approval.
+- Source-backed titles from the storefront or accepted docs do not count as supplier verification, content completion, or import readiness.
 
 ## Home & Living (`6` slots)
 
@@ -74,94 +140,94 @@ The goal is to turn the accepted Slice 11A taxonomy into a department-balanced p
 - Product title or TBD: `Touch Lamp – Warm LED Dimmable`
 - Department/collection: `Home & Living`
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping, DSers-compatible supplier pools, and manual local lighting suppliers
+- Supplier/source recommendation: `Mixed`; start with `CJdropshipping`, compare against `DSers` only if shipping, fragility, or packaging is viable
 - Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 229`
+- Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; fragility and plug-spec checks required
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; long-form product description remains `TBD`
-- Risk notes: Lighting compliance, fragility, and packaging assumptions remain unverified
-- Readiness status: `Content ready`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Fragility, plug-spec expectations, packaging, and support burden remain unverified
+- Readiness status: `Candidate`
 
 ### HL-02
 
 - Product slot ID: `HL-02`
 - Product title or TBD: `Indoor Plant Pot Set – Terracotta`
 - Department/collection: `Home & Living`
-- Merchandising rail fit, if any: `New Arrivals`; `Featured`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/manual homeware shortlist
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 179`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; breakage risk and pack count still need review
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; merchandising copy remains `TBD`
-- Risk notes: Pot material, size set, and breakage exposure remain unverified
-- Readiness status: `Content ready`
-
-### HL-03
-
-- Product slot ID: `HL-03`
-- Product title or TBD: `TBD candidate`
-- Department/collection: `Home & Living`
-- Merchandising rail fit, if any: `Featured`; `Shop All`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual homeware sourcing
+- Merchandising rail fit, if any: `Featured`; `New Arrivals`
+- Supplier/source recommendation: `CJdropshipping` first; compare manual sourcing later only if shipping economics are weak
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Candidate family still undefined beyond department fit
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Breakage, material quality, and pack-count clarity remain unverified
+- Readiness status: `Candidate`
+
+### HL-03
+
+- Product slot ID: `HL-03`
+- Product title or TBD: `Adhesive Wall Hooks Pack`
+- Department/collection: `Home & Living`
+- Merchandising rail fit, if any: `Best Sellers`; `Shop All`
+- Supplier/source recommendation: `DSers` first
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Adhesive quality, surface-claim limits, and weak imagery risk remain unverified
 - Readiness status: `Candidate`
 
 ### HL-04
 
 - Product slot ID: `HL-04`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Space-Saving Hanger Set`
 - Department/collection: `Home & Living`
-- Merchandising rail fit, if any: `Deals`; `Shop All`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual homeware sourcing
+- Merchandising rail fit, if any: `Featured`; `Deals`
+- Supplier/source recommendation: `CJdropshipping` first; compare `DSers` if unit economics stay lightweight
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Candidate family still undefined beyond department fit
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Plastic quality, claimed load capacity, and pack-size clarity remain unverified
 - Readiness status: `Candidate`
 
 ### HL-05
 
 - Product slot ID: `HL-05`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Sofa / Bedside Pocket Organiser`
 - Department/collection: `Home & Living`
-- Merchandising rail fit, if any: `Best Sellers`; `Shop All`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual homeware sourcing
+- Merchandising rail fit, if any: `New In`; `Trending`
+- Supplier/source recommendation: `CJdropshipping` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Product identity, pricing, and supplier path all remain open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Fabric quality, pocket count, fit expectations, and return risk remain unverified
 - Readiness status: `Candidate`
 
 ### HL-06
 
 - Product slot ID: `HL-06`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Foldable Storage Crate`
 - Department/collection: `Home & Living`
-- Merchandising rail fit, if any: `New In`; `Featured`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual homeware sourcing
+- Merchandising rail fit, if any: `Featured`; `Seasonal`
+- Supplier/source recommendation: `CJdropshipping` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Home & Living coverage count is planned, but slot specifics remain open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Bulk shipping, folded dimensions, and breakage risk remain unverified
 - Readiness status: `Candidate`
 
 ## Kitchen & Storage (`7` slots)
@@ -169,113 +235,113 @@ The goal is to turn the accepted Slice 11A taxonomy into a department-balanced p
 ### KS-01
 
 - Product slot ID: `KS-01`
-- Product title or TBD: `Bamboo Lid Storage Container Set`
+- Product title or TBD: `Sink Drain Basket / Strainer`
 - Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `Best Sellers`; `Featured`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping and manual kitchen-storage supplier shortlist
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 349`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; pack size and breakage risk need review
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; detailed description remains `TBD`
-- Risk notes: Set count, material specs, and packaging assumptions remain unverified
-- Readiness status: `Content ready`
-
-### KS-02
-
-- Product slot ID: `KS-02`
-- Product title or TBD: `Stainless Steel French Press`
-- Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `Best Sellers`; `Featured`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/manual kitchen supplier shortlist
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 299`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; glass/stainless construction risk still unknown
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; brew-capacity/spec copy remains `TBD`
-- Risk notes: Capacity, material mix, and breakage profile remain unverified
-- Readiness status: `Content ready`
-
-### KS-03
-
-- Product slot ID: `KS-03`
-- Product title or TBD: `Insulated Vacuum Flask 500ml`
-- Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `New In`; `Featured`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/manual kitchen supplier shortlist
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 189`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; leak-proof and thermal performance validation still needed
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; feature bullets remain `TBD`
-- Risk notes: Lid quality, insulation claims, and returns exposure remain unverified
-- Readiness status: `Content ready`
-
-### KS-04
-
-- Product slot ID: `KS-04`
-- Product title or TBD: `Fabric Storage Cube Organiser`
-- Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `Deals`; `Best Sellers`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/manual storage supplier shortlist
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 149`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; folded size and pack dimensions still need review
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; size/material copy remains `TBD`
-- Risk notes: Fabric quality, structural support, and pack configuration remain unverified
-- Readiness status: `Content ready`
-
-### KS-05
-
-- Product slot ID: `KS-05`
-- Product title or TBD: `TBD candidate`
-- Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `Featured`; `Shop All`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual kitchen-storage sourcing
+- Merchandising rail fit, if any: `Best Sellers`; `Deals`
+- Supplier/source recommendation: `DSers` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Slot reserved for department-balance planning only
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Sink-fit expectations, material quality, and claim clarity remain unverified
+- Readiness status: `Candidate`
+
+### KS-02
+
+- Product slot ID: `KS-02`
+- Product title or TBD: `Under-Cabinet Paper Towel Holder`
+- Department/collection: `Kitchen & Storage`
+- Merchandising rail fit, if any: `Featured`; `New In`
+- Supplier/source recommendation: `CJdropshipping` first; compare `DSers` where pack size stays efficient
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Mounting method, install claims, and cabinet-fit variability remain unverified
+- Readiness status: `Candidate`
+
+### KS-03
+
+- Product slot ID: `KS-03`
+- Product title or TBD: `Reusable Food Storage Bag Set`
+- Department/collection: `Kitchen & Storage`
+- Merchandising rail fit, if any: `Best Sellers`; `Trending`
+- Supplier/source recommendation: `CJdropshipping` first; compare `DSers` for lightweight set variants
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Food-contact claims, seal quality, and size-set clarity remain unverified
+- Readiness status: `Candidate`
+
+### KS-04
+
+- Product slot ID: `KS-04`
+- Product title or TBD: `Silicone Dish Drying Mat`
+- Department/collection: `Kitchen & Storage`
+- Merchandising rail fit, if any: `Shop All`; `New Arrivals`
+- Supplier/source recommendation: `CJdropshipping` first
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Size expectations, heat claims, and packaging efficiency remain unverified
+- Readiness status: `Candidate`
+
+### KS-05
+
+- Product slot ID: `KS-05`
+- Product title or TBD: `Stackable Fridge Organiser Bins`
+- Department/collection: `Kitchen & Storage`
+- Merchandising rail fit, if any: `Featured`; `Trending`
+- Supplier/source recommendation: `CJdropshipping` first
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Bulk shipping, crack risk, and set-size clarity remain unverified
 - Readiness status: `Candidate`
 
 ### KS-06
 
 - Product slot ID: `KS-06`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Airtight Food Storage Container Set`
 - Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `Deals`; `Shop All`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual kitchen-storage sourcing
+- Merchandising rail fit, if any: `Best Sellers`; `Featured`
+- Supplier/source recommendation: `CJdropshipping` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Slot reserved for department-balance planning only
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Seal quality, size-pack clarity, breakage, and shipping-cost risk remain unverified
 - Readiness status: `Candidate`
 
 ### KS-07
 
 - Product slot ID: `KS-07`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Bamboo Lid Storage Container Set`
 - Department/collection: `Kitchen & Storage`
-- Merchandising rail fit, if any: `New In`; `Featured`
-- Supplier/source recommendation: `TBD`; shortlist via CJdropshipping/manual kitchen-storage sourcing
+- Merchandising rail fit, if any: `Best Sellers`; `Deals`
+- Supplier/source recommendation: `CJdropshipping` first; compare manual sourcing only if quality consistency becomes a concern
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Department count is approved, but product specifics remain open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Material quality, lid seal quality, and breakage risk remain unverified
 - Readiness status: `Candidate`
 
 ## Office & Desk (`5` slots)
@@ -283,81 +349,81 @@ The goal is to turn the accepted Slice 11A taxonomy into a department-balanced p
 ### OD-01
 
 - Product slot ID: `OD-01`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Desk Cable Clips Set`
 - Department/collection: `Office & Desk`
-- Merchandising rail fit, if any: `Featured`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible desk-accessory suppliers and manual local ergonomic suppliers
+- Merchandising rail fit, if any: `Best Sellers`; `Deals`
+- Supplier/source recommendation: `DSers` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Unpublished preview evidence suggests a laptop-stand product handle exists, but the approved display title is still unconfirmed
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Adhesive quality, count-per-pack clarity, and weak imagery risk remain unverified
 - Readiness status: `Candidate`
 
 ### OD-02
 
 - Product slot ID: `OD-02`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Cable Management Sleeve`
 - Department/collection: `Office & Desk`
-- Merchandising rail fit, if any: `New In`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible desk-accessory suppliers and manual local ergonomic suppliers
+- Merchandising rail fit, if any: `Shop All`; `New In`
+- Supplier/source recommendation: `DSers` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Department has no source-confirmed product title examples in the homepage product rails
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Material quality, size clarity, and installation expectations remain unverified
 - Readiness status: `Candidate`
 
 ### OD-03
 
 - Product slot ID: `OD-03`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Phone / Tablet Desk Stand`
 - Department/collection: `Office & Desk`
-- Merchandising rail fit, if any: `Featured`; `Best Sellers`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible desk-accessory suppliers and manual local ergonomic suppliers
+- Merchandising rail fit, if any: `Best Sellers`; `Featured`
+- Supplier/source recommendation: `DSers` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Supplier shortlist, imagery, and final product family remain open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Device-size compatibility, hinge quality, and finish consistency remain unverified
 - Readiness status: `Candidate`
 
 ### OD-04
 
 - Product slot ID: `OD-04`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Adjustable Laptop Stand`
 - Department/collection: `Office & Desk`
-- Merchandising rail fit, if any: `Deals`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible desk-accessory suppliers and manual local ergonomic suppliers
+- Merchandising rail fit, if any: `Featured`; `Trending`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Office & Desk remains the highest planning-risk department because all visible source product examples belong to other departments
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Weight-bearing claims, material quality, and compatibility expectations remain unverified
 - Readiness status: `Candidate`
 
 ### OD-05
 
 - Product slot ID: `OD-05`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Multi-Use Storage Organiser Bin`
 - Department/collection: `Office & Desk`
-- Merchandising rail fit, if any: `New In`; `Featured`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible desk-accessory suppliers and manual local ergonomic suppliers
+- Merchandising rail fit, if any: `Featured`; `Shop All`
+- Supplier/source recommendation: `CJdropshipping` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Slot retained to satisfy approved department count, but product identity is still open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Material quality, size expectations, and storage-use claims remain unverified
 - Readiness status: `Candidate`
 
 ## Tech Accessories (`7` slots)
@@ -365,137 +431,128 @@ The goal is to turn the accepted Slice 11A taxonomy into a department-balanced p
 ### TA-01
 
 - Product slot ID: `TA-01`
-- Product title or TBD: `Premium Over-Ear Headphones`
+- Product title or TBD: `Screen Cleaning Kit`
 - Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `Best Sellers`; `Deals`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 899`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; electronics packaging and warranty handling still need review
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; feature/spec copy remains `TBD`
-- Risk notes: Audio specs, certification, and warranty expectations remain unverified
-- Readiness status: `Content ready`
-
-### TA-02
-
-- Product slot ID: `TA-02`
-- Product title or TBD: `Smart Watch – Black Edition`
-- Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `Best Sellers`; `Deals`
-- Supplier/source recommendation: `Unconfirmed`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
-- Cost estimate if known: `Unconfirmed`
-- Target selling price if known: `R 1 249`
-- Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`; battery/shipping-compliance review still needed
-- Image readiness: Placeholder product image present in approved HTML
-- Description readiness: Short title and price confirmed; feature/spec copy remains `TBD`
-- Risk notes: Battery shipping, app ecosystem, and support burden remain unverified
-- Readiness status: `Content ready`
-
-### TA-03
-
-- Product slot ID: `TA-03`
-- Product title or TBD: `TBD candidate`
-- Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `New In`; `Featured`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
+- Merchandising rail fit, if any: `Deals`; `Best Sellers`
+- Supplier/source recommendation: `DSers` first
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Slot reserved for tech-category breadth only
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Consumable contents, claim wording, and compliance expectations remain unverified
+- Readiness status: `Candidate`
+
+### TA-02
+
+- Product slot ID: `TA-02`
+- Product title or TBD: `Magnetic / Air-Vent Phone Holder`
+- Department/collection: `Tech Accessories`
+- Merchandising rail fit, if any: `Best Sellers`; `Featured`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Vehicle-fit expectations, magnet strength, and compatibility risk remain unverified
+- Readiness status: `Candidate`
+
+### TA-03
+
+- Product slot ID: `TA-03`
+- Product title or TBD: `USB-C Hub / Card Reader`
+- Department/collection: `Tech Accessories`
+- Merchandising rail fit, if any: `Featured`; `Trending`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
+- Cost estimate if known: `Unconfirmed`
+- Target selling price if known: `Unconfirmed`
+- Margin assumption if known: `Unconfirmed`
+- Shipping expectation: `Unconfirmed`
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Port specification, compatibility, and return risk remain unverified
 - Readiness status: `Candidate`
 
 ### TA-04
 
 - Product slot ID: `TA-04`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `3-in-1 Charging Cable`
 - Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `Best Sellers`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
+- Merchandising rail fit, if any: `Deals`; `New In`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Tech accessories can support the approved count, but product identities remain open
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Connector compatibility, charging-speed claims, and defect risk remain unverified
 - Readiness status: `Candidate`
 
 ### TA-05
 
 - Product slot ID: `TA-05`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Phone Tripod / Selfie Stand`
 - Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `Deals`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
+- Merchandising rail fit, if any: `Featured`; `Seasonal`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Supplier and warranty expectations remain undefined
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Stability claims, phone compatibility, and breakage risk remain unverified
 - Readiness status: `Candidate`
 
 ### TA-06
 
 - Product slot ID: `TA-06`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Premium Over-Ear Headphones`
 - Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `New Arrivals`; `Featured`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
+- Merchandising rail fit, if any: `Best Sellers`; `Deals`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Slot reserved for newness-led tech merchandising only
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Audio-quality claims, battery or wired-spec clarity, and return exposure remain unverified
 - Readiness status: `Candidate`
 
 ### TA-07
 
 - Product slot ID: `TA-07`
-- Product title or TBD: `TBD candidate`
+- Product title or TBD: `Smart Watch – Black Edition`
 - Department/collection: `Tech Accessories`
-- Merchandising rail fit, if any: `Trending`; `Shop All`
-- Supplier/source recommendation: `TBD`; evaluate CJdropshipping/DSers-compatible tech suppliers with manual QA fallback
+- Merchandising rail fit, if any: `Featured`; `New Arrivals`
+- Supplier/source recommendation: `Mixed`; compare `DSers` and `CJdropshipping`
 - Cost estimate if known: `Unconfirmed`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
 - Shipping expectation: `Unconfirmed`
-- Image readiness: No approved product image yet
-- Description readiness: `TBD`
-- Risk notes: Trend-sensitive tech slot should not be treated as a permanent department need
+- Image readiness: `Unconfirmed`
+- Description readiness: `Unconfirmed`
+- Risk notes: Compatibility, warranty burden, claim substantiation, and return risk remain unverified
 - Readiness status: `Candidate`
 
-## Planning-path notes: DSers, CJdropshipping, manual, and CSV
+## Notes on DSers / CJdropshipping / manual / CSV path
 
-- `DSers path`: useful where commodity-style tech, desk, or home items can be matched to existing supplier listings, but no DSers product has been approved in this pass.
-- `CJdropshipping path`: useful for early shortlist comparison across home, kitchen, office, and tech accessories, but no CJ supplier has been approved in this pass.
-- `Manual supplier path`: useful for fragile, local-market, branded-feel, or support-sensitive items where generic dropship listings may not preserve launch quality expectations.
-- `CSV preparation path`: should begin only after title, collection, merchandising rail fit, media, supplier, price, and import-field readiness move beyond `Candidate` or `Content ready`.
-- Import approval remains separate from planning. This document does not authorize import via DSers, CJdropshipping, Shopify CSV, or any other path.
+- `DSers` is the first screening path for the low-risk lightweight set because the initial priority group favors small, low-complexity, low-shipping-volume accessories.
+- `CJdropshipping` is the first screening path for larger storage and kitchen-organisation products where shipping-cost comparison is likely to change viability.
+- `Mixed DSers + CJ comparison` is required for tech accessories with compatibility or return-risk exposure before any product can progress beyond `Candidate`.
+- `Manual / CSV readiness tracking` remains the only approved operational path in this phase. No direct import workflow may start until the Product Owner explicitly approves product import.
 
-## Readiness summary by department
+## Launch-readiness blocker reminder
 
-- `Home & Living`: `2` content-ready source-backed examples, `4` candidate slots
-- `Kitchen & Storage`: `4` content-ready source-backed examples, `3` candidate slots
-- `Office & Desk`: `0` content-ready source-backed examples, `5` candidate slots
-- `Tech Accessories`: `2` content-ready source-backed examples, `5` candidate slots
+Catalogue readiness planning does not remove the existing storefront blocker:
 
-## Launch-readiness implications
+- Contact/About route availability remains unresolved.
+- `/pages/contact` and `/pages/about` previously rendered `404`.
+- Publish consideration remains blocked until those page resources are created in Shopify or their handles, visibility, and template assignment are verified.
 
-- The approved `25`-slot department coverage plan now exists in documentation, but supplier verification and import preparation do not.
-- No slot currently qualifies as `Import ready`.
-- Contact/About route availability remains a separate launch-readiness blocker before publish consideration.
-- Product import remains unapproved even after this matrix is recorded.
-
----
-
-**Footer Standard For This Pass:** Slice 11B catalogue readiness matrix recorded. Planning only. No import approved, no Shopify publish approved, no theme/code changes made, and unresolved Contact/About route availability remains a launch-readiness blocker.
+**Footer Standard For This Pass:** Slice 11C sourcing/readiness planning recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, documents priority verification order and sourcing path, updates durable readiness rules elsewhere in the doc set, preserves the Contact/About blocker, leaves theme/code unchanged, and does not approve product import.
