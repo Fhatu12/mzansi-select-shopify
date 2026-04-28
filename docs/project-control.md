@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 10 full foundation unpublished preview refresh  
-**Status:** Slice 10 full foundation unpublished preview refresh completed  
+**Owner:** Slice 10.6 docs-only authenticated preview QA closure (Slice 10.5 / 10.5B)  
+**Status:** Slice 10.6 docs-only authenticated preview QA closure in progress  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 10 full foundation unpublished preview refresh
+Slice 10.6 docs-only authenticated preview QA closure (Slice 10.5 / 10.5B)
 
 ## Source of truth
 
@@ -81,6 +81,8 @@ Slice 9.6 docs-only 404 / generic empty-state QA closure documentation completed
 
 Slice 10 full foundation unpublished preview refresh completed.
 
+Slice 10.5 / 10.5B authenticated Shopify preview QA evidence capture completed and accepted as PASS WITH NOTES.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -120,6 +122,18 @@ Current repo inspection indicates:
 - Slice 10 refreshed the existing unpublished preview theme `Mzansi Select MVP Preview` (`151207542967`) without changing its `unpublished` role, refreshed preview URL `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`, and admin editor URL `https://dropshippoc.myshopify.com/admin/themes/151207542967/editor`.
 - Slice 10 confirmed the live theme remained untouched, no publish occurred, no product import occurred, no checkout change occurred, no design changes or dynamic product/catalogue wiring occurred, no final legal publication occurred, and `mzansi-select-theme.html` remained unchanged at SHA-256 `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
 - Slice 10 evidence was captured in `artifacts/platform/shopify-preview-refresh-slice-10-20260428-203727`, and `artifacts/` remains untracked and must not be committed unless separately approved.
+- Slice 10.5B captured authenticated preview screenshots in `artifacts/qa/slice-10-5b-authenticated-playwright-preview/20260428-210501/` using headed Playwright with manual storefront unlock; the password was not requested, printed, or stored.
+- Slice 10.5B route coverage captured:
+  - `/?preview_theme_id=151207542967`
+  - `/collections/all?preview_theme_id=151207542967`
+  - `/products/adjustable-laptop-stand?preview_theme_id=151207542967`
+  - `/search?preview_theme_id=151207542967`
+  - `/cart?preview_theme_id=151207542967`
+  - `/pages/contact?preview_theme_id=151207542967` rendered HTTP `404`
+  - `/pages/about?preview_theme_id=151207542967` rendered HTTP `404`
+  - `/404-check-missing-page?preview_theme_id=151207542967` rendered HTTP `404` as expected for a missing route check
+- Slice 10.5B confirmed no Shopify push occurred, no Shopify publish occurred, no live theme overwrite occurred, no product import occurred, no checkout customization occurred, no dynamic product/catalogue wiring occurred, and no defect-fix pass occurred.
+- Slice 10.5B confirmed no tracked code/theme/docs files changed during evidence capture, and `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Scope completed
 
@@ -246,7 +260,10 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - final Slice 8 implementation commit accepted at `cd276714e7dc5aa53ce966a7dc3c2f1e3a1699b6`
 - final Slice 9 implementation commit accepted at `1d9a289b1c5027e22b6ea1a28fbcc04b1c98a95b`
 - Slice 10 unpublished preview refresh completed against theme `151207542967`
-- next Product Owner decision pending: review refreshed unpublished preview state and confirm next release/deployment instruction
+- Slice 10.5 / 10.5B authenticated preview QA evidence capture accepted as PASS WITH NOTES
+- next Product Owner decision pending:
+  - accept docs-only closure and commit it
+  - decide whether Contact/About `404` availability becomes the next defect/scope slice before launch-readiness or publish consideration
 
 ## Preview workflow status
 
@@ -254,6 +271,7 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - Dynamic product wiring remains deferred after the accepted preview.
 - Slice 10 refreshed the existing unpublished preview theme `Mzansi Select MVP Preview` (`151207542967`) at `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`.
 - Slice 10 confirmed the live theme remained untouched and the refreshed preview theme remained `unpublished`.
+- Slice 10.5B captured authenticated route-level preview evidence for core templates and confirmed no route remained blocked by `/password` after unlock.
 - Shopify publish remains unapproved; no publish or live overwrite occurred during Slice 10 preview refresh.
 - Product import, checkout customization, final legal sign-off, live policy publication, customer account/auth/contact backend wiring, and dynamic product/catalogue wiring remain deferred after Slice 10 preview refresh.
 - No product import, checkout change, final legal publication, or live-store overwrite occurred during the Slice 10 preview refresh.
@@ -352,7 +370,7 @@ Slice 9 scope is limited to:
 
 ## Next recommended owner
 
-QA / Test Engineer
+Product Owner
 
 ## Risks / unknowns
 
@@ -383,7 +401,8 @@ QA / Test Engineer
 
 ## Handoff queue
 
-- Product Owner decision pending on the final Slice 9 implementation commit scope and timing.
+- Product Owner decision pending on docs-only closure commit for Slice 10.6.
+- Product Owner decision pending on whether Contact/About `404` behavior is acceptable for current MVP preview, or becomes a dedicated next slice before launch-readiness/publish consideration.
 - Keep `artifacts/` excluded from any Slice 9 commit.
 - Keep product import, Shopify push/publish, checkout customization, RemoteAsset cleanup, live contact/backend wiring, final legal sign-off, live policy publication, dynamic product/catalogue wiring, and broader responsive QA deferred until explicitly approved.
 

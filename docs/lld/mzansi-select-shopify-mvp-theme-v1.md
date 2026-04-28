@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 9.6 docs-only 404/generic empty-state QA closure  
-**Status:** Slice 9.6 docs-only 404/generic empty-state QA closure completed  
+**Owner:** Slice 10.6 docs-only authenticated preview QA closure (Slice 10.5 / 10.5B)  
+**Status:** Slice 10.6 docs-only authenticated preview QA closure in progress  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -1129,6 +1129,31 @@ Theme Check blocker-fix validation state:
 - Legal/support placeholder policy wording, final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, live contact details, backend support handling, and publication readiness still need explicit approval before launch use.
 - Broader empty-state coverage beyond the current collection, search, cart, and 404 foundations still needs explicit approval where live data and merchandising logic are involved.
 - Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
+- Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
+
+## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
+
+Evidence folder accepted:
+
+- `artifacts/qa/slice-10-5b-authenticated-playwright-preview/20260428-210501/`
+
+Route coverage captured (unpublished preview theme `151207542967`):
+
+- `/?preview_theme_id=151207542967`
+- `/collections/all?preview_theme_id=151207542967`
+- `/products/adjustable-laptop-stand?preview_theme_id=151207542967`
+- `/search?preview_theme_id=151207542967`
+- `/cart?preview_theme_id=151207542967`
+- `/pages/contact?preview_theme_id=151207542967` rendered HTTP `404`
+- `/pages/about?preview_theme_id=151207542967` rendered HTTP `404`
+- `/404-check-missing-page?preview_theme_id=151207542967` rendered HTTP `404` as expected for a missing route check
+
+Notes recorded:
+
+- Storefront unlock was completed manually in a headed Playwright window.
+- The storefront password was not requested, printed, or stored.
+- No Shopify push/publish/live overwrite/product import/checkout customization/dynamic product wiring occurred during evidence capture.
+- The preview theme remained `unpublished`; publish/launch-readiness remains deferred.
 
 ## Acceptance checklist
 
