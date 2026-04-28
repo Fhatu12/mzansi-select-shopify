@@ -1,0 +1,75 @@
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Shop with Confidence
+      </div>
+      <h1 class="hero-h1">Practical home and<br>everyday finds for<br><span class="gold">South African</span> shoppers</h1>
+      <p class="hero-desc">Start with clear department-led browse paths, then move into curated picks with straightforward pricing and support.</p>
+      <div class="hero-btns">
+        <a class="btn-dark" href="{{ routes.all_products_collection_url }}">
+          Browse all products
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a class="btn-ghost" href="#shipping">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+            <path d="M16 8h5l2 5v4h-7V8z"></path>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+          Shipping info
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="collage-grid">
+        <div class="cg-item cg-wide">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80&auto=format&fit=crop" alt="Headphones" loading="eager">
+        </div>
+        <div class="cg-item">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80&auto=format&fit=crop" alt="Watch" loading="eager">
+        </div>
+        <div class="cg-item">
+          <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80&auto=format&fit=crop" alt="Bottle" loading="eager">
+        </div>
+        <div class="cg-item cg-tall">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop" alt="Storage box" loading="eager">
+        </div>
+        <div class="cg-item">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" alt="Charger" loading="eager">
+        </div>
+        <div class="cg-item">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80&auto=format&fit=crop" alt="Plant" loading="eager">
+        </div>
+        <div class="cg-item">
+          <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&q=80&auto=format&fit=crop" alt="Lamp" loading="eager">
+        </div>
+      </div>
+      <div class="hero-badge-corner">
+        <svg width="20" height="20" fill="none" stroke="#C8973A" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Carefully chosen.<br>Fairly priced.
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero collage",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Hero collage"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "hero_collage": {
+      "type": "hero-collage",
+      "settings": {}
+    },
+    "category_strip": {
+      "type": "category-strip",
+      "settings": {}
+    },
+    "best_sellers": {
+      "type": "featured-product-grid",
+      "settings": {
+        "anchor_id": "best-sellers",
+        "section_title": "Best",
+        "section_accent": "Sellers",
+        "section_link_label": "View all products",
+        "background_style": "cream",
+        "content_preset": "best_sellers"
+      }
+    },
+    "promo_banner": {
+      "type": "promo-banner-split",
+      "settings": {}
+    },
+    "new_arrivals": {
+      "type": "feature-tile-grid",
+      "settings": {
+        "anchor_id": "new-in",
+        "section_title": "New",
+        "section_accent": "Arrivals",
+        "section_link_label": "View all new in"
+      }
+    },
+    "kitchen_storage": {
+      "type": "featured-product-grid",
+      "settings": {
+        "anchor_id": "kitchen-storage",
+        "section_title": "Kitchen &",
+        "section_accent": "Storage",
+        "section_link_label": "View all",
+        "background_style": "white",
+        "content_preset": "kitchen_storage"
+      }
+    }
+  },
+  "order": [
+    "hero_collage",
+    "category_strip",
+    "best_sellers",
+    "promo_banner",
+    "new_arrivals",
+    "kitchen_storage"
+  ]
+}

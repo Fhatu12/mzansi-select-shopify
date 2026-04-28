@@ -1,0 +1,9 @@
+<div class="p-price">
+  <span class="p-now">{{ price_now }}</span>
+  {% if price_was != blank %}
+    <span class="p-was">{{ price_was }}</span>
+  {% endif %}
+  {% if price_save != blank %}
+    <span class="p-save">{{ price_save }}</span>
+  {% endif %}
+</div>

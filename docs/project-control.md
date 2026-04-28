@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 2.6 documentation closure pass  
-**Status:** Slice 2.5 QA review accepted - PASS WITH NOTES  
+**Owner:** Slice 3 implementation pass  
+**Status:** Slice 3 homepage composition foundation implemented  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 2.6 - docs-only QA closure documentation for Slice 2.5
+Slice 3 - homepage composition foundation
 
 ## Source of truth
 
@@ -33,15 +33,21 @@ Slice 2 global chrome refinement completed.
 
 Slice 2.5 global chrome design/QA fidelity review completed and accepted as PASS WITH NOTES.
 
+Slice 2.6 docs-only QA closure documentation completed and committed.
+
+Slice 3 homepage composition foundation completed.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
 - Git is now initialized in `D:\dev\mzansi-select-shopify`.
 - Accepted Slice 1 baseline commit is `19fe316baad455220ab7d9a1305d2ba5a8bc7715`.
 - Accepted Slice 2 reviewed commit is `63dc32dd20ef921d92dff993f83071a4d3666de6` with message `feat: refine Shopify global chrome foundation`.
+- Accepted Slice 2.6 closure commit is `3a540ebdab2db093ed5cd76def4f7ca3e3878a3a` with message `docs: record Slice 2.5 QA closure`.
 - Native Shopify theme folders now exist: `layout`, `config`, `templates`, `sections`, `snippets`, `assets`, and `locales`.
 - Slice 2.5 confirmed the approved HTML remained unchanged and the repo ended clean on `master`.
 - No Shopify push, publish, product import, homepage conversion, or product/data wiring was introduced during Slice 2.5 review.
+- Slice 3 adds the homepage composition foundation in native Shopify theme files without introducing dynamic product wiring or Shopify deployment activity.
 
 ## Scope completed
 
@@ -63,6 +69,12 @@ Current repo inspection indicates:
 - Refined the global chrome to more closely match approved source details including shell IDs, exact chrome text treatment, footer fidelity, and toast shell compatibility.
 - Completed Slice 2.5 read-only QA fidelity review against `mzansi-select-theme.html`.
 - Recorded Slice 2.5 acceptance as PASS WITH NOTES for the reviewed Slice 2 commit.
+- Recorded Slice 2.6 documentation closure and committed it to Git.
+- Added `templates/index.json` to represent the approved homepage section order in Shopify theme structure.
+- Added homepage foundation sections for hero collage, category strip, featured product grids, promo banner, and new arrivals tiles.
+- Added reusable homepage snippets for section headings and static-safe product-card placeholder rendering.
+- Extended `assets/theme.css` with homepage-only styles extracted from the approved HTML.
+- Kept homepage product surfaces static-safe and did not introduce product import or Shopify product-loop wiring.
 
 ## What must not change
 
@@ -87,27 +99,29 @@ The repository is now a Git-initialized Shopify theme foundation with:
 
 - the approved static HTML source retained unchanged
 - refined global Shopify chrome scaffolding
-- no homepage Liquid conversion yet
-- no product data wiring
+- homepage composition foundation implemented in Shopify sections and `templates/index.json`
+- no dynamic product data wiring
 - no Shopify deployment activity
 - accepted Slice 2.5 QA review results recorded against commit `63dc32dd20ef921d92dff993f83071a4d3666de6`
-- clean `master` state after the accepted QA review
+- accepted Slice 2.6 closure recorded at commit `3a540ebdab2db093ed5cd76def4f7ca3e3878a3a`
 
 ## Approved scope
 
-Slice 2.6 scope is limited to:
+Slice 3 scope is limited to:
 
-- recording the accepted Slice 2.5 QA outcome in documentation only
-- documenting the reviewed commit and source-hash confirmation
-- documenting deferred items and unresolved review notes
-- leaving theme implementation unchanged
+- homepage composition foundation only
+- approved homepage section order implementation
+- static-safe homepage section and snippet creation
+- homepage-only CSS extraction from the approved HTML
+- documentation updates for the new homepage foundation
 
 ## Critical constraints
 
 - `mzansi-select-theme.html` remains the approved frontend source of truth.
 - No redesign is allowed.
-- No homepage Liquid conversion is included in Slice 2.
-- No product import, Shopify push, publish, checkout customization, multi-country logic, or advanced personalization is allowed in this slice.
+- No product import, Shopify push, publish, checkout customization, multi-country logic, advanced personalization, or supplier integration is allowed in this slice.
+- No collection, PDP, search/results, cart, or support-page conversion is included in Slice 3.
+- No full dynamic Shopify product wiring is included in Slice 3.
 - No unnecessary tooling or package/build system has been introduced.
 
 ## Decisions made
@@ -125,10 +139,14 @@ Slice 2.6 scope is limited to:
 - The approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F` through the accepted QA review.
 - One `rg` evidence command failed because of PowerShell quoting, so that exact command output was not captured during Slice 2.5 review.
 - Slice 2.6 records the QA closure only and does not alter theme implementation.
+- Slice 3 uses `templates/index.json` plus native Shopify sections to mirror the approved homepage order.
+- Homepage product cards remain static-safe placeholder components rendered through snippets rather than Shopify product-loop wiring.
+- Section-level composition was favored over expanding global theme settings so the approved design can be preserved with minimal configuration drift.
+- Accepted global chrome files were left unchanged during Slice 3 because no blocking integration fix was required.
 
 ## Next recommended owner
 
-Product Owner
+Senior Full-Stack Software Architect
 
 ## Risks / unknowns
 
@@ -137,24 +155,25 @@ Product Owner
 - Only the homepage and lightweight interaction mocks are represented in the source HTML; collection, product, search, cart, legal, support, and 404 page layouts require implementation confirmation where the source does not show exact structures.
 - The source uses externally hosted Google Fonts and remote image URLs, which require implementation decisions for Shopify delivery.
 - The source contains simulated cart and newsletter interactions only, not production Shopify data wiring.
-- `templates/` and `locales/` exist but remain intentionally unimplemented pending later slices.
+- `locales/` remains intentionally unimplemented pending later slices.
 - Chrome responsiveness beyond the approved desktop-first source remains deferred until broader template/page implementation decisions are made.
 - Font hosting remains deferred pending implementation approval.
 - Toast, cart, and newsletter wiring remain deferred pending later implementation slices.
-- Homepage, collection, PDP, search, cart, and support template implementation remain deferred.
+- Homepage is now implemented as a static-safe composition foundation, but collection, PDP, search, cart, and support template implementation remain deferred.
+- Homepage product cards, arrivals, and promo surfaces currently rely on static-safe source-derived content and still require later approval before dynamic data wiring.
 
 ## Handoff queue
 
-- Review and approve the recorded Slice 2.5 PASS WITH NOTES closure.
-- Decide whether to authorize the next implementation slice after documentation closure.
-- Decide whether fonts remain remote-hosted or move into managed theme assets.
-- Decide the minimal template set to add before homepage composition work begins.
-- Keep responsive behaviour, toast/cart/newsletter wiring, and secondary template rollout deferred until explicitly approved.
+- Review Slice 3 homepage composition fidelity against the approved HTML source.
+- Decide whether to keep remote font delivery or move fonts into managed theme assets.
+- Decide when to replace static-safe homepage product placeholders with approved Shopify data wiring.
+- Approve the next template slice for collection, PDP, search, cart, or support-page implementation.
+- Keep toast/cart/newsletter behavior wiring and broader responsive refinement deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass now records the accepted Slice 2.5 QA closure for the Slice 2 chrome refinement commit. The approved HTML remains unchanged, no homepage conversion or product/data wiring was introduced, no Shopify push/publish/product import occurred, and the next decision remains pending Product Owner approval.
+This pass adds the approved homepage composition foundation on top of the accepted Slice 2.6 checkpoint. The approved HTML remains unchanged, homepage section order is now represented in Shopify theme structure, product surfaces remain static-safe, and dynamic wiring plus secondary template implementation remain deferred.
 
 ---
 
-**Footer Standard For This Pass:** Slice 2.5 QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 2.6 changes are documentation-only and record no implementation, deployment, or data-wiring expansion beyond the agreed chrome scope.
+**Footer Standard For This Pass:** Slice 3 homepage composition foundation implemented. Approved source HTML unchanged. Changes remain limited to homepage structure, homepage-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.

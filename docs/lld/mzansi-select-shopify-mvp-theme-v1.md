@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 2.6 documentation closure pass  
-**Status:** Slice 2.5 QA review accepted - PASS WITH NOTES  
+**Owner:** Slice 3 implementation pass  
+**Status:** Slice 3 homepage composition foundation implemented  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -146,6 +146,28 @@ Slice 2 explicitly defers:
 - collection, product, cart, search, page, or 404 template implementation
 - product or collection data wiring beyond native chrome-level route/cart references
 
+## Slice 3 homepage foundation responsibilities
+
+Slice 3 converts the approved homepage structure into Shopify theme architecture while keeping content static-safe and implementation-light.
+
+Slice 3 scope includes:
+
+- `templates/index.json` creation with the approved homepage section order
+- hero collage section implementation
+- category strip section implementation
+- reusable featured product grid section implementation for Best Sellers and Kitchen & Storage
+- promo banner split section implementation
+- new arrivals feature-tile section implementation
+- homepage-only CSS extraction from the approved HTML
+- reusable snippets for section headings and static-safe product-card rendering
+
+Slice 3 explicitly defers:
+
+- dynamic Shopify product or collection wiring
+- product import or merchandising operations
+- collection, PDP, search, cart, support, legal, or 404 template implementation
+- add-to-cart, toast, wishlist, newsletter, or cart behavior wiring beyond the accepted chrome shell
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -153,13 +175,13 @@ Slice 2 explicitly defers:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Reserved for later slices; not populated in Slice 1.
+  - Contains `index.json` for Slice 3 homepage composition foundation.
 - `sections/`
-  - Contains structural shell placeholders rendered globally by the layout.
+  - Contains global shell placeholders plus homepage composition sections.
 - `snippets/`
-  - Contains reusable shell fragments such as toast/cart feedback.
+  - Contains reusable shell fragments plus homepage utility snippets.
 - `assets/`
-  - Contains the extracted global/base shell CSS for Slice 1.
+  - Contains extracted global/base shell CSS plus homepage foundation styling for Slice 3.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -211,6 +233,11 @@ Slice 2 refinement note:
 - Chrome/base CSS may be refined where needed for closer fidelity to the approved source.
 - Homepage module CSS remains deferred.
 
+Slice 3 addition:
+
+- `assets/theme.css` now includes homepage module styling for hero, category strip, section headings, product-card placeholders, promo banner, and arrivals tiles.
+- Homepage CSS remains source-derived and does not introduce Shopify product-loop styling differences.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -229,6 +256,27 @@ Slice 2 refinement note:
 Slice 2 refinement note:
 
 - These shell files now prioritize closer alignment to the approved HTML's structure, identifiers, and chrome-level copy while remaining implementation-light.
+
+Slice 3 addition:
+
+- `sections/hero-collage.liquid`
+  - Carries the approved hero copy, CTA shell, collage grid, and value badge.
+- `sections/category-strip.liquid`
+  - Carries the approved horizontal department/service strip.
+- `sections/featured-product-grid.liquid`
+  - Reuses one static-safe product-grid implementation for Best Sellers and Kitchen & Storage.
+- `sections/promo-banner-split.liquid`
+  - Carries the approved editorial promo band.
+- `sections/feature-tile-grid.liquid`
+  - Carries the approved New Arrivals tile layout.
+- `snippets/section-heading.liquid`
+  - Reuses the approved section title/link pattern.
+- `snippets/static-product-card.liquid`
+  - Carries static-safe product-card markup only.
+- `snippets/product-badge.liquid`
+  - Reuses sale/new badge rendering.
+- `snippets/price-stack.liquid`
+  - Reuses the approved price hierarchy pattern.
 
 ### Sections
 
@@ -304,6 +352,11 @@ Slice 2 note:
 - No JavaScript wiring was added in this slice.
 - Toast and cart shell identifiers were refined only to support later implementation compatibility.
 
+Slice 3 note:
+
+- `templates/index.json` is now implemented to represent the approved homepage order only.
+- No product-loop JavaScript or Shopify storefront data wiring was added for homepage content sections.
+
 ### Settings
 
 - Brand colour tokens with approved defaults matching source values
@@ -342,6 +395,7 @@ Homepage implementation notes:
 - The category strip is a visual bridge between hero and commerce modules and should remain immediately below the hero.
 - Best Sellers and Kitchen & Storage reuse the same structural product-card system and should be implemented from the same underlying pattern.
 - White and cream background alternation should be preserved exactly where shown.
+- Slice 3 implements this order in `templates/index.json` using static-safe sections and snippets rather than Shopify product data loops.
 
 ## Collection/category page pattern
 
@@ -618,6 +672,21 @@ Slice 2.5 QA closure note:
 - One `rg` evidence command failed due to PowerShell quoting, so exact output for that individual check was not captured in the review record.
 - Responsive behaviour, font hosting strategy, toast/cart/newsletter wiring, and homepage/product/collection/search/cart/support template implementation remain deferred.
 
+Slice 3 testing and preview expectations:
+
+- Verify `templates/index.json` parses as valid JSON and renders the approved homepage section order:
+  - hero collage
+  - category strip
+  - Best Sellers grid
+  - promo banner
+  - New Arrivals tiles
+  - Kitchen & Storage grid
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify homepage section classes and visual rhythm remain aligned with the approved HTML.
+- Verify Best Sellers and Kitchen & Storage use static-safe placeholder cards only.
+- Verify no `collection.products`, `product.title`, `product.price`, `for product in`, or `paginate collection` wiring was introduced.
+- Verify no Shopify push, publish, or product import activity occurred.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -626,9 +695,10 @@ Slice 2.5 QA closure note:
 - Product ratings, wishlist flows, and review counts shown in cards require data-source decisions.
 - Font hosting strategy for `DM Sans` and `Playfair Display` requires implementation choice compatible with Shopify.
 - Sample imagery currently references external Unsplash URLs and needs approved asset ownership/hosting decisions.
-- Homepage, product, collection, search, cart, and support template implementation remain deferred beyond Slice 2.
+- Homepage is now implemented as a static-safe foundation, but product, collection, search, cart, and support template implementation remain deferred beyond Slice 3.
 - Chrome-level fidelity is improved, but final responsive behaviour still depends on later template/page rollout decisions.
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
+- Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
 
 ## Acceptance checklist
 
@@ -641,8 +711,8 @@ Slice 2.5 QA closure note:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 2 changes stay limited to global chrome refinement scope.
+- [ ] Approved source HTML remains untouched while Slice 3 changes stay limited to homepage composition foundation scope.
 
 ---
 
-**Footer Standard For This Pass:** Slice 2.5 QA review accepted as PASS WITH NOTES. Approved source HTML unchanged. Slice 2.6 updates are documentation-only and preserve the existing Slice 2 implementation scope.
+**Footer Standard For This Pass:** Slice 3 homepage composition foundation implemented. Approved source HTML unchanged. Theme changes remain limited to homepage structure, homepage-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.

@@ -1,0 +1,181 @@
+{% liquid
+  assign section_classes = 'section'
+  if section.settings.background_style == 'cream'
+    assign section_classes = section_classes | append: ' section-cream'
+  endif
+%}
+<section id="{{ section.settings.anchor_id | escape }}" class="{{ section_classes }}">
+  <div class="section-inner">
+    {% render 'section-heading',
+      title: section.settings.section_title,
+      accent: section.settings.section_accent,
+      link_label: section.settings.section_link_label,
+      link_url: section.settings.section_link_url
+    %}
+    <div class="products-grid">
+      {% if section.settings.content_preset == 'kitchen_storage' %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Kitchen',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Stainless Steel French Press',
+          stars: '★★★★★',
+          reviews: '(57)',
+          price_now: 'R 299'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Bottle',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Insulated Vacuum Flask 500ml',
+          stars: '★★★★☆',
+          reviews: '(93)',
+          price_now: 'R 189'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Storage box',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Fabric Storage Cube Organiser',
+          stars: '★★★★★',
+          reviews: '(34)',
+          price_now: 'R 149',
+          price_was: 'R 199'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Plant',
+          product_type: 'Home & Living',
+          product_name: 'Indoor Plant Pot Set – Terracotta',
+          stars: '★★★★☆',
+          reviews: '(48)',
+          price_now: 'R 179'
+        %}
+      {% else %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Headphones',
+          badge_label: 'Sale',
+          badge_tone: 'sale',
+          product_type: 'Tech Accessories',
+          product_name: 'Premium Over-Ear Headphones',
+          stars: '★★★★★',
+          reviews: '(128)',
+          price_now: 'R 899',
+          price_was: 'R 1 199',
+          price_save: '25% off'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Storage',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Bamboo Lid Storage Container Set',
+          stars: '★★★★☆',
+          reviews: '(64)',
+          price_now: 'R 349'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Watch',
+          product_type: 'Tech Accessories',
+          product_name: 'Smart Watch – Black Edition',
+          stars: '★★★★★',
+          reviews: '(211)',
+          price_now: 'R 1 249',
+          price_was: 'R 1 599',
+          price_save: '22% off'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Lamp',
+          badge_label: 'Sale',
+          badge_tone: 'sale',
+          product_type: 'Home & Living',
+          product_name: 'Touch Lamp – Warm LED Dimmable',
+          stars: '★★★★☆',
+          reviews: '(89)',
+          price_now: 'R 229',
+          price_was: 'R 299'
+        %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured product grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "default": "best-sellers"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Best"
+    },
+    {
+      "type": "text",
+      "id": "section_accent",
+      "label": "Section accent",
+      "default": "Sellers"
+    },
+    {
+      "type": "text",
+      "id": "section_link_label",
+      "label": "Section link label",
+      "default": "View all products"
+    },
+    {
+      "type": "url",
+      "id": "section_link_url",
+      "label": "Section link URL"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background style",
+      "default": "cream",
+      "options": [
+        {
+          "value": "cream",
+          "label": "Cream"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_preset",
+      "label": "Content preset",
+      "default": "best_sellers",
+      "options": [
+        {
+          "value": "best_sellers",
+          "label": "Best sellers"
+        },
+        {
+          "value": "kitchen_storage",
+          "label": "Kitchen and storage"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product grid"
+    }
+  ]
+}
+{% endschema %}

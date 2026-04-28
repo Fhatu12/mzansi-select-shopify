@@ -1,0 +1,17 @@
+<div class="section-head">
+  <h2 class="section-title">
+    {{ title }}
+    {% if accent != blank %}
+      <span class="gold">{{ accent }}</span>
+    {% endif %}
+  </h2>
+  {% if link_label != blank %}
+    <a class="section-link" href="{{ link_url | default: '#' }}">
+      {{ link_label }}
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  {% endif %}
+</div>
