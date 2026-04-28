@@ -2,8 +2,8 @@
 
 **Document Type:** Project Control  
 **Prepared:** 2026-04-28  
-**Owner:** Slice 4.7 docs-only unpublished preview acceptance closure  
-**Status:** Slice 4 unpublished preview accepted by user  
+**Owner:** Slice 5.6 docs-only PDP QA closure  
+**Status:** Slice 5.5 PDP QA accepted as PASS WITH NOTES  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 4.7 docs-only unpublished preview acceptance closure
+Slice 5.6 docs-only PDP QA closure documentation
 
 ## Source of truth
 
@@ -51,6 +51,10 @@ DevOps Shopify unpublished preview retry completed.
 
 Slice 4.7 unpublished preview acceptance closure completed.
 
+Slice 5 product detail page template foundation completed.
+
+Slice 5.5 product detail page design/QA fidelity review completed and accepted as PASS WITH NOTES.
+
 Current repo inspection indicates:
 
 - The working directory contains the approved static HTML source file, documentation artefacts, and the new Slice 1 Shopify theme foundation.
@@ -69,6 +73,8 @@ Current repo inspection indicates:
 - DevOps preview workflow confirmed Shopify CLI availability, required theme-file presence, valid JSON, unchanged source HTML, and no store-side actions before Theme Check blocking.
 - Theme Check blocking errors were limited to missing `width` and `height` attributes on approved placeholder images plus one overlong collection section schema name.
 - The unpublished Shopify preview was reviewed by the user and accepted.
+- Slice 5 adds a static-safe product detail page foundation without introducing live product data or checkout/cart behaviour.
+- Slice 5.5 confirmed the PDP foundation is visually acceptable for this slice and remains static-safe/visual-only.
 
 ## Scope completed
 
@@ -107,6 +113,11 @@ Current repo inspection indicates:
 - Added only the `width` and `height` attributes required to clear Shopify Theme Check blocking image errors.
 - Shortened the collection section schema name to `Collection main` to satisfy Shopify Theme Check schema-name limits.
 - Recorded user acceptance of the unpublished Shopify preview and current safety state in documentation only.
+- Added `templates/product.json` for native Shopify product routing.
+- Added `sections/main-product-foundation.liquid` for gallery, title, price, option-shell, quantity shell, support notes, description/spec content, and related placeholder presentation.
+- Extended `assets/theme.css` with product detail page foundation styling only.
+- Kept PDP content static-safe and did not introduce live product object wiring, product forms, cart add routes, or checkout behaviour.
+- Recorded Slice 5.5 acceptance as PASS WITH NOTES for the uncommitted PDP foundation review.
 
 ## What must not change
 
@@ -133,6 +144,7 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - refined global Shopify chrome scaffolding
 - homepage composition foundation implemented in Shopify sections and `templates/index.json`
 - collection/category foundation implemented in Shopify sections and `templates/collection.json`
+- product detail page foundation implemented in Shopify sections and `templates/product.json`
 - Theme Check preview blockers remediated locally for the affected homepage and collection files only
 - no dynamic product data wiring
 - no Shopify deployment activity
@@ -141,42 +153,22 @@ The repository is now a Git-initialized Shopify theme foundation with:
 - accepted Slice 3.5 homepage QA review results recorded against commit `9066067d8699dfadfb0b012a8f038a34c6537fb5`
 - accepted Slice 3.6 closure recorded at commit `0044634b469b1b39bcc85e0064536abdbb64f248`
 - accepted unpublished preview recorded against preview theme `151207542967`
+- accepted Slice 5.5 PDP QA review results recorded against the current uncommitted Slice 5 worktree
 
 ## Preview workflow status
 
-- Date/time: 2026-04-28 15:40:53 Africa/Johannesburg
-- Store: `dropshippoc.myshopify.com`
-- Commit validated: `e4e5f3b432120df041bc4ce45c3192a3ec6f32d5`
-- Shopify CLI version: `3.92.1`
-- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, and `templates/collection.json`
-- Theme Check passed with zero blocking errors
-- `18` `RemoteAsset` warnings remain intentionally deferred
-- Preview theme name: `Mzansi Select MVP Preview`
-- Preview theme ID: `151207542967`
-- Preview theme role: `unpublished`
-- Preview URL: `https://dropshippoc.myshopify.com?preview_theme_id=151207542967`
-- Admin editor URL: `https://dropshippoc.myshopify.com/admin/themes/151207542967/editor`
-- Evidence folder: `D:\dev\mzansi-select-shopify\artifacts\platform\shopify-preview-retry-20260428-154053`
-- Safety confirmations:
-  - no publish
-  - live theme untouched
-  - no product import
-  - checkout untouched
-  - no design changes
-  - no dynamic product wiring
-  - `mzansi-select-theme.html` unchanged
-- Slice 4.7 acceptance closure:
-  - user reviewed the unpublished preview and confirmed acceptance
-  - dynamic product wiring remains deferred
-  - `artifacts/` remains untracked and must not be committed unless separately approved
+- Slice 4 unpublished preview remains accepted by the user against theme `151207542967`.
+- Dynamic product wiring remains deferred after the accepted preview.
+- Shopify push/publish remains unapproved in the current Slice 5 state.
+- `artifacts/` remains untracked and must not be committed unless separately approved.
 
 ## Approved scope
 
-This pass is limited to:
+Slice 5.6 scope is limited to:
 
-- recording acceptance of the unpublished Shopify preview in documentation only
-- confirming current safety state and deferred dynamic product wiring
-- keeping `artifacts/` untracked and uncommitted
+- documentation-only closure of the accepted Slice 5.5 PDP QA review
+- recording the accepted PDP QA result and current safety state
+- confirming that non-doc Slice 5 implementation files remain outside the scope of this pass
 
 ## Critical constraints
 
@@ -219,6 +211,13 @@ This pass is limited to:
 - Theme Check remediation remained limited to image dimension attributes and the shortened collection schema name.
 - RemoteAsset warnings remain deferred and were not broadened or cleaned up.
 - The unpublished Shopify preview was subsequently created safely as an unpublished theme and accepted by the user.
+- Slice 5 uses `templates/product.json` plus a single main section to introduce the product detail page foundation.
+- PDP content remains static-safe and does not use live product objects, product forms, cart add routes, or checkout behaviour.
+- Existing snippets for pricing, badges, section headings, and product cards are reused to keep the accepted visual language consistent.
+- Slice 5.5 QA accepted the PDP foundation as PASS WITH NOTES.
+- Slice 5.5 confirmed `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, and `templates/product.json` all parse successfully.
+- Slice 5.5 confirmed Shopify Theme Check passes with zero blocking errors while `23` non-blocking `RemoteAsset` warnings remain open.
+- Slice 5.5 confirmed no Shopify login, theme list, push, preview/store action, publish, checkout change, product import, or dynamic product wiring occurred.
 
 ## Next recommended owner
 
@@ -245,16 +244,19 @@ Product Owner
 - Real collection product data wiring, sorting, filtering, and pagination remain deferred.
 - RemoteAsset warnings for Google Fonts and remote image URLs remain open by design.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
+- Live product media, variants, pricing, stock state, and transactional add-to-cart wiring remain deferred for PDP work.
+- The current Slice 5 implementation files remain uncommitted pending Product Owner approval of the final Slice 5 commit scope.
 
 ## Handoff queue
 
-- Sequence the next approved implementation slice after the accepted unpublished preview.
-- Keep product import, broader responsive QA, Shopify publish, RemoteAsset cleanup, dynamic product wiring, and richer collection behaviors deferred until explicitly approved.
+- Decide the final accepted Slice 5 commit scope for implementation plus docs only.
+- Keep `artifacts/` excluded from any Slice 5 commit.
+- Keep product import, Shopify publish, RemoteAsset cleanup, live product wiring, and broader responsive QA deferred until explicitly approved.
 
 ## Final handoff summary
 
-This pass records that the safe unpublished Shopify preview was created, reviewed, and accepted by the user. The approved HTML remains unchanged, the live theme remains untouched, no publish or product import occurred, checkout remained untouched, dynamic product wiring remains deferred, and `artifacts/` stays untracked pending any separate approval.
+This pass records the accepted Slice 5.5 PDP QA closure in documentation only. The approved HTML remains unchanged, the PDP foundation remains static-safe and visual-only, Theme Check still passes with zero blocking errors, `23` non-blocking `RemoteAsset` warnings remain deferred, no Shopify push/publish/product import/checkout or live-store action occurred, and `artifacts/` remains untracked pending any separate approval.
 
 ---
 
-**Footer Standard For This Pass:** Slice 4 unpublished preview accepted by user. Approved source HTML unchanged. Changes remain documentation-only, with no publish, no product import, no checkout change, no dynamic product wiring, and `artifacts/` left untracked.
+**Footer Standard For This Pass:** Slice 5.5 PDP QA accepted as PASS WITH NOTES. Approved source HTML unchanged. This pass is documentation-only and records accepted PDP QA state, deferred live wiring, deferred product import, deferred Shopify publish, and untracked `artifacts/` handling within the agreed scope.

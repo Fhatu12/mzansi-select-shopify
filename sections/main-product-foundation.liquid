@@ -1,0 +1,285 @@
+<section class="product-main-shell">
+  <div class="section-inner">
+    <div class="product-main">
+      <div class="product-gallery">
+        <div class="product-gallery-main">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=720&q=80&auto=format&fit=crop" alt="Premium headphones" loading="eager" width="720" height="720">
+        </div>
+        <div class="product-gallery-strip">
+          <button class="product-gallery-thumb is-active" type="button" aria-label="Headphones primary view">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=180&q=80&auto=format&fit=crop" alt="Headphones primary view" loading="lazy" width="180" height="180">
+          </button>
+          <button class="product-gallery-thumb" type="button" aria-label="Headphones side profile">
+            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=180&q=80&auto=format&fit=crop" alt="Headphones side profile" loading="lazy" width="180" height="180">
+          </button>
+          <button class="product-gallery-thumb" type="button" aria-label="Headphones detail view">
+            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=180&q=80&auto=format&fit=crop" alt="Headphones detail view" loading="lazy" width="180" height="180">
+          </button>
+          <button class="product-gallery-thumb" type="button" aria-label="Headphones travel case">
+            <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=180&q=80&auto=format&fit=crop" alt="Headphones travel case" loading="lazy" width="180" height="180">
+          </button>
+        </div>
+      </div>
+
+      <div class="product-summary">
+        <div class="product-main-kicker">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          {{ section.settings.product_label }}
+        </div>
+
+        <div class="product-main-badge-row">
+          {% render 'product-badge', label: 'Sale', tone: 'sale' %}
+          {% render 'product-badge', label: 'Fast Delivery', tone: 'new' %}
+        </div>
+
+        <div class="p-type product-main-type">{{ section.settings.product_type }}</div>
+        <h1 class="product-main-title">{{ section.settings.product_title }}</h1>
+        <div class="product-main-rating">★★★★★ <span class="p-rev">{{ section.settings.product_reviews }}</span></div>
+        {% render 'price-stack', price_now: section.settings.price_now, price_was: section.settings.price_was, price_save: section.settings.price_save %}
+
+        <p class="product-main-intro">{{ section.settings.product_intro }}</p>
+
+        <div class="product-option-shell">
+          <div class="product-option-label">Colour</div>
+          <div class="product-option-row">
+            <button class="product-option-chip is-active" type="button">Matte Black</button>
+            <button class="product-option-chip" type="button">Sandstone</button>
+            <button class="product-option-chip" type="button">Forest</button>
+          </div>
+        </div>
+
+        <div class="product-option-shell">
+          <div class="product-option-label">Bundle</div>
+          <div class="product-option-row">
+            <button class="product-option-chip is-active" type="button">Headphones only</button>
+            <button class="product-option-chip" type="button">With travel case</button>
+            <button class="product-option-chip" type="button">Gift set</button>
+          </div>
+        </div>
+
+        <div class="product-purchase-shell">
+          <div class="product-qty-wrap">
+            <div class="product-option-label">Quantity</div>
+            <div class="product-qty-shell" aria-label="Quantity selector">
+              <button class="product-qty-btn" type="button" aria-label="Decrease quantity">−</button>
+              <div class="product-qty-value">1</div>
+              <button class="product-qty-btn" type="button" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <div class="product-action-row">
+            <button class="add-btn product-main-add" type="button">Add to Cart</button>
+            <button class="btn-ghost product-main-save" type="button">Save to Wishlist</button>
+          </div>
+        </div>
+
+        <div class="product-reassurance-list">
+          <div class="product-reassurance-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+              <path d="M16 8h5l2 5v4h-7V8z"></path>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            Fast fulfilment across South Africa
+          </div>
+          <div class="product-reassurance-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Secure checkout with trusted payment methods
+          </div>
+          <div class="product-reassurance-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 .49-4.95"></path>
+            </svg>
+            Easy returns within 7 days
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-detail-grid">
+      <div class="product-detail-card">
+        <div class="product-detail-title">{{ section.settings.description_title }}</div>
+        <p class="product-detail-copy">{{ section.settings.description_copy }}</p>
+      </div>
+      <div class="product-detail-card">
+        <div class="product-detail-title">{{ section.settings.specs_title }}</div>
+        <ul class="product-spec-list">
+          {% assign product_specs = section.settings.specs_copy | newline_to_br | split: '<br />' %}
+          {% for spec in product_specs %}
+            {% if spec != blank %}
+              <li>{{ spec | strip }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="product-support-band">
+      <div class="product-support-item">
+        <div class="product-support-title">Need help before ordering?</div>
+        <div class="product-support-copy">Local support is available seven days a week for delivery, returns, and product guidance.</div>
+      </div>
+      <div class="product-support-item">
+        <div class="product-support-title">Straightforward value</div>
+        <div class="product-support-copy">Keep the same premium-practical Mzansi Select tone with clear pricing and no unnecessary clutter.</div>
+      </div>
+      <div class="product-support-item">
+        <div class="product-support-title">Ready for later wiring</div>
+        <div class="product-support-copy">Live media, options, stock, and add-to-cart behaviour remain intentionally deferred for a later approved slice.</div>
+      </div>
+    </div>
+
+    <div class="product-related-shell">
+      {% render 'section-heading',
+        title: section.settings.related_heading,
+        accent: section.settings.related_accent,
+        link_label: 'Browse all products',
+        link_url: routes.all_products_collection_url
+      %}
+      <div class="products-grid">
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Storage',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Bamboo Lid Storage Container Set',
+          stars: '★★★★☆',
+          reviews: '(64)',
+          price_now: 'R 349'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Watch',
+          product_type: 'Tech Accessories',
+          product_name: 'Smart Watch – Black Edition',
+          stars: '★★★★★',
+          reviews: '(211)',
+          price_now: 'R 1 249',
+          price_was: 'R 1 599',
+          price_save: '22% off'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Bottle',
+          badge_label: 'New',
+          badge_tone: 'new',
+          product_type: 'Kitchen & Storage',
+          product_name: 'Insulated Vacuum Flask 500ml',
+          stars: '★★★★☆',
+          reviews: '(93)',
+          price_now: 'R 189'
+        %}
+        {% render 'static-product-card',
+          image_src: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop',
+          image_alt: 'Lamp',
+          badge_label: 'Sale',
+          badge_tone: 'sale',
+          product_type: 'Home & Living',
+          product_name: 'Touch Lamp – Warm LED Dimmable',
+          stars: '★★★★☆',
+          reviews: '(89)',
+          price_now: 'R 229',
+          price_was: 'R 299'
+        %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Product label",
+      "default": "Product Preview"
+    },
+    {
+      "type": "text",
+      "id": "product_type",
+      "label": "Product type",
+      "default": "Tech Accessories"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product title",
+      "default": "Premium Over-Ear Headphones"
+    },
+    {
+      "type": "text",
+      "id": "product_reviews",
+      "label": "Review summary",
+      "default": "(128 verified reviews)"
+    },
+    {
+      "type": "text",
+      "id": "price_now",
+      "label": "Current price",
+      "default": "R 899"
+    },
+    {
+      "type": "text",
+      "id": "price_was",
+      "label": "Previous price",
+      "default": "R 1 199"
+    },
+    {
+      "type": "text",
+      "id": "price_save",
+      "label": "Savings label",
+      "default": "25% off"
+    },
+    {
+      "type": "textarea",
+      "id": "product_intro",
+      "label": "Product intro",
+      "default": "A static-safe product detail foundation that preserves the approved Mzansi Select balance of premium presentation, clear pricing, and practical support cues while live Shopify product wiring remains deferred."
+    },
+    {
+      "type": "text",
+      "id": "description_title",
+      "label": "Description title",
+      "default": "Product Overview"
+    },
+    {
+      "type": "textarea",
+      "id": "description_copy",
+      "label": "Description copy",
+      "default": "Designed for everyday listening, work calls, and travel, this product detail page shell mirrors the approved storefront language with a clean gallery-first layout, compact pricing hierarchy, and straightforward support reassurance. Final catalog data and transactional behaviour remain deferred to a later approved slice."
+    },
+    {
+      "type": "text",
+      "id": "specs_title",
+      "label": "Specifications title",
+      "default": "Specifications"
+    },
+    {
+      "type": "textarea",
+      "id": "specs_copy",
+      "label": "Specifications copy",
+      "default": "Wireless Bluetooth connectivity\nUp to 28 hours playback\nFold-flat travel design\nSoft over-ear cushions\nUSB-C charging cable included"
+    },
+    {
+      "type": "text",
+      "id": "related_heading",
+      "label": "Related heading",
+      "default": "You may also"
+    },
+    {
+      "type": "text",
+      "id": "related_accent",
+      "label": "Related accent",
+      "default": "like"
+    }
+  ]
+}
+{% endschema %}

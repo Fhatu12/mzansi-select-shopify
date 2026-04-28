@@ -2,8 +2,8 @@
 
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-28  
-**Owner:** Theme Check blocker fix pass  
-**Status:** Theme Check blocker fix implemented for preview readiness  
+**Owner:** Slice 5.6 docs-only PDP QA closure  
+**Status:** Slice 5.5 PDP QA accepted as PASS WITH NOTES  
 **Version:** 1.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
@@ -193,6 +193,35 @@ Theme Check blocker-fix note:
 - The collection/homepage preview blocker pass is limited to adding required image `width` and `height` attributes to placeholder images and shortening the collection section schema name to `Collection main`.
 - RemoteAsset warnings remain intentionally deferred because they were not blocking unpublished preview safety.
 
+## Slice 5 product detail page foundation responsibilities
+
+Slice 5 introduces the first native product detail page foundation while keeping PDP content static-safe and implementation-light.
+
+Slice 5 scope includes:
+
+- `templates/product.json` creation for product routing
+- product gallery/media placeholder foundation
+- product title, pricing, badge, option-shell, quantity shell, and add-to-cart visual shell
+- description/specification content foundation
+- trust/support notes and related placeholder area
+- PDP-only CSS extraction aligned to accepted homepage and collection card/typography rhythm
+
+Slice 5 explicitly defers:
+
+- live Shopify product object wiring
+- live product media, options, variants, pricing, or stock states
+- product forms, cart add routes, or checkout behaviour
+- search, cart, support, legal, or 404 template implementation
+
+Slice 5.5 PDP QA closure note:
+
+- The uncommitted Slice 5 PDP foundation was reviewed and accepted as PASS WITH NOTES.
+- Approved source hash remained `894D0F1BF015B68D77F990BCDCA958B4125BFDAEC139EEC79B4FD47D9AE4506F`.
+- JSON validation passed for `config/settings_schema.json`, `templates/index.json`, `templates/collection.json`, and `templates/product.json`.
+- `shopify theme check --path . --fail-level error` passed with zero blocking errors.
+- `23` non-blocking `RemoteAsset` warnings remain open across `layout/theme.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/main-product-foundation.liquid`, `sections/promo-banner-split.liquid`, and `snippets/static-product-card.liquid`.
+- No product import, Shopify login, theme list, push, preview/store action, publish, checkout change, or live product/cart wiring was introduced during the accepted review pass.
+
 ## Shopify theme folder structure
 
 - `layout/`
@@ -200,13 +229,13 @@ Theme Check blocker-fix note:
 - `config/`
   - Contains minimal theme settings schema for shell-level placeholders only.
 - `templates/`
-  - Contains `index.json` and `collection.json` for approved homepage and collection foundations.
+  - Contains `index.json`, `collection.json`, and `product.json` for approved homepage, collection, and PDP foundations.
 - `sections/`
-  - Contains global shell placeholders plus homepage and collection composition sections.
+  - Contains global shell placeholders plus homepage, collection, and PDP composition sections.
 - `snippets/`
-  - Contains reusable shell fragments plus homepage and collection utility snippets.
+  - Contains reusable shell fragments plus homepage, collection, and PDP utility snippets.
 - `assets/`
-  - Contains extracted global/base shell CSS plus homepage and collection foundation styling.
+  - Contains extracted global/base shell CSS plus homepage, collection, and PDP foundation styling.
 - `locales/`
   - Reserved for later slice internationalization or repeated string extraction if needed.
 
@@ -268,6 +297,11 @@ Slice 4 addition:
 - `assets/theme.css` now includes collection/category foundation styling for intro, collection listing wrapper, and empty-state presentation.
 - Collection CSS remains source-aligned and reuses existing grid/card language rather than inventing a new browsing treatment.
 
+Slice 5 addition:
+
+- `assets/theme.css` now includes product detail page foundation styling for gallery, summary, option-shell, quantity shell, support panels, and related placeholder area.
+- PDP CSS remains source-aligned and reuses the same pricing, CTA, and product-card design language already accepted on homepage and collection foundations.
+
 ### Shell placeholder responsibilities
 
 - `sections/announcement-topbar.liquid`
@@ -321,6 +355,11 @@ Theme Check blocker-fix addition:
   - Now include explicit image `width` and `height` attributes to satisfy Shopify Theme Check without changing sources, wrappers, classes, or layout intent.
 - `sections/main-collection-foundation.liquid`
   - Schema name shortened from `Main collection foundation` to `Collection main` to satisfy Shopify Theme Check name-length rules.
+
+Slice 5 addition:
+
+- `sections/main-product-foundation.liquid`
+  - Carries PDP gallery, summary, pricing, option-shell, quantity shell, support notes, detail content, and related placeholder presentation.
 
 ### Sections
 
@@ -406,6 +445,11 @@ Slice 4 note:
 - `templates/collection.json` is now implemented to represent a static-safe collection/category page foundation only.
 - No product-loop JavaScript, sorting, filtering, or Shopify collection data wiring was added for collection content sections.
 
+Slice 5 note:
+
+- `templates/product.json` is now implemented to represent a static-safe product detail page foundation only.
+- No live product-object JavaScript or Shopify product/cart wiring was added for PDP content sections.
+
 ### Settings
 
 - Brand colour tokens with approved defaults matching source values
@@ -469,6 +513,11 @@ Slice 4 implementation note:
 
 - The collection foundation now uses a cream intro panel, a homepage-aligned listing heading, the shared product-card snippet, and a reusable empty-state surface.
 - Listing content remains static-safe placeholders until dynamic collection data wiring is explicitly approved.
+
+Slice 5 implementation note:
+
+- The PDP foundation uses a gallery-first layout, accepted price hierarchy, trusted-support cues, and related placeholder cards aligned to the homepage and collection visual language.
+- PDP content remains static-safe placeholders until dynamic product data wiring is explicitly approved.
 
 ## Product detail page pattern
 
@@ -761,6 +810,21 @@ Slice 4 testing and preview expectations:
 - Verify no `collection.products`, `product.title`, `product.price`, `paginate collection`, `for product in`, `sort_by`, or `filter` wiring was introduced.
 - Verify no Shopify push, publish, or product import activity occurred.
 
+Slice 5 testing and preview expectations:
+
+- Verify `templates/product.json` parses as valid JSON.
+- Verify `sections/main-product-foundation.liquid` renders product title, gallery, price stack, option-shell, quantity shell, description/spec content, support notes, and related placeholder area.
+- Verify new PDP images include explicit `width` and `height` attributes so Theme Check continues to pass with zero blocking errors.
+- Verify `layout/theme.liquid` still references `theme.css`, `content_for_header`, and `content_for_layout`.
+- Verify no `product.title`, `product.price`, `product.variants`, `product.media`, `product.images`, `form 'product'`, `routes.cart_add_url`, or checkout/cart wiring was introduced.
+- Verify no Shopify push, publish, login, theme list, or product import activity occurred.
+
+Slice 5.5 QA acceptance note:
+
+- PDP layout structure, media/gallery placeholder, title/type/badge/rating area, price stack, option-shell, quantity/add-to-cart shell, description/spec blocks, trust/support notes, and related placeholder area were accepted for this slice.
+- Accepted global chrome remained unchanged through the reviewed Slice 5 worktree.
+- PDP content remains static-safe and visual-only until a later approved live product wiring pass.
+
 Theme Check blocker-fix validation state:
 
 - `shopify theme check --path . --fail-level error` must return zero blocking errors after this pass.
@@ -782,6 +846,7 @@ Theme Check blocker-fix validation state:
 - Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
 - Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
 - RemoteAsset warnings remain open after blocker-fix validation and require separate Product Owner approval before cleanup.
+- PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
 
 ## Acceptance checklist
 
@@ -794,8 +859,8 @@ Theme Check blocker-fix validation state:
 - [ ] No new visual language is introduced on secondary pages.
 - [ ] Unknown patterns are resolved through implementation confirmation rather than invention.
 - [ ] Shopify settings expose content management without enabling brand drift.
-- [ ] Approved source HTML remains untouched while Slice 4 changes plus the narrow Theme Check blocker-fix remain limited to agreed scope.
+- [ ] Approved source HTML remains untouched while Slice 5 changes stay limited to PDP foundation scope with static-safe placeholder behaviour.
 
 ---
 
-**Footer Standard For This Pass:** Theme Check blocker fix implemented for preview readiness. Approved source HTML unchanged. Theme changes remain limited to required image dimensions, collection schema-name remediation, and documentation within the agreed blocker-fix scope.
+**Footer Standard For This Pass:** Slice 5 product detail page template foundation implemented. Approved source HTML unchanged. Theme changes remain limited to PDP structure, product-only styling, static-safe placeholder rendering, and documentation within the agreed slice scope.

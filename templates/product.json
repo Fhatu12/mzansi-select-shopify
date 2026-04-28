@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-foundation",
+      "settings": {
+        "product_label": "Product Preview",
+        "product_type": "Tech Accessories",
+        "product_title": "Premium Over-Ear Headphones",
+        "product_reviews": "(128 verified reviews)",
+        "price_now": "R 899",
+        "price_was": "R 1 199",
+        "price_save": "25% off",
+        "product_intro": "A static-safe product detail foundation that preserves the approved Mzansi Select balance of premium presentation, clear pricing, and practical support cues while live Shopify product wiring remains deferred.",
+        "description_title": "Product Overview",
+        "description_copy": "Designed for everyday listening, work calls, and travel, this product detail page shell mirrors the approved storefront language with a clean gallery-first layout, compact pricing hierarchy, and straightforward support reassurance. Final catalog data and transactional behaviour remain deferred to a later approved slice.",
+        "specs_title": "Specifications",
+        "specs_copy": "Wireless Bluetooth connectivity\nUp to 28 hours playback\nFold-flat travel design\nSoft over-ear cushions\nUSB-C charging cable included",
+        "related_heading": "You may also",
+        "related_accent": "like"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
