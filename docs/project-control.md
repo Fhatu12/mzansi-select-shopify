@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12F launch collection Admin setup readiness recorded; Contact/About remains resolved, supplier/product readiness remains the active blocker, and launch department link switching remains unapproved  
-**Version:** 2.7  
+**Status:** Slice 12G launch collection preview evidence recorded; Contact/About remains resolved, supplier/product readiness remains the active blocker, and launch department link switching remains unapproved  
+**Version:** 2.8  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,17 +13,18 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12F launch collection Admin setup readiness check
+- Active slice: Slice 12G launch collection preview evidence and density review
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 12E launch collection content plan
-- Last committed slice: Slice 12E launch collection content plan (`af8a5f4c4960a14a1b200e12dde5a1575addca10`)
+- Last accepted slice: Slice 12F launch collection readiness check
+- Last committed slice: Slice 12F launch collection readiness check (`621eeb08923120b6f8c33213c2b98159fce18ede`)
 - Current blockers:
   - Slice 11I refreshed CJ evidence and captured public AliExpress comparison results, but exact-match source confirmation and final commercial sign-off are still open
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - `DSers` application pages were reachable in this pass, but targeted queries returned `No Data`, so DSers comparison evidence remains missing
   - Slice 12F confirms that the four approved launch collections already exist in Shopify Admin and are included on the Online Store channel, so the remaining collection blocker is safe exposure and link-switch timing rather than collection creation itself
-  - The current launch collection product counts are still thin (`Home & Living` `1`, `Kitchen & Storage` `4`, `Office & Desk` `1`, `Tech Accessories` `1`), so switching department links away from `all-products` remains high risk without explicit Product Owner approval
+  - Slice 12G confirms that all four preview routes render in the unpublished preview theme, but the current collection page presentation still shows the generic static-safe heading `Everyday Essentials` with placeholder-style product-card coverage rather than department-specific live collection content
+  - Admin density remains too thin for safe link switching (`Home & Living` `1`, `Kitchen & Storage` `4`, `Office & Desk` `1`, `Tech Accessories` `1`), so switching department links away from `all-products` remains high risk without explicit Product Owner approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
   - Product import remains deferred and unapproved
@@ -35,13 +36,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 12F launch collection Admin readiness review
+- Last tracker update: 2026-04-29 during Slice 12G launch collection preview evidence review
 - Tracker status: Updated
-- LLD status: Unchanged with reason - Slice 12E already contains the durable collection setup plan and Slice 12F only records readiness/risk posture in project-control.
+- LLD status: Unchanged with reason - Slice 12E already contains the durable collection setup plan and Slice 12G only records route evidence and density posture in project-control.
 
 ## Current active pass
 
-Slice 12F launch collection Admin setup readiness check
+Slice 12G launch collection preview evidence and density review
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -253,6 +254,95 @@ Evidence folder path:
 
 - `artifacts/platform/slice-12f-launch-collection-admin-readiness-20260429-172417`
 
+## Slice 12G launch collection preview evidence and density review (read-only)
+
+Objective:
+
+- Capture unpublished-preview route evidence for the four approved launch collections and assess whether any collection is suitable for future department link-switch consideration.
+
+Slice 12F commit hash reviewed:
+
+- `621eeb08923120b6f8c33213c2b98159fce18ede`
+
+Collection routes reviewed:
+
+- `https://dropshippoc.myshopify.com/collections/home-living?preview_theme_id=151207542967`
+- `https://dropshippoc.myshopify.com/collections/kitchen-storage?preview_theme_id=151207542967`
+- `https://dropshippoc.myshopify.com/collections/office-desk?preview_theme_id=151207542967`
+- `https://dropshippoc.myshopify.com/collections/tech-accessories?preview_theme_id=151207542967`
+
+Per-collection evidence summary:
+
+- `Home & Living`
+  - Route result: reachable in authenticated unpublished preview with HTTP `200`
+  - Visible title: `Everyday Essentials`
+  - Handle evidence: SEO title confirms `Home & Living`; preview URL resolved to `/collections/home-living`
+  - Rough preview card count: `8` visible `.product-card` elements
+  - Admin density from Slice 12F: `1` product (`thin`)
+  - Preview acceptability: acceptable for preview-route evidence only
+  - Future link-switch consideration: not ready
+  - Notes: the preview route renders, but the visible heading remains generic rather than department-specific and the Admin collection remains thin
+- `Kitchen & Storage`
+  - Route result: reachable in authenticated unpublished preview with HTTP `200`
+  - Visible title: `Everyday Essentials`
+  - Handle evidence: SEO title confirms `Kitchen & Storage`; preview URL resolved to `/collections/kitchen-storage`
+  - Rough preview card count: `8` visible `.product-card` elements
+  - Admin density from Slice 12F: `4` products (`some content`, still below a strong navigation-ready threshold)
+  - Preview acceptability: acceptable for preview-route evidence only
+  - Future link-switch consideration: not ready
+  - Notes: this is the strongest current collection, but the preview still presents generic static-safe collection content and the Admin density is not yet strong enough for a confident department-link switch
+- `Office & Desk`
+  - Route result: reachable in authenticated unpublished preview with HTTP `200`
+  - Visible title: `Everyday Essentials`
+  - Handle evidence: SEO title confirms `Office & Desk`; preview URL resolved to `/collections/office-desk`
+  - Rough preview card count: `8` visible `.product-card` elements
+  - Admin density from Slice 12F: `1` product (`thin`)
+  - Preview acceptability: acceptable for preview-route evidence only
+  - Future link-switch consideration: not ready
+  - Notes: preview rendering is available, but the collection is still thin and the page does not yet present a department-specific collection title/state
+- `Tech Accessories`
+  - Route result: reachable in authenticated unpublished preview with HTTP `200`
+  - Visible title: `Everyday Essentials`
+  - Handle evidence: SEO title confirms `Tech Accessories`; preview URL resolved to `/collections/tech-accessories`
+  - Rough preview card count: `8` visible `.product-card` elements
+  - Admin density from Slice 12F: `1` product (`thin`)
+  - Preview acceptability: acceptable for preview-route evidence only
+  - Future link-switch consideration: not ready
+  - Notes: preview rendering is available, but the collection is still thin and the page does not yet present a department-specific collection title/state
+
+Route-evidence interpretation captured in this pass:
+
+- All four collection routes are reachable in the unpublished preview theme and can be reviewed safely in a read-only workflow.
+- The preview theme currently renders a generic static-safe collection heading (`Everyday Essentials`) and a repeated placeholder-style product-card set across the four routes, so the visible preview card count is not treated as proof of real collection density.
+- SEO page titles do reflect the specific collection names, which helps confirm the handles are wired correctly at the route level.
+- Meta descriptions could not be confirmed from the rendered page in this pass.
+
+Future link-switch consideration result:
+
+- No launch collection is ready for future department link-switch consideration in this pass.
+- `Kitchen & Storage` is the strongest current candidate because it has the highest confirmed Admin count (`4`), but it still falls short of a confident navigation-ready density threshold and still renders through the generic static-safe collection presentation.
+- The current safe rule remains: keep launch department links routed to `{{ routes.all_products_collection_url }}` until Product Owner approval follows stronger collection density, better department-specific collection presentation, and accepted preview evidence.
+
+Safety confirmations:
+
+- No Shopify Admin collection creation
+- No collection edits
+- No department link switching
+- No product import
+- No Shopify push
+- No publish
+- No live overwrite
+- No checkout customization
+- No dynamic catalogue wiring
+- No PDP Add to Cart wiring
+- No cart wiring
+- No final legal publication
+- `artifacts/` remains untracked/uncommitted
+
+Evidence folder path:
+
+- `artifacts/platform/slice-12g-launch-collection-preview-density-20260429-173855`
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -309,6 +399,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 12D records the staged department menu and collection destination strategy only; no theme/code files, product data, or Shopify state were changed in this pass.
 - Slice 12E records the launch collection setup content plan only; no theme/code files, product data, or Shopify state were changed in this pass.
 - Slice 12F records a read-only Admin readiness and risk posture only; no theme/code files, product data, or Shopify state were changed in this pass.
+- Slice 12G records read-only unpublished-preview collection-route evidence and density posture only; no theme/code files, product data, or Shopify state were changed in this pass.
 
 ## Current readiness summary
 
@@ -513,7 +604,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 12F launch collection Admin readiness recommendation, followed by a later approved decision on whether to keep the existing collections thin but unlinked, increase collection density first, or capture preview-route evidence before any department-link switch is considered.
+Product Owner acceptance or correction of the Slice 12G launch collection preview evidence review, followed by a later approved decision on whether to improve collection density and department-specific collection presentation before any department-link switch is considered.
 
 ## Decisions made
 
@@ -540,11 +631,13 @@ Product Owner acceptance or correction of the Slice 12F launch collection Admin 
 - Slice 12D is limited to documentation-only department destination strategy recording.
 - Slice 12E is limited to Shopify Admin launch collection-content planning only.
 - Slice 12F is limited to read-only launch collection Admin readiness and exposure-risk review only.
+- Slice 12G is limited to read-only launch collection preview evidence and density review only.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
 - Launch collection title/handle alignment, intro copy, SEO title, SEO meta description, unpublished-preview HTTP `200` validation, and Online Store exposure readiness are now treated as required setup checkpoints before a later department-link switch.
 - Shopify Admin read-only inspection in Slice 12F confirms the four launch collections already exist and are included on `Online Store`; the remaining question is safe exposure timing, not collection creation feasibility.
+- Slice 12G preview evidence confirms that the four collection routes render in the unpublished preview theme, but the page still presents the generic static-safe collection heading and repeated placeholder-style cards rather than department-specific live collection content.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -563,6 +656,7 @@ Product Owner acceptance or correction of the Slice 12F launch collection Admin 
 - Long South Africa delivery windows, DDU duty handling, and shipping-heavy landed costs are now the immediate commercial blockers highlighted by the captured evidence.
 - If launch departments remain on `all-products` too long, browse intent clarity and department-level QA confidence remain weaker than the approved launch taxonomy intends.
 - If dedicated department links are enabled before collections and content are ready, empty or sparse landing pages may weaken trust and navigation quality.
+- If department links are switched while the preview template still presents a generic static-safe collection heading and placeholder-style product-card coverage, shoppers may receive a misleading browse experience even when the collection route itself is reachable.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 
 ## Recommended sequencing
@@ -574,12 +668,13 @@ Product Owner acceptance or correction of the Slice 12F launch collection Admin 
 5. Slice 11I targeted supplier gap-closure evidence pass: completed in this pass.
 6. Slice 12D docs-only department destination strategy: completed in this pass.
 7. Slice 12E docs-only launch collection setup content plan: completed in this pass.
-8. Slice 12F read-only launch collection Admin readiness check: completed in this pass.
-9. Decide whether the existing collections should remain unlinked until product density and preview evidence improve.
-10. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
-11. Validate the strongest surfaced replacement candidates at item-page level where still needed.
-12. Docs-only closure for supplier evidence once the blocker is resolved.
-13. Product Owner decision on product import planning only after the supplier blocker is resolved.
+8. Slice 12F read-only launch collection Admin readiness check: completed and committed.
+9. Slice 12G read-only launch collection preview evidence and density review: completed in this pass.
+10. Decide whether the existing collections should remain unlinked until Admin density and department-specific collection presentation improve.
+11. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+12. Validate the strongest surfaced replacement candidates at item-page level where still needed.
+13. Docs-only closure for supplier evidence once the blocker is resolved.
+14. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
@@ -591,8 +686,10 @@ Product Owner acceptance or correction of the Slice 12F launch collection Admin 
 - Use the Slice 11H price bands and commercial thresholds as planning gates only until a later approved pricing decision is made.
 - Use `docs/content/mzansi-select-launch-collections-v1.md` as the source of truth for launch collection handles, intro copy, and SEO placeholders in any later Shopify Admin setup pass.
 - Use `artifacts/platform/slice-12f-launch-collection-admin-readiness-20260429-172417/` as the read-only evidence bundle for the current launch collection readiness posture.
+- Use `artifacts/platform/slice-12g-launch-collection-preview-density-20260429-173855/` as the current unpublished-preview collection route and density evidence bundle.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and direct-URL exposure posture.
+- Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current preview-state collection presentation as department-appropriate, or a later approved pass replaces the generic static-safe collection heading/presentation with department-specific collection content.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -601,8 +698,8 @@ Product Owner acceptance or correction of the Slice 12F launch collection Admin 
 
 ## Final handoff summary
 
-This Slice 12F readiness-only pass confirms in read-only Shopify Admin checks that the four approved launch collections already exist, are included on `Online Store`, and remain thin enough that department-link switching away from `all-products` would still be risky without explicit Product Owner approval. It preserves Contact/About as resolved, keeps supplier/product readiness as the active blocker, avoids Admin mutations, avoids code changes and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
+This Slice 12G readiness-only pass confirms in unpublished-preview route evidence that all four approved launch collection URLs render successfully in the preview theme, but the current collection page still presents a generic static-safe heading (`Everyday Essentials`) and placeholder-style product-card coverage while Admin density remains thin or modest (`1`, `4`, `1`, `1`). It preserves Contact/About as resolved, keeps supplier/product readiness as the active blocker, recommends keeping department links on `all-products`, avoids Admin mutations, avoids code changes and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12F launch collection Admin readiness recorded. Approved source HTML unchanged. This readiness-only pass confirms the current collection/exposure posture, keeps Contact/About resolved, leaves the LLD unchanged because Slice 12E already holds the durable collection rules, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12G launch collection preview evidence recorded. Approved source HTML unchanged. This readiness-only pass confirms the preview-route and density posture, keeps Contact/About resolved, leaves the LLD unchanged because Slice 12E already holds the durable collection rules, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
