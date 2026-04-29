@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11I targeted first-six supplier gap-closure evidence captured; all six products remain `Candidate` pending exact-match source confirmation and unresolved commercial gates  
-**Version:** 1.8  
+**Status:** Slice 12H collection readiness gap plan recorded; all first-batch products remain `Candidate`, and launch collections remain below approved link-switch readiness  
+**Version:** 1.9  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, and the Slice 11I targeted gap-closure evidence pass for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, and the Slice 12H docs-only collection readiness gap plan for the approved `25`-product launch catalogue.
 
-This pass is targeted supplier gap-closure evidence only:
+This pass adds collection-readiness gap planning only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,8 +20,8 @@ This pass is targeted supplier gap-closure evidence only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
-No product import, readiness movement beyond `Candidate`, or supplier credential storage has occurred in this pass.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -51,6 +51,64 @@ No product import, readiness movement beyond `Candidate`, or supplier credential
 - `Office & Desk`: `5` product slots
 - `Tech Accessories`: `7` product slots
 - Total: `25` product slots
+
+## Slice 12H collection readiness gap plan
+
+Current collection readiness recorded in this pass:
+
+- `Home & Living`: HTTP `200`, Admin density `1` -> `not ready`
+- `Kitchen & Storage`: HTTP `200`, Admin density `4` -> `closest to ready`, but still needs merchandising/content review
+- `Office & Desk`: HTTP `200`, Admin density `1` -> `not ready`
+- `Tech Accessories`: HTTP `200`, Admin density `1` -> `not ready`
+
+Minimum product-density recommendation:
+
+- Minimum preview threshold: `3` products per launch collection
+- Preferred public launch threshold: `5` products per launch collection
+- No department link switching while any launch collection has only `1` product
+
+Preferred launch density targets:
+
+- `Home & Living`: `5-6` products
+- `Kitchen & Storage`: `6-7` products
+- `Office & Desk`: `5-6` products
+- `Tech Accessories`: `6-7` products
+
+Visible collection-content expectations:
+
+- The generic visible heading `Everyday Essentials` is acceptable as temporary preview/template evidence only.
+- Before any department link switch, each collection page must clearly show its real department name:
+  - `Home & Living`
+  - `Kitchen & Storage`
+  - `Office & Desk`
+  - `Tech Accessories`
+- If `Everyday Essentials` remains as a shared design phrase, the department name must still be visible and clear.
+
+Merchandising quality expectations:
+
+- Products must match the department intent.
+- No filler products should be used to reach density thresholds.
+- Product cards must have usable titles, images, and prices before launch-navigation exposure is considered.
+- `Best Sellers` remains blocked until real sales evidence exists.
+- `Deals` should only be used where margin supports a genuine discount.
+- `New In` / `New Arrivals` can be used for launch products.
+- `Featured` / `Trending` / `Seasonal` remain merchandising rails, not departments.
+- `Mother's Day` / `Winter-ready` positioning may be used only where product fit, timing, shipping expectation, and margin support it.
+- Seasonal copy is campaign/merchandising copy, not permanent taxonomy.
+
+Product allocation priorities:
+
+- Prioritize supplier-ready and lower-risk candidates first when filling each department to the minimum threshold.
+- `Office & Desk` should first rely on the current first-batch focus set already aligned to the department: `Desk Cable Clips Set`, `Cable Management Sleeve`, and `Phone / Tablet Desk Stand`, then expand with approved Office & Desk slots that pass readiness review.
+- `Kitchen & Storage` should continue building from the strongest current launch collection and use approved Kitchen & Storage slots with credible product fit before any exposure decision.
+- `Tech Accessories` should prioritize credible, lower-claim accessories before higher-risk compatibility or returns-heavy items.
+- `Home & Living` should not use weak-fit fillers; any `Adhesive Wall Hooks Pack` allocation remains dependent on finding a clean ZA-shippable source.
+
+Link-switch gating:
+
+- No department link switching is approved in this pass.
+- No department link should move away from `{{ routes.all_products_collection_url }}` until every launch collection clears the approved gating rules.
+- Collection density alone is not enough; department-visible naming and merchandising quality must also be acceptable before any switch review.
 
 ## Current readiness summary
 
@@ -1054,14 +1112,20 @@ For each product, update the future execution record with:
 
 - `Deals` rail remains planning-only unless gross margin is proven at `55%+`.
 - `Best Sellers` rail remains blocked until actual sales evidence exists.
+- `New In` / `New Arrivals` may be used for launch products where the product fit is credible.
+- `Featured` / `Trending` / `Seasonal` remain merchandising rails, not departments.
+- Seasonal or campaign-led copy such as `Mother's Day` or `Winter-ready` may be used only where product fit, timing, shipping expectation, and margin support it.
+- Seasonal copy does not change the durable department taxonomy.
 - Any existing rail-fit references in this document are planning-fit notes only and do not override the commercial-readiness gates.
 
 ## Launch-readiness blocker reminder
 
-Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence:
+Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence plus launch-collection density/presentation gaps:
 
 - Contact/About route availability is resolved in unpublished preview evidence.
 - Supplier verification for the first batch remains unresolved because Slice 11I improved comparison coverage, but exact-match source confirmation and commercial-gate closure are still incomplete.
+- Collection-readiness planning now requires at least `3` products for preview consideration, prefers `5` products for public launch consideration, and blocks any department link switch while any launch collection still has only `1` product.
+- Collection-page presentation must clearly expose the real department name before launch-navigation exposure is considered safe.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11I targeted first-six supplier gap-closure evidence captured. This evidence-only pass keeps all `25` launch slots at `Candidate`, records refreshed CJ evidence and ZA-facing AliExpress comparison results for the first batch without approving import or status promotion, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 12H collection readiness gap plan recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records collection-density targets, link-switch gating, and merchandising-quality expectations without approving import or collection edits, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.

@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12E launch collection setup content plan and durable collection-content readiness rules recorded pending Product Owner acceptance or correction  
-**Version:** 1.8  
+**Status:** Slice 12H collection readiness gap plan and durable launch-collection readiness rules recorded pending Product Owner acceptance or correction  
+**Version:** 1.9  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -832,6 +832,17 @@ Launch-ready routing once approved collections exist:
   - `/collections/tech-accessories`
 - Launch department links should not switch to dedicated collection URLs until the underlying collections are created, visible to Online Store, and accepted as ready to replace the temporary fallback.
 
+Collection-readiness thresholds before link-switch review:
+
+- Minimum preview threshold: `3` products per launch collection.
+- Preferred public launch threshold: `5` products per launch collection.
+- No department link switching is allowed while any launch collection still has only `1` product.
+- Preferred launch density targets are:
+  - `Home & Living`: `5-6` products
+  - `Kitchen & Storage`: `6-7` products
+  - `Office & Desk`: `5-6` products
+  - `Tech Accessories`: `6-7` products
+
 Expansion-ready department exposure rule:
 
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only.
@@ -880,11 +891,34 @@ Online Store exposure readiness rules:
 - Public launch navigation should avoid empty or thin department pages.
 - Department links should remain on `all-products` until the Product Owner approves switching to the dedicated collection URLs.
 
+Visible collection-content expectation:
+
+- The generic phrase `Everyday Essentials` is acceptable as temporary preview/template evidence only.
+- Before department link switching, each launch collection page must clearly show its actual department name:
+  - `Home & Living`
+  - `Kitchen & Storage`
+  - `Office & Desk`
+  - `Tech Accessories`
+- If `Everyday Essentials` remains as a shared design phrase, the department name must still be visible and clear on the page.
+
+Merchandising quality expectations:
+
+- Products placed in each launch collection must match the department intent.
+- Filler products must not be used to reach readiness thresholds.
+- Product cards must have usable titles, images, and prices before public navigation exposure is considered acceptable.
+- `Best Sellers` remains blocked until real sales evidence exists.
+- `Deals` should be used only where margin supports a genuine discount.
+- `New In` / `New Arrivals` can be used for launch products.
+- `Featured` / `Trending` / `Seasonal` remain merchandising rails, not departments.
+- `Mother's Day` / `Winter-ready` positioning may be used only where product fit, timing, shipping expectation, and margin support it.
+- Seasonal copy is campaign/merchandising copy, not permanent taxonomy.
+
 Empty preview collection guidance:
 
 - Empty collections are acceptable during unpublished preview review only.
 - Empty collections are not sufficient for public launch navigation readiness.
 - If a collection is still empty or thin, preview review may continue, but the launch department destination should remain on `all-products`.
+- Even when the preview route returns HTTP `200`, the page is not ready for link-switch review if department naming is unclear or if density thresholds are met only through weak-fit or filler products.
 
 Expansion collection deferral:
 
@@ -895,6 +929,7 @@ Constraints carried into any later setup pass:
 
 - No product import is implied by collection-content setup planning.
 - No Shopify push, publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, or cart wiring is implied by these rules.
+- No collection edit or department link switch is implied by collection-readiness planning alone.
 
 Catalogue readiness statuses for planning:
 
@@ -1387,7 +1422,7 @@ Theme Check blocker-fix validation state:
 - Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
 - Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
 - Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, and Slice 11B now records the approved `25`-slot planning matrix without approving import or live catalogue operations.
-- Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup and later Product Owner approval for exposure.
+- Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup, collection-density/presentation readiness, and later Product Owner approval for exposure.
 - Contact/About route availability was later reconciled as resolved in unpublished preview evidence through Manual Track A.1, so it no longer belongs in the active launch blocker set.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
@@ -1429,4 +1464,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 12E launch collection setup content plan recorded. Approved source HTML unchanged. This docs-only pass updates durable collection-content readiness rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 12H collection readiness gap plan recorded. Approved source HTML unchanged. This docs-only pass updates durable launch-collection readiness rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
