@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11M replacement candidate commercial readiness plan recorded; `Jewellery / accessory organiser` is the preferred replacement-direction `Candidate`, and no product is `Supplier verified`  
+**Status:** Slice 11N Jewellery / accessory organiser supplier evidence closure recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, and no product is `Supplier verified`  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, and the Slice 11M replacement candidate commercial readiness plan for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, and the Slice 11N Jewellery / accessory organiser supplier evidence closure for the approved `25`-product launch catalogue.
 
-This pass adds replacement candidate commercial-readiness planning only:
+This pass adds replacement-direction supplier evidence closure only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,7 +20,7 @@ This pass adds replacement candidate commercial-readiness planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -269,6 +269,120 @@ Recommended next action:
 - Keep `Jewellery / accessory organiser` at `Candidate`.
 - Move `Adhesive Wall Hooks Pack` out of active first-six verification focus.
 - Capture the preferred supplier route, ZA shipping closure, and the final commercial-gate evidence before any formal matrix replacement is approved.
+
+## Slice 11N Jewellery / accessory organiser supplier evidence closure
+
+Supplier evidence summary recorded in this pass:
+
+- `CJdropshipping` candidate re-checked:
+  - Product title: `Transparent Jewelry Storage Box Jewelry Organizer Dustproof Display`
+  - Supplier reference: `SKU: CJCC119463801AZ`
+  - Product cost: `$3.34`
+  - Variant captured: `Color(Beige)`
+  - Weight captured: `1020g`
+  - Description facts still supported by captured evidence: plastic/flocking materials, bedroom/table storage scene, and `3` layers of jewelry storage plus `2` velvet trays
+- `DSers` comparison closure result:
+  - The route redirected to the DSers login page again in this pass
+  - Comparison evidence from DSers therefore remains `Missing`
+- Public AliExpress comparison closure captured:
+  - `10 Slots ( Adjustable) Plastic Jewelry Box Storage Case...`
+    - Visible item price: `ZAR15.65`
+    - Visible shipping: `ZAR66.42`
+    - Visible delivery estimate: `May 12 - 21`
+    - Ratings signal: `4.8`, `1008` reviews, `5,000+ sold`
+    - Captured specs/highlights: `Closure Type: Buckle`, `Inside Material: Plastic`, `High-concerned chemical: None`, `Jewelry Packaging & Display Type: Carrying Cases`
+  - `Portable Jewelry Box Jewelry Organizer Display Travel Jewelry Case...`
+    - Visible item price: `ZAR41.39`
+    - Visible delivery estimate: `May 12 - 22`
+    - Ratings signal: `4.5`, `650` reviews, `5,000+ sold`
+    - Captured specs/highlights: `Closure Type: Flip top`, `Inside Material: Others`, `High-concerned chemical: None`, `Jewelry Packaging & Display Type: Cases & Displays`, `Item Width: 11`, `Item Length: 16`
+
+CJ South Africa shipping/cost result:
+
+- The captured CJ route now shows `PostNL` available to ZA.
+- Captured shipping cost: `$41.63`
+- Captured processing estimate: `1-3 days for 90% orders`
+- Captured delivery estimate: `15-45 days`
+- Captured caution notes: oversized-product warning plus DDU / buyer-duties note
+- CJ is therefore not the preferred supplier route on the evidence captured in this pass because the route remains commercially weak.
+
+DSers / AliExpress comparison result:
+
+- `DSers` remained unavailable because the route redirected to login again in this pass.
+- The public AliExpress adjustable-box route is the only route in this pass that provided item price, visible ZA shipping, and delivery evidence together.
+- The public AliExpress portable-case route appears more giftable and category-fit friendly, but its shipping cost was not independently confirmed in this pass.
+
+Preferred supplier recommendation recorded in this pass:
+
+- Preferred supplier selection remains open.
+- Provisional commercial comparison leader: the public AliExpress adjustable-box route, because it is the only route with captured item-price + ZA-shipping + delivery evidence in one pass.
+- Secondary watch candidate: the public AliExpress portable-case route, because it appears stronger for `Home & Living` / giftable fit, but its shipping field still needs clean confirmation.
+- `CJdropshipping` should not be treated as the preferred supplier route on current evidence.
+
+Landed-cost and margin analysis where evidence is sufficient:
+
+- Adjustable-box comparison landed-cost signal: `ZAR82.07` (`ZAR15.65` item price + `ZAR66.42` shipping)
+- Planning target selling price band remains assumption only: `R159-R229`
+- At `R159`:
+  - landed-cost ratio about `51.6%`
+  - gross margin about `48.4%`
+  - gross-margin amount about `R76.93`
+- At `R229`:
+  - landed-cost ratio about `35.8%`
+  - gross margin about `64.2%`
+  - gross-margin amount about `R146.93`
+- Interpretation:
+  - the captured adjustable-box route clears the minimum landed-cost ratio gate (`<=55%`) at the floor of the planning band
+  - it clears the minimum gross-margin gate (`45%`) at the floor of the planning band
+  - it clears the `R70` absolute gross-margin gate for products priced `R150+`
+  - it does **not** prove the `50%+` target at the very bottom of the band
+  - shipping cost is higher than product cost on this route, so the existing commercial risk flag remains active
+- The captured CJ route also shows shipping cost materially higher than product cost (`$41.63` shipping vs `$3.34` item cost), and the `15-45` day delivery estimate remains commercially weak.
+- No direct landed-cost-to-`R159-R229` comparison is recorded for CJ in this pass because the captured CJ route remains in source currency and this pass does not add an approved FX-conversion basis.
+- The portable-case route did not yield a confirmed shipping-cost field in this pass, so no landed-cost or gross-margin claim is recorded for it.
+
+Image, variant-fit, claim/compliance, and return/quality notes:
+
+- Image suitability: `Not verified` on a final storefront basis for any preferred route.
+- Variant/size/compartment fit:
+  - CJ evidence only confirmed `Color(Beige)` in this pass.
+  - Portable-case comparison captured size clues (`11 x 16`) and a more giftable case format, but final compartment/fit suitability still needs review.
+  - Adjustable-box comparison provides a commercially clearer route, but the product framing still leans toward beads/craft storage rather than a cleaner gift/storage angle.
+- Claim/compliance risk:
+  - avoid exaggerated storage-capacity or category-fit claims until the final route and exact variant are chosen
+  - keep any material/chemical notes tied to captured source facts only
+- Return/quality risk:
+  - portable-case comparison shows a mixed quality signal with `poor quality (23)` appearing in the captured review summary
+  - adjustable-box route shows stronger ratings but still carries expectation risk if the craft/beads framing feels misaligned for the intended `Home & Living` slot
+  - CJ route remains commercially unattractive for ZA unless shipping economics improve materially
+
+Recommended status recorded in this pass:
+
+- `Jewellery / accessory organiser`: `Candidate`
+- Do **not** move to `Supplier verified` in this pass.
+
+Recommendation on formal replacement of `Adhesive Wall Hooks Pack`:
+
+- Keep `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`.
+- Keep `Adhesive Wall Hooks Pack` as replacement-directed / deferred.
+- Do **not** treat formal replacement as fully approved yet; it remains blocked until preferred supplier selection, shipping closure, landed-cost closure, final image suitability, final variant/fit, and risk review are completed.
+
+Missing evidence still blocking readiness:
+
+- clean `DSers` comparison evidence if session access becomes available
+- final preferred supplier selection
+- confirmed South Africa shipping cost for the preferred final route
+- final estimated landed cost for the preferred final route
+- final variant / size / compartment-fit confirmation
+- final storefront image suitability review
+- final claim / compliance risk review
+- final return / quality risk review
+
+Next action:
+
+- Keep `Jewellery / accessory organiser` at `Candidate`.
+- Use the adjustable-box route as the current commercial reference point only, not as final merchandising approval.
+- Resolve shipping closure plus final route choice before asking for Product Owner approval on formal replacement.
 
 ## Current readiness summary
 
