@@ -13,7 +13,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11I targeted first-six supplier gap-closure evidence pass
+- Active slice: Slice 12C navigation and page-link correctness foundation
 - Active owner: Product Owner
 - Next owner: Product Owner
 - Last accepted slice: Slice 11H docs-only first-six commercial gap plan
@@ -39,7 +39,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-Slice 11I targeted first-six supplier gap-closure evidence pass
+Slice 12C navigation and page-link correctness foundation
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -66,6 +66,44 @@ Slice 11I targeted first-six supplier gap-closure evidence pass
   - No Contact/About remediation
   - No final legal publication
 - Next Product Owner decision pending: approve a dedicated wiring/backlog implementation slice and confirm which items are required before product import vs before publish.
+
+## Slice 12C navigation and page-link correctness foundation (bounded fix)
+
+Objective:
+
+- Fix primary and footer navigation targets so they reliably route to valid Shopify routes, valid page resources, or valid page-specific anchors routed via the correct page.
+
+Corrections implemented in this pass:
+
+- Converted global hash-only help/policy anchors to page-routed anchors where the anchor exists:
+  - `#shipping` -> `/pages/about#shipping`
+  - `#returns` -> `/pages/about#returns`
+  - `#faq` -> `/pages/about#faq`
+  - `#about-us` -> `/pages/about#about-us`
+  - `#privacy-policy` -> `/pages/about#privacy-policy`
+- Resolved the Terms anchor mismatch:
+  - `#terms-conditions` -> `/pages/about#terms`
+- Converted Contact and Track Order footer links to route to the known support page resource:
+  - `#contact` / `#track-order` -> `/pages/contact#contact`
+- Department menu and key browse links now route to `{{ routes.all_products_collection_url }}` as a safe destination until a collection strategy is approved.
+- Deals link routes to the homepage deals section when present:
+  - `#deals` -> `{{ routes.root_url }}#deals`
+
+Deferred placeholders left unchanged (explicitly deferred; not silently wired):
+
+- Social links (`#facebook`, `#instagram`, `#tiktok`, `#youtube`)
+- Careers (`#careers`) and Affiliates (`#affiliates`)
+- Wishlist and Saved Addresses anchors (`#wishlist`, `#saved-addresses`)
+
+Scope confirmations (still out of scope for Slice 12C):
+
+- No product import
+- No Shopify push/publish/live overwrite
+- No checkout customization
+- No dynamic catalogue wiring
+- No PDP Add to Cart wiring
+- No cart checkout/quantity/remove wiring
+- No final legal publication
 
 ## Source of truth
 
