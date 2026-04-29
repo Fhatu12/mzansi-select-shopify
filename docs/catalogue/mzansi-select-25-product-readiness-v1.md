@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11O Jewellery organiser viability and supplier-path decision recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, and no product is `Supplier verified`  
+**Status:** Slice 11P Jewellery organiser DSers comparison and commercial assessment recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, no formal final replacement approval is recorded, and no product is `Supplier verified`  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, and the Slice 11O Jewellery organiser viability and supplier-path decision for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, the Slice 11O Jewellery organiser viability and supplier-path decision, and the Slice 11P Jewellery organiser DSers comparison and commercial assessment for the approved `25`-product launch catalogue.
 
-This pass adds a docs-only supplier-path decision for the preferred replacement direction:
+This pass adds a docs-only DSers comparison and commercial assessment update for the preferred replacement direction:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,7 +20,7 @@ This pass adds a docs-only supplier-path decision for the preferred replacement 
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -446,6 +446,77 @@ Evidence still needed before `Supplier verified`:
 - return/quality risk reviewed
 - compliance/claim risk reviewed
 - final Product Owner decision recorded
+
+## Slice 11P Jewellery organiser DSers comparison and commercial assessment
+
+DSers / supplier-path decision recorded in this pass:
+
+- `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`.
+- `Jewellery / accessory organiser` is not formally approved as the final replacement.
+- `Jewellery / accessory organiser` is not promoted to `Supplier verified`.
+- AliExpress adjustable-box remains the preferred supplier-path candidate.
+- `CJdropshipping` remains rejected for current commercial readiness.
+- Portable-case remains secondary comparison only.
+- `DSers` comparison remains preferred for added confidence, but incomplete `DSers` evidence does not block continued `Candidate` status.
+- `Adhesive Wall Hooks Pack` remains replacement-directed / deferred.
+
+Commercial readiness assessment recorded in this pass:
+
+- Evidence-only landed-cost signal: `R82.07`
+- `R159` estimated margin: `48.4%`; gross profit `R76.93`
+- `R179` estimated margin: `54.2%`; gross profit `R96.93`
+- `R199` estimated margin: `58.8%`; gross profit `R116.93`
+- `R229` estimated margin: `64.2%`; gross profit `R146.93`
+- Preferred planning price band: `R179-R229`
+- `R159` remains only a competitive lower bound
+- Shipping cost higher than product cost remains flagged
+- Delivery expectation is not yet proven as `<=21` business days
+- `Deals` rail only if final proven margin is `55%+`
+- `Best Sellers` remains blocked until actual sales evidence exists
+- Do not promise delivery by `Mother's Day`
+
+Planning-only control preserved in this pass:
+
+- Target selling price and landed-cost references remain planning/evidence-only until final Product Owner commercial approval.
+- No formal final replacement approval is recorded in this pass.
+- No product is promoted to `Supplier verified` in this pass.
+
+Formal replacement approval remains blocked by:
+
+- exact AliExpress adjustable-box item URL/reference
+- evidence capture date/time
+- confirmed current item price
+- confirmed current shipping price to South Africa
+- confirmed current delivery estimate to South Africa
+- final landed cost in ZAR
+- selected target selling price
+- final gross margin
+- variant/options clarity
+- image suitability
+- product dimensions
+- description facts
+- return/quality risk note
+- compliance/claim risk note
+- no unsupported claims check
+- Product Owner commercial decision note
+
+`Supplier verified` remains blocked by:
+
+- confirmed supplier/source
+- exact supplier/item reference
+- confirmed product cost
+- confirmed South Africa shipping option
+- confirmed shipping cost
+- calculated landed cost
+- recorded delivery expectation
+- checked variants/options
+- checked image suitability
+- available description facts
+- selected target selling price
+- calculated gross margin
+- return/quality risk review
+- compliance/claim risk review
+- final Product Owner decision
 
 ## Current readiness summary
 
@@ -1468,4 +1539,4 @@ Catalogue readiness planning no longer carries the previous Contact/About storef
 - The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11M replacement candidate commercial readiness plan recorded. This docs-only pass keeps all current launch slots at `Candidate`, records the preferred replacement-candidate role, planning price band, and required landed-cost/margin gates for `Jewellery / accessory organiser`, moves `Adhesive Wall Hooks Pack` into replacement-directed / deferred status, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11P Jewellery organiser DSers comparison and commercial assessment recorded. This docs-only pass keeps `Jewellery / accessory organiser` at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records the explicit planning-margin view and preferred planning band `R179-R229`, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and does not approve product import.
