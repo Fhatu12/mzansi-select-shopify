@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11P Jewellery organiser DSers comparison and commercial assessment recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, no formal final replacement approval is recorded, Contact/About remains resolved, and launch department link switching remains unapproved  
+**Status:** Slice 11Q Jewellery organiser current supplier proof gap recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, no formal final replacement approval is recorded, Contact/About remains resolved, and launch department link switching remains unapproved  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,20 +13,20 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11P Jewellery organiser DSers comparison and commercial assessment
+- Active slice: Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure
 - Active owner: Product Manager
 - Next owner: Product Owner
-- Last accepted slice: Slice 11O Jewellery organiser supplier-path decision
-- Last committed slice: Slice 11O Jewellery organiser supplier-path decision (`fe6e64c0294488491ceef15d0ca0259f82bf03de`)
+- Last accepted slice: Slice 11P Jewellery organiser DSers comparison path
+- Last committed slice: Slice 11P Jewellery organiser DSers comparison path (`6f4f83923f34bf9d5b39538329cc136b75bbfb89`)
 - Current blockers:
-  - Slice 11P keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but formal replacement remains blocked by exact AliExpress path closure, evidence timestamping, current price/shipping reconfirmation, final landed-cost and margin closure, final variant/fit review, storefront image suitability, and risk review
+  - Slice 11Q keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but current supplier proof is still incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
   - No product may move to `Supplier verified` until the remaining evidence and decisions are completed
-  - Slice 11P keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
-  - Slice 11P keeps the public AliExpress adjustable-box route as the preferred supplier-path candidate, but only on an evidence/planning basis
+  - Slice 11Q keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
+  - Slice 11Q keeps the public AliExpress adjustable-box route as the preferred supplier-path candidate, but only on an evidence/planning basis
   - The portable-case route remains secondary comparison only because its shipping-cost field was not independently confirmed
   - `DSers` comparison is still preferred for additional confidence, but it is not blocking continued `Candidate` status for `Jewellery / accessory organiser`
-  - The preferred planning price band is now `R179-R229`; `R159` remains only a competitive lower bound
-  - Shipping cost higher than product cost remains flagged, and delivery expectation is not yet proven as `<=21` business days
+  - The preferred planning price band remains `R179-R229`; `R159` remains only a competitive lower bound
+  - Shipping cost higher than product cost remains flagged, delivery expectation is not yet proven as `<=21` business days, and commercial readiness remains inconclusive pending current supplier proof
   - Slice 11K records that the `25`-product plan meets preferred launch density targets on paper (`Home & Living` `6`, `Kitchen & Storage` `7`, `Office & Desk` `6`, `Tech Accessories` `6`), but this does not close launch readiness
   - The real launch-readiness gap remains verified product quality, supplier evidence, shipping, margin, and collection fit across the planned catalogue
   - `Adhesive Wall Hooks Pack` is now replacement-directed / deferred and should no longer be treated as an active first-six verification focus
@@ -42,14 +42,14 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11P Jewellery organiser DSers comparison and commercial assessment
+- Last tracker update: 2026-04-29 during Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged with reason - Slice 11P applies existing catalogue/commercial readiness rules to a product-specific supplier-path decision and does not create durable AliExpress-only catalogue policy.
+- LLD status: Unchanged with reason - Slice 11Q applies existing supplier evidence and catalogue readiness gates to one product-specific replacement candidate and does not create a new durable catalogue policy.
 
 ## Current active pass
 
-Slice 11P Jewellery organiser DSers comparison and commercial assessment
+Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -866,6 +866,116 @@ Safety confirmations:
 - No final replacement approval
 - `artifacts/` remains untracked/uncommitted
 
+## Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure (docs-only)
+
+Objective:
+
+- Record that `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, but current supplier proof is still incomplete and does not yet support formal replacement approval review or `Supplier verified` movement.
+
+Slice 11P commit hash reviewed:
+
+- `6f4f83923f34bf9d5b39538329cc136b75bbfb89`
+
+Current supplier-proof assessment recorded in this pass:
+
+- `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`.
+- Do not move `Jewellery / accessory organiser` to Product Owner formal replacement approval review yet.
+- Do not promote `Jewellery / accessory organiser` to `Supplier verified`.
+- Do not approve `Jewellery / accessory organiser` as the final replacement.
+- AliExpress adjustable-box remains the preferred supplier-path candidate.
+- `DSers` evidence remains useful for supplier confidence, but incomplete and not sufficient for formal approval or `Supplier verified` status.
+- `Adhesive Wall Hooks Pack` remains replacement-directed / deferred.
+- Commercial readiness remains inconclusive pending current supplier proof.
+
+Current supplier-proof summary recorded in this pass:
+
+- Exact AliExpress adjustable-box item URL/reference: `Missing`
+- `DSers` item/source reference: `Missing` or incomplete
+- Evidence capture date/time: `Missing`
+- Current item price: `Missing`
+- Current shipping price to South Africa: `Missing`
+- Current delivery estimate to South Africa: `Missing`
+- Final landed cost in ZAR: `Not proven`
+- Selected target selling price: planning band only `R179-R229`
+- Final gross margin: `Not proven`
+- Variant/options clarity: `Missing`
+- Image suitability: `Missing`
+- Product dimensions: `Missing`
+- Description facts: `Missing`
+- Return/quality risk note: `Missing`
+- Compliance/claim risk note: `Missing`
+- No unsupported claims check: `Missing`
+- Product Owner commercial decision note: still required
+
+Commercial assessment preserved in this pass:
+
+- Previous landed-cost signal `R82.07` remains planning-only
+- `R159` estimated margin: `48.4%`
+- `R179` estimated margin: `54.2%`
+- `R199` estimated margin: `58.8%`
+- `R229` estimated margin: `64.2%`
+- Preferred planning band remains `R179-R229`
+- `R159` remains competitive lower bound only
+- `Deals` rail remains conditional on final proven margin of `55%+`
+- `Best Sellers` remains blocked until actual sales evidence exists
+- No `Mother's Day` delivery promise is allowed
+
+Formal replacement approval blockers still open:
+
+- exact item URL/reference
+- evidence capture date/time
+- confirmed item price
+- confirmed shipping price to South Africa
+- confirmed delivery estimate to South Africa
+- final landed cost
+- selected target selling price
+- final gross margin
+- variant/options clarity
+- image suitability
+- product dimensions
+- description facts
+- return/quality risk note
+- compliance/claim risk note
+- no unsupported claims check
+- Product Owner commercial decision note
+
+`Supplier verified` blockers still open:
+
+- confirmed supplier/source
+- exact supplier/item reference
+- confirmed product cost
+- confirmed South Africa shipping option
+- confirmed shipping cost
+- calculated landed cost
+- recorded delivery expectation
+- checked variants/options
+- checked image suitability
+- available description facts
+- selected target selling price
+- calculated gross margin
+- return/quality risk review
+- compliance/claim risk review
+- final Product Owner decision
+
+Safety confirmations:
+
+- No product import
+- No Shopify push
+- No publish
+- No live theme overwrite
+- No collection edits
+- No department link switching
+- No checkout customization
+- No dynamic catalogue wiring
+- No PDP Add to Cart wiring
+- No cart wiring
+- No final legal publication
+- No theme/code changes
+- No supplier credential storage
+- No `Supplier verified` promotion
+- No final replacement approval
+- `artifacts/` remains untracked/uncommitted
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -1131,7 +1241,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11P DSers comparison and commercial assessment, followed by an approved decision on whether the preferred AliExpress adjustable-box route is strong enough to support formal replacement of `Adhesive Wall Hooks Pack` while `Jewellery / accessory organiser` still remains blocked from `Supplier verified`.
+Product Owner acceptance or correction of the Slice 11Q current supplier-proof assessment, followed by an approved decision on whether fresh supplier-proof capture is complete enough to move `Jewellery / accessory organiser` into formal replacement approval review while it still remains blocked from `Supplier verified`.
 
 ## Decisions made
 
@@ -1165,6 +1275,7 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 - Slice 11M is accepted and committed at `12ee842ced3f237cbc24a759e11164503b6129ce`.
 - Slice 11N is accepted and committed at `5ad34921b8c5e0d1d7c3dc60f875dec5c50a6b0c`.
 - Slice 11O is accepted and committed at `fe6e64c0294488491ceef15d0ca0259f82bf03de`.
+- Slice 11P is accepted and committed at `6f4f83923f34bf9d5b39538329cc136b75bbfb89`.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
@@ -1178,6 +1289,7 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 - Slice 11N confirms that the captured CJ route is available to ZA but commercially weak because shipping is high, delivery is long, and DDU/oversized cautions apply; the organiser route remains `Candidate` while preferred-supplier selection stays open.
 - Slice 11O rejects the captured CJ route for current commercial readiness, records the AliExpress adjustable-box route as the preferred supplier-path candidate, keeps the portable-case route as secondary comparison only, and preserves `Candidate` status with no formal final replacement approval yet.
 - Slice 11P keeps the organiser route at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records the preferred planning band as `R179-R229`, and confirms that incomplete `DSers` evidence does not block `Candidate` status.
+- Slice 11Q confirms that current supplier proof is still too incomplete to move the organiser route into formal replacement approval review or `Supplier verified` review, even though the AliExpress adjustable-box route remains the preferred supplier-path candidate.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -1190,6 +1302,7 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 - The public ZA-facing AliExpress comparison improves comparison coverage and provides a usable landed-cost signal, but it still does not close preferred-supplier selection or final merchandising-fit risk for the preferred candidate.
 - The preferred supplier-path candidate still needs exact item-reference confirmation, current ZA shipping reconfirmation, product-dimensions clarity, and final Product Owner commercial approval before formal replacement can be approved.
 - The preferred path now has stronger planning-margin visibility, but delivery expectation is still not proven as `<=21` business days and the path remains blocked from `Supplier verified`.
+- Current supplier proof is stale/incomplete because exact current item URL, item price, shipping price, delivery estimate, evidence timestamping, dimensions, image suitability, description facts, and risk notes are still missing.
 - Price bands are now documented for planning, but final live pricing remains unapproved until later commercial sign-off.
 - The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
@@ -1221,10 +1334,11 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 13. Slice 11M replacement candidate commercial readiness plan: completed and committed.
 14. Slice 11N supplier evidence closure for `Jewellery / accessory organiser`: completed and committed.
 15. Slice 11O supplier-path decision for `Jewellery / accessory organiser`: completed and committed.
-16. Slice 11P DSers comparison and commercial assessment for `Jewellery / accessory organiser`: completed in this pass.
-17. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
-18. Improve launch collection density and department-specific collection-page presentation without using filler products.
-19. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+16. Slice 11P DSers comparison and commercial assessment for `Jewellery / accessory organiser`: completed and committed.
+17. Slice 11Q current supplier proof and formal replacement evidence closure for `Jewellery / accessory organiser`: completed in this pass.
+18. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
+19. Improve launch collection density and department-specific collection-page presentation without using filler products.
+20. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
 
 ## Handoff queue
 
@@ -1244,7 +1358,7 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current preview-state collection presentation as department-appropriate, or a later approved pass replaces the generic static-safe collection heading/presentation with department-specific collection content.
 - Use the Slice 12H density gates when evaluating any later launch-collection exposure decision: minimum preview threshold `3`, preferred public launch threshold `5`, and no switch while any launch collection remains at `1` product.
 - Treat the Slice 11K replacement shortlist as planning-only except where Slice 11L now adds product-specific evidence; even there, the preferred `Jewellery / accessory organiser` candidate must remain `Candidate` until shipping, landed cost, and comparison closure are complete.
-- Use the Slice 11P DSers comparison and commercial assessment before allowing `Jewellery / accessory organiser` to formally replace `Adhesive Wall Hooks Pack` in the live launch catalogue matrix.
+- Use the Slice 11Q current supplier-proof assessment before allowing `Jewellery / accessory organiser` to move into formal replacement approval review or to formally replace `Adhesive Wall Hooks Pack` in the live launch catalogue matrix.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -1253,8 +1367,8 @@ Product Owner acceptance or correction of the Slice 11P DSers comparison and com
 
 ## Final handoff summary
 
-This Slice 11P docs-only assessment pass records that `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate` for `Adhesive Wall Hooks Pack`, that the captured CJ route remains rejected for current commercial readiness, that the AliExpress adjustable-box route remains the preferred supplier-path candidate, and that the portable-case route remains secondary comparison only. The planning-margin view is now explicit across `R159`, `R179`, `R199`, and `R229`, but formal replacement is still not finally approved and no product is moved to `Supplier verified`. Contact/About remains resolved, supplier/product readiness remains the active blocker, and `artifacts/` remains untracked and uncommitted.
+This Slice 11Q docs-only assessment pass records that `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate` for `Adhesive Wall Hooks Pack`, that the AliExpress adjustable-box route remains the preferred supplier-path candidate, and that current supplier proof is still too incomplete to support formal replacement approval review or `Supplier verified` movement. The prior planning-margin view remains preserved, but current item URL, current price/shipping, delivery estimate, evidence timestamp, dimensions, image suitability, and risk notes still require fresh proof capture. Contact/About remains resolved, supplier/product readiness remains the active blocker, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11P Jewellery organiser DSers comparison and commercial assessment recorded. Approved source HTML unchanged. This docs-only pass keeps `Jewellery / accessory organiser` at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records the explicit planning-margin view and preferred planning band `R179-R229`, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11Q Jewellery organiser current supplier proof gap recorded. Approved source HTML unchanged. This docs-only pass keeps `Jewellery / accessory organiser` at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records that current supplier proof remains incomplete for formal replacement approval or `Supplier verified` movement, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
