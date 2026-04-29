@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12D docs-only department menu and collection destination strategy recorded; safe temporary routing remains in place until launch collections are ready for exposure  
-**Version:** 2.5  
+**Status:** Slice 12E docs-only launch collection setup content plan recorded; Contact/About remains resolved in unpublished preview while supplier and product readiness remain the active blockers  
+**Version:** 2.6  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,16 +13,16 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12D department menu and collection destination strategy
+- Active slice: Slice 12E launch collection setup content plan
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 12C.5 navigation/page-link QA validation
-- Last committed slice: Slice 12C navigation and page-link correctness foundation (`e38970e843a4cce88d533414df4dce556f5c7cac`)
+- Last accepted slice: Slice 12D department destination strategy documentation
+- Last committed slice: Slice 12D department destination strategy documentation (`f67381256696b43d2423066ccf3c2a8c268b7e61`)
 - Current blockers:
   - Slice 11I refreshed CJ evidence and captured public AliExpress comparison results, but exact-match source confirmation and final commercial sign-off are still open
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - `DSers` application pages were reachable in this pass, but targeted queries returned `No Data`, so DSers comparison evidence remains missing
-  - Slice 12D records the staged department-destination strategy, but launch department links should not switch to dedicated collection URLs until the required Shopify collection setup exists
+  - Slice 12E records the launch collection setup content plan, but the four launch collections still need later Shopify Admin setup before department links can switch away from `all-products`
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
   - Product import remains deferred and unapproved
@@ -34,13 +34,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 12D department destination strategy planning
+- Last tracker update: 2026-04-29 during Slice 12E launch collection setup content planning
 - Tracker status: Updated
 - LLD status: Updated
 
 ## Current active pass
 
-Slice 12D department menu and collection destination strategy
+Slice 12E launch collection setup content plan
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -155,6 +155,20 @@ Risk summary captured in this pass:
 - If dedicated department links are activated before real collections/content exist, customers may land on sparse or empty collection pages that undermine launch confidence.
 - No code changes are approved in Slice 12D; this pass records the rule set only.
 
+## Slice 12E launch collection setup content plan (docs-only)
+
+Objective:
+
+- Record the approved Shopify Admin collection-content plan for the four launch collections before any collection creation, product import, or navigation switch is approved.
+
+Content-planning outcome recorded in this pass:
+
+- The four approved launch collections now have named handles, intro copy, SEO title targets, and SEO meta-description targets recorded in the docs.
+- The current department-link fallback remains `{{ routes.all_products_collection_url }}` until a later approved setup pass creates the launch collections and the Product Owner approves the switch.
+- Empty collections remain acceptable for unpublished preview review only.
+- Expansion collections remain deferred from launch setup and launch navigation.
+- No Shopify Admin creation, no product import, and no code changes are approved in Slice 12E.
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -178,6 +192,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - `docs/project-control.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
+- `docs/content/mzansi-select-launch-collections-v1.md`
 - `sections/primary-navigation.liquid`
 - `sections/category-strip.liquid`
 - Existing approved Slice 11F and Contact/About closure commit history
@@ -207,6 +222,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 11H records the first-six commercial gap-closure plan, planning price bands, and readiness thresholds without changing theme/code files, product data, supplier state, or Shopify state.
 - Slice 11I refreshed CJ evidence, captured public ZA-facing AliExpress comparison candidates, and recorded a targeted gap-closure summary without changing theme/code files, product data, supplier state, or Shopify state.
 - Slice 12D records the staged department menu and collection destination strategy only; no theme/code files, product data, or Shopify state were changed in this pass.
+- Slice 12E records the launch collection setup content plan only; no theme/code files, product data, or Shopify state were changed in this pass.
 
 ## Current readiness summary
 
@@ -261,7 +277,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Preview routes returned HTTP `200`:
   - `https://dropshippoc.myshopify.com/pages/contact?preview_theme_id=151207542967`
   - `https://dropshippoc.myshopify.com/pages/about?preview_theme_id=151207542967`
-- Contact/About route availability remains resolved in unpublished preview evidence and is not the current blocker.
+- Contact/About route availability remains resolved in unpublished preview evidence and is not a launch-readiness blocker.
 - Evidence paths:
   - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/fix-summary.md`
   - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/contact-admin-editor.png`
@@ -272,6 +288,7 @@ All future Shopify implementation work must preserve the approved visual design 
 ## Remaining launch-readiness blocker summary
 
 - Track B blocker: Slice 11G supplier verification remains incomplete because the refreshed evidence still leaves exact-match source confirmation, delivery validation, and/or commercial gate closure open.
+- Track C blocker: launch collection resources and content are now planned, but they still need a later approved Shopify Admin setup pass before department destinations can switch from `all-products`.
 - Slice 11I targeted evidence outcome:
   - `Desk Cable Clips Set`: AliExpress ZA comparison materially improved cost visibility, but exact match confirmation is still open
   - `Cable Management Sleeve`: comparison coverage improved, but the captured price points still look margin-weak inside the approved band
@@ -280,6 +297,7 @@ All future Shopify implementation work must preserve the approved visual design 
   - `Sink Drain Basket / Strainer`: package-size evidence improved, but fit dimensions and stronger image support are still missing
   - `Phone / Tablet Desk Stand`: comparison coverage improved, but captured sources still miss the approved commercial gates
 - No first-batch product is ready to move beyond `Candidate` yet because comparison, delivery, and margin decisions remain incomplete.
+- Contact/About route availability is resolved and is no longer part of the launch-readiness blocker set.
 - The first-batch products still blocked at `Candidate` are:
   - `Desk Cable Clips Set`
   - `Cable Management Sleeve`
@@ -353,7 +371,7 @@ Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
 - The first six-product verification batch now has a public-research outcome, a manual execution guide, a CJ-based evidence bundle, a commercial gap-closure plan, and a targeted gap-closure evidence set, but no item moves beyond `Candidate` until comparison and pricing decisions are complete.
-- This pass preserves the Contact/About resolved state, but it does not resolve the supplier-verification blocker.
+- This pass preserves the Contact/About resolved state, and the active launch-readiness blockers remain supplier/product readiness plus later launch-collection setup.
 
 ## Current product state
 
@@ -362,6 +380,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
 - Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. Slice 11G.2 adds supplier evidence capture and documentation only. Slice 11H adds commercial gap-closure planning and durable readiness-threshold documentation only. Slice 11I adds targeted supplier gap-closure evidence only. None of these passes change collection wiring, product data inside Shopify, or visual implementation.
+- Slice 12D adds department destination strategy documentation only, and Slice 12E adds launch collection setup content-planning documentation only. Neither pass changes collection wiring, product data inside Shopify, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -374,9 +393,10 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - `Contact Us` existed, remained visible to Online Store, and its handle was corrected to `contact`.
 - `About` was created, is visible to Online Store, and uses handle `about`.
 - Preview verification confirmed HTTP `200` for `/pages/contact?preview_theme_id=151207542967` and `/pages/about?preview_theme_id=151207542967`.
+- Contact/About is no longer a launch-readiness blocker.
 - Supplier verification remains a launch-readiness blocker for the first six-product batch.
 - Slice 11I refreshed the CJ evidence, captured public ZA-facing AliExpress comparison candidates, and confirmed that commercial gates remain unresolved for the first-six batch.
-- Department navigation now has a documented staged destination strategy, but the launch collections required for dedicated department routing are not yet confirmed as ready for exposure.
+- Department navigation now has a documented staged destination strategy, and Slice 12E now records the required launch collection content plan, but the launch collections required for dedicated department routing are not yet created or confirmed as ready for exposure.
 - No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
 - Additional comparison and pricing review is still required before any first-batch status movement beyond `Candidate`.
 
@@ -393,18 +413,20 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - No final legal publication approved.
 - No product import or Shopify mutation inside the repo.
 - No supplier credential storage.
-- Contact/About resolved state preserved only in this pass.
+- No Contact/About fix approved in this pass.
+- Contact/About resolved state preserved from Manual Track A.1 and earlier docs-only closure passes.
 - `artifacts/` must remain untracked/uncommitted.
 
 ## Documentation artefacts
 
 - `docs/project-control.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
+- `docs/content/mzansi-select-launch-collections-v1.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 12D staged department destination strategy, followed by a later approved decision on when the four launch department links may switch from `{{ routes.all_products_collection_url }}` to dedicated collection handles.
+Product Owner acceptance or correction of the Slice 12E launch collection setup content plan, followed by a later approved Shopify Admin setup pass for the four launch collections and a separate later decision on when department links may switch from `{{ routes.all_products_collection_url }}` to dedicated collection handles.
 
 ## Decisions made
 
@@ -417,6 +439,7 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 - Slice 11H is accepted and committed at `adfbc2f463497ead605580ae4bf6f2f337130fa8`.
 - Slice 11I is accepted and committed at `83aa6c053db6b7597823ab24b45c04a9198db153`.
 - Slice 12C navigation and page-link correctness foundation is committed at `e38970e843a4cce88d533414df4dce556f5c7cac`.
+- Slice 12D department destination strategy documentation is accepted and committed at `f67381256696b43d2423066ccf3c2a8c268b7e61`.
 - Slice 11G.2 is limited to supplier evidence capture only; no import, publish, or Shopify mutation is approved.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
 - Candidate -> Supplier verified evidence fields remain durable catalogue launch-readiness criteria.
@@ -427,9 +450,11 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 - Slice 11H commercial readiness thresholds are readiness gates only and must not be treated as proof of verification or import readiness.
 - Slice 11I is limited to targeted supplier gap-closure evidence capture only.
 - Slice 12D is limited to documentation-only department destination strategy recording.
+- Slice 12E is limited to Shopify Admin launch collection-content planning only.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
+- Launch collection title/handle alignment, intro copy, SEO title, SEO meta description, unpublished-preview HTTP `200` validation, and Online Store exposure readiness are now treated as required setup checkpoints before a later department-link switch.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -443,7 +468,7 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 - The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
 - Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
-- Contact/About route availability no longer blocks unpublished preview, but supplier verification still blocks catalogue status movement and import planning.
+- Contact/About route availability no longer blocks unpublished preview or launch readiness; supplier verification and later launch collection setup remain the active blockers.
 - Long South Africa delivery windows, DDU duty handling, and shipping-heavy landed costs are now the immediate commercial blockers highlighted by the captured evidence.
 - If launch departments remain on `all-products` too long, browse intent clarity and department-level QA confidence remain weaker than the approved launch taxonomy intends.
 - If dedicated department links are enabled before collections and content are ready, empty or sparse landing pages may weaken trust and navigation quality.
@@ -457,11 +482,12 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 4. Slice 11H docs-only commercial gap-closure plan: completed and committed.
 5. Slice 11I targeted supplier gap-closure evidence pass: completed in this pass.
 6. Slice 12D docs-only department destination strategy: completed in this pass.
-7. Create the four launch collection resources in Shopify Admin when a later setup pass is approved.
-8. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
-9. Validate the strongest surfaced replacement candidates at item-page level where still needed.
-10. Docs-only closure for supplier evidence once the blocker is resolved.
-11. Product Owner decision on product import planning only after the supplier blocker is resolved.
+7. Slice 12E docs-only launch collection setup content plan: completed in this pass.
+8. Create the four launch collection resources in Shopify Admin when a later setup pass is approved.
+9. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+10. Validate the strongest surfaced replacement candidates at item-page level where still needed.
+11. Docs-only closure for supplier evidence once the blocker is resolved.
+12. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
@@ -471,6 +497,7 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 - Preserve `artifacts/supplier-verification/slice-11i/first-six-gap-closure-summary.md` as the current targeted gap-closure evidence summary.
 - Use the Slice 11F manual guide as execution input for any later comparison-only follow-up pass.
 - Use the Slice 11H price bands and commercial thresholds as planning gates only until a later approved pricing decision is made.
+- Use `docs/content/mzansi-select-launch-collections-v1.md` as the source of truth for launch collection handles, intro copy, and SEO placeholders in any later Shopify Admin setup pass.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
@@ -480,8 +507,8 @@ Product Owner acceptance or correction of the Slice 12D staged department destin
 
 ## Final handoff summary
 
-This Slice 12D docs-only pass records a staged department menu destination strategy that keeps the current safe `all-products` routing in place until the four approved launch collections are created and approved for exposure, defers the three expansion-ready departments from launch navigation, preserves the current visual/navigation hierarchy, avoids code changes, avoids product import and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
+This Slice 12E docs-only pass records the launch collection setup content plan for the four approved launch departments, reconciles Contact/About as resolved in unpublished preview evidence, keeps supplier/product readiness as the active blocker, preserves the current safe `all-products` routing until a later setup pass is approved, avoids code changes and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12D department destination strategy recorded. Approved source HTML unchanged. This docs-only pass preserves the current safe navigation fallback, records the future launch collection-handle strategy, keeps expansion-ready departments deferred from launch exposure, leaves theme/code unchanged, updates the LLD because durable navigation/collection rules changed, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12E launch collection setup content plan recorded. Approved source HTML unchanged. This docs-only pass reconciles Contact/About as resolved, records the launch collection content requirements and exposure-readiness checkpoints, keeps expansion-ready collections deferred, leaves theme/code unchanged, updates the LLD because durable collection/content readiness rules changed, and keeps `artifacts/` untracked and uncommitted.

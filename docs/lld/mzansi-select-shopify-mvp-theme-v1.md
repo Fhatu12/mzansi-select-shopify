@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12D department destination strategy and durable collection-routing rules recorded pending Product Owner acceptance or correction  
-**Version:** 1.7  
+**Status:** Slice 12E launch collection setup content plan and durable collection-content readiness rules recorded pending Product Owner acceptance or correction  
+**Version:** 1.8  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -854,6 +854,48 @@ Risks and dependencies:
 - Shopify Admin setup is required before activation: collection creation, handle confirmation, Online Store availability, and approved collection content direction.
 - This strategy changes destination rules only; it does not approve product import, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, Shopify push, or publish activity.
 
+## Launch collection setup content rules
+
+Approved launch collection content requirements:
+
+- Each approved launch collection must have:
+  - the approved collection title
+  - the approved collection handle
+  - short intro copy
+  - SEO title
+  - SEO meta description
+- The approved launch collections are:
+  - `Home & Living` -> `home-living`
+  - `Kitchen & Storage` -> `kitchen-storage`
+  - `Office & Desk` -> `office-desk`
+  - `Tech Accessories` -> `tech-accessories`
+
+Online Store exposure readiness rules:
+
+- Collection title and handle must match the approved strategy before exposure.
+- Short intro copy must be added before preview readiness is treated as complete.
+- SEO title and meta description must be added before the collection is treated as ready for destination-switch review.
+- The collection route must return HTTP `200` in unpublished preview before it is treated as preview-ready.
+- A launch collection should be made available to Online Store only when it is intentionally ready for preview review.
+- Public launch navigation should avoid empty or thin department pages.
+- Department links should remain on `all-products` until the Product Owner approves switching to the dedicated collection URLs.
+
+Empty preview collection guidance:
+
+- Empty collections are acceptable during unpublished preview review only.
+- Empty collections are not sufficient for public launch navigation readiness.
+- If a collection is still empty or thin, preview review may continue, but the launch department destination should remain on `all-products`.
+
+Expansion collection deferral:
+
+- `garden-outdoor`, `bath-bedroom`, and `cleaning-laundry` remain deferred from launch collection setup and launch navigation exposure.
+- Expansion collection handles may be reserved for later use, but they should not enter launch setup scope without a later approved expansion pass.
+
+Constraints carried into any later setup pass:
+
+- No product import is implied by collection-content setup planning.
+- No Shopify push, publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, or cart wiring is implied by these rules.
+
 Catalogue readiness statuses for planning:
 
 - `Candidate`
@@ -1037,6 +1079,7 @@ Slice 9 implementation note:
 
 - The current foundation set now covers empty collection, empty search, empty cart, and 404 recovery states through a shared empty-state visual pattern.
 - The empty collection pattern is acceptable as an unpublished preview/setup state, but it should not become the preferred live destination for launch department navigation when `all-products` remains the safer fallback.
+- The empty collection pattern is also acceptable during launch collection setup review, but only until title/handle/content/SEO checks and unpublished-preview HTTP `200` validation are complete.
 
 Constraint for implementation:
 
@@ -1345,6 +1388,7 @@ Theme Check blocker-fix validation state:
 - Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
 - Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, and Slice 11B now records the approved `25`-slot planning matrix without approving import or live catalogue operations.
 - Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup and later Product Owner approval for exposure.
+- Contact/About route availability was later reconciled as resolved in unpublished preview evidence through Manual Track A.1, so it no longer belongs in the active launch blocker set.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1385,4 +1429,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 12D department destination strategy recorded. Approved source HTML unchanged. This docs-only pass updates durable navigation and collection-routing rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 12E launch collection setup content plan recorded. Approved source HTML unchanged. This docs-only pass updates durable collection-content readiness rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
