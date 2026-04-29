@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11G.2 Playwright-assisted supplier verification evidence captured for the first six candidate products via authenticated CJdropshipping inspection; supplier verification remains incomplete pending comparison and pricing decisions  
-**Version:** 1.6  
+**Status:** Slice 11H docs-only first-six supplier evidence gap-closure and commercial decision plan recorded; all six products remain `Candidate` pending comparison closure and commercial sign-off  
+**Version:** 1.7  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline and the Slice 11G.2 first-six supplier evidence capture outcome for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, and the Slice 11H docs-only commercial gap-closure plan for the approved `25`-product launch catalogue.
 
-This pass is evidence-capture preparation only:
+This pass is commercial gap-closure planning only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,8 +20,8 @@ This pass is evidence-capture preparation only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11G.2 reached authenticated `CJdropshipping` product-level evidence capture for the first six products. Unknown values remain `Unconfirmed` or `TBD` where comparison, pricing, or risk acceptance was not completed.
-No product import, readiness movement beyond `Candidate`, or supplier credential storage has occurred in this pass.
+Slice 11H uses the committed Slice 11G.2 evidence bundle as local reference only. Unknown values remain `Unconfirmed` or `TBD` where comparison, pricing, or risk acceptance was not completed.
+No product import, readiness movement beyond `Candidate`, supplier credential storage, or actual supplier verification has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -147,6 +147,91 @@ All six first-batch products remain `Candidate`.
 Key CJ evidence fields are now captured for all six products, but `DSers` / `AliExpress` comparison, target selling price, estimated gross margin, and final commercial sign-off remain incomplete.
 Recommended next action for each first-batch product: review the captured CJ evidence, close the docs-only pass if accepted, and run a narrower comparison pass only where the remaining gaps materially affect the decision.
 
+## Slice 11H first-six evidence review summary
+
+- Slice 11G.2 remains the latest supplier-evidence source for the first six products.
+- Slice 11H adds commercial gap-closure planning only; no new supplier facts were created in this pass.
+- All six first-batch products remain `Candidate`.
+- No product is promoted to `Supplier verified` in this pass.
+- Target selling price bands recorded below are planning assumptions only, not final live prices.
+- Commercial readiness thresholds recorded below are readiness gates only, not proof of verification, approval, or import readiness.
+- No product import, supplier credential storage, or actual supplier verification occurred in this pass.
+
+## Slice 11H commercial readiness thresholds
+
+- Estimated gross margin minimum: `45%`
+- Target gross margin: `50%+`
+- Preferred landed cost ratio: landed cost `<=55%` of target selling price
+- Low-ticket absolute gross margin: minimum `R45` for products under `R150`
+- Mid-ticket absolute gross margin: minimum `R70` for products at `R150+`
+- Preferred delivery expectation to South Africa: `<=21` business days
+- Flag any case where shipping cost is higher than product cost
+- `Deals` rail is blocked unless gross margin is proven at `55%+`
+- `Best Sellers` rail remains blocked until actual sales evidence exists
+- Price bands are planning assumptions only unless later approved as live pricing
+
+## Slice 11H product-by-product commercial gap-closure plan
+
+### Desk Cable Clips Set
+
+- Current status: `Candidate`
+- Recommendation: Continue verification
+- Planning target selling price band: `R79-R119`
+- Commercial planning note: low-ticket item; shipping-cost-higher-than-product-cost flag is already triggered by the captured CJ evidence
+- Missing evidence still blocking closure: `DSers` / `AliExpress` comparison, final target selling price decision, estimated gross margin validation against the readiness thresholds, and final commercial sign-off
+- Replacement/rejection note: no replacement required yet; continue comparison before any promotion
+- Promotion decision in this pass: remain `Candidate`
+
+### Cable Management Sleeve
+
+- Current status: `Candidate`
+- Recommendation: Continue verification; replacement-watch
+- Planning target selling price band: `R119-R169`
+- Commercial planning note: shipping-cost-higher-than-product-cost flag is already triggered by the captured CJ evidence
+- Missing evidence still blocking closure: cleaner source comparison, final target selling price decision, estimated gross margin validation against the readiness thresholds, and delivery-viability review against the preferred South Africa expectation
+- Replacement/rejection note: keep under replacement-watch if comparison sources do not improve the shipping-heavy economics
+- Promotion decision in this pass: remain `Candidate`
+
+### Screen Cleaning Kit
+
+- Current status: `Candidate`
+- Recommendation: Continue verification; strong candidate
+- Planning target selling price band: `R99-R149`
+- Commercial planning note: image support is comparatively stronger than the rest of the first batch, but pricing and claim wording still need confirmation
+- Missing evidence still blocking closure: exact non-liquid sellable variant confirmation, `DSers` / `AliExpress` comparison, final target selling price decision, and estimated gross margin validation against the readiness thresholds
+- Replacement/rejection note: no replacement recommended at this stage
+- Promotion decision in this pass: remain `Candidate`
+
+### Adhesive Wall Hooks Pack
+
+- Current status: `Candidate`
+- Recommendation: Replace unless a clean ZA-shippable source is found quickly
+- Planning target selling price band: `R79-R129`
+- Commercial planning note: the tested listing did not verify a South Africa route, so the preferred delivery gate and landed-cost review cannot be closed from current evidence
+- Missing evidence still blocking closure: clean ZA-shippable source, verified shipping option, shipping cost, landed cost, final target selling price decision, and estimated gross margin validation against the readiness thresholds
+- Replacement/rejection note: replacement is preferred unless an acceptable alternative source is found quickly
+- Promotion decision in this pass: remain `Candidate`
+
+### Sink Drain Basket / Strainer
+
+- Current status: `Candidate`
+- Recommendation: Continue verification, but require clearer fit dimensions and stronger image support
+- Planning target selling price band: `R89-R139`
+- Commercial planning note: shipping-cost-higher-than-product-cost flag is already triggered by the captured CJ evidence
+- Missing evidence still blocking closure: clearer fit dimensions, stronger image support, source comparison, final target selling price decision, and estimated gross margin validation against the readiness thresholds
+- Replacement/rejection note: no replacement required yet, but rejection should stay available if fit clarity and imagery do not improve
+- Promotion decision in this pass: remain `Candidate`
+
+### Phone / Tablet Desk Stand
+
+- Current status: `Candidate`
+- Recommendation: Continue verification; strong candidate
+- Planning target selling price band: `R129-R199`
+- Commercial planning note: comparatively cleaner CJ evidence exists, but price competitiveness and margin viability remain unconfirmed until comparison closes
+- Missing evidence still blocking closure: `DSers` / `AliExpress` comparison, final target selling price decision, estimated gross margin validation against the readiness thresholds, and compatibility-risk review
+- Replacement/rejection note: no replacement recommended at this stage
+- Promotion decision in this pass: remain `Candidate`
+
 ### Desk Cable Clips Set
 
 - Current status: `Candidate`
@@ -198,6 +283,7 @@ Recommended next action for each first-batch product: review the captured CJ evi
 - Variant/options checked
 - Minimum image quality checked
 - Basic description facts available
+- Planning price band, if recorded early, remains labeled as a planning assumption only
 - Margin risk reviewed
 - Return/quality risk reviewed
 - Decision note recorded
@@ -218,6 +304,7 @@ Recommended next action for each first-batch product: review the captured CJ evi
 - Basic description facts
 - Target selling price
 - Estimated gross margin
+- Commercial readiness threshold review
 - Margin-risk note
 - Return/quality-risk note
 - Compliance/claim-risk note
@@ -230,6 +317,7 @@ Recommended next action for each first-batch product: review the captured CJ evi
 - All six products remain blocked at `Candidate` until the full evidence set is captured.
 - No first-batch product may move to `Supplier verified` based on product title fit alone.
 - No first-batch product may move forward based on assumed shipping, assumed margin, or assumed supplier quality.
+- Planning price bands must not be treated as final live prices.
 - Contact/About route availability is already resolved in unpublished preview evidence.
 - Product import remains unapproved even if future supplier evidence is captured.
 
@@ -366,6 +454,7 @@ Recommended next action for each first-batch product: review the captured CJ evi
 All six first-batch products remain `Candidate`.
 No actual supplier verification, product import, readiness movement, or supplier credential storage has occurred in this pass.
 This guide is preparation for a later approved manual logged-in verification pass only.
+Slice 11H does not perform any new supplier verification; it only records commercial planning thresholds against the previously captured evidence.
 
 ### Guide rules
 
@@ -510,8 +599,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Best Sellers`; `Shop All`
 - Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `CJ tested listing shows $10.97`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R79-R129`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; replacement preferred unless a clean ZA-shippable source is found quickly`
 - Shipping expectation: `Tested listing remained US-route-only; ZA shipping not verified`
 - Image readiness: `Minimum usable on tested listing; 8 gallery images`
 - Description readiness: `Basic tested-listing facts captured, but restrictions-heavy`
@@ -576,8 +665,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
 - Supplier/source recommendation: `DSers` first; `CJdropshipping` fallback
 - Cost estimate if known: `CJ captured at $2.11`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R89-R139`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; low-ticket absolute gross margin must reach R45`
 - Shipping expectation: `CJ ZA route captured at $6.80; 20-60 days`
 - Image readiness: `Weak in captured CJ data; 1 image in product data`
 - Description readiness: `Basic CJ facts captured; fit dimensions still incomplete`
@@ -690,8 +779,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
 - Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `CJ selected variant captured at $0.23`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R79-R119`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; low-ticket absolute gross margin must reach R45`
 - Shipping expectation: `CJ ZA route captured at $4.77; 20-60 days`
 - Image readiness: `Usable; 15 gallery images`
 - Description readiness: `Basic CJ facts captured`
@@ -706,8 +795,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Shop All`; `New In`
 - Supplier/source recommendation: `DSers` first + manual matrix
 - Cost estimate if known: `CJ captured at $1.39`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R119-R169`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; final pricing still TBD`
 - Shipping expectation: `CJ ZA route captured at $7.19; 20-60 days`
 - Image readiness: `Usable; 9 gallery images`
 - Description readiness: `Basic CJ facts captured`
@@ -722,8 +811,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Best Sellers`; `Featured`
 - Supplier/source recommendation: `DSers` + `CJdropshipping` compare
 - Cost estimate if known: `CJ captured at $5.62`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R129-R199`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; R70 absolute gross margin applies once pricing reaches R150+`
 - Shipping expectation: `CJ ZA route captured at $7.80; 20-60 days`
 - Image readiness: `Usable; 11 gallery images`
 - Description readiness: `Basic CJ facts captured`
@@ -772,8 +861,8 @@ For each product, update the future execution record with:
 - Merchandising rail fit, if any: `Deals`; `Best Sellers`
 - Supplier/source recommendation: `DSers` + `CJdropshipping` compare
 - Cost estimate if known: `CJ selected variant captured at $3.04`
-- Target selling price if known: `Unconfirmed`
-- Margin assumption if known: `Unconfirmed`
+- Target selling price if known: `Planning assumption only: R99-R149`
+- Margin assumption if known: `Planning gate only: minimum 45%; target 50%+; low-ticket absolute gross margin must reach R45`
 - Shipping expectation: `CJ ZA route captured at $6.73; 20-60 days`
 - Image readiness: `Strong in CJ capture; 26 gallery images`
 - Description readiness: `Core CJ facts captured, but liquid/non-liquid wording is inconsistent`
@@ -883,12 +972,18 @@ For each product, update the future execution record with:
 - `Mixed DSers + CJ comparison` is required for tech accessories with compatibility or return-risk exposure before any product can progress beyond `Candidate`.
 - `Manual / CSV readiness tracking` remains the only approved operational path in this phase. No direct import workflow may start until the Product Owner explicitly approves product import.
 
+## Merchandising rail commercial rules
+
+- `Deals` rail remains planning-only unless gross margin is proven at `55%+`.
+- `Best Sellers` rail remains blocked until actual sales evidence exists.
+- Any existing rail-fit references in this document are planning-fit notes only and do not override the commercial-readiness gates.
+
 ## Launch-readiness blocker reminder
 
 Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence:
 
 - Contact/About route availability is resolved in unpublished preview evidence.
-- Supplier verification for the first batch remains unresolved because Slice 11G.2 captured CJ evidence only and did not finish comparison or pricing closure.
+- Supplier verification for the first batch remains unresolved because Slice 11G.2 captured CJ evidence only and Slice 11H records planning thresholds rather than closing comparison or pricing.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11G.2 first-six supplier evidence captured. This pass keeps all `25` launch slots at `Candidate`, records authenticated CJ evidence for the first batch, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11H first-six commercial gap plan recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records planning price bands and commercial readiness gates for the first batch without treating them as live pricing or supplier verification, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.

@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11F docs-only logged-in supplier verification checklist and manual execution guide completed pending Product Owner acceptance or correction  
-**Version:** 1.5  
+**Status:** Slice 11H docs-only first-six supplier evidence gap-closure and commercial readiness rules recorded pending Product Owner acceptance or correction  
+**Version:** 1.6  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -762,7 +762,7 @@ Launch catalogue readiness criteria affected by taxonomy:
 - The future 25-product readiness matrix should be built around the four launch-stable departments first.
 - Additional departments should only enter launch scope once they can support a credible collection landing page and at least one reused merchandising surface without looking sparse.
 - The readiness matrix must score stable departments separately from merchandising rails and separately from informational pages.
-- Launch-readiness remains blocked even with approved taxonomy until Contact/About page resources are created or verified in Shopify.
+- Contact/About route availability is already resolved in unpublished preview evidence, but launch-readiness remains blocked until supplier and commercial readiness gates are met.
 
 ## Launch catalogue planning rules
 
@@ -805,9 +805,10 @@ Readiness-rule constraints:
 
 - Unknown product titles, supplier details, cost, target selling price, margin, and shipping assumptions must remain `TBD` or `Unconfirmed` until verified.
 - Confirmed product names may be carried into readiness planning only when they exist in the approved source HTML or accepted project documentation.
+- Planning price bands may be recorded before verification only when they are clearly labeled as planning assumptions rather than live prices.
 - Product import remains unapproved in this slice even where planning records a product slot.
 - No slot should be treated as launch-ready for import until supplier, cost, margin, shipping, content, image, and risk verification are complete.
-- Contact/About route availability remains a launch-readiness blocker independent of catalogue completeness.
+- No merchandising rail should override the catalogue-readiness gates recorded below.
 
 Durable 4-stage readiness movement rules:
 
@@ -838,6 +839,20 @@ Durable Candidate -> Supplier verified evidence fields:
 - Decision note recorded
 - Recommended status recorded: `Candidate` / `Supplier verified` / `Rejected`
 - Next action recorded
+
+Durable commercial readiness gates:
+
+- Estimated gross margin must reach at least `45%` before a product can be considered commercially ready for status movement beyond `Candidate`.
+- Target gross margin should reach `50%+` wherever the product is intended to remain a durable catalogue candidate.
+- Preferred landed cost ratio is landed cost at or below `55%` of the target selling price.
+- Products under `R150` should retain at least `R45` absolute gross margin.
+- Products at `R150+` should retain at least `R70` absolute gross margin.
+- Preferred delivery expectation to South Africa is `<=21` business days.
+- A commercial risk flag must be recorded whenever shipping cost is higher than product cost.
+- `Deals` rail is allowed only when gross margin is proven at `55%+`.
+- `Best Sellers` rail remains blocked until actual sales evidence exists.
+- Planning price bands remain assumptions only and must not be treated as live pricing unless later approved.
+- No product import is approved merely because a planning price band or commercial threshold has been recorded.
 
 Durable rejection rules:
 
@@ -1307,4 +1322,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11F supplier-verification guide recorded. Approved source HTML unchanged. This docs-only pass minimally updates durable supplier-verification evidence format, preserves the Contact/About blocker, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 11H commercial readiness rules recorded. Approved source HTML unchanged. This docs-only pass updates durable catalogue/commercial readiness gates, preserves the Contact/About resolved state, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
