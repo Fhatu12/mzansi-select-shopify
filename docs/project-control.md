@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12 docs-only Contact/About route evidence closure recorded after Manual Track A.1 pending Product Owner acceptance or correction  
-**Version:** 2.0  
+**Status:** Slice 11G.2 Playwright-assisted supplier verification evidence captured for the first six candidate products via authenticated CJdropshipping inspection; supplier verification remains incomplete pending comparison and pricing decisions  
+**Version:** 2.2  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,14 +13,15 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
+- Active slice: Slice 11G.2 Playwright-assisted supplier verification evidence capture
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 12 docs-only launch-readiness blocker plan
-- Last committed slice: Slice 12 docs-only launch-readiness blocker plan (`c67aafe95795bc5b2598a9fb51e66112d4b56981`)
+- Last accepted slice: docs-only Contact/About route evidence closure
+- Last committed slice: docs-only Contact/About route evidence closure (`bd186d5230963945692d5c9f76dc0bb9790fd80e`)
 - Current blockers:
-  - Slice 11G supplier verification remains blocked/incomplete because logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` supplier-tool access is required for manual verification
-  - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the required evidence is captured
+  - Slice 11G.2 captured CJ-based supplier evidence for the first six products, but supplier verification remains incomplete because `DSers` / `AliExpress` comparison evidence, target selling prices, and estimated gross margins are still missing
+  - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
+  - `Adhesive Wall Hooks Pack` still lacks a verified South Africa route on the tested listing and carries material distribution-policy restrictions
 - Deferred items:
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
@@ -31,13 +32,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
+- Last tracker update: 2026-04-29 during Slice 11G.2 CJ-based first-six supplier evidence capture
 - Tracker status: Updated
-- LLD status: Unchanged with reason - this pass records manual evidence closure; no durable rule changed
+- LLD status: Unchanged with reason - Slice 11G.2 captures product-specific supplier evidence and does not change durable catalogue-readiness criteria
 
 ## Current active pass
 
-Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
+Slice 11G.2 Playwright-assisted supplier verification evidence capture
 
 ## Source of truth
 
@@ -62,8 +63,10 @@ All future Shopify implementation work must preserve the approved visual design 
 - `docs/project-control.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
-- Existing approved Slice 12 commit history
-- `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/fix-summary.md`
+- Existing approved Slice 11F and Contact/About closure commit history
+- `artifacts/supplier-verification/slice-11g2/session-access-summary.md`
+- `artifacts/supplier-verification/slice-11g2/first-six-supplier-verification-summary.md`
+- `artifacts/supplier-verification/slice-11g2/*.json`
 
 ## Current status
 
@@ -80,8 +83,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 11E first product research outcome remains committed at `73144cc2db1eaade777355612d09c91002546710`.
 - Slice 11F records the manual logged-in supplier-verification guide and durable evidence format without changing theme/code files, product data, or Shopify state.
 - Slice 11G.1 records that the first logged-in supplier-verification execution pass is attempted/planned but blocked/incomplete because supplier-tool login access is required and was not used in this docs-only pass.
-- Slice 12 records the launch-readiness blocker review and next-action plan without changing theme/code files, product data, supplier state, or Shopify state.
-- This pass records docs-only Contact/About route evidence closure after Manual Track A.1 without changing theme/code files, product data, supplier state, or Shopify state.
+- Slice 12 records the launch-readiness blocker review, Contact/About evidence closure, and next-action plan without changing theme/code files, product data, supplier state, or Shopify state.
+- Slice 11G.2 completed Playwright-assisted first-six supplier evidence capture against authenticated local `CJdropshipping` product pages without importing any product or touching Shopify.
 
 ## Current readiness summary
 
@@ -90,7 +93,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - TBD: `0`
 - Unconfirmed: `25`
 
-## Slice 12 closure status
+## Slice 11G.2 evidence-capture status
 
 - Planning scope only: accepted.
 - Product import approval: not granted.
@@ -102,10 +105,10 @@ All future Shopify implementation work must preserve the approved visual design 
 - Checkout customization approval: not granted.
 - Contact/About implementation fix approval: not granted in this pass.
 - Final legal publication approval: not granted in this pass.
-- Actual supplier verification approval: not granted in this pass.
+- Actual supplier verification approval: granted for evidence capture only in this pass; no import or Shopify action was approved.
 - Supplier credential storage approval: not granted in this pass.
-- Supplier-account access: not used in this docs-only pass.
-- Execution result: Manual Track A.1 evidence closure recorded only.
+- Supplier-account access: authenticated local `CJdropshipping` product pages were inspected through the user's local browser profile; `DSers` comparison remained incomplete in this pass.
+- Execution result: CJ-based product evidence was captured for all six first-batch products, but no product was promoted beyond `Candidate`.
 - Contact/About blocker: resolved in unpublished preview evidence.
 - Supplier verification blocker: preserved and still unresolved.
 
@@ -121,22 +124,22 @@ All future Shopify implementation work must preserve the approved visual design 
 ## Current six-product batch status
 
 - All six first-batch products remain `Candidate`.
-- No actual supplier/source verification has occurred in this pass.
-- No supplier accounts were accessed in this pass.
+- Authenticated `CJdropshipping` supplier product pages were accessed in this pass.
+- Supplier/source link or internal reference, SKU/reference, South Africa shipping outcome, shipping cost, landed-cost estimate, basic variants/options, minimum image quality, and description facts were captured from the tested CJ listings.
+- `DSers` / `AliExpress` comparison evidence remains incomplete in this pass.
 - No supplier credential storage has occurred in this pass.
-- All cost, shipping, margin, image, and readiness evidence remains unverified until a later logged-in execution pass.
+- Target selling price and estimated gross margin remain `TBD` for all six products.
 - No product import or import-readiness movement has occurred in this pass.
 - No product was promoted to `Supplier verified`.
 
-## Contact/About evidence closure
+## Contact/About resolved state
 
-- Manual Track A.1 completed Shopify Admin page verification/correction and preview re-test for Contact/About.
 - `Contact Us` already existed, remained visible to Online Store, kept the `page.contact` template assignment, and its handle was corrected from `contact-us` to `contact`.
 - `About` did not exist, was created, is visible to Online Store, uses the default page template, and has handle `about`.
 - Preview routes returned HTTP `200`:
   - `https://dropshippoc.myshopify.com/pages/contact?preview_theme_id=151207542967`
   - `https://dropshippoc.myshopify.com/pages/about?preview_theme_id=151207542967`
-- Contact/About route availability is now resolved in unpublished preview evidence and is no longer an active launch-readiness blocker.
+- Contact/About route availability remains resolved in unpublished preview evidence and is not the current blocker.
 - Evidence paths:
   - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/fix-summary.md`
   - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/contact-admin-editor.png`
@@ -146,7 +149,15 @@ All future Shopify implementation work must preserve the approved visual design 
 
 ## Remaining launch-readiness blocker summary
 
-- Track B blocker: Slice 11G supplier verification remains blocked because logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` access is required, and no product may move to `Supplier verified` until the required evidence is captured.
+- Track B blocker: Slice 11G supplier verification remains incomplete because evidence capture progressed on CJ only, while `DSers` / `AliExpress` comparison, target pricing, and final margin decisions remain open.
+- Slice 11G.2 evidence outcome:
+  - `Desk Cable Clips Set`: CJ source plus South Africa shipping captured
+  - `Cable Management Sleeve`: CJ source plus South Africa shipping captured
+  - `Screen Cleaning Kit`: CJ source plus South Africa shipping captured
+  - `Adhesive Wall Hooks Pack`: tested listing remained US-route-only; South Africa shipping not verified
+  - `Sink Drain Basket / Strainer`: CJ source plus South Africa shipping captured
+  - `Phone / Tablet Desk Stand`: CJ source plus South Africa shipping captured
+- No first-batch product is ready to move beyond `Candidate` yet because comparison and pricing decisions remain incomplete.
 - The first-batch products still blocked at `Candidate` are:
   - `Desk Cable Clips Set`
   - `Cable Management Sleeve`
@@ -159,7 +170,9 @@ All future Shopify implementation work must preserve the approved visual design 
 
 Track B — supplier verification:
 
-- Use the Slice 11F manual guide only in a later manual logged-in supplier-check pass.
+- Review the captured CJ evidence bundle and close the docs-only evidence pass if the Product Owner accepts the current capture state.
+- Capture `DSers` / `AliExpress` comparison evidence where the product route still expects comparison, especially for `Desk Cable Clips Set`, `Cable Management Sleeve`, `Screen Cleaning Kit`, and `Phone / Tablet Desk Stand`.
+- Decide whether to replace or reject the tested `Adhesive Wall Hooks Pack` source because the captured listing did not verify a South Africa route and carries restrictive VEVOR distribution notes.
 - No product may move to `Supplier verified` until the required evidence is captured for each first-batch product.
 
 ## Evidence requirements recorded per first-batch product
@@ -215,8 +228,8 @@ Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 - No slot is yet `Content ready`.
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
-- The first six-product verification batch now has both a public-research outcome and a manual execution guide, but Slice 11G execution remains blocked until logged-in supplier-tool access is available, so no item moves beyond `Candidate`.
-- This pass resolves the Contact/About route blocker in unpublished preview evidence, but it does not resolve the supplier-verification blocker.
+- The first six-product verification batch now has a public-research outcome, a manual execution guide, and a CJ-based evidence bundle, but no item moves beyond `Candidate` until comparison and pricing decisions are complete.
+- This pass preserves the Contact/About resolved state, but it does not resolve the supplier-verification blocker.
 
 ## Current product state
 
@@ -224,7 +237,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. None of these passes change collection wiring, product data, or visual implementation.
+- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. Slice 11G.2 adds supplier evidence capture and documentation only. None of these passes change collection wiring, product data inside Shopify, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -238,9 +251,9 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - `About` was created, is visible to Online Store, and uses handle `about`.
 - Preview verification confirmed HTTP `200` for `/pages/contact?preview_theme_id=151207542967` and `/pages/about?preview_theme_id=151207542967`.
 - Supplier verification remains a launch-readiness blocker for the first six-product batch.
-- Logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` access is required before supplier evidence can be captured.
+- Slice 11G.2 captured authenticated `CJdropshipping` evidence for all six products, but `DSers` / `AliExpress` comparison evidence and pricing decisions are still incomplete.
 - No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
-- Manual logged-in supplier verification is now required before any first-batch status movement beyond `Candidate`.
+- Additional comparison and pricing review is still required before any first-batch status movement beyond `Candidate`.
 
 ## Approved execution constraints
 
@@ -251,9 +264,9 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - No checkout customization approved.
 - No dynamic product/catalogue wiring approved.
 - No final legal publication approved.
-- No actual supplier verification inside the repo.
+- No product import or Shopify mutation inside the repo.
 - No supplier credential storage.
-- Contact/About route evidence closure recorded only in this docs-only pass.
+- Contact/About resolved state preserved only in this pass.
 - `artifacts/` must remain untracked/uncommitted.
 
 ## Documentation artefacts
@@ -264,7 +277,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Contact/About route evidence closure, followed by a later manual logged-in supplier-verification pass before any import-planning decision is accepted.
+Product Owner acceptance or correction of the Slice 11G.2 first-six supplier evidence capture, followed by either docs-only supplier-evidence closure or a narrower comparison pass for the remaining `DSers` / `AliExpress` gaps.
 
 ## Decisions made
 
@@ -273,47 +286,50 @@ Product Owner acceptance or correction of the Contact/About route evidence closu
 - Slice 11G.1 is limited to recording the supplier-access execution blocker only.
 - Slice 12 is limited to launch-readiness blocker review and next-action planning only.
 - Manual Track A.1 resolved Contact/About Shopify Admin resource verification/correction and unpublished-preview route validation.
-- This pass is limited to recording the Contact/About evidence closure only.
+- Slice 11G.2 is limited to supplier evidence capture only; no import, publish, or Shopify mutation is approved.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
 - Candidate -> Supplier verified evidence fields remain durable catalogue launch-readiness criteria.
 - Supplier-verification evidence format is now treated as a durable catalogue launch-readiness rule.
 - Rejection rules are now durable launch-readiness criteria.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
-- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, actual supplier verification, and supplier credential storage remain out of scope for this pass.
+- Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, and supplier credential storage remain out of scope for this pass.
 
 ## Risks / unknowns
 
 - All `25` product slots still require supplier/source checking before any movement beyond `Candidate`.
-- The first six-product verification batch still requires manual logged-in execution to populate the full evidence format.
-- Logged-in supplier-tool access is still required before the first six-product batch can be manually verified.
+- The first six-product verification batch still needs comparison closure, pricing decisions, and final risk acceptance before any product can move beyond `Candidate`.
+- `DSers` / `AliExpress` comparison remains useful for several lightweight accessories even after the CJ capture.
 - The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
 - Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
 - Contact/About route availability no longer blocks unpublished preview, but supplier verification still blocks catalogue status movement and import planning.
+- Long South Africa delivery windows, DDU duty handling, and shipping-heavy landed costs are now the immediate commercial blockers highlighted by the captured evidence.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 
 ## Recommended sequencing
 
 1. Manual Contact/About Shopify Admin setup and preview verification: completed via Manual Track A.1.
 2. Docs-only closure for Contact/About evidence: completed in this pass.
-3. Manual first-six supplier verification.
-4. Docs-only closure for supplier evidence.
-5. Product Owner decision on product import planning only after the supplier blocker is resolved.
+3. Review the CJ evidence bundle and decide whether a comparison follow-up is required before docs-only closure.
+4. Capture any remaining `DSers` / `AliExpress` comparison evidence that materially changes the first-six decision set.
+5. Docs-only closure for supplier evidence.
+6. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
 - Keep `artifacts/` excluded from any commit unless separately approved.
 - Preserve the Manual Track A.1 evidence bundle as the current Contact/About unpublished-preview verification record.
-- Use the Slice 11F manual guide as execution input only in a later approved logged-in supplier-check pass with account access outside the repo.
-- Do not access supplier accounts or store credentials in the repo during docs-only passes.
+- Preserve `artifacts/supplier-verification/slice-11g2/session-access-summary.md` as the initial session-access record and `artifacts/supplier-verification/slice-11g2/first-six-supplier-verification-summary.md` as the current first-batch evidence record.
+- Use the Slice 11F manual guide as execution input for any later comparison-only follow-up pass.
+- Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
 - Follow the recorded sequencing before any product import planning decision is requested.
 - Record `Tracker status` and `LLD status` in every handoff.
 
 ## Final handoff summary
 
-This Slice 12 docs-only pass records Manual Track A.1 evidence closure for Contact/About route availability in unpublished preview, confirms that `Contact Us` now resolves under handle `contact`, confirms that `About` exists under handle `about`, preserves the supplier-verification blocker for the first six-product batch, keeps product import and Shopify publish activity unapproved, avoids all theme/code changes, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11G.2 pass completed Playwright-assisted `CJdropshipping` evidence capture for the first six candidate products, recorded sanitized source, SKU, cost, South Africa shipping, landed-cost, option, image, description, and risk notes under `artifacts/supplier-verification/slice-11g2/`, preserved the resolved Contact/About state, kept all six products at `Candidate`, avoided product import and Shopify activity, avoided credential storage, and left `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12 Contact/About evidence closure recorded. Approved source HTML unchanged. This docs-only pass records Manual Track A.1 unpublished-preview evidence, resolves the Contact/About route blocker, preserves the supplier-verification blocker, leaves the LLD unchanged because no durable rule changed, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11G.2 first-six supplier evidence captured. Approved source HTML unchanged. This pass records sanitized supplier evidence only, preserves the Contact/About resolved state, preserves the unresolved supplier-verification blocker, leaves the LLD unchanged because no durable rule changed, and keeps `artifacts/` untracked and uncommitted.

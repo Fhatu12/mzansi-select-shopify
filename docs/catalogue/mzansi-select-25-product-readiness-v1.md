@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11F logged-in supplier verification checklist and manual execution guide completed pending Product Owner acceptance or correction  
-**Version:** 1.4  
+**Status:** Slice 11G.2 Playwright-assisted supplier verification evidence captured for the first six candidate products via authenticated CJdropshipping inspection; supplier verification remains incomplete pending comparison and pricing decisions  
+**Version:** 1.6  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F docs-only logged-in supplier verification checklist and manual execution guide for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline and the Slice 11G.2 first-six supplier evidence capture outcome for the approved `25`-product launch catalogue.
 
-This pass is planning only:
+This pass is evidence-capture preparation only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,8 +20,8 @@ This pass is planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-This pass does not verify suppliers, landed cost, South Africa shipping, margin, image pack quality, or import readiness. Unknown values remain `Unconfirmed` rather than inferred.
-No actual supplier verification, product import, readiness movement, or supplier credential storage has occurred in this pass.
+Slice 11G.2 reached authenticated `CJdropshipping` product-level evidence capture for the first six products. Unknown values remain `Unconfirmed` or `TBD` where comparison, pricing, or risk acceptance was not completed.
+No product import, readiness movement beyond `Candidate`, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -128,7 +128,66 @@ All `25` slots are planning candidates only. None may be treated as supplier-ver
 - `Phone / Tablet Desk Stand`
 
 All six first-batch products remain `Candidate` in this pass.
-No actual supplier/source verification, cost validation, shipping validation, image approval, content approval, import readiness movement, or supplier credential storage has occurred.
+Product-level `CJdropshipping` evidence capture, South Africa shipping checks, and basic risk review occurred in this pass.
+No import readiness movement or supplier credential storage occurred.
+
+## Slice 11G.2 supplier evidence-capture outcome
+
+- Playwright-assisted inspection captured authenticated `CJdropshipping` product evidence for all six first-batch products.
+- `DSers` authenticated app access was available, but no reliable product-by-product comparison evidence was captured in this pass.
+- `AliExpress` was not captured separately in this pass; comparison remains `TBD` where still useful.
+- No screenshots containing private account details were saved.
+- Sanitized evidence paths:
+  - `artifacts/supplier-verification/slice-11g2/session-access-summary.md`
+  - `artifacts/supplier-verification/slice-11g2/first-six-supplier-verification-summary.md`
+
+## Slice 11G.2 first-batch outcome
+
+All six first-batch products remain `Candidate`.
+Key CJ evidence fields are now captured for all six products, but `DSers` / `AliExpress` comparison, target selling price, estimated gross margin, and final commercial sign-off remain incomplete.
+Recommended next action for each first-batch product: review the captured CJ evidence, close the docs-only pass if accepted, and run a narrower comparison pass only where the remaining gaps materially affect the decision.
+
+### Desk Cable Clips Set
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: CJ source, `CJJT1251898`, selected cost `$0.23`, ZA shipping fee `$4.77`, landed cost `$5.00`, `20-60 days`, style set `A/B/C/F/G/H`, `15` images, silicone `10pcs` description facts
+- Recommended status: `Candidate`
+- Next action: compare against `DSers` / `AliExpress`, then set sell-price and margin threshold
+
+### Cable Management Sleeve
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: CJ source, `CJYD1921031`, cost `$1.39`, ZA shipping fee `$7.19`, landed cost `$8.58`, `20-60 days`, models `1000x110mm/1000x135mm/1500x110mm/1500x135mm`, `9` images, neoprene sleeve description facts
+- Recommended status: `Candidate`
+- Next action: compare alternative source and confirm whether margin can survive ZA freight
+
+### Screen Cleaning Kit
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: CJ source, `CJJT1545925`, selected cost `$3.04`, ZA shipping fee `$6.73`, landed cost `$9.77`, `20-60 days`, selected `Q8 Black`, quantities `1PC/2PCS/3PCS`, `26` images, 5-in-1 cleaning-tool description facts
+- Recommended status: `Candidate`
+- Next action: confirm exact non-liquid sellable variant and compare against `DSers` / `AliExpress`
+
+### Adhesive Wall Hooks Pack
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: tested CJ / VEVOR listing `CJJT2459813`, shown cost `$10.97`, `US` route only on the tested listing, ZA shipping not verified, `8` images, VEVOR distribution restrictions and random-logistics warning captured
+- Recommended status: `Candidate`
+- Next action: find a cleaner ZA-shippable source or confirm whether this listing should be replaced
+
+### Sink Drain Basket / Strainer
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: CJ source, `CJJT2351658`, cost `$2.11`, ZA shipping fee `$6.80`, landed cost `$8.91`, `20-60 days`, single style observed, `1` image in captured product data, plastic sink-filter description facts
+- Recommended status: `Candidate`
+- Next action: find better image/dimension support and compare other sources before approval
+
+### Phone / Tablet Desk Stand
+
+- Current status: `Candidate`
+- Captured evidence in Slice 11G.2: CJ source, `CJSJ1253098`, cost `$5.62`, ZA shipping fee `$7.80`, landed cost `$13.42`, `20-60 days`, selected `Green`, `11` images, adjustable `120°` and `12.9-inch` compatibility description facts
+- Recommended status: `Candidate`
+- Next action: compare with `DSers` / `AliExpress`, then test whether margin remains workable after ZA freight
 
 ## Candidate -> Supplier verified requirements
 
@@ -171,7 +230,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - All six products remain blocked at `Candidate` until the full evidence set is captured.
 - No first-batch product may move to `Supplier verified` based on product title fit alone.
 - No first-batch product may move forward based on assumed shipping, assumed margin, or assumed supplier quality.
-- Contact/About route availability remains a separate launch-readiness blocker before publish consideration.
+- Contact/About route availability is already resolved in unpublished preview evidence.
 - Product import remains unapproved even if future supplier evidence is captured.
 
 ## First verification batch checklist by product
@@ -195,7 +254,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - adhesive quality and count-per-pack may vary by listing
   - weak imagery could make low-ticket positioning less credible
-  - no actual supplier verification has occurred
+  - ZA shipping is available, but landed cost is still shipping-heavy for a low-ticket item
 
 ### Cable Management Sleeve
 
@@ -216,7 +275,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - material quality and size clarity may differ materially by listing
   - option count and install method need evidence, not assumption
-  - no actual supplier verification has occurred
+  - ZA freight is materially higher than the unit cost
 
 ### Screen Cleaning Kit
 
@@ -237,7 +296,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - consumable or liquid components may change shipping and compliance viability
   - weak claims or unclear kit contents raise return and trust risk
-  - no actual supplier verification has occurred
+  - liquid / non-liquid wording needs tighter verification before listing claims are used
 
 ### Adhesive Wall Hooks Pack
 
@@ -258,7 +317,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - adhesive and load-capacity claims are high-return-risk if overstated
   - imagery must make pack contents and use case obvious
-  - no actual supplier verification has occurred
+  - the tested listing did not verify South Africa shipping and carries restrictive VEVOR policy notes
 
 ### Sink Drain Basket / Strainer
 
@@ -279,7 +338,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - sink-fit and dimensions must be explicit to avoid avoidable returns
   - material quality and drainage claims require evidence
-  - no actual supplier verification has occurred
+  - captured image depth is weak and fit dimensions remain incomplete
 
 ### Phone / Tablet Desk Stand
 
@@ -300,7 +359,7 @@ No actual supplier/source verification, cost validation, shipping validation, im
 - Batch-specific risks/blockers:
   - compatibility, hinge quality, and finish consistency need evidence
   - comparable listings may differ enough that manual comparison is required
-  - no actual supplier verification has occurred
+  - landed cost may constrain margin once a target price is set
 
 ## Manual logged-in verification guide
 
@@ -450,13 +509,13 @@ For each product, update the future execution record with:
 - Department/collection: `Home & Living`
 - Merchandising rail fit, if any: `Best Sellers`; `Shop All`
 - Supplier/source recommendation: `DSers` first + manual matrix
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ tested listing shows $10.97`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Adhesive quality, surface-claim limits, and weak imagery risk remain unverified
+- Shipping expectation: `Tested listing remained US-route-only; ZA shipping not verified`
+- Image readiness: `Minimum usable on tested listing; 8 gallery images`
+- Description readiness: `Basic tested-listing facts captured, but restrictions-heavy`
+- Risk notes: Adhesive quality and load-claim risk remain material; tested listing carries VEVOR distribution restrictions, random-logistics warning, and no verified ZA route
 - Readiness status: `Candidate`
 
 ### HL-04
@@ -516,13 +575,13 @@ For each product, update the future execution record with:
 - Department/collection: `Kitchen & Storage`
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
 - Supplier/source recommendation: `DSers` first; `CJdropshipping` fallback
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ captured at $2.11`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Sink-fit expectations, material quality, and claim clarity remain unverified
+- Shipping expectation: `CJ ZA route captured at $6.80; 20-60 days`
+- Image readiness: `Weak in captured CJ data; 1 image in product data`
+- Description readiness: `Basic CJ facts captured; fit dimensions still incomplete`
+- Risk notes: Sink-fit expectations remain a major return risk; landed cost is shipping-heavy and dimensions still need confirmation
 - Readiness status: `Candidate`
 
 ### KS-02
@@ -630,13 +689,13 @@ For each product, update the future execution record with:
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Best Sellers`; `Deals`
 - Supplier/source recommendation: `DSers` first + manual matrix
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ selected variant captured at $0.23`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Adhesive quality, count-per-pack clarity, and weak imagery risk remain unverified
+- Shipping expectation: `CJ ZA route captured at $4.77; 20-60 days`
+- Image readiness: `Usable; 15 gallery images`
+- Description readiness: `Basic CJ facts captured`
+- Risk notes: Low-ticket economics are pressured by shipping; adhesive quality and pack-count clarity still need comparison support
 - Readiness status: `Candidate`
 
 ### OD-02
@@ -646,13 +705,13 @@ For each product, update the future execution record with:
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Shop All`; `New In`
 - Supplier/source recommendation: `DSers` first + manual matrix
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ captured at $1.39`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Material quality, size clarity, and installation expectations remain unverified
+- Shipping expectation: `CJ ZA route captured at $7.19; 20-60 days`
+- Image readiness: `Usable; 9 gallery images`
+- Description readiness: `Basic CJ facts captured`
+- Risk notes: Freight materially outweighs unit cost; size clarity and install expectation still need comparison support
 - Readiness status: `Candidate`
 
 ### OD-03
@@ -662,13 +721,13 @@ For each product, update the future execution record with:
 - Department/collection: `Office & Desk`
 - Merchandising rail fit, if any: `Best Sellers`; `Featured`
 - Supplier/source recommendation: `DSers` + `CJdropshipping` compare
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ captured at $5.62`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Device-size compatibility, hinge quality, and finish consistency remain unverified
+- Shipping expectation: `CJ ZA route captured at $7.80; 20-60 days`
+- Image readiness: `Usable; 11 gallery images`
+- Description readiness: `Basic CJ facts captured`
+- Risk notes: Compatibility and hinge-quality claims still need comparison support; landed cost may narrow pricing headroom
 - Readiness status: `Candidate`
 
 ### OD-04
@@ -712,13 +771,13 @@ For each product, update the future execution record with:
 - Department/collection: `Tech Accessories`
 - Merchandising rail fit, if any: `Deals`; `Best Sellers`
 - Supplier/source recommendation: `DSers` + `CJdropshipping` compare
-- Cost estimate if known: `Unconfirmed`
+- Cost estimate if known: `CJ selected variant captured at $3.04`
 - Target selling price if known: `Unconfirmed`
 - Margin assumption if known: `Unconfirmed`
-- Shipping expectation: `Unconfirmed`
-- Image readiness: `Unconfirmed`
-- Description readiness: `Unconfirmed`
-- Risk notes: Consumable contents, claim wording, and compliance expectations remain unverified
+- Shipping expectation: `CJ ZA route captured at $6.73; 20-60 days`
+- Image readiness: `Strong in CJ capture; 26 gallery images`
+- Description readiness: `Core CJ facts captured, but liquid/non-liquid wording is inconsistent`
+- Risk notes: Cleaning/liquid claim wording and exact included contents need careful review before listing
 - Readiness status: `Candidate`
 
 ### TA-02
@@ -826,10 +885,10 @@ For each product, update the future execution record with:
 
 ## Launch-readiness blocker reminder
 
-Catalogue readiness planning does not remove the existing storefront blocker:
+Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence:
 
-- Contact/About route availability remains unresolved.
-- `/pages/contact` and `/pages/about` previously rendered `404`.
-- Publish consideration remains blocked until those page resources are created in Shopify or their handles, visibility, and template assignment are verified.
+- Contact/About route availability is resolved in unpublished preview evidence.
+- Supplier verification for the first batch remains unresolved because Slice 11G.2 captured CJ evidence only and did not finish comparison or pricing closure.
+- Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11E first-batch research outcome recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records public source-candidate notes for the first batch without logged-in verification, preserves the Contact/About blocker, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11G.2 first-six supplier evidence captured. This pass keeps all `25` launch slots at `Candidate`, records authenticated CJ evidence for the first batch, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
