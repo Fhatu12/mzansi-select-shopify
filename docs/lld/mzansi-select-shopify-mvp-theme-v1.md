@@ -38,6 +38,22 @@ Help South African shoppers browse departments quickly, discover curated product
 
 Launch a Shopify MVP storefront that preserves the approved brand presentation while enabling real catalog, navigation, search, cart, and content management workflows inside Shopify.
 
+## Slice 12A clickable inventory backlog (durable launch-readiness expectations)
+
+Durable expectations for launch readiness and wiring, based on the accepted Slice 12A clickable inventory:
+
+- Site-wide links must route to one of:
+  - a valid Shopify native route (e.g. `routes.root_url`, `routes.cart_url`, `routes.search_url`)
+  - a valid page resource route (e.g. `/pages/about`, `/pages/contact`, policy pages as approved)
+  - a valid in-page anchor **only when the destination page is known to contain that anchor**
+- Global navigation/footer links must not rely on page-local anchors unless they first route to the correct page (e.g. use `/pages/about#shipping` rather than `#shipping` from arbitrary pages).
+- Anchor mismatches are a publish-readiness defect. Example: footer Terms link `#terms-conditions` must match the actual Terms anchor (currently `id="terms"` in the page foundation) or be replaced with a page route.
+- Department navigation requires an approved destination strategy (collections vs curated pages vs homepage sections) and an approved interaction behavior (desktop + mobile) before publish readiness.
+- PDP Add to Cart must be wired (product form, variant/quantity selection, add-to-cart) before any product import / commerce readiness work is treated as complete.
+- Cart checkout, quantity, and remove controls must be wired before publish readiness (even if broader catalogue wiring remains deferred).
+- Wishlist, newsletter, social links, brands, gift cards, and save-for-later may remain deferred only with explicit Product Owner decision recorded in the tracker.
+- Live product/catalogue/search/collection wiring remains deferred until explicitly approved; placeholder shells are acceptable until then, but must be clearly labeled/treated as non-functional.
+
 ## MVP Shopify theme boundary
 
 Included in boundary:

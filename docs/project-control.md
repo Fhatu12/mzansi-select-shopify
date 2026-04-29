@@ -22,6 +22,7 @@ Mzansi Select Shopify MVP Theme Conversion
   - Slice 11I refreshed CJ evidence and captured public AliExpress comparison results, but exact-match source confirmation and final commercial sign-off are still open
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - `DSers` application pages were reachable in this pass, but targeted queries returned `No Data`, so DSers comparison evidence remains missing
+  - Slice 12A clickable inventory is accepted as PASS WITH NOTES; site-wide navigation correctness and core commerce wiring gaps remain launch blockers until a dedicated wiring pass is approved
 - Deferred items:
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
@@ -39,6 +40,32 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current active pass
 
 Slice 11I targeted first-six supplier gap-closure evidence pass
+
+## Slice 12A / 12B clickable inventory backlog (docs-only)
+
+- Slice 12A site-wide clickable items and fields inventory is accepted as PASS WITH NOTES.
+- Slice 12B records the clickable inventory backlog only (documentation-only). No implementation is approved in Slice 12B.
+- Accepted findings to carry forward:
+  - Several site-wide links use hash-only anchors without matching targets (dead anchors).
+  - Some anchors exist only on specific page templates, making them unreliable from global nav/footer contexts.
+  - Footer Terms link mismatch: `#terms-conditions` vs page anchor `id="terms"` (must be resolved before publish readiness).
+  - Product cards, PDP Add to Cart, cart checkout, cart quantity/remove, wishlist, newsletter, social links, and search/category filtering remain shells or deferred.
+  - Department navigation needs an approved destination strategy and likely interaction wiring.
+  - Contact/About route blocker is treated as previously handled and was not modified in Slice 12A/12B.
+- Launch blockers (wiring/backlog):
+  - Navigation correctness for primary/footer links.
+  - Department menu behavior.
+  - PDP Add to Cart flow.
+  - Cart checkout path and cart item controls (quantity/remove).
+- Scope confirmations (still out of scope for Slice 12B):
+  - No theme/code changes
+  - No Shopify push/publish/live overwrite
+  - No product import
+  - No checkout customization
+  - No dynamic catalogue wiring
+  - No Contact/About remediation
+  - No final legal publication
+- Next Product Owner decision pending: approve a dedicated wiring/backlog implementation slice and confirm which items are required before product import vs before publish.
 
 ## Source of truth
 
