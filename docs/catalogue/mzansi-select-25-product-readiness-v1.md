@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12H collection readiness gap plan recorded; all first-batch products remain `Candidate`, and launch collections remain below approved link-switch readiness  
-**Version:** 1.9  
+**Status:** Slice 11K collection allocation and replacement planning recorded; all first-batch products remain `Candidate`, and replacement directions remain planning-only  
+**Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, and the Slice 12H docs-only collection readiness gap plan for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, and the Slice 11K docs-only collection allocation and replacement-planning update for the approved `25`-product launch catalogue.
 
-This pass adds collection-readiness gap planning only:
+This pass adds collection allocation and replacement planning only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,7 +20,7 @@ This pass adds collection-readiness gap planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -109,6 +109,54 @@ Link-switch gating:
 - No department link switching is approved in this pass.
 - No department link should move away from `{{ routes.all_products_collection_url }}` until every launch collection clears the approved gating rules.
 - Collection density alone is not enough; department-visible naming and merchandising quality must also be acceptable before any switch review.
+
+## Slice 11K collection-density product allocation and replacement shortlist update
+
+Collection-density summary recorded in this pass:
+
+- `Home & Living` target: `5-6`; current plan count: `6`
+- `Kitchen & Storage` target: `6-7`; current plan count: `7`
+- `Office & Desk` target: `5-6`; current plan count: `6`
+- `Tech Accessories` target: `6-7`; current plan count: `6`
+
+Current allocation gaps recorded in this pass:
+
+- The `25`-product plan meets the preferred launch-density targets on paper.
+- The real gap is not raw count; it is verified product quality, supplier evidence, shipping, margin, and collection fit.
+- `Office & Desk` is currently strong on paper, but that does not close the evidence gap on the current first-batch products.
+- `Tech Accessories` still needs stronger verified-fit depth even though it meets the preferred density target on paper.
+- `Home & Living` keeps paper density only if the weak `Adhesive Wall Hooks Pack` slot is replaced credibly rather than padded with filler.
+- `Kitchen & Storage` has enough planned count on paper, but still carries fit, imagery, and readiness concerns around specific candidates such as `Sink Drain Basket / Strainer`.
+
+First-six recommendations recorded in this pass:
+
+- `Desk Cable Clips Set`: Continue
+- `Cable Management Sleeve`: Replacement-watch
+- `Screen Cleaning Kit`: Continue
+- `Adhesive Wall Hooks Pack`: Replace
+- `Sink Drain Basket / Strainer`: Replacement-watch
+- `Phone / Tablet Desk Stand`: Continue
+
+Replacement shortlist recorded in this pass:
+
+- `Adhesive Wall Hooks Pack` -> `Jewellery / accessory organiser`
+- `Adhesive Wall Hooks Pack` -> `drawer organiser tray`
+- `Cable Management Sleeve` -> `reusable cable ties / velcro cable straps`
+- `Cable Management Sleeve` -> `desk mat / large mouse pad`
+- `Sink Drain Basket / Strainer` -> `silicone dish drying mat`
+- `Sink Drain Basket / Strainer` -> `thermal lunch bag`
+
+Preferred immediate replacement direction recorded in this pass:
+
+- `Adhesive Wall Hooks Pack` -> `Jewellery / accessory organiser`
+- Reason: better `Home & Living` fit, stronger `Mother's Day` / giftable angle, lower claim risk, and keeps collection density intact
+
+Planning-only controls for replacements:
+
+- Replacement candidates are planning-only.
+- No replacement candidate in this pass is claimed as supplier-ready, cost-ready, margin-ready, shipping-ready, image-ready, or import-ready unless existing supplier evidence already supports it.
+- All products remain `Candidate` unless existing supplier evidence supports movement.
+- Department link switching remains blocked until collection density, product quality, and visible presentation gates are met.
 
 ## Current readiness summary
 
@@ -1120,12 +1168,13 @@ For each product, update the future execution record with:
 
 ## Launch-readiness blocker reminder
 
-Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence plus launch-collection density/presentation gaps:
+Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence plus launch-collection quality/fit gaps:
 
 - Contact/About route availability is resolved in unpublished preview evidence.
 - Supplier verification for the first batch remains unresolved because Slice 11I improved comparison coverage, but exact-match source confirmation and commercial-gate closure are still incomplete.
 - Collection-readiness planning now requires at least `3` products for preview consideration, prefers `5` products for public launch consideration, and blocks any department link switch while any launch collection still has only `1` product.
 - Collection-page presentation must clearly expose the real department name before launch-navigation exposure is considered safe.
+- The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 12H collection readiness gap plan recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records collection-density targets, link-switch gating, and merchandising-quality expectations without approving import or collection edits, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11K collection allocation and replacement planning recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records the paper-density allocation result and planning-only replacement shortlist without approving import or collection edits, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.

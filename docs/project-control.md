@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12H collection readiness gap plan recorded; Contact/About remains resolved, supplier/product readiness remains the active blocker, and launch department link switching remains unapproved  
-**Version:** 2.9  
+**Status:** Slice 11K collection allocation and replacement planning recorded; Contact/About remains resolved, supplier/product readiness remains the active blocker, and launch department link switching remains unapproved  
+**Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,18 +13,19 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12H collection readiness gap plan update
+- Active slice: Slice 11K collection-density product allocation and replacement shortlist update
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 12G launch collection preview evidence
-- Last committed slice: Slice 12G launch collection preview evidence (`000330334ea9a84f0392ff9e68a779f2c2bebb18`)
+- Last accepted slice: Slice 12H collection readiness gap plan
+- Last committed slice: Slice 12H collection readiness gap plan (`7d60b983fc11fdd6b758a50cf09cf056628ee28b`)
 - Current blockers:
   - Slice 11I refreshed CJ evidence and captured public AliExpress comparison results, but exact-match source confirmation and final commercial sign-off are still open
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - `DSers` application pages were reachable in this pass, but targeted queries returned `No Data`, so DSers comparison evidence remains missing
-  - Slice 12H records the current launch collection posture: `Home & Living` HTTP `200` / Admin density `1` (`not ready`), `Kitchen & Storage` HTTP `200` / Admin density `4` (`closest to ready`, but merchandising/content review still required), `Office & Desk` HTTP `200` / Admin density `1` (`not ready`), and `Tech Accessories` HTTP `200` / Admin density `1` (`not ready`)
-  - Approved collection-readiness gates now require at least `3` products for preview-readiness consideration, prefer `5` products for public-launch consideration, and block any department link switch while any launch collection still has only `1` product
-  - The current collection page presentation still shows the generic static-safe heading `Everyday Essentials` with placeholder-style product-card coverage rather than clearly exposing each department name on its collection page
+  - Slice 11K records that the `25`-product plan meets preferred launch density targets on paper (`Home & Living` `6`, `Kitchen & Storage` `7`, `Office & Desk` `6`, `Tech Accessories` `6`), but this does not close launch readiness
+  - The real launch-readiness gap remains verified product quality, supplier evidence, shipping, margin, and collection fit across the planned catalogue
+  - The first-six allocation decision posture is now explicit: `Desk Cable Clips Set` continue, `Cable Management Sleeve` replacement-watch, `Screen Cleaning Kit` continue, `Adhesive Wall Hooks Pack` replace, `Sink Drain Basket / Strainer` replacement-watch, `Phone / Tablet Desk Stand` continue
+  - Replacement candidates are planning-only and must not be treated as supplier-verified, cost-verified, margin-verified, shipping-verified, image-ready, or import-ready until evidence exists
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
   - Product import remains deferred and unapproved
@@ -36,13 +37,14 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 12H collection readiness gap-plan update
+- Last tracker update: 2026-04-29 during Slice 11K collection allocation and replacement-planning update
 - Tracker status: Updated
-- LLD status: Updated
+- Catalogue plan status: Updated
+- LLD status: Unchanged with reason - Slice 11K applies the existing collection-density and catalogue-readiness rules to the current product plan without changing durable rules.
 
 ## Current active pass
 
-Slice 12H collection readiness gap plan update
+Slice 11K collection-density product allocation and replacement shortlist update
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -416,6 +418,70 @@ Safety confirmations:
 - No theme/code changes
 - `artifacts/` remains untracked/uncommitted
 
+## Slice 11K collection-density product allocation and replacement shortlist update (docs-only)
+
+Objective:
+
+- Record the paper-density allocation posture of the current `25`-product plan and capture the approved replacement shortlist directions without claiming new supplier, cost, margin, shipping, image, or import readiness.
+
+Slice 12H commit hash reviewed:
+
+- `7d60b983fc11fdd6b758a50cf09cf056628ee28b`
+
+Collection-density summary recorded in this pass:
+
+- `Home & Living`: target `5-6`; current plan count `6`
+- `Kitchen & Storage`: target `6-7`; current plan count `7`
+- `Office & Desk`: target `5-6`; current plan count `6`
+- `Tech Accessories`: target `6-7`; current plan count `6`
+
+Main conclusion recorded in this pass:
+
+- The `25`-product plan meets preferred launch density targets on paper.
+- The real readiness gap remains verified product quality, supplier evidence, shipping, margin, and collection fit.
+
+First-six allocation decisions recorded in this pass:
+
+- `Desk Cable Clips Set`: continue
+- `Cable Management Sleeve`: replacement-watch
+- `Screen Cleaning Kit`: continue
+- `Adhesive Wall Hooks Pack`: replace
+- `Sink Drain Basket / Strainer`: replacement-watch
+- `Phone / Tablet Desk Stand`: continue
+
+Replacement shortlist directions recorded in this pass:
+
+- `Adhesive Wall Hooks Pack` -> `Jewellery / accessory organiser` or `drawer organiser tray`
+- `Cable Management Sleeve` -> `reusable cable ties / velcro cable straps` or `desk mat / large mouse pad`
+- `Sink Drain Basket / Strainer` -> `silicone dish drying mat` or `thermal lunch bag`
+- Preferred immediate replacement direction: `Adhesive Wall Hooks Pack` -> `Jewellery / accessory organiser`
+- Reason recorded: better `Home & Living` fit, stronger `Mother's Day` / giftable angle, lower claim risk, and keeps collection density intact
+
+Planning-only controls preserved in this pass:
+
+- Replacement candidates are planning-only.
+- No replacement candidate may be treated as supplier-verified, cost-verified, margin-verified, shipping-verified, image-ready, or import-ready unless existing supplier evidence already supports it.
+- All products remain `Candidate` unless existing supplier evidence supports movement.
+- Department link switching remains blocked until collection density, product quality, and visible presentation gates are met.
+- `Best Sellers` remains blocked until real sales evidence exists.
+- `Deals` still requires genuine margin support.
+
+Safety confirmations:
+
+- No collection edits
+- No department link switching
+- No product import
+- No Shopify push
+- No publish
+- No live overwrite
+- No checkout customization
+- No dynamic catalogue wiring
+- No PDP Add to Cart wiring
+- No cart wiring
+- No final legal publication
+- No theme/code changes
+- `artifacts/` remains untracked/uncommitted
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -474,6 +540,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 12F records a read-only Admin readiness and risk posture only; no theme/code files, product data, or Shopify state were changed in this pass.
 - Slice 12G records read-only unpublished-preview collection-route evidence and density posture only; no theme/code files, product data, or Shopify state were changed in this pass.
 - Slice 12H records collection-readiness gap planning only; no theme/code files, product data, or Shopify state were changed in this pass.
+- Slice 11K records collection-density allocation and replacement planning only; no theme/code files, product data, or Shopify state were changed in this pass.
 
 ## Current readiness summary
 
@@ -648,7 +715,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - Contact/About is no longer a launch-readiness blocker.
 - Supplier verification remains a launch-readiness blocker for the first six-product batch.
 - Slice 11I refreshed the CJ evidence, captured public ZA-facing AliExpress comparison candidates, and confirmed that commercial gates remain unresolved for the first-six batch.
-- Department navigation now has a documented staged destination strategy, Slice 12E records the required launch collection content plan, Slice 12F confirms the collections already exist, Slice 12G confirms the preview routes render, and Slice 12H records the explicit collection-density and presentation gates that still block safe link switching away from `all-products`.
+- Department navigation now has a documented staged destination strategy, Slice 12E records the required launch collection content plan, Slice 12F confirms the collections already exist, Slice 12G confirms the preview routes render, Slice 12H records the explicit collection-density and presentation gates, and Slice 11K confirms that paper-density sufficiency does not remove the verified-product-quality and supplier-readiness blockers.
 - No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
 - Additional comparison and pricing review is still required before any first-batch status movement beyond `Candidate`.
 
@@ -678,7 +745,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 12H collection readiness gap plan, followed by a later approved decision on how to close supplier readiness first, then improve collection density and collection-page presentation before any department-link switch is considered.
+Product Owner acceptance or correction of the Slice 11K collection allocation and replacement-planning update, followed by a later approved decision on how to close supplier readiness first and whether the `Adhesive Wall Hooks Pack` replacement direction should enter a future evidence pass.
 
 ## Decisions made
 
@@ -707,6 +774,7 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 - Slice 12F is limited to read-only launch collection Admin readiness and exposure-risk review only.
 - Slice 12G is limited to read-only launch collection preview evidence and density review only.
 - Slice 12H is limited to docs-only collection readiness gap planning only.
+- Slice 11K is limited to docs-only collection allocation and replacement-planning only.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
@@ -714,6 +782,8 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 - Shopify Admin read-only inspection in Slice 12F confirms the four launch collections already exist and are included on `Online Store`; the remaining question is safe exposure timing, not collection creation feasibility.
 - Slice 12G preview evidence confirms that the four collection routes render in the unpublished preview theme, but the page still presents the generic static-safe collection heading and repeated placeholder-style cards rather than department-specific live collection content.
 - Slice 12H makes the collection gap plan explicit: minimum preview threshold `3`, preferred public launch threshold `5`, no department link switching while any launch collection has only `1` product, and each collection page must visibly expose the department name before switch approval.
+- Slice 11K records that the current `25`-product plan already meets the preferred density targets on paper, so the remaining launch gap is not raw count but evidence-backed product quality, supplier closure, shipping, margin, and collection fit.
+- Slice 11K records replacement directions as planning-only and does not treat any replacement candidate as verified or import-ready.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -734,6 +804,7 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 - If dedicated department links are enabled before collections and content are ready, empty or sparse landing pages may weaken trust and navigation quality.
 - If department links are switched while the preview template still presents a generic static-safe collection heading and placeholder-style product-card coverage, shoppers may receive a misleading browse experience even when the collection route itself is reachable.
 - If density thresholds are met only through weak-fit or filler products, department trust and merchandising quality may still fail even when the collection count looks acceptable on paper.
+- If replacement candidates are allowed to inherit implied readiness without evidence, the catalogue plan may appear healthier on paper than it is in verified launch terms.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 
 ## Recommended sequencing
@@ -748,12 +819,14 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 8. Slice 12F read-only launch collection Admin readiness check: completed and committed.
 9. Slice 12G read-only launch collection preview evidence and density review: completed in this pass.
 10. Slice 12H docs-only collection readiness gap plan: completed in this pass.
-11. Close supplier/product readiness gaps before relying on collection-density targets as launch decisions.
-12. Improve launch collection density and department-specific collection-page presentation without using filler products.
-13. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
-14. Validate the strongest surfaced replacement candidates at item-page level where still needed.
-15. Docs-only closure for supplier evidence once the blocker is resolved.
-16. Product Owner decision on product import planning only after the supplier blocker is resolved.
+11. Slice 11K docs-only collection allocation and replacement planning: completed in this pass.
+12. Close supplier/product readiness gaps before relying on collection-density targets as launch decisions.
+13. Decide whether the preferred `Adhesive Wall Hooks Pack` replacement direction should enter a future evidence pass.
+14. Improve launch collection density and department-specific collection-page presentation without using filler products.
+15. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+16. Validate the strongest surfaced replacement candidates at item-page level where still needed.
+17. Docs-only closure for supplier evidence once the blocker is resolved.
+18. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
@@ -770,6 +843,7 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and direct-URL exposure posture.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current preview-state collection presentation as department-appropriate, or a later approved pass replaces the generic static-safe collection heading/presentation with department-specific collection content.
 - Use the Slice 12H density gates when evaluating any later launch-collection exposure decision: minimum preview threshold `3`, preferred public launch threshold `5`, and no switch while any launch collection remains at `1` product.
+- Treat the Slice 11K replacement shortlist as planning-only until a later evidence pass captures supplier, shipping, margin, image, and fit support where needed.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -778,8 +852,8 @@ Product Owner acceptance or correction of the Slice 12H collection readiness gap
 
 ## Final handoff summary
 
-This Slice 12H docs-only planning pass records the approved collection-readiness gap plan on top of the accepted Slice 12G route evidence: `Home & Living`, `Office & Desk`, and `Tech Accessories` remain clearly not ready at density `1`, `Kitchen & Storage` is closest at density `4` but still needs merchandising/content review, the minimum preview threshold is now `3`, the preferred public launch threshold is now `5`, no department link switching is allowed while any launch collection remains at `1`, and each collection page must clearly expose its real department name before switch approval. It preserves Contact/About as resolved, keeps supplier/product readiness as the active blocker, avoids Admin mutations, avoids code changes and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11K docs-only planning pass records that the current `25`-product allocation meets the preferred launch-density targets on paper, but the real readiness gap remains verified product quality, supplier evidence, shipping, margin, and collection fit. It keeps the first-six decisions explicit (`continue`, `replacement-watch`, `replace`), treats replacement candidates as planning-only, preserves Contact/About as resolved, keeps supplier/product readiness as the active blocker, avoids Admin mutations, avoids code changes and Shopify activity, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12H collection readiness gap plan recorded. Approved source HTML unchanged. This docs-only pass records the approved collection-density, collection-presentation, and merchandising-quality gates, keeps Contact/About resolved, updates the LLD because durable collection-readiness rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11K collection allocation and replacement planning recorded. Approved source HTML unchanged. This docs-only pass records the paper-density allocation result and planning-only replacement shortlist, keeps Contact/About resolved, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
