@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11H docs-only first-six supplier evidence gap-closure and commercial readiness rules recorded pending Product Owner acceptance or correction  
-**Version:** 1.6  
+**Status:** Slice 12D department destination strategy and durable collection-routing rules recorded pending Product Owner acceptance or correction  
+**Version:** 1.7  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -49,6 +49,7 @@ Durable expectations for launch readiness and wiring, based on the accepted Slic
 - Global navigation/footer links must not rely on page-local anchors unless they first route to the correct page (e.g. use `/pages/about#shipping` rather than `#shipping` from arbitrary pages).
 - Anchor mismatches are a publish-readiness defect. Example: footer Terms link `#terms-conditions` must match the actual Terms anchor (currently `id="terms"` in the page foundation) or be replaced with a page route.
 - Department navigation requires an approved destination strategy (collections vs curated pages vs homepage sections) and an approved interaction behavior (desktop + mobile) before publish readiness.
+- Launch department navigation must use a staged routing rule: keep temporary fallback routing on `all-products` until the approved launch collections exist, then switch only the approved launch departments to dedicated collection handles.
 - PDP Add to Cart must be wired (product form, variant/quantity selection, add-to-cart) before any product import / commerce readiness work is treated as complete.
 - Cart checkout, quantity, and remove controls must be wired before publish readiness (even if broader catalogue wiring remains deferred).
 - Wishlist, newsletter, social links, brands, gift cards, and save-for-later may remain deferred only with explicit Product Owner decision recorded in the tracker.
@@ -809,6 +810,50 @@ Merchandising rails remain distinct from departments:
 
 These may drive homepage merchandising, manual collections, or smart collections later, but they must not replace or dilute the stable department-led browse taxonomy.
 
+## Department destination strategy
+
+Temporary safe routing before collections/products exist:
+
+- The accepted temporary safe destination for launch departments is `{{ routes.all_products_collection_url }}`.
+- This temporary rule applies to the four approved launch departments in both the primary department menu and the homepage category strip.
+- The temporary fallback avoids broken or empty department destinations while collection resources and approved launch content are still missing.
+
+Launch-ready routing once approved collections exist:
+
+- The preferred dedicated launch collection handles are:
+  - `home-living`
+  - `kitchen-storage`
+  - `office-desk`
+  - `tech-accessories`
+- Once those collections exist in Shopify and are approved for exposure, the four launch department links should route to:
+  - `/collections/home-living`
+  - `/collections/kitchen-storage`
+  - `/collections/office-desk`
+  - `/collections/tech-accessories`
+- Launch department links should not switch to dedicated collection URLs until the underlying collections are created, visible to Online Store, and accepted as ready to replace the temporary fallback.
+
+Expansion-ready department exposure rule:
+
+- `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only.
+- Proposed future handles may be reserved as:
+  - `garden-outdoor`
+  - `bath-bedroom`
+  - `cleaning-laundry`
+- Expansion-ready departments should stay deferred from launch navigation exposure until a later approved catalogue expansion pass confirms that those destinations are intentionally ready.
+
+Empty collection guidance:
+
+- Empty or sparse collection states are acceptable for unpublished preview QA and internal setup only.
+- Empty collections are not the preferred live primary-navigation destination for launch departments.
+- If a dedicated department collection is still empty, the safer live fallback remains `all-products` until the Product Owner approves the switch.
+
+Risks and dependencies:
+
+- Keeping launch departments on `all-products` for too long weakens department intent clarity and makes the accepted taxonomy less visible in browse behaviour.
+- Activating dedicated department links too early risks sending shoppers to sparse or empty collection pages that feel unfinished.
+- Shopify Admin setup is required before activation: collection creation, handle confirmation, Online Store availability, and approved collection content direction.
+- This strategy changes destination rules only; it does not approve product import, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, Shopify push, or publish activity.
+
 Catalogue readiness statuses for planning:
 
 - `Candidate`
@@ -991,6 +1036,7 @@ Unknown / requires implementation confirmation:
 Slice 9 implementation note:
 
 - The current foundation set now covers empty collection, empty search, empty cart, and 404 recovery states through a shared empty-state visual pattern.
+- The empty collection pattern is acceptable as an unpublished preview/setup state, but it should not become the preferred live destination for launch department navigation when `all-products` remains the safer fallback.
 
 Constraint for implementation:
 
@@ -1298,6 +1344,7 @@ Theme Check blocker-fix validation state:
 - Live-store behavior, dynamic product/catalogue wiring, and any auto-recovery logic remain deferred for the Slice 9 404 foundation.
 - Authenticated preview QA evidence was captured in headed Playwright for Slice 10.5B and accepted as PASS WITH NOTES; publish/launch-readiness remains blocked until the Product Owner resolves whether Contact/About `404` route availability is expected or requires a dedicated defect/scope slice.
 - Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, and Slice 11B now records the approved `25`-slot planning matrix without approving import or live catalogue operations.
+- Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup and later Product Owner approval for exposure.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1338,4 +1385,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 11H commercial readiness rules recorded. Approved source HTML unchanged. This docs-only pass updates durable catalogue/commercial readiness gates, preserves the Contact/About resolved state, leaves theme/code unchanged, keeps product import unapproved, and keeps live catalogue/support behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 12D department destination strategy recorded. Approved source HTML unchanged. This docs-only pass updates durable navigation and collection-routing rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
