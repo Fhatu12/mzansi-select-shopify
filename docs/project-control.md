@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12 docs-only launch-readiness blocker review and next-action plan recorded pending Product Owner acceptance or correction  
-**Version:** 1.9  
+**Status:** Slice 12 docs-only Contact/About route evidence closure recorded after Manual Track A.1 pending Product Owner acceptance or correction  
+**Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,36 +13,31 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12 docs-only launch-readiness blocker review and next-action plan
+- Active slice: Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 11G.1 docs-only supplier verification blocker recording
-- Last committed slice: Slice 11G.1 docs-only supplier verification blocker recording (`618a441037ddfc7558a1b6fbfa24736f89af93cf`)
+- Last accepted slice: Slice 12 docs-only launch-readiness blocker plan
+- Last committed slice: Slice 12 docs-only launch-readiness blocker plan (`c67aafe95795bc5b2598a9fb51e66112d4b56981`)
 - Current blockers:
-  - Contact/About route availability remains unresolved
-  - `/pages/contact` and `/pages/about` rendered HTTP `404` in authenticated unpublished-preview evidence
-  - Shopify Admin page resources for `Contact` and `About` still need to be created or verified, including handle, Online Store availability, and template assignment
-  - Launch-readiness and any publish decision remain blocked until the required Contact/About page resources are created in Shopify or their existence, handles, visibility, and template assignment are verified
   - Slice 11G supplier verification remains blocked/incomplete because logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` supplier-tool access is required for manual verification
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the required evidence is captured
 - Deferred items:
-  - Slice 10.8 Contact/About store-content setup and preview verification remains deferred/incomplete
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
   - Dynamic product/catalogue wiring remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Blocked by unresolved Contact/About route availability and by unresolved supplier/cost/shipping/content readiness across the planned catalogue
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved supplier/cost/shipping/content readiness across the planned catalogue
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 12 docs-only launch-readiness blocker review and next-action plan update
+- Last tracker update: 2026-04-29 during Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
 - Tracker status: Updated
-- LLD status: Unchanged with reason - no durable catalogue or launch-readiness rule changed; Slice 12 sequences already-known blockers
+- LLD status: Unchanged with reason - this pass records manual evidence closure; no durable rule changed
 
 ## Current active pass
 
-Slice 12 docs-only launch-readiness blocker review and next-action plan
+Slice 12 docs-only Contact/About route evidence closure after Manual Track A.1
 
 ## Source of truth
 
@@ -67,7 +62,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - `docs/project-control.md`
 - `docs/catalogue/mzansi-select-25-product-readiness-v1.md`
 - `docs/lld/mzansi-select-shopify-mvp-theme-v1.md`
-- Existing approved Slice 11G.1 commit history
+- Existing approved Slice 12 commit history
+- `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/fix-summary.md`
 
 ## Current status
 
@@ -75,7 +71,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 10 unpublished preview refresh remains committed at `e91d529`.
 - Slice 10.6 docs-only authenticated preview QA closure remains committed at `5d74ddc`.
 - Slice 10.7 Contact/About route availability diagnosis remains committed at `ae9ac7d`.
-- Slice 10.8 Contact/About store-content setup and preview verification remains deferred/incomplete.
+- Manual Track A.1 completed Shopify Admin resource verification/correction and unpublished-preview re-test for Contact/About route availability.
 - Slice 10.9 tracker correction remains committed at `5e2ea07`.
 - Slice 11A storefront taxonomy recommendation remains committed at `662e4bb7c8c8df2b4cb73bd7c234d7e071f465e2`.
 - Slice 11B catalogue readiness matrix remains committed at `a0bfbb1a0f3428be6251004dc0f90e0a9e1f3987`.
@@ -85,6 +81,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 11F records the manual logged-in supplier-verification guide and durable evidence format without changing theme/code files, product data, or Shopify state.
 - Slice 11G.1 records that the first logged-in supplier-verification execution pass is attempted/planned but blocked/incomplete because supplier-tool login access is required and was not used in this docs-only pass.
 - Slice 12 records the launch-readiness blocker review and next-action plan without changing theme/code files, product data, supplier state, or Shopify state.
+- This pass records docs-only Contact/About route evidence closure after Manual Track A.1 without changing theme/code files, product data, supplier state, or Shopify state.
 
 ## Current readiness summary
 
@@ -93,7 +90,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - TBD: `0`
 - Unconfirmed: `25`
 
-## Slice 12 blocker-plan status
+## Slice 12 closure status
 
 - Planning scope only: accepted.
 - Product import approval: not granted.
@@ -108,8 +105,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - Actual supplier verification approval: not granted in this pass.
 - Supplier credential storage approval: not granted in this pass.
 - Supplier-account access: not used in this docs-only pass.
-- Execution result: blocker review and next-action sequencing recorded only.
-- Contact/About blocker: preserved and still unresolved.
+- Execution result: Manual Track A.1 evidence closure recorded only.
+- Contact/About blocker: resolved in unpublished preview evidence.
 - Supplier verification blocker: preserved and still unresolved.
 
 ## First verification batch
@@ -131,9 +128,24 @@ All future Shopify implementation work must preserve the approved visual design 
 - No product import or import-readiness movement has occurred in this pass.
 - No product was promoted to `Supplier verified`.
 
-## Launch-readiness blocker summary
+## Contact/About evidence closure
 
-- Track A blocker: `/pages/contact` and `/pages/about` rendered HTTP `404` in authenticated preview evidence, so Shopify Admin page resources still need to be created or verified before launch-readiness or publish consideration can proceed.
+- Manual Track A.1 completed Shopify Admin page verification/correction and preview re-test for Contact/About.
+- `Contact Us` already existed, remained visible to Online Store, kept the `page.contact` template assignment, and its handle was corrected from `contact-us` to `contact`.
+- `About` did not exist, was created, is visible to Online Store, uses the default page template, and has handle `about`.
+- Preview routes returned HTTP `200`:
+  - `https://dropshippoc.myshopify.com/pages/contact?preview_theme_id=151207542967`
+  - `https://dropshippoc.myshopify.com/pages/about?preview_theme_id=151207542967`
+- Contact/About route availability is now resolved in unpublished preview evidence and is no longer an active launch-readiness blocker.
+- Evidence paths:
+  - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/fix-summary.md`
+  - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/contact-admin-editor.png`
+  - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/about-admin-editor.png`
+  - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/contact-preview.png`
+  - `artifacts/qa/manual-track-a1-fix-2026-04-29T07-11-26-367Z/about-preview.png`
+
+## Remaining launch-readiness blocker summary
+
 - Track B blocker: Slice 11G supplier verification remains blocked because logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` access is required, and no product may move to `Supplier verified` until the required evidence is captured.
 - The first-batch products still blocked at `Candidate` are:
   - `Desk Cable Clips Set`
@@ -143,22 +155,7 @@ All future Shopify implementation work must preserve the approved visual design 
   - `Sink Drain Basket / Strainer`
   - `Phone / Tablet Desk Stand`
 
-## Manual action plan
-
-Track A — Contact/About Shopify Admin setup:
-
-- Verify or create `Contact` page.
-- Verify or create `About` page.
-- Confirm handles:
-  - `contact`
-  - `about`
-- Confirm Online Store availability.
-- Assign templates:
-  - `Contact` -> `page.contact`
-  - `About` -> default page template unless a better existing assignment is available
-- Re-test authenticated preview routes:
-  - `/pages/contact?preview_theme_id=151207542967`
-  - `/pages/about?preview_theme_id=151207542967`
+## Remaining manual action plan
 
 Track B — supplier verification:
 
@@ -219,7 +216,7 @@ Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
 - The first six-product verification batch now has both a public-research outcome and a manual execution guide, but Slice 11G execution remains blocked until logged-in supplier-tool access is available, so no item moves beyond `Candidate`.
-- Slice 12 adds the manual blocker-control sequence only; it does not resolve either blocker.
+- This pass resolves the Contact/About route blocker in unpublished preview evidence, but it does not resolve the supplier-verification blocker.
 
 ## Current product state
 
@@ -227,7 +224,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan documentation only. None of these passes change collection wiring, product data, or visual implementation.
+- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. None of these passes change collection wiring, product data, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -236,12 +233,10 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Launch-readiness blockers
 
-- Contact/About route availability remains a launch-readiness blocker.
-- `/pages/contact` rendered HTTP `404` in authenticated unpublished-preview evidence.
-- `/pages/about` rendered HTTP `404` in authenticated unpublished-preview evidence.
-- Launch-readiness and publish consideration cannot proceed until Contact/About page resources are created or verified in Shopify.
-- Required verification still includes page existence, page handles, Online Store visibility, and template assignment for the Contact/About resources.
-- Slice 10.8 store-content setup and preview verification remains deferred/incomplete, so this blocker remains open.
+- Contact/About route availability is resolved in unpublished preview evidence.
+- `Contact Us` existed, remained visible to Online Store, and its handle was corrected to `contact`.
+- `About` was created, is visible to Online Store, and uses handle `about`.
+- Preview verification confirmed HTTP `200` for `/pages/contact?preview_theme_id=151207542967` and `/pages/about?preview_theme_id=151207542967`.
 - Supplier verification remains a launch-readiness blocker for the first six-product batch.
 - Logged-in `CJdropshipping`, `DSers`, and/or `AliExpress` access is required before supplier evidence can be captured.
 - No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
@@ -255,11 +250,10 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - No product import approved.
 - No checkout customization approved.
 - No dynamic product/catalogue wiring approved.
-- No Contact/About implementation fix approved in this pass.
 - No final legal publication approved.
 - No actual supplier verification inside the repo.
 - No supplier credential storage.
-- Contact/About route availability remains unresolved.
+- Contact/About route evidence closure recorded only in this docs-only pass.
 - `artifacts/` must remain untracked/uncommitted.
 
 ## Documentation artefacts
@@ -270,7 +264,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 12 launch-readiness blocker control plan, followed by manual Contact/About Shopify Admin setup and preview verification, then later manual logged-in supplier verification before any import-planning decision is accepted.
+Product Owner acceptance or correction of the Contact/About route evidence closure, followed by a later manual logged-in supplier-verification pass before any import-planning decision is accepted.
 
 ## Decisions made
 
@@ -278,6 +272,8 @@ Product Owner acceptance or correction of the Slice 12 launch-readiness blocker 
 - Slice 11F is limited to manual supplier-verification guide setup and documentation only.
 - Slice 11G.1 is limited to recording the supplier-access execution blocker only.
 - Slice 12 is limited to launch-readiness blocker review and next-action planning only.
+- Manual Track A.1 resolved Contact/About Shopify Admin resource verification/correction and unpublished-preview route validation.
+- This pass is limited to recording the Contact/About evidence closure only.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
 - Candidate -> Supplier verified evidence fields remain durable catalogue launch-readiness criteria.
 - Supplier-verification evidence format is now treated as a durable catalogue launch-readiness rule.
@@ -293,25 +289,21 @@ Product Owner acceptance or correction of the Slice 12 launch-readiness blocker 
 - The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
 - Kitchen & Storage includes several bulkier or packaging-sensitive items that likely need CJdropshipping-versus-DSers shipping comparison before verification.
-- Contact/About route availability still cannot be fully resolved from theme files alone.
+- Contact/About route availability no longer blocks unpublished preview, but supplier verification still blocks catalogue status movement and import planning.
 - `artifacts/` remains untracked and should not be committed unless separately approved.
 
 ## Recommended sequencing
 
-1. Manual Contact/About Shopify Admin setup and preview verification.
-2. Docs-only closure for Contact/About evidence.
+1. Manual Contact/About Shopify Admin setup and preview verification: completed via Manual Track A.1.
+2. Docs-only closure for Contact/About evidence: completed in this pass.
 3. Manual first-six supplier verification.
 4. Docs-only closure for supplier evidence.
-5. Product Owner decision on product import planning only after blockers are resolved.
+5. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
 - Keep `artifacts/` excluded from any commit unless separately approved.
-- Preserve the unresolved Contact/About route blocker until store-content setup or verification is completed.
-- Do not treat launch-readiness or publish as eligible until Contact/About page resources are created or verified.
-- Re-test authenticated preview routes after any Contact/About Shopify Admin setup using:
-  - `/pages/contact?preview_theme_id=151207542967`
-  - `/pages/about?preview_theme_id=151207542967`
+- Preserve the Manual Track A.1 evidence bundle as the current Contact/About unpublished-preview verification record.
 - Use the Slice 11F manual guide as execution input only in a later approved logged-in supplier-check pass with account access outside the repo.
 - Do not access supplier accounts or store credentials in the repo during docs-only passes.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -320,8 +312,8 @@ Product Owner acceptance or correction of the Slice 12 launch-readiness blocker 
 
 ## Final handoff summary
 
-This Slice 12 docs-only pass records the active launch-readiness blockers, the manual Contact/About Shopify Admin setup track, the manual first-six supplier-verification track, the evidence requirements that still block any move beyond `Candidate`, and the recommended blocker-resolution sequence before any later product import planning decision. No supplier accounts were accessed, no credentials were stored, no product moved beyond `Candidate`, the Contact/About `404` blocker remains unresolved, no theme/code or Shopify-state changes occurred, and `artifacts/` remains untracked and uncommitted.
+This Slice 12 docs-only pass records Manual Track A.1 evidence closure for Contact/About route availability in unpublished preview, confirms that `Contact Us` now resolves under handle `contact`, confirms that `About` exists under handle `about`, preserves the supplier-verification blocker for the first six-product batch, keeps product import and Shopify publish activity unapproved, avoids all theme/code changes, and leaves `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12 launch-readiness blocker plan recorded. Approved source HTML unchanged. This docs-only pass updates tracker sequencing only, preserves the Contact/About and supplier-verification blockers, leaves the LLD unchanged because no durable catalogue or launch-readiness rule changed, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12 Contact/About evidence closure recorded. Approved source HTML unchanged. This docs-only pass records Manual Track A.1 unpublished-preview evidence, resolves the Contact/About route blocker, preserves the supplier-verification blocker, leaves the LLD unchanged because no durable rule changed, and keeps `artifacts/` untracked and uncommitted.
