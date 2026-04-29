@@ -3,8 +3,8 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11H docs-only first-six supplier evidence gap-closure and commercial decision plan recorded; all six products remain `Candidate` pending comparison closure and commercial sign-off  
-**Version:** 2.3  
+**Status:** Slice 11I targeted first-six supplier gap-closure evidence captured; all six products remain `Candidate` pending exact-match source confirmation and unresolved commercial gates  
+**Version:** 2.4  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Project name
@@ -13,15 +13,15 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11H docs-only first-six supplier evidence gap-closure and commercial decision plan
+- Active slice: Slice 11I targeted first-six supplier gap-closure evidence pass
 - Active owner: Product Owner
 - Next owner: Product Owner
-- Last accepted slice: Slice 11G.2 supplier verification evidence documentation
-- Last committed slice: Slice 11G.2 supplier verification evidence documentation (`3d1cdca58a89e39b994a0a5163b140063538b8f7`)
+- Last accepted slice: Slice 11H docs-only first-six commercial gap plan
+- Last committed slice: Slice 11H docs-only first-six commercial gap plan (`adfbc2f463497ead605580ae4bf6f2f337130fa8`)
 - Current blockers:
-  - Slice 11H records planning price bands and commercial readiness thresholds, but supplier verification remains incomplete because `DSers` / `AliExpress` comparison evidence and final commercial sign-off are still open
+  - Slice 11I refreshed CJ evidence and captured public AliExpress comparison results, but exact-match source confirmation and final commercial sign-off are still open
   - All six first-batch products remain `Candidate`, and no product may move to `Supplier verified` until the remaining evidence and decisions are completed
-  - `Adhesive Wall Hooks Pack` remains on replacement-watch unless a clean South Africa-shippable source is found quickly
+  - `DSers` application pages were reachable in this pass, but targeted queries returned `No Data`, so DSers comparison evidence remains missing
 - Deferred items:
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
@@ -32,13 +32,13 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11H commercial gap-closure planning
+- Last tracker update: 2026-04-29 during Slice 11I targeted supplier gap-closure evidence capture
 - Tracker status: Updated
-- LLD status: Updated
+- LLD status: Unchanged with reason - Slice 11I captures product-specific supplier/commercial evidence and does not change durable catalogue-readiness rules
 
 ## Current active pass
 
-Slice 11H docs-only first-six supplier evidence gap-closure and commercial decision plan
+Slice 11I targeted first-six supplier gap-closure evidence pass
 
 ## Source of truth
 
@@ -67,6 +67,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - `artifacts/supplier-verification/slice-11g2/session-access-summary.md`
 - `artifacts/supplier-verification/slice-11g2/first-six-supplier-verification-summary.md`
 - `artifacts/supplier-verification/slice-11g2/*.json`
+- `artifacts/supplier-verification/slice-11i/first-six-gap-closure-summary.md`
+- `artifacts/supplier-verification/slice-11i/*.json`
 
 ## Current status
 
@@ -86,6 +88,7 @@ All future Shopify implementation work must preserve the approved visual design 
 - Slice 12 records the launch-readiness blocker review, Contact/About evidence closure, and next-action plan without changing theme/code files, product data, supplier state, or Shopify state.
 - Slice 11G.2 completed Playwright-assisted first-six supplier evidence capture against authenticated local `CJdropshipping` product pages without importing any product or touching Shopify.
 - Slice 11H records the first-six commercial gap-closure plan, planning price bands, and readiness thresholds without changing theme/code files, product data, supplier state, or Shopify state.
+- Slice 11I refreshed CJ evidence, captured public ZA-facing AliExpress comparison candidates, and recorded a targeted gap-closure summary without changing theme/code files, product data, supplier state, or Shopify state.
 
 ## Current readiness summary
 
@@ -94,9 +97,9 @@ All future Shopify implementation work must preserve the approved visual design 
 - TBD: `0`
 - Unconfirmed: `25`
 
-## Slice 11H commercial-planning status
+## Slice 11I targeted gap-closure status
 
-- Commercial gap-closure planning scope only: approved.
+- Targeted supplier gap-closure evidence scope only: approved.
 - Product import approval: not granted.
 - Shopify push approval: not granted.
 - Shopify push/publish approval: not granted.
@@ -108,8 +111,8 @@ All future Shopify implementation work must preserve the approved visual design 
 - Final legal publication approval: not granted in this pass.
 - Actual supplier verification approval: not granted in this pass.
 - Supplier credential storage approval: not granted in this pass.
-- Supplier-account access: not used in this pass; Slice 11G.2 evidence was used as a local reference only.
-- Execution result: first-six commercial gap-closure recommendations, planning price bands, and readiness thresholds were recorded only; no product was promoted beyond `Candidate`.
+- Supplier-account access: the existing local browser session was reused for CJ and DSers inspection; no auth state was saved in the repo.
+- Execution result: refreshed CJ evidence and public ZA-facing AliExpress comparison evidence were recorded for all six first-batch products; no product was promoted beyond `Candidate`.
 - Contact/About blocker: resolved in unpublished preview evidence.
 - Supplier verification blocker: preserved and still unresolved.
 
@@ -125,9 +128,9 @@ All future Shopify implementation work must preserve the approved visual design 
 ## Current six-product batch status
 
 - All six first-batch products remain `Candidate`.
-- Slice 11G.2 CJ-based evidence remains the latest supplier-evidence record for the first six products.
-- Slice 11H adds planning price bands and commercial readiness thresholds only; those values are planning assumptions and readiness gates, not final live prices or verification outcomes.
-- `DSers` / `AliExpress` comparison evidence remains incomplete where still planned.
+- Slice 11I refreshed the CJ product evidence for all six products.
+- Public ZA-facing AliExpress search results were captured for all six products and used as the comparison fallback in this pass.
+- `DSers` application pages were reachable, but targeted search queries returned `No Data`, so DSers comparison evidence remains incomplete.
 - No supplier credential storage has occurred in this pass.
 - No product was promoted to `Supplier verified`.
 - Final target selling price, estimated gross margin, and import readiness remain unapproved and unresolved.
@@ -150,15 +153,15 @@ All future Shopify implementation work must preserve the approved visual design 
 
 ## Remaining launch-readiness blocker summary
 
-- Track B blocker: Slice 11G supplier verification remains incomplete because evidence capture progressed on CJ only, while comparison closure and commercial sign-off are still open.
-- Slice 11H commercial planning outcome:
-  - `Desk Cable Clips Set`: continue verification
-  - `Cable Management Sleeve`: continue verification; replacement-watch
-  - `Screen Cleaning Kit`: continue verification; strong candidate
-  - `Adhesive Wall Hooks Pack`: replace unless a clean ZA-shippable source is found quickly
-  - `Sink Drain Basket / Strainer`: continue verification, but require clearer fit dimensions and stronger image support
-  - `Phone / Tablet Desk Stand`: continue verification; strong candidate
-- No first-batch product is ready to move beyond `Candidate` yet because comparison, pricing, and final margin decisions remain incomplete.
+- Track B blocker: Slice 11G supplier verification remains incomplete because the refreshed evidence still leaves exact-match source confirmation, delivery validation, and/or commercial gate closure open.
+- Slice 11I targeted evidence outcome:
+  - `Desk Cable Clips Set`: AliExpress ZA comparison materially improved cost visibility, but exact match confirmation is still open
+  - `Cable Management Sleeve`: comparison coverage improved, but the captured price points still look margin-weak inside the approved band
+  - `Screen Cleaning Kit`: refreshed evidence confirmed the liquid/non-liquid wording conflict and margin remains weak on captured comparisons
+  - `Adhesive Wall Hooks Pack`: the current CJ source remains unusable for ZA, but public ZA-facing replacement candidates were surfaced
+  - `Sink Drain Basket / Strainer`: package-size evidence improved, but fit dimensions and stronger image support are still missing
+  - `Phone / Tablet Desk Stand`: comparison coverage improved, but captured sources still miss the approved commercial gates
+- No first-batch product is ready to move beyond `Candidate` yet because comparison, delivery, and margin decisions remain incomplete.
 - The first-batch products still blocked at `Candidate` are:
   - `Desk Cable Clips Set`
   - `Cable Management Sleeve`
@@ -171,11 +174,11 @@ All future Shopify implementation work must preserve the approved visual design 
 
 Track B — supplier verification and commercial gap closure:
 
-- Keep all six products at `Candidate` until comparison evidence, target price review, and commercial gate review are completed.
-- Capture `DSers` / `AliExpress` comparison evidence where the product route still expects comparison, especially for `Desk Cable Clips Set`, `Cable Management Sleeve`, `Screen Cleaning Kit`, and `Phone / Tablet Desk Stand`.
+- Keep all six products at `Candidate` until exact-match source confirmation, delivery validation, and commercial gate review are completed.
+- Continue comparison work where still needed, especially where DSers returned `No Data` and AliExpress public search results still need item-page confirmation.
 - Treat the Slice 11H target selling price bands as planning assumptions only until a later approved pricing decision is made.
 - Use the durable commercial thresholds as readiness gates only: minimum estimated gross margin `45%`, target gross margin `50%+`, landed cost ratio at or below `55%` of target selling price, minimum absolute gross margin `R45` under `R150`, minimum absolute gross margin `R70` at `R150+`, preferred South Africa delivery expectation `<=21` business days, and a risk flag whenever shipping cost is higher than product cost.
-- Decide whether to replace or reject the tested `Adhesive Wall Hooks Pack` source because the captured listing did not verify a South Africa route and carries restrictive VEVOR distribution notes.
+- Decide whether to keep `Adhesive Wall Hooks Pack` in the first-six set based on item-page verification of the surfaced ZA-facing replacement candidates.
 - No product may move to `Supplier verified` until the required evidence is captured for each first-batch product.
 
 ## Evidence requirements recorded per first-batch product
@@ -231,7 +234,7 @@ Use logged-in `CJdropshipping` / `DSers` / `AliExpress` tools to confirm:
 - No slot is yet `Content ready`.
 - No slot is yet `Import ready`.
 - All `25` slots still carry unconfirmed supplier/cost/shipping/content evidence and must move through the durable 4-stage readiness flow before any import approval is considered.
-- The first six-product verification batch now has a public-research outcome, a manual execution guide, a CJ-based evidence bundle, and a commercial gap-closure plan, but no item moves beyond `Candidate` until comparison and pricing decisions are complete.
+- The first six-product verification batch now has a public-research outcome, a manual execution guide, a CJ-based evidence bundle, a commercial gap-closure plan, and a targeted gap-closure evidence set, but no item moves beyond `Candidate` until comparison and pricing decisions are complete.
 - This pass preserves the Contact/About resolved state, but it does not resolve the supplier-verification blocker.
 
 ## Current product state
@@ -240,7 +243,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 - The approved static HTML source remains unchanged.
 - Global chrome, homepage, collection, product, search, cart, legal/support, and 404 foundation work exists in native Shopify theme structure.
-- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. Slice 11G.2 adds supplier evidence capture and documentation only. Slice 11H adds commercial gap-closure planning and durable readiness-threshold documentation only. None of these passes change collection wiring, product data inside Shopify, or visual implementation.
+- Slice 11F adds manual-verification guide documentation only. Slice 11G.1 adds blocker-record documentation only. Slice 12 adds blocker-plan and Contact/About evidence-closure documentation only. Slice 11G.2 adds supplier evidence capture and documentation only. Slice 11H adds commercial gap-closure planning and durable readiness-threshold documentation only. Slice 11I adds targeted supplier gap-closure evidence only. None of these passes change collection wiring, product data inside Shopify, or visual implementation.
 - Product import remains unapproved.
 - Shopify push/publish remains unapproved.
 - Live theme overwrite remains unapproved.
@@ -254,7 +257,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 - `About` was created, is visible to Online Store, and uses handle `about`.
 - Preview verification confirmed HTTP `200` for `/pages/contact?preview_theme_id=151207542967` and `/pages/about?preview_theme_id=151207542967`.
 - Supplier verification remains a launch-readiness blocker for the first six-product batch.
-- Slice 11G.2 captured authenticated `CJdropshipping` evidence for all six products, and Slice 11H now records the planning price bands and commercial thresholds that must still be proven before any status movement.
+- Slice 11I refreshed the CJ evidence, captured public ZA-facing AliExpress comparison candidates, and confirmed that commercial gates remain unresolved for the first-six batch.
 - No product may be treated as `Import ready` until supplier, landed-cost, shipping, content, image, and risk checks are complete.
 - Additional comparison and pricing review is still required before any first-batch status movement beyond `Candidate`.
 
@@ -280,7 +283,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11H first-six commercial gap-closure plan, followed by either a narrower comparison pass for the remaining `DSers` / `AliExpress` gaps or a later docs-only supplier-evidence closure once the blocker is resolved.
+Product Owner acceptance or correction of the Slice 11I targeted supplier gap-closure evidence pass, followed by either item-page validation of the surfaced replacement candidates or a later docs-only supplier-evidence closure once the blocker is resolved.
 
 ## Decisions made
 
@@ -290,6 +293,7 @@ Product Owner acceptance or correction of the Slice 11H first-six commercial gap
 - Slice 12 is limited to launch-readiness blocker review and next-action planning only.
 - Manual Track A.1 resolved Contact/About Shopify Admin resource verification/correction and unpublished-preview route validation.
 - Slice 11G.2 is accepted and committed at `3d1cdca58a89e39b994a0a5163b140063538b8f7`.
+- Slice 11H is accepted and committed at `adfbc2f463497ead605580ae4bf6f2f337130fa8`.
 - Slice 11G.2 is limited to supplier evidence capture only; no import, publish, or Shopify mutation is approved.
 - The 4-stage readiness movement rules are now treated as durable catalogue launch-readiness criteria.
 - Candidate -> Supplier verified evidence fields remain durable catalogue launch-readiness criteria.
@@ -298,6 +302,7 @@ Product Owner acceptance or correction of the Slice 11H first-six commercial gap
 - Slice 11H is limited to docs-only commercial gap-closure planning.
 - Slice 11H target selling price bands are planning assumptions only and must not be treated as final live prices.
 - Slice 11H commercial readiness thresholds are readiness gates only and must not be treated as proof of verification or import readiness.
+- Slice 11I is limited to targeted supplier gap-closure evidence capture only.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -305,7 +310,8 @@ Product Owner acceptance or correction of the Slice 11H first-six commercial gap
 
 - All `25` product slots still require supplier/source checking before any movement beyond `Candidate`.
 - The first six-product verification batch still needs comparison closure, pricing decisions, and final risk acceptance before any product can move beyond `Candidate`.
-- `DSers` / `AliExpress` comparison remains useful for several lightweight accessories even after the CJ capture.
+- `DSers` comparison remains incomplete because the targeted queries returned `No Data` in this pass.
+- The public ZA-facing AliExpress results improved comparison coverage, but exact item-page validation is still missing for the strongest replacement candidates.
 - Price bands are now documented for planning, but final live pricing remains unapproved until later commercial sign-off.
 - The manual route must avoid storing supplier credentials anywhere in the repo or artefacts.
 - Office & Desk and Tech Accessories still require careful compatibility/returns review because several planned products are accessories with variant or quality risk.
@@ -319,16 +325,18 @@ Product Owner acceptance or correction of the Slice 11H first-six commercial gap
 1. Manual Contact/About Shopify Admin setup and preview verification: completed via Manual Track A.1.
 2. Docs-only closure for Contact/About evidence: completed in this pass.
 3. Slice 11G.2 first-six supplier evidence capture: completed and committed.
-4. Slice 11H docs-only commercial gap-closure plan: completed in this pass.
-5. Capture any remaining `DSers` / `AliExpress` comparison evidence that materially changes the first-six decision set.
-6. Docs-only closure for supplier evidence once the blocker is resolved.
-7. Product Owner decision on product import planning only after the supplier blocker is resolved.
+4. Slice 11H docs-only commercial gap-closure plan: completed and committed.
+5. Slice 11I targeted supplier gap-closure evidence pass: completed in this pass.
+6. Validate the strongest surfaced replacement candidates at item-page level where still needed.
+7. Docs-only closure for supplier evidence once the blocker is resolved.
+8. Product Owner decision on product import planning only after the supplier blocker is resolved.
 
 ## Handoff queue
 
 - Keep `artifacts/` excluded from any commit unless separately approved.
 - Preserve the Manual Track A.1 evidence bundle as the current Contact/About unpublished-preview verification record.
 - Preserve `artifacts/supplier-verification/slice-11g2/session-access-summary.md` as the initial session-access record and `artifacts/supplier-verification/slice-11g2/first-six-supplier-verification-summary.md` as the current first-batch evidence record.
+- Preserve `artifacts/supplier-verification/slice-11i/first-six-gap-closure-summary.md` as the current targeted gap-closure evidence summary.
 - Use the Slice 11F manual guide as execution input for any later comparison-only follow-up pass.
 - Use the Slice 11H price bands and commercial thresholds as planning gates only until a later approved pricing decision is made.
 - Do not store supplier credentials in the repo during any pass.
@@ -338,8 +346,8 @@ Product Owner acceptance or correction of the Slice 11H first-six commercial gap
 
 ## Final handoff summary
 
-This Slice 11H docs-only pass records the first-six commercial gap-closure plan using the committed Slice 11G.2 evidence bundle as local reference, keeps all six products at `Candidate`, adds planning price bands and durable commercial readiness thresholds without treating them as live pricing or verification outcomes, preserves the resolved Contact/About state, avoids product import and Shopify activity, avoids credential storage, avoids actual supplier verification, and leaves `artifacts/` untracked and uncommitted.
+This Slice 11I pass reused the existing local browser workflow to refresh CJ evidence, capture public ZA-facing AliExpress comparison candidates, record DSers `No Data` outcomes, keep all six products at `Candidate`, preserve the resolved Contact/About state, avoid product import and Shopify activity, avoid credential storage, avoid theme/code changes, and leave `artifacts/` untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11H first-six commercial gap plan recorded. Approved source HTML unchanged. This docs-only pass records planning price bands and durable commercial readiness gates only, keeps all six products at `Candidate`, preserves the Contact/About resolved state, preserves the unresolved supplier-verification blocker, updates the LLD because durable catalogue/commercial readiness rules changed, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 11I targeted first-six supplier gap-closure evidence captured. Approved source HTML unchanged. This evidence-only pass keeps all six products at `Candidate`, preserves the Contact/About resolved state, preserves the unresolved supplier-verification blocker, leaves the LLD unchanged because no durable rule changed, and keeps `artifacts/` untracked and uncommitted.

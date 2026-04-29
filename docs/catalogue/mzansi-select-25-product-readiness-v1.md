@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11H docs-only first-six supplier evidence gap-closure and commercial decision plan recorded; all six products remain `Candidate` pending comparison closure and commercial sign-off  
-**Version:** 1.7  
+**Status:** Slice 11I targeted first-six supplier gap-closure evidence captured; all six products remain `Candidate` pending exact-match source confirmation and unresolved commercial gates  
+**Version:** 1.8  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, and the Slice 11H docs-only commercial gap-closure plan for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, and the Slice 11I targeted gap-closure evidence pass for the approved `25`-product launch catalogue.
 
-This pass is commercial gap-closure planning only:
+This pass is targeted supplier gap-closure evidence only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,8 +20,8 @@ This pass is commercial gap-closure planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11H uses the committed Slice 11G.2 evidence bundle as local reference only. Unknown values remain `Unconfirmed` or `TBD` where comparison, pricing, or risk acceptance was not completed.
-No product import, readiness movement beyond `Candidate`, supplier credential storage, or actual supplier verification has occurred in this pass.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+No product import, readiness movement beyond `Candidate`, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
 
@@ -231,6 +231,84 @@ Recommended next action for each first-batch product: review the captured CJ evi
 - Missing evidence still blocking closure: `DSers` / `AliExpress` comparison, final target selling price decision, estimated gross margin validation against the readiness thresholds, and compatibility-risk review
 - Replacement/rejection note: no replacement recommended at this stage
 - Promotion decision in this pass: remain `Candidate`
+
+## Slice 11I targeted gap-closure evidence summary
+
+- Slice 11I refreshed the CJ evidence for all six first-batch products using the existing local browser workflow.
+- `DSers` application pages were reachable, but the targeted queries returned `No Data` in this pass, so no DSers card-level comparison evidence was captured.
+- Public South Africa-facing `AliExpress` search results were captured for all six products and used as the comparison fallback in this pass.
+- No screenshots containing private account details were saved.
+- No product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, final legal publication, or supplier credential storage occurred in this pass.
+- No product is promoted to `Supplier verified` in this pass.
+- Planning FX assumption used for CJ landed-cost checks in this pass: `1 USD = R15.87` on `2026-04-29`.
+
+## Slice 11I product-by-product gap-closure result
+
+### Desk Cable Clips Set
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: `CJJT1251898`; ZA route still available; shipping fee `4.77 USD`; delivery `20-60 days`; package-size evidence now captured
+- AliExpress comparison outcome: public ZA-facing candidates surfaced with visible free-shipping markers, including a `10pcs`-style listing around `R63.11` and lower apparent clip candidates around `R17.21`
+- Landed-cost-to-price-band assessment: the previously captured CJ selected total of `5.00 USD` is about `R79.36`; this misses the low end of the approved band and reaches only about `33.3%` gross margin at `R119`
+- Gross-margin estimate where enough evidence exists: the captured CJ route does not meet the `45%` minimum margin gate; at least one surfaced AliExpress candidate could clear the gate if the exact pack match is verified
+- Missing evidence still blocking readiness: exact-match comparison confirmation, item-page validation of the strongest AliExpress candidate, and final quality/risk acceptance
+- Recommended status: `Candidate`
+- Next action: validate the best exact-match AliExpress candidate before any status movement
+
+### Cable Management Sleeve
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: `CJYD1921031`; ZA route still available; shipping fee `7.19 USD`; delivery `20-60 days`; package-size evidence captured
+- AliExpress comparison outcome: public ZA-facing candidates surfaced around `R132.67`, `R146.23`, and `R201.83`, generally with visible free-shipping markers
+- Landed-cost-to-price-band assessment: the captured CJ landed cost of `8.58 USD` is about `R136.19`; this fails the approved band at `R119` and reaches only about `19.4%` gross margin at `R169`
+- Gross-margin estimate where enough evidence exists: the captured CJ route does not meet the `45%` minimum margin gate; the surfaced AliExpress candidates still look margin-weak inside the approved band
+- Missing evidence still blocking readiness: cleaner exact-match source confirmation, item-page validation of the strongest candidate, and delivery confirmation for the non-CJ route
+- Recommended status: `Candidate`
+- Next action: keep replacement-watch active unless a materially cheaper exact-match source is verified
+
+### Screen Cleaning Kit
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: `CJJT1545925`; ZA route still available; shipping fee `6.73 USD`; delivery `20-60 days`; `Liquid Contains` remains visible while the description still says liquid cleaner is not included for shipping reasons
+- AliExpress comparison outcome: public ZA-facing candidates surfaced around `R100.64`, `R103.49`, and `R142.01`, generally with visible free-shipping markers
+- Landed-cost-to-price-band assessment: the previously captured CJ selected total of `9.77 USD` is about `R155.08`, which sits above the top of the approved band
+- Gross-margin estimate where enough evidence exists: the captured CJ route fails the approved band; the surfaced AliExpress candidates still do not prove the `45%` gross-margin gate inside the current band
+- Missing evidence still blocking readiness: exact non-liquid variant confirmation, item-page verification of the strongest comparison candidate, and final commercial decision on claim-risk tolerance
+- Recommended status: `Candidate`
+- Next action: confirm a fully non-liquid variant and re-test margin viability inside the approved band
+
+### Adhesive Wall Hooks Pack
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: current `VEVOR`-backed listing `CJJT2459813` still does not support the required South Africa route and still carries distribution-policy and phone-number-processing risk
+- AliExpress comparison outcome: public ZA-facing candidates surfaced with visible free-shipping markers, including lower-cost hook options around `R17.74` and higher-priced candidates around `R79.82`
+- Landed-cost-to-price-band assessment: the current CJ source remains unsuitable for the ZA decision path, so the approved band cannot be closed on the captured CJ listing
+- Gross-margin estimate where enough evidence exists: the current CJ source is not commercially usable for the approved ZA route; at least one surfaced AliExpress candidate may clear the commercial gates if exact pack parity is verified
+- Missing evidence still blocking readiness: exact 4-pack parity, item-page validation of the strongest ZA-facing replacement candidate, and load-claim / imagery match confirmation
+- Recommended status: `Candidate`
+- Next action: verify one clean ZA-shippable replacement candidate at item-page level before keeping this product in the first-six set
+
+### Sink Drain Basket / Strainer
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: `CJJT2351658`; ZA route still available; shipping fee `6.80 USD`; delivery `20-60 days`; package-size evidence `108*62*108(mm)` captured, but only `1` CJ product image remains visible in the captured data
+- AliExpress comparison outcome: public ZA-facing candidates surfaced around `R98.21`, `R125.55`, and `R183.67`, generally with visible free-shipping markers
+- Landed-cost-to-price-band assessment: the captured CJ landed cost of `8.91 USD` is about `R141.43`, which sits above the top of the approved band
+- Gross-margin estimate where enough evidence exists: the captured CJ route does not meet the approved commercial gates; the surfaced public comparisons still look weak inside the approved band
+- Missing evidence still blocking readiness: explicit sink-fit dimensions, stronger image support, and exact-match validation of the strongest alternative source
+- Recommended status: `Candidate`
+- Next action: verify a better-documented source before any status movement
+
+### Phone / Tablet Desk Stand
+
+- Current status: `Candidate`
+- Slice 11I refreshed CJ evidence: `CJSJ1253098`; ZA route still available; shipping fee `7.80 USD`; delivery `20-60 days`; package-size evidence captured
+- AliExpress comparison outcome: public ZA-facing candidates surfaced around `R132.21`, `R140.98`, and `R156.86`, generally with visible free-shipping markers
+- Landed-cost-to-price-band assessment: the captured CJ landed cost of `13.42 USD` is about `R213.01`, which sits above the top of the approved band
+- Gross-margin estimate where enough evidence exists: the captured CJ route does not meet the `45%` minimum margin gate; the surfaced comparison candidates still do not prove the approved gates inside the current band
+- Missing evidence still blocking readiness: exact-match source validation, stronger stability confirmation, and final compatibility-risk review at the chosen price point
+- Recommended status: `Candidate`
+- Next action: validate the strongest exact-match stand candidate before any status movement
 
 ### Desk Cable Clips Set
 
@@ -452,9 +530,9 @@ Recommended next action for each first-batch product: review the captured CJ evi
 ## Manual logged-in verification guide
 
 All six first-batch products remain `Candidate`.
-No actual supplier verification, product import, readiness movement, or supplier credential storage has occurred in this pass.
-This guide is preparation for a later approved manual logged-in verification pass only.
-Slice 11H does not perform any new supplier verification; it only records commercial planning thresholds against the previously captured evidence.
+No product import, readiness movement, or supplier credential storage has occurred in this pass.
+This guide is preparation for later approved supplier-evidence follow-up passes only.
+Slice 11I captures targeted supplier/commercial evidence but does not by itself promote any product to `Supplier verified`.
 
 ### Guide rules
 
@@ -983,7 +1061,7 @@ For each product, update the future execution record with:
 Catalogue readiness planning no longer carries the previous Contact/About storefront blocker, but launch readiness is still blocked by unresolved supplier evidence:
 
 - Contact/About route availability is resolved in unpublished preview evidence.
-- Supplier verification for the first batch remains unresolved because Slice 11G.2 captured CJ evidence only and Slice 11H records planning thresholds rather than closing comparison or pricing.
+- Supplier verification for the first batch remains unresolved because Slice 11I improved comparison coverage, but exact-match source confirmation and commercial-gate closure are still incomplete.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11H first-six commercial gap plan recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records planning price bands and commercial readiness gates for the first batch without treating them as live pricing or supplier verification, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11I targeted first-six supplier gap-closure evidence captured. This evidence-only pass keeps all `25` launch slots at `Candidate`, records refreshed CJ evidence and ZA-facing AliExpress comparison results for the first batch without approving import or status promotion, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
