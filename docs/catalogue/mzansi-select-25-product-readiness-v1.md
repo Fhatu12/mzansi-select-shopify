@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11K collection allocation and replacement planning recorded; all first-batch products remain `Candidate`, and replacement directions remain planning-only  
+**Status:** Slice 11L replacement candidate supplier evidence recorded; all first-batch products remain `Candidate`, and the preferred `Jewellery / accessory organiser` replacement direction remains `Candidate` only  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, and the Slice 11K docs-only collection allocation and replacement-planning update for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, and the Slice 11L replacement candidate supplier evidence pass for the approved `25`-product launch catalogue.
 
-This pass adds collection allocation and replacement planning only:
+This pass adds replacement candidate evidence only:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,7 +20,7 @@ This pass adds collection allocation and replacement planning only:
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -157,6 +157,66 @@ Planning-only controls for replacements:
 - No replacement candidate in this pass is claimed as supplier-ready, cost-ready, margin-ready, shipping-ready, image-ready, or import-ready unless existing supplier evidence already supports it.
 - All products remain `Candidate` unless existing supplier evidence supports movement.
 - Department link switching remains blocked until collection density, product quality, and visible presentation gates are met.
+
+## Slice 11L replacement candidate supplier evidence pass
+
+Replacement target reviewed in this pass:
+
+- `Adhesive Wall Hooks Pack` -> `Jewellery / accessory organiser`
+
+Evidence summary recorded in this pass:
+
+- `DSers` query attempts for `jewelry organizer box`, `jewellery organizer tray`, and `accessory organizer tray` redirected to login in this pass, so DSers comparison evidence remains `Missing`.
+- `CJdropshipping` yielded a directly captured candidate page:
+  - Product title: `Transparent Jewelry Storage Box Jewelry Organizer Dustproof Display`
+  - Supplier reference: `SKU: CJCC119463801AZ`
+  - Product cost: `$3.34`
+  - Description facts captured: `Material: Plastic`, `Specific material: Flocking`, `Storage scene: Bedroom, table`, `Scope of application: Jewelry`, `Capacity: 3 layers of jewelry storage + 2 velvet tray`
+  - Variants/options surfaced in captured page text: beige / off-white and gray transparent variants
+  - South Africa shipping option: `Not verified`
+  - Shipping cost: `Missing`
+- Public AliExpress comparison evidence was captured for:
+  - `10 Slots ( Adjustable) Plastic Jewelry Box Storage Case Craft Jewelry Organizer...`
+  - Visible item price: `ZAR15.65`
+  - Visible South Africa shipping: `ZAR66.42`
+  - Visible delivery estimate: `May 12 - 21`
+  - Visible route landed-cost signal from this comparison page: `ZAR82.07`
+  - Variants/options captured: `hot pink`, `black clasp`
+  - Specs captured: `Closure Type: Buckle`, `Inside Material: Plastic`, `High-concerned chemical: None`, `Jewelry Packaging & Display Type: Carrying Cases`
+
+Replacement recommendation recorded in this pass:
+
+- `Jewellery / accessory organiser` should replace `Adhesive Wall Hooks Pack` as the preferred `Candidate` direction.
+- `Adhesive Wall Hooks Pack` should remain the product being replaced, not recovered as the preferred path.
+- The replacement direction improves `Home & Living` fit, supports a more giftable angle, and reduces adhesive-performance claim exposure versus wall hooks.
+
+Recommended status from this pass:
+
+- `Jewellery / accessory organiser`: `replace Adhesive Wall Hooks Pack as preferred Candidate`
+- Readiness movement: keep at `Candidate`; do **not** move to `Supplier verified`
+
+Missing evidence still blocking readiness:
+
+- Logged-in `DSers` comparison evidence
+- CJ South Africa shipping option and shipping cost
+- Preferred-supplier landed cost
+- Planning target selling price band for the preferred supplier route
+- Gross-margin estimate for the preferred supplier route
+- Final storefront image suitability review
+- Final chosen variant / compartment-size fit review
+
+Next action:
+
+- Capture logged-in `DSers` comparison or equivalent exact-match comparison evidence.
+- Capture CJ South Africa shipping and landed-cost evidence for the preferred organiser route.
+- Review the final image set, selected colour, and quality-risk posture before any move beyond `Candidate`.
+
+Planning-control reminder preserved in this pass:
+
+- The captured evidence supports the replacement direction, but it does **not** prove supplier verification or import readiness.
+- Do not claim supplier, cost, margin, shipping, image, or import readiness beyond the fields actually captured above.
+- No product import is approved.
+- No collection edit or department link switching is approved.
 
 ## Current readiness summary
 
@@ -1177,4 +1237,4 @@ Catalogue readiness planning no longer carries the previous Contact/About storef
 - The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11K collection allocation and replacement planning recorded. This docs-only pass keeps all `25` launch slots at `Candidate`, records the paper-density allocation result and planning-only replacement shortlist without approving import or collection edits, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 11L replacement candidate supplier evidence recorded. This evidence-only pass keeps all current launch slots at `Candidate`, adds captured CJ and public ZA-facing AliExpress evidence for the preferred `Jewellery / accessory organiser` replacement direction, does not approve import or collection edits, preserves the Contact/About resolved state, leaves theme/code unchanged, and does not approve product import.
