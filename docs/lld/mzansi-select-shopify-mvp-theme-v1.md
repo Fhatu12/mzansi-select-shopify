@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12H collection readiness gap plan and durable launch-collection readiness rules recorded pending Product Owner acceptance or correction  
-**Version:** 1.9  
+**Status:** Slice 12J / 12J.1 preview product visibility foundation and preview-theme identity reconciliation recorded; safe targeted push completed to unpublished theme `151207542967`, while browser-level preview validation remains blocked by the storefront password wall without a reusable authenticated session  
+**Version:** 2.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -229,6 +229,27 @@ Slice 5 explicitly defers:
 - live product media, options, variants, pricing, or stock states
 - product forms, cart add routes, or checkout behaviour
 - search, cart, support, legal, or 404 template implementation
+
+## Slice 12J preview product visibility foundation responsibilities
+
+Slice 12J enables real Shopify collection and PDP data rendering inside the existing accepted collection and product layouts while keeping transactional behaviour deferred.
+
+Slice 12J scope includes:
+
+- collection intro and listing rendering from live `collection.title`, `collection.description`, and `collection.products`
+- a live product-card snippet that keeps the accepted card layout while using real product title, media, price, compare-at price when present, and product URL
+- PDP rendering from live `product.title`, `product.media`, `product.description`, selected-variant price data, and `product.options_with_values`
+- preview-only/disabled purchase controls so the page stays honest while cart and checkout wiring remain out of scope
+- safe empty/fallback states when a collection has no products or a product has limited media/content
+
+Slice 12J explicitly defers:
+
+- product import or merchandising operations
+- Shopify product creation or editing
+- Shopify collection editing
+- live Add to Cart, cart, checkout, or wishlist behaviour
+- homepage, search, cart, legal/support, or navigation rework beyond what is already accepted
+- publish or live-theme overwrite
 
 Slice 5.5 PDP QA closure note:
 
@@ -502,6 +523,8 @@ Slice 3 addition:
   - Reuses the approved section title/link pattern.
 - `snippets/static-product-card.liquid`
   - Carries static-safe product-card markup only.
+- `snippets/live-product-card.liquid`
+  - Reuses the accepted product-card contract while rendering live Shopify product title, image, price, compare-at pricing, and product-link data for collection and related-product contexts.
 - `snippets/product-badge.liquid`
   - Reuses sale/new badge rendering.
 - `snippets/price-stack.liquid`
@@ -511,6 +534,7 @@ Slice 4 addition:
 
 - `sections/main-collection-foundation.liquid`
   - Carries collection/category intro, listing foundation, and empty/no-results state switching.
+  - Slice 12J now makes this section prefer live `collection.title`, `collection.description`, and `collection.products` while keeping the accepted layout structure.
 - `snippets/empty-state.liquid`
   - Carries reusable empty collection/no-results presentation aligned to the approved design language.
 
@@ -524,7 +548,8 @@ Theme Check blocker-fix addition:
 Slice 5 addition:
 
 - `sections/main-product-foundation.liquid`
-  - Carries PDP gallery, summary, pricing, option-shell, quantity shell, support notes, detail content, and related placeholder presentation.
+  - Carries PDP gallery, summary, pricing, option-shell, quantity shell, support notes, detail content, and related presentation.
+  - Slice 12J now makes this section prefer live `product` object data while leaving purchase actions disabled and preview-only.
 
 Slice 6 addition:
 
@@ -631,13 +656,13 @@ Slice 3 note:
 
 Slice 4 note:
 
-- `templates/collection.json` is now implemented to represent a static-safe collection/category page foundation only.
-- No product-loop JavaScript, sorting, filtering, or Shopify collection data wiring was added for collection content sections.
+- `templates/collection.json` continues to host the accepted collection/category page foundation.
+- Slice 12J now makes `sections/main-collection-foundation.liquid` prefer live `collection` object data when products exist, while sorting, filtering, pagination, and broader merchandising logic remain deferred.
 
 Slice 5 note:
 
-- `templates/product.json` is now implemented to represent a static-safe product detail page foundation only.
-- No live product-object JavaScript or Shopify product/cart wiring was added for PDP content sections.
+- `templates/product.json` continues to host the accepted product detail page foundation.
+- Slice 12J now makes `sections/main-product-foundation.liquid` prefer live `product` object data while keeping Add to Cart, cart, checkout, and broader transactional behaviour deferred.
 
 Slice 6 note:
 
@@ -721,12 +746,12 @@ Constraint for implementation:
 Slice 4 implementation note:
 
 - The collection foundation now uses a cream intro panel, a homepage-aligned listing heading, the shared product-card snippet, and a reusable empty-state surface.
-- Listing content remains static-safe placeholders until dynamic collection data wiring is explicitly approved.
+- Slice 12J now replaces the previous placeholder-card path with live `collection.products` rendering where products exist, while filters, sorting, pagination, and broader merchandising logic remain deferred.
 
 Slice 5 implementation note:
 
-- The PDP foundation uses a gallery-first layout, accepted price hierarchy, trusted-support cues, and related placeholder cards aligned to the homepage and collection visual language.
-- PDP content remains static-safe placeholders until dynamic product data wiring is explicitly approved.
+- The PDP foundation uses a gallery-first layout, accepted price hierarchy, preview-safe support cues, and related product cards aligned to the homepage and collection visual language.
+- Slice 12J now replaces the previous static-safe PDP shell with live `product` object rendering for title, media, price, description, and option values while keeping purchase actions disabled and preview-only.
 
 ## Durable Shopify collection taxonomy
 
@@ -1399,6 +1424,17 @@ Theme Check blocker-fix validation state:
 - RemoteAsset warnings for Google Fonts and remote image URLs may remain and should be reported, not cleaned up, unless separately approved.
 - No Shopify login, theme list, theme push, preview theme creation, publish, product import, or checkout change should occur during this blocker-fix pass.
 
+Slice 12J validation note:
+
+- `shopify theme check --path . --fail-level error` returned warning-only output after the Slice 12J changes; no slice-specific errors remained after the related-products markup fix.
+- Repo-level Theme Check warnings still include remote assets plus warning noise from files stored under `artifacts/`; those were not changed in Slice 12J.
+- Safe CLI validation showed the authenticated store theme list included live theme `148914077879` (`Horizon`), unpublished theme `151207542967` (`Mzansi Select MVP Preview`), and development theme `151101407415`, while the Product Owner-provided push target `150454599863` was not present.
+- Safe identity reconciliation therefore treated `151207542967` as the correct unpublished preview-validation target and used it for a targeted push of `assets/theme.css`, `sections/main-collection-foundation.liquid`, `sections/main-product-foundation.liquid`, and `snippets/live-product-card.liquid`.
+- Post-push theme listing confirmed the live theme metadata remained unchanged and the pushed target remained unpublished.
+- Unauthenticated HTTP checks against homepage, launch collection, and PDP preview URLs still served the storefront password wall, so route-level browser validation remains blocked by authenticated preview access rather than by theme identity.
+- A no-state-export Playwright reuse attempt against the local Chrome default profile did not yield a reusable authenticated session in this pass, so no browser screenshots of unlocked collection/PDP routes were captured.
+- Evidence folder for the identity reconciliation, push, and access-gap checks: `artifacts/platform/slice-12j-1-preview-theme-reconciliation-20260430-111007/`.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -1412,9 +1448,9 @@ Theme Check blocker-fix validation state:
 - QA evidence capture on Windows PowerShell may require safer quoting or split-string checks in later review passes.
 - Homepage cards, promo content, and arrivals content still need an approved strategy for later Shopify data replacement without changing the approved visual contract.
 - Shopify preview and publish remain unapproved after the accepted Slice 3.5 QA review.
-- Collection placeholders, empty-state copy, and browse behaviors still need an approved strategy for later Shopify collection data replacement without changing the approved visual contract.
+- Collection filtering, sorting, pagination, and richer browse controls still need an approved strategy beyond the Slice 12J live product-card rendering path.
 - `24` non-blocking `RemoteAsset` warnings remain open after Slice 9.5 QA validation and require separate Product Owner approval before cleanup.
-- PDP placeholders, option-shell labels, support notes, and related content still need an approved strategy for later Shopify product data replacement without changing the approved visual contract.
+- PDP cart, checkout, wishlist, richer media interaction, and any merchandising logic beyond the Slice 12J live product-data path still need explicit approval.
 - Search placeholder queries, result ranking, browse recovery behaviours, and no-results merchandising still need an approved strategy for later Shopify search data replacement without changing the approved visual contract.
 - Cart placeholder line items, subtotal logic, drawer behaviour, checkout actions, and recovery/upsell behaviours still need an approved strategy for later Shopify cart data replacement without changing the approved visual contract.
 - Legal/support placeholder policy wording, final legal wording/sign-off, live policy publication, live support/contact/legal-policy behaviour, live contact details, backend support handling, and publication readiness still need explicit approval before launch use.
@@ -1424,6 +1460,7 @@ Theme Check blocker-fix validation state:
 - Slice 11A taxonomy guidance now supports a four-department launch-first catalogue model with three expansion-ready department candidates, and Slice 11B now records the approved `25`-slot planning matrix without approving import or live catalogue operations.
 - Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup, collection-density/presentation readiness, and later Product Owner approval for exposure.
 - Contact/About route availability was later reconciled as resolved in unpublished preview evidence through Manual Track A.1, so it no longer belongs in the active launch blocker set.
+- The local Slice 12J theme now supports live collection/PDP rendering, the correct unpublished preview theme has been reconciled as `151207542967`, and the remaining validation blocker is authenticated storefront access through the password wall.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1464,4 +1501,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 12H collection readiness gap plan recorded. Approved source HTML unchanged. This docs-only pass updates durable launch-collection readiness rules, preserves the approved visual/navigation structure, leaves theme/code unchanged, keeps product import and live commerce wiring unapproved, and keeps live catalogue behaviour deferred within the agreed scope.
+**Footer Standard For This Pass:** Slice 12J / 12J.1 preview product visibility foundation recorded. Approved source HTML unchanged. This pass updates durable collection/PDP rendering behaviour so the local theme prefers live Shopify product data where available, reconciles the safe unpublished preview target as `151207542967`, records a targeted unpublished push without publish or live overwrite, preserves the approved visual/navigation structure, and leaves product import, publish, and live overwrite unapproved.

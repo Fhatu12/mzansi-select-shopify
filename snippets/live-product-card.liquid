@@ -1,0 +1,47 @@
+{% assign card_variant = product.selected_or_first_available_variant %}
+{% assign card_product_url = product.url %}
+{% if collection_context != blank %}
+  {% assign card_product_url = product.url | within: collection_context %}
+{% endif %}
+
+{% assign card_price_now = card_variant.price | money_without_trailing_zeros %}
+{% assign card_price_was = blank %}
+{% assign card_price_save = blank %}
+{% if card_variant.compare_at_price > card_variant.price %}
+  {% assign card_price_was = card_variant.compare_at_price | money_without_trailing_zeros %}
+  {% assign card_price_delta = card_variant.compare_at_price | minus: card_variant.price %}
+  {% assign card_price_percent = card_price_delta | times: 100 | divided_by: card_variant.compare_at_price %}
+  {% assign card_price_save = card_price_percent | append: '% off' %}
+{% endif %}
+
+<div class="product-card">
+  <div class="prod-img">
+    <a href="{{ card_product_url }}" aria-label="View {{ product.title }}">
+      {% if product.featured_media %}
+        <img
+          src="{{ product.featured_media | image_url: width: 600 }}"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
+      {% endif %}
+    </a>
+    {% if card_variant.compare_at_price > card_variant.price %}
+      {% render 'product-badge', label: 'Sale', tone: 'sale' %}
+    {% endif %}
+    <button class="p-wish" type="button" aria-label="Wishlist remains deferred for {{ product.title }}" disabled>
+      <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="prod-info">
+    <div class="p-type">{{ product.type | default: product.vendor | default: 'Preview product' }}</div>
+    <div class="p-name"><a href="{{ card_product_url }}">{{ product.title }}</a></div>
+    {% render 'price-stack', price_now: card_price_now, price_was: card_price_was, price_save: card_price_save %}
+    <a class="add-btn" href="{{ card_product_url }}">{{ cta_label | default: 'View product' }}</a>
+  </div>
+</div>

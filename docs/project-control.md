@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12I preview catalogue staging status recorded; preview-store product visibility remains blocked by static-safe collection and PDP foundations, Contact/About remains resolved, and launch department link switching remains unapproved  
+**Status:** Slice 12J.1 preview theme identity reconciliation and safe validation push recorded; collection and PDP templates now prefer real Shopify data in-theme, the correct unpublished preview theme was reconciled as `151207542967` (`Mzansi Select MVP Preview`), a targeted unpublished push completed safely, storefront browser validation remains blocked by the password wall without a reusable authenticated session, Contact/About remains resolved, and launch department link switching remains unapproved  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,14 +13,14 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12I preview catalogue staging for visible products
+- Active slice: Slice 12J.1 preview theme identity reconciliation and safe validation push
 - Active owner: Product Manager
 - Next owner: Product Owner
-- Last accepted slice: Slice 11R Jewellery organiser supplier proof capture status
-- Last committed slice: Slice 11R Jewellery organiser supplier proof capture status (`cc3317d2099c0d7f9d334b6e62cd2d0da1392744`)
+- Last accepted slice: Slice 12I preview catalogue staging blocked-status update
+- Last committed slice: Slice 12I preview catalogue staging blocked-status update (`2f0423373b499f2f6e9fff797b6cedbed79c31fc`)
 - Current blockers:
-  - Slice 12I confirms that the current preview theme still uses static-safe collection and PDP foundations, so Shopify product staging alone would not make live product data visible in the unpublished preview storefront
-  - Preview-visible catalogue review remains blocked until a later approved slice introduces live product/catalogue visibility or the Product Owner explicitly approves an alternate admin-only review path
+  - Slice 12J removes the local static-safe collection/PDP rendering blocker and Slice 12J.1 reconciles the correct unpublished preview theme target as `151207542967`, but meaningful browser-level preview review remains blocked by the storefront password wall because no reusable authenticated session was available in this pass
+  - Meaningful preview catalogue review now depends on existing Shopify product records, correct collection membership, and authenticated inspection against the already-pushed unpublished preview theme
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
   - No product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - Slice 11R keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
@@ -37,21 +37,21 @@ Mzansi Select Shopify MVP Theme Conversion
 - Deferred items:
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
-  - Dynamic product/catalogue wiring remains deferred and unapproved
+  - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved supplier/commercial readiness across the planned catalogue
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved supplier/commercial readiness, thin collection readiness, and the remaining authenticated preview-access gap for browser-level collection/PDP review
 - Product import status: Not approved and not started
-- Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
+- Shopify push/publish status: Safe targeted push completed in this pass to unpublished preview theme `151207542967` (`Mzansi Select MVP Preview`) for `assets/theme.css`, `sections/main-collection-foundation.liquid`, `sections/main-product-foundation.liquid`, and `snippets/live-product-card.liquid`; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-30 during Slice 12I preview catalogue staging for visible products
+- Last tracker update: 2026-04-30 during Slice 12J.1 preview theme identity reconciliation and safe validation push
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged with reason - Slice 12I records preview-catalogue staging status only and does not change durable theme, design, or catalogue-readiness rules.
+- LLD status: Updated with reason - Slice 12J changes durable collection/PDP preview rendering behaviour and records preview-only use of live Shopify collection/product data while purchase actions remain deferred.
 
 ## Current active pass
 
-Slice 12I preview catalogue staging for visible products
+Slice 12J.1 preview theme identity reconciliation and safe validation push
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -1174,6 +1174,71 @@ Safety confirmations:
 - No supplier credential storage
 - `artifacts/` remains untracked/uncommitted
 
+## Slice 12J preview product visibility foundation (bounded theme implementation)
+
+Objective:
+
+- Replace the static-safe collection and PDP preview foundations with the smallest safe theme changes needed so the unpublished/password-protected preview theme can render real Shopify collection products and real Shopify PDP product data.
+
+Prerequisite commit reviewed:
+
+- Slice 12I accepted and committed at `2f0423373b499f2f6e9fff797b6cedbed79c31fc`
+
+Root cause confirmed in this pass:
+
+- `sections/main-collection-foundation.liquid` used section settings plus eight hardcoded `static-product-card` renders instead of `collection.title`, `collection.description`, or `collection.products`.
+- `sections/main-product-foundation.liquid` used section settings plus hardcoded media, badges, pricing, option chips, and related cards instead of live `product` object data.
+- Because those sections were disconnected from the native Shopify `collection` and `product` objects, real product records already present in Shopify could not appear meaningfully in preview collection routes or PDP routes.
+
+Theme implementation recorded in this pass:
+
+- `sections/main-collection-foundation.liquid` now prefers live `collection.title`, `collection.description`, and `collection.products`, while keeping the existing collection-shell layout and a safe empty-state path when no products exist.
+- `snippets/live-product-card.liquid` was added so collection pages can keep the accepted product-card visual contract while rendering real product titles, images, prices, compare-at pricing when present, and real product links.
+- `sections/main-product-foundation.liquid` now prefers live `product.title`, `product.media`, `product.description`, `product.options_with_values`, and selected-variant price data, while keeping purchase controls explicitly disabled and preview-only.
+- `assets/theme.css` was updated minimally for disabled preview-only controls, live-product placeholder SVG treatment, and rich-text spacing inside the product description area.
+
+Validation results recorded in this pass:
+
+- `shopify theme check --path . --fail-level error` returned warning-only output after the Slice 12J Liquid changes; no slice-specific Theme Check errors remained after the related-products markup fix.
+- Remaining Theme Check warnings are repo-level legacy warnings for remote assets plus warning noise caused by files under `artifacts/`; they were not changed in this pass.
+- `shopify theme list` returned the currently authenticated store theme set:
+  - live `148914077879` (`Horizon`)
+  - unpublished `151207542967` (`Mzansi Select MVP Preview`)
+  - development `151101407415`
+- Product Owner-provided preview theme id `150454599863` was not present on the authenticated store and was therefore not safe to use.
+- Safe identity reconciliation confirmed that unpublished theme `151207542967` (`Mzansi Select MVP Preview`) was the correct preview-validation target because it exists on `dropshippoc.myshopify.com`, is not the live theme, and is the only unpublished preview theme currently listed.
+- `shopify theme push --store dropshippoc.myshopify.com --theme 151207542967 --only assets/theme.css --only sections/main-collection-foundation.liquid --only sections/main-product-foundation.liquid --only snippets/live-product-card.liquid --json` completed successfully.
+- Post-push theme listing confirmed the live theme remained `148914077879` (`Horizon`) and the pushed target remained unpublished `151207542967` (`Mzansi Select MVP Preview`).
+
+Preview-validation caveat recorded in this pass:
+
+- Unauthenticated HTTP checks against the reconciled preview routes returned HTTP `200` but still served the storefront password wall for homepage, launch collection, and PDP preview URLs.
+- A no-state-export Playwright reuse attempt against the local Chrome default profile did not yield a reusable authenticated storefront session in this pass, so browser-level confirmation of live collection cards and live PDP data remains blocked by authenticated preview access rather than by theme identity.
+- Evidence for the identity reconciliation, push, and preview-access gap was written to `artifacts/platform/slice-12j-1-preview-theme-reconciliation-20260430-111007/`.
+
+Preview-only controls preserved in this pass:
+
+- Live collection/PDP data rendering is now enabled locally in the theme, but no product import, product edit, or collection edit was performed.
+- Purchase actions remain disabled and preview-only; no Add to Cart, wishlist, cart, or checkout behaviour was enabled.
+- No delivery promise, urgency claim, fake discount, unsupported scarcity claim, `Mother's Day` promise, or final launch approval was introduced in this pass.
+
+Safety confirmations:
+
+- No Shopify product creation
+- No Shopify product edits
+- No Shopify collection edits
+- No product import
+- No Shopify publish
+- No live theme overwrite
+- No checkout customization
+- No final legal publication
+- No supplier verification
+- No `Supplier verified` promotion
+- No final product approval
+- No final replacement approval for `Jewellery / accessory organiser`
+- No secret exposure
+- `artifacts/` remains untracked/uncommitted
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -1439,7 +1504,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 12I preview-catalogue staging status update, followed by an approved decision on whether to keep preview catalogue staging blocked until live collection/PDP visibility is approved or to authorize a bounded follow-up pass that enables real preview-visible product rendering.
+Product Owner review of the Slice 12J.1 identity reconciliation and safe push evidence, followed by either an approved authenticated preview-validation path for `151207542967` or explicit acceptance that browser-level collection/PDP confirmation remains blocked by the current storefront password-access gap.
 
 ## Decisions made
 
@@ -1476,6 +1541,7 @@ Product Owner acceptance or correction of the Slice 12I preview-catalogue stagin
 - Slice 11P is accepted and committed at `6f4f83923f34bf9d5b39538329cc136b75bbfb89`.
 - Slice 11Q is accepted and committed at `0457a5faada646d8aab78a7565596134968f65a4`.
 - Slice 11R is accepted and committed at `cc3317d2099c0d7f9d334b6e62cd2d0da1392744`.
+- Slice 12I is accepted and committed at `2f0423373b499f2f6e9fff797b6cedbed79c31fc`.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
@@ -1492,6 +1558,8 @@ Product Owner acceptance or correction of the Slice 12I preview-catalogue stagin
 - Slice 11Q confirms that current supplier proof is still too incomplete to move the organiser route into formal replacement approval review or `Supplier verified` review, even though the AliExpress adjustable-box route remains the preferred supplier-path candidate.
 - Slice 11R confirms that the supplier proof capture pack remains incomplete, that the exact AliExpress item reference is still missing, and that the organiser route must remain `Candidate` only.
 - Slice 12I confirms that the current preview theme still uses static-safe collection and PDP foundations, so Shopify preview-data staging would not make real products visibly reviewable in the unpublished storefront without a later approved live-catalogue visibility step.
+- Slice 12J changes the local theme so collection pages now prefer live `collection` object data and PDP pages now prefer live `product` object data while purchase actions remain disabled and preview-only.
+- Slice 12J.1 reconciled the correct unpublished preview theme as `151207542967` and completed a safe targeted push there without changing the live theme.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -1539,10 +1607,13 @@ Product Owner acceptance or correction of the Slice 12I preview-catalogue stagin
 16. Slice 11P DSers comparison and commercial assessment for `Jewellery / accessory organiser`: completed and committed.
 17. Slice 11Q current supplier proof and formal replacement evidence closure for `Jewellery / accessory organiser`: completed and committed.
 18. Slice 11R supplier proof capture status for `Jewellery / accessory organiser`: completed and committed.
-19. Slice 12I preview catalogue staging for visible products: completed in this pass with no Shopify mutation because the preview theme still renders static-safe collection/PDP placeholder content.
-20. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
-21. Approve a bounded live collection/PDP visibility pass or alternate preview-data rendering approach before attempting any further preview-catalogue staging.
-22. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+19. Slice 12I preview catalogue staging blocked-status update: completed and committed.
+20. Slice 12J preview product visibility foundation: completed locally in this pass.
+21. Slice 12J.1 reconciled the correct unpublished preview theme target as `151207542967` and completed the safe targeted push there.
+22. Capture authenticated preview evidence for at least one launch collection route and one product route on `151207542967`, or explicitly record that acceptance remains blocked by the storefront password-access gap.
+23. Confirm whether existing Shopify product/collection membership is sufficient for preview review or whether a separate bounded staging pass is still required.
+24. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
+25. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
 
 ## Handoff queue
 
@@ -1557,13 +1628,15 @@ Product Owner acceptance or correction of the Slice 12I preview-catalogue stagin
 - Use `artifacts/platform/slice-12g-launch-collection-preview-density-20260429-173855/` as the current unpublished-preview collection route and density evidence bundle.
 - Use `artifacts/supplier-verification/slice-11l/jewellery-accessory-organiser-evidence-summary.md` as the current replacement-direction evidence summary for the preferred `Adhesive Wall Hooks Pack` replacement path.
 - Use `artifacts/supplier-verification/slice-11n/jewellery-accessory-organiser-evidence-summary.md` as the current supplier-evidence-closure summary for the organiser replacement route.
+- Use the Slice 12J local theme changes before approving any later preview-data staging; collection and PDP routes now prefer live Shopify data where present, while purchase actions remain disabled and preview-only.
+- Treat the unpublished preview theme identity mismatch as reconciled: `150454599863` was not present on the authenticated store, while `151207542967` (`Mzansi Select MVP Preview`) is the safe unpublished preview target now used for validation push.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and direct-URL exposure posture.
-- Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current preview-state collection presentation as department-appropriate, or a later approved pass replaces the generic static-safe collection heading/presentation with department-specific collection content.
+- Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and preview presentation as department-appropriate after the Slice 12J live-data rendering path is validated on the approved unpublished theme.
 - Use the Slice 12H density gates when evaluating any later launch-collection exposure decision: minimum preview threshold `3`, preferred public launch threshold `5`, and no switch while any launch collection remains at `1` product.
 - Treat the Slice 11K replacement shortlist as planning-only except where Slice 11L now adds product-specific evidence; even there, the preferred `Jewellery / accessory organiser` candidate must remain `Candidate` until shipping, landed cost, and comparison closure are complete.
 - Use the Slice 11R supplier-proof capture status before allowing `Jewellery / accessory organiser` to move into formal replacement approval review or to formally replace `Adhesive Wall Hooks Pack` in the live launch catalogue matrix.
-- Use the Slice 12I preview-staging status before approving any Shopify product-data staging intended for visible storefront review; the current theme still renders static-safe placeholders rather than live product data.
+- Use the Slice 12J preview-rendering foundation before approving any later Shopify product-data staging intended for visible storefront review; the local theme now prefers live Shopify collection/PDP data where present, the safe push target is reconciled, and the remaining blocker is authenticated storefront preview access.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -1572,8 +1645,8 @@ Product Owner acceptance or correction of the Slice 12I preview-catalogue stagin
 
 ## Final handoff summary
 
-This Slice 12I docs-only assessment pass records that storefront password protection remains active and the preview theme remains unpublished, but the current collection and PDP templates are still static-safe foundations that do not surface live product data. As a result, no Shopify preview-data mutation was performed because it would not make the preferred products visibly reviewable in the unpublished storefront. Contact/About remains resolved, supplier/product readiness remains the active blocker, a later approved live-visibility or alternate preview-data pass is still required before catalogue-card/PDP review becomes meaningful, and `artifacts/` remains untracked and uncommitted.
+This Slice 12J / 12J.1 implementation pass records that the local collection and PDP foundations now prefer real Shopify collection/product data while keeping purchase actions preview-only and disabled, that the correct unpublished preview theme was reconciled as `151207542967` (`Mzansi Select MVP Preview`), and that a safe targeted push completed there without touching the live theme. Contact/About remains resolved, supplier/product readiness remains the active launch blocker set, collection-density and merchandising gates still apply, browser-level preview validation is still blocked by the storefront password-access gap, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12I preview catalogue staging status recorded. Approved source HTML unchanged. This docs-only pass records that the preview theme still uses static-safe collection/PDP foundations, therefore no Shopify preview-data mutation was performed, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12J.1 preview theme identity reconciliation and safe validation push recorded. Approved source HTML unchanged. This pass keeps the Slice 12J live collection/PDP rendering foundation, reconciles the safe unpublished preview target as `151207542967`, records the successful targeted push there without publish or live overwrite, updates the LLD because durable preview-validation behaviour changed, and keeps `artifacts/` untracked and uncommitted.
