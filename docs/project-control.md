@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11R Jewellery organiser supplier proof capture status recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, no formal final replacement approval is recorded, Contact/About remains resolved, and launch department link switching remains unapproved  
+**Status:** Slice 12I preview catalogue staging status recorded; preview-store product visibility remains blocked by static-safe collection and PDP foundations, Contact/About remains resolved, and launch department link switching remains unapproved  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,12 +13,14 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 11R Jewellery organiser supplier proof capture status
+- Active slice: Slice 12I preview catalogue staging for visible products
 - Active owner: Product Manager
 - Next owner: Product Owner
-- Last accepted slice: Slice 11Q Jewellery organiser supplier proof gap
-- Last committed slice: Slice 11Q Jewellery organiser supplier proof gap (`0457a5faada646d8aab78a7565596134968f65a4`)
+- Last accepted slice: Slice 11R Jewellery organiser supplier proof capture status
+- Last committed slice: Slice 11R Jewellery organiser supplier proof capture status (`cc3317d2099c0d7f9d334b6e62cd2d0da1392744`)
 - Current blockers:
+  - Slice 12I confirms that the current preview theme still uses static-safe collection and PDP foundations, so Shopify product staging alone would not make live product data visible in the unpublished preview storefront
+  - Preview-visible catalogue review remains blocked until a later approved slice introduces live product/catalogue visibility or the Product Owner explicitly approves an alternate admin-only review path
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
   - No product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - Slice 11R keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
@@ -42,14 +44,14 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify push approved in this pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-29 during Slice 11R Jewellery organiser supplier proof capture status
+- Last tracker update: 2026-04-30 during Slice 12I preview catalogue staging for visible products
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged with reason - Slice 11R records product-specific supplier proof gaps and does not create a new durable catalogue policy.
+- LLD status: Unchanged with reason - Slice 12I records preview-catalogue staging status only and does not change durable theme, design, or catalogue-readiness rules.
 
 ## Current active pass
 
-Slice 11R Jewellery organiser supplier proof capture status
+Slice 12I preview catalogue staging for visible products
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -1086,6 +1088,92 @@ Safety confirmations:
 - No final replacement approval
 - `artifacts/` remains untracked/uncommitted
 
+## Slice 12I preview catalogue staging for visible products (bounded preview-only)
+
+Objective:
+
+- Determine the minimum safe action needed to make a controlled set of `8-12` products reviewable in the unpublished/password-protected preview store across the four launch collections.
+
+Prerequisite commit reviewed:
+
+- Slice 11R committed at `cc3317d2099c0d7f9d334b6e62cd2d0da1392744`
+
+Safe inspection results recorded in this pass:
+
+- Shopify CLI remained available for safe read-only checks.
+- Preview theme `151207542967` remains present and `unpublished`.
+- Storefront root checks still indicate password protection is active, which reduces general-public exposure risk.
+- Read-only Shopify Admin inspection confirmed existing Shopify product records for at least:
+  - `Under Cabinet Paper Towel Holder`
+  - `Adjustable Laptop Stand`
+  - `Multi-Use Storage Organizer Bin`
+- Read-only Shopify Admin inspection confirmed the four launch collections remain present:
+  - `Home & Living`
+  - `Kitchen & Storage`
+  - `Office & Desk`
+  - `Tech Accessories`
+- Existing collection-density evidence from earlier accepted slices remains the current working reference:
+  - `Home & Living`: `1`
+  - `Kitchen & Storage`: `4`
+  - `Office & Desk`: `1`
+  - `Tech Accessories`: `1`
+
+Preview-visibility blocker recorded in this pass:
+
+- Repo inspection confirmed that `sections/main-collection-foundation.liquid` still renders a fixed static-safe `8`-card placeholder grid and generic collection heading content rather than live collection-product data.
+- Repo inspection confirmed that `sections/main-product-foundation.liquid` still renders a static-safe PDP shell and does not consume live Shopify product title, media, price, or variant data.
+- Because live catalogue/PDP visibility remains deferred in the theme, Shopify product or collection data staging would not reliably make the preferred products visible in the unpublished preview storefront.
+- For that reason, no Shopify product or collection mutation was performed in this pass.
+
+Manual preview-staging checklist recorded for a later approved pass:
+
+- Keep storefront password protection ON and keep preview theme `151207542967` unpublished before any later preview-data staging attempt.
+- Do not stage `Jewellery / accessory organiser`; it remains parked as `Candidate` only until exact supplier/item proof exists.
+- Do not use `Adhesive Wall Hooks Pack` as preview filler unless the Product Owner explicitly accepts that temporary exception.
+- Once live collection/PDP visibility is approved, start with the preferred preview set:
+  - `Desk Cable Clips Set`
+  - `Cable Management Sleeve`
+  - `Screen Cleaning Kit`
+  - `Sink Drain Basket / Strainer`
+  - `Phone / Tablet Desk Stand`
+  - `Multi-Use Storage Organizer Bin`
+  - `Adjustable Laptop Stand`
+  - `Under Cabinet Paper Towel Holder`
+- If additional preview density is still needed after that, use planning candidates already recorded in the catalogue matrix:
+  - `Sofa / Bedside Pocket Organiser`
+  - `Space-Saving Hanger Set`
+  - `3-in-1 Charging Cable`
+- Recommended collection assignments for that later pass:
+  - `Home & Living`: `Sofa / Bedside Pocket Organiser`, `Space-Saving Hanger Set`
+  - `Kitchen & Storage`: `Sink Drain Basket / Strainer`, `Under-Cabinet Paper Towel Holder`
+  - `Office & Desk`: `Desk Cable Clips Set`, `Cable Management Sleeve`, `Phone / Tablet Desk Stand`, `Adjustable Laptop Stand`, `Multi-Use Storage Organiser Bin`
+  - `Tech Accessories`: `Screen Cleaning Kit`, `3-in-1 Charging Cable`
+
+Preview-only controls preserved in this pass:
+
+- Products in the preview set remain `Candidate` only.
+- No product in this pass is `Supplier verified`, final launch approved, import approved, or final-price approved.
+- No delivery promise, urgency claim, `Mother's Day` promise, `Deals` discount claim, or `Best Sellers` claim is approved through this pass.
+
+Safety confirmations:
+
+- No Shopify product creation
+- No Shopify product edits
+- No Shopify collection edits
+- No department link switching
+- No product import
+- No Shopify push
+- No publish
+- No live theme overwrite
+- No checkout customization
+- No dynamic catalogue wiring
+- No PDP Add to Cart wiring
+- No cart wiring
+- No final legal publication
+- No theme/code changes
+- No supplier credential storage
+- `artifacts/` remains untracked/uncommitted
+
 ## Source of truth
 
 The approved frontend source of truth for this project is `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`.
@@ -1351,7 +1439,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner acceptance or correction of the Slice 11R supplier-proof capture status update, followed by an approved decision on whether fresh supplier-proof capture is complete enough to move `Jewellery / accessory organiser` into formal replacement approval review while it still remains blocked from `Supplier verified`.
+Product Owner acceptance or correction of the Slice 12I preview-catalogue staging status update, followed by an approved decision on whether to keep preview catalogue staging blocked until live collection/PDP visibility is approved or to authorize a bounded follow-up pass that enables real preview-visible product rendering.
 
 ## Decisions made
 
@@ -1387,6 +1475,7 @@ Product Owner acceptance or correction of the Slice 11R supplier-proof capture s
 - Slice 11O is accepted and committed at `fe6e64c0294488491ceef15d0ca0259f82bf03de`.
 - Slice 11P is accepted and committed at `6f4f83923f34bf9d5b39538329cc136b75bbfb89`.
 - Slice 11Q is accepted and committed at `0457a5faada646d8aab78a7565596134968f65a4`.
+- Slice 11R is accepted and committed at `cc3317d2099c0d7f9d334b6e62cd2d0da1392744`.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
@@ -1402,6 +1491,7 @@ Product Owner acceptance or correction of the Slice 11R supplier-proof capture s
 - Slice 11P keeps the organiser route at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records the preferred planning band as `R179-R229`, and confirms that incomplete `DSers` evidence does not block `Candidate` status.
 - Slice 11Q confirms that current supplier proof is still too incomplete to move the organiser route into formal replacement approval review or `Supplier verified` review, even though the AliExpress adjustable-box route remains the preferred supplier-path candidate.
 - Slice 11R confirms that the supplier proof capture pack remains incomplete, that the exact AliExpress item reference is still missing, and that the organiser route must remain `Candidate` only.
+- Slice 12I confirms that the current preview theme still uses static-safe collection and PDP foundations, so Shopify preview-data staging would not make real products visibly reviewable in the unpublished storefront without a later approved live-catalogue visibility step.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -1448,10 +1538,11 @@ Product Owner acceptance or correction of the Slice 11R supplier-proof capture s
 15. Slice 11O supplier-path decision for `Jewellery / accessory organiser`: completed and committed.
 16. Slice 11P DSers comparison and commercial assessment for `Jewellery / accessory organiser`: completed and committed.
 17. Slice 11Q current supplier proof and formal replacement evidence closure for `Jewellery / accessory organiser`: completed and committed.
-18. Slice 11R supplier proof capture status for `Jewellery / accessory organiser`: completed in this pass.
-19. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
-20. Improve launch collection density and department-specific collection-page presentation without using filler products.
-21. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+18. Slice 11R supplier proof capture status for `Jewellery / accessory organiser`: completed and committed.
+19. Slice 12I preview catalogue staging for visible products: completed in this pass with no Shopify mutation because the preview theme still renders static-safe collection/PDP placeholder content.
+20. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
+21. Approve a bounded live collection/PDP visibility pass or alternate preview-data rendering approach before attempting any further preview-catalogue staging.
+22. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
 
 ## Handoff queue
 
@@ -1472,6 +1563,7 @@ Product Owner acceptance or correction of the Slice 11R supplier-proof capture s
 - Use the Slice 12H density gates when evaluating any later launch-collection exposure decision: minimum preview threshold `3`, preferred public launch threshold `5`, and no switch while any launch collection remains at `1` product.
 - Treat the Slice 11K replacement shortlist as planning-only except where Slice 11L now adds product-specific evidence; even there, the preferred `Jewellery / accessory organiser` candidate must remain `Candidate` until shipping, landed cost, and comparison closure are complete.
 - Use the Slice 11R supplier-proof capture status before allowing `Jewellery / accessory organiser` to move into formal replacement approval review or to formally replace `Adhesive Wall Hooks Pack` in the live launch catalogue matrix.
+- Use the Slice 12I preview-staging status before approving any Shopify product-data staging intended for visible storefront review; the current theme still renders static-safe placeholders rather than live product data.
 - Do not expose expansion-ready department links as launch destinations until a later approved expansion pass.
 - Do not store supplier credentials in the repo during any pass.
 - Capture all required supplier evidence before recommending any status movement beyond `Candidate`.
@@ -1480,8 +1572,8 @@ Product Owner acceptance or correction of the Slice 11R supplier-proof capture s
 
 ## Final handoff summary
 
-This Slice 11R docs-only assessment pass records that `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate` for `Adhesive Wall Hooks Pack`, that the AliExpress adjustable-box route remains the preferred supplier-path candidate, and that the current supplier proof capture pack is still too incomplete to support formal replacement approval review or `Supplier verified` movement. The prior planning-margin view remains preserved, but the exact item reference, current price/shipping, delivery estimate, evidence timestamp, dimensions, image suitability, and risk notes still require fresh proof capture. Contact/About remains resolved, supplier/product readiness remains the active blocker, and `artifacts/` remains untracked and uncommitted.
+This Slice 12I docs-only assessment pass records that storefront password protection remains active and the preview theme remains unpublished, but the current collection and PDP templates are still static-safe foundations that do not surface live product data. As a result, no Shopify preview-data mutation was performed because it would not make the preferred products visibly reviewable in the unpublished storefront. Contact/About remains resolved, supplier/product readiness remains the active blocker, a later approved live-visibility or alternate preview-data pass is still required before catalogue-card/PDP review becomes meaningful, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 11R Jewellery organiser supplier proof capture status recorded. Approved source HTML unchanged. This docs-only pass keeps `Jewellery / accessory organiser` at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records that the supplier proof capture pack remains incomplete for formal replacement approval or `Supplier verified` movement, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12I preview catalogue staging status recorded. Approved source HTML unchanged. This docs-only pass records that the preview theme still uses static-safe collection/PDP foundations, therefore no Shopify preview-data mutation was performed, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and keeps `artifacts/` untracked and uncommitted.

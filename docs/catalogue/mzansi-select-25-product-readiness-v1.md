@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 11R Jewellery organiser supplier proof capture status recorded; `Jewellery / accessory organiser` remains the preferred replacement-direction `Candidate`, no formal final replacement approval is recorded, and no product is `Supplier verified`  
+**Status:** Slice 12I preview catalogue staging status recorded; preview-store product visibility remains blocked by static-safe collection and PDP foundations, and no product is `Supplier verified`  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, the Slice 11O Jewellery organiser viability and supplier-path decision, the Slice 11P Jewellery organiser DSers comparison and commercial assessment, the Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure, and the Slice 11R Jewellery organiser supplier proof capture status for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, the Slice 11O Jewellery organiser viability and supplier-path decision, the Slice 11P Jewellery organiser DSers comparison and commercial assessment, the Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure, the Slice 11R Jewellery organiser supplier proof capture status, and the Slice 12I preview catalogue staging status for the approved `25`-product launch catalogue.
 
 This pass adds a docs-only supplier-proof capture status update for the preferred replacement direction:
 
@@ -20,7 +20,7 @@ This pass adds a docs-only supplier-proof capture status update for the preferre
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Slice 12I records that the current preview theme still renders static-safe collection and PDP placeholder content, so preview-data staging in Shopify would not make live products visibly reviewable in the unpublished storefront until a later approved live-visibility step exists. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -683,6 +683,68 @@ Formal replacement approval blockers still open:
 - return/quality risk review
 - compliance/claim risk review
 - final Product Owner decision
+
+## Slice 12I preview catalogue staging status
+
+Preview-staging status recorded in this pass:
+
+- `Jewellery / accessory organiser` remains parked as the preferred replacement-direction `Candidate` and must not be used for preview staging until exact supplier/item proof exists.
+- `Adhesive Wall Hooks Pack` remains replacement-directed / deferred and should not be used as temporary preview filler without explicit Product Owner approval.
+- Products intended for preview visibility remain `Candidate` only and are not treated as supplier-verified, final launch-approved, import-approved, or final-price-approved.
+- No product in this pass may be treated as having an approved delivery promise or approved replacement decision.
+
+Current preview-visibility blocker recorded in this pass:
+
+- `sections/main-collection-foundation.liquid` still renders a static-safe `8`-card placeholder grid and generic collection-heading content rather than live collection-product data.
+- `sections/main-product-foundation.liquid` still renders a static-safe PDP shell and does not surface live Shopify product title, media, price, or variant data.
+- Because the current preview theme does not yet consume live catalogue/PDP data, Shopify product-data staging would not make real products visibly reviewable in the unpublished storefront.
+- No Shopify product or collection mutation was performed in this pass.
+
+Safe inspection summary recorded in this pass:
+
+- Existing Shopify product records were safely confirmed for:
+  - `Under Cabinet Paper Towel Holder`
+  - `Adjustable Laptop Stand`
+  - `Multi-Use Storage Organizer Bin`
+- Existing launch collections remain the current collection targets:
+  - `Home & Living`
+  - `Kitchen & Storage`
+  - `Office & Desk`
+  - `Tech Accessories`
+- Current accepted density evidence remains the working reference:
+  - `Home & Living`: `1`
+  - `Kitchen & Storage`: `4`
+  - `Office & Desk`: `1`
+  - `Tech Accessories`: `1`
+
+Manual preview-only staging checklist recorded for a later approved pass:
+
+- Keep storefront password protection ON and keep preview theme `151207542967` unpublished.
+- Start with the preferred preview product set:
+  - `Desk Cable Clips Set`
+  - `Cable Management Sleeve`
+  - `Screen Cleaning Kit`
+  - `Sink Drain Basket / Strainer`
+  - `Phone / Tablet Desk Stand`
+  - `Multi-Use Storage Organizer Bin`
+  - `Adjustable Laptop Stand`
+  - `Under Cabinet Paper Towel Holder`
+- If additional review density is still needed after that, use current planning candidates only:
+  - `Sofa / Bedside Pocket Organiser`
+  - `Space-Saving Hanger Set`
+  - `3-in-1 Charging Cable`
+- Recommended launch-collection assignments for that later pass:
+  - `Home & Living`: `Sofa / Bedside Pocket Organiser`, `Space-Saving Hanger Set`
+  - `Kitchen & Storage`: `Sink Drain Basket / Strainer`, `Under-Cabinet Paper Towel Holder`
+  - `Office & Desk`: `Desk Cable Clips Set`, `Cable Management Sleeve`, `Phone / Tablet Desk Stand`, `Adjustable Laptop Stand`, `Multi-Use Storage Organiser Bin`
+  - `Tech Accessories`: `Screen Cleaning Kit`, `3-in-1 Charging Cable`
+
+Preview-only commercial controls preserved in this pass:
+
+- Previous landed-cost and margin references remain planning-only.
+- `Deals` remains blocked unless final proven margin is `55%+`.
+- `Best Sellers` remains blocked until actual sales evidence exists.
+- No `Mother's Day` delivery promise is allowed.
 
 ## Current readiness summary
 
@@ -1703,6 +1765,7 @@ Catalogue readiness planning no longer carries the previous Contact/About storef
 - Collection-readiness planning now requires at least `3` products for preview consideration, prefers `5` products for public launch consideration, and blocks any department link switch while any launch collection still has only `1` product.
 - Collection-page presentation must clearly expose the real department name before launch-navigation exposure is considered safe.
 - The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
+- Preview-catalogue visibility is still blocked because the current theme foundations render static-safe collection/PDP placeholder content rather than live Shopify catalogue data.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 11R Jewellery organiser supplier proof capture status recorded. This docs-only pass keeps `Jewellery / accessory organiser` at `Candidate`, keeps the AliExpress adjustable-box route as the preferred supplier-path candidate, records that the supplier proof capture pack remains incomplete for formal replacement approval or `Supplier verified` movement, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and does not approve product import.
+**Footer Standard For This Pass:** Slice 12I preview catalogue staging status recorded. This docs-only pass records that the current preview theme still renders static-safe collection/PDP placeholder content, so no Shopify preview-data mutation was performed, leaves the LLD unchanged because no durable rules changed, leaves theme/code unchanged, and does not approve product import.
