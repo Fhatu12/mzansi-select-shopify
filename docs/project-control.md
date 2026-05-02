@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Roadmap reset to local-first sourcing recorded; Slice 12J is closed and committed at `263e60f1588b03f4120121007411c701d342d9e4`, Slice 12K preview product staging and Playwright/Admin staging work are paused pending local supplier shortlist approval, Slice 13A local supplier pivot and launch sourcing matrix is next, no Shopify write action occurred in this reconciliation pass, and `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13A docs-only local supplier pivot and launch sourcing matrix update recorded; the Product Owner accepted the local-first sourcing strategy, South African supplier prioritisation and launch collection supplier matrix are now documented, international and older candidate sourcing paths are paused unless explicitly reopened, Slice 13C local supplier preview product shortlist is next, no Shopify write action occurred in this pass, and `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,14 +13,15 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13A local supplier pivot and launch sourcing matrix
+- Active slice: Slice 13A docs-only local supplier pivot and launch sourcing matrix update
 - Active owner: Product Manager
-- Next owner: Product Manager
+- Next owner: Product Owner
 - Last accepted slice: Slice 12J preview product visibility foundation
 - Last committed slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
 - Current blockers:
-  - Product Owner accepted the roadmap reset to local-first sourcing, so Slice 12K preview product staging and Shopify Admin automation remain paused until a local supplier shortlist is approved
-  - Meaningful preview catalogue review remains deferred because no approved local-first supplier shortlist exists yet for the next bounded staging decision
+  - Local-first sourcing is now approved, but Slice 13C still must select the first `8-12` preview-visible products from the prioritised local supplier pool before any preview-only staging decision is revisited
+  - Shopify Admin automation and preview product staging remain paused until the local supplier shortlist is approved
+  - International and older supplier candidate paths remain paused unless explicitly reopened
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
   - No product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - Slice 11R keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
@@ -42,26 +43,28 @@ Mzansi Select Shopify MVP Theme Conversion
   - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by the local-first supplier shortlist decision, unresolved supplier/commercial readiness, and thin collection readiness
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, shortlist selection, supplier/commercial readiness, and thin collection readiness
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify write action occurred in this reconciliation pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-02 during Slice 12K pause and Slice 13A local supplier pivot reconciliation
+- Last tracker update: 2026-05-02 during Slice 13A docs-only local supplier pivot and launch sourcing matrix update
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged with reason - this pass is repo-state and roadmap reconciliation only; no durable theme or data-rendering architecture changed.
+- LLD status: Unchanged with reason - Slice 13A changes sourcing/catalogue strategy documentation only and does not change durable theme, rendering, architecture, or storefront behaviour.
 
 ## Current active pass
 
-Slice 13A local supplier pivot and launch sourcing matrix preparation
+Slice 13A docs-only local supplier pivot and launch sourcing matrix update
 
-## Slice 12K pause and Slice 13A pivot
+## Slice 13A local supplier pivot and launch sourcing matrix
 
 - Slice 12J is the last accepted and committed implementation slice at `263e60f1588b03f4120121007411c701d342d9e4`.
-- Product Owner accepted the roadmap reset to local-first sourcing.
-- Slice 12K preview product staging and Playwright/Admin staging work are paused/deferred for now.
-- Shopify Admin automation and product staging must not continue until a local supplier shortlist is approved.
-- Preview staging remains blocked/deferred until the local supplier shortlist is selected.
+- Product Owner accepted the Product Manager recommendation for a local-first South African supplier strategy.
+- Reason for the shift: reduce fulfilment risk, long delivery delays, refund risk, customer trust damage, and order-fulfilment uncertainty from international suppliers.
+- International and older candidate supplier paths are paused unless explicitly reopened.
+- Primary local supplier priorities are now documented in [docs/catalogue/local-supplier-sourcing-matrix-v1.md](/d:/dev/mzansi-select-shopify/docs/catalogue/local-supplier-sourcing-matrix-v1.md).
+- Slice 12K preview product staging and Playwright/Admin staging work remain paused/deferred until a local supplier shortlist is approved.
+- Slice 13C — Local supplier preview product shortlist is the next recommended product-readiness slice.
 - No Shopify write action occurred in this reconciliation pass.
 - `artifacts/` remains untracked and must not be committed.
 
@@ -1516,7 +1519,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Manager completion of Slice 13A local supplier pivot and launch sourcing matrix preparation, followed by Product Owner approval of a local supplier shortlist before any Shopify Admin automation, preview product staging, or related write path resumes.
+Product Owner review of the documented local supplier matrix and approval of Slice 13C local supplier preview product shortlist scope, followed by selection of `8-12` preview-visible products before any Shopify Admin automation, preview staging, or related write path resumes.
 
 ## Decisions made
 
@@ -1556,9 +1559,20 @@ Product Manager completion of Slice 13A local supplier pivot and launch sourcing
 - Slice 12I is accepted and committed at `2f0423373b499f2f6e9fff797b6cedbed79c31fc`.
 - Slice 12J is accepted and committed at `263e60f1588b03f4120121007411c701d342d9e4`.
 - Local-first sourcing is the approved roadmap direction.
+- Slice 13A is limited to docs-only local supplier strategy, supplier-prioritisation, launch matrix, and status-model recording.
+- `ZA Dropshipping` is the best Shopify-integration and local-stock test candidate, but should be used only as a small pilot first because public Shopify app review confidence is weak.
+- `Neat Freak` is the best current category-fit supplier for `Home & Living`, `Kitchen & Storage`, `Office & Desk`, storage, organisers, kitchen, laundry, and household utility, pending wholesale / dropship terms and image-usage-rights confirmation.
+- `Gadgetgyz` is the best current `Tech Accessories` test supplier, pending stock, pricing, fulfilment workflow, delivery-SLA, and return-terms confirmation.
+- `Men’s Republic` and `Third Wave Distribution` are conditional suppliers only and must be verified directly before MVP reliance.
+- `Dropstore`, `Mantality`, `The Scents`, `Wheeltrend`, `Printify`, and `Printful` are deferred under the current local-first MVP strategy.
+- `Beauty & Hair` remains outside the launch taxonomy and female hair pieces are deferred to a later Slice 13B opportunity assessment.
+- The launch collection supplier matrix is now recorded for the four approved launch departments.
+- The working product status model is now `Candidate`, `Preview staged`, `Supplier proof in progress`, and `Supplier verified`.
+- `Preview staged` means visible in the preview store only and does not mean supplier approval, final pricing approval, delivery approval, claims approval, or final launch approval.
 - Slice 12K preview product staging is paused/deferred.
 - Shopify Admin automation and product staging must not continue until a local supplier shortlist is approved.
 - Preview staging remains blocked/deferred until the local supplier shortlist is selected.
+- Slice 13C — Local supplier preview product shortlist is the next recommended product-readiness slice.
 - No Shopify write action occurred in this reconciliation pass.
 - `artifacts/` remains untracked and must not be committed.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
@@ -1628,10 +1642,11 @@ Product Manager completion of Slice 13A local supplier pivot and launch sourcing
 19. Slice 12I preview catalogue staging blocked-status update: completed and committed.
 20. Slice 12J preview product visibility foundation: completed and committed.
 21. Slice 12K preview product staging and Playwright/Admin staging retry: paused/deferred pending local supplier shortlist approval.
-22. Slice 13A local supplier pivot and launch sourcing matrix: next active slice.
-23. Build the local supplier shortlist and launch sourcing matrix for the approved launch departments before any Shopify Admin write-path decision is revisited.
-24. Keep `Jewellery / accessory organiser` parked at `Candidate`, keep all products below `Supplier verified`, and keep `Beauty & Hair` outside the launch taxonomy.
-25. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves the local supplier shortlist.
+22. Slice 13A docs-only local supplier pivot and launch sourcing matrix update: completed locally in this pass.
+23. Slice 13C — Local supplier preview product shortlist: next recommended product-readiness slice.
+24. Select `8-12` preview-visible products across `Home & Living`, `Kitchen & Storage`, `Office & Desk`, and `Tech Accessories`, prioritising `ZA Dropshipping`, `Neat Freak`, and `Gadgetgyz`.
+25. Keep `Jewellery / accessory organiser` parked at `Candidate`, keep all products below `Supplier verified`, and keep `Beauty & Hair` outside the launch taxonomy.
+26. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves the local supplier shortlist.
 
 ## Handoff queue
 
@@ -1646,9 +1661,12 @@ Product Manager completion of Slice 13A local supplier pivot and launch sourcing
 - Use `artifacts/platform/slice-12g-launch-collection-preview-density-20260429-173855/` as the current unpublished-preview collection route and density evidence bundle.
 - Use `artifacts/supplier-verification/slice-11l/jewellery-accessory-organiser-evidence-summary.md` as the current replacement-direction evidence summary for the preferred `Adhesive Wall Hooks Pack` replacement path.
 - Use `artifacts/supplier-verification/slice-11n/jewellery-accessory-organiser-evidence-summary.md` as the current supplier-evidence-closure summary for the organiser replacement route.
+- Use [docs/catalogue/local-supplier-sourcing-matrix-v1.md](/d:/dev/mzansi-select-shopify/docs/catalogue/local-supplier-sourcing-matrix-v1.md) as the source of truth for the approved local-first supplier strategy, supplier tiers, and launch collection supplier matrix.
 - Use the Slice 12J local theme changes before approving any later preview-data staging; collection and PDP routes now prefer live Shopify data where present, while purchase actions remain disabled and preview-only.
 - Treat Slice 12K Playwright/Admin staging work as parked for later until the local supplier shortlist is approved.
 - Do not continue Shopify Admin automation, preview product staging, or other Shopify write work until the local supplier shortlist is approved.
+- Treat `Preview staged` as preview-store visibility only; it does not imply supplier approval, launch approval, final pricing approval, delivery approval, or claims approval.
+- Keep female hair pieces outside the launch taxonomy and treat them as a later Slice 13B opportunity assessment only.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and direct-URL exposure posture.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and preview presentation as department-appropriate after the Slice 12J live-data rendering path is validated on the approved unpublished theme.
@@ -1664,8 +1682,8 @@ Product Manager completion of Slice 13A local supplier pivot and launch sourcing
 
 ## Final handoff summary
 
-This reconciliation pass records the approved roadmap reset to local-first sourcing, confirms that Slice 12J is the last accepted and committed implementation slice, pauses Slice 12K preview product staging and Playwright/Admin staging work until a local supplier shortlist is approved, and sets Slice 13A local supplier pivot and launch sourcing matrix work as the next active slice. No Shopify write action occurred in this pass, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
+This Slice 13A docs-only pass records the approved local-first South African supplier strategy, documents the primary, conditional, and deferred supplier tiers, captures the launch collection supplier matrix, preserves the working product status model, and recommends Slice 13C local supplier preview product shortlist as the next product-readiness slice. No Shopify write action occurred in this pass, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12K pause and Slice 13A local supplier pivot reconciliation recorded. Approved source HTML unchanged. This pass keeps the accepted Slice 12J live collection/PDP rendering foundation in place, records the approved local-first sourcing reset, pauses Shopify Admin automation and preview product staging until a local supplier shortlist is approved, leaves the LLD unchanged because no durable theme/data-rendering rule changed, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 13A docs-only local supplier pivot and launch sourcing matrix update recorded. Approved source HTML unchanged. This pass documents the approved local-first supplier strategy, supplier prioritisation, launch collection supplier matrix, product status model, and Slice 13C recommendation, leaves the LLD unchanged because no durable theme/data-rendering rule changed, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.
