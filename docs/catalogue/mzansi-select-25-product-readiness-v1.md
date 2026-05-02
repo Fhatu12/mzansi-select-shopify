@@ -3,7 +3,7 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13A local-first supplier sourcing matrix is now recorded; previous international-candidate preview staging remains paused, the launch collection supplier matrix and product status model are now documented, Slice 13C local supplier preview product shortlist is next, no product is `Supplier verified`, and no product is final launch approved  
+**Status:** Slice 13C local supplier preview product shortlist is now recorded; supplier weighting is documented, `ZA Dropshipping` slots remain pending app/admin review, all shortlisted products remain `Candidate` only, Slice 13D local supplier proof pack is next, no product is `Supplier verified`, and no product is final launch approved  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -20,7 +20,7 @@ This pass records the local-first supplier pivot, launch collection supplier mat
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Slice 12I records that the current preview theme still renders static-safe collection and PDP placeholder content, so preview-data staging in Shopify would not make live products visibly reviewable in the unpublished storefront until a later approved live-visibility step exists. Slice 12J records that the local theme now renders live Shopify collection/PDP data where available. Slice 13A now documents the approved local-first supplier priorities, launch collection supplier matrix, and preview-only product status model, keeps older international supplier paths paused unless explicitly reopened, keeps all catalogue entries below `Supplier verified`, and keeps final launch approval closed until local supplier shortlist evidence exists. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Slice 12I records that the current preview theme still renders static-safe collection and PDP placeholder content, so preview-data staging in Shopify would not make live products visibly reviewable in the unpublished storefront until a later approved live-visibility step exists. Slice 12J records that the local theme now renders live Shopify collection/PDP data where available. Slice 13A documents the approved local-first supplier priorities, launch collection supplier matrix, and preview-only product status model. Slice 13C now records the first `12` local supplier preview-planning products, the supplier weighting across `Neat Freak`, `Gadgetgyz`, and `ZA Dropshipping`, the two `ZA Dropshipping` slots as pending app/admin review, and keeps all shortlisted entries at `Candidate` only pending later proof capture. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -779,25 +779,46 @@ Catalogue reset recorded in this pass:
 - `Deals` rail remains blocked unless final proven margin is `55%+`.
 - `Best Sellers` remains blocked until actual sales evidence exists.
 
-## Slice 13A local supplier status model
+## Slice 13C local supplier preview shortlist
 
-Working product statuses recorded in this pass:
+Shortlist recorded in this pass:
 
-- `Candidate`
-- `Preview staged`
-- `Supplier proof in progress`
-- `Supplier verified`
+1. `Compact Organiser Basket` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+2. `2-Layer Carry Handle Container 3.8L` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+3. `Hook-over Door Basket` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+4. `Mini Plastic Divider Basket` — `Neat Freak` — `Kitchen & Storage`
+5. `Sink Strainer, stainless steel` — `Neat Freak` — `Kitchen & Storage`
+6. `Cable Organiser / Cable Management item` — `Neat Freak` — `Office & Desk`
+7. `Velcro Cable Tidies` or `Neat Cables Label Pack` — `Neat Freak` — `Office & Desk`
+8. `HFC Free Air Duster Can / tech cleaning item` — `Neat Freak` — `Office & Desk` / `Tech Accessories`
+9. `Acrylic Tablet or Phone Stand` — `Gadgetgyz` — `Office & Desk` / `Tech Accessories`
+10. `Tablet / Cellphone Stand Acrylic Flat Pack` — `Gadgetgyz` — `Office & Desk` / `Tech Accessories`
+11. `ZA Dropshipping Home/Kitchen utility item` — `ZA Dropshipping` — pending app/admin review
+12. `ZA Dropshipping Tech accessory item` — `ZA Dropshipping` — pending app/admin review
+
+Supplier weighting recorded in this pass:
+
+- `Neat Freak`: strongest current category fit.
+- `Gadgetgyz`: strongest current `Tech Accessories` fit.
+- `ZA Dropshipping`: useful Shopify/local-stock test path, but product and margin proof must be checked inside the app/admin workflow before relying on it.
 
 Status rule recorded in this pass:
 
-- `Preview staged` means visible in the preview store only.
-- `Preview staged` does **not** mean `Supplier verified`, launch approved, final pricing approved, supplier approved, delivery approved, or claims approved.
+- All shortlisted products remain `Candidate` only.
+- They are not `Supplier verified`.
+- They are not launch approved.
+- They are not approved for import.
+- They are not final-priced.
+- They are not approved for delivery promises or product claims.
 
-Slice 13C recommendation recorded in this pass:
+ZA Dropshipping review rule recorded in this pass:
 
-- Slice 13C — Local supplier preview product shortlist is the next product-readiness slice.
-- Slice 13C should select `8-12` preview-visible products across `Home & Living`, `Kitchen & Storage`, `Office & Desk`, and `Tech Accessories`.
-- Slice 13C should prioritise `ZA Dropshipping`, `Neat Freak`, and `Gadgetgyz`.
+- The two `ZA Dropshipping` shortlist slots remain pending app/admin review.
+
+Slice 13D recommendation recorded in this pass:
+
+- Slice 13D — Local supplier proof pack for first preview shortlist is the next proof-pack slice.
+- Slice 13D should capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision.
 
 ## Current readiness summary
 
@@ -1821,7 +1842,7 @@ Catalogue readiness planning no longer carries the previous Contact/About storef
 - Collection-readiness planning now requires at least `3` products for preview consideration, prefers `5` products for public launch consideration, and blocks any department link switch while any launch collection still has only `1` product.
 - Collection-page presentation must clearly expose the real department name before launch-navigation exposure is considered safe.
 - The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
-- Preview-catalogue visibility foundation is now implemented locally, but preview staging should next be driven by the local-first supplier matrix and no preview staging may resume until the Slice 13C shortlist is approved.
+- Preview-catalogue visibility foundation is now implemented locally, but preview staging should next be driven by the recorded local supplier shortlist and no preview staging may resume until the Slice 13D proof-pack path is approved.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 13A local-first supplier sourcing matrix recorded. This pass documents the approved supplier priorities and launch collection supplier matrix, preserves the `Candidate` / `Preview staged` / `Supplier proof in progress` / `Supplier verified` status model, keeps `Jewellery / accessory organiser` parked, keeps `Beauty & Hair` outside the launch taxonomy, records Slice 13C as the next product-readiness slice, keeps all products below `Supplier verified` and final launch approval, and leaves product import unapproved.
+**Footer Standard For This Pass:** Slice 13C local supplier preview shortlist recorded. This pass documents the first local supplier preview-planning products, records supplier weighting, keeps the full shortlist at `Candidate` only, keeps the two `ZA Dropshipping` slots pending app/admin review, records Slice 13D as the next proof-pack slice, keeps all products below `Supplier verified` and final launch approval, and leaves product import unapproved.

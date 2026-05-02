@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13A docs-only local supplier pivot and launch sourcing matrix recorded  
+**Status:** Slice 13C docs-only local supplier preview shortlist recorded; all shortlisted products remain `Candidate` only, `ZA Dropshipping` slots remain pending app/admin review, and Slice 13D local supplier proof pack is next  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, and the recommended next product-readiness slice.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, and the recommended next proof-pack slice.
 
 ## Approved strategy
 
@@ -66,6 +66,36 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `Preview staged` means visible in the preview store only.
 - It does **not** mean `Supplier verified`, launch approved, final pricing approved, supplier approved, delivery approved, or claims approved.
 
+## Slice 13C preview shortlist
+
+- `Compact Organiser Basket` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+- `2-Layer Carry Handle Container 3.8L` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+- `Hook-over Door Basket` — `Neat Freak` — `Home & Living` / `Kitchen & Storage`
+- `Mini Plastic Divider Basket` — `Neat Freak` — `Kitchen & Storage`
+- `Sink Strainer, stainless steel` — `Neat Freak` — `Kitchen & Storage`
+- `Cable Organiser / Cable Management item` — `Neat Freak` — `Office & Desk`
+- `Velcro Cable Tidies` or `Neat Cables Label Pack` — `Neat Freak` — `Office & Desk`
+- `HFC Free Air Duster Can / tech cleaning item` — `Neat Freak` — `Office & Desk` / `Tech Accessories`
+- `Acrylic Tablet or Phone Stand` — `Gadgetgyz` — `Office & Desk` / `Tech Accessories`
+- `Tablet / Cellphone Stand Acrylic Flat Pack` — `Gadgetgyz` — `Office & Desk` / `Tech Accessories`
+- `ZA Dropshipping Home/Kitchen utility item` — `ZA Dropshipping` — pending app/admin review
+- `ZA Dropshipping Tech accessory item` — `ZA Dropshipping` — pending app/admin review
+
+## Supplier weighting
+
+- `Neat Freak`: strongest current category fit.
+- `Gadgetgyz`: strongest current `Tech Accessories` fit.
+- `ZA Dropshipping`: useful Shopify/local-stock test path, but product and margin proof must be checked inside the app/admin workflow before relying on it.
+
+## Candidate-only rule
+
+- All shortlisted products remain `Candidate` only.
+- They are not `Supplier verified`.
+- They are not launch approved.
+- They are not approved for import.
+- They are not final-priced.
+- They are not approved for delivery promises or product claims.
+
 ## Beauty & Hair rule
 
 - Do not add `Beauty & Hair` to the launch taxonomy.
@@ -74,13 +104,13 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Recommended next slice
 
-### Slice 13C — Local supplier preview product shortlist
+### Slice 13D — Local supplier proof pack for first preview shortlist
 
 Objective:
 
-- Select `8-12` preview-visible products across `Home & Living`, `Kitchen & Storage`, `Office & Desk`, and `Tech Accessories`.
+- Capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision.
 
-Prioritise:
+Seed from:
 
 - `ZA Dropshipping`
 - `Neat Freak`
