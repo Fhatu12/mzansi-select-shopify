@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13D docs-only local supplier proof pack recorded; seven shortlisted products are now `Supplier proof in progress` only, `Cable Organiser / Cable Management item` is paused, product-only margin estimates remain caveated, and `ZA Dropshipping` slots remain pending app/admin review  
+**Status:** Slice 13E docs-only local supplier proof gap closure recorded; all seven shortlisted proof-pack products remain `Supplier proof in progress` only, no product is ready for `Supplier verified` review, `Cable Organiser / Cable Management item` remains paused, product-only margin estimates remain caveated, and `ZA Dropshipping` slots remain pending app/admin review  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, and the Slice 13D supplier proof-pack status.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, and the Slice 13E supplier proof gap-closure status.
 
 ## Approved strategy
 
@@ -89,10 +89,11 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Current status rule
 
-- `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` are now `Supplier proof in progress` only.
-- `Cable Organiser / Cable Management item` is paused because the current definition is too broad and commercially weak at the visible public price signal.
+- `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` remain `Supplier proof in progress` only.
+- `Cable Organiser / Cable Management item` remains paused because the current definition is too broad and commercially weak at the visible public price signal.
 - The remaining shortlisted products stay `Candidate` only in this pass.
 - No shortlisted product is `Supplier verified`.
+- No shortlisted product is ready for `Supplier verified` review.
 - No shortlisted product is launch approved.
 - No shortlisted product is approved for import.
 - No shortlisted product is final-priced.
@@ -115,11 +116,26 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `Acrylic Tablet or Phone Stand` — `Gadgetgyz` — SKU `DP0402`, in stock, price `R158.89`, weight `0.5 kg`, dimensions `90 x 145 x 145 mm`, recommended selling range `R329-R349`, product-only margin at `R329` about `51.7%`; missing dropship SLA, shipping fee, image permission, and supplier fulfilment workflow confirmation.
 - `Cable Organiser / Cable Management item` — `Neat Freak` — paused because the current definition is too broad, multiple possible products were found, the visible `Multiplug and Cable Organiser` public price signal is `R299`, and the sell price would likely need around `R599+` to preserve the target product-only margin unless a lower-cost exact product or wholesale price is confirmed.
 
+## Slice 13E gap-closure status
+
+- All seven shortlisted proof-pack products remain `Supplier proof in progress` only.
+- No product is ready for `Supplier verified` review.
+- No product is approved for import.
+- No product is approved for actual preview staging.
+- Safe for preview-staging preparation on paper only: `Sink Strainer, stainless steel`, `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand`.
+- Lower-priority for preview-staging preparation: `2-Layer Carry Handle Container 3.8L` and `Hook-over Door Basket`.
+- Lower-priority reason: dimensions, image permission, delivery handling, and price positioning need stronger closure first.
+- `Cable Organiser / Cable Management item` remains paused unless narrowed to a specific lower-cost item or wholesale pricing is confirmed.
+- `Neat Freak` remains a strong category fit, and public evidence supports local retail fulfilment, shipping fees, delivery estimates, and returns process, but public evidence still does not confirm wholesale / dropship terms, direct-to-customer fulfilment for Mzansi Select, image usage permission, stock reliability, or sample / product quality.
+- `Gadgetgyz` shows a stronger dropship-workflow signal than `Neat Freak`, and `Acrylic Tablet or Phone Stand` has strong product proof and SKU evidence, but exact shipping fee, SLA, image permission, supplier workflow confirmation, and final Product Owner commercial decision remain open.
+
 ## Commercial readiness note
 
 - Current margin calculations are product-only estimates based on public supplier prices.
 - They assume shipping is charged separately to the customer or otherwise recovered.
-- Final margins remain blocked until the shipping-cost handling model is confirmed.
+- Product-only margins are promising, but final margins remain blocked until the shipping-cost handling model is confirmed.
+- If shipping is customer-paid or otherwise recovered, the shortlist remains viable.
+- If shipping is absorbed by Mzansi Select, low-ticket items likely need bundles or minimum-cart rules.
 - No final pricing is approved.
 
 ## Fulfilment risk
@@ -127,6 +143,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `Neat Freak` is promising for local sourcing, but order timing must not be overpromised.
 - Public shipping guidance indicates orders can take `7-14` working days, with most sent within `2-7` working days after payment confirmation, plus courier delivery after dispatch.
 - `Gadgetgyz` has useful product and dropship signals, but exact shipping fee, SLA, and fulfilment workflow still need direct confirmation.
+- Delivery wording must remain cautious, and product copy should stay factual and conservative until stronger supplier-backed evidence exists.
 
 ## Global blockers
 
@@ -134,14 +151,15 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Direct fulfilment workflow
 - Shipping-cost handling model
 - Image usage permission
+- Stock reliability proof
 - Sample / product quality proof
-- Stock reliability
-- Final target price acceptance
+- Final target selling range confidence
+- Return / refund practicality under the Mzansi Select support model
 - Final Product Owner commercial decision
 
 ## Next expected decision
 
-- Product Owner review of the documented Slice 13D supplier proof pack and approval of the next supplier-proof follow-up scope.
+- Product Owner review of the documented Slice 13E supplier proof gap closure and approval of the next supplier-proof follow-up scope.
 
 ## Constraints preserved in this strategy pass
 
