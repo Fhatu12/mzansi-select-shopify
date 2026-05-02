@@ -13,14 +13,15 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13C docs-only local supplier preview product shortlist update
-- Active owner: Product Manager
-- Next owner: Product Owner
-- Last accepted slice: Slice 12J preview product visibility foundation
-- Last committed slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
+- Active slice: Slice 13D - Local supplier proof pack for first preview shortlist
+- Active owner: Product Owner
+- Next owner: Product Manager
+- Last accepted slice: Slice 13C docs-only local supplier preview product shortlist update (`301374ea4155acfa99b454a77ea3cdfc72d5fdcb`)
+- Last committed slice: Slice 13C docs-only local supplier preview product shortlist update (`301374ea4155acfa99b454a77ea3cdfc72d5fdcb`)
+- Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
 - Current blockers:
-  - The Slice 13C shortlist is now recorded, but Slice 13D still must capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision is revisited
-  - Shopify Admin automation and preview product staging remain paused until the local supplier shortlist is approved
+  - Slice 13D must capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision is revisited
+  - Shopify Admin automation and preview product staging remain paused/deferred until Slice 13D proof-pack review is completed and a later write-action pass is explicitly approved
   - International and older supplier candidate paths remain paused unless explicitly reopened
   - `ZA Dropshipping` remains a useful Shopify/local-stock test path, but the shortlisted product slots there are still pending app/admin review before product and margin proof can be relied on
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
@@ -37,18 +38,18 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Jewellery / accessory organiser` is now the preferred replacement-direction `Candidate`, but it must remain blocked until the commercial-readiness gates are met and Product Owner records formal replacement approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
-  - Slice 12K preview catalogue product staging remains paused/deferred until the local supplier shortlist is approved
-  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred until the local supplier shortlist is approved
+  - Slice 12K preview catalogue product staging remains paused/deferred pending later explicit approval after the Slice 13D proof-pack path
+  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred pending later explicit approval after the Slice 13D proof-pack path
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
   - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, shortlist selection, supplier/commercial readiness, and thin collection readiness
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, supplier/commercial readiness, and thin collection readiness
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify write action occurred in this reconciliation pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-02 during Slice 13C docs-only local supplier preview product shortlist update
+- Last tracker update: 2026-05-02 during post-Slice 13C tracker sync toward Slice 13D
 - Tracker status: Updated
 - Catalogue plan status: Updated
 - LLD status: Unchanged with reason - Slice 13C is catalogue/supplier planning only and does not change durable theme, rendering, architecture, or storefront behaviour.
