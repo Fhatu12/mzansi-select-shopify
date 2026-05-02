@@ -3,15 +3,15 @@
 **Document Type:** Catalogue Readiness Planning  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12J / 12J.1 preview product visibility foundation recorded; collection/PDP pages can now consume live Shopify data in-theme, the correct unpublished preview target was reconciled as `151207542967` and safely updated, browser-level preview review remains blocked by the storefront password wall without a reusable authenticated session, and no product is `Supplier verified`  
+**Status:** Local-first sourcing reset recorded; previous international-candidate preview staging is paused, Slice 13A local supplier pivot and launch sourcing matrix is next, no product is `Supplier verified`, and no product is final launch approved  
 **Version:** 2.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose and scope
 
-This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, the Slice 11O Jewellery organiser viability and supplier-path decision, the Slice 11P Jewellery organiser DSers comparison and commercial assessment, the Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure, the Slice 11R Jewellery organiser supplier proof capture status, the Slice 12I preview catalogue staging status, and the Slice 12J preview product visibility foundation status for the approved `25`-product launch catalogue.
+This document records the Slice 11F logged-in supplier verification checklist baseline, the Slice 11G.2 first-six supplier evidence capture outcome, the Slice 11H docs-only commercial gap-closure plan, the Slice 11I targeted gap-closure evidence pass, the Slice 12H docs-only collection readiness gap plan, the Slice 11K docs-only collection allocation and replacement-planning update, the Slice 11L replacement candidate supplier evidence pass, the Slice 11M replacement candidate commercial readiness plan, the Slice 11N Jewellery / accessory organiser supplier evidence closure, the Slice 11O Jewellery organiser viability and supplier-path decision, the Slice 11P Jewellery organiser DSers comparison and commercial assessment, the Slice 11Q Jewellery organiser current supplier proof and formal replacement evidence closure, the Slice 11R Jewellery organiser supplier proof capture status, the Slice 12I preview catalogue staging status, the Slice 12J preview product visibility foundation status, and the Slice 12K pause / Slice 13A local-first supplier pivot status for the approved `25`-product launch catalogue.
 
-This pass records the preview product visibility foundation status for the approved launch-catalogue context:
+This pass records the local-first supplier pivot and paused preview-staging status for the approved launch-catalogue context:
 
 - No product import is approved.
 - No Shopify push is approved.
@@ -20,7 +20,7 @@ This pass records the preview product visibility foundation status for the appro
 - No checkout customization is approved.
 - No dynamic product/catalogue wiring is approved.
 
-Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Slice 12I records that the current preview theme still renders static-safe collection and PDP placeholder content, so preview-data staging in Shopify would not make live products visibly reviewable in the unpublished storefront until a later approved live-visibility step exists. Slice 12J records that the local theme now renders live Shopify collection/PDP data where available. Slice 12J.1 records that the requested preview theme id `150454599863` was not present on the authenticated store, that unpublished theme `151207542967` (`Mzansi Select MVP Preview`) was safely reconciled as the correct preview target, and that browser-level preview review is still blocked by the storefront password wall without a reusable authenticated session even after the targeted unpublished push. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
+Slice 11I uses the committed Slice 11G.2 evidence bundle and the committed Slice 11H planning gates as local reference. Slice 12H adds collection-density targets, link-switch gating, and merchandising-quality expectations as catalogue-planning rules only. Slice 11K applies those rules to the current `25`-product plan and records planning-only replacement directions without claiming new evidence where none exists. Slice 11L adds product-specific evidence for the preferred `Jewellery / accessory organiser` replacement direction without approving any readiness movement beyond `Candidate`. Slice 11M applies the existing commercial-gate rules to that preferred replacement direction and records what is still required before formal catalogue replacement can be approved. Slice 11N closes the currently available CJ and public comparison evidence further, but it still does not complete every field required for `Supplier verified` or final formal replacement approval. Slice 11O applies the existing catalogue/commercial rules to make a product-specific supplier-path decision while keeping all pricing and landed-cost references at planning/evidence-only level. Slice 11P keeps the same Candidate-only supplier-path decision, adds the explicit planning-margin view across the working price points, and records the remaining blockers before any final replacement approval or `Supplier verified` movement can occur. Slice 11Q keeps the same Candidate-only supplier-path decision and planning-margin view, but records that current supplier proof is still incomplete and therefore cannot yet support formal replacement approval review or `Supplier verified` movement. Slice 11R keeps the same Candidate-only supplier-path decision and planning-margin view, but records that the current supplier proof capture pack remains incomplete and therefore still cannot support formal replacement approval review or `Supplier verified` movement. Slice 12I records that the current preview theme still renders static-safe collection and PDP placeholder content, so preview-data staging in Shopify would not make live products visibly reviewable in the unpublished storefront until a later approved live-visibility step exists. Slice 12J records that the local theme now renders live Shopify collection/PDP data where available. This reconciliation pass pauses the previous international-candidate preview-staging path, shifts the next sourcing work to a local-first supplier matrix, keeps all catalogue entries below `Supplier verified`, and keeps final launch approval closed until local supplier shortlist evidence exists. Unknown values remain `Unconfirmed`, `TBD`, or `Not verified` where comparison or final closure was not completed.
 No product import, readiness movement beyond `Candidate`, collection edit, or supplier credential storage has occurred in this pass.
 
 ## Accepted Slice 11A taxonomy baseline
@@ -34,6 +34,8 @@ No product import, readiness movement beyond `Candidate`, collection edit, or su
   - `Garden & Outdoor`
   - `Bath & Bedroom`
   - `Cleaning & Laundry`
+- Separate assessment stream only:
+  - `Beauty & Hair`
 - Merchandising rails, not departments:
   - `Shop All`
   - `Best Sellers`
@@ -763,6 +765,19 @@ Preview-validation caveat recorded in this pass:
 - Unauthenticated HTTP checks against `/?preview_theme_id=151207542967`, `/collections/all`, `/collections/home-living`, `/collections/kitchen-storage`, `/collections/office-desk`, `/collections/tech-accessories`, and `/products/adjustable-laptop-stand` all returned HTTP `200` while still serving the storefront password wall.
 - Preview-catalogue review is therefore no longer blocked by local theme placeholders or by preview-theme identity, but it is still blocked from final browser confirmation by the authenticated preview-access gap and by whatever existing Shopify product/collection assignments are or are not present behind that password wall.
 
+## Slice 12K pause and Slice 13A local-first supplier pivot
+
+Catalogue reset recorded in this pass:
+
+- Previous international-candidate preview staging is paused/deferred.
+- Local-first supplier matrix work is next.
+- `Jewellery / accessory organiser` remains parked.
+- `Beauty & Hair` remains a separate assessment stream and is not part of the launch taxonomy.
+- No product is `Supplier verified`.
+- No product is final launch approved.
+- `Deals` rail remains blocked unless final proven margin is `55%+`.
+- `Best Sellers` remains blocked until actual sales evidence exists.
+
 ## Current readiness summary
 
 - Confirmed: `0`
@@ -770,7 +785,7 @@ Preview-validation caveat recorded in this pass:
 - TBD: `0`
 - Unconfirmed: `25`
 
-All `25` slots are planning candidates only. None may be treated as supplier-verified, content-ready, or import-ready in this pass.
+All `25` slots are planning candidates only. None may be treated as supplier-verified, content-ready, import-ready, or final launch approved in this pass.
 
 ## Readiness statuses
 
@@ -1782,7 +1797,7 @@ Catalogue readiness planning no longer carries the previous Contact/About storef
 - Collection-readiness planning now requires at least `3` products for preview consideration, prefers `5` products for public launch consideration, and blocks any department link switch while any launch collection still has only `1` product.
 - Collection-page presentation must clearly expose the real department name before launch-navigation exposure is considered safe.
 - The `25`-product plan now meets preferred density targets on paper, so the remaining blocker is verified product quality and evidence-backed collection fit rather than simple count.
-- Preview-catalogue visibility foundation is now implemented locally, but meaningful preview review still depends on the correct unpublished preview theme target plus the existing Shopify product and collection assignments already present on the store.
+- Preview-catalogue visibility foundation is now implemented locally, but the previous international-candidate staging path is paused and no preview staging may resume until the local-first supplier shortlist is approved.
 - Publish consideration and product import planning remain blocked until supplier/source, cost, shipping, image, description, margin, and risk evidence are captured.
 
-**Footer Standard For This Pass:** Slice 12J preview product visibility foundation implemented locally. This pass records that the local theme now renders live Shopify collection/PDP data where available, that preview validation still depends on confirming the correct unpublished preview theme target, updates the LLD because durable rendering behaviour changed, leaves product import unapproved, and does not approve any product readiness movement beyond `Candidate`.
+**Footer Standard For This Pass:** Slice 12K pause and Slice 13A local supplier pivot reconciliation recorded. This pass pauses the previous international-candidate preview-staging path, records the approved local-first sourcing reset, keeps `Jewellery / accessory organiser` parked, keeps `Beauty & Hair` outside the launch taxonomy, leaves all products below `Supplier verified` and final launch approval, keeps `Deals` blocked unless final proven margin is `55%+`, keeps `Best Sellers` blocked until actual sales evidence exists, and leaves product import unapproved.

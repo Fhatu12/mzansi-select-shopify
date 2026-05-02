@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12J.1 preview theme identity reconciliation and safe validation push recorded; collection and PDP templates now prefer real Shopify data in-theme, the correct unpublished preview theme was reconciled as `151207542967` (`Mzansi Select MVP Preview`), a targeted unpublished push completed safely, storefront browser validation remains blocked by the password wall without a reusable authenticated session, Contact/About remains resolved, and launch department link switching remains unapproved  
+**Status:** Roadmap reset to local-first sourcing recorded; Slice 12J is closed and committed at `263e60f1588b03f4120121007411c701d342d9e4`, Slice 12K preview product staging and Playwright/Admin staging work are paused pending local supplier shortlist approval, Slice 13A local supplier pivot and launch sourcing matrix is next, no Shopify write action occurred in this reconciliation pass, and `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,14 +13,14 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 12J.1 preview theme identity reconciliation and safe validation push
+- Active slice: Slice 13A local supplier pivot and launch sourcing matrix
 - Active owner: Product Manager
-- Next owner: Product Owner
-- Last accepted slice: Slice 12I preview catalogue staging blocked-status update
-- Last committed slice: Slice 12I preview catalogue staging blocked-status update (`2f0423373b499f2f6e9fff797b6cedbed79c31fc`)
+- Next owner: Product Manager
+- Last accepted slice: Slice 12J preview product visibility foundation
+- Last committed slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
 - Current blockers:
-  - Slice 12J removes the local static-safe collection/PDP rendering blocker and Slice 12J.1 reconciles the correct unpublished preview theme target as `151207542967`, but meaningful browser-level preview review remains blocked by the storefront password wall because no reusable authenticated session was available in this pass
-  - Meaningful preview catalogue review now depends on existing Shopify product records, correct collection membership, and authenticated inspection against the already-pushed unpublished preview theme
+  - Product Owner accepted the roadmap reset to local-first sourcing, so Slice 12K preview product staging and Shopify Admin automation remain paused until a local supplier shortlist is approved
+  - Meaningful preview catalogue review remains deferred because no approved local-first supplier shortlist exists yet for the next bounded staging decision
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
   - No product may move to `Supplier verified` until the remaining evidence and decisions are completed
   - Slice 11R keeps the captured `CJdropshipping` route rejected for current commercial readiness because shipping is high, delivery is long, and DDU / oversized cautions weaken the route materially
@@ -35,23 +35,35 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Jewellery / accessory organiser` is now the preferred replacement-direction `Candidate`, but it must remain blocked until the commercial-readiness gates are met and Product Owner records formal replacement approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
+  - Slice 12K preview catalogue product staging remains paused/deferred until the local supplier shortlist is approved
+  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred until the local supplier shortlist is approved
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
   - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved supplier/commercial readiness, thin collection readiness, and the remaining authenticated preview-access gap for browser-level collection/PDP review
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by the local-first supplier shortlist decision, unresolved supplier/commercial readiness, and thin collection readiness
 - Product import status: Not approved and not started
-- Shopify push/publish status: Safe targeted push completed in this pass to unpublished preview theme `151207542967` (`Mzansi Select MVP Preview`) for `assets/theme.css`, `sections/main-collection-foundation.liquid`, `sections/main-product-foundation.liquid`, and `snippets/live-product-card.liquid`; no publish approved; no live theme overwrite approved
+- Shopify push/publish status: No Shopify write action occurred in this reconciliation pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-04-30 during Slice 12J.1 preview theme identity reconciliation and safe validation push
+- Last tracker update: 2026-05-02 during Slice 12K pause and Slice 13A local supplier pivot reconciliation
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Updated with reason - Slice 12J changes durable collection/PDP preview rendering behaviour and records preview-only use of live Shopify collection/product data while purchase actions remain deferred.
+- LLD status: Unchanged with reason - this pass is repo-state and roadmap reconciliation only; no durable theme or data-rendering architecture changed.
 
 ## Current active pass
 
-Slice 12J.1 preview theme identity reconciliation and safe validation push
+Slice 13A local supplier pivot and launch sourcing matrix preparation
+
+## Slice 12K pause and Slice 13A pivot
+
+- Slice 12J is the last accepted and committed implementation slice at `263e60f1588b03f4120121007411c701d342d9e4`.
+- Product Owner accepted the roadmap reset to local-first sourcing.
+- Slice 12K preview product staging and Playwright/Admin staging work are paused/deferred for now.
+- Shopify Admin automation and product staging must not continue until a local supplier shortlist is approved.
+- Preview staging remains blocked/deferred until the local supplier shortlist is selected.
+- No Shopify write action occurred in this reconciliation pass.
+- `artifacts/` remains untracked and must not be committed.
 
 ## Slice 12A / 12B clickable inventory backlog (docs-only)
 
@@ -1504,7 +1516,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner review of the Slice 12J.1 identity reconciliation and safe push evidence, followed by either an approved authenticated preview-validation path for `151207542967` or explicit acceptance that browser-level collection/PDP confirmation remains blocked by the current storefront password-access gap.
+Product Manager completion of Slice 13A local supplier pivot and launch sourcing matrix preparation, followed by Product Owner approval of a local supplier shortlist before any Shopify Admin automation, preview product staging, or related write path resumes.
 
 ## Decisions made
 
@@ -1542,6 +1554,13 @@ Product Owner review of the Slice 12J.1 identity reconciliation and safe push ev
 - Slice 11Q is accepted and committed at `0457a5faada646d8aab78a7565596134968f65a4`.
 - Slice 11R is accepted and committed at `cc3317d2099c0d7f9d334b6e62cd2d0da1392744`.
 - Slice 12I is accepted and committed at `2f0423373b499f2f6e9fff797b6cedbed79c31fc`.
+- Slice 12J is accepted and committed at `263e60f1588b03f4120121007411c701d342d9e4`.
+- Local-first sourcing is the approved roadmap direction.
+- Slice 12K preview product staging is paused/deferred.
+- Shopify Admin automation and product staging must not continue until a local supplier shortlist is approved.
+- Preview staging remains blocked/deferred until the local supplier shortlist is selected.
+- No Shopify write action occurred in this reconciliation pass.
+- `artifacts/` remains untracked and must not be committed.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
 - The preferred launch-ready department handles are `home-living`, `kitchen-storage`, `office-desk`, and `tech-accessories`.
 - `Garden & Outdoor`, `Bath & Bedroom`, and `Cleaning & Laundry` remain expansion-ready only and should stay deferred as launch destinations.
@@ -1559,7 +1578,6 @@ Product Owner review of the Slice 12J.1 identity reconciliation and safe push ev
 - Slice 11R confirms that the supplier proof capture pack remains incomplete, that the exact AliExpress item reference is still missing, and that the organiser route must remain `Candidate` only.
 - Slice 12I confirms that the current preview theme still uses static-safe collection and PDP foundations, so Shopify preview-data staging would not make real products visibly reviewable in the unpublished storefront without a later approved live-catalogue visibility step.
 - Slice 12J changes the local theme so collection pages now prefer live `collection` object data and PDP pages now prefer live `product` object data while purchase actions remain disabled and preview-only.
-- Slice 12J.1 reconciled the correct unpublished preview theme as `151207542967` and completed a safe targeted push there without changing the live theme.
 - Unknown supplier, cost, selling price, margin, shipping, image, and import-readiness values remain `Unconfirmed`.
 - Product import, Shopify push/publish, live overwrite, checkout customization, dynamic catalogue wiring, PDP Add to Cart wiring, cart wiring, final legal publication, Contact/About route remediation, supplier credential storage, and actual supplier verification remain out of scope for this pass.
 
@@ -1608,12 +1626,12 @@ Product Owner review of the Slice 12J.1 identity reconciliation and safe push ev
 17. Slice 11Q current supplier proof and formal replacement evidence closure for `Jewellery / accessory organiser`: completed and committed.
 18. Slice 11R supplier proof capture status for `Jewellery / accessory organiser`: completed and committed.
 19. Slice 12I preview catalogue staging blocked-status update: completed and committed.
-20. Slice 12J preview product visibility foundation: completed locally in this pass.
-21. Slice 12J.1 reconciled the correct unpublished preview theme target as `151207542967` and completed the safe targeted push there.
-22. Capture authenticated preview evidence for at least one launch collection route and one product route on `151207542967`, or explicitly record that acceptance remains blocked by the storefront password-access gap.
-23. Confirm whether existing Shopify product/collection membership is sufficient for preview review or whether a separate bounded staging pass is still required.
-24. Confirm the exact AliExpress adjustable-box reference, current ZA shipping, variant/dimensions, image suitability, and commercial gates for the preferred replacement path.
-25. Switch launch department links from `{{ routes.all_products_collection_url }}` to dedicated collection handles only after Product Owner approval.
+20. Slice 12J preview product visibility foundation: completed and committed.
+21. Slice 12K preview product staging and Playwright/Admin staging retry: paused/deferred pending local supplier shortlist approval.
+22. Slice 13A local supplier pivot and launch sourcing matrix: next active slice.
+23. Build the local supplier shortlist and launch sourcing matrix for the approved launch departments before any Shopify Admin write-path decision is revisited.
+24. Keep `Jewellery / accessory organiser` parked at `Candidate`, keep all products below `Supplier verified`, and keep `Beauty & Hair` outside the launch taxonomy.
+25. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves the local supplier shortlist.
 
 ## Handoff queue
 
@@ -1629,7 +1647,8 @@ Product Owner review of the Slice 12J.1 identity reconciliation and safe push ev
 - Use `artifacts/supplier-verification/slice-11l/jewellery-accessory-organiser-evidence-summary.md` as the current replacement-direction evidence summary for the preferred `Adhesive Wall Hooks Pack` replacement path.
 - Use `artifacts/supplier-verification/slice-11n/jewellery-accessory-organiser-evidence-summary.md` as the current supplier-evidence-closure summary for the organiser replacement route.
 - Use the Slice 12J local theme changes before approving any later preview-data staging; collection and PDP routes now prefer live Shopify data where present, while purchase actions remain disabled and preview-only.
-- Treat the unpublished preview theme identity mismatch as reconciled: `150454599863` was not present on the authenticated store, while `151207542967` (`Mzansi Select MVP Preview`) is the safe unpublished preview target now used for validation push.
+- Treat Slice 12K Playwright/Admin staging work as parked for later until the local supplier shortlist is approved.
+- Do not continue Shopify Admin automation, preview product staging, or other Shopify write work until the local supplier shortlist is approved.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and direct-URL exposure posture.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until Product Owner explicitly accepts the current collection density and preview presentation as department-appropriate after the Slice 12J live-data rendering path is validated on the approved unpublished theme.
@@ -1645,8 +1664,8 @@ Product Owner review of the Slice 12J.1 identity reconciliation and safe push ev
 
 ## Final handoff summary
 
-This Slice 12J / 12J.1 implementation pass records that the local collection and PDP foundations now prefer real Shopify collection/product data while keeping purchase actions preview-only and disabled, that the correct unpublished preview theme was reconciled as `151207542967` (`Mzansi Select MVP Preview`), and that a safe targeted push completed there without touching the live theme. Contact/About remains resolved, supplier/product readiness remains the active launch blocker set, collection-density and merchandising gates still apply, browser-level preview validation is still blocked by the storefront password-access gap, and `artifacts/` remains untracked and uncommitted.
+This reconciliation pass records the approved roadmap reset to local-first sourcing, confirms that Slice 12J is the last accepted and committed implementation slice, pauses Slice 12K preview product staging and Playwright/Admin staging work until a local supplier shortlist is approved, and sets Slice 13A local supplier pivot and launch sourcing matrix work as the next active slice. No Shopify write action occurred in this pass, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 12J.1 preview theme identity reconciliation and safe validation push recorded. Approved source HTML unchanged. This pass keeps the Slice 12J live collection/PDP rendering foundation, reconciles the safe unpublished preview target as `151207542967`, records the successful targeted push there without publish or live overwrite, updates the LLD because durable preview-validation behaviour changed, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 12K pause and Slice 13A local supplier pivot reconciliation recorded. Approved source HTML unchanged. This pass keeps the accepted Slice 12J live collection/PDP rendering foundation in place, records the approved local-first sourcing reset, pauses Shopify Admin automation and preview product staging until a local supplier shortlist is approved, leaves the LLD unchanged because no durable theme/data-rendering rule changed, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.

@@ -1,5 +1,8 @@
 .env
 .env.*
+.auth/
+storageState.json
+artifacts/
 node_modules/
 dist/
 build/
