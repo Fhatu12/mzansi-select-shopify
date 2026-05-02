@@ -4,10 +4,26 @@
   {% assign card_product_url = product.url | within: collection_context %}
 {% endif %}
 
+{% capture card_tag_tokens %}|{{ product.tags | join: '|' | downcase }}|{% endcapture %}
+{% assign card_preview_only = false %}
+{% assign card_price_to_confirm = false %}
+{% if card_tag_tokens contains '|preview-only|' %}
+  {% assign card_preview_only = true %}
+{% endif %}
+{% if card_tag_tokens contains '|price-to-confirm|' %}
+  {% assign card_price_to_confirm = true %}
+{% endif %}
+{% assign card_use_placeholder_price = false %}
+{% if card_preview_only or card_price_to_confirm %}
+  {% assign card_use_placeholder_price = true %}
+{% endif %}
+
 {% assign card_price_now = card_variant.price | money_without_trailing_zeros %}
 {% assign card_price_was = blank %}
 {% assign card_price_save = blank %}
-{% if card_variant.compare_at_price > card_variant.price %}
+{% if card_use_placeholder_price %}
+  {% assign card_price_now = 'Price to be confirmed' %}
+{% elsif card_variant.compare_at_price > card_variant.price %}
   {% assign card_price_was = card_variant.compare_at_price | money_without_trailing_zeros %}
   {% assign card_price_delta = card_variant.compare_at_price | minus: card_variant.price %}
   {% assign card_price_percent = card_price_delta | times: 100 | divided_by: card_variant.compare_at_price %}
@@ -29,7 +45,9 @@
         {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
       {% endif %}
     </a>
-    {% if card_variant.compare_at_price > card_variant.price %}
+    {% if card_preview_only %}
+      {% render 'product-badge', label: 'Preview item', tone: 'preview' %}
+    {% elsif card_variant.compare_at_price > card_variant.price and card_use_placeholder_price == false %}
       {% render 'product-badge', label: 'Sale', tone: 'sale' %}
     {% endif %}
     <button class="p-wish" type="button" aria-label="Wishlist remains deferred for {{ product.title }}" disabled>
@@ -41,7 +59,13 @@
   <div class="prod-info">
     <div class="p-type">{{ product.type | default: product.vendor | default: 'Preview product' }}</div>
     <div class="p-name"><a href="{{ card_product_url }}">{{ product.title }}</a></div>
-    {% render 'price-stack', price_now: card_price_now, price_was: card_price_was, price_save: card_price_save %}
+    {% render 'price-stack',
+      price_now: card_price_now,
+      price_was: card_price_was,
+      price_save: card_price_save,
+      price_is_placeholder: card_use_placeholder_price,
+      supporting_note: blank
+    %}
     <a class="add-btn" href="{{ card_product_url }}">{{ cta_label | default: 'View product' }}</a>
   </div>
 </div>

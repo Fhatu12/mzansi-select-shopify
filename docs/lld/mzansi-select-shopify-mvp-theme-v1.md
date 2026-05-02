@@ -251,6 +251,27 @@ Slice 12J explicitly defers:
 - homepage, search, cart, legal/support, or navigation rework beyond what is already accepted
 - publish or live-theme overwrite
 
+## Slice 13G preview-only product safety control responsibilities
+
+Slice 13G adds the smallest durable preview-safety rule needed before any later preview-store product visibility pass.
+
+Slice 13G scope includes:
+
+- tag-based preview-state detection on live product cards and PDPs using `preview-only` and `price-to-confirm`
+- placeholder price rendering (`Price to be confirmed`) whenever either tag is present
+- suppression of sale / compare-at / discount treatment whenever preview-only placeholder pricing is active
+- explicit non-final preview wording on tagged PDPs so delivery and launch-readiness do not appear approved
+- CSS-only support for the above safety state without redesigning the accepted card or PDP layouts
+
+Slice 13G explicitly defers:
+
+- product import or merchandising operations
+- Shopify Admin product creation or editing
+- actual preview staging
+- live Add to Cart, cart, checkout, or wishlist behaviour
+- collection/link changes, publish, or live-theme overwrite
+- any broader catalogue automation beyond the minimal preview-safety state
+
 Slice 5.5 PDP QA closure note:
 
 - The uncommitted Slice 5 PDP foundation was reviewed and accepted as PASS WITH NOTES.
@@ -1435,6 +1456,16 @@ Slice 12J validation note:
 - A no-state-export Playwright reuse attempt against the local Chrome default profile did not yield a reusable authenticated session in this pass, so no browser screenshots of unlocked collection/PDP routes were captured.
 - Evidence folder for the identity reconciliation, push, and access-gap checks: `artifacts/platform/slice-12j-1-preview-theme-reconciliation-20260430-111007/`.
 
+Slice 13G validation note:
+
+- The live card and PDP foundations required a small preview-safety guard because they still rendered live variant pricing and sale states by default for any staged product.
+- The accepted minimal convention is tag-based rather than metafield-based for now:
+  - `preview-only`
+  - `price-to-confirm`
+- When either tag is present, cards and PDPs now show `Price to be confirmed` instead of final public pricing.
+- When `preview-only` is present, cards and PDPs now surface `Preview item`, PDP delivery wording stays `Delivery details to be confirmed before launch.`, and sale/discount treatment is suppressed.
+- Purchase controls remain disabled as before, and no Shopify Admin write action, preview staging, publish, or live overwrite is introduced by this slice.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -1461,6 +1492,7 @@ Slice 12J validation note:
 - Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup, collection-density/presentation readiness, and later Product Owner approval for exposure.
 - Contact/About route availability was later reconciled as resolved in unpublished preview evidence through Manual Track A.1, so it no longer belongs in the active launch blocker set.
 - The local Slice 12J theme now supports live collection/PDP rendering, the correct unpublished preview theme has been reconciled as `151207542967`, and the remaining validation blocker is authenticated storefront access through the password wall.
+- Preview-only safety depends on consistent product tagging; if a later staged product is missing the `preview-only` / `price-to-confirm` convention, live pricing or sale treatment could still appear prematurely.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1501,4 +1533,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 12J / 12J.1 preview product visibility foundation recorded. Approved source HTML unchanged. This pass updates durable collection/PDP rendering behaviour so the local theme prefers live Shopify product data where available, reconciles the safe unpublished preview target as `151207542967`, records a targeted unpublished push without publish or live overwrite, preserves the approved visual/navigation structure, and leaves product import, publish, and live overwrite unapproved.
+**Footer Standard For This Pass:** Slice 13G preview-only product safety controls recorded locally. Approved source HTML unchanged. This pass adds a minimal durable tag-based preview-safety state for live product cards and PDPs so placeholder pricing and cautious preview wording can appear without implying final pricing, discount approval, supplier approval, or launch approval, and it leaves product import, actual preview staging, publish, and live overwrite unapproved.

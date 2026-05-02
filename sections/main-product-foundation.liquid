@@ -6,10 +6,25 @@
   {% assign current_product_intro = section.settings.product_intro %}
 {% endif %}
 {% assign current_product_description = product.description | strip %}
+{% capture current_tag_tokens %}|{{ product.tags | join: '|' | downcase }}|{% endcapture %}
+{% assign current_product_preview_only = false %}
+{% assign current_product_price_to_confirm = false %}
+{% if current_tag_tokens contains '|preview-only|' %}
+  {% assign current_product_preview_only = true %}
+{% endif %}
+{% if current_tag_tokens contains '|price-to-confirm|' %}
+  {% assign current_product_price_to_confirm = true %}
+{% endif %}
+{% assign current_product_use_placeholder_price = false %}
+{% if current_product_preview_only or current_product_price_to_confirm %}
+  {% assign current_product_use_placeholder_price = true %}
+{% endif %}
 {% assign current_product_price = current_variant.price | money_without_trailing_zeros %}
 {% assign current_product_price_was = blank %}
 {% assign current_product_price_save = blank %}
-{% if current_variant.compare_at_price > current_variant.price %}
+{% if current_product_use_placeholder_price %}
+  {% assign current_product_price = 'Price to be confirmed' %}
+{% elsif current_variant.compare_at_price > current_variant.price %}
   {% assign current_product_price_was = current_variant.compare_at_price | money_without_trailing_zeros %}
   {% assign current_product_price_delta = current_variant.compare_at_price | minus: current_variant.price %}
   {% assign current_product_price_percent = current_product_price_delta | times: 100 | divided_by: current_variant.compare_at_price %}
@@ -62,14 +77,25 @@
         </div>
 
         <div class="product-main-badge-row">
-          {% if current_variant.compare_at_price > current_variant.price %}
+          {% if current_product_preview_only %}
+            {% render 'product-badge', label: 'Preview item', tone: 'preview' %}
+          {% elsif current_variant.compare_at_price > current_variant.price and current_product_use_placeholder_price == false %}
             {% render 'product-badge', label: 'Sale', tone: 'sale' %}
           {% endif %}
         </div>
 
         <div class="p-type product-main-type">{{ current_product_type }}</div>
         <h1 class="product-main-title">{{ current_product_title }}</h1>
-        {% render 'price-stack', price_now: current_product_price, price_was: current_product_price_was, price_save: current_product_price_save %}
+        {% render 'price-stack',
+          price_now: current_product_price,
+          price_was: current_product_price_was,
+          price_save: current_product_price_save,
+          price_is_placeholder: current_product_use_placeholder_price,
+          supporting_note: blank
+        %}
+        {% if current_product_preview_only %}
+          <div class="product-preview-note">Delivery details to be confirmed before launch.</div>
+        {% endif %}
 
         <p class="product-main-intro">{{ current_product_intro }}</p>
 
@@ -148,7 +174,7 @@
             {% if product.type != blank %}
               <li>Type: {{ product.type }}</li>
             {% endif %}
-            <li>Availability: {% if product.available %}Available in preview{% else %}Currently unavailable{% endif %}</li>
+            <li>Availability: {% if current_product_preview_only %}Preview item{% elsif product.available %}Available in preview{% else %}Currently unavailable{% endif %}</li>
             <li>Variant count: {{ product.variants.size }}</li>
             {% unless product.has_only_default_variant %}
               <li>Options: {{ product.options | join: ', ' }}</li>
