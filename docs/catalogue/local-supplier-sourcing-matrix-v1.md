@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13C docs-only local supplier preview shortlist recorded; all shortlisted products remain `Candidate` only, `ZA Dropshipping` slots remain pending app/admin review, and Slice 13D local supplier proof pack is next  
+**Status:** Slice 13D docs-only local supplier proof pack recorded; seven shortlisted products are now `Supplier proof in progress` only, `Cable Organiser / Cable Management item` is paused, product-only margin estimates remain caveated, and `ZA Dropshipping` slots remain pending app/admin review  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, and the recommended next proof-pack slice.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, and the Slice 13D supplier proof-pack status.
 
 ## Approved strategy
 
@@ -87,14 +87,16 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `Gadgetgyz`: strongest current `Tech Accessories` fit.
 - `ZA Dropshipping`: useful Shopify/local-stock test path, but product and margin proof must be checked inside the app/admin workflow before relying on it.
 
-## Candidate-only rule
+## Current status rule
 
-- All shortlisted products remain `Candidate` only.
-- They are not `Supplier verified`.
-- They are not launch approved.
-- They are not approved for import.
-- They are not final-priced.
-- They are not approved for delivery promises or product claims.
+- `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` are now `Supplier proof in progress` only.
+- `Cable Organiser / Cable Management item` is paused because the current definition is too broad and commercially weak at the visible public price signal.
+- The remaining shortlisted products stay `Candidate` only in this pass.
+- No shortlisted product is `Supplier verified`.
+- No shortlisted product is launch approved.
+- No shortlisted product is approved for import.
+- No shortlisted product is final-priced.
+- No shortlisted product is approved for delivery promises or product claims.
 
 ## Beauty & Hair rule
 
@@ -102,19 +104,44 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Keep female hair pieces as a separate later Slice 13B opportunity assessment.
 - Reason: higher variant, return, quality, hygiene, and claim-risk complexity.
 
-## Recommended next slice
+## Slice 13D proof-pack status
 
-### Slice 13D — Local supplier proof pack for first preview shortlist
+- `Compact Organiser Basket` — `Neat Freak` — public price signal `R59`, recommended selling range `R119-R149`, product-only margin at `R119` about `50.4%`; missing dimensions, image permission, wholesale / dropship terms, and fulfilment workflow.
+- `2-Layer Carry Handle Container 3.8L` — `Neat Freak` — public price signal `R147`, recommended selling range `R299-R329`, product-only margin at `R299` about `50.8%`; missing exact product-detail proof, dimensions, material facts, image permission, and wholesale / dropship terms.
+- `Hook-over Door Basket` — `Neat Freak` — public price signal `R179`, recommended selling range `R379-R429`, product-only margin at `R379` about `52.8%`; missing dimensions, material facts, image permission, and wholesale / dropship terms.
+- `Mini Plastic Divider Basket` — `Neat Freak` — public price signal `R24-R29`, recommended selling range `R69-R79`, product-only margin at `R69` using `R24` cost about `65.2%`; low-ticket add-on risk remains and exact product-detail proof, dimensions, image permission, and wholesale / dropship terms are still missing.
+- `Sink Strainer, stainless steel` — `Neat Freak` — SKU `CL-150-003733`, price `R28`, estimated dispatch `2-5` working days, weight `0.2 kg`, dimensions `7.5 x 7.5 x 0.8 cm`, stainless-steel / fits-most-sinks fact signal, recommended selling range `R79-R99`, product-only margin at `R79` about `64.6%`; low-ticket add-on risk remains.
+- `Velcro Cable Tidies` / `Neat Cables Label Pack` — `Neat Freak` — public price signals `R45` and about `R35-R55`, recommended selling range `R99-R119`, product-only margin at `R99` using `R45` cost about `54.5%`; low-ticket add-on risk remains.
+- `Acrylic Tablet or Phone Stand` — `Gadgetgyz` — SKU `DP0402`, in stock, price `R158.89`, weight `0.5 kg`, dimensions `90 x 145 x 145 mm`, recommended selling range `R329-R349`, product-only margin at `R329` about `51.7%`; missing dropship SLA, shipping fee, image permission, and supplier fulfilment workflow confirmation.
+- `Cable Organiser / Cable Management item` — `Neat Freak` — paused because the current definition is too broad, multiple possible products were found, the visible `Multiplug and Cable Organiser` public price signal is `R299`, and the sell price would likely need around `R599+` to preserve the target product-only margin unless a lower-cost exact product or wholesale price is confirmed.
 
-Objective:
+## Commercial readiness note
 
-- Capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision.
+- Current margin calculations are product-only estimates based on public supplier prices.
+- They assume shipping is charged separately to the customer or otherwise recovered.
+- Final margins remain blocked until the shipping-cost handling model is confirmed.
+- No final pricing is approved.
 
-Seed from:
+## Fulfilment risk
 
-- `ZA Dropshipping`
-- `Neat Freak`
-- `Gadgetgyz`
+- `Neat Freak` is promising for local sourcing, but order timing must not be overpromised.
+- Public shipping guidance indicates orders can take `7-14` working days, with most sent within `2-7` working days after payment confirmation, plus courier delivery after dispatch.
+- `Gadgetgyz` has useful product and dropship signals, but exact shipping fee, SLA, and fulfilment workflow still need direct confirmation.
+
+## Global blockers
+
+- Wholesale / dropship terms for `Neat Freak`
+- Direct fulfilment workflow
+- Shipping-cost handling model
+- Image usage permission
+- Sample / product quality proof
+- Stock reliability
+- Final target price acceptance
+- Final Product Owner commercial decision
+
+## Next expected decision
+
+- Product Owner review of the documented Slice 13D supplier proof pack and approval of the next supplier-proof follow-up scope.
 
 ## Constraints preserved in this strategy pass
 

@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13C docs-only local supplier preview product shortlist update recorded; the Product Owner accepted the shortlist recommendation, the local supplier preview shortlist and supplier weighting are now documented, all shortlisted products remain `Candidate` only, `ZA Dropshipping` slots remain pending app/admin review, Slice 13D local supplier proof pack is next, no Shopify write action occurred in this pass, and `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13D docs-only local supplier proof pack update recorded; seven shortlisted products are now `Supplier proof in progress` only, `Cable Organiser / Cable Management item` is paused pending narrower exact-product proof or lower-cost confirmation, product-only margin estimates remain caveated, no product is `Supplier verified`, launch approved, import approved, or final-priced, no Shopify write action occurred in this pass, and `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,15 +13,19 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13D - Local supplier proof pack for first preview shortlist
-- Active owner: Product Owner
-- Next owner: Product Manager
+- Active slice: Slice 13D docs-only local supplier proof pack update
+- Active owner: Product Manager
+- Next owner: Product Owner
 - Last accepted slice: Slice 13C docs-only local supplier preview product shortlist update (`301374ea4155acfa99b454a77ea3cdfc72d5fdcb`)
 - Last committed slice: Slice 13C docs-only local supplier preview product shortlist update (`301374ea4155acfa99b454a77ea3cdfc72d5fdcb`)
 - Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
 - Current blockers:
-  - Slice 13D must capture exact supplier proof for the strongest `6-8` products before any product import or `Supplier verified` decision is revisited
-  - Shopify Admin automation and preview product staging remain paused/deferred until Slice 13D proof-pack review is completed and a later write-action pass is explicitly approved
+  - Seven shortlisted products are now `Supplier proof in progress`, but wholesale / dropship terms, direct fulfilment workflow, shipping-cost handling, image permission, sample / product quality proof, stock reliability, final target price acceptance, and final Product Owner commercial approval remain open before any product import or `Supplier verified` decision is revisited
+  - Current margin calculations are product-only estimates from public supplier prices, assume shipping is charged separately to the customer or otherwise recovered, and do not approve final pricing
+  - Neat Freak looks promising for local sourcing, but order timing must not be overpromised; public guidance indicates most orders are sent within `2-7` working days after payment confirmation and can take `7-14` working days overall before / through courier delivery
+  - Gadgetgyz still requires direct confirmation of shipping fee, SLA, image permission, and fulfilment workflow
+  - `Cable Organiser / Cable Management item` is paused because the current definition is too broad and the visible public price signal would likely require a `R599+` sell price to preserve the target product-only margin unless a narrower or lower-cost exact item is confirmed
+  - Shopify Admin automation and preview product staging remain paused/deferred until Product Owner review of the Slice 13D proof pack is completed and a later write-action pass is explicitly approved
   - International and older supplier candidate paths remain paused unless explicitly reopened
   - `ZA Dropshipping` remains a useful Shopify/local-stock test path, but the shortlisted product slots there are still pending app/admin review before product and margin proof can be relied on
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
@@ -38,25 +42,34 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Jewellery / accessory organiser` is now the preferred replacement-direction `Candidate`, but it must remain blocked until the commercial-readiness gates are met and Product Owner records formal replacement approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
-  - Slice 12K preview catalogue product staging remains paused/deferred pending later explicit approval after the Slice 13D proof-pack path
-  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred pending later explicit approval after the Slice 13D proof-pack path
+  - Slice 12K preview catalogue product staging remains paused/deferred pending later explicit approval after Product Owner review of the Slice 13D proof-pack outcome
+  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred pending later explicit approval after Product Owner review of the Slice 13D proof-pack outcome
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
   - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
-- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, supplier/commercial readiness, and thin collection readiness
+- Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, shipping-cost handling, supplier/commercial readiness, and thin collection readiness
 - Product import status: Not approved and not started
 - Shopify push/publish status: No Shopify write action occurred in this reconciliation pass; no publish approved; no live theme overwrite approved
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-02 during post-Slice 13C tracker sync toward Slice 13D
+- Last tracker update: 2026-05-02 during Slice 13D docs-only local supplier proof pack update
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged with reason - Slice 13C is catalogue/supplier planning only and does not change durable theme, rendering, architecture, or storefront behaviour.
+- LLD status: Unchanged with reason - Slice 13D is catalogue/supplier proof planning only and does not change durable theme, rendering, architecture, or storefront behaviour.
 
 ## Current active pass
 
-Slice 13C docs-only local supplier preview product shortlist update
+Slice 13D docs-only local supplier proof pack update
+
+## Slice 13D local supplier proof pack
+
+- Product Owner accepted the Product Manager Slice 13D recommendation as an evidence-capture update only.
+- `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` are now `Supplier proof in progress` only.
+- `Cable Organiser / Cable Management item` is paused because the current definition is too broad and the visible public price signal would likely require a `R599+` sell price unless a narrower or lower-cost exact product is confirmed.
+- Product-only margin estimates in this pass are planning signals only; they assume shipping is charged separately to the customer or otherwise recovered and do not approve final pricing.
+- `Supplier proof in progress` does not mean `Supplier verified`, launch approved, import approved, final-priced, delivery-approved, or claims-approved.
+- Preview staging remains blocked/deferred, Slice 12K remains paused/deferred, no Shopify write action occurred in this pass, and `artifacts/` remains untracked.
 
 ## Slice 13C local supplier preview product shortlist
 
@@ -1318,10 +1331,10 @@ All future Shopify implementation work must preserve the approved visual design 
 
 ## Current readiness summary
 
-- Confirmed: `0`
-- Candidate: `25`
-- TBD: `0`
-- Unconfirmed: `25`
+- Candidate: `18`
+- Preview staged: `0`
+- Supplier proof in progress: `7`
+- Supplier verified: `0`
 
 ## Slice 11I targeted gap-closure status
 
@@ -1521,7 +1534,7 @@ The repository remains a Git-initialized Shopify theme foundation with implement
 
 ## Next expected decision
 
-Product Owner review of the documented Slice 13C shortlist and approval of Slice 13D local supplier proof-pack scope, followed by exact supplier proof capture for the strongest `6-8` products before any product import or `Supplier verified` decision is revisited.
+Product Owner review of the documented Slice 13D supplier proof pack, confirmation of the seven `Supplier proof in progress` items and the paused cable-organiser status, and approval of the next supplier-proof follow-up scope before any product import or `Supplier verified` decision is revisited.
 
 ## Decisions made
 
@@ -1563,6 +1576,7 @@ Product Owner review of the documented Slice 13C shortlist and approval of Slice
 - Local-first sourcing is the approved roadmap direction.
 - Slice 13A is limited to docs-only local supplier strategy, supplier-prioritisation, launch matrix, and status-model recording.
 - Slice 13C is limited to docs-only local supplier preview product shortlist, supplier weighting, and Candidate-only status recording.
+- Slice 13D is limited to docs-only local supplier proof-pack recording, status movement to `Supplier proof in progress` only, and paused-item recording where evidence remains too broad or commercially weak.
 - `ZA Dropshipping` is the best Shopify-integration and local-stock test candidate, but should be used only as a small pilot first because public Shopify app review confidence is weak.
 - `Neat Freak` is the best current category-fit supplier for `Home & Living`, `Kitchen & Storage`, `Office & Desk`, storage, organisers, kitchen, laundry, and household utility, pending wholesale / dropship terms and image-usage-rights confirmation.
 - `Gadgetgyz` is the best current `Tech Accessories` test supplier, pending stock, pricing, fulfilment workflow, delivery-SLA, and return-terms confirmation.
@@ -1576,11 +1590,16 @@ Product Owner review of the documented Slice 13C shortlist and approval of Slice
 - `Neat Freak` carries the strongest current category-fit weighting.
 - `Gadgetgyz` carries the strongest current `Tech Accessories` weighting.
 - `ZA Dropshipping` remains useful for Shopify/local-stock testing, but its shortlisted product slots remain pending app/admin review before product and margin proof can be relied on.
-- All shortlisted products remain `Candidate` only and are not `Supplier verified`, launch approved, import approved, final-priced, delivery-approved, or claims-approved.
+- Seven shortlisted products now move to `Supplier proof in progress` only: `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand`.
+- `Cable Organiser / Cable Management item` is paused because the current evidence is too broad and the visible public price signal is commercially weak at the current definition.
+- Remaining shortlisted products stay `Candidate` only unless a later approved pass records a different status with evidence.
+- `Supplier proof in progress` does not mean `Supplier verified`, launch approved, import approved, final-priced, delivery-approved, or claims-approved.
+- Product-only margin calculations in this pass are planning estimates only, assume shipping is charged separately or otherwise recovered, and do not approve final pricing.
+- Neat Freak public fulfilment guidance suggests most orders are sent within `2-7` working days after payment confirmation and can take `7-14` working days overall before / through courier delivery, so delivery timing must not be overpromised.
+- Gadgetgyz still needs direct confirmation of shipping fee, SLA, image permission, and fulfilment workflow before any later status movement beyond `Supplier proof in progress`.
 - Slice 12K preview product staging is paused/deferred.
-- Shopify Admin automation and product staging must not continue until a local supplier shortlist is approved.
-- Preview staging remains blocked/deferred until the local supplier shortlist is selected.
-- Slice 13D — Local supplier proof pack for first preview shortlist is the next recommended proof-pack slice.
+- Shopify Admin automation and product staging must not continue until Product Owner reviews the Slice 13D proof pack and a later write-action pass is explicitly approved.
+- Preview staging remains blocked/deferred in this pass.
 - No Shopify write action occurred in this reconciliation pass.
 - `artifacts/` remains untracked and must not be committed.
 - The temporary safe routing rule remains `{{ routes.all_products_collection_url }}` for launch departments until dedicated launch collections are created and approved for exposure.
@@ -1651,11 +1670,12 @@ Product Owner review of the documented Slice 13C shortlist and approval of Slice
 20. Slice 12J preview product visibility foundation: completed and committed.
 21. Slice 12K preview product staging and Playwright/Admin staging retry: paused/deferred pending local supplier shortlist approval.
 22. Slice 13A docs-only local supplier pivot and launch sourcing matrix update: completed and committed.
-23. Slice 13C docs-only local supplier preview product shortlist update: completed locally in this pass.
-24. Slice 13D — Local supplier proof pack for first preview shortlist: next recommended proof-pack slice.
-25. Capture exact supplier proof for the strongest `6-8` shortlisted products before any product import or `Supplier verified` decision is revisited.
-26. Keep all shortlisted products at `Candidate`, keep `ZA Dropshipping` slots pending app/admin review, and keep `Beauty & Hair` outside the launch taxonomy.
-27. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves the shortlist follow-up path.
+23. Slice 13C docs-only local supplier preview product shortlist update: completed and committed.
+24. Post-Slice 13C tracker sync: completed and committed.
+25. Slice 13D docs-only local supplier proof pack update: completed locally in this pass.
+26. Product Owner review of the Slice 13D supplier proof pack and decision on the next supplier-proof follow-up scope.
+27. Keep the seven promoted items at `Supplier proof in progress` only, keep `Cable Organiser / Cable Management item` paused unless narrowed or re-costed successfully, keep `ZA Dropshipping` slots pending app/admin review, and keep `Beauty & Hair` outside the launch taxonomy.
+28. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves a later write-action follow-up path.
 
 ## Handoff queue
 
@@ -1671,12 +1691,14 @@ Product Owner review of the documented Slice 13C shortlist and approval of Slice
 - Use `artifacts/supplier-verification/slice-11l/jewellery-accessory-organiser-evidence-summary.md` as the current replacement-direction evidence summary for the preferred `Adhesive Wall Hooks Pack` replacement path.
 - Use `artifacts/supplier-verification/slice-11n/jewellery-accessory-organiser-evidence-summary.md` as the current supplier-evidence-closure summary for the organiser replacement route.
 - Use [docs/catalogue/local-supplier-sourcing-matrix-v1.md](/d:/dev/mzansi-select-shopify/docs/catalogue/local-supplier-sourcing-matrix-v1.md) as the source of truth for the approved local-first supplier strategy, supplier tiers, and launch collection supplier matrix.
-- Use the Slice 13C shortlist there as the source of truth for the first local supplier preview-planning product set.
+- Use the Slice 13D proof pack there as the source of truth for the current local supplier follow-up status on the first preview shortlist.
 - Use the Slice 12J local theme changes before approving any later preview-data staging; collection and PDP routes now prefer live Shopify data where present, while purchase actions remain disabled and preview-only.
-- Treat Slice 12K Playwright/Admin staging work as parked for later until the local supplier shortlist is approved.
-- Do not continue Shopify Admin automation, preview product staging, or other Shopify write work until the local supplier shortlist is approved.
+- Treat Slice 12K Playwright/Admin staging work as parked for later until Product Owner reviews the Slice 13D proof-pack outcome and explicitly approves a later write-action pass.
+- Do not continue Shopify Admin automation, preview product staging, or other Shopify write work until Product Owner reviews the Slice 13D proof-pack outcome and explicitly approves a later write-action pass.
 - Treat `Preview staged` as preview-store visibility only; it does not imply supplier approval, launch approval, final pricing approval, delivery approval, or claims approval.
-- Treat all Slice 13C shortlisted products as `Candidate` only until Slice 13D proof capture is complete and accepted.
+- Treat `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` as `Supplier proof in progress` only until the remaining evidence gaps and Product Owner commercial decision are closed.
+- Treat `Cable Organiser / Cable Management item` as paused until a narrower exact product or lower-cost confirmation is captured.
+- Treat the remaining Slice 13C shortlisted products as `Candidate` only unless a later approved pass records a different status with evidence.
 - Treat the two `ZA Dropshipping` shortlist slots as pending app/admin review until product, stock, and margin proof is captured inside that workflow.
 - Keep female hair pieces outside the launch taxonomy and treat them as a later Slice 13B opportunity assessment only.
 - Keep launch department navigation on `{{ routes.all_products_collection_url }}` until the four approved launch collections exist and are approved for exposure.
@@ -1694,8 +1716,8 @@ Product Owner review of the documented Slice 13C shortlist and approval of Slice
 
 ## Final handoff summary
 
-This Slice 13C docs-only pass records the first local supplier preview product shortlist, documents the supplier weighting across `Neat Freak`, `Gadgetgyz`, and `ZA Dropshipping`, preserves Candidate-only status across the shortlist, marks the `ZA Dropshipping` slots as pending app/admin review, and recommends Slice 13D local supplier proof pack as the next proof-pack slice. No Shopify write action occurred in this pass, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
+This Slice 13D docs-only pass records the first local supplier proof pack against the shortlist, moves seven products to `Supplier proof in progress` only, pauses `Cable Organiser / Cable Management item` because the current definition is too broad and commercially weak, records the product-only margin caveat plus fulfilment/shipping blockers, and keeps all launch, import, pricing, staging, and verification approvals blocked. No Shopify write action occurred in this pass, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 13C docs-only local supplier preview product shortlist update recorded. Approved source HTML unchanged. This pass documents the local supplier preview shortlist, supplier weighting, Candidate-only status, `ZA Dropshipping` pending-review slots, and Slice 13D recommendation, leaves the LLD unchanged because no durable theme/data-rendering rule changed, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 13D docs-only local supplier proof pack update recorded. Approved source HTML unchanged. This pass documents seven `Supplier proof in progress` items, the paused cable-organiser status, the product-only margin caveat, the open fulfilment/shipping blockers, leaves the LLD unchanged because no durable theme/data-rendering rule changed, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.
