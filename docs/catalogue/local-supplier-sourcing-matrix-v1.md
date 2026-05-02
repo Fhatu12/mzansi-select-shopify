@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13F docs-only preview-staging preparation pack recorded; five shortlisted products now have preparation-pack entries with handles, collections, conservative copy, placeholder-image approach, hidden/placeholder price guidance, cautious delivery wording, and blocker lists, all five remain `Supplier proof in progress` only, and `ZA Dropshipping` slots remain pending app/admin review  
+**Status:** Slice 13I controlled Shopify Admin preview-only listings exist for five approved handles with `preview-only` / `price-to-confirm` tags, `supplier-neat-freak` on the first four and `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand`, `0.00` placeholder pricing, empty media, and approved existing collection joins only; all five remain `Supplier proof in progress` only with **no** `Supplier verified` approval; `ZA Dropshipping` slots remain pending app/admin review  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, the Slice 13E supplier proof gap-closure status, and the Slice 13F preview-staging preparation-pack status.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, the Slice 13E supplier proof gap-closure status, the Slice 13F preview-staging preparation-pack status, and the Slice 13I controlled Admin preview-only listing outcome for five approved handles.
 
 ## Approved strategy
 
@@ -98,7 +98,14 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - No shortlisted product is approved for import.
 - No shortlisted product is final-priced.
 - No shortlisted product is approved for delivery promises or product claims.
-- No actual preview staging is approved in this pass.
+- Slice 13I narrow **preview-only** Admin listings for five approved handles are now executed; they do **not** approve `Supplier verified`, launch readiness, final pricing, delivery promises, product claims, or broader automated staging.
+
+## Slice 13I controlled Admin preview-only listings
+
+- Shopify Admin now has **preview-only** catalogue rows for: `Sink Strainer — Stainless Steel` (`sink-strainer-stainless-steel`), `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand`, using approved handles and collection joins only.
+- **Supplier tags:** `supplier-neat-freak` on the first four; `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand`.
+- **Commercial posture unchanged:** all five remain `Supplier proof in progress` only; **no** `Supplier verified` approval; **no** supplier verification sign-off; **no** final pricing, delivery promise, or product-claim approval.
+- Earlier Slice 13E wording that disallowed actual preview staging reflects the **pre-Slice-13I** baseline; Slice 13I is the narrow Product Owner–approved exception for these five handles only.
 
 ## Beauty & Hair rule
 
@@ -175,7 +182,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Next expected decision
 
-- Product Owner review of the documented Slice 13F preview-staging preparation pack and approval of the next supplier-proof or later staging-preparation follow-up scope.
+- Product Owner review of Slice 13I Admin listing outcome, authenticated preview-theme validation when password access is available, and approval of the next supplier-proof or broader staging scope if needed.
 
 ## Constraints preserved in this strategy pass
 

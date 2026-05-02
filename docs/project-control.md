@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13G preview-only product staging safety controls recorded locally; live collection cards and PDPs now support non-final preview safety states for tagged products, price display can be replaced with `Price to be confirmed`, delivery wording can stay cautious, all preview-prepared products remain `Supplier proof in progress` only, no actual preview staging is approved, no product is `Supplier verified`, import approved, or final-priced, no Shopify write action occurred in this pass, and `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; theme publish/live overwrite/checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted (this pass is not git-committed)  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,14 +13,14 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13G preview-only product staging safety controls
+- Active slice: Slice 13I controlled Shopify Admin preview-only product staging
 - Active owner: Product Manager
 - Next owner: Product Owner
-- Last accepted slice: Slice 13F preview staging preparation pack (`e04d04737ab846e35d82265ab5b2f65ef16a87f4`)
-- Last committed slice: Slice 13F preview staging preparation pack (`e04d04737ab846e35d82265ab5b2f65ef16a87f4`)
+- Last accepted slice: Slice 13I preview-only product staging documentation (PASS WITH NOTES)
+- Last committed slice: Slice 13I preview-only product staging documentation
 - Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
 - Current blockers:
-  - The five-product preview-staging preparation pack is now documented, and the local theme now has a minimal preview-only safety control path for tagged products, but all prepared items remain `Supplier proof in progress` only and none is approved for actual preview staging, import, or `Supplier verified` review
+  - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation requires an authenticated preview session
   - Any later preview-store visibility test must use the documented `preview-only` and `price-to-confirm` tags so cards and PDPs show non-final placeholder pricing, suppress sale/discount treatment, and keep delivery wording cautious until Product Owner approval exists
   - Wholesale / dropship terms, direct fulfilment workflow, shipping-cost handling, image permission, stock reliability proof, sample / product quality proof, final target selling-range confidence, return / refund practicality under the Mzansi Select support model, and final Product Owner commercial approval remain open before any product import or `Supplier verified` decision is revisited
   - Current margin calculations are product-only estimates from public supplier prices, assume shipping is charged separately to the customer or otherwise recovered, and do not approve final pricing; low-ticket items likely need bundles or minimum-cart rules if shipping is absorbed by Mzansi Select
@@ -29,7 +29,7 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Cable Organiser / Cable Management item` is paused because the current definition is too broad and the visible public price signal would likely require a `R599+` sell price to preserve the target product-only margin unless a narrower or lower-cost exact item is confirmed
   - Preview-preparation entries are recorded only for `Sink Strainer, stainless steel`, `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand`; price display must stay hidden or placeholder-only, delivery wording must stay cautious, and supplier images must remain placeholder-only until image permission is confirmed
   - `2-Layer Carry Handle Container 3.8L` and `Hook-over Door Basket` remain lower-priority for preview-staging preparation because dimensions, image permission, delivery handling, and price positioning need stronger closure first
-  - Shopify Admin automation and actual preview product staging remain paused/deferred until Product Owner review of the Slice 13G safety-control outcome is completed and a later write-action pass is explicitly approved
+  - Broader Shopify Admin automation (for example Slice 12K Playwright-style flows) remains paused unless Product Owner explicitly approves a follow-on scope beyond this controlled five-product pass
   - International and older supplier candidate paths remain paused unless explicitly reopened
   - `ZA Dropshipping` remains a useful Shopify/local-stock test path, but the shortlisted product slots there are still pending app/admin review before product and margin proof can be relied on
   - Slice 11R keeps `Jewellery / accessory organiser` as the preferred replacement-direction `Candidate`, but the current supplier proof capture pack remains incomplete and does not yet support formal replacement approval review or `Supplier verified` movement
@@ -46,25 +46,44 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Jewellery / accessory organiser` is now the preferred replacement-direction `Candidate`, but it must remain blocked until the commercial-readiness gates are met and Product Owner records formal replacement approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
-  - Slice 12K preview catalogue product staging remains paused/deferred pending later explicit approval after Product Owner review of the Slice 13G safety-control outcome
-  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred pending later explicit approval after Product Owner review of the Slice 13G safety-control outcome
+  - Slice 12K preview catalogue product staging remains paused/deferred for automation-style flows; Slice 13I completed a **narrow** Product Owner–approved manual/API product staging pass for exactly five handles only
+  - Shopify Admin automation and Playwright/Admin staging remain paused/deferred unless Product Owner explicitly approves a broader write-action scope
   - Product import remains deferred and unapproved
   - Shopify push/publish remains deferred and unapproved
   - Broader dynamic catalogue wiring beyond collection/PDP preview rendering remains deferred and unapproved
   - Checkout customization remains deferred and unapproved
   - Final legal publication remains deferred and unapproved
 - Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, shipping-cost handling, supplier/commercial readiness, and thin collection readiness
-- Product import status: Not approved and not started
-- Shopify push/publish status: No Shopify write action occurred in this reconciliation pass; no publish approved; no live theme overwrite approved
+- Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
+- Shopify push/publish status: No theme push, no theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-03 during Slice 13G preview-only product staging safety controls
+- Last tracker update: 2026-05-03 during Slice 13I controlled Shopify Admin preview-only product staging
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Updated - Slice 13G adds a minimal durable preview-only product safety state for cards and PDPs without changing broader storefront architecture or approved visual direction.
+- LLD status: Unchanged in this pass — Slice 13I is Shopify Admin product staging only; theme behaviour remains per committed Slice 13G
 
 ## Current active pass
 
-Slice 13G preview-only product staging safety controls
+Slice 13I controlled Shopify Admin preview-only product staging
+
+## Slice 13I controlled Shopify Admin preview-only product staging
+
+- Product Owner approved a **controlled** Shopify Admin write-action pass for **exactly five** preview-only products on `dropshippoc.myshopify.com` (no theme publish, no live theme overwrite).
+- **Preview theme** validated before writes: `151207542967` / Mzansi Select MVP Preview — `unpublished`. **Live theme** validated: `148914077879` / Horizon — `live`.
+- Repo **HEAD** matched Slice 13G commit `0b594c40a97bca29481e947092d4854f4910b9a4` at run start.
+- **Products created** (none of the five handles existed before; all **created** via Admin GraphQL `productCreate`, then `publishablePublish` to **Online Store**):
+  1. `Sink Strainer — Stainless Steel` — handle `sink-strainer-stainless-steel` — collections: **Kitchen & Storage** — tags: `preview-only`, `price-to-confirm`, `supplier-proof-in-progress`, `local-supplier-candidate`, `supplier-neat-freak`
+  2. `Compact Organiser Basket` — `compact-organiser-basket` — **Home & Living**, **Kitchen & Storage** — same tag set
+  3. `Mini Plastic Divider Basket` — `mini-plastic-divider-basket` — **Kitchen & Storage**, **Office & Desk** — same tag set
+  4. `Cable Tidies Set` — `cable-tidies-set` — **Office & Desk**, **Tech Accessories** — same tag set
+  5. `Acrylic Tablet or Phone Stand` — `acrylic-tablet-phone-stand` — **Office & Desk**, **Tech Accessories** — tags include `supplier-gadgetgyz` instead of `supplier-neat-freak`
+- **Vendor / type:** `Mzansi Select Preview` / `Preview Catalogue` (organisation only).
+- **Variants:** price `0.00`, compare-at blank, inventory quantity `0`, inventory policy `DENY` (continue selling when out of stock **false**), **no** product media.
+- **Collections:** only existing launch collections above — **no** create/delete/rename/restructure.
+- **Evidence folder:** `artifacts/platform/slice-13i-preview-only-product-staging-20260503-003149` (matrix, CLI preflight, GraphQL validation output).
+- **Preview URL checks (unauthenticated):** listed PDP and collection `preview_theme_id` URLs return **HTTP 200** but **storefront password** HTML — visual validation of placeholder price copy, delivery line, and purchase-disabled state **blocked** without authenticated preview; do not bypass password protection.
+- **Rollback / removal plan:** set product to Draft or Archive; unpublish from Online Store; remove from collections if needed; delete products only with Product Owner approval; record rollback in this tracker; do not change theme code for rollback.
+- **Safety confirmations:** no publish of theme, no live theme overwrite, no checkout/shipping/markets/tax/payment settings edit, no discounts, no compare-at, no supplier images, no `Supplier verified` promotion, no final launch/pricing/delivery/claims approval, no Beauty & Hair taxonomy change, no Jewellery organiser final replacement approval, no credentials or tokens written into repo docs.
 
 ## Slice 13G preview-only product staging safety controls
 
@@ -1718,10 +1737,11 @@ Product Owner review of the documented Slice 13F preview-staging preparation pac
 25. Slice 13D docs-only local supplier proof pack update: completed and committed.
 26. Slice 13E docs-only supplier proof gap-closure update: completed and committed.
 27. Slice 13F docs-only preview-staging preparation pack update: completed and committed.
-28. Slice 13G preview-only product staging safety controls: completed locally in this pass.
-29. Product Owner review of the Slice 13G safety-control outcome and decision on whether a later preview-staging write-action pass should begin.
-30. Keep the five prepared entries at preparation-only status, keep the seven shortlisted proof-pack items at `Supplier proof in progress` only, keep `Cable Organiser / Cable Management item` paused unless narrowed or re-costed successfully, keep `ZA Dropshipping` slots pending app/admin review, and keep `Beauty & Hair` outside the launch taxonomy.
-31. Resume preview product staging, Shopify Admin automation, or other Shopify write actions only after Product Owner approves a later write-action follow-up path.
+28. Slice 13G preview-only product staging safety controls: completed and committed at `0b594c40a97bca29481e947092d4854f4910b9a4`.
+29. Slice 13I controlled Shopify Admin preview-only product staging for five approved handles: completed in this pass (documented locally; not committed until Product Owner review).
+30. Product Owner review of Slice 13I Admin outcome, authenticated preview-theme PDP/collection validation when password access is available, and decision on any follow-on write scope.
+31. Keep the seven shortlisted proof-pack items at `Supplier proof in progress` only, keep `Cable Organiser / Cable Management item` paused unless narrowed or re-costed successfully, keep `ZA Dropshipping` slots pending app/admin review, and keep `Beauty & Hair` outside the launch taxonomy.
+32. Resume broader Shopify Admin automation or additional product staging only after Product Owner explicitly approves a follow-up path beyond Slice 13I.
 
 ## Handoff queue
 
@@ -1739,11 +1759,11 @@ Product Owner review of the documented Slice 13F preview-staging preparation pac
 - Use [docs/catalogue/local-supplier-sourcing-matrix-v1.md](/d:/dev/mzansi-select-shopify/docs/catalogue/local-supplier-sourcing-matrix-v1.md) as the source of truth for the approved local-first supplier strategy, supplier tiers, and launch collection supplier matrix.
 - Use the Slice 13F preparation pack there as the source of truth for the current preview-preparation posture on the first shortlist subset.
 - Use the Slice 12J local theme changes before approving any later preview-data staging; collection and PDP routes now prefer live Shopify data where present, while purchase actions remain disabled and preview-only.
-- Treat Slice 12K Playwright/Admin staging work as parked for later until Product Owner reviews the Slice 13G safety-control outcome and explicitly approves a later write-action pass.
-- Do not continue Shopify Admin automation, preview product staging, or other Shopify write work until Product Owner reviews the Slice 13G safety-control outcome and explicitly approves a later write-action pass.
+- Treat Slice 12K Playwright/Admin staging work as parked for broader automation until Product Owner reviews Slice 13I and any later write-action scope.
+- Do not expand Shopify Admin automation or additional product writes beyond the approved Slice 13I five-product scope until Product Owner explicitly approves a follow-up path.
 - Treat `Preview staged` as preview-store visibility only; it does not imply supplier approval, launch approval, final pricing approval, delivery approval, or claims approval.
 - Treat `Compact Organiser Basket`, `2-Layer Carry Handle Container 3.8L`, `Hook-over Door Basket`, `Mini Plastic Divider Basket`, `Sink Strainer, stainless steel`, `Velcro Cable Tidies` / `Neat Cables Label Pack`, and `Acrylic Tablet or Phone Stand` as `Supplier proof in progress` only until the remaining evidence gaps and Product Owner commercial decision are closed.
-- Treat `Sink Strainer - Stainless Steel`, `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand` as the only prepared preview-staging pack entries on paper; do not treat that preparation as staging approval.
+- Treat `Sink Strainer - Stainless Steel`, `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand` as the Slice 13F preparation-pack subset; Slice 13I now created matching **preview-only** Shopify products for those five handles — still not `Supplier verified`, not final-priced, not delivery- or claims-approved, and not final launch approved.
 - Treat `2-Layer Carry Handle Container 3.8L` and `Hook-over Door Basket` as lower-priority for preview-staging preparation until dimensions, image permission, delivery handling, and price-positioning closure improve.
 - Treat `Cable Organiser / Cable Management item` as paused until a narrower exact product or lower-cost confirmation is captured.
 - Treat the remaining Slice 13C shortlisted products as `Candidate` only unless a later approved pass records a different status with evidence.
@@ -1764,8 +1784,8 @@ Product Owner review of the documented Slice 13F preview-staging preparation pac
 
 ## Final handoff summary
 
-This Slice 13G local theme/docs pass adds minimal preview-only product safety controls so tagged products can later appear in the unpublished preview store without showing final public pricing, discount treatment, or delivery/launch approval signals. The five prepared shortlist entries remain `Supplier proof in progress` only, actual preview staging and all Shopify write actions remain blocked, supplier/product readiness remains the active blocker set, and `artifacts/` remains untracked and uncommitted.
+Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: five preview-only products were **created**, assigned only to existing launch collections, tagged for Slice 13G storefront safety, priced at `0.00` placeholder with zero stock and `DENY` oversell, with empty media, and published to **Online Store** for password-gated preview review. No theme publish, no live theme overwrite, no checkout/shipping/market/tax/payment edits, and no collection structure changes. All five remain `Supplier proof in progress` only. Unauthenticated `preview_theme_id` URL checks still return the storefront password page — authenticated preview remains required to confirm PDP/collection rendering. Evidence: `artifacts/platform/slice-13i-preview-only-product-staging-20260503-003149`. `artifacts/` remains untracked and uncommitted.
 
 ---
 
-**Footer Standard For This Pass:** Slice 13G preview-only product staging safety controls recorded locally. Approved source HTML unchanged. This pass adds a minimal tag-based preview-safety state for live product cards and PDPs, preserves preview-only status rules and open blockers, records that no Shopify write action occurred, and keeps `artifacts/` untracked and uncommitted.
+**Footer Standard For This Pass:** Slice 13I controlled Shopify Admin preview-only product staging recorded locally. Five products created with approved tags, placeholder pricing, and Online Store publication for preview only; no theme code change in this pass; broader automation still gated by Product Owner; `artifacts/` remains untracked and uncommitted pending Product Owner review before any docs commit.
