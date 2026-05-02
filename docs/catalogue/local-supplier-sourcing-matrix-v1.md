@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13E docs-only local supplier proof gap closure recorded; all seven shortlisted proof-pack products remain `Supplier proof in progress` only, no product is ready for `Supplier verified` review, `Cable Organiser / Cable Management item` remains paused, product-only margin estimates remain caveated, and `ZA Dropshipping` slots remain pending app/admin review  
+**Status:** Slice 13F docs-only preview-staging preparation pack recorded; five shortlisted products now have preparation-pack entries with handles, collections, conservative copy, placeholder-image approach, hidden/placeholder price guidance, cautious delivery wording, and blocker lists, all five remain `Supplier proof in progress` only, and `ZA Dropshipping` slots remain pending app/admin review  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, and the Slice 13E supplier proof gap-closure status.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, the Slice 13E supplier proof gap-closure status, and the Slice 13F preview-staging preparation-pack status.
 
 ## Approved strategy
 
@@ -98,6 +98,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - No shortlisted product is approved for import.
 - No shortlisted product is final-priced.
 - No shortlisted product is approved for delivery promises or product claims.
+- No actual preview staging is approved in this pass.
 
 ## Beauty & Hair rule
 
@@ -129,6 +130,20 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `Neat Freak` remains a strong category fit, and public evidence supports local retail fulfilment, shipping fees, delivery estimates, and returns process, but public evidence still does not confirm wholesale / dropship terms, direct-to-customer fulfilment for Mzansi Select, image usage permission, stock reliability, or sample / product quality.
 - `Gadgetgyz` shows a stronger dropship-workflow signal than `Neat Freak`, and `Acrylic Tablet or Phone Stand` has strong product proof and SKU evidence, but exact shipping fee, SLA, image permission, supplier workflow confirmation, and final Product Owner commercial decision remain open.
 
+## Slice 13F preview-staging preparation pack
+
+- `Sink Strainer - Stainless Steel` — handle `sink-strainer-stainless-steel` — collection `Kitchen & Storage`
+- `Compact Organiser Basket` — handle `compact-organiser-basket` — collections `Home & Living` / `Kitchen & Storage`
+- `Mini Plastic Divider Basket` — handle `mini-plastic-divider-basket` — collections `Kitchen & Storage` / `Office & Desk`
+- `Cable Tidies Set` — handle `cable-tidies-set` — collections `Office & Desk` / `Tech Accessories`
+- `Acrylic Tablet or Phone Stand` — handle `acrylic-tablet-phone-stand` — collections `Office & Desk` / `Tech Accessories`
+- All five prepared entries remain `Supplier proof in progress` only and are preparation-only, not actual preview staging approval.
+- Use conservative factual preview copy only.
+- Use placeholder images until supplier image permission is confirmed.
+- Use hidden price or placeholder wording until final pricing and shipping-cost handling are approved.
+- Use cautious delivery wording only: `Delivery details to be confirmed before launch.`
+- Priority order: `Sink Strainer - Stainless Steel`, `Compact Organiser Basket`, `Acrylic Tablet or Phone Stand`, `Mini Plastic Divider Basket`, `Cable Tidies Set`.
+
 ## Commercial readiness note
 
 - Current margin calculations are product-only estimates based on public supplier prices.
@@ -144,6 +159,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Public shipping guidance indicates orders can take `7-14` working days, with most sent within `2-7` working days after payment confirmation, plus courier delivery after dispatch.
 - `Gadgetgyz` has useful product and dropship signals, but exact shipping fee, SLA, and fulfilment workflow still need direct confirmation.
 - Delivery wording must remain cautious, and product copy should stay factual and conservative until stronger supplier-backed evidence exists.
+- Do not approve best-seller, premium-quality, guaranteed-stock, delivery-promise, or supplier-backed claims unless evidence confirms them.
 
 ## Global blockers
 
@@ -159,7 +175,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Next expected decision
 
-- Product Owner review of the documented Slice 13E supplier proof gap closure and approval of the next supplier-proof follow-up scope.
+- Product Owner review of the documented Slice 13F preview-staging preparation pack and approval of the next supplier-proof or later staging-preparation follow-up scope.
 
 ## Constraints preserved in this strategy pass
 
