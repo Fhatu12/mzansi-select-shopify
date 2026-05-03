@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 12J / 12J.1 preview product visibility foundation and preview-theme identity reconciliation recorded; safe targeted push completed to unpublished theme `151207542967`, while browser-level preview validation remains blocked by the storefront password wall without a reusable authenticated session  
-**Version:** 2.0  
+**Status:** Slice **14B** launch department URLs wired to Shopify collection routes in **`primary-navigation`**, **`category-strip`**, and **`main-search-foundation`**; preview validation posture unchanged (password wall without reusable authenticated session)  
+**Version:** 2.1  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -49,7 +49,7 @@ Durable expectations for launch readiness and wiring, based on the accepted Slic
 - Global navigation/footer links must not rely on page-local anchors unless they first route to the correct page (e.g. use `/pages/about#shipping` rather than `#shipping` from arbitrary pages).
 - Anchor mismatches are a publish-readiness defect. Example: footer Terms link `#terms-conditions` must match the actual Terms anchor (currently `id="terms"` in the page foundation) or be replaced with a page route.
 - Department navigation requires an approved destination strategy (collections vs curated pages vs homepage sections) and an approved interaction behavior (desktop + mobile) before publish readiness.
-- Launch department navigation must use a staged routing rule: keep temporary fallback routing on `all-products` until the approved launch collections exist, then switch only the approved launch departments to dedicated collection handles.
+- Launch department navigation (**Slice 14B**) routes the approved quartet (**`home-living`**, **`kitchen-storage`**, **`office-desk`**, **`tech-accessories`**) via **`collections['handle'].url`** (**`launch-collection-url` snippet**); expansion-ready departments remain on **`all-products`** until a later slice.
 - PDP Add to Cart must be wired (product form, variant/quantity selection, add-to-cart) before any product import / commerce readiness work is treated as complete.
 - Cart checkout, quantity, and remove controls must be wired before publish readiness (even if broader catalogue wiring remains deferred).
 - Wishlist, newsletter, social links, brands, gift cards, and save-for-later may remain deferred only with explicit Product Owner decision recorded in the tracker.
@@ -289,6 +289,22 @@ Slice 13J explicit non-goals:
 
 - no Shopify publish, live theme overwrite, checkout/shipping/markets/tax/payment changes, or Supplier verified promotion
 - no removal of Shopify-injected structured data in `content_for_header` (store-level SEO JSON-LD may still reference numeric price; theme-visible price remains guarded)
+
+## Slice 14B launch department collection routing responsibilities
+
+Slice **14B** directs the four approved launch departments away from **`all-products`-only placeholders** toward **real Shopify collection URLs** (`/collections/{handle}`) in key browse shells.
+
+Slice **14B** scope includes:
+
+- **`snippets/launch-collection-url.liquid`**: emits **`collections[handle].url`** when present, otherwise **`{{ routes.all_products_collection_url }}`** (defensive Liquid only; does **not** authorise omitting collections in Shopify Admin).
+- **`sections/primary-navigation.liquid`**, **`sections/category-strip.liquid`**, and **`sections/main-search-foundation.liquid`**: first four department targets use **`{% render 'launch-collection-url', handle: '…' %}`**.
+- **`mzansi-select-theme.html`**: parity update — quartet `href`s use **`/collections/home-living`**, **`/collections/kitchen-storage`**, **`/collections/office-desk`**, **`/collections/tech-accessories`**.
+
+Slice **14B** explicit non-goals:
+
+- no wishlist / heart behavioural work (**Slice 14C**)
+- no homepage merchandising static-card PDP navigation (**Slice 14D**)
+- no Shopify publish, checkout/shipping/markets/tax/payment changes, **`Supplier verified` promotion**, bulk product import, or Admin edits implied solely by routing
 
 Slice 5.5 PDP QA closure note:
 
@@ -534,7 +550,7 @@ Slice 9 addition:
 - `sections/site-header.liquid`
   - Carries the approved logo, search shell, account/wishlist/cart action structure.
 - `sections/primary-navigation.liquid`
-  - Carries the approved department trigger/menu and primary nav shell.
+  - Carries the approved department trigger/menu and primary nav shell; Slice **14B** resolves the approved launch quartet through **`snippets/launch-collection-url.liquid`**.
 - `sections/trust-bar.liquid`
   - Carries the approved reassurance block shell.
 - `sections/site-footer.liquid`
@@ -551,7 +567,7 @@ Slice 3 addition:
 - `sections/hero-collage.liquid`
   - Carries the approved hero copy, CTA shell, collage grid, and value badge.
 - `sections/category-strip.liquid`
-  - Carries the approved horizontal department/service strip.
+  - Carries the approved horizontal department/service strip; Slice **14B** applies **`launch-collection-url`** to the first four department tiles (**Shipping / Returns / FAQ anchors unchanged**).
 - `sections/featured-product-grid.liquid`
   - Reuses one static-safe product-grid implementation for Best Sellers and Kitchen & Storage.
 - `sections/promo-banner-split.liquid`
@@ -593,7 +609,7 @@ Slice 5 addition:
 Slice 6 addition:
 
 - `sections/main-search-foundation.liquid`
-  - Carries search heading, query/result summary shell, static-safe results grid, no-results state, and browse/support prompt presentation.
+  - Carries search heading, query/result summary shell, static-safe results grid, no-results state, and browse/support prompt presentation; Slice **14B** routes browse-department shortcuts through **`launch-collection-url`**.
 
 Slice 7 addition:
 
@@ -876,25 +892,16 @@ These may drive homepage merchandising, manual collections, or smart collections
 
 ## Department destination strategy
 
-Temporary safe routing before collections/products exist:
+**Slice 14B active theme contract:**
 
-- The accepted temporary safe destination for launch departments is `{{ routes.all_products_collection_url }}`.
-- This temporary rule applies to the four approved launch departments in both the primary department menu and the homepage category strip.
-- The temporary fallback avoids broken or empty department destinations while collection resources and approved launch content are still missing.
+- Dedicated launch handles (**`home-living`**, **`kitchen-storage`**, **`office-desk`**, **`tech-accessories`**) resolve in Liquid to **`collections['handle'].url`** via **`snippets/launch-collection-url.liquid`**.
+- Fallback: if **`collections['handle']`** is unavailable at render time, **`{{ routes.all_products_collection_url }}`** is emitted (thin-store safety — does **not** replace Admin collection readiness expectations in **`project-control`**).
+- Surfaces wired in **Slice 14B**: **`sections/primary-navigation.liquid`** (**department dropdown**), **`sections/category-strip.liquid`** (**first four department tiles** — **Shipping**, **Returns**, **FAQ** still use **`/pages/about`** anchors), **`sections/main-search-foundation.liquid`** (**browse department links row**).
+- **`mzansi-select-theme.html`** uses relative **`/collections/{handle}`** for the quartet so the static source matches routed behaviour.
 
-Launch-ready routing once approved collections exist:
+**Expansion-ready departments** (`Garden & Outdoor`, `Bath & Bedroom`, `Cleaning & Laundry`) remain on **`{{ routes.all_products_collection_url }}`** until another approved slice assigns collection URLs.
 
-- The preferred dedicated launch collection handles are:
-  - `home-living`
-  - `kitchen-storage`
-  - `office-desk`
-  - `tech-accessories`
-- Once those collections exist in Shopify and are approved for exposure, the four launch department links should route to:
-  - `/collections/home-living`
-  - `/collections/kitchen-storage`
-  - `/collections/office-desk`
-  - `/collections/tech-accessories`
-- Launch department links should not switch to dedicated collection URLs until the underlying collections are created, visible to Online Store, and accepted as ready to replace the temporary fallback.
+Historical note (before **Slice 14B**): the launch quartet defaulted to **`all-products`** everywhere in Liquid pending collection activation.
 
 Collection-readiness thresholds before link-switch review:
 
@@ -953,7 +960,7 @@ Online Store exposure readiness rules:
 - The collection route must return HTTP `200` in unpublished preview before it is treated as preview-ready.
 - A launch collection should be made available to Online Store only when it is intentionally ready for preview review.
 - Public launch navigation should avoid empty or thin department pages.
-- Department links should remain on `all-products` until the Product Owner approves switching to the dedicated collection URLs.
+- Slice **14B** activates dedicated quartet URLs at the Liquid layer; storefront operational readiness and density expectations remain governed separately in **`docs/project-control.md`** (theme falls back to **`all-products`** when **`collections['handle']`** fails).
 
 Visible collection-content expectation:
 
@@ -1558,4 +1565,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 13G preview-only product safety controls and Slice 13J preview-only storefront safety gap fixes are recorded locally. Approved source HTML unchanged. These passes add a minimal durable preview-safety state for live product cards and PDPs so placeholder pricing, optional placeholder imagery without `image-permission-confirmed`, cautious preview wording, and route-aware global copy can appear without implying final pricing, discount approval, supplier image permission, supplier verification, or launch approval, and they leave product import, publish, and live overwrite unapproved unless separately recorded.
+**Footer Standard For This Pass:** Slice 13G / 13J preview-safety behaviours remain documented above. Slice **14B** updates **`mzansi-select-theme.html`**, **`sections/primary-navigation.liquid`**, **`sections/category-strip.liquid`**, **`sections/main-search-foundation.liquid`**, plus **`snippets/launch-collection-url.liquid`** so approved launch departments resolve to Shopify collection URLs. No product-import, **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, Admin edit, Slice **14D** homepage-card PDP wiring, or Slice **14C** wishlist work is claimed by Slice **14B** routing alone.

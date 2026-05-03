@@ -96,10 +96,10 @@
       <div class="search-browse-title">{{ section.settings.browse_title }}</div>
       <p class="search-browse-copy">{{ section.settings.browse_copy }}</p>
       <div class="search-browse-links">
-        <a class="search-browse-link" href="{{ routes.root_url }}">Home & Living</a>
-        <a class="search-browse-link" href="{{ routes.root_url }}">Kitchen & Storage</a>
-        <a class="search-browse-link" href="{{ routes.root_url }}">Office & Desk</a>
-        <a class="search-browse-link" href="{{ routes.root_url }}">Tech Accessories</a>
+        <a class="search-browse-link" href="{% render 'launch-collection-url', handle: 'home-living' %}">Home & Living</a>
+        <a class="search-browse-link" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}">Kitchen & Storage</a>
+        <a class="search-browse-link" href="{% render 'launch-collection-url', handle: 'office-desk' %}">Office & Desk</a>
+        <a class="search-browse-link" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">Tech Accessories</a>
       </div>
     </div>
   </div>

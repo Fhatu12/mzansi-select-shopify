@@ -9,10 +9,10 @@
         </svg>
       </button>
       <div class="dept-menu">
-        <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🛋️</span> Home &amp; Living</a>
-        <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🍳</span> Kitchen &amp; Storage</a>
-        <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
-        <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🎧</span> Tech Accessories</a>
+        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'home-living' %}"><span class="dept-item-icon">🛋️</span> Home &amp; Living</a>
+        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}"><span class="dept-item-icon">🍳</span> Kitchen &amp; Storage</a>
+        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
+        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}"><span class="dept-item-icon">🎧</span> Tech Accessories</a>
         <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🌿</span> Garden &amp; Outdoor</a>
         <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🛁</span> Bath &amp; Bedroom</a>
         <a class="dept-item" href="{{ routes.all_products_collection_url }}"><span class="dept-item-icon">🧹</span> Cleaning &amp; Laundry</a>
