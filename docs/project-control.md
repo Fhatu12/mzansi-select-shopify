@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J theme/Liquid/CSS/docs tighten preview storefront safety (tag normalisation, zero-price + preview vendor guard, placeholder media without `image-permission-confirmed`, cautious global copy on preview routes) — **not git-committed yet** pending Product Owner review; theme publish/live overwrite/checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J preview storefront safety is **committed** in git (`cef5713412ef218bee4af56ae9767c78d6304859`) and authenticated preview QA re-run is **PASS WITH NOTES**; no **live** theme publish or live theme overwrite; checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,12 +13,12 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13J preview-only storefront safety gap fix (theme/docs; commit pending Product Owner)
+- Active slice: Post–Slice 13J tracker sync (docs-only; this pass)
 - Active owner: Product Manager
-- Next owner: Product Owner
-- Last accepted slice: Slice 13I preview-only product staging documentation (PASS WITH NOTES)
-- Last committed slice: Slice 13I preview-only product staging documentation (`b61746cdc3a566bb3723b95581676da0f88b9561`)
-- Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`); Slice 13J theme changes staged locally only until commit approval
+- Next owner: Product Owner — next decision whether to pursue more preview QA, supplier proof closure, or launch-readiness planning
+- Last accepted slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`, **PASS WITH NOTES** on authenticated preview QA re-run)
+- Last committed slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`); prior documentation slice remains Slice 13I (`b61746cdc3a566bb3723b95581676da0f88b9561`)
+- Last theme/code implementation slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`) remains the prior baseline
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation requires an authenticated preview session
   - Any later preview-store visibility test must use the documented `preview-only` and `price-to-confirm` tags so cards and PDPs show non-final placeholder pricing, suppress sale/discount treatment, and keep delivery wording cautious until Product Owner approval exists; Slice 13J adds Liquid tag normalisation, a `Mzansi Select Preview` + non-positive price guard, optional `image-permission-confirmed` before showing catalog media for `preview-only` rows, and cautious announcement/trust/footer copy on preview routes (see LLD)
@@ -55,22 +55,22 @@ Mzansi Select Shopify MVP Theme Conversion
   - Final legal publication remains deferred and unapproved
 - Launch readiness: Contact/About route availability is resolved in unpublished preview evidence; launch readiness remains blocked by unresolved local supplier proof, shipping-cost handling, supplier/commercial readiness, and thin collection readiness
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
-- Shopify push/publish status: No theme push, no theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I)
+- Shopify push/publish status: No **live** theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I); Slice 13J used **targeted** CLI push to **unpublished** preview theme `151207542967` for QA only (does not publish live)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-03 during Slice 13J preview-only storefront safety gap fix (local theme/docs; commit pending)
-- Tracker status: Updated
-- Catalogue plan status: Updated
-- LLD status: Updated for Slice 13J theme preview-safety behaviour (pending commit with theme files)
+- Last tracker update: 2026-05-03 post–Slice 13J git commit and authenticated preview QA acceptance (PASS WITH NOTES)
+- Tracker status: Updated (Slice 13J committed; this docs-only sync aligns header/current state)
+- Catalogue plan status: Updated (Slice 13J rules recorded in catalogue doc; unchanged in this pass)
+- LLD status: Updated (Slice 13J behaviour recorded in LLD; unchanged in this pass)
 
 ## Current active pass
 
-Slice 13J preview-only storefront safety gap fix (local implementation; no git commit in this pass unless Product Owner approves)
+Post–Slice 13J tracker sync — `docs/project-control.md` only; no code, no Shopify Admin actions, no commit in this pass unless Product Owner approves
 
 ## Slice 13J preview-only storefront safety gap fix
 
 - Bounded follow-up to Slice 13I (PASS WITH NOTES) before launch-readiness, final pricing, final product approval, supplier verification, or publish consideration.
 - **Root cause of visible `R 0`:** Theme previously relied on substring tag tokens (`|preview-only|`). Any Admin tag spelling drift, spacing variant, or missing tag while the variant remained at `0.00` still rendered `money_without_trailing_zeros` output (`R 0`). Slice 13J normalises tags per token, adds a secondary guard for non-positive price when vendor is `Mzansi Select Preview`, and keeps placeholder copy as the exact string `Price to be confirmed`.
-- **Theme changes (pending commit):** `layout/theme.liquid`, `snippets/preview-route-body-class.liquid`, `snippets/live-product-card.liquid`, `sections/main-product-foundation.liquid`, `sections/trust-bar.liquid`, `sections/announcement-topbar.liquid`, `sections/site-footer.liquid`, `assets/theme.css`, plus LLD / catalogue / project-control documentation updates.
+- **Theme changes (git commit `cef5713412ef218bee4af56ae9767c78d6304859`):** `layout/theme.liquid`, `snippets/preview-route-body-class.liquid`, `snippets/live-product-card.liquid`, `sections/main-product-foundation.liquid`, `sections/trust-bar.liquid`, `sections/announcement-topbar.liquid`, `sections/site-footer.liquid`, `assets/theme.css`, plus LLD / catalogue / project-control documentation in that same commit.
 - **Delivery:** PDPs for `preview-only` products show exactly `Delivery details to be confirmed before launch.` as a visible paragraph.
 - **Global marketing copy:** Announcement topbar, trust bar, and footer brand description gain cautious alternates only when `body.preview-route-cautious` applies (preview-only PDP, or collection first page containing a preview-only product). Other routes unchanged.
 - **Imagery:** `preview-only` products render theme placeholder images unless `image-permission-confirmed` is present; no new supplier assets added in-repo.
