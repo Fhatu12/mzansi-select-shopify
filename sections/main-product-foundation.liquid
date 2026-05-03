@@ -6,17 +6,27 @@
   {% assign current_product_intro = section.settings.product_intro %}
 {% endif %}
 {% assign current_product_description = product.description | strip %}
-{% capture current_tag_tokens %}|{{ product.tags | join: '|' | downcase }}|{% endcapture %}
 {% assign current_product_preview_only = false %}
 {% assign current_product_price_to_confirm = false %}
-{% if current_tag_tokens contains '|preview-only|' %}
-  {% assign current_product_preview_only = true %}
-{% endif %}
-{% if current_tag_tokens contains '|price-to-confirm|' %}
-  {% assign current_product_price_to_confirm = true %}
-{% endif %}
+{% assign current_image_permission_confirmed = false %}
+{% for tag in product.tags %}
+  {% assign current_nt = tag | downcase | strip | replace: ' ', '-' %}
+  {% if current_nt == 'preview-only' %}
+    {% assign current_product_preview_only = true %}
+  {% endif %}
+  {% if current_nt == 'price-to-confirm' %}
+    {% assign current_product_price_to_confirm = true %}
+  {% endif %}
+  {% if current_nt == 'image-permission-confirmed' %}
+    {% assign current_image_permission_confirmed = true %}
+  {% endif %}
+{% endfor %}
 {% assign current_product_use_placeholder_price = false %}
 {% if current_product_preview_only or current_product_price_to_confirm %}
+  {% assign current_product_use_placeholder_price = true %}
+{% endif %}
+{% assign current_vendor_norm = product.vendor | downcase | strip %}
+{% if current_product_use_placeholder_price == false and current_variant.price <= 0 and current_vendor_norm == 'mzansi select preview' %}
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
 {% assign current_product_price = current_variant.price | money_without_trailing_zeros %}
@@ -30,7 +40,14 @@
   {% assign current_product_price_percent = current_product_price_delta | times: 100 | divided_by: current_variant.compare_at_price %}
   {% assign current_product_price_save = current_product_price_percent | append: '% off' %}
 {% endif %}
+{% assign current_show_catalog_media = true %}
+{% if current_product_preview_only and current_image_permission_confirmed == false %}
+  {% assign current_show_catalog_media = false %}
+{% endif %}
 {% assign current_media = current_variant.featured_media | default: product.featured_media | default: product.media.first %}
+{% unless current_show_catalog_media %}
+  {% assign current_media = blank %}
+{% endunless %}
 {% assign related_collection = product.collections.first %}
 {% assign related_products_found = 0 %}
 
@@ -51,8 +68,8 @@
             {{ 'product-1' | placeholder_svg_tag: 'product-gallery-placeholder' }}
           {% endif %}
         </div>
-        <div class="product-gallery-strip">
-          {% if product.media.size > 0 %}
+        {% if product.media.size > 0 and current_show_catalog_media %}
+          <div class="product-gallery-strip">
             {% for media in product.media limit: 4 %}
               <div class="product-gallery-thumb{% if current_media and media.id == current_media.id %} is-active{% endif %}">
                 <img
@@ -64,8 +81,8 @@
                 >
               </div>
             {% endfor %}
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
       </div>
 
       <div class="product-summary">
@@ -94,7 +111,7 @@
           supporting_note: blank
         %}
         {% if current_product_preview_only %}
-          <div class="product-preview-note">Delivery details to be confirmed before launch.</div>
+          <p class="product-preview-note">Delivery details to be confirmed before launch.</p>
         {% endif %}
 
         <p class="product-main-intro">{{ current_product_intro }}</p>
@@ -136,7 +153,11 @@
               <circle cx="5.5" cy="18.5" r="2.5"></circle>
               <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
-            Live Shopify product title, media, and pricing now render in preview
+            {% if current_product_preview_only or current_product_use_placeholder_price %}
+              Live Shopify product titles and catalog layout render in preview; price is not final until separately approved.
+            {% else %}
+              Live Shopify product title, media, and pricing now render in preview
+            {% endif %}
           </div>
           <div class="product-reassurance-item">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">

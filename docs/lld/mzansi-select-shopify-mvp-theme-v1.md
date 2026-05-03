@@ -272,6 +272,24 @@ Slice 13G explicitly defers:
 - collection/link changes, publish, or live-theme overwrite
 - any broader catalogue automation beyond the minimal preview-safety state
 
+## Slice 13J preview-only storefront safety gap fix responsibilities
+
+Slice 13J tightens preview-only storefront safety after Slice 13I authenticated preview validation (PASS WITH NOTES) so staged `0.00` placeholder products do not read as final shop pricing, supplier media, or launch-ready delivery promises.
+
+Slice 13J scope includes:
+
+- robust tag parsing for `preview-only` and `price-to-confirm` (handles common spacing variants by normalising tags before comparison)
+- a bounded secondary guard: when the variant price is `0` (or non-positive) and the vendor normalises to `Mzansi Select Preview`, cards and PDPs treat pricing as non-final and show `Price to be confirmed` even if safety tags were mistyped in Admin
+- optional `image-permission-confirmed` tag: when absent and `preview-only` is present, collection cards and PDP galleries use theme placeholder imagery instead of catalog media (avoids supplier promotional overlays without documented permission)
+- PDP delivery line remains the exact string `Delivery details to be confirmed before launch.` for `preview-only` products, surfaced as a visible paragraph
+- cautious alternate announcement, trust-bar, and footer description copy only when `body` carries class `preview-route-cautious` (product template with `preview-only`, or first-page collection products including any `preview-only` item), without redesigning the global shell
+- PDP reassurance copy avoids implying live final pricing when preview placeholder pricing or `preview-only` applies
+
+Slice 13J explicit non-goals:
+
+- no Shopify publish, live theme overwrite, checkout/shipping/markets/tax/payment changes, or Supplier verified promotion
+- no removal of Shopify-injected structured data in `content_for_header` (store-level SEO JSON-LD may still reference numeric price; theme-visible price remains guarded)
+
 Slice 5.5 PDP QA closure note:
 
 - The uncommitted Slice 5 PDP foundation was reviewed and accepted as PASS WITH NOTES.
@@ -1466,6 +1484,13 @@ Slice 13G validation note:
 - When `preview-only` is present, cards and PDPs now surface `Preview item`, PDP delivery wording stays `Delivery details to be confirmed before launch.`, and sale/discount treatment is suppressed.
 - Purchase controls remain disabled as before, and no Shopify Admin write action, preview staging, publish, or live overwrite is introduced by this slice.
 
+Slice 13J validation note:
+
+- Theme-visible collection cards and PDP price stacks show `Price to be confirmed` when safety tags parse correctly or when the variant price is non-positive with vendor `Mzansi Select Preview`.
+- For `preview-only` products, catalog media is suppressed in favour of theme placeholders unless the `image-permission-confirmed` tag is present (Product Owner evidence required before using this tag).
+- Global announcement, trust-bar, and footer description swap to cautious copy only on `preview-route-cautious` routes (preview-only PDP, or collection first page listing a preview-only product).
+- Shopify `content_for_header` JSON-LD may still expose a numeric offer price for crawlers; that is outside Liquid theme removal scope and remains a known residual risk unless addressed in a later store-level or platform-approved pass.
+
 ## Risks, unknowns, dependencies
 
 - Secondary page designs are not explicitly present in the source HTML.
@@ -1492,7 +1517,7 @@ Slice 13G validation note:
 - Department navigation currently uses a safe temporary fallback to `all-products`; dedicated launch collection routing now depends on Shopify Admin collection setup, collection-density/presentation readiness, and later Product Owner approval for exposure.
 - Contact/About route availability was later reconciled as resolved in unpublished preview evidence through Manual Track A.1, so it no longer belongs in the active launch blocker set.
 - The local Slice 12J theme now supports live collection/PDP rendering, the correct unpublished preview theme has been reconciled as `151207542967`, and the remaining validation blocker is authenticated storefront access through the password wall.
-- Preview-only safety depends on consistent product tagging; if a later staged product is missing the `preview-only` / `price-to-confirm` convention, live pricing or sale treatment could still appear prematurely.
+- Preview-only safety depends on consistent product tagging; Slice 13J reduces but does not eliminate this risk by adding vendor+zero-price fallback parsing and cautious global copy on preview routes. Residual JSON-LD price exposure may still exist from Shopify core injection.
 
 ## Slice 10.5 / 10.5B authenticated preview QA closure (PASS WITH NOTES)
 
@@ -1533,4 +1558,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 13G preview-only product safety controls recorded locally. Approved source HTML unchanged. This pass adds a minimal durable tag-based preview-safety state for live product cards and PDPs so placeholder pricing and cautious preview wording can appear without implying final pricing, discount approval, supplier approval, or launch approval, and it leaves product import, actual preview staging, publish, and live overwrite unapproved.
+**Footer Standard For This Pass:** Slice 13G preview-only product safety controls and Slice 13J preview-only storefront safety gap fixes are recorded locally. Approved source HTML unchanged. These passes add a minimal durable preview-safety state for live product cards and PDPs so placeholder pricing, optional placeholder imagery without `image-permission-confirmed`, cautious preview wording, and route-aware global copy can appear without implying final pricing, discount approval, supplier image permission, supplier verification, or launch approval, and they leave product import, publish, and live overwrite unapproved unless separately recorded.

@@ -1,0 +1,26 @@
+{% liquid
+  assign preview_route_cautious = false
+  if request.page_type == 'product' and product != blank
+    for tag in product.tags
+      assign nt = tag | downcase | strip | replace: ' ', '-'
+      if nt == 'preview-only'
+        assign preview_route_cautious = true
+        break
+      endif
+    endfor
+  elsif request.page_type == 'collection' and collection != blank
+    for coll_product in collection.products limit: 48
+      for tag in coll_product.tags
+        assign nt = tag | downcase | strip | replace: ' ', '-'
+        if nt == 'preview-only'
+          assign preview_route_cautious = true
+          break
+        endif
+      endfor
+      if preview_route_cautious
+        break
+      endif
+    endfor
+  endif
+%}
+{% if preview_route_cautious %}preview-route-cautious{% endif %}

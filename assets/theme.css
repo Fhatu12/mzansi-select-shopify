@@ -2231,6 +2231,31 @@ nav {
   line-height: 1.45;
 }
 
+/* Slice 13J: alternate header/footer/trust copy when viewing preview-only PDP or a collection listing preview items */
+.trust-bar-copy-cautious,
+.topbar-copy-cautious,
+.f-desc-cautious {
+  display: none;
+}
+
+.preview-route-cautious .trust-bar-copy-default,
+.preview-route-cautious .topbar-copy-default,
+.preview-route-cautious .f-desc-default {
+  display: none;
+}
+
+.preview-route-cautious .trust-bar-copy-cautious {
+  display: grid;
+}
+
+.preview-route-cautious .topbar-copy-cautious {
+  display: flex;
+}
+
+.preview-route-cautious .f-desc-cautious {
+  display: block;
+}
+
 footer {
   background: var(--white);
   border-top: 1px solid var(--border);

@@ -23,7 +23,7 @@
     {{ content_for_header }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
   </head>
-  <body>
+  <body class="{%- render 'preview-route-body-class' -%}">
     {% section 'announcement-topbar' %}
     {% section 'site-header' %}
     {% section 'primary-navigation' %}

@@ -4,17 +4,27 @@
   {% assign card_product_url = product.url | within: collection_context %}
 {% endif %}
 
-{% capture card_tag_tokens %}|{{ product.tags | join: '|' | downcase }}|{% endcapture %}
 {% assign card_preview_only = false %}
 {% assign card_price_to_confirm = false %}
-{% if card_tag_tokens contains '|preview-only|' %}
-  {% assign card_preview_only = true %}
-{% endif %}
-{% if card_tag_tokens contains '|price-to-confirm|' %}
-  {% assign card_price_to_confirm = true %}
-{% endif %}
+{% assign card_image_permission_confirmed = false %}
+{% for tag in product.tags %}
+  {% assign card_nt = tag | downcase | strip | replace: ' ', '-' %}
+  {% if card_nt == 'preview-only' %}
+    {% assign card_preview_only = true %}
+  {% endif %}
+  {% if card_nt == 'price-to-confirm' %}
+    {% assign card_price_to_confirm = true %}
+  {% endif %}
+  {% if card_nt == 'image-permission-confirmed' %}
+    {% assign card_image_permission_confirmed = true %}
+  {% endif %}
+{% endfor %}
 {% assign card_use_placeholder_price = false %}
 {% if card_preview_only or card_price_to_confirm %}
+  {% assign card_use_placeholder_price = true %}
+{% endif %}
+{% assign card_vendor_norm = product.vendor | downcase | strip %}
+{% if card_use_placeholder_price == false and card_variant.price <= 0 and card_vendor_norm == 'mzansi select preview' %}
   {% assign card_use_placeholder_price = true %}
 {% endif %}
 
@@ -30,10 +40,15 @@
   {% assign card_price_save = card_price_percent | append: '% off' %}
 {% endif %}
 
+{% assign card_show_catalog_media = true %}
+{% if card_preview_only and card_image_permission_confirmed == false %}
+  {% assign card_show_catalog_media = false %}
+{% endif %}
+
 <div class="product-card">
   <div class="prod-img">
     <a href="{{ card_product_url }}" aria-label="View {{ product.title }}">
-      {% if product.featured_media %}
+      {% if product.featured_media and card_show_catalog_media %}
         <img
           src="{{ product.featured_media | image_url: width: 600 }}"
           alt="{{ product.featured_media.alt | default: product.title | escape }}"

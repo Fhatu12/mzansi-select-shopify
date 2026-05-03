@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; theme publish/live overwrite/checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted (this pass is not git-committed)  
+**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J theme/Liquid/CSS/docs tighten preview storefront safety (tag normalisation, zero-price + preview vendor guard, placeholder media without `image-permission-confirmed`, cautious global copy on preview routes) — **not git-committed yet** pending Product Owner review; theme publish/live overwrite/checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,15 +13,15 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13I controlled Shopify Admin preview-only product staging
+- Active slice: Slice 13J preview-only storefront safety gap fix (theme/docs; commit pending Product Owner)
 - Active owner: Product Manager
 - Next owner: Product Owner
 - Last accepted slice: Slice 13I preview-only product staging documentation (PASS WITH NOTES)
-- Last committed slice: Slice 13I preview-only product staging documentation
-- Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`)
+- Last committed slice: Slice 13I preview-only product staging documentation (`b61746cdc3a566bb3723b95581676da0f88b9561`)
+- Last theme/code implementation slice: Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`); Slice 13J theme changes staged locally only until commit approval
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation requires an authenticated preview session
-  - Any later preview-store visibility test must use the documented `preview-only` and `price-to-confirm` tags so cards and PDPs show non-final placeholder pricing, suppress sale/discount treatment, and keep delivery wording cautious until Product Owner approval exists
+  - Any later preview-store visibility test must use the documented `preview-only` and `price-to-confirm` tags so cards and PDPs show non-final placeholder pricing, suppress sale/discount treatment, and keep delivery wording cautious until Product Owner approval exists; Slice 13J adds Liquid tag normalisation, a `Mzansi Select Preview` + non-positive price guard, optional `image-permission-confirmed` before showing catalog media for `preview-only` rows, and cautious announcement/trust/footer copy on preview routes (see LLD)
   - Wholesale / dropship terms, direct fulfilment workflow, shipping-cost handling, image permission, stock reliability proof, sample / product quality proof, final target selling-range confidence, return / refund practicality under the Mzansi Select support model, and final Product Owner commercial approval remain open before any product import or `Supplier verified` decision is revisited
   - Current margin calculations are product-only estimates from public supplier prices, assume shipping is charged separately to the customer or otherwise recovered, and do not approve final pricing; low-ticket items likely need bundles or minimum-cart rules if shipping is absorbed by Mzansi Select
   - Neat Freak remains a strong category-fit supplier with public local-retail fulfilment, shipping-fee, delivery-estimate, and returns-process signals, but public evidence still does not confirm wholesale / dropship terms, direct-to-customer fulfilment for Mzansi Select, image usage permission, stock reliability, or sample / product quality
@@ -57,14 +57,24 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
 - Shopify push/publish status: No theme push, no theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-03 during Slice 13I controlled Shopify Admin preview-only product staging
+- Last tracker update: 2026-05-03 during Slice 13J preview-only storefront safety gap fix (local theme/docs; commit pending)
 - Tracker status: Updated
 - Catalogue plan status: Updated
-- LLD status: Unchanged in this pass — Slice 13I is Shopify Admin product staging only; theme behaviour remains per committed Slice 13G
+- LLD status: Updated for Slice 13J theme preview-safety behaviour (pending commit with theme files)
 
 ## Current active pass
 
-Slice 13I controlled Shopify Admin preview-only product staging
+Slice 13J preview-only storefront safety gap fix (local implementation; no git commit in this pass unless Product Owner approves)
+
+## Slice 13J preview-only storefront safety gap fix
+
+- Bounded follow-up to Slice 13I (PASS WITH NOTES) before launch-readiness, final pricing, final product approval, supplier verification, or publish consideration.
+- **Root cause of visible `R 0`:** Theme previously relied on substring tag tokens (`|preview-only|`). Any Admin tag spelling drift, spacing variant, or missing tag while the variant remained at `0.00` still rendered `money_without_trailing_zeros` output (`R 0`). Slice 13J normalises tags per token, adds a secondary guard for non-positive price when vendor is `Mzansi Select Preview`, and keeps placeholder copy as the exact string `Price to be confirmed`.
+- **Theme changes (pending commit):** `layout/theme.liquid`, `snippets/preview-route-body-class.liquid`, `snippets/live-product-card.liquid`, `sections/main-product-foundation.liquid`, `sections/trust-bar.liquid`, `sections/announcement-topbar.liquid`, `sections/site-footer.liquid`, `assets/theme.css`, plus LLD / catalogue / project-control documentation updates.
+- **Delivery:** PDPs for `preview-only` products show exactly `Delivery details to be confirmed before launch.` as a visible paragraph.
+- **Global marketing copy:** Announcement topbar, trust bar, and footer brand description gain cautious alternates only when `body.preview-route-cautious` applies (preview-only PDP, or collection first page containing a preview-only product). Other routes unchanged.
+- **Imagery:** `preview-only` products render theme placeholder images unless `image-permission-confirmed` is present; no new supplier assets added in-repo.
+- **Explicit exclusions:** No publish, no live theme overwrite, no checkout/shipping/markets/tax/payment edits, no Supplier verified promotion, no final approvals, no Beauty & Hair taxonomy change, no `artifacts/` commit.
 
 ## Slice 13I controlled Shopify Admin preview-only product staging
 
