@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J preview storefront safety is **committed** in git (`cef5713412ef218bee4af56ae9767c78d6304859`) and authenticated preview QA re-run is **PASS WITH NOTES**; no **live** theme publish or live theme overwrite; checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J preview storefront safety is **committed** (`cef5713412ef218bee4af56ae9767c78d6304859`, tracker sync `353276375a3814cbe3ed929df5696bc60d7e03d5`) with authenticated preview QA **PASS WITH NOTES**; Slice **13K** (docs-only, pending commit) records supplier proof closure — **Neat Freak public FAQ evidence treated as a major `Supplier verified` blocker** (no reseller sales; no dropshipping); **Gadgetgyz** / **`Acrylic Tablet or Phone Stand`** remains closest candidate but blocked; no **live** theme publish or live theme overwrite; checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,19 +13,19 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Post–Slice 13J tracker sync (docs-only; this pass)
+- Active slice: Slice 13K docs-only supplier proof closure (this pass; pending Product Owner commit)
 - Active owner: Product Manager
-- Next owner: Product Owner — next decision whether to pursue more preview QA, supplier proof closure, or launch-readiness planning
-- Last accepted slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`, **PASS WITH NOTES** on authenticated preview QA re-run)
-- Last committed slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`); prior documentation slice remains Slice 13I (`b61746cdc3a566bb3723b95581676da0f88b9561`)
+- Next owner: Product Owner — whether to pursue more preview QA, further supplier proof / alternate sourcing for Neat Freak–path SKUs, **Gadgetgyz** closure for the acrylic stand, or launch-readiness planning
+- Last accepted slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`, **PASS WITH NOTES** on authenticated preview QA re-run); Slice 13K supplier proof closure recommendation **accepted** as docs-only (pending commit)
+- Last committed slice: Docs tracker sync after Slice 13J (`353276375a3814cbe3ed929df5696bc60d7e03d5`); theme Slice 13J (`cef5713412ef218bee4af56ae9767c78d6304859`); prior documentation slice remains Slice 13I (`b61746cdc3a566bb3723b95581676da0f88b9561`)
 - Last theme/code implementation slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`) remains the prior baseline
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation requires an authenticated preview session
   - Any later preview-store visibility test must use the documented `preview-only` and `price-to-confirm` tags so cards and PDPs show non-final placeholder pricing, suppress sale/discount treatment, and keep delivery wording cautious until Product Owner approval exists; Slice 13J adds Liquid tag normalisation, a `Mzansi Select Preview` + non-positive price guard, optional `image-permission-confirmed` before showing catalog media for `preview-only` rows, and cautious announcement/trust/footer copy on preview routes (see LLD)
   - Wholesale / dropship terms, direct fulfilment workflow, shipping-cost handling, image permission, stock reliability proof, sample / product quality proof, final target selling-range confidence, return / refund practicality under the Mzansi Select support model, and final Product Owner commercial approval remain open before any product import or `Supplier verified` decision is revisited
   - Current margin calculations are product-only estimates from public supplier prices, assume shipping is charged separately to the customer or otherwise recovered, and do not approve final pricing; low-ticket items likely need bundles or minimum-cart rules if shipping is absorbed by Mzansi Select
-  - Neat Freak remains a strong category-fit supplier with public local-retail fulfilment, shipping-fee, delivery-estimate, and returns-process signals, but public evidence still does not confirm wholesale / dropship terms, direct-to-customer fulfilment for Mzansi Select, image usage permission, stock reliability, or sample / product quality
-  - Gadgetgyz shows a stronger dropship-workflow signal than Neat Freak and the `Acrylic Tablet or Phone Stand` has strong product / SKU evidence, but exact shipping fee, SLA, image permission, supplier workflow confirmation, and final Product Owner commercial approval remain open
+  - **Neat Freak — major `Supplier verified` blocker (Slice 13K):** public FAQ / help-centre evidence is now recorded as stating **no sales through resellers** and **no dropshipping**; pause treating Neat Freak as a viable `Supplier verified` path until **written** resale / wholesale / dropship / direct-fulfilment permission exists **or** alternate suppliers are found; category-fit and retail signals remain planning-only
+  - **Gadgetgyz (Slice 13K):** strongest operational signal for **`Acrylic Tablet or Phone Stand`** — closest candidate of the five preview-only handles — still **blocked** from `Supplier verified` (exact shipping fee, image permission, sample/product quality proof, stock reliability, final margin after shipping, Product Owner commercial decision)
   - `Cable Organiser / Cable Management item` is paused because the current definition is too broad and the visible public price signal would likely require a `R599+` sell price to preserve the target product-only margin unless a narrower or lower-cost exact item is confirmed
   - Preview-preparation entries are recorded only for `Sink Strainer, stainless steel`, `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand`; price display must stay hidden or placeholder-only, delivery wording must stay cautious, and supplier images must remain placeholder-only until image permission is confirmed
   - `2-Layer Carry Handle Container 3.8L` and `Hook-over Door Basket` remain lower-priority for preview-staging preparation because dimensions, image permission, delivery handling, and price positioning need stronger closure first
@@ -57,14 +57,28 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
 - Shopify push/publish status: No **live** theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I); Slice 13J used **targeted** CLI push to **unpublished** preview theme `151207542967` for QA only (does not publish live)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-03 post–Slice 13J git commit and authenticated preview QA acceptance (PASS WITH NOTES)
-- Tracker status: Updated (Slice 13J committed; this docs-only sync aligns header/current state)
-- Catalogue plan status: Updated (Slice 13J rules recorded in catalogue doc; unchanged in this pass)
-- LLD status: Updated (Slice 13J behaviour recorded in LLD; unchanged in this pass)
+- Last tracker update: 2026-05-03 Slice 13K docs-only supplier proof closure (pending commit)
+- Tracker status: Updated (Slice 13K closure posture and Neat Freak blocker recorded)
+- Catalogue plan status: Updated (Slice 13K recorded in readiness matrix; pending commit)
+- LLD status: **Unchanged in this pass** — Slice 13K is supplier/catalogue documentation only; no durable theme, rendering, architecture, or storefront behaviour change
 
 ## Current active pass
 
-Post–Slice 13J tracker sync — `docs/project-control.md` only; no code, no Shopify Admin actions, no commit in this pass unless Product Owner approves
+Slice 13K docs-only supplier proof closure — `docs/project-control.md`, `docs/catalogue/mzansi-select-25-product-readiness-v1.md`, `docs/catalogue/local-supplier-sourcing-matrix-v1.md` only; no code, no Shopify Admin actions, no commit until Product Owner approves
+
+## Slice 13K docs-only supplier proof closure update
+
+- Product Owner accepted the Product Manager recommendation as a **docs-only** supplier proof closure update. **No** product import, **no** additional preview staging, **no** Shopify Admin product edits, **no** collection/link edits, **no** theme push/publish, **no** live theme overwrite, **no** checkout/shipping/markets/tax/payment changes, **no** `Supplier verified` promotion, **no** final launch / final pricing / delivery-promise / product-claim approvals, **no** `Beauty & Hair` launch-taxonomy addition.
+- **All five** preview-only staged handles may remain **visible** in preview; **none** is ready for **`Supplier verified` review** or **launch approval**; **do not reject** product concepts yet.
+- **Neat Freak:** **Pause** as a **`Supplier verified` path** unless **written** resale / wholesale / dropship / direct-fulfilment permission is obtained **or** alternate suppliers are found — public **FAQ**-style evidence is recorded as stating **no reseller sales** and **no dropshipping**, which is treated as a **major `Supplier verified` blocker** for Neat Freak–tied SKUs.
+- **`Gadgetgyz` / `Acrylic Tablet or Phone Stand`:** **closest candidate** of the five; **continue** toward proof closure; **still blocked** from `Supplier verified`.
+- **Per-handle decisions (preview-only staged; block `Supplier verified`):**
+  1. **`Sink Strainer — Stainless Steel`** (`sink-strainer-stainless-steel`) — **Neat Freak** — keep staged; **block `Supplier verified`**. Evidence strength: strong product proof. Blockers: Neat Freak dropship/reseller terms, image permission, fulfilment workflow, sample quality, shipping-cost model, final PO decision.
+  2. **`Compact Organiser Basket`** — **Neat Freak** — same. Evidence: good product and price signal. Blockers: Neat Freak terms, image permission, dimensions/material proof, fulfilment workflow, stock reliability, sample quality.
+  3. **`Mini Plastic Divider Basket`** — **Neat Freak** — same. Evidence: good low-ticket price/category signal. Blockers: Neat Freak terms, image permission, dimensions/material proof, bundle/minimum-cart economics, final margin after shipping.
+  4. **`Cable Tidies Set`** — **Neat Freak** — keep staged; **do not advance** until **exact product** is narrowed (title may map to several possible products). Blockers: exact item selection, Neat Freak terms, image permission, product copy clarity, final commercial model.
+  5. **`Acrylic Tablet or Phone Stand`** (`acrylic-tablet-phone-stand`) — **`Gadgetgyz`** — continue proof closure; **still blocked**. Product proof: SKU **DP0402**, in stock, **R158.89**, Parrot Products brand, weight **0.5 kg**, dimensions **90 x 145 x 145 mm**. Fulfilment: public dropship / direct-to-customer dispatch signal. Blockers: exact shipping fee, image permission, sample/product quality proof, stock reliability confirmation, final margin after shipping, final PO commercial decision.
+- **Commercial / fulfilment / image-rights summary:** Neat Freak–path rows retain catalogue fit but **current recorded supplier posture** blocks `Supplier verified` progression; Neat Freak shipping and stock timing remain **too uncertain** for delivery promises. **Gadgetgyz** is operationally stronger but still needs exact shipping fee, image permission, sample quality proof, and margin closure. **Image rights unresolved for all five.** Product copy must remain **conservative and factual only**.
 
 ## Slice 13J preview-only storefront safety gap fix
 
