@@ -3,13 +3,13 @@
 **Document Type:** Catalogue Sourcing Strategy  
 **Prepared:** 2026-05-02  
 **Owner:** Product Owner  
-**Status:** Slice 13I preview-only Admin listings exist for five approved handles with `preview-only` / `price-to-confirm` tags, `supplier-neat-freak` on the first four and `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand`, `0.00` placeholder pricing, empty media, and approved existing collection joins only; Slice 13J theme preview safety **committed** (`cef5713412ef218bee4af56ae9767c78d6304859`, tracker sync `353276375a3814cbe3ed929df5696bc60d7e03d5`); Slice **13K** **committed** (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); Slice **13K.1** **committed** (`0054d66acfe926be21127ae02ba7453989c11131`); Slice **13L** (docs-only, pending commit) records **Gadgetgyz** **`Acrylic Tablet or Phone Stand`** **stronger supplier proof** while **keeping** it **`Supplier proof in progress`** — **not** `Supplier verified`, not final-priced, not launch-approved; **all five** unchanged in tier; **Neat Freak** remains **major `Supplier verified` blocker** on **FAQ** evidence; `ZA Dropshipping` slots remain pending app/admin review  
+**Status:** Slice 13I preview-only Admin listings exist for five approved handles with `preview-only` / `price-to-confirm` tags, `supplier-neat-freak` on the first four and `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand` (tags reflect **historical Slice 13I** creation only — **Slice 13M** redirects proof to **`ZA Dropshipping`** / **`Ecomstock`** / **`Gadgetgyz`** routing); Slice 13J **committed** (`cef5713412ef218bee4af56ae9767c78d6304859`, `353276375a3814cbe3ed929df5696bc60d7e03d5`); Slice **13K**.1/`13L`/`13L.1` **committed**; **`Neat Freak` removed from launch `Supplier verified` path** (**Slice 13M**, pending commit) — **benchmark only**; **`ZA Dropshipping`** primary replacement (**Home/Kitchen/storage-style** preview SKUs); **`Ecomstock`** backup; **`Gadgetgyz`** (**Cable Tidies**, **Tech** incl. acrylic **Slice 13L**); **all five `Supplier proof in progress`** — **none `Supplier verified`**  
 **Version:** 1.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
 ## Purpose
 
-This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, the Slice 13E supplier proof gap-closure status, the Slice 13F preview-staging preparation-pack status, the Slice 13I controlled Admin preview-only listing outcome for five approved handles, Slice **13K** docs-only supplier proof closure (Neat Freak FAQ blocker; Gadgetgyz closest-candidate posture), and Slice **13L** docs-only **Gadgetgyz** **`Acrylic Tablet or Phone Stand`** proof closure.
+This document records the approved local-first sourcing strategy for the MVP launch catalogue, the supplier-prioritisation tiers, the launch collection supplier matrix, the working product status model, the Slice 13C preview shortlist, the Slice 13D supplier proof-pack status, the Slice 13E supplier proof gap-closure status, the Slice 13F preview-staging preparation-pack status, the Slice 13I controlled Admin preview-only listing outcome for five approved handles, Slice **13K** docs-only supplier proof closure, Slice **13L** docs-only **Gadgetgyz** **`Acrylic Tablet or Phone Stand`** proof closure, and Slice **13M** docs-only **`Neat Freak` supplier-path replacement**.
 
 ## Approved strategy
 
@@ -23,19 +23,26 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 - Best Shopify integration and local-stock test candidate.
 - Use only as a small pilot first because public Shopify app review confidence is weak.
+- **Slice 13M:** **Primary replacement path** for **Home / Kitchen / storage-style** Neat‑Freak‑historical SKUs (**Sink Strainer**, **Compact Organiser**, **Mini Divider**; **`Cable Tidies`** as **backup** after **Gadgetgyz** first) — no-inventory / fulfilment positioning, sample-order signal — **blocked** by missing exact app/admin **product references**, **costs**, **shipping fee**, **delivery model**, **image usage**, **sample proof**.
+- **`Slice 13N`:** intended to capture exact **ZA** replacement references in app/admin (**Gadgetgyz Cable Tidies** exact item optionally same pass or separate per Product Owner).
 
 ### 2. Neat Freak
 
-- Best category fit for `Home & Living`, `Kitchen & Storage`, `Office & Desk`, storage, organisers, kitchen, laundry, and household utility.
-- Must confirm wholesale / dropship terms and image-usage rights.
-- **Slice 13K:** Recorded public **FAQ**-style evidence is treated as stating **no sales through resellers** and **no dropshipping** — **major `Supplier verified` blocker** for Neat Freak–tied SKUs; **pause** `Supplier verified` path until **written** resale / wholesale / dropship / direct-fulfilment permission **or** alternate suppliers; shipping/stock timing remains too uncertain for delivery promises.
+- Strong **historical category fit** benchmark for `Home & Living`, `Kitchen & Storage`, `Office & Desk`, organisers, utility.
+- **`Slice 13K` FAQ** evidence: **no reseller sales** / **no dropshipping** — remains factual on record.
+- **`Slice 13M`:** **Removed from launch `Supplier verified` path** — **benchmark / catalogue reference only** — **not viable** **`Supplier verified` launch path** unless **written** resale/wholesale/dropship/direct-fulfilment permission **later**.
 
-### 3. Gadgetgyz
+### 3. Ecomstock
 
-- Best `Tech Accessories` test supplier.
-- Must confirm stock, pricing, fulfilment workflow, delivery SLA, and return terms.
-- **Slice 13K:** Strongest operational signal among the five preview-only handles; **`Acrylic Tablet or Phone Stand`** is **closest** `Supplier verified` **candidate** but **still blocked** (exact shipping fee, image permission, sample/product quality proof, stock reliability, final margin after shipping, final PO decision).
-- **Slice 13L:** **`Acrylic Tablet or Phone Stand`** — **stronger recorded public proof** (Gadgetgyz + Parrot **DP0402**, stock signal incl. total **49**; dropship workflow; delivery/returns wording) — **still `Supplier proof in progress` / preview-only**; **not** `Supplier verified` until **ZA** shipping fee, final margin after shipping, sample/quality, **Product Owner image-use acceptance**, stock near launch, final sell price, return/refund copy, and PO decision close; **Deals** rail blocked unless **final proven margin 55%+**; **Best Sellers** blocked without sales evidence; order **one sample** before **`Supplier verified` review**; conservative copy rule and disallowed claims as recorded in readiness / project-control **Slice 13L** sections.
+- **Backup supplier path** — positions as **South African** wholesale/retail with relevant categories (**Slice 13M**).
+- **Blocked:** unclear dropship/reseller workflow, exact product references vs Mzansi Select handles, fulfilment clarity, shipping fee, image usage, sample proof.
+
+### 4. Gadgetgyz
+
+- Best `Tech Accessories` path and **`Cable Tidies Set` preferred routing** (**Slice 13M** — **stronger public dropship workflow** vs **Ecomstock**).
+- **`Acrylic Tablet or Phone Stand`:** **`Slice 13L` committed** posture — **`Supplier proof in progress`**, **not** `Supplier verified`.
+- **`Cable Tidies Set`:** **Gadgetgyz first**, **`ZA Dropshipping` backup** — exact item reference **still outstanding**.
+- Continue stock, pricing, SLA, sample, image PO gates per **Slices 13L**/**13M**.
 
 ## Conditional suppliers
 
@@ -52,10 +59,10 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Launch collection supplier matrix
 
-- `Home & Living`: `Neat Freak` primary, `ZA Dropshipping` backup
-- `Kitchen & Storage`: `Neat Freak` primary, `ZA Dropshipping` backup
-- `Office & Desk`: `Neat Freak` + `ZA Dropshipping` primary, `Gadgetgyz` backup
-- `Tech Accessories`: `Gadgetgyz` + `ZA Dropshipping` primary, `Men’s Republic` only after verification
+- `Home & Living`: **`ZA Dropshipping`** primary (**Slice 13M** replacement), **`Ecomstock` backup**; **`Neat Freak`** benchmark-only (**not** launch **`Supplier verified`** path)
+- `Kitchen & Storage`: **`ZA Dropshipping`** primary, **`Ecomstock` backup**; **`Neat Freak`** benchmark-only
+- `Office & Desk`: **`ZA Dropshipping`** + **`Gadgetgyz`** (**Office & Desk**–joined SKUs vary by routing — **`Cable Tidies`** routes **`Gadgetgyz` first**, **`ZA` backup**); **`Ecomstock`** backup category fit — **`Neat Freak`** benchmark-only
+- `Tech Accessories`: **`Gadgetgyz`** preferred (**Cable Tidies**, acrylic **Slice 13L**) + **`ZA Dropshipping`**; **`Men’s Republic`** only after verification — **`Neat Freak`** benchmark-only
 
 ## Working product status model
 
@@ -84,11 +91,12 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - `ZA Dropshipping Home/Kitchen utility item` — `ZA Dropshipping` — pending app/admin review
 - `ZA Dropshipping Tech accessory item` — `ZA Dropshipping` — pending app/admin review
 
-## Supplier weighting
+## Supplier weighting (`Slice 13M`)
 
-- `Neat Freak`: strongest current category fit.
-- `Gadgetgyz`: strongest current `Tech Accessories` fit.
-- `ZA Dropshipping`: useful Shopify/local-stock test path, but product and margin proof must be checked inside the app/admin workflow before relying on it.
+- `Neat Freak`: category/catalogue **benchmark only** — **removed** from **`Supplier verified` launch path**.
+- `ZA Dropshipping`: **primary** replacement routing for historical Neat‑Freak‑kitchen/storage preview SKUs (pending **`Slice 13N`** refs).
+- `Ecomstock`: structured **backup**.
+- `Gadgetgyz`: **`Tech Accessories`** plus **`Cable Tidies Set`** **preferred routing** (**stronger dropship workflow** vs **Ecomstock** — exact **Cable Tidies** ref still blocked).
 
 ## Current status rule
 
@@ -106,7 +114,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 ## Slice 13I controlled Admin preview-only listings
 
 - Shopify Admin now has **preview-only** catalogue rows for: `Sink Strainer — Stainless Steel` (`sink-strainer-stainless-steel`), `Compact Organiser Basket`, `Mini Plastic Divider Basket`, `Cable Tidies Set`, and `Acrylic Tablet or Phone Stand`, using approved handles and collection joins only.
-- **Supplier tags:** `supplier-neat-freak` on the first four; `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand`.
+- **Supplier tags:** `supplier-neat-freak` on the first four; `supplier-gadgetgyz` on `Acrylic Tablet or Phone Stand` — **historical Snapshot 13I** only; **`Slice 13M` replacement routing** is documented in **`## Slice 13M`** (**no Shopify Admin edit** performed in **`Slice 13M`** docs pass).
 - **Commercial posture unchanged:** all five remain `Supplier proof in progress` only; **no** `Supplier verified` approval; **no** supplier verification sign-off; **no** final pricing, delivery promise, or product-claim approval.
 - Earlier Slice 13E wording that disallowed actual preview staging reflects the **pre-Slice-13I** baseline; Slice 13I is the narrow Product Owner–approved exception for these five handles only.
 
@@ -114,22 +122,30 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 - **Scope:** Documentation only (**committed** `cb61ee28fbb3e575669236310d4e5b131fc697bf`). No product import, no additional preview staging, no Admin/collection/link edits, no theme publish, no `Supplier verified` promotion.
 - **Supplier-level:** All five may remain **preview-only visible**; **none** ready for **`Supplier verified` review** or launch approval; **do not reject** product concepts.
-- **`Sink Strainer — Stainless Steel`** — Neat Freak — strong product proof; blockers: Neat Freak terms, image permission, fulfilment workflow, sample quality, shipping-cost model, final PO decision.
-- **`Compact Organiser Basket`** — Neat Freak — good product/price signal; blockers: Neat Freak terms, image permission, dimensions/material proof, fulfilment workflow, stock reliability, sample quality.
-- **`Mini Plastic Divider Basket`** — Neat Freak — good low-ticket signal; blockers: Neat Freak terms, image permission, dimensions/material proof, bundle/minimum-cart economics, final margin after shipping.
-- **`Cable Tidies Set`** — Neat Freak — **do not advance** until **exact product** narrowed (title may map to several items); blockers: exact item selection, Neat Freak terms, image permission, copy clarity, final commercial model.
-- **`Acrylic Tablet or Phone Stand`** — **Gadgetgyz** — continue toward proof closure; **still blocked**. Recorded product proof: SKU **DP0402**, in stock, **R158.89**, Parrot Products, **0.5 kg**, **90 x 145 x 145 mm**; public dropship / direct-to-customer dispatch signal; remaining blockers as above.
-- **Commercial / fulfilment / image-rights summary:** Neat Freak category fit is strong but **terms block** `Supplier verified` progression; Neat Freak shipping/stock **too uncertain** for delivery promises; **Gadgetgyz** operationally stronger but needs fee, image, sample, margin closure; **image rights unresolved** for all five; copy **factual only**.
+- **`Sink Strainer — Stainless Steel`** — **`Slice 13M`:** **`ZA Dropshipping` first**, **`Ecomstock` backup** — **`Supplier proof in progress`**; replacement evidence blockers as **Slice 13M**/ **13N**.
+- **`Compact Organiser Basket`** — **`ZA` first**, **`Ecomstock` backup** — **`Supplier proof in progress`**.
+- **`Mini Plastic Divider Basket`** — **`ZA` first**, **`Ecomstock` backup** — **`Supplier proof in progress`**.
+- **`Cable Tidies Set`** — **`Gadgetgyz` first**, **`ZA` backup** — exact item still required — **`Supplier proof in progress`**.
+- **`Acrylic Tablet or Phone Stand`** — **`Gadgetgyz`** (**Slice 13L** committed) — **DP0402** proof pack; **`Supplier proof in progress`** until **Slice 13L** gates close.
+- **Commercial / fulfilment / image-rights summary (`Slice 13M`):** **`Neat Freak` launch SV closure** redirects proof to **`ZA`** / **`Ecomstock`** / **`Gadgetgyz`** lanes; **`Slice 13N`** prioritises **`ZA`** exact refs (**Gadgetgyz Cable Tidies** optional same pass/separate).
 
 ## Slice 13L docs-only Gadgetgyz Acrylic Tablet or Phone Stand proof closure
 
-- **Scope:** Documentation only (this pass; pending Product Owner commit). Same exclusions as Slice 13K (no import, staging, Admin, collections, theme publish, `Supplier verified` promotion, final approvals).
+- **Scope:** Documentation only (**committed** `a87e8c6124d9708967dfbf2c6a208b601fe6f608`). Same exclusions as Slice 13K (no import, staging, Admin, collections, theme publish, `Supplier verified` promotion, final approvals).
 - **Product / handle / collections:** **`Acrylic Tablet or Phone Stand`** — `acrylic-tablet-phone-stand` — **`Gadgetgyz`** — **Office & Desk** / **Tech Accessories**.
 - **Decision:** **Keep** **`Supplier proof in progress` / preview-only staged**; **do not** move to **`Supplier verified` review**; **do not** approve final pricing, launch readiness, delivery promises, or product claims.
 - **Evidence:** Gadgetgyz product page (**DP0402**, **R158.89**, **0.5 kg**, **90 x 145 x 145 mm**, in-stock signal); Parrot Products page confirms **DP0402**, Acrylic Stands category, in-stock, **total stock 49**; Gadgetgyz **dropshipping** workflow (upload without Gadgetgyz logo; forward orders after customer order); delivery costs **excluded** from product price, **separate at checkout**, **may vary**; target **2–5** working days after confirmation/payment; returns **within 7 days** of delivery; wrong/damaged **refund or replacement**.
 - **Commercial (planning-only):** Internal sell range **R329–R379** vs cost **R158.89**; product-only gross **~51.7%** / **~54.5%** / **~58.1%** at **R329** / **R349** / **R379**; **final margin unproven** until shipping fee + handling closed; **Deals** / **Best Sellers** gating as above.
 - **Image / sample / copy:** Strong dropship-page image signal — **Product Owner explicit acceptance** still required before launch supplier images; **recommend one sample** before **`Supplier verified` review**; allowed conservative sentence and **avoid** unsupported claims per project-control **Slice 13L**.
 - **Remaining blockers:** Exact **ZA** shipping fee; shipping-cost model; final margin after shipping; sample/quality; PO image acceptance; stock reliability near launch; final sell price; customer return/refund wording; final PO commercial decision.
+
+## Slice 13M docs-only Neat Freak supplier-path replacement
+
+- **`Neat Freak`:** removed from **launch `Supplier verified` path** — **benchmark only** — viable only if **written** resale/dropship/direct-fulfilment permission arises **later** — otherwise **paused** strictly as **`Supplier verified` reliance**, **not** as product rejection.
+- **`ZA Dropshipping`:** primary **Home/Kitchen/storage-style** replacements — **blocked** by app/admin refs, costs, shipping, images, samples.
+- **`Ecomstock`:** backup wholesale/retail path — blocked by workflow/ref/shipping/samples/images clarity.
+- **`Gadgetgyz`:** **`Cable Tidies`** + **`Tech`** preferred — **`Cable Tidies`** exact SKU still missing.
+- **`Slice 13N` objective:** **`ZA Dropshipping`** app/admin references for **`Sink Strainer`**, **`Compact Organiser`**, **`Mini Divider`**, **`Cable Tidies`** **if available as ZA backup** — **Gadgetgyz Cable Tidies** exact capture **optional** same pass **or separated**.
 
 ## Beauty & Hair rule
 
@@ -158,8 +174,8 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Lower-priority for preview-staging preparation: `2-Layer Carry Handle Container 3.8L` and `Hook-over Door Basket`.
 - Lower-priority reason: dimensions, image permission, delivery handling, and price positioning need stronger closure first.
 - `Cable Organiser / Cable Management item` remains paused unless narrowed to a specific lower-cost item or wholesale pricing is confirmed.
-- `Neat Freak` remains a strong category fit on paper, but **Slice 13K** records public **FAQ** evidence as a **major `Supplier verified` blocker** (no reseller sales; no dropshipping); shipping/stock timing remains uncertain for promises; wholesale / direct-fulfilment for Mzansi Select, image permission, stock reliability, and sample / product quality remain unclosed.
-- `Gadgetgyz` shows a stronger dropship-workflow signal than `Neat Freak` for the acrylic stand; **`Acrylic Tablet or Phone Stand`** is the **closest candidate** of the five preview-only handles; **Slice 13L** adds recorded public delivery, returns, Parrot stock, dropship image signal, and planning-only **R329–R379** margin ladder — exact **ZA** shipping fee, **final margin after shipping**, Product Owner image acceptance, sample/quality proof, stock near launch, return/refund copy, and final PO decision **remain open**.
+- **Neat Freak (`Slice 13K` FAQ + `Slice 13M`):** FAQ evidence remains on record; **`Slice 13M` removes Neat Freak from launch `Supplier verified` routing** — **benchmark/category fit only**.
+- **`ZA Dropshipping`**, **`Ecomstock`**, **`Gadgetgyz`:** replacement paths carry **`Slice 13M` / `Slice 13N` evidence gaps** (exact refs, app/admin proof where needed, pricing, shipping, images, samples, returns, margin closure); **`Gadgetgyz`** (**`Acrylic Tablet or Phone Stand` `Slice 13L`**, **`Cable Tidies Set` preferred first**) retains stronger public dropship workflow documentation than **`Ecomstock`** for **Cable Tidies / Tech Accessories** lanes.
 
 ## Slice 13F preview-staging preparation pack
 
@@ -194,7 +210,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Global blockers
 
-- `Neat Freak` — recorded public **FAQ** evidence: **no reseller sales** / **no dropshipping** (Slice 13K `Supplier verified` blocker); written permission or alternate suppliers required to revisit path
+- `Neat Freak` — **Slice 13K** **FAQ**: **no reseller sales** / **no dropshipping** (on record); **Slice 13M** removes Neat Freak **from launch `Supplier verified` path** — **benchmark only** unless **written** resale/dropship/direct-fulfilment permission arrives **later**
 - Wholesale / dropship terms for `Neat Freak`
 - Direct fulfilment workflow
 - Shipping-cost handling model
@@ -207,7 +223,7 @@ This document records the approved local-first sourcing strategy for the MVP lau
 
 ## Next expected decision
 
-- Product Owner: commit Slice **13L** documentation when approved; then **Slice 13M** Neat Freak alternate supplier / written permission path, remaining **Gadgetgyz** acrylic gates (exact **ZA** shipping fee, final margin, sample, image PO acceptance, returns copy), and authenticated preview QA as needed — **no** `Supplier verified` promotion until evidence closes.
+- Product Owner: commit **Slice 13M** docs when approved; then **Slice 13N** **`ZA Dropshipping`** replacement ref capture (**Gadgetgyz Cable Tidies** optionally scoped together or separate), **`Ecomstock`** backup proof closure as scheduled, **`Gadgetgyz` acrylic Slice 13L** gates, authenticated preview QA — **no `Supplier verified` promotion** until evidence gates close.
 
 ## Constraints preserved in this strategy pass
 
