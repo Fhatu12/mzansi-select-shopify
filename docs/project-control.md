@@ -3,7 +3,7 @@
 **Document Type:** Project Control  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J preview storefront safety is **committed** (`cef5713412ef218bee4af56ae9767c78d6304859`, tracker sync `353276375a3814cbe3ed929df5696bc60d7e03d5`) with authenticated preview QA **PASS WITH NOTES**; Slice **13K** (docs-only, pending commit) records supplier proof closure — **Neat Freak public FAQ evidence treated as a major `Supplier verified` blocker** (no reseller sales; no dropshipping); **Gadgetgyz** / **`Acrylic Tablet or Phone Stand`** remains closest candidate but blocked; no **live** theme publish or live theme overwrite; checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
+**Status:** Slice 13I controlled Shopify Admin preview-only product staging completed for five approved handles on `dropshippoc.myshopify.com`; products are `ACTIVE`, published to **Online Store** only for password-protected preview review, use `preview-only` and `price-to-confirm` tags with `0.00` placeholder price, zero inventory, `DENY` inventory policy, empty media, and approved existing collection assignments only; all five remain `Supplier proof in progress` only, not `Supplier verified`, not final launch approved, not final-priced, not delivery- or claims-approved; Slice 13J preview storefront safety is **committed** (`cef5713412ef218bee4af56ae9767c78d6304859`, tracker sync `353276375a3814cbe3ed929df5696bc60d7e03d5`) with authenticated preview QA **PASS WITH NOTES**; Slice **13K** supplier proof closure **committed** (`cb61ee28fbb3e575669236310d4e5b131fc697bf`) — **Neat Freak public FAQ evidence treated as a major `Supplier verified` blocker** (no reseller sales; no dropshipping); **Gadgetgyz** / **`Acrylic Tablet or Phone Stand`** remains closest candidate but requires proof closure; **next product proof slice:** **Slice 13L** — **Gadgetgyz** **`Acrylic Tablet or Phone Stand`** proof closure; **following planned slice:** **Slice 13M** — **Neat Freak** alternate supplier / written permission path; no **live** theme publish or live theme overwrite; checkout/shipping/markets/taxes/payments unchanged; `artifacts/` remains untracked and uncommitted  
 **Version:** 3.0  
 **Source of Truth:** `mzansi-select-theme.html`
 
@@ -13,11 +13,13 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: Slice 13K docs-only supplier proof closure (this pass; pending Product Owner commit)
+- Active slice: Slice 13K.1 docs-only tracker sync after Slice 13K commit (this pass; pending Product Owner commit)
+- Next product proof slice: **Slice 13L** — **Gadgetgyz** **`Acrylic Tablet or Phone Stand`** proof closure
+- Following planned slice: **Slice 13M** — **Neat Freak** alternate supplier / written permission path
 - Active owner: Product Manager
-- Next owner: Product Owner — whether to pursue more preview QA, further supplier proof / alternate sourcing for Neat Freak–path SKUs, **Gadgetgyz** closure for the acrylic stand, or launch-readiness planning
-- Last accepted slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`, **PASS WITH NOTES** on authenticated preview QA re-run); Slice 13K supplier proof closure recommendation **accepted** as docs-only (pending commit)
-- Last committed slice: Docs tracker sync after Slice 13J (`353276375a3814cbe3ed929df5696bc60d7e03d5`); theme Slice 13J (`cef5713412ef218bee4af56ae9767c78d6304859`); prior documentation slice remains Slice 13I (`b61746cdc3a566bb3723b95581676da0f88b9561`)
+- Next owner: Product Owner — execute **Slice 13L** proof closure for the acrylic stand, then **Slice 13M** Neat Freak path, further preview QA, or launch-readiness planning as approved
+- Last accepted slice: Slice 13K supplier proof closure docs **accepted** and **committed** (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`, **PASS WITH NOTES** on authenticated preview QA re-run)
+- Last committed slice: Slice 13K supplier proof closure blockers docs (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); docs tracker sync after Slice 13J (`353276375a3814cbe3ed929df5696bc60d7e03d5`); theme Slice 13J (`cef5713412ef218bee4af56ae9767c78d6304859`); prior documentation slice remains Slice 13I (`b61746cdc3a566bb3723b95581676da0f88b9561`)
 - Last theme/code implementation slice: Slice 13J preview-only storefront safety (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J preview product visibility foundation (`263e60f1588b03f4120121007411c701d342d9e4`) remains the prior baseline
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation requires an authenticated preview session
@@ -57,18 +59,18 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
 - Shopify push/publish status: No **live** theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I); Slice 13J used **targeted** CLI push to **unpublished** preview theme `151207542967` for QA only (does not publish live)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-03 Slice 13K docs-only supplier proof closure (pending commit)
-- Tracker status: Updated (Slice 13K closure posture and Neat Freak blocker recorded)
-- Catalogue plan status: Updated (Slice 13K recorded in readiness matrix; pending commit)
-- LLD status: **Unchanged in this pass** — Slice 13K is supplier/catalogue documentation only; no durable theme, rendering, architecture, or storefront behaviour change
+- Last tracker update: 2026-05-03 Slice 13K.1 tracker sync after Slice 13K commit (`cb61ee28fbb3e575669236310d4e5b131fc697bf`) (pending commit)
+- Tracker status: Updated (Slice 13K recorded **committed**; **Slice 13L** next; **Slice 13M** planned)
+- Catalogue plan status: Unchanged in this pass — last catalogue update remains Slice 13K commit (`cb61ee28fbb3e575669236310d4e5b131fc697bf`)
+- LLD status: **Unchanged in this pass** — Slice 13K.1 is project-control tracker sync only; no durable theme, rendering, architecture, or storefront behaviour change
 
 ## Current active pass
 
-Slice 13K docs-only supplier proof closure — `docs/project-control.md`, `docs/catalogue/mzansi-select-25-product-readiness-v1.md`, `docs/catalogue/local-supplier-sourcing-matrix-v1.md` only; no code, no Shopify Admin actions, no commit until Product Owner approves
+Slice 13K.1 docs-only tracker sync — `docs/project-control.md` only; no code, no Shopify Admin actions, no commit until Product Owner approves; **Slice 13L** (**Gadgetgyz** **`Acrylic Tablet or Phone Stand`** proof closure) is the next product proof slice; **Slice 13M** (**Neat Freak** alternate supplier / written permission path) follows in the approved sequence
 
 ## Slice 13K docs-only supplier proof closure update
 
-- Product Owner accepted the Product Manager recommendation as a **docs-only** supplier proof closure update. **No** product import, **no** additional preview staging, **no** Shopify Admin product edits, **no** collection/link edits, **no** theme push/publish, **no** live theme overwrite, **no** checkout/shipping/markets/tax/payment changes, **no** `Supplier verified` promotion, **no** final launch / final pricing / delivery-promise / product-claim approvals, **no** `Beauty & Hair` launch-taxonomy addition.
+- Product Owner accepted the Product Manager recommendation as a **docs-only** supplier proof closure update; documentation **committed** in git as `cb61ee28fbb3e575669236310d4e5b131fc697bf`. **No** product import, **no** additional preview staging, **no** Shopify Admin product edits, **no** collection/link edits, **no** theme push/publish, **no** live theme overwrite, **no** checkout/shipping/markets/tax/payment changes, **no** `Supplier verified` promotion, **no** final launch / final pricing / delivery-promise / product-claim approvals, **no** `Beauty & Hair` launch-taxonomy addition.
 - **All five** preview-only staged handles may remain **visible** in preview; **none** is ready for **`Supplier verified` review** or **launch approval**; **do not reject** product concepts yet.
 - **Neat Freak:** **Pause** as a **`Supplier verified` path** unless **written** resale / wholesale / dropship / direct-fulfilment permission is obtained **or** alternate suppliers are found — public **FAQ**-style evidence is recorded as stating **no reseller sales** and **no dropshipping**, which is treated as a **major `Supplier verified` blocker** for Neat Freak–tied SKUs.
 - **`Gadgetgyz` / `Acrylic Tablet or Phone Stand`:** **closest candidate** of the five; **continue** toward proof closure; **still blocked** from `Supplier verified`.
