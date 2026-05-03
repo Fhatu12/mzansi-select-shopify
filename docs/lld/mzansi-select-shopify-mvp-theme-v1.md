@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **14D** wires homepage **`featured-product-grid`** slots to **`all_products`** preview handles when present (**`live-product-card`**); **`Slice 14B`** department collection routing remains as documented; preview validation posture unchanged (password wall without reusable authenticated session)  
-**Version:** 2.2  
+**Status:** Slice **14C** makes wishlist / heart controls **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy); **Slice 14D** homepage grids and **Slice 14B** department routing remain as documented; preview validation posture unchanged (password wall without reusable authenticated session)  
+**Version:** 2.3  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -323,6 +323,25 @@ Slice **14D** explicit non-goals:
 - no department routing regressions (**Slice 14B** contract unchanged)
 - no Shopify publish, **`Supplier verified`**, bulk import, Admin edits, checkout/shipping/markets/tax/payment changes
 
+## Slice 14C wishlist honesty / deferred hearts responsibilities
+
+Slice **14C** addresses **Slice 14A.1** QA findings that heart controls were **not** real favourites (**no** `aria-pressed`, **no** persistence contract) while still **looking** interactive.
+
+Slice **14C** scope includes:
+
+- **`snippets/static-product-card.liquid`**: **`.p-wish`** is **`disabled`** with **`aria-disabled="true"`** and an **`aria-label`** that states wishlist is **not available yet** (replaces “Save … to wishlist” misleading copy).
+- **`snippets/live-product-card.liquid`**: same **`disabled` / `aria-disabled`** pattern; **`aria-label`** references the live **`product.title`**.
+- **`sections/site-header.liquid`**: wishlist chrome is a **`<span class="hdr-action hdr-action--deferred">`** (not an **`<a href="#wishlist">`** fake route) with **`aria-label`**.
+- **`sections/site-footer.liquid`**: wishlist Account column entry is a **`<span class="f-link-deferred">`** with visually hidden “coming soon”.
+- **`sections/main-product-foundation.liquid`**: **`Wishlist deferred`** control gains **`aria-disabled="true"`** + matching **`aria-label`**.
+- **`assets/theme.css`**: **`.hdr-action--deferred`**, **`.p-wish:disabled` / `[aria-disabled="true"]`**, **`.f-link-deferred`**, **`.visually-hidden`**.
+
+Slice **14C** explicit non-goals:
+
+- no customer-account wishlist, **no** **`localStorage` / `sessionStorage`** wishlist persistence
+- no **`aria-pressed`** favourite toggle without a real persisted wishlist implementation
+- no **Slice 14B** department routing edits, no **Slice 14D** **`featured-product-grid`** handle wiring edits
+
 Slice 5.5 PDP QA closure note:
 
 - The uncommitted Slice 5 PDP foundation was reviewed and accepted as PASS WITH NOTES.
@@ -565,13 +584,13 @@ Slice 9 addition:
 - `sections/announcement-topbar.liquid`
   - Carries the approved trust-message strip structure.
 - `sections/site-header.liquid`
-  - Carries the approved logo, search shell, account/wishlist/cart action structure.
+  - Carries the approved logo, search shell, account/wishlist/cart action structure; Slice **14C** renders wishlist as **`hdr-action--deferred`** (**non-link**, **`aria-label`**) instead of **`#wishlist`**.
 - `sections/primary-navigation.liquid`
   - Carries the approved department trigger/menu and primary nav shell; Slice **14B** resolves the approved launch quartet through **`snippets/launch-collection-url.liquid`**.
 - `sections/trust-bar.liquid`
   - Carries the approved reassurance block shell.
 - `sections/site-footer.liquid`
-  - Carries the approved footer information architecture shell.
+  - Carries the approved footer information architecture shell; Slice **14C** renders Account-column wishlist as **non-link** **`f-link-deferred`**.
 - `snippets/toast-feedback.liquid`
   - Carries the structural toast/cart feedback container only.
 
@@ -594,9 +613,9 @@ Slice 3 addition:
 - `snippets/section-heading.liquid`
   - Reuses the approved section title/link pattern.
 - `snippets/static-product-card.liquid`
-  - Carries static-safe product-card markup only.
+  - Carries static-safe product-card markup only; Slice **14C** keeps **`.p-wish`** **disabled** with honest **`aria-label`** (no save-to-wishlist pretence).
 - `snippets/live-product-card.liquid`
-  - Reuses the accepted product-card contract while rendering live Shopify product title, image, price, compare-at pricing, and product-link data for collection and related-product contexts.
+  - Reuses the accepted product-card contract while rendering live Shopify product title, image, price, compare-at pricing, and product-link data for collection and related-product contexts; Slice **14C** aligns **`.p-wish`** with the same deferred pattern.
 - `snippets/product-badge.liquid`
   - Reuses sale/new badge rendering.
 - `snippets/price-stack.liquid`
@@ -1582,4 +1601,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice **14B** department collection routing and Slice **14D** homepage **`featured-product-grid`** → **`all_products`** / **`live-product-card`** bridging are recorded above. **`snippets/static-product-card.liquid`** is unchanged (fallback only). No **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, Admin edit, or Slice **14C** wishlist behaviour is introduced by **Slice 14D** grid wiring alone.
+**Footer Standard For This Pass:** Slices **14B** (department URLs), **14D** (homepage **`featured-product-grid`** → **`live-product-card`**), and **14C** (honest deferred wishlist / hearts: **`static-product-card`**, **`live-product-card`**, **`site-header`**, **`site-footer`**, **`main-product-foundation`**, **`theme.css`**) are recorded above. No account wishlist persistence, **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, or Admin edit is implied by **Slice 14C** UI honesty alone.

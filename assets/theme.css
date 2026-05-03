@@ -218,6 +218,16 @@ header {
   color: var(--gold);
 }
 
+.hdr-action--deferred {
+  cursor: default;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.hdr-action--deferred:hover {
+  color: var(--text-body);
+}
+
 .cart-dot {
   position: absolute;
   top: -4px;
@@ -761,6 +771,18 @@ nav {
 
 .p-wish:hover svg {
   stroke: var(--gold);
+}
+
+.p-wish:disabled,
+.p-wish[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.p-wish:disabled:hover svg,
+.p-wish[aria-disabled="true"]:hover svg {
+  stroke: #666;
 }
 
 .prod-info {
@@ -2352,6 +2374,24 @@ footer {
 
 .f-links a:hover {
   color: var(--gold);
+}
+
+.f-link-deferred {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .nl-desc {
