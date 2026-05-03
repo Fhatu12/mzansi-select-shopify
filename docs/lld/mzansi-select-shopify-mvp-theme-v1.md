@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **14B** launch department URLs wired to Shopify collection routes in **`primary-navigation`**, **`category-strip`**, and **`main-search-foundation`**; preview validation posture unchanged (password wall without reusable authenticated session)  
-**Version:** 2.1  
+**Status:** Slice **14D** wires homepage **`featured-product-grid`** slots to **`all_products`** preview handles when present (**`live-product-card`**); **`Slice 14B`** department collection routing remains as documented; preview validation posture unchanged (password wall without reusable authenticated session)  
+**Version:** 2.2  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -303,8 +303,25 @@ Slice **14B** scope includes:
 Slice **14B** explicit non-goals:
 
 - no wishlist / heart behavioural work (**Slice 14C**)
-- no homepage merchandising static-card PDP navigation (**Slice 14D**)
+- no homepage merchandising static-card PDP navigation (**Slice 14D** — delivered in a separate theme pass after **Slice 14B**)
 - no Shopify publish, checkout/shipping/markets/tax/payment changes, **`Supplier verified` promotion**, bulk product import, or Admin edits implied solely by routing
+
+## Slice 14D homepage featured grid to PDP bridging responsibilities
+
+Slice **14D** removes non-navigating homepage merchandising **product grids** ( **`sections/featured-product-grid.liquid`** ) for the **Slice 13I** five-preview-handle set by preferring **`{% render 'live-product-card', product: all_products[handle], cta_label: 'View product' %}`** when the drop resolves.
+
+Slice **14D** scope includes:
+
+- **`sections/featured-product-grid.liquid`**: **`best_sellers`** preset iterates handles **`cable-tidies-set`**, **`acrylic-tablet-phone-stand`**, **`sink-strainer-stainless-steel`**, **`compact-organiser-basket`**; **`kitchen_storage`** preset iterates **`cable-tidies-set`**, **`sink-strainer-stainless-steel`**, **`compact-organiser-basket`**, **`mini-plastic-divider-basket`**. Per slot, **`live-product-card`** when **`all_products[handle]`** is non-blank; otherwise the prior **`static-product-card`** placeholder for that grid position (no invented PDP **`href`**).
+- **`templates/index.json`**: **`section_link_url`** for both grids set to **`/collections/all`** so “View all” is not a dead **`#`** when the setting is unset in older themes; section Liquid also defaults blank **`section_link_url`** to **`routes.all_products_collection_url`**.
+- Preview safety remains on **`live-product-card`** (**Slice 13J**): **`View product`** link CTA, disabled wishlist, placeholder pricing rules — **no** Add to Cart enablement introduced by **Slice 14D**.
+
+Slice **14D** explicit non-goals:
+
+- no wishlist / heart behaviour (**Slice 14C**)
+- no **`feature-tile-grid`** / hero collage merchandising tile rewiring (**Slice 14A.1** follow-up if needed later)
+- no department routing regressions (**Slice 14B** contract unchanged)
+- no Shopify publish, **`Supplier verified`**, bulk import, Admin edits, checkout/shipping/markets/tax/payment changes
 
 Slice 5.5 PDP QA closure note:
 
@@ -569,7 +586,7 @@ Slice 3 addition:
 - `sections/category-strip.liquid`
   - Carries the approved horizontal department/service strip; Slice **14B** applies **`launch-collection-url`** to the first four department tiles (**Shipping / Returns / FAQ anchors unchanged**).
 - `sections/featured-product-grid.liquid`
-  - Reuses one static-safe product-grid implementation for Best Sellers and Kitchen & Storage.
+  - Reuses **`static-product-card`** fallbacks and **`live-product-card`** for **Slice 13I** preview handles when **`all_products[handle]`** resolves (**Slice 14D**); section heading link defaults to **`all-products`** when **`section_link_url`** unset.
 - `sections/promo-banner-split.liquid`
   - Carries the approved editorial promo band.
 - `sections/feature-tile-grid.liquid`
@@ -1565,4 +1582,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slice 13G / 13J preview-safety behaviours remain documented above. Slice **14B** updates **`mzansi-select-theme.html`**, **`sections/primary-navigation.liquid`**, **`sections/category-strip.liquid`**, **`sections/main-search-foundation.liquid`**, plus **`snippets/launch-collection-url.liquid`** so approved launch departments resolve to Shopify collection URLs. No product-import, **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, Admin edit, Slice **14D** homepage-card PDP wiring, or Slice **14C** wishlist work is claimed by Slice **14B** routing alone.
+**Footer Standard For This Pass:** Slice **14B** department collection routing and Slice **14D** homepage **`featured-product-grid`** → **`all_products`** / **`live-product-card`** bridging are recorded above. **`snippets/static-product-card.liquid`** is unchanged (fallback only). No **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, Admin edit, or Slice **14C** wishlist behaviour is introduced by **Slice 14D** grid wiring alone.

@@ -15,6 +15,7 @@
         "section_title": "Best",
         "section_accent": "Sellers",
         "section_link_label": "View all products",
+        "section_link_url": "/collections/all",
         "background_style": "cream",
         "content_preset": "best_sellers"
       }
@@ -39,6 +40,7 @@
         "section_title": "Kitchen &",
         "section_accent": "Storage",
         "section_link_label": "View all",
+        "section_link_url": "/collections/all",
         "background_style": "white",
         "content_preset": "kitchen_storage"
       }
