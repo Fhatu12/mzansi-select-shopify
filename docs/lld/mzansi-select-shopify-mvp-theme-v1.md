@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **14C** makes wishlist / heart controls **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy); **Slice 14D** homepage grids and **Slice 14B** department routing remain as documented; preview validation posture unchanged (password wall without reusable authenticated session)  
-**Version:** 2.3  
+**Status:** Slice **14C** makes wishlist / heart controls **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy); **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain as documented below; **Slice 14 post-fix** unlocked storefront regression audit **PASS WITH NOTES** (**evidence** **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**) confirms those behaviours plus **PDP preview-only** safety and **search** / **mobile** harness coverage on preview theme **`151207542967`** — **supplier-proof** sequencing per **`docs/project-control.md`** after docs closure only; preview validation posture unchanged (password wall without reusable authenticated session)  
+**Version:** 2.4  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -341,6 +341,13 @@ Slice **14C** explicit non-goals:
 - no customer-account wishlist, **no** **`localStorage` / `sessionStorage`** wishlist persistence
 - no **`aria-pressed`** favourite toggle without a real persisted wishlist implementation
 - no **Slice 14B** department routing edits, no **Slice 14D** **`featured-product-grid`** handle wiring edits
+
+## Slice 14 post-fix unlocked storefront regression audit (QA closure)
+
+- **QA verdict:** **PASS WITH NOTES** (Product Owner acceptance). **Evidence:** **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`** — primary text artifacts (**`qa-report.md`**, **`link-audit.csv`**, **`interaction-audit.csv`**, **`automation-notes.json`**) plus screenshots/trace; **`artifacts/`** not committed.
+- **Behavioural confirmation (implementation):** **14B** — quartet department links resolve to **`/collections/home-living`**, **`/collections/kitchen-storage`**, **`/collections/office-desk`**, **`/collections/tech-accessories`** in **primary-navigation**, **category-strip** (first four tiles), **main-search-foundation** browse row; **14D** — homepage **`.product-card .prod-img a[href*="/products/"]`** navigates to **PDP** in harness; **14C** — hearts and chrome wishlist remain **honestly deferred/disabled** (see **Slice 14C** section); **PDP** — **Preview only** / **Wishlist deferred** / preview copy unchanged in intent from **Slices 12J / 13G / 13J**; **search** — **`/search?q=strainer&type=product`** loads (**static-safe search foundation** unchanged); **mobile** — subset of routes + card bridge exercised.
+- **Notes (informational):** evidence tree may contain **`node_modules`** with generic auth/session wording in upstream docs — not a merchant secret leak from reviewed report/CSVs/JSON; no storefront password value recorded in those artifacts per closure review.
+- **Sequencing:** **`docs/project-control.md`** records that **supplier-proof** work **may resume only after** the **`docs: record storefront recovery qa closure`** commit.
 
 Slice 5.5 PDP QA closure note:
 
@@ -1601,4 +1608,4 @@ Notes recorded:
 
 ---
 
-**Footer Standard For This Pass:** Slices **14B** (department URLs), **14D** (homepage **`featured-product-grid`** → **`live-product-card`**), and **14C** (honest deferred wishlist / hearts: **`static-product-card`**, **`live-product-card`**, **`site-header`**, **`site-footer`**, **`main-product-foundation`**, **`theme.css`**) are recorded above. No account wishlist persistence, **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, or Admin edit is implied by **Slice 14C** UI honesty alone.
+**Footer Standard For This Pass:** Slices **14B** (department URLs), **14D** (homepage **`featured-product-grid`** → **`live-product-card`**), and **14C** (honest deferred wishlist / hearts: **`static-product-card`**, **`live-product-card`**, **`site-header`**, **`site-footer`**, **`main-product-foundation`**, **`theme.css`**) are recorded above. **Slice 14 post-fix** unlocked storefront regression audit **PASS WITH NOTES** (**evidence** **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**) closes formal QA traceability for those behaviours after the theme commits landed. No account wishlist persistence, **`Supplier verified`**, publish/live-overwrite approval, checkout/shipping/market/tax/payment change, catalogue doc edit, or Admin edit is implied by **Slice 14C** UI honesty alone or by this docs-only QA closure note.
