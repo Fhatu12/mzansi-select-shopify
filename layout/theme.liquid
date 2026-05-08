@@ -22,6 +22,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     {{ content_for_header }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <style>
+      @media (max-width: 900px) {
+        header.site-header-desktop,
+        nav.site-nav-desktop,
+        .footer-desktop {
+          display: none !important;
+        }
+
+        header.mob-header,
+        .footer-mobile {
+          display: block !important;
+        }
+
+        nav.bottom-bar {
+          display: flex !important;
+        }
+
+        .topbar {
+          max-width: 100%;
+          overflow: hidden;
+        }
+
+        .topbar-inner {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        .trust-inner,
+        .trust-item {
+          max-width: 100%;
+          min-width: 0;
+        }
+      }
+    </style>
   </head>
   <body class="{%- render 'preview-route-body-class' -%}">
     {% section 'announcement-topbar' %}

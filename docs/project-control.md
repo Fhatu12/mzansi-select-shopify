@@ -65,12 +65,12 @@ Mzansi Select Shopify MVP Theme Conversion
 - Last tracker update: 2026-05-04 **docs-only** — **Slice 14 post-fix** unlocked storefront regression QA **PASS WITH NOTES** recorded (**evidence** **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**) — **`supplier-proof` may resume only after this docs closure commit** — prior **2026-05-03** **Slice 14C** theme commit remains last **theme/code** change
 - Tracker status: **Slice 14 post-fix regression** **PASS WITH NOTES** **accepted** — **Slice 14B / 14D / 14C** theme **commits** **QA-validated** on preview — **`supplier proof`:** **may resume only after** **`docs: record storefront recovery qa closure`** — **`Slice 13N`** (**`421551…`**): **`ZA`** public refs **inconclusive** (unchanged); **`Ecomstock` Sink Strainer** (**`P5260S`**) backup retained; **`Slice 13O`**: **`Cable Tidies`** SKU **`PCB-CT-25150`** docs **committed** (**`3bf260b…`**) — **product-proof gates open**
 - Catalogue plan status: **Slice 13O** (**`3bf260b…`**) + **`docs/catalogue`** companions **committed** — **canonical narrative** **`project-control`** + **`mzansi-select-25-product-readiness-v1`** + **`local-supplier-sourcing-matrix-v1`**
-- Documentation sync status: **current for `project-control`** after **Slice 15L** fail closure (**this pass**)
-- LLD status: unchanged in **Slice 15L** because it was a QA-only rerun with no approved implementation changes
+- Documentation sync status: **current for `project-control`** after **Slice 15M** root-cause remediation sync (**this pass**)
+- LLD status: updated in **Slice 15M** because the mobile shell-swap / topbar-trust containment backstop now also lives in **`layout/theme.liquid`** as critical inline CSS
 
 ## Current active pass
 
-**Tracker closure + implementation (this pass):** **Slice 15M** mobile topbar / nav width root-cause remediation — close the clean authenticated **Slice 15L** fail state, inspect the persistent **861px** overflow signature across all **20** required routes, and remove the actual oversized topbar / nav width source without redesigning the approved north-star composition.
+**Implementation + deployment hardening (this pass):** **Slice 15M** mobile topbar / nav width root-cause remediation — close the clean authenticated **Slice 15L** fail state, inspect the persistent **861px** overflow signature across all **20** required routes, and harden the critical mobile shell-swap / containment rules so desktop topbar/nav/footer chrome cannot reopen page width when preview serves a stale stylesheet.
 
 ## Slice 15H preview deployment parity verification (DevOps)
 
@@ -134,6 +134,16 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Stable overflow discriminator:** **`max_scroll_w=861`** with top offenders reported as **`div.tb-item`** and **`nav / .nav-right`**.
 - **Regression checks preserved in QA evidence:** **Slice 14B** department routing **PASS**, **Slice 14C** wishlist honesty **PASS**, **Slice 14D** homepage card-to-PDP **PASS**, PDP preview-only safety **PASS**, **`/search`** measured, **`/search?q=strainer&type=product`** measured.
 - **Blocked path:** **Slice 15A** private preview sharing remains blocked until a later clean authenticated rerun passes.
+
+## Slice 15M mobile topbar / nav width root-cause remediation (theme)
+
+- **Scope:** isolate the clean authenticated **Slice 15L** overflow discriminator (**`861px`**, **`div.tb-item`**, **`nav / .nav-right`**) and correct the real source without redesigning the approved north-star layout.
+- **Exact root cause found:** the unpublished preview theme was still serving a **pre-15K** **`assets/theme.css`** variant whose mobile breakpoint lacked the stronger shell-swap selectors / overrides now present locally. That stale asset left desktop header/nav/footer chrome in the mobile render flow, which reintroduced the legacy **`nav / .nav-right`** width leak and the associated **`div.tb-item`** overflow signature seen in the authenticated screenshots.
+- **Evidence of parity mismatch:** a read-only pull of preview theme **`151207542967`** returned a remote **`assets/theme.css`** hash of **`2C93CDFA42255F78AAC7D21F7F4BA2CFE261895E7314ED93E1EF0B40DF4E7042`**, while local **HEAD** carried **`DB4999549F00A9E1D3C24CB87A3EB6DEB291C8957BF30606A2D29E444519CA15`** and the diff showed the preview missing the **Slice 15K** mobile shell-swap / containment rules.
+- **Theme hardening applied:** the critical mobile shell-swap and topbar/trust containment rules now also live inline in **`layout/theme.liquid`** after the main stylesheet so they still win if the preview serves an older stylesheet or stale asset order. This keeps **`header.site-header-desktop`**, **`nav.site-nav-desktop`**, and **`.footer-desktop`** out of the mobile render flow while preserving the approved mobile header/bottom-bar composition.
+- **Theme files touched:** **`layout/theme.liquid`**.
+- **Local verification:** current local preview still validates with **zero** page-level horizontal overflow across all **20** required routes at **`360x800`**, **`390x844`**, **`414x896`**, and **`768x1024`**.
+- **Theme Check note:** the exact repo-root command **`shopify theme check --path . --fail-level error`** remains blocked by the pre-existing artifact JSON error under **`artifacts/devops/slice-15h-selected-file-preview-push-20260508-171750/theme-push-output.json`**; a sanitized theme-only rerun of the active theme surface remains warning-only with **zero** errors.
 
 ## Slice 15F mobile overflow root-cause remediation (theme)
 
