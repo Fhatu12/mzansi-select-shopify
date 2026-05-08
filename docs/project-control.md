@@ -13,12 +13,12 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: **Slice 15H** — preview deployment parity verification for mobile overflow investigation (**read-only DevOps parity pass complete; Product Owner approval needed before any selected-file push**)
+- Active slice: **Slice 15J** — auth-gated mobile readiness rerun + harness hard-stop on `/password` (**QA evidence pass**)
 - Next implementation slice: **Slice 14E** / **Slice 14G** (**P1** follow-ups) or **supplier-proof** backlog — **Slice 14C** wishlist honesty **committed** **`fix(theme): make wishlist controls honest`** — storefront recovery slice **closed** at QA/docs layer by **Slice 14 post-fix** regression **PASS WITH NOTES** (see dedicated section)
 - Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof remains separate from Slice 15A feedback** and may resume per Product Owner sequencing (not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
 - Active owner: Product Owner
-- Next owner: **Product Owner** if selected-file push approval is needed for preview parity; **QA / Test Engineer** only after preview parity is restored and a rerun is approved
-- Last accepted slice: **Slice 15A** private preview share + tester feedback plan (**feedback-only**, **10–20** trusted testers; **Google Forms** primary, **WhatsApp** fallback; **no sales / no checkout**) — accepted by Product Owner; prior **Slice 14 post-fix** unlocked storefront regression audit **PASS WITH NOTES** (evidence **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**); prior **`Slice 14A.1`** unlocked storefront interaction audit **PASS WITH NOTES** (headed Playwright after manual storefront unlock; evidence **`artifacts/qa/slice-14a1-unlocked-storefront-interaction-audit/20260503T170500Z/`**); prior supplier-proof acceptance: **`Slice 13O`** **`Gadgetgyz` `Cable Tidies Set`** proof **accepted**, **committed**, **closed** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`); **Slice 13N.1** tracker sync (`f10eedcaa2dd6e6b20967960bb5bebed5002e38a`); **Slice 13N** (`421a5514cf33430e633763741c7a0e4bf054a969`); Slice 13M (`45eb8e23b568e8fc7f6bdd2413818caa29288e5e`); Slice 13L.1 (`a33895a3bb242455c95da74a6c6f2c72bee946d6`); Slice 13L (`a87e8c6124d9708967dfbf2c6a208b601fe6f608`); Slice 13K.1 (`0054d66acfe926be21127ae02ba7453989c11131`); Slice 13K (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); Slice 13J (**PASS WITH NOTES**)
+- Next owner: **QA / Test Engineer** for the Slice 15J rerun evidence pass; escalate to **DevOps / Platform Engineer** if preview authentication/session is unstable
+- Last accepted slice: **Slice 15I** mobile readiness rerun (**INCONCLUSIVE**, accepted by Product Owner due to password-wall instability causing invalid measurements). Slice 15A sharing remains **blocked** pending a clean authenticated overflow report.
 - Last committed slice: **Slice 14C** **`fix(theme): make wishlist controls honest`** — **`snippets/static-product-card.liquid`**, **`snippets/live-product-card.liquid`**, **`sections/site-header.liquid`**, **`sections/site-footer.liquid`**, **`sections/main-product-foundation.liquid`**, **`assets/theme.css`**, **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`**, **`docs/project-control.md`** — prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`)
 - Last theme/code implementation slice: **Slice 14C** wishlist honesty / deferred heart controls (**this pass**); prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`); **Slice 14B** (`1bef8f0c5658426860e35f49ef94ec86c3633110`); **Slice 13J** (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J (`263e60f1588b03f4120121007411c701d342d9e4`) baseline
 - Current blockers:
@@ -96,6 +96,18 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Operational safety:** **no** publish occurred; **no** live overwrite occurred; **no** theme/source files were edited in this pass; **no** product import/Admin product edit/collection edit/link edit/checkout/shipping/markets/tax/payment change occurred; **`artifacts/`** remains uncommitted.
 - **Next recommended owner:** **QA / Test Engineer** for **Slice 15I — mobile readiness rerun** and **Slice 15A** re-enable decision.
 - **Knowledge capture:** reusable knowledge discovered — remote preview parity must be verified before assuming a committed CSS remediation failed. Asset updated — **`docs/project-control.md`** only; **`artifacts/`** remains evidence-only. Suggested repository location — defer **`docs/knowledge/mobile-overflow-qa-check.md`** until **Slice 15I** confirms the successful path. Sensitive material excluded — storefront password / secrets excluded. Follow-up needed — QA rerun after the selected-file preview push.
+
+## Slice 15I mobile readiness rerun (QA) — accepted INCONCLUSIVE
+
+- **Decision:** accepted by Product Owner as **INCONCLUSIVE** because password-wall instability caused invalid measurements.
+- **Evidence folder:** **`artifacts/qa/slice-15i-mobile-readiness-rerun/20260508-152139/`**.
+- **Outcome:** mobile readiness **not accepted**; Slice 15A sharing remains **blocked**.
+- **Requirement promoted:** QA harness must **hard-stop** and produce **INCONCLUSIVE** if `final_url` is `/password` or the password wall persists — no overflow measurement or regression checks may be reported from `/password`.
+
+## Slice 15J auth-gated mobile readiness rerun (QA) — active
+
+- **Scope:** harden the QA runner so it never measures or asserts while on `/password`, then rerun the full route+viewport suite only after authenticated preview access is confirmed.
+- **Escalation rule:** if unlock/session cannot be stabilized inside the harness, stop and hand off to **DevOps / Platform Engineer** for preview authentication/session stabilization.
 
 ## Slice 15F mobile overflow root-cause remediation (theme)
 
