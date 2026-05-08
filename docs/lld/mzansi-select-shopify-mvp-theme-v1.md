@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **15F** now preserves the approved north-stars while closing the remaining mobile/tablet overflow leaks: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping.  
-**Version:** 2.6  
+**Status:** Slice **15K** keeps the approved north-stars intact while hardening the mobile shell-swap / containment contract around the announcement topbar, header/nav swap, trust bar, and footer: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping.  
+**Version:** 2.7  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html` + `D:\dev\mzansi-select-shopify\mzansi-select-mobile.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -106,6 +106,8 @@ Out of boundary for this document pass:
 - Shared promo/product/cart grids that contain intrinsic-width media must use shrink-safe tracks such as **`minmax(0, 1fr)`** rather than relying on default grid minimums.
 - Shrinkable promo/card/cart children must explicitly allow compression with **`min-width: 0`** where intrinsic media or long inline content would otherwise hold tracks open.
 - Live product-card media anchors inside **`.prod-img`** must be block-level, full-size wrappers so linked images inherit the approved card container width instead of their intrinsic **`width`** attributes.
+- The mobile breakpoint must explicitly swap desktop shells out of the render flow: **`header.site-header-desktop`**, **`nav.site-nav-desktop`**, and **`.footer-desktop`** must be hidden at **`<= 900px`**, while **`header.mob-header`** and **`nav.bottom-bar`** remain the active approved mobile chrome.
+- Mobile topbar and trust-bar wrappers must stay shrink-safe with explicit **`width/max-width/min-width`** containment so long inline trust copy can scroll only inside the approved bounded topbar rail and never hold open page-level width.
 
 ## Component / section inventory extracted from the HTML
 

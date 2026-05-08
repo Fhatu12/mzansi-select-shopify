@@ -3010,15 +3010,15 @@ footer {
     padding-bottom: var(--bottom-bar);
   }
 
-  .site-header-desktop,
-  .site-nav-desktop,
+  header.site-header-desktop,
+  nav.site-nav-desktop,
   .footer-desktop {
-    display: none;
+    display: none !important;
   }
 
-  .mob-header,
+  header.mob-header,
   .footer-mobile {
-    display: block;
+    display: block !important;
   }
 
   .drawer-overlay {
@@ -3029,17 +3029,20 @@ footer {
     display: flex;
   }
 
-  .bottom-bar {
-    display: flex;
+  nav.bottom-bar {
+    display: flex !important;
   }
 
   .topbar {
+    max-width: 100%;
     overflow: hidden;
     padding: 8px 0;
   }
 
   .topbar-inner {
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin: 0;
     padding: 0 16px;
     justify-content: flex-start;
@@ -3353,11 +3356,14 @@ footer {
   }
 
   .trust-inner {
+    max-width: 100%;
+    min-width: 0;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin: 0 16px;
   }
 
   .trust-item {
+    min-width: 0;
     padding: 16px 14px;
     flex-direction: column;
     text-align: center;
