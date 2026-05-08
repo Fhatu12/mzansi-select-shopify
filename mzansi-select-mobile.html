@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mzansi Select – Home · Life · Everyday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  --black:#111111;--gold:#C8973A;--gold-light:#E8B85A;
+  --cream:#FAF8F4;--white:#FFFFFF;--border:#E5E0D8;
+  --text-muted:#888880;--text-body:#333330;--green-dark:#1A2818;
+  --bottom-bar:60px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:14px;-webkit-text-size-adjust:100%;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-body);line-height:1.5;overflow-x:hidden;padding-bottom:var(--bottom-bar);}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+button{cursor:pointer;font-family:inherit;}
+
+/* ── TOP ANNOUNCEMENT TICKER ── */
+.topbar{background:var(--black);color:#ccc;font-size:11px;padding:8px 0;overflow:hidden;white-space:nowrap;}
+.topbar-track{display:flex;gap:48px;animation:ticker 22s linear infinite;}
+.topbar-track:hover{animation-play-state:paused;}
+.tb-item{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;}
+.tb-item svg{opacity:.7;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── MOBILE HEADER ── */
+.mob-header{
+  position:sticky;top:0;z-index:300;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 10px rgba(0,0,0,.07);
+}
+.mob-header-top{
+  display:flex;align-items:center;
+  padding:12px 16px;gap:12px;
+}
+.mob-menu-btn{
+  background:none;border:none;padding:6px;
+  display:flex;flex-direction:column;gap:5px;
+  flex-shrink:0;
+}
+.mob-menu-btn span{display:block;width:20px;height:2px;background:var(--black);border-radius:2px;transition:transform .3s,opacity .3s;}
+.mob-menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.mob-menu-btn.open span:nth-child(2){opacity:0;}
+.mob-menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mob-logo{flex:1;text-align:center;}
+.mob-logo-top{font-size:20px;font-weight:700;color:var(--black);letter-spacing:-.025em;display:inline-flex;align-items:baseline;gap:5px;}
+.mob-logo-top em{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold);}
+.mob-logo-sub{font-size:7.5px;letter-spacing:.22em;color:var(--text-muted);text-transform:uppercase;margin-top:1px;}
+
+.mob-header-icons{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.mob-icon-btn{background:none;border:none;padding:6px;position:relative;color:var(--text-body);}
+.mob-icon-btn:active{color:var(--gold);}
+.cart-badge-mob{position:absolute;top:2px;right:2px;background:var(--gold);color:white;font-size:8px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid white;}
+
+/* Search bar below header */
+.mob-search-bar{
+  padding:0 16px 12px;
+}
+.mob-search-inner{
+  display:flex;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color .2s;
+}
+.mob-search-inner:focus-within{border-color:var(--gold);}
+.mob-search-input{flex:1;border:none;outline:none;padding:10px 14px;font-family:inherit;font-size:13px;background:transparent;color:var(--text-body);}
+.mob-search-input::placeholder{color:#bbb;}
+.mob-search-btn{background:var(--black);border:none;padding:0 16px;display:flex;align-items:center;justify-content:center;}
+.mob-search-btn svg{color:white;}
+
+/* ── SLIDE-OUT NAV DRAWER ── */
+.drawer-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:400;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.drawer-overlay.open{opacity:1;pointer-events:all;}
+
+.nav-drawer{
+  position:fixed;top:0;left:0;bottom:0;width:82vw;max-width:320px;
+  background:var(--white);z-index:401;
+  transform:translateX(-100%);transition:transform .32s cubic-bezier(.22,1,.36,1);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.nav-drawer.open{transform:translateX(0);}
+
+.drawer-header{
+  padding:20px 20px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.drawer-logo{font-size:18px;font-weight:700;color:var(--black);display:flex;align-items:baseline;gap:4px;}
+.drawer-logo em{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold);}
+.drawer-close{background:none;border:none;padding:6px;color:var(--text-muted);}
+
+.drawer-section-label{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:700;
+  padding:14px 20px 6px;
+}
+.drawer-link{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 20px;font-size:14px;color:var(--text-body);
+  border-left:3px solid transparent;transition:all .15s;
+}
+.drawer-link:active,.drawer-link.active{color:var(--gold);border-left-color:var(--gold);background:var(--cream);}
+.drawer-link-icon{font-size:18px;width:26px;text-align:center;}
+.drawer-link-arrow{margin-left:auto;color:var(--text-muted);}
+.drawer-divider{height:1px;background:var(--border);margin:8px 0;}
+
+.drawer-account{padding:16px 20px;background:var(--cream);margin:8px 12px;border-radius:8px;}
+.drawer-account p{font-size:12px;color:var(--text-muted);margin-bottom:10px;}
+.drawer-btn-row{display:flex;gap:8px;}
+.drawer-btn{flex:1;padding:9px;font-family:inherit;font-size:12.5px;font-weight:600;border-radius:4px;border:none;text-align:center;cursor:pointer;}
+.drawer-btn-outline{background:white;border:1.5px solid var(--border);color:var(--text-body);}
+.drawer-btn-filled{background:var(--green-dark);color:white;}
+
+/* ── HERO ── */
+.hero{background:var(--cream);overflow:hidden;}
+.hero-inner{padding:28px 16px 0;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  border:1px solid var(--gold);color:var(--gold);
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:14px;
+}
+.hero-h1{font-size:26px;font-weight:700;color:var(--black);line-height:1.15;letter-spacing:-.02em;margin-bottom:12px;}
+.hero-h1 .gold{color:var(--gold);}
+.hero-desc{font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:20px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.btn-dark{background:var(--green-dark);color:white;border:none;padding:12px 20px;font-family:inherit;font-size:13px;font-weight:600;border-radius:4px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;flex:1;justify-content:center;}
+.btn-ghost{background:transparent;color:var(--text-body);border:1.5px solid var(--border);padding:11px 16px;font-family:inherit;font-size:13px;border-radius:4px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;}
+
+/* Hero image strip — horizontal scroll of collage */
+.hero-imgs{
+  display:flex;gap:10px;padding:0 16px 24px;
+  overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.hero-imgs::-webkit-scrollbar{display:none;}
+.hero-img-item{
+  flex-shrink:0;width:130px;height:160px;
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+.hero-img-item img{width:100%;height:100%;object-fit:cover;}
+.hero-img-item.tall{height:200px;width:110px;}
+.hero-badge-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-dark);color:white;
+  padding:8px 14px;border-radius:6px;margin:0 16px 24px;
+  font-size:12px;font-weight:500;
+}
+.hero-badge-pill svg{flex-shrink:0;}
+
+/* ── CATEGORY STRIP ── */
+.cat-strip{background:white;border-bottom:1px solid var(--border);}
+.cat-strip-inner{
+  display:flex;overflow-x:auto;scrollbar-width:none;
+  padding:0 16px;-webkit-overflow-scrolling:touch;
+}
+.cat-strip-inner::-webkit-scrollbar{display:none;}
+.cat-item{
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;padding:16px 14px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  text-decoration:none;color:var(--text-body);min-width:90px;
+}
+.cat-item:last-child{border-right:none;}
+.cat-icon{width:48px;height:48px;border-radius:50%;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cat-icon img{width:100%;height:100%;object-fit:cover;}
+.cat-icon.svg-only{background:#f0ede7;}
+.cat-name{font-size:11px;font-weight:500;text-align:center;line-height:1.3;}
+.cat-sub{font-size:9.5px;color:var(--gold);}
+
+/* ── SECTION COMMON ── */
+.section{padding:28px 0;}
+.section-inner{padding:0 16px;}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--black);}
+.section-title .gold{color:var(--gold);}
+.section-link{font-size:12px;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:3px;}
+
+/* ── PRODUCT CARDS – 2 COL ── */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.product-card{background:white;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;}
+.prod-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cream);}
+.prod-img img{width:100%;height:100%;object-fit:cover;}
+.p-badge{position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.04em;z-index:1;}
+.p-badge.sale{background:var(--gold);color:white;}
+.p-badge.new{background:var(--green-dark);color:white;}
+.p-wish{position:absolute;top:8px;right:8px;background:white;border:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.15);cursor:pointer;}
+.prod-info{padding:10px 12px 12px;}
+.p-type{font-size:9.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
+.p-name{font-size:13px;font-weight:500;color:var(--black);margin-bottom:6px;line-height:1.3;}
+.p-stars{color:var(--gold);font-size:11px;display:flex;align-items:center;gap:4px;margin-bottom:6px;}
+.p-rev{font-size:10px;color:var(--text-muted);}
+.p-price{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.p-now{font-size:14px;font-weight:700;color:var(--black);}
+.p-was{font-size:11px;color:var(--text-muted);text-decoration:line-through;}
+.p-save{font-size:9.5px;background:#f0f9f1;color:#2a7a3a;padding:2px 5px;border-radius:3px;font-weight:600;}
+.add-btn{width:100%;background:var(--green-dark);color:white;border:none;padding:9px;font-family:inherit;font-size:12px;font-weight:500;border-radius:4px;transition:background .2s;}
+.add-btn:active{background:var(--gold);}
+
+/* ── PROMO BANNER ── */
+.promo-banner{border-radius:12px;overflow:hidden;background:var(--green-dark);margin:0 16px;}
+.promo-visual{height:180px;overflow:hidden;position:relative;}
+.promo-visual img{width:100%;height:100%;object-fit:cover;}
+.promo-visual-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,40,24,.85) 0%,transparent 60%);}
+.promo-text{padding:20px 20px 24px;}
+.promo-eyebrow{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.promo-h{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:white;line-height:1.2;margin-bottom:8px;}
+.promo-sub{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:16px;}
+.promo-cta{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:white;border:none;padding:11px 22px;font-family:inherit;font-size:13px;font-weight:600;border-radius:4px;cursor:pointer;}
+
+/* ── ARRIVALS – vertical stack ── */
+.arrivals-grid{display:flex;flex-direction:column;gap:12px;}
+.arr-card{border-radius:10px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:16/9;}
+.arr-card img{width:100%;height:100%;object-fit:cover;}
+.arr-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;}
+.arr-cat{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:3px;}
+.arr-name{font-size:16px;font-weight:600;color:white;margin-bottom:10px;font-family:'Playfair Display',serif;line-height:1.2;}
+.arr-link{display:inline-flex;align-items:center;gap:5px;background:white;color:var(--black);font-size:11.5px;font-weight:600;padding:7px 14px;border-radius:3px;}
+
+/* ── TRUST – 2×2 grid ── */
+.trust-bar{border-top:1px solid var(--border);background:white;padding:20px 0;}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:0 16px;}
+.trust-item{background:white;padding:16px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;}
+.trust-icon{width:40px;height:40px;background:var(--green-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.trust-title{font-size:12px;font-weight:600;color:var(--black);}
+.trust-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+
+/* ── FOOTER ── */
+footer{background:white;border-top:1px solid var(--border);padding:28px 0 0;}
+.footer-brand{padding:0 16px 20px;border-bottom:1px solid var(--border);}
+.f-logo-row{font-size:20px;font-weight:700;color:var(--black);display:flex;align-items:baseline;gap:5px;margin-bottom:3px;}
+.f-logo-row em{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold);}
+.f-logo-tag{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+.f-desc{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:16px;}
+.f-socials{display:flex;gap:8px;}
+.f-social{width:34px;height:34px;border:1.5px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);}
+
+/* Accordion footer links */
+.f-accordion{}
+.f-acc-item{border-bottom:1px solid var(--border);}
+.f-acc-trigger{
+  width:100%;background:none;border:none;
+  padding:15px 16px;display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;font-weight:600;color:var(--black);text-align:left;cursor:pointer;
+}
+.f-acc-icon{transition:transform .25s;color:var(--text-muted);}
+.f-acc-item.open .f-acc-icon{transform:rotate(180deg);}
+.f-acc-body{display:none;padding:0 16px 16px;background:var(--cream);}
+.f-acc-item.open .f-acc-body{display:block;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.f-links a{font-size:13px;color:var(--text-muted);}
+
+/* Newsletter */
+.footer-nl{padding:20px 16px;border-bottom:1px solid var(--border);}
+.f-col-title{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--black);margin-bottom:10px;}
+.nl-desc{font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.55;}
+.nl-row{display:flex;gap:8px;}
+.nl-input{flex:1;border:1.5px solid var(--border);border-radius:4px;padding:10px 12px;font-family:inherit;font-size:13px;outline:none;}
+.nl-input:focus{border-color:var(--gold);}
+.nl-btn{background:var(--black);color:white;border:none;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:500;border-radius:4px;cursor:pointer;white-space:nowrap;}
+
+/* Payment + copyright */
+.footer-bottom{padding:16px 16px 20px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;}
+.pay-methods{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;}
+.pay-pill{background:#f5f3ef;border:1px solid var(--border);border-radius:3px;padding:4px 8px;font-size:9.5px;font-weight:700;color:var(--text-body);}
+.f-copy{font-size:11px;color:var(--text-muted);}
+.f-sa{font-size:11px;color:var(--text-muted);}
+
+/* ── STICKY BOTTOM NAV BAR ── */
+.bottom-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:250;
+  background:white;border-top:1px solid var(--border);
+  display:flex;align-items:stretch;
+  height:var(--bottom-bar);
+  box-shadow:0 -4px 16px rgba(0,0,0,.08);
+}
+.bb-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;font-size:10px;color:var(--text-muted);border:none;background:none;cursor:pointer;
+  transition:color .2s;position:relative;padding:6px 0;
+}
+.bb-item.active{color:var(--gold);}
+.bb-item svg{transition:color .2s;}
+.bb-cart-badge{
+  position:absolute;top:8px;right:calc(50% - 18px);
+  background:var(--gold);color:white;font-size:8px;font-weight:700;
+  min-width:15px;height:15px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 3px;border:1.5px solid white;
+}
+.bb-center{
+  background:var(--green-dark);color:white;border-radius:50%;
+  width:46px;height:46px;margin-top:-10px;
+  box-shadow:0 4px 14px rgba(26,40,24,.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:9px;font-weight:600;gap:2px;
+  border:none;cursor:pointer;
+}
+.bb-center svg{color:white;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:calc(var(--bottom-bar) + 12px);left:16px;right:16px;
+  background:var(--green-dark);color:white;
+  padding:13px 16px;border-radius:8px;
+  font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+  transform:translateY(20px);opacity:0;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s;
+  z-index:500;pointer-events:none;
+}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ── UTILS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .5s ease both;}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT TICKER -->
+<div class="topbar">
+  <div class="topbar-track">
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fast Tracked Delivery – All 9 Provinces</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Secure Checkout</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg> Easy Returns – 7 Days</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Local Support 7 Days a Week</span>
+    <!-- duplicate for seamless loop -->
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fast Tracked Delivery – All 9 Provinces</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Secure Checkout</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg> Easy Returns – 7 Days</span>
+    <span class="tb-item"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Local Support 7 Days a Week</span>
+  </div>
+</div>
+
+<!-- MOBILE HEADER -->
+<header class="mob-header">
+  <div class="mob-header-top">
+    <button class="mob-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mob-logo">
+      <div class="mob-logo-top">Mzansi <em>Select</em></div>
+      <div class="mob-logo-sub">Home · Life · Everyday</div>
+    </div>
+    <div class="mob-header-icons">
+      <button class="mob-icon-btn" aria-label="Wishlist">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="mob-icon-btn" aria-label="Cart" style="position:relative;" onclick="openCart()">
+        <span class="cart-badge-mob" id="cartBadge">0</span>
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mob-search-bar">
+    <div class="mob-search-inner">
+      <input class="mob-search-input" type="search" placeholder="Search products or brands...">
+      <button class="mob-search-btn" aria-label="Search">
+        <svg width="16" height="16" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeMenu()"></div>
+
+<!-- SLIDE-OUT DRAWER -->
+<nav class="nav-drawer" id="navDrawer" aria-label="Main navigation">
+  <div class="drawer-header">
+    <div class="drawer-logo">Mzansi <em>Select</em></div>
+    <button class="drawer-close" onclick="closeMenu()" aria-label="Close menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="drawer-section-label">Shop</div>
+  <a class="drawer-link active" href="#">
+    <span class="drawer-link-icon">🏠</span> Home
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+  <a class="drawer-link" href="#">
+    <span class="drawer-link-icon">🛍️</span> Shop All
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+  <a class="drawer-link" href="#">
+    <span class="drawer-link-icon">✨</span> New In
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+  <a class="drawer-link" href="#">
+    <span class="drawer-link-icon">🏆</span> Best Sellers
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+  <a class="drawer-link" href="#">
+    <span class="drawer-link-icon">🔖</span> Deals
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+  <a class="drawer-link" href="#">
+    <span class="drawer-link-icon">🎁</span> Gift Cards
+    <svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+
+  <div class="drawer-divider"></div>
+  <div class="drawer-section-label">Departments</div>
+  <a class="drawer-link" href="#"><span class="drawer-link-icon">🛋️</span> Home &amp; Living<svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+  <a class="drawer-link" href="#"><span class="drawer-link-icon">🍳</span> Kitchen &amp; Storage<svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+  <a class="drawer-link" href="#"><span class="drawer-link-icon">💼</span> Office &amp; Desk<svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+  <a class="drawer-link" href="#"><span class="drawer-link-icon">🎧</span> Tech Accessories<svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+  <a class="drawer-link" href="#"><span class="drawer-link-icon">🌿</span> Garden &amp; Outdoor<svg class="drawer-link-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+
+  <div class="drawer-divider"></div>
+  <div class="drawer-account">
+    <p>Sign in to track orders, save items and get exclusive offers.</p>
+    <div class="drawer-btn-row">
+      <button class="drawer-btn drawer-btn-outline">Log In</button>
+      <button class="drawer-btn drawer-btn-filled">Register</button>
+    </div>
+  </div>
+  <div style="padding:12px 20px;">
+    <a class="drawer-link" href="#" style="padding:10px 0;"><span class="drawer-link-icon">🚚</span> Track My Order</a>
+    <a class="drawer-link" href="#" style="padding:10px 0;"><span class="drawer-link-icon">❓</span> Help &amp; FAQ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero fade-up">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      Shop with Confidence
+    </div>
+    <h1 class="hero-h1">Practical home &amp; everyday finds for <span class="gold">South African</span> shoppers</h1>
+    <p class="hero-desc">Clear browse paths, curated picks and straightforward pricing — delivered across South Africa.</p>
+    <div class="hero-btns">
+      <button class="btn-dark">
+        Browse all products
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn-ghost">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Shipping
+      </button>
+    </div>
+  </div>
+
+  <!-- Scrollable image collage -->
+  <div class="hero-imgs">
+    <div class="hero-img-item tall"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80&auto=format&fit=crop" alt="Headphones" loading="eager"></div>
+    <div class="hero-img-item"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&q=80&auto=format&fit=crop" alt="Storage" loading="eager"></div>
+    <div class="hero-img-item tall"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80&auto=format&fit=crop" alt="Watch" loading="eager"></div>
+    <div class="hero-img-item"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300&q=80&auto=format&fit=crop" alt="Bottle" loading="eager"></div>
+    <div class="hero-img-item tall"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=300&q=80&auto=format&fit=crop" alt="Lamp" loading="eager"></div>
+    <div class="hero-img-item"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=80&auto=format&fit=crop" alt="Plant" loading="eager"></div>
+  </div>
+
+  <div class="hero-badge-pill">
+    <svg width="16" height="16" fill="none" stroke="#C8973A" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    Carefully chosen. Fairly priced.
+  </div>
+</section>
+
+<!-- CATEGORY STRIP -->
+<div class="cat-strip">
+  <div class="cat-strip-inner">
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=100&q=80&auto=format&fit=crop" alt="Home"></div>
+      <div class="cat-name">Home &amp; Living</div><div class="cat-sub">Shop →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=100&q=80&auto=format&fit=crop" alt="Kitchen"></div>
+      <div class="cat-name">Kitchen &amp; Storage</div><div class="cat-sub">Shop →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=100&q=80&auto=format&fit=crop" alt="Office"></div>
+      <div class="cat-name">Office &amp; Desk</div><div class="cat-sub">Shop →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80&auto=format&fit=crop" alt="Tech"></div>
+      <div class="cat-name">Tech Accessories</div><div class="cat-sub">Shop →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon svg-only"><svg width="22" height="22" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div class="cat-name">Shipping</div><div class="cat-sub">Info →</div>
+    </a>
+    <a class="cat-item" href="#">
+      <div class="cat-icon svg-only"><svg width="22" height="22" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
+      <div class="cat-name">Returns</div><div class="cat-sub">Easy →</div>
+    </a>
+    <a class="cat-item" href="#" style="border-right:none;">
+      <div class="cat-icon svg-only"><svg width="22" height="22" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="cat-name">FAQ</div><div class="cat-sub">Help →</div>
+    </a>
+  </div>
+</div>
+
+<!-- BEST SELLERS -->
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">Best <span class="gold">Sellers</span></h2>
+      <a class="section-link" href="#">View all <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80&auto=format&fit=crop" alt="Headphones" loading="lazy">
+          <span class="p-badge sale">Sale</span>
+          <button class="p-wish" aria-label="Wishlist"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Tech</div>
+          <div class="p-name">Premium Over-Ear Headphones</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(128)</span></div>
+          <div class="p-price"><span class="p-now">R 899</span><span class="p-was">R 1 199</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=400&q=80&auto=format&fit=crop" alt="Storage" loading="lazy">
+          <span class="p-badge new">New</span>
+          <button class="p-wish" aria-label="Wishlist"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Kitchen</div>
+          <div class="p-name">Bamboo Lid Storage Container Set</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(64)</span></div>
+          <div class="p-price"><span class="p-now">R 349</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80&auto=format&fit=crop" alt="Watch" loading="lazy">
+          <button class="p-wish" aria-label="Wishlist"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Tech</div>
+          <div class="p-name">Smart Watch – Black Edition</div>
+          <div class="p-stars">★★★★★ <span class="p-rev">(211)</span></div>
+          <div class="p-price"><span class="p-now">R 1 249</span><span class="p-was">R 1 599</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80&auto=format&fit=crop" alt="Lamp" loading="lazy">
+          <span class="p-badge sale">Sale</span>
+          <button class="p-wish" aria-label="Wishlist"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+        <div class="prod-info">
+          <div class="p-type">Home</div>
+          <div class="p-name">Touch Lamp – Warm LED Dimmable</div>
+          <div class="p-stars">★★★★☆ <span class="p-rev">(89)</span></div>
+          <div class="p-price"><span class="p-now">R 229</span><span class="p-was">R 299</span></div>
+          <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<section class="section" style="padding-top:0;">
+  <div class="promo-banner">
+    <div class="promo-visual">
+      <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80&auto=format&fit=crop" alt="Sale" loading="lazy">
+      <div class="promo-visual-overlay"></div>
+    </div>
+    <div class="promo-text">
+      <div class="promo-eyebrow">Limited Time Offer</div>
+      <div class="promo-h">Up to 30% off Tech &amp; Home Bundles</div>
+      <div class="promo-sub">Curated deals hand-picked for South African homes.</div>
+      <button class="promo-cta">Shop the Sale <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">New <span class="gold">Arrivals</span></h2>
+      <a class="section-link" href="#">View all <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="arrivals-grid">
+      <div class="arr-card">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80&auto=format&fit=crop" alt="Living room" loading="lazy">
+        <div class="arr-overlay">
+          <div class="arr-cat">Home &amp; Living</div>
+          <div class="arr-name">Modern Living Room Collection</div>
+          <a class="arr-link" href="#">Explore <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <div class="arr-card">
+        <img src="https://images.unsplash.com/photo-1593642632633-c56c686f7a33?w=800&q=80&auto=format&fit=crop" alt="Tech" loading="lazy">
+        <div class="arr-overlay">
+          <div class="arr-cat">Tech Accessories</div>
+          <div class="arr-name">New Tech Essentials Drop</div>
+          <a class="arr-link" href="#">Explore <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KITCHEN GRID -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">Kitchen &amp; <span class="gold">Storage</span></h2>
+      <a class="section-link" href="#">View all <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80&auto=format&fit=crop" alt="French press" loading="lazy"><button class="p-wish"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div>
+        <div class="prod-info"><div class="p-type">Kitchen</div><div class="p-name">Stainless Steel French Press</div><div class="p-stars">★★★★★ <span class="p-rev">(57)</span></div><div class="p-price"><span class="p-now">R 299</span></div><button class="add-btn" onclick="addToCart(this)">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80&auto=format&fit=crop" alt="Flask" loading="lazy"><span class="p-badge new">New</span><button class="p-wish"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div>
+        <div class="prod-info"><div class="p-type">Kitchen</div><div class="p-name">Insulated Vacuum Flask 500ml</div><div class="p-stars">★★★★☆ <span class="p-rev">(93)</span></div><div class="p-price"><span class="p-now">R 189</span></div><button class="add-btn" onclick="addToCart(this)">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop" alt="Storage" loading="lazy"><button class="p-wish"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div>
+        <div class="prod-info"><div class="p-type">Storage</div><div class="p-name">Fabric Storage Cube Organiser</div><div class="p-stars">★★★★★ <span class="p-rev">(34)</span></div><div class="p-price"><span class="p-now">R 149</span><span class="p-was">R 199</span></div><button class="add-btn" onclick="addToCart(this)">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80&auto=format&fit=crop" alt="Plants" loading="lazy"><button class="p-wish"><svg width="13" height="13" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div>
+        <div class="prod-info"><div class="p-type">Home</div><div class="p-name">Indoor Plant Pot Set – Terracotta</div><div class="p-stars">★★★★☆ <span class="p-rev">(48)</span></div><div class="p-price"><span class="p-now">R 179</span></div><button class="add-btn" onclick="addToCart(this)">Add to Cart</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR 2×2 -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div><div class="trust-title">Fast Delivery</div><div class="trust-desc">All 9 provinces</div></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><div class="trust-title">Secure Pay</div><div class="trust-desc">Encrypted checkout</div></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
+      <div><div class="trust-title">Easy Returns</div><div class="trust-desc">7-day returns</div></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div><div class="trust-title">Local Support</div><div class="trust-desc">7 days a week</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="f-logo-row">Mzansi <em>Select</em></div>
+    <div class="f-logo-tag">Home · Life · Everyday</div>
+    <p class="f-desc">Your one-stop store for practical home, everyday essentials and more. Carefully chosen. Fairly priced. Delivered across South Africa.</p>
+    <div class="f-socials">
+      <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+      <div class="f-social"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"/></svg></div>
+      <div class="f-social"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div>
+    </div>
+  </div>
+
+  <!-- Accordion links -->
+  <div class="f-accordion">
+    <div class="f-acc-item">
+      <button class="f-acc-trigger" onclick="toggleAcc(this)">
+        Shop
+        <svg class="f-acc-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="f-acc-body">
+        <ul class="f-links"><li><a href="#">Shop All</a></li><li><a href="#">New In</a></li><li><a href="#">Best Sellers</a></li><li><a href="#">Deals</a></li><li><a href="#">Gift Cards</a></li></ul>
+      </div>
+    </div>
+    <div class="f-acc-item">
+      <button class="f-acc-trigger" onclick="toggleAcc(this)">
+        Help
+        <svg class="f-acc-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="f-acc-body">
+        <ul class="f-links"><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Track Order</a></li></ul>
+      </div>
+    </div>
+    <div class="f-acc-item">
+      <button class="f-acc-trigger" onclick="toggleAcc(this)">
+        Account
+        <svg class="f-acc-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="f-acc-body">
+        <ul class="f-links"><li><a href="#">My Account</a></li><li><a href="#">Orders</a></li><li><a href="#">Wishlist</a></li><li><a href="#">Saved Addresses</a></li><li><a href="#">Login / Register</a></li></ul>
+      </div>
+    </div>
+    <div class="f-acc-item">
+      <button class="f-acc-trigger" onclick="toggleAcc(this)">
+        Company
+        <svg class="f-acc-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="f-acc-body">
+        <ul class="f-links"><li><a href="#">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Careers</a></li><li><a href="#">Affiliates</a></li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="footer-nl">
+    <div class="f-col-title">Stay in the Loop</div>
+    <p class="nl-desc">Get exclusive offers, new arrivals and helpful updates.</p>
+    <div class="nl-row">
+      <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email">
+      <button class="nl-btn" onclick="subscribe()">Subscribe</button>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <div class="pay-methods">
+      <span class="pay-pill">VISA</span><span class="pay-pill">Mastercard</span><span class="pay-pill">Instant EFT</span><span class="pay-pill">Zapper</span><span class="pay-pill">Mobicred</span><span class="pay-pill">PayFlex</span>
+    </div>
+    <div class="f-copy">© 2025 Mzansi Select. All rights reserved.</div>
+    <div class="f-sa">Proudly South African 🇿🇦</div>
+  </div>
+</footer>
+
+<!-- STICKY BOTTOM BAR -->
+<div class="bottom-bar">
+  <button class="bb-item active" onclick="setActive(this)">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+  </button>
+  <button class="bb-item" onclick="setActive(this)">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Search
+  </button>
+  <button class="bb-center" onclick="addToCart(null)">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <span id="bbCartCount" style="font-size:9px;font-weight:700;">0</span>
+  </button>
+  <button class="bb-item" onclick="setActive(this)">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    Wishlist
+  </button>
+  <button class="bb-item" onclick="setActive(this)">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Account
+  </button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<script>
+  let cartCount = 0;
+
+  // Menu open/close
+  function openMenu() {
+    document.getElementById('navDrawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('menuBtn').classList.add('open');
+    document.getElementById('menuBtn').setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    document.getElementById('navDrawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('menuBtn').classList.remove('open');
+    document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navDrawer').classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Add to cart
+  function addToCart(btn) {
+    cartCount++;
+    document.getElementById('cartBadge').textContent = cartCount;
+    document.getElementById('bbCartCount').textContent = cartCount;
+    let name = 'Item';
+    if (btn && btn.closest && btn.closest('.product-card')) {
+      name = btn.closest('.product-card').querySelector('.p-name').textContent;
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#2a7a3a';
+      setTimeout(() => { btn.textContent = 'Add to Cart'; btn.style.background = ''; }, 1600);
+    }
+    const toastEl = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = name.slice(0,32) + (name.length>32?'…':'') + ' added to cart';
+    toastEl.classList.add('show');
+    setTimeout(() => toastEl.classList.remove('show'), 3000);
+  }
+  function openCart() { addToCart(null); }
+
+  // Subscribe
+  function subscribe() {
+    const e = document.getElementById('nlEmail');
+    const b = document.querySelector('.nl-btn');
+    if (e.value.includes('@')) {
+      b.textContent = '✓ Done!'; b.style.background='#2a7a3a'; e.value='';
+      setTimeout(()=>{ b.textContent='Subscribe'; b.style.background=''; }, 3000);
+    } else { e.style.borderColor='#e05050'; setTimeout(()=>e.style.borderColor='',1500); }
+  }
+
+  // Footer accordion
+  function toggleAcc(btn) {
+    const item = btn.closest('.f-acc-item');
+    item.classList.toggle('open');
+  }
+
+  // Bottom bar active
+  function setActive(btn) {
+    document.querySelectorAll('.bb-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
