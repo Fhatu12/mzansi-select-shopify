@@ -13,11 +13,12 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: **Slice 14E** / **Slice 14G** (**P1** follow-ups) or **supplier-proof** backlog — **Slice 14C** wishlist honesty **committed** **`fix(theme): make wishlist controls honest`** — storefront recovery slice **closed** at QA/docs layer by **Slice 14 post-fix** regression **PASS WITH NOTES** (see dedicated section)
-- Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof backlog may resume only after** the **`docs: record storefront recovery qa closure`** commit (then per Product Owner sequencing, not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
+- Active slice: **Slice 15A** — **private preview share + tester feedback plan** (**feedback-only**, **10–20** trusted testers; **no sales / no checkout testing**) — accepted by Product Owner (see Slice 15A section)
+- Next implementation slice: **Slice 14E** / **Slice 14G** (**P1** follow-ups) or **supplier-proof** backlog — **Slice 14C** wishlist honesty **committed** **`fix(theme): make wishlist controls honest`** — storefront recovery slice **closed** at QA/docs layer by **Slice 14 post-fix** regression **PASS WITH NOTES** (see dedicated section)
+- Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof remains separate from Slice 15A feedback** and may resume per Product Owner sequencing (not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
 - Active owner: Product Owner
 - Next owner: Product Owner — **resume supplier proof** after **`docs: record storefront recovery qa closure`** lands, when ready; **Senior Full-Stack Software Architect** for **Slice 14E** / **14G** if PO prioritises storefront **P1**
-- Last accepted slice: **Slice 14 post-fix unlocked storefront regression audit** **PASS WITH NOTES** (evidence **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**); prior **`Slice 14A.1`** unlocked storefront interaction audit **PASS WITH NOTES** (headed Playwright after manual storefront unlock; evidence **`artifacts/qa/slice-14a1-unlocked-storefront-interaction-audit/20260503T170500Z/`**); prior supplier-proof acceptance: **`Slice 13O`** **`Gadgetgyz` `Cable Tidies Set`** proof **accepted**, **committed**, **closed** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`); **Slice 13N.1** tracker sync (`f10eedcaa2dd6e6b20967960bb5bebed5002e38a`); **Slice 13N** (`421a5514cf33430e633763741c7a0e4bf054a969`); Slice 13M (`45eb8e23b568e8fc7f6bdd2413818caa29288e5e`); Slice 13L.1 (`a33895a3bb242455c95da74a6c6f2c72bee946d6`); Slice 13L (`a87e8c6124d9708967dfbf2c6a208b601fe6f608`); Slice 13K.1 (`0054d66acfe926be21127ae02ba7453989c11131`); Slice 13K (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); Slice 13J (**PASS WITH NOTES**)
+- Last accepted slice: **Slice 15A** private preview share + tester feedback plan (**feedback-only**, **10–20** trusted testers; **Google Forms** primary, **WhatsApp** fallback; **no sales / no checkout**) — accepted by Product Owner; prior **Slice 14 post-fix** unlocked storefront regression audit **PASS WITH NOTES** (evidence **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**); prior **`Slice 14A.1`** unlocked storefront interaction audit **PASS WITH NOTES** (headed Playwright after manual storefront unlock; evidence **`artifacts/qa/slice-14a1-unlocked-storefront-interaction-audit/20260503T170500Z/`**); prior supplier-proof acceptance: **`Slice 13O`** **`Gadgetgyz` `Cable Tidies Set`** proof **accepted**, **committed**, **closed** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`); **Slice 13N.1** tracker sync (`f10eedcaa2dd6e6b20967960bb5bebed5002e38a`); **Slice 13N** (`421a5514cf33430e633763741c7a0e4bf054a969`); Slice 13M (`45eb8e23b568e8fc7f6bdd2413818caa29288e5e`); Slice 13L.1 (`a33895a3bb242455c95da74a6c6f2c72bee946d6`); Slice 13L (`a87e8c6124d9708967dfbf2c6a208b601fe6f608`); Slice 13K.1 (`0054d66acfe926be21127ae02ba7453989c11131`); Slice 13K (`cb61ee28fbb3e575669236310d4e5b131fc697bf`); Slice 13J (**PASS WITH NOTES**)
 - Last committed slice: **Slice 14C** **`fix(theme): make wishlist controls honest`** — **`snippets/static-product-card.liquid`**, **`snippets/live-product-card.liquid`**, **`sections/site-header.liquid`**, **`sections/site-footer.liquid`**, **`sections/main-product-foundation.liquid`**, **`assets/theme.css`**, **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`**, **`docs/project-control.md`** — prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`)
 - Last theme/code implementation slice: **Slice 14C** wishlist honesty / deferred heart controls (**this pass**); prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`); **Slice 14B** (`1bef8f0c5658426860e35f49ef94ec86c3633110`); **Slice 13J** (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J (`263e60f1588b03f4120121007411c701d342d9e4`) baseline
 - Current blockers:
@@ -69,7 +70,42 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current active pass
 
-**Docs-only (this commit):** record **Slice 14 post-fix** unlocked storefront regression QA closure (**PASS WITH NOTES**) — **`docs/project-control.md`**, **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`** — last **theme/code** implementation pass remains **Slice 14C** **`fix(theme): make wishlist controls honest`**
+**Docs-only (this commit):** record **Slice 15A** private preview share + tester feedback plan (**feedback-only**, **10–20** trusted testers; **Google Forms** primary / **WhatsApp** fallback; **no sales / no checkout**) — **`docs/project-control.md`** only — **LLD unchanged** (no technical/theme/platform behaviour change)
+
+## Slice 15A private preview share and tester feedback plan (accepted)
+
+- **Decision:** accepted by Product Owner as a controlled **feedback-only** private preview with **10–20** trusted testers.
+- **Purpose:** collect human feedback on **trust**, **navigation**, **mobile usability**, **product interest**, **clarity**, **broken links/buttons**, and **unfinished/confusing areas** before any public launch decision.
+- **Approved tester group:** friends; family; trusted colleagues; **2–3** people using low/mid-tier mobile phones; **1–2** people unfamiliar with the project.
+- **Collection method:** **Google Forms** primary; **WhatsApp** fallback.
+- **Feedback tracker columns:** `ID | Tester type | Device | Page/area | Feedback | Screenshot? | Severity | Category | Decision | Owner | Status`
+- **Tester message (template):**
+  - Hi, I’m testing a private preview of Mzansi Select and would appreciate your feedback.
+  - This is not a live/public store yet. Please browse only.
+  - Do not: try to make a real purchase; enter payment details; treat prices, delivery, or product availability as final.
+  - Please check: whether the site loads properly; whether navigation makes sense; whether links, buttons, product cards, and hearts/favourites behave clearly; whether the site feels trustworthy; whether anything looks unfinished or confusing; whether the mobile experience works well.
+  - Preview link: `[PASTE PRIVATE PREVIEW LINK]`
+  - After browsing, please answer the feedback questions I send you. Screenshots of problems are very helpful.
+- **Approved feedback questions (Google Form):**
+  1. What device did you use?
+  2. Were you on mobile data, Wi-Fi, or both?
+  3. Which page did you start on?
+  4. Did the site load properly?
+  5. Did navigation make sense?
+  6. Did any link or button fail?
+  7. Did the product cards open correctly?
+  8. Did the hearts/favourites behave as expected?
+  9. Did the store feel trustworthy?
+  10. Which product would you most likely buy after launch?
+  11. What made you hesitate?
+  12. What felt unfinished?
+  13. Was anything confusing about prices, delivery, or purchase availability?
+  14. Would you share this store with someone after launch?
+  15. Any screenshots of issues?
+- **No-sales / no-checkout constraints:** testers must **browse only**; **no purchase attempts**; **no payment details**; prices/delivery/availability treated as **non-final**.
+- **Feedback triage plan:** log each submission into the tracker; set **Severity** (blocker/high/medium/low/info) and **Category** (trust, nav, mobile, links, product cards, wishlist/hearts, copy clarity, unfinished); assign **Owner**; mark **Decision** (fix now / backlog / won’t fix / needs PO decision); keep **Status** (new / triaged / in progress / done / deferred).
+- **Supplier-proof remains separate:** feedback-only preview does **not** change supplier-proof gates, `Supplier verified` posture, or any import/pricing/delivery approvals.
+- **Next expected follow-up:** **Slice 15B** — private preview feedback triage and launch-readiness backlog.
 
 ## Slice 14A.1 unlocked storefront interaction audit (QA)
 
