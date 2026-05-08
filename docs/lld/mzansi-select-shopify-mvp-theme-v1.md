@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **15C** now restores approved north-star fidelity while fixing mobile overflow: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation now follows **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, and preview-only PDP safety stays unchanged in intent; overflow remediation is limited to true width offenders rather than design stripping.  
-**Version:** 2.5  
+**Status:** Slice **15F** now preserves the approved north-stars while closing the remaining mobile/tablet overflow leaks: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping.  
+**Version:** 2.6  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html` + `D:\dev\mzansi-select-shopify\mzansi-select-mobile.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -95,7 +95,7 @@ Out of boundary for this document pass:
 - Primary CTA language must retain the practical, low-friction tone already present in the source.
 - Visual hierarchy must preserve the sequence: trust/value messaging first, browse/navigation second, hero third, curated commerce sections after.
 
-## Slice 15C responsive fidelity rules
+## Slice 15C / 15F responsive fidelity rules
 
 - Desktop fidelity remains anchored to **`mzansi-select-theme.html`**. Mobile fidelity remains anchored to **`mzansi-select-mobile.html`**.
 - Mobile overflow remediation must not use broad design flattening as the primary fix. Desktop header/nav/footer shells must not simply wrap into mobile as a substitute for the approved mobile composition.
@@ -103,6 +103,9 @@ Out of boundary for this document pass:
 - Product-card imagery must keep its approved image-first composition. Avoid broad global image-height overrides that flatten cards or break media aspect handling.
 - Intentional mobile horizontal scrolling is limited to bounded rails only: announcement/ticker content, hero collage/media rail, and category strip. Page-level horizontal overflow elsewhere is a defect.
 - Promo, arrivals, trust, and footer sections may reflow responsively, but their typography, spacing, borders, badges, shadows, and information hierarchy must stay visually faithful to the approved north-stars.
+- Shared promo/product/cart grids that contain intrinsic-width media must use shrink-safe tracks such as **`minmax(0, 1fr)`** rather than relying on default grid minimums.
+- Shrinkable promo/card/cart children must explicitly allow compression with **`min-width: 0`** where intrinsic media or long inline content would otherwise hold tracks open.
+- Live product-card media anchors inside **`.prod-img`** must be block-level, full-size wrappers so linked images inherit the approved card container width instead of their intrinsic **`width`** attributes.
 
 ## Component / section inventory extracted from the HTML
 
