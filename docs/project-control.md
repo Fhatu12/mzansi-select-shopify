@@ -2057,3 +2057,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 ---
 
 **Footer Standard For This Pass:** Slice 13I controlled Shopify Admin preview-only product staging recorded locally. Five products created with approved tags, placeholder pricing, and Online Store publication for preview only; no theme code change in this pass; broader automation still gated by Product Owner; `artifacts/` remains untracked and uncommitted pending Product Owner review before any docs commit.
+
+## Slice 15M preview push
+
+- Slice 15M final strict-safe clean theme-surface selected-file push completed.
+- Temp surface included selected files plus recursive validation dependencies only.
+- Only `assets/theme.css` and `layout/theme.liquid` were selected for push.
+- Target was preview theme `151207542967 / Mzansi Select MVP Preview / unpublished`.
+- Live theme `148914077879 / Horizon` remained live and untouched.
+- No publish/live overwrite/Admin/product/collection/checkout/commercial changes occurred.
+- Evidence folder: `artifacts/devops/slice-15m-final-strict-clean-theme-surface-push-20260508-230417/`.
+- Next recommended owner: QA / Test Engineer for Slice 15N.
