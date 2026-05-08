@@ -1,4 +1,4 @@
-<header>
+<header class="site-header-desktop">
   <div class="header-inner">
     <a class="logo" href="{{ routes.root_url }}">
       <div class="logo-top">Mzansi <em>Select</em></div>
@@ -53,6 +53,57 @@
       </a>
     </div>
   </div>
+</header>
+
+<header class="mob-header">
+  <div class="mob-header-top">
+    <button class="mob-menu-btn" type="button" id="mobileMenuToggle" aria-controls="navDrawer" aria-expanded="false" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a class="mob-logo" href="{{ routes.root_url }}">
+      <div class="mob-logo-top">Mzansi <em>Select</em></div>
+      <div class="mob-logo-sub">{{ settings.brand_tagline }}</div>
+    </a>
+
+    <div class="mob-header-icons">
+      <span class="mob-icon-btn mob-icon-btn--deferred" aria-disabled="true" aria-label="Wishlist coming soon. Not available yet.">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </span>
+      <a class="mob-icon-btn" href="{{ routes.cart_url }}" aria-label="Cart">
+        <span class="cart-badge-mob">{{ cart.item_count }}</span>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <form class="mob-search-bar" action="{{ routes.search_url }}" method="get" role="search">
+    <div class="mob-search-inner">
+      <input
+        class="mob-search-input"
+        id="mobileSearchInput"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="{{ settings.search_placeholder | escape }}"
+      >
+      <input type="hidden" name="type" value="product">
+      <button class="mob-search-btn" type="submit" aria-label="Search">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+  </form>
 </header>
 
 {% schema %}

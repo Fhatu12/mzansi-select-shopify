@@ -35,5 +35,57 @@
     {% section 'trust-bar' %}
     {% section 'site-footer' %}
     {% render 'toast-feedback' %}
+    <script>
+      (() => {
+        const body = document.body;
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const drawer = document.getElementById('navDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const drawerClose = document.getElementById('drawerClose');
+        const searchInput = document.getElementById('mobileSearchInput');
+
+        const setDrawerOpen = (open) => {
+          if (!drawer || !overlay || !menuToggle) return;
+          body.classList.toggle('mobile-nav-open', open);
+          drawer.classList.toggle('open', open);
+          overlay.classList.toggle('open', open);
+          drawer.setAttribute('aria-hidden', String(!open));
+          menuToggle.classList.toggle('open', open);
+          menuToggle.setAttribute('aria-expanded', String(open));
+        };
+
+        const toggleDrawer = () => setDrawerOpen(!drawer?.classList.contains('open'));
+
+        menuToggle?.addEventListener('click', toggleDrawer);
+        overlay?.addEventListener('click', () => setDrawerOpen(false));
+        drawerClose?.addEventListener('click', () => setDrawerOpen(false));
+        drawer?.querySelectorAll('.mob-drawer-link').forEach((link) => {
+          link.addEventListener('click', () => setDrawerOpen(false));
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') setDrawerOpen(false);
+        });
+
+        document.querySelectorAll('[data-mobile-search-trigger]').forEach((trigger) => {
+          trigger.addEventListener('click', () => {
+            if (!searchInput) return;
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            searchInput.focus();
+          });
+        });
+
+        const mobileMedia = window.matchMedia('(max-width: 900px)');
+        const syncDrawerState = () => {
+          if (!mobileMedia.matches) setDrawerOpen(false);
+        };
+
+        if (mobileMedia.addEventListener) {
+          mobileMedia.addEventListener('change', syncDrawerState);
+        } else if (mobileMedia.addListener) {
+          mobileMedia.addListener(syncDrawerState);
+        }
+      })();
+    </script>
   </body>
 </html>
