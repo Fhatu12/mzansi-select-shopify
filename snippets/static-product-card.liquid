@@ -19,6 +19,14 @@
     <div class="p-name">{{ product_name }}</div>
     <div class="p-stars">{{ stars }} <span class="p-rev">{{ reviews }}</span></div>
     {% render 'price-stack', price_now: price_now, price_was: price_was, price_save: price_save %}
-    <button class="add-btn" type="button">Add to Cart</button>
+    <button
+      class="add-btn"
+      type="button"
+      disabled
+      aria-disabled="true"
+      aria-label="Preview only. Add to Cart is not available for this item yet."
+    >
+      Preview only
+    </button>
   </div>
 </div>
