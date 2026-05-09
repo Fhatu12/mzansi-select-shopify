@@ -17,6 +17,23 @@
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const mobileShellMedia = window.matchMedia('(max-width: 900px)');
+        const applyShellMode = (matches) => {
+          root.dataset.shellMode = matches ? 'mobile' : 'desktop';
+        };
+
+        applyShellMode(mobileShellMedia.matches);
+
+        if (mobileShellMedia.addEventListener) {
+          mobileShellMedia.addEventListener('change', (event) => applyShellMode(event.matches));
+        } else if (mobileShellMedia.addListener) {
+          mobileShellMedia.addListener((event) => applyShellMode(event.matches));
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -24,19 +41,32 @@
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     <style>
       @media (max-width: 900px) {
-        header.site-header-desktop,
-        nav.site-nav-desktop,
-        .footer-desktop {
+        html[data-shell-mode="mobile"] [data-shell="desktop-header"],
+        html[data-shell-mode="mobile"] [data-shell="desktop-nav"],
+        html[data-shell-mode="mobile"] [data-shell="desktop-footer"] {
           display: none !important;
         }
 
-        header.mob-header,
-        .footer-mobile {
+        html[data-shell-mode="mobile"] [data-shell="mobile-header"],
+        html[data-shell-mode="mobile"] [data-shell="mobile-footer"] {
           display: block !important;
         }
 
-        nav.bottom-bar {
+        html[data-shell-mode="mobile"] [data-shell="mobile-nav"],
+        html[data-shell-mode="mobile"] [data-shell="mobile-drawer"] {
           display: flex !important;
+        }
+
+        html[data-shell-mode="mobile"] [data-shell="mobile-overlay"] {
+          display: block !important;
+        }
+
+        html[data-shell-mode="desktop"] [data-shell="mobile-header"],
+        html[data-shell-mode="desktop"] [data-shell="mobile-nav"],
+        html[data-shell-mode="desktop"] [data-shell="mobile-drawer"],
+        html[data-shell-mode="desktop"] [data-shell="mobile-overlay"],
+        html[data-shell-mode="desktop"] [data-shell="mobile-footer"] {
+          display: none !important;
         }
 
         .topbar {

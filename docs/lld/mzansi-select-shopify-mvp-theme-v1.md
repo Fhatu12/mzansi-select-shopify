@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **15M** keeps the approved north-stars intact while hardening the mobile shell-swap / containment contract around the announcement topbar, header/nav swap, trust bar, and footer: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping.  
-**Version:** 2.8  
+**Status:** Slice **15O** keeps the approved north-stars intact while hardening the mobile shell-swap / containment contract around the announcement topbar, header/nav swap, trust bar, and footer: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping. The mobile shell swap is now protected by stable **`data-shell`** hooks plus an early runtime **`data-shell-mode`** guard in **`layout/theme.liquid`**, so the approved mobile chrome stays active even if preview serves the wrong shell-only cascade winner.  
+**Version:** 2.9  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html` + `D:\dev\mzansi-select-shopify\mzansi-select-mobile.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -109,6 +109,7 @@ Out of boundary for this document pass:
 - The mobile breakpoint must explicitly swap desktop shells out of the render flow: **`header.site-header-desktop`**, **`nav.site-nav-desktop`**, and **`.footer-desktop`** must be hidden at **`<= 900px`**, while **`header.mob-header`** and **`nav.bottom-bar`** remain the active approved mobile chrome.
 - Mobile topbar and trust-bar wrappers must stay shrink-safe with explicit **`width/max-width/min-width`** containment so long inline trust copy can scroll only inside the approved bounded topbar rail and never hold open page-level width.
 - Because preview deployments may temporarily serve an older stylesheet, the critical mobile shell-swap / containment subset may also be duplicated inline in **`layout/theme.liquid`** after the main stylesheet so the approved mobile chrome remains dominant even under stale asset ordering.
+- Slice **15O** strengthens that contract further by assigning explicit **`data-shell`** roles to desktop/mobile header, nav, overlay/drawer, and footer chrome, then toggling an early **`html[data-shell-mode]`** state from **`matchMedia('(max-width: 900px)')`** so shell visibility no longer depends on the stylesheet-only desktop selectors winning the cascade in preview.
 
 ## Component / section inventory extracted from the HTML
 
