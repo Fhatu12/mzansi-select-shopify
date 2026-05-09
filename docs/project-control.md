@@ -13,12 +13,12 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: **Slice 15M** — mobile topbar / nav width root-cause remediation after clean authenticated QA fail
+- Active slice: **Slice 15O** — persistent topbar / nav **861px** overflow remediation after clean authenticated QA fail
 - Next implementation slice: **Slice 14E** / **Slice 14G** (**P1** follow-ups) or **supplier-proof** backlog — **Slice 14C** wishlist honesty **committed** **`fix(theme): make wishlist controls honest`** — storefront recovery slice **closed** at QA/docs layer by **Slice 14 post-fix** regression **PASS WITH NOTES** (see dedicated section)
 - Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof remains separate from Slice 15A feedback** and may resume per Product Owner sequencing (not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
 - Active owner: Product Owner
-- Next owner: **Product Owner** for post-remediation preview-only push approval decision if local validation passes; otherwise engineering continues remediation
-- Last accepted slice: **Slice 15L** clean mobile readiness rerun (**FAIL**). Slice 15A sharing remains **blocked** pending a later clean authenticated overflow pass.
+- Next owner: **Engineering** for **Slice 15O** root-cause remediation; then **Product Owner** for bounded preview-only push approval if local validation passes
+- Last accepted slice: **Slice 15N** clean authenticated mobile readiness rerun (**FAIL**). Slice 15A sharing remains **blocked** pending a later clean authenticated overflow pass.
 - Last committed slice: **Slice 14C** **`fix(theme): make wishlist controls honest`** — **`snippets/static-product-card.liquid`**, **`snippets/live-product-card.liquid`**, **`sections/site-header.liquid`**, **`sections/site-footer.liquid`**, **`sections/main-product-foundation.liquid`**, **`assets/theme.css`**, **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`**, **`docs/project-control.md`** — prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`)
 - Last theme/code implementation slice: **Slice 14C** wishlist honesty / deferred heart controls (**this pass**); prior **Slice 14D** (`ccf4db4115b7c3b7c496fcf9be8a04e2f79869e3`); **Slice 14B** (`1bef8f0c5658426860e35f49ef94ec86c3633110`); **Slice 13J** (`cef5713412ef218bee4af56ae9767c78d6304859`); Slice 12J (`263e60f1588b03f4120121007411c701d342d9e4`) baseline
 - Current blockers:
@@ -65,12 +65,12 @@ Mzansi Select Shopify MVP Theme Conversion
 - Last tracker update: 2026-05-04 **docs-only** — **Slice 14 post-fix** unlocked storefront regression QA **PASS WITH NOTES** recorded (**evidence** **`artifacts/qa/slice-14-postfix-unlocked-storefront-regression-audit/20260503-220755`**) — **`supplier-proof` may resume only after this docs closure commit** — prior **2026-05-03** **Slice 14C** theme commit remains last **theme/code** change
 - Tracker status: **Slice 14 post-fix regression** **PASS WITH NOTES** **accepted** — **Slice 14B / 14D / 14C** theme **commits** **QA-validated** on preview — **`supplier proof`:** **may resume only after** **`docs: record storefront recovery qa closure`** — **`Slice 13N`** (**`421551…`**): **`ZA`** public refs **inconclusive** (unchanged); **`Ecomstock` Sink Strainer** (**`P5260S`**) backup retained; **`Slice 13O`**: **`Cable Tidies`** SKU **`PCB-CT-25150`** docs **committed** (**`3bf260b…`**) — **product-proof gates open**
 - Catalogue plan status: **Slice 13O** (**`3bf260b…`**) + **`docs/catalogue`** companions **committed** — **canonical narrative** **`project-control`** + **`mzansi-select-25-product-readiness-v1`** + **`local-supplier-sourcing-matrix-v1`**
-- Documentation sync status: **current for `project-control`** after **Slice 15M** root-cause remediation sync (**this pass**)
-- LLD status: updated in **Slice 15M** because the mobile shell-swap / topbar-trust containment backstop now also lives in **`layout/theme.liquid`** as critical inline CSS
+- Documentation sync status: **current for `project-control`** after **Slice 15N** QA fail sync (**this pass**)
+- LLD status: **unchanged in Slice 15N** because the pass was **QA-only**; prior responsive/layout update remains **Slice 15M**
 
 ## Current active pass
 
-**Implementation + deployment hardening (this pass):** **Slice 15M** mobile topbar / nav width root-cause remediation — close the clean authenticated **Slice 15L** fail state, inspect the persistent **861px** overflow signature across all **20** required routes, and harden the critical mobile shell-swap / containment rules so desktop topbar/nav/footer chrome cannot reopen page width when preview serves a stale stylesheet.
+**Implementation + deployment hardening (this pass):** **Slice 15O** persistent topbar / nav **861px** overflow remediation — close the clean authenticated **Slice 15N** fail state, capture the exact active selector/rule keeping page width open, and correct the real **`div.tb-item`** / **`nav .nav-right`** layout source without redesigning the approved north-star presentation.
 
 ## Slice 15H preview deployment parity verification (DevOps)
 
@@ -2068,3 +2068,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - No publish/live overwrite/Admin/product/collection/checkout/commercial changes occurred.
 - Evidence folder: `artifacts/devops/slice-15m-final-strict-clean-theme-surface-push-20260508-230417/`.
 - Next recommended owner: QA / Test Engineer for Slice 15N.
+
+## Slice 15N clean authenticated mobile readiness rerun (QA) — accepted FAIL
+
+- **Decision:** accepted by the Product Owner as **FAIL**.
+- **Evidence folder:** **`artifacts/qa/slice-15n-clean-mobile-readiness-rerun/20260508-230846/`**.
+- **Authentication gate:** no route was measured on **`/password`**.
+- **Coverage:** all **20** required routes were tested, including **`/search?q=strainer&type=product`**, across the required mobile/tablet viewports; the optional desktop baseline also ran.
+- **Blocking result:** page-level horizontal overflow persisted on **all 20 routes** at **`360x800`**, **`390x844`**, **`414x896`**, and **`768x1024`**.
+- **Persistent overflow signature:** **`max_scroll_w=861`** with top offenders **`div.tb-item`** and **`nav .nav-right`**; the earlier **Slice 15G** **`908px`** / **`section#deals`** signature is no longer the active blocker.
+- **Regression checks preserved in QA evidence:** **Slice 14B** department routing **PASS**, **Slice 14C** wishlist honesty **PASS**, **Slice 14D** homepage card-to-PDP **PASS**, PDP preview-only safety **PASS**, **`/search`** **HTTP 200** and measured, **`/search?q=strainer&type=product`** **HTTP 200** and measured.
+- **Blocked path:** **Slice 15A** private preview sharing remains blocked until a later clean authenticated rerun passes.
