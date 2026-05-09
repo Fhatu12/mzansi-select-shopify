@@ -1119,6 +1119,11 @@ nav {
   gap: 9px;
 }
 
+.section-link--deferred {
+  color: var(--text-muted);
+  cursor: default;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

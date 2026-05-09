@@ -6,12 +6,23 @@
     {% endif %}
   </h2>
   {% if link_label != blank %}
-    <a class="section-link" href="{{ link_url | default: '#' }}">
-      {{ link_label }}
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </a>
+    {% if link_url != blank %}
+      <a class="section-link" href="{{ link_url }}">
+        {{ link_label }}
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    {% else %}
+      <span class="section-link section-link--deferred" aria-disabled="true">
+        {{ link_label }}
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+        <span class="visually-hidden">Browse link pending destination approval.</span>
+      </span>
+    {% endif %}
   {% endif %}
 </div>
