@@ -1,14 +1,14 @@
 <nav class="site-nav-desktop" data-shell="desktop-nav">
   <div class="nav-inner">
     <div class="dept-wrap">
-      <button class="dept-btn" type="button" aria-expanded="false">
+      <button class="dept-btn" type="button" aria-expanded="false" aria-controls="desktopDepartmentMenu" aria-haspopup="true">
         <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
         Shop by Department
         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
-      <div class="dept-menu">
+      <div class="dept-menu" id="desktopDepartmentMenu">
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'home-living' %}"><span class="dept-item-icon">🛋️</span> Home &amp; Living</a>
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}"><span class="dept-item-icon">🍳</span> Kitchen &amp; Storage</a>
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
@@ -115,22 +115,26 @@
   <div class="drawer-divider"></div>
 
   <div class="drawer-section-label">Help</div>
-  <a class="drawer-link mob-drawer-link" href="/pages/about#shipping">
+  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">🚚</span>
     Shipping
-  </a>
-  <a class="drawer-link mob-drawer-link" href="/pages/about#returns">
+    <span class="visually-hidden">Support shipping information is pending launch approval.</span>
+  </span>
+  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">↺</span>
     Returns
-  </a>
-  <a class="drawer-link mob-drawer-link" href="/pages/about#faq">
+    <span class="visually-hidden">Returns guidance is pending launch approval.</span>
+  </span>
+  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">?</span>
     FAQ
-  </a>
-  <a class="drawer-link mob-drawer-link" href="/pages/contact#contact">
+    <span class="visually-hidden">FAQ content is pending launch approval.</span>
+  </span>
+  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">✆</span>
     Contact Us
-  </a>
+    <span class="visually-hidden">Contact support routing is pending launch approval.</span>
+  </span>
 
   <div class="drawer-account">
     <p>Account tools stay grounded in the approved MVP scope.</p>
@@ -156,7 +160,7 @@
     </svg>
     Search
   </button>
-  <a class="bb-center" href="{{ routes.cart_url }}" aria-label="Cart">
+  <a class="bb-center" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
       <line x1="3" y1="6" x2="21" y2="6"></line>

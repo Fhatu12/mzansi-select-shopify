@@ -17,7 +17,7 @@
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </a>
-        <a class="btn-ghost" href="/pages/about#shipping">
+        <span class="btn-ghost btn-ghost--deferred" aria-disabled="true">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="1" y="3" width="15" height="13" rx="1"></rect>
             <path d="M16 8h5l2 5v4h-7V8z"></path>
@@ -25,31 +25,32 @@
             <circle cx="18.5" cy="18.5" r="2.5"></circle>
           </svg>
           Shipping info
-        </a>
+          <span class="visually-hidden">Shipping guidance is pending launch approval.</span>
+        </span>
       </div>
     </div>
     <div class="hero-visual">
       <div class="collage-grid">
         <div class="cg-item cg-wide">
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80&auto=format&fit=crop" alt="Headphones" loading="eager" width="700" height="520">
+          <img src="{{ 'headphones-premium.jpg' | asset_url }}" alt="Headphones" loading="eager" width="700" height="520">
         </div>
         <div class="cg-item">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80&auto=format&fit=crop" alt="Watch" loading="eager" width="400" height="400">
+          <img src="{{ 'smart-watch-black-edition.jpg' | asset_url }}" alt="Watch" loading="eager" width="400" height="400">
         </div>
         <div class="cg-item">
-          <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80&auto=format&fit=crop" alt="Bottle" loading="eager" width="400" height="400">
+          <img src="{{ 'insulated-vacuum-flask.jpg' | asset_url }}" alt="Bottle" loading="eager" width="400" height="400">
         </div>
         <div class="cg-item cg-tall">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop" alt="Storage box" loading="eager" width="400" height="640">
+          <img src="{{ 'fabric-storage-cube.jpg' | asset_url }}" alt="Storage box" loading="eager" width="400" height="640">
         </div>
         <div class="cg-item">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" alt="Charger" loading="eager" width="400" height="400">
+          <img src="{{ 'charger-accessory.jpg' | asset_url }}" alt="Charger" loading="eager" width="400" height="400">
         </div>
         <div class="cg-item">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80&auto=format&fit=crop" alt="Plant" loading="eager" width="400" height="400">
+          <img src="{{ 'indoor-plant-pot.jpg' | asset_url }}" alt="Plant" loading="eager" width="400" height="400">
         </div>
         <div class="cg-item">
-          <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&q=80&auto=format&fit=crop" alt="Lamp" loading="eager" width="400" height="400">
+          <img src="{{ 'touch-lamp-warm-led.jpg' | asset_url }}" alt="Lamp" loading="eager" width="400" height="400">
         </div>
       </div>
       <div class="hero-badge-corner">

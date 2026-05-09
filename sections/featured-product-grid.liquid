@@ -23,7 +23,7 @@
             {% case forloop.index %}
               {% when 1 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'stainless-french-press.jpg' | asset_url,
                   image_alt: 'Kitchen',
                   product_type: 'Kitchen & Storage',
                   product_name: 'Stainless Steel French Press',
@@ -33,7 +33,7 @@
                 %}
               {% when 2 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'insulated-vacuum-flask.jpg' | asset_url,
                   image_alt: 'Bottle',
                   badge_label: 'New',
                   badge_tone: 'new',
@@ -45,7 +45,7 @@
                 %}
               {% when 3 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'fabric-storage-cube.jpg' | asset_url,
                   image_alt: 'Storage box',
                   product_type: 'Kitchen & Storage',
                   product_name: 'Fabric Storage Cube Organiser',
@@ -56,7 +56,7 @@
                 %}
               {% else %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'indoor-plant-pot.jpg' | asset_url,
                   image_alt: 'Plant',
                   product_type: 'Home & Living',
                   product_name: 'Indoor Plant Pot Set – Terracotta',
@@ -77,7 +77,7 @@
             {% case forloop.index %}
               {% when 1 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'headphones-premium.jpg' | asset_url,
                   image_alt: 'Headphones',
                   badge_label: 'Sale',
                   badge_tone: 'sale',
@@ -91,7 +91,7 @@
                 %}
               {% when 2 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'bamboo-storage-containers.jpg' | asset_url,
                   image_alt: 'Storage',
                   badge_label: 'New',
                   badge_tone: 'new',
@@ -103,7 +103,7 @@
                 %}
               {% when 3 %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'smart-watch-black-edition.jpg' | asset_url,
                   image_alt: 'Watch',
                   product_type: 'Tech Accessories',
                   product_name: 'Smart Watch – Black Edition',
@@ -115,7 +115,7 @@
                 %}
               {% else %}
                 {% render 'static-product-card',
-                  image_src: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop',
+                  image_src: 'touch-lamp-warm-led.jpg' | asset_url,
                   image_alt: 'Lamp',
                   badge_label: 'Sale',
                   badge_tone: 'sale',

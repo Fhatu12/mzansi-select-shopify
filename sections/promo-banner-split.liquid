@@ -5,7 +5,7 @@
         <div class="promo-eyebrow">Limited Time Offer</div>
         <div class="promo-h">Up to 30% off<br>Tech &amp; Home Bundles</div>
         <div class="promo-sub">Curated deals on the products you actually need — hand-picked for South African homes.</div>
-        <a class="promo-cta" href="#">
+        <a class="promo-cta" href="{{ routes.all_products_collection_url }}">
           Shop the Sale
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -14,7 +14,7 @@
         </a>
       </div>
       <div class="promo-visual">
-        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=900&q=80&auto=format&fit=crop" alt="Sale banner" loading="lazy" width="900" height="640">
+        <img src="{{ 'promo-tech-home-bundles.jpg' | asset_url }}" alt="Sale banner" loading="lazy" width="900" height="640">
       </div>
     </div>
   </div>

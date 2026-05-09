@@ -7,29 +7,29 @@
         <p class="f-desc f-desc-default">Your one-stop store for practical home, everyday essentials and more. Carefully chosen. Fairly priced. Delivered across South Africa.</p>
         <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
         <div class="f-socials">
-          <a class="f-social" href="#facebook" aria-label="Facebook">
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Facebook coming soon. Social profile not available yet.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
-          </a>
-          <a class="f-social" href="#instagram" aria-label="Instagram">
+          </span>
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Instagram coming soon. Social profile not available yet.">
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
-          </a>
-          <a class="f-social" href="#tiktok" aria-label="TikTok">
+          </span>
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="TikTok coming soon. Social profile not available yet.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"></path>
             </svg>
-          </a>
-          <a class="f-social" href="#youtube" aria-label="YouTube">
+          </span>
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="YouTube coming soon. Social profile not available yet.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
               <polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
             </svg>
-          </a>
+          </span>
         </div>
       </div>
 
@@ -47,11 +47,11 @@
       <div>
         <div class="f-col-title">Help</div>
         <ul class="f-links">
-          <li><a href="/pages/about#shipping">Shipping</a></li>
-          <li><a href="/pages/about#returns">Returns</a></li>
-          <li><a href="/pages/about#faq">FAQ</a></li>
-          <li><a href="/pages/contact#contact">Contact Us</a></li>
-          <li><a href="/pages/contact#contact">Track Order</a></li>
+          <li><span class="f-link-deferred">Shipping <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Returns <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">FAQ <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(pending launch approval)</span></span></li>
         </ul>
       </div>
 
@@ -61,7 +61,7 @@
           <li><a href="{{ routes.account_url }}">My Account</a></li>
           <li><a href="{{ routes.account_url }}">Orders</a></li>
           <li><span class="f-link-deferred">Wishlist <span class="visually-hidden">(coming soon)</span></span></li>
-          <li><a href="#saved-addresses">Saved Addresses</a></li>
+          <li><span class="f-link-deferred">Saved Addresses <span class="visually-hidden">(coming soon)</span></span></li>
           <li><a href="{{ routes.account_login_url }}">Login / Register</a></li>
         </ul>
       </div>
@@ -69,21 +69,22 @@
       <div>
         <div class="f-col-title">Company</div>
         <ul class="f-links">
-          <li><a href="/pages/about#about-us">About Us</a></li>
-          <li><a href="/pages/about#privacy-policy">Privacy Policy</a></li>
-          <li><a href="/pages/about#terms">Terms &amp; Conditions</a></li>
-          <li><a href="#careers">Careers</a></li>
-          <li><a href="#affiliates">Affiliates</a></li>
+          <li><span class="f-link-deferred">About Us <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Privacy Policy <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Terms &amp; Conditions <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
+          <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
         </ul>
       </div>
 
       <div>
         <div class="f-col-title">Stay in the Loop</div>
         <p class="nl-desc">Get exclusive offers, new arrivals and helpful updates.</p>
-        <div class="nl-row">
-          <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email">
+        <form class="nl-row" aria-label="Newsletter signup preview">
+          <label class="visually-hidden" for="nlEmail">Email address</label>
+          <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email" autocomplete="email" inputmode="email">
           <button class="nl-btn" type="button">Subscribe</button>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -108,29 +109,29 @@
       <p class="f-desc f-desc-default">Your one-stop store for practical home, everyday essentials and more. Carefully chosen. Fairly priced. Delivered across South Africa.</p>
       <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
       <div class="f-socials">
-        <a class="f-social" href="#facebook" aria-label="Facebook">
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Facebook coming soon. Social profile not available yet.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
           </svg>
-        </a>
-        <a class="f-social" href="#instagram" aria-label="Instagram">
+        </span>
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Instagram coming soon. Social profile not available yet.">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
-        </a>
-        <a class="f-social" href="#tiktok" aria-label="TikTok">
+        </span>
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="TikTok coming soon. Social profile not available yet.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"></path>
           </svg>
-        </a>
-        <a class="f-social" href="#youtube" aria-label="YouTube">
+        </span>
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="YouTube coming soon. Social profile not available yet.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
             <polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
           </svg>
-        </a>
+        </span>
       </div>
     </div>
 
@@ -162,11 +163,11 @@
         </summary>
         <div class="f-acc-body">
           <ul class="f-links">
-            <li><a href="/pages/about#shipping">Shipping</a></li>
-            <li><a href="/pages/about#returns">Returns</a></li>
-            <li><a href="/pages/about#faq">FAQ</a></li>
-            <li><a href="/pages/contact#contact">Contact Us</a></li>
-            <li><a href="/pages/contact#contact">Track Order</a></li>
+            <li><span class="f-link-deferred">Shipping <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Returns <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">FAQ <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(pending launch approval)</span></span></li>
           </ul>
         </div>
       </details>
@@ -183,7 +184,7 @@
             <li><a href="{{ routes.account_url }}">My Account</a></li>
             <li><a href="{{ routes.account_url }}">Orders</a></li>
             <li><span class="f-link-deferred">Wishlist <span class="visually-hidden">(coming soon)</span></span></li>
-            <li><a href="#saved-addresses">Saved Addresses</a></li>
+            <li><span class="f-link-deferred">Saved Addresses <span class="visually-hidden">(coming soon)</span></span></li>
             <li><a href="{{ routes.account_login_url }}">Login / Register</a></li>
           </ul>
         </div>
@@ -198,11 +199,11 @@
         </summary>
         <div class="f-acc-body">
           <ul class="f-links">
-            <li><a href="/pages/about#about-us">About Us</a></li>
-            <li><a href="/pages/about#privacy-policy">Privacy Policy</a></li>
-            <li><a href="/pages/about#terms">Terms &amp; Conditions</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#affiliates">Affiliates</a></li>
+            <li><span class="f-link-deferred">About Us <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Privacy Policy <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Terms &amp; Conditions <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
+            <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
           </ul>
         </div>
       </details>
@@ -211,10 +212,11 @@
     <div class="footer-nl">
       <div class="f-col-title">Stay in the Loop</div>
       <p class="nl-desc">Get exclusive offers, new arrivals and helpful updates.</p>
-      <div class="nl-row">
-        <input class="nl-input" id="nlEmailMobile" type="email" placeholder="Enter your email">
+      <form class="nl-row" aria-label="Newsletter signup preview">
+        <label class="visually-hidden" for="nlEmailMobile">Email address</label>
+        <input class="nl-input" id="nlEmailMobile" type="email" placeholder="Enter your email" autocomplete="email" inputmode="email">
         <button class="nl-btn" type="button">Subscribe</button>
-      </div>
+      </form>
     </div>
 
     <div class="footer-bottom">

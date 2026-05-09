@@ -5,15 +5,19 @@
       <div class="logo-tag">{{ settings.brand_tagline }}</div>
     </a>
 
-    <form class="search-wrap" action="{{ routes.search_url }}" method="get" role="search">
+    <form class="search-wrap" action="{{ routes.search_url }}" method="get" role="search" aria-label="Site search">
+      <label class="visually-hidden" for="desktopSearchInput">Search products</label>
       <input
         class="search-input"
+        id="desktopSearchInput"
         type="search"
         name="q"
         value="{{ search.terms | escape }}"
         placeholder="{{ settings.search_placeholder | escape }}"
+        autocomplete="off"
       >
-      <select class="search-cat" name="type">
+      <label class="visually-hidden" for="desktopSearchType">Browse category</label>
+      <select class="search-cat" id="desktopSearchType" name="type">
         <option value="product">All categories</option>
         <option value="product">Home &amp; Living</option>
         <option value="product">Kitchen &amp; Storage</option>
@@ -42,7 +46,7 @@
         </svg>
         Wishlist
       </span>
-      <a class="hdr-action" href="{{ routes.cart_url }}">
+      <a class="hdr-action" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
         <span class="cart-dot" id="cart-count">{{ cart.item_count }}</span>
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -74,7 +78,7 @@
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
         </svg>
       </span>
-      <a class="mob-icon-btn" href="{{ routes.cart_url }}" aria-label="Cart">
+      <a class="mob-icon-btn" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
         <span class="cart-badge-mob">{{ cart.item_count }}</span>
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -85,8 +89,9 @@
     </div>
   </div>
 
-  <form class="mob-search-bar" action="{{ routes.search_url }}" method="get" role="search">
+  <form class="mob-search-bar" action="{{ routes.search_url }}" method="get" role="search" aria-label="Mobile site search">
     <div class="mob-search-inner">
+      <label class="visually-hidden" for="mobileSearchInput">Search products</label>
       <input
         class="mob-search-input"
         id="mobileSearchInput"
@@ -94,6 +99,7 @@
         name="q"
         value="{{ search.terms | escape }}"
         placeholder="{{ settings.search_placeholder | escape }}"
+        autocomplete="off"
       >
       <input type="hidden" name="type" value="product">
       <button class="mob-search-btn" type="submit" aria-label="Search">

@@ -8,11 +8,11 @@
     %}
     <div class="arrivals-grid">
       <div class="arr-card">
-        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80&auto=format&fit=crop" alt="Living room" loading="lazy" width="900" height="720">
+        <img src="{{ 'modern-living-room.jpg' | asset_url }}" alt="Living room" loading="lazy" width="900" height="720">
         <div class="arr-overlay">
           <div class="arr-cat">Home &amp; Living</div>
           <div class="arr-name">Modern Living Room Collection</div>
-          <a class="arr-link" href="#">
+          <a class="arr-link" href="{% render 'launch-collection-url', handle: 'home-living' %}">
             Explore now
             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -22,11 +22,11 @@
         </div>
       </div>
       <div class="arr-card">
-        <img src="https://images.unsplash.com/photo-1593642632633-c56c686f7a33?w=900&q=80&auto=format&fit=crop" alt="Tech" loading="lazy" width="900" height="720">
+        <img src="{{ 'smart-watch-black-edition.jpg' | asset_url }}" alt="Tech" loading="lazy" width="900" height="720">
         <div class="arr-overlay">
           <div class="arr-cat">Tech Accessories</div>
           <div class="arr-name">New Tech Essentials Drop</div>
-          <a class="arr-link" href="#">
+          <a class="arr-link" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">
             Explore now
             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>

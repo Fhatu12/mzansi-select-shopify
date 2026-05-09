@@ -30,6 +30,23 @@ body {
   line-height: 1.5;
 }
 
+.skip-to-main {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  z-index: 1000;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--green-dark);
+  color: var(--white);
+  transform: translateY(-150%);
+  transition: transform .2s ease;
+}
+
+.skip-to-main:focus {
+  transform: translateY(0);
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -48,6 +65,15 @@ select {
 
 button {
   cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .page-shell {
@@ -642,6 +668,19 @@ nav {
   background: var(--cream);
 }
 
+.drawer-link--deferred {
+  cursor: default;
+  color: var(--text-muted);
+}
+
+.drawer-link--deferred:hover,
+.drawer-link--deferred:focus-visible {
+  color: var(--text-muted);
+  border-left-color: transparent;
+  background: transparent;
+  outline: none;
+}
+
 .drawer-link-icon {
   font-size: 18px;
   width: 26px;
@@ -727,6 +766,7 @@ nav {
 
 .bb-item--deferred {
   cursor: default;
+  pointer-events: none;
 }
 
 .bb-center {
@@ -867,6 +907,16 @@ nav {
   color: var(--gold);
 }
 
+.btn-ghost--deferred {
+  cursor: default;
+  opacity: 0.82;
+}
+
+.btn-ghost--deferred:hover {
+  border-color: var(--border);
+  color: var(--text-body);
+}
+
 .hero-visual {
   position: relative;
   height: 440px;
@@ -995,6 +1045,19 @@ nav {
 
 .cat-item:hover .cat-name {
   color: var(--gold);
+}
+
+.cat-item--deferred {
+  cursor: default;
+}
+
+.cat-item--deferred:hover .cat-icon {
+  box-shadow: none;
+  transform: none;
+}
+
+.cat-item--deferred:hover .cat-name {
+  color: var(--text-body);
 }
 
 .cat-name {
@@ -2405,6 +2468,17 @@ nav {
   box-shadow: 0 12px 28px rgba(17, 17, 17, 0.06);
 }
 
+.not-found-recovery-link--deferred {
+  cursor: default;
+}
+
+.not-found-recovery-link--deferred:hover {
+  border-color: var(--border);
+  color: var(--black);
+  transform: none;
+  box-shadow: none;
+}
+
 .page-content-grid,
 .support-channel-grid {
   display: grid;
@@ -2738,6 +2812,16 @@ footer {
   border-color: var(--gold);
   background: var(--gold);
   color: var(--white);
+}
+
+.f-social--deferred {
+  cursor: default;
+}
+
+.f-social--deferred:hover {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text-muted);
 }
 
 .f-col-title {

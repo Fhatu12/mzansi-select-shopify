@@ -3,8 +3,8 @@
 **Document Type:** Low-Level Design / Technical Specification  
 **Prepared:** 2026-04-29  
 **Owner:** Product Owner  
-**Status:** Slice **15O** keeps the approved north-stars intact while hardening the mobile shell-swap / containment contract around the announcement topbar, header/nav swap, trust bar, and footer: desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, **Slice 14C** wishlist / heart controls remain **honestly deferred** (**disabled** **`.p-wish`**, non-link header/footer, **`aria-label`** copy), **Slice 14D** homepage **`featured-product-grid`** → **PDP** bridging and **Slice 14B** real launch quartet **`collections[handle].url`** routing remain intact, preview-only PDP safety stays unchanged in intent, and overflow remediation remains limited to true intrinsic-width offenders rather than design stripping. The mobile shell swap is now protected by stable **`data-shell`** hooks plus an early runtime **`data-shell-mode`** guard in **`layout/theme.liquid`**, so the approved mobile chrome stays active even if preview serves the wrong shell-only cascade winner.  
-**Version:** 2.9  
+**Status:** Slice **16C** preserves the approved north-stars while remediating the accepted Slice **16B** blocker/high HTML foundation issues in the live Shopify theme: a skip-to-main path now precedes the repeated chrome, search and newsletter fields now have durable labels, icon-only controls keep explicit accessible names, customer-facing placeholder legal/support/social/account fragments are now honestly deferred instead of pretending to be live routes, customer-facing fonts/images are served from theme assets instead of third-party hosts, placeholder `about`/`contact` handles are noindexed while still unpublished, and the north-star mobile shell no longer blocks zoom with `maximum-scale=1.0`. Desktop presentation remains aligned to **`mzansi-select-theme.html`**, mobile presentation remains aligned to **`mzansi-select-mobile.html`**, and the remediation is intentionally limited to foundation safety/accessibility without redesign or visual stripping.  
+**Version:** 3.0  
 **Source Frontend:** `D:\dev\mzansi-select-shopify\mzansi-select-theme.html` + `D:\dev\mzansi-select-shopify\mzansi-select-mobile.html`
 
 ## Approved metadata/header/footer standard used in the repo
@@ -110,6 +110,18 @@ Out of boundary for this document pass:
 - Mobile topbar and trust-bar wrappers must stay shrink-safe with explicit **`width/max-width/min-width`** containment so long inline trust copy can scroll only inside the approved bounded topbar rail and never hold open page-level width.
 - Because preview deployments may temporarily serve an older stylesheet, the critical mobile shell-swap / containment subset may also be duplicated inline in **`layout/theme.liquid`** after the main stylesheet so the approved mobile chrome remains dominant even under stale asset ordering.
 - Slice **15O** strengthens that contract further by assigning explicit **`data-shell`** roles to desktop/mobile header, nav, overlay/drawer, and footer chrome, then toggling an early **`html[data-shell-mode]`** state from **`matchMedia('(max-width: 900px)')`** so shell visibility no longer depends on the stylesheet-only desktop selectors winning the cascade in preview.
+
+## Slice 16C HTML foundation hardening rules
+
+- The live theme document shell must expose a keyboard-accessible skip link before the repeated announcement/header/navigation chrome and target the single **`main#MainContent`** landmark.
+- Search inputs in desktop and mobile header chrome must not rely on placeholder text alone; they require durable labels or equivalent accessible names while preserving the approved visual treatment.
+- Newsletter preview inputs in the footer must remain visibly lightweight but now sit inside real form containers with explicit email labels so keyboard/screen-reader use does not depend on placeholder text.
+- Icon-only or icon-led controls must keep explicit accessible names: menu open/close, search submit, cart entry points, deferred wishlist/favourites, and similar compact controls.
+- Customer-facing launch surfaces must not expose dead placeholder destinations for support, company, social, or account helpers. If publication-ready destinations are unavailable, the surface must become an honest deferred non-interactive state rather than a fake link.
+- Placeholder legal/support foundations may remain in the codebase for later approved publication work, but they must not be promoted through customer-facing navigation before publication-ready copy/routes exist. Slice **16C** reinforces this by removing live-surface entry points and adding **`noindex,nofollow`** to placeholder `about`/`contact` page handles.
+- Customer-facing fonts and static imagery should be served from Shopify/theme-controlled assets where practical. Slice **16C** replaces the live theme Google Fonts + Unsplash dependence with local theme assets while preserving the approved visual direction.
+- Focus treatment should remain visually restrained but consistent. Slice **16C** adds a shared **`:focus-visible`** outline contract plus honest deferred-state styling so accessibility hardening does not flatten the approved design language.
+- The north-star mobile shell must not block user zoom. Slice **16C** removes the **`maximum-scale=1.0`** viewport cap from **`mzansi-select-mobile.html`** as the durable accessibility baseline for downstream work.
 
 ## Component / section inventory extracted from the HTML
 

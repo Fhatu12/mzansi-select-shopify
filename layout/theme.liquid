@@ -1,10 +1,18 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
+    {% assign gated_page_handles = 'about,contact' | split: ',' %}
+    {% assign gated_support_page = false %}
+    {% if request.page_type == 'page' and page != blank and gated_page_handles contains page.handle %}
+      {% assign gated_support_page = true %}
+    {% endif %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#111111">
     <link rel="canonical" href="{{ canonical_url }}">
+    {% if gated_support_page %}
+      <meta name="robots" content="noindex,nofollow">
+    {% endif %}
     <title>
       {{ page_title }}
       {% if current_tags %}
@@ -34,12 +42,73 @@
         }
       })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     {{ content_for_header }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     <style>
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("{{ 'dm-sans-300.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("{{ 'dm-sans-400.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("{{ 'dm-sans-500.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("{{ 'dm-sans-600.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("{{ 'dm-sans-700.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Playfair Display';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("{{ 'playfair-display-400-italic.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("{{ 'playfair-display-400.ttf' | asset_url }}") format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("{{ 'playfair-display-600.ttf' | asset_url }}") format('truetype');
+      }
+
       @media (max-width: 900px) {
         html[data-shell-mode="mobile"] [data-shell="desktop-header"],
         html[data-shell-mode="mobile"] [data-shell="desktop-nav"],
@@ -89,6 +158,7 @@
     </style>
   </head>
   <body class="{%- render 'preview-route-body-class' -%}">
+    <a class="skip-to-main" href="#MainContent">Skip to main content</a>
     {% section 'announcement-topbar' %}
     {% section 'site-header' %}
     {% section 'primary-navigation' %}
@@ -108,15 +178,35 @@
         const overlay = document.getElementById('drawerOverlay');
         const drawerClose = document.getElementById('drawerClose');
         const searchInput = document.getElementById('mobileSearchInput');
+        const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+        let lastFocusedElement = null;
 
-        const setDrawerOpen = (open) => {
+        const getDrawerFocusable = () => {
+          if (!drawer) return [];
+          return [...drawer.querySelectorAll(focusableSelector)].filter((element) => !element.hasAttribute('disabled'));
+        };
+
+        const focusFirstDrawerElement = () => {
+          const [firstFocusable] = getDrawerFocusable();
+          firstFocusable?.focus();
+        };
+
+        const setDrawerOpen = (open, { restoreFocus = true } = {}) => {
           if (!drawer || !overlay || !menuToggle) return;
+          if (open) {
+            lastFocusedElement = document.activeElement;
+          }
           body.classList.toggle('mobile-nav-open', open);
           drawer.classList.toggle('open', open);
           overlay.classList.toggle('open', open);
           drawer.setAttribute('aria-hidden', String(!open));
           menuToggle.classList.toggle('open', open);
           menuToggle.setAttribute('aria-expanded', String(open));
+          if (open) {
+            window.setTimeout(focusFirstDrawerElement, 0);
+          } else if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+          }
         };
 
         const toggleDrawer = () => setDrawerOpen(!drawer?.classList.contains('open'));
@@ -129,7 +219,26 @@
         });
 
         document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') setDrawerOpen(false);
+          if (!drawer?.classList.contains('open')) return;
+          if (event.key === 'Escape') {
+            setDrawerOpen(false);
+            return;
+          }
+          if (event.key !== 'Tab') return;
+
+          const focusableElements = getDrawerFocusable();
+          if (focusableElements.length === 0) return;
+
+          const firstFocusable = focusableElements[0];
+          const lastFocusable = focusableElements[focusableElements.length - 1];
+
+          if (event.shiftKey && document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable.focus();
+          } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable.focus();
+          }
         });
 
         document.querySelectorAll('[data-mobile-search-trigger]').forEach((trigger) => {
@@ -142,7 +251,7 @@
 
         const mobileMedia = window.matchMedia('(max-width: 900px)');
         const syncDrawerState = () => {
-          if (!mobileMedia.matches) setDrawerOpen(false);
+          if (!mobileMedia.matches) setDrawerOpen(false, { restoreFocus: false });
         };
 
         if (mobileMedia.addEventListener) {
