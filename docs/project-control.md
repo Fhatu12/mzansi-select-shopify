@@ -2090,3 +2090,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Local validation (theme dev surface):** all **20** required routes at **`http://127.0.0.1:9292`**, including **`/search?q=strainer&type=product`**, returned **HTTP 200** and **zero page-level horizontal overflow failures** across **`360x800`**, **`390x844`**, **`414x896`**, and **`768x1024`** after the hardening pass.
 - **Regression checks preserved locally:** **Slice 14B** department routing remained present in chrome across all required viewports, **Slice 14C** wishlist honesty remained intact (**no `#wishlist` route, no pressed toggle states**), **Slice 14D** homepage first card still reached **`/products/cable-tidies-set`**, and preview-only PDP safety remained intact across all required PDP routes.
 - **Next recommended owner:** **Product Owner** for bounded preview-only selected-file push approval; then **DevOps / Platform Engineer** for the approved unpublished preview push and **QA / Test Engineer** for **Slice 15P** rerun plus the later **Slice 15A** re-enable decision.
+
+## Slice 15O selected-file preview push
+
+- Slice 15O selected-file preview push completed.
+- Target preview theme: `151207542967 / Mzansi Select MVP Preview / unpublished`.
+- Live theme `148914077879 / Horizon` remained live and untouched.
+- Push command selected only `layout/theme.liquid`, `sections/site-header.liquid`, `sections/primary-navigation.liquid`, and `sections/site-footer.liquid`.
+- A clean temp theme surface was used for strict validation before upload.
+- Evidence folder: `artifacts/devops/slice-15o-selected-file-preview-push-20260509-064419/`.
+- No publish/live overwrite/Admin/product/collection/checkout/commercial changes occurred.
+- Next recommended owner: QA / Test Engineer for Slice 15P.
