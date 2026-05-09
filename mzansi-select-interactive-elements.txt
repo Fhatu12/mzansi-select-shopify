@@ -1,0 +1,137 @@
+MZANSI SELECT – INTERACTIVE UI ELEMENTS
+========================================
+Source file: mzansi-select-theme.html
+========================================
+
+
+FORM CONTROLS & INPUTS
+-----------------------
+
+Text Fields:
+  - Search input
+      <input class="search-input" type="text" placeholder="Search products, departments or brands...">
+
+  - Newsletter email input
+      <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email">
+
+Select / Dropdown:
+  - Search category filter
+      <select class="search-cat">
+        Options: All categories, Home & Living, Kitchen & Storage, Office & Desk, Tech Accessories
+
+
+BUTTONS
+-------
+
+Header:
+  - Search button (magnifier icon)        <button class="search-btn">
+
+Hero Section:
+  - "Browse all products"                 <button class="btn-dark">
+  - "Shipping info"                       <button class="btn-ghost">
+
+Navigation:
+  - "Shop by Department" (dropdown trigger)  <button class="dept-btn">
+
+Product Cards – Wishlist buttons (visible on hover, one per card):
+  - Best Sellers section (×4)             <button class="p-wish">
+  - Kitchen & Storage section (×4)        <button class="p-wish">
+
+Product Cards – Add to Cart buttons:
+  Best Sellers:
+    - Premium Over-Ear Headphones         <button class="add-btn" onclick="addToCart(this)">
+    - Bamboo Lid Storage Container Set    <button class="add-btn" onclick="addToCart(this)">
+    - Smart Watch – Black Edition         <button class="add-btn" onclick="addToCart(this)">
+    - Touch Lamp – Warm LED Dimmable      <button class="add-btn" onclick="addToCart(this)">
+
+  Kitchen & Storage:
+    - Stainless Steel French Press        <button class="add-btn" onclick="addToCart(this)">
+    - Insulated Vacuum Flask 500ml        <button class="add-btn" onclick="addToCart(this)">
+    - Fabric Storage Cube Organiser       <button class="add-btn" onclick="addToCart(this)">
+    - Indoor Plant Pot Set – Terracotta   <button class="add-btn" onclick="addToCart(this)">
+
+Promo Banner:
+  - "Shop the Sale"                       <button class="promo-cta">
+
+Footer:
+  - "Subscribe"                           <button class="nl-btn" onclick="subscribe()">
+
+
+LINKS (<a href>)
+----------------
+
+Header:
+  - Logo                                  href="#"
+  - Account                               href="#"
+  - Wishlist                              href="#"
+  - Cart                                  href="#"
+
+Department Dropdown Menu (appears on hover):
+  - Home & Living                         href="/collections/home-living"
+  - Kitchen & Storage                     href="/collections/kitchen-storage"
+  - Office & Desk                         href="/collections/office-desk"
+  - Tech Accessories                      href="/collections/tech-accessories"
+  - Garden & Outdoor                      href="#"
+  - Bath & Bedroom                        href="#"
+  - Cleaning & Laundry                    href="#"
+
+Top Navigation Links:
+  - Home (active)                         href="#"
+  - Shop All                              href="#"
+  - New In                                href="#"
+  - Best Sellers                          href="#"
+  - Deals                                 href="#"
+  - Brands                                href="#"
+
+Section "View all" Links:
+  - "View all products"                   (Best Sellers section)    href="#"
+  - "View all new in"                     (New Arrivals section)    href="#"
+  - "View all"                            (Kitchen & Storage)       href="#"
+
+Category Strip (clickable cards as <a> links):
+  - Home & Living                         href="/collections/home-living"
+  - Kitchen & Storage                     href="/collections/kitchen-storage"
+  - Office & Desk                         href="/collections/office-desk"
+  - Tech Accessories                      href="/collections/tech-accessories"
+  - Shipping                              href="#"
+  - Returns                               href="#"
+  - FAQ                                   href="#"
+
+New Arrivals Cards:
+  - "Explore now" – Modern Living Room Collection    href="#"
+  - "Explore now" – New Tech Essentials Drop         href="#"
+
+Footer Links:
+  Shop:
+    - Shop All, New In, Best Sellers, Deals, Gift Cards
+
+  Help:
+    - Shipping, Returns, FAQ, Contact Us, Track Order
+
+  Account:
+    - My Account, Orders, Wishlist, Saved Addresses, Login / Register
+
+  Company:
+    - About Us, Privacy Policy, Terms & Conditions, Careers, Affiliates
+
+
+SOCIAL ICONS (clickable divs – cursor:pointer, no <a> wrapper)
+---------------------------------------------------------------
+  - Facebook    <div class="f-social">
+  - Instagram   <div class="f-social">
+  - TikTok      <div class="f-social">
+  - YouTube     <div class="f-social">
+
+  Note: These are styled as clickable but are not wrapped in anchor tags.
+  They would need <a> tags to function as proper links.
+
+
+SUMMARY COUNT
+-------------
+  Text inputs              2
+  Select dropdowns         1
+  Buttons                 ~20
+  Anchor links            ~40
+  Clickable category cards  7
+  Clickable arrival cards   2
+  Social icon divs          4  (cursor:pointer only, no href)
