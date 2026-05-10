@@ -74,15 +74,15 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
 - Shopify push/publish status: No **live** theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I); Slice 13J used **targeted** CLI push to **unpublished** preview theme `151207542967` for QA only (does not publish live)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-10 **implementation + tracker sync** — **Slice 17L** remediates the **Slice 17K FAIL** on `/search` card CTA honesty
+- Last tracker update: 2026-05-10 **docs-only tracker sync** — Product Owner accepts **Slice 17L** authenticated preview **`/search` card CTA honesty** as **PASS** and closes the **17J / 17K / 17L** chain (**evidence `artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`**); theme remediation remains **Slice 17L** implementation vs **Slice 17K FAIL**
 - Tracker status: **Slice 17K FAIL recorded + Slice 17L remediation completed** — **Slice 14B / 14C / 14D**, **Slice 17B**, **Slice 17C**, **Slice 17E**, **Slice 17G**, and PDP preview-only safety remain intact; the desktop category/select remains honest-deferred, the working search route remains intact, and `/search` card CTAs are now owned directly by the search section as disabled preview-only controls
 - Catalogue plan status: **Slice 13O** (**`3bf260b…`**) + **`docs/catalogue`** companions **committed** — **canonical narrative** **`project-control`** + **`mzansi-select-25-product-readiness-v1`** + **`local-supplier-sourcing-matrix-v1`**
-- Documentation sync status: **current for `project-control`** after **Slice 17L** implementation sync
-- LLD status: **updated in Slice 17L** because the shared-card vs search-specific CTA contract needed clarification after the authenticated **Slice 17K FAIL**
+- Documentation sync status: **current for `project-control`** after **Slice 17L** authenticated preview **PASS** docs-only sync
+- LLD status: **updated** for final **`/search`** preview-commerce CTA honesty contract + removal of stale **`/search` body** gap after **Slice 17G** (see **Slice 17L** section)
 
 ## Current active pass
 
-**Implementation + tracker sync (this pass):** **Slice 17L** — remediate the authenticated `/search` card CTA preview-commerce honesty failure while preserving the working search route and earlier search-shell treatments.
+**Docs-only tracker sync (this pass):** record Product Owner **PASS** for **Slice 17L** — authenticated preview **`/search` card CTA preview-commerce honesty** — with evidence **`artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`**, verbatim QA bullets, chain closure (**17J / 17K / 17L**), and bounded acceptance constraints; no theme/code changes in this pass.
 
 ## Slice 17J search page body preview-commerce honesty remediation
 
@@ -104,24 +104,26 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Slice 17L authenticated preview regression for /search card CTA honesty
 
+- **Product Owner decision:** Accept **Slice 17L** as **PASS**.
+- **Product Owner constraint:** This acceptance covers only the bounded `/search` card CTA honesty fix. It does not approve public launch; production promotion; final pricing; supplier verification; delivery promises; checkout/payment enablement; or product claims.
 - **QA verdict:** **PASS** — Product Owner acceptance is **bounded to preview-only CTA honesty** and does **not** approve public launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, or product claims.
 - **Evidence folder:** **`artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`** — contains QA report, DOM analysis, network summary, console logs, and multi-viewport/multi-route screenshots.
 - **Preview theme tested:** **`151207542967 / Mzansi Select MVP Preview / unpublished`**.
 - **Store:** **`dropshippoc.myshopify.com`**.
-- **Auth method:** authenticated storefront preview using **`.auth/shopify-storefront-preview.json`**.
+- **Auth method:** authenticated storefront preview session (credentials and storage paths are not recorded in this tracker).
 - **Routes tested:**
   - **`https://dropshippoc.myshopify.com/search?preview_theme_id=151207542967`** ✓
   - **`https://dropshippoc.myshopify.com/search?q=strainer&type=product&preview_theme_id=151207542967`** ✓
 - **Viewports tested:** Desktop **1366x768** ✓ | Mobile **390x844** ✓
 - **QA check results:**
   1. **Preview unlock confirmation:** **PASS** — pages loaded without remaining on `/password`; actual storefront DOM reachable.
-  2. **CTA text result:** **PASS** — all visible `/search` result card CTAs show **`Preview only`**; no card CTA shows **`Add to Cart`**.
-  3. **CTA type="button" result:** **PASS** — all result-card CTAs are button elements with `type="button"` attribute.
-  4. **Disabled state result:** **PASS** — all result-card CTAs are disabled and click attempts do not trigger commerce actions.
-  5. **aria-disabled result:** **PASS** — all result-card CTAs include `aria-disabled="true"`.
-  6. **Add to Cart absence result:** **PASS** — no enabled-looking **`Add to Cart`** button remains in `/search` body; no `/cart/add` or checkout endpoints called.
-  7. **Layout/route contract result:** **PASS** — card grid, spacing, visual rhythm, and responsive layout preserved on desktop and mobile; `/search?q=strainer&type=product` route preserved query parameters; page titles correct.
-  8. **Network result:** **PASS** — no `/cart/add`, checkout, predictive search, facets, collection-scoped search, or new filtering service endpoints appeared.
+  2. **CTA text result:** **PASS** — all visible search result card CTAs show "Preview only".
+  3. **CTA type="button" result:** **PASS** — all result-card CTAs are button elements with type="button".
+  4. **Disabled state result:** **PASS** — all result-card CTAs are disabled and click attempts did not trigger commerce actions.
+  5. **aria-disabled result:** **PASS** — all result-card CTAs include aria-disabled="true".
+  6. **Add to Cart absence result:** **PASS** — no enabled-looking Add to Cart button remains in the /search body.
+  7. **Layout/route contract result:** **PASS** — card grid, spacing, responsive layout, and search route contracts were preserved.
+  8. **Network result:** **PASS** — no /cart/add, checkout, predictive search, facets, collection-scoped search, or new filtering service appeared.
 - **Chain closure:** **Slice 17J / 17K / 17L /search body honesty remediation chain is now closed as ACCEPTED** — Slice 17J remediated shell copy/badges/pricing; **Slice 17K** failed on card CTAs; **Slice 17L** remediated card CTA honesty and now passes authenticated rerun.
 - **Acceptance scope (bounded):** this acceptance covers **only** the `/search` card CTA preview-only honesty fix and **does not** approve launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, newsletter collection, account enablement, wishlist enablement, or any product claims.
 - **Preserved scope:** predictive search, Search & Discovery facets, collection-scoped search, new filtering services remain deferred; working `/search` route contract and **Slice 17G** search-select honesty remain intact.
