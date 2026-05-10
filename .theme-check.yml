@@ -1,0 +1,6 @@
+# Ignore historical QA/devops snapshots under artifacts/ — they duplicate theme files and
+# NDJSON fragments that trigger ValidJSON false positives during `shopify theme check`.
+extends: theme-check:recommended
+
+ignore:
+  - "artifacts/**"

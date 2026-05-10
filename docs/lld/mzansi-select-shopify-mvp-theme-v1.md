@@ -133,7 +133,7 @@ Out of boundary for this document pass:
 - **Live DOM limitation:** Playwright reached **`/password`** on every tested preview URL. Password-page output was not treated as storefront evidence, so live storefront DOM behaviour remains **INCONCLUSIVE** until a later authenticated rerun.
 - **Preview messaging variants that remain part of the durable contract:** preview surfaces may use **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`**; announcement / trust / footer copy may shift to cautious variants on preview routes; and **Slice 17D** now adds durable promo / nav / browse / purchase-copy rules for preview-only storefront surfaces.
 - **Static vs live card distinction:** static homepage merchandising cards may preserve the approved visual affordances before full commerce wiring, but they must not be mistaken for live product-form behaviour. The accepted audit records that the static homepage **Add to Cart** button still has no handler and **`View all new in`** still falls back to **`#`**. By contrast, live collection/PDP foundations continue to use the Slice **12J / 13G / 13J** preview-safety rules rather than pretending static commerce is complete.
-- **Deferred-service map:** newsletter/email capture posture is now decided in **Slice 18A** (**PASS WITH NOTES**, **Option 2** — visual section may remain only as **honest disabled/deferred preview**; **private preview** forbids collection, submit activation, and external capture integrations — see **`## Slice 18A`**); the search category/select honesty path is now covered by **Slices 17F–17L** where applicable; wishlist/hearts remain mostly honest/deferred but still need a consistent launch strategy; account exposure remains deferred pending a Product Owner decision if customer accounts are not enabled; social icons and external links remain subject to final semantic/link-safety validation.
+- **Deferred-service map:** newsletter/email capture posture is now decided in **Slice 18A** (**PASS WITH NOTES**, **Option 2** — visual section may remain only as **honest disabled/deferred preview**; **private preview** forbids collection, submit activation, and external capture integrations — see **`## Slice 18A`**); the search category/select honesty path is now covered by **Slices 17F–17L** where applicable; **Slice 18D PASS WITH NOTES** locks the **private-preview posture** for account / wishlist / social (**no** live account entry points while accounts are disabled; **no** wishlist persistence; **no** live social **`href`**); **Slice 18E** applies that posture in theme chrome — see **`## Slice 18D and Slice 18E account wishlist social deferred chrome`**.
 - **Follow-up interaction-contract sequence:** **Slice 17B — Section link correctness**; **Slice 17C — Static card commerce honesty**; **Slice 17D — Promo/nav copy honesty** (**docs-only review + handoff recorded here**); **Slice 17E — Preview-safe copy implementation**; **Slice 17F — Search select honesty**; **Slice 17G — Desktop search select honesty implementation**; **Slice 17H — Newsletter/account/wishlist/social exposure decision**; **Slice 17I — Live regression after authenticated unlock**.
 
 ## Slice 17B section link correctness
@@ -169,7 +169,7 @@ Out of boundary for this document pass:
 - Department names such as **`Home & Living`**, **`Kitchen & Storage`**, **`Office & Desk`**, and **`Tech Accessories`** remain stable and may stay unchanged. Browse-first labels such as **`Shop All`**, **`Browse all products`**, **`Explore now`**, **`View product`**, **`Preview only`**, **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`** are acceptable while the storefront remains preview-only.
 - **`New In`** / **`New Arrivals`** may remain only when the wording is explicitly preview-qualified or clearly treated as a non-final merchandising rail rather than a live stock or launch claim.
 - Default global chrome must follow the same preview-safe rule set as preview-tagged PDP and collection surfaces. It is not sufficient for only preview routes to use cautious copy if the homepage, announcement bar, trust bar, promo strip, footer, or cart foundation still imply live commerce readiness.
-- Newsletter/update visual treatment and honest deferred interaction semantics for the footer module are sequenced under **Slice 18A** (Product Owner compliance decision) plus **Slice 18B** (**Senior UI/UX Designer** copy + interaction-state handoff) before any capture can be enabled — see **`## Slice 18A`**. Broader account / wishlist / social exposure remains subject to later Product Owner sequencing beyond **Slice 18A** scope.
+- Newsletter/update visual treatment and honest deferred interaction semantics for the footer module are sequenced under **Slice 18A** (Product Owner compliance decision) plus **Slice 18B** (**Senior UI/UX Designer** copy + interaction-state handoff) before any capture can be enabled — see **`## Slice 18A`**. Account / wishlist / social **preview chrome honesty** is decided in **Slice 18D** and implemented in **Slice 18E** — see **`## Slice 18D and Slice 18E account wishlist social deferred chrome`**.
 - **Slice 17E** implements the preview-safe copy standard from **Slice 17D** on bounded preview surfaces within its approved scope; it does **not** by itself authorize newsletter capture or integrations.
 - This slice is documentation-only. It does **not** implement theme changes, enable services, or approve public launch.
 
@@ -196,6 +196,24 @@ Out of boundary for this document pass:
 - **Accessibility:** Honest **`<label>`** (visually hidden) describing **paused / not collecting**; optional **`aria-describedby`** from **`nl-desc`**; group **`aria-label`** must **not** say “signup”. Disabled controls may sit outside tab order — heading + description supply context.
 - **Visual fidelity:** Preserve **`nl-row`** two-cell rhythm; match north-star **column presence** on **desktop + mobile** — adjust **opacity/cursor** via **`:disabled`** styling, not by deleting the module.
 - **Implementation sequencing:** **Senior Full-Stack Software Architect** after Product Owner accepts spec; **minimal-diff** theme slice only.
+
+## Slice 18D and Slice 18E account wishlist social deferred chrome
+
+- **Slice 18D verdict (Product Owner):** **PASS WITH NOTES** — canonical decision text and approved copy palette live in **`docs/project-control.md` `## Slice 18D`**.
+- **Slice 18E implementation scope:** honest **non-link / disabled** treatment only — **does not** enable customer accounts, login/register/orders, wishlist service, social destinations, checkout, capture, or persistence.
+
+### Theme mapping (implementation)
+
+- **`sections/site-header.liquid`**: desktop **Account** uses the same **`hdr-action hdr-action--deferred` span** pattern as deferred wishlist (**no** **`routes.account_url`**); mobile header wishlist keeps deferred icon treatment with **Slice 18D**-aligned assistive copy (**Favourites paused** / **Save feature coming later**).
+- **`sections/primary-navigation.liquid`**: mobile drawer **Sign in** becomes a **`button`**, **`type="button"`**, **`disabled`**, **`aria-disabled="true"`**, visible label **Customer accounts paused**; bottom-bar **Account** becomes **`bb-item bb-item--deferred`** (**no** account route). **Cart** links remain on **`routes.cart_url`** (cart remains a separate preview policy).
+- **`sections/site-footer.liquid`**: **Account** column removes **`routes.account_url`** / **`routes.account_login_url`** anchors; entries are **`f-link-deferred`** spans using approved strings (**Account coming later**, **Orders not available in preview**, **Save feature coming later**, **Addresses not available in preview**, **Customer accounts paused**); footer social icons stay non-navigating **`span.f-social--deferred`** placeholders with **Slice 18D**-aligned **`aria-label`** (**Social links coming later**; **Follow links paused during preview**; **Social profiles to be confirmed**).
+- **`sections/main-product-foundation.liquid`**: PDP wishlist control visible label **Favourites paused** with matching **`aria-label`**.
+- **`snippets/live-product-card.liquid`**, **`snippets/static-product-card.liquid`**, **`sections/main-search-foundation.liquid`**: heart controls remain native **`button`**, **`disabled`**, with standardized **Favourites paused / Save feature coming later** **`aria-label`** text (**no** **`localStorage`**, **no** customer APIs).
+- **`assets/theme.css`**: disabled **`button.drawer-btn`** styling supports the deferred drawer account control without mimicking a live **Sign in** link.
+
+### Tooling note
+
+- Repo-root **`shopify theme check --path . --fail-level error`** is configured to **ignore** **`artifacts/**`** via **`.theme-check.yml`** so historical devops JSON snapshots do not produce **ValidJSON** false positives against the active theme surface.
 
 ## Slice 17F search select honesty
 
@@ -491,11 +509,11 @@ Slice **14C** addresses **Slice 14A.1** QA findings that heart controls were **n
 
 Slice **14C** scope includes:
 
-- **`snippets/static-product-card.liquid`**: **`.p-wish`** is **`disabled`** with **`aria-disabled="true"`** and an **`aria-label`** that states wishlist is **not available yet** (replaces “Save … to wishlist” misleading copy).
-- **`snippets/live-product-card.liquid`**: same **`disabled` / `aria-disabled`** pattern; **`aria-label`** references the live **`product.title`**.
-- **`sections/site-header.liquid`**: wishlist chrome is a **`<span class="hdr-action hdr-action--deferred">`** (not an **`<a href="#wishlist">`** fake route) with **`aria-label`**.
-- **`sections/site-footer.liquid`**: wishlist Account column entry is a **`<span class="f-link-deferred">`** with visually hidden “coming soon”.
-- **`sections/main-product-foundation.liquid`**: **`Wishlist deferred`** control gains **`aria-disabled="true"`** + matching **`aria-label`**.
+- **`snippets/static-product-card.liquid`**: **`.p-wish`** is **`disabled`** with **`aria-disabled="true"`** and honest deferred **`aria-label`** (**Slice 18E** standardizes copy to **Favourites paused** / **Save feature coming later** — replaces misleading “save to wishlist” wording).
+- **`snippets/live-product-card.liquid`**: same **`disabled` / `aria-disabled`** pattern; **`aria-label`** references the live **`product.title`** with the same deferred vocabulary.
+- **`sections/site-header.liquid`**: wishlist chrome is a **`<span class="hdr-action hdr-action--deferred">`** (not an **`href`** fake route); **Slice 18E** also defers desktop **Account** the same way (**no** **`routes.account_*`**).
+- **`sections/site-footer.liquid`**: wishlist Account column entry is a **`<span class="f-link-deferred">`**; **Slice 18E** aligns visible copy to **Save feature coming later** and removes live account anchors from the column.
+- **`sections/main-product-foundation.liquid`**: PDP wishlist remains a disabled control; **Slice 18E** sets visible label **`Favourites paused`** with matching **`aria-label`**.
 - **`assets/theme.css`**: **`.hdr-action--deferred`**, **`.p-wish:disabled` / `[aria-disabled="true"]`**, **`.f-link-deferred`**, **`.visually-hidden`**.
 
 Slice **14C** explicit non-goals:

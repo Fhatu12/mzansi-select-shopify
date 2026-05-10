@@ -744,6 +744,14 @@ nav {
   color: var(--white);
 }
 
+button.drawer-btn:disabled,
+button.drawer-btn[disabled] {
+  cursor: default;
+  opacity: 0.72;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
 .bottom-bar {
   position: fixed;
   left: 0;
