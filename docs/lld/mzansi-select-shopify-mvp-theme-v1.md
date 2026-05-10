@@ -172,6 +172,26 @@ Out of boundary for this document pass:
 - Newsletter consent / handling wording and broader account / wishlist / social exposure decisions remain governed by **Slice 17G**, while **Slice 17D** establishes the wording standard that **Slice 17E** implements on bounded preview surfaces.
 - This slice is documentation-only. It does **not** implement theme changes, enable services, or approve public launch.
 
+## Slice 17F search select honesty
+
+- **Acceptance verdict:** **Slice 17F — Search select honesty decision** is accepted as **PASS WITH NOTES**.
+- Preserve the working Shopify search route and query submission contract that already exists in header chrome: the search input may continue to submit **`q`** to **`routes.search_url`**, and the mobile search path may continue using its hidden **`type=product`** value while live search/filter wiring remains deferred.
+- A search category/select control must **not** remain interactive if it does not change search scope or filtering behaviour in a real, user-visible way. An active-looking control whose options all submit the same value is misleading even when the underlying search route itself works.
+- The current desktop header select is therefore treated as a **preview honesty defect** rather than a missing feature request: all visible options currently resolve to the same **`type=product`** behaviour, so the UI implies department filtering that does not exist.
+- For preview-only operation, prefer the smallest honest treatment:
+  - keep the working search input and submit button
+  - keep the visual slot only if needed to preserve the approved header composition
+  - render the category/select as disabled or otherwise clearly deferred when it is not wired
+  - use short preview-safe wording such as **`All preview items`**, **`Preview categories`**, **`Category preview`**, or helper copy such as **`Department filter coming soon`**
+- Do **not** wire new department filtering, predictive search, Search & Discovery facets, or collection-scoped query logic inside a preview-honesty slice unless that behaviour already exists and can be exposed with minimal risk.
+- If a later approved implementation keeps the desktop control visible but inactive, it must use honest accessibility semantics:
+  - clear label text that reflects preview status rather than live filtering
+  - disabled or non-focusable semantics consistent with the chosen control pattern
+  - explanatory assistive text where needed so screen-reader users are not led to expect unavailable filtering
+  - keyboard focus should remain on the working search input and submit path rather than a fake filter
+- The search results template may remain a static-safe preview foundation while live search data stays deferred, but its visible controls must not overstate live query handling, ranking, category scoping, or filtering readiness.
+- **Recommended next implementation slice:** **Slice 17G** — minimal-diff desktop search select honesty implementation.
+
 ## Component / section inventory extracted from the HTML
 
 1. Top announcement bar with four trust/value points and inline SVG icons.
