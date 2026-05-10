@@ -13,14 +13,14 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: **Slice 17L** — remediate `/search` card CTA preview-commerce honesty failure (**this pass**)
-- Next implementation slice: **Slice 17L** — authenticated preview rerun for `/search` card CTA honesty after implementation
+- Active slice: **Slice 18A** — deferred-service decision backlog sequencing (Product Owner) — **next candidate: choose the next deferred-service decision slice**
+- Completed slice: **Slice 17L** — authenticated preview regression for `/search` card CTA preview-commerce honesty — **PASS** — Product Owner acceptance is **bounded to preview-only CTA honesty** and does **not** approve public launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, or product claims
 - Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof remains separate from Slice 15A feedback** and may resume per Product Owner sequencing (not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
 - Active owner: Product Owner
-- Next owner: **QA / Test Engineer** for **Slice 17L** authenticated preview rerun after remediation
-- Last accepted slice: **Slice 17I** authenticated preview regression for search-select honesty accepted **PASS WITH NOTES**; **Slice 17K** authenticated preview regression for search page body honesty is recorded as **FAIL** with evidence under **`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`**; **Slice 17F** search select honesty decision remains accepted **PASS WITH NOTES**; **Slice 17A** HTML interaction contract audit acceptance remains recorded canonically under the original evidence label **`Slice 16B — HTML foundation and interactive UI contract audit`**, and **Slice 16D** HTML foundation remediation verification remains accepted **PASS WITH NOTES**
-- Last committed slice: **Slice 17L** search card CTA preview-commerce remediation (**this pass**) — hardens `/search` card CTA honesty while preserving the working search route and earlier search-shell treatments
-- Last theme/code implementation slice: **Slice 17L** search card CTA preview-commerce remediation (**this pass**) — the `/search` page body now owns preview-only CTA semantics inside the section so search cards no longer rely on shared CTA parity for preview honesty
+- Next owner: **Product Owner** — choose next deferred-service decision slice
+- Last accepted slice: **Slice 17L** authenticated preview regression for `/search` card CTA preview-commerce honesty accepted **PASS** (**evidence: `artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`**) — **this closes the Slice 17J / 17K / 17L /search body honesty remediation chain as accepted** — Slice 17J resolved the `/search` body shell copy, badge, and placeholder-price posture; **Slice 17K** authenticated preview QA failed because `/search` cards still rendered active-looking **`Add to Cart`** CTAs; **Slice 17L** remediation now hardens the `/search` section to own its card CTA markup directly so search cards render disabled **`Preview only`** controls with explicit deferred semantics while preserving **`Preview item`** badges and **`Price to be confirmed`** placeholder pricing; **acceptance is bounded to this /search card CTA honesty fix and does not approve launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, or product claims**; earlier accepted results: **Slice 17I** authenticated preview regression for search-select honesty accepted **PASS WITH NOTES**; **Slice 17K** authenticated preview regression for search page body honesty is recorded as **FAIL** with evidence under **`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`** (now remediated by Slice 17L); **Slice 17F** search select honesty decision remains accepted **PASS WITH NOTES**; **Slice 17A** HTML interaction contract audit acceptance remains recorded canonically under the original evidence label **`Slice 16B — HTML foundation and interactive UI contract audit`**, and **Slice 16D** HTML foundation remediation verification remains accepted **PASS WITH NOTES**
+- Last committed slice: **Slice 17L** search card CTA preview-commerce remediation (**authenticated preview PASS**, hardens `/search` card CTA honesty while preserving the working search route and earlier search-shell treatments)
+- Last theme/code implementation slice: **Slice 17L** search card CTA preview-commerce remediation (authenticated preview PASS) — the `/search` page body now owns preview-only CTA semantics inside the section so search cards no longer rely on shared CTA parity for preview honesty
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation generally requires an authenticated preview session — **Slice 14A.1** (**PASS WITH NOTES**, headed Playwright after manual unlock) **did** exercise themed UI on required desktop routes + mobile subset (**`/`**, **`/collections/all`**, **`/products/cable-tidies-set`**) with preview theme **`151207542967`** — **Slice 14 post-fix** regression (**PASS WITH NOTES**, same preview theme in harness) **re-validated** after **14B/14D/14C** commits
   - **Slice 16D** verified the HTML foundation blocker/high remediation set as **PASS WITH NOTES** with **7 findings remediated** and **1 deferred Product Owner decision**; the remaining deferred item is intentional legal/support placeholder gating only, evidenced at **`artifacts/security/slice-16d-html-foundation-remediation-verification/20260509-232645/`**
@@ -100,8 +100,32 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Implementation result:** the `/search` section now owns its card CTA markup directly instead of relying on shared snippet parity for preview honesty, so search cards render disabled **`Preview only`** buttons with explicit preview-only semantics at the section source.
 - **Preserved preview posture:** **`Preview item`** badges remain, **`Price to be confirmed`** remains, and the decorative body-search button stays disabled as **`Preview only`**.
 - **Preserved route contract:** the working header and mobile search forms still own **`/search`** and **`/search?q=strainer&type=product`** behaviour; **Slice 17G** desktop search-select honesty remains intact.
-- **QA evidence to rerun against:** **`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`**.
-- **Recommended next owner:** **QA / Test Engineer** for the authenticated **Slice 17L** preview rerun.
+- **Theme commit:** **`7b5c3b6`** — implements the `/search` section card CTA honesty fix.
+
+## Slice 17L authenticated preview regression for /search card CTA honesty
+
+- **QA verdict:** **PASS** — Product Owner acceptance is **bounded to preview-only CTA honesty** and does **not** approve public launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, or product claims.
+- **Evidence folder:** **`artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`** — contains QA report, DOM analysis, network summary, console logs, and multi-viewport/multi-route screenshots.
+- **Preview theme tested:** **`151207542967 / Mzansi Select MVP Preview / unpublished`**.
+- **Store:** **`dropshippoc.myshopify.com`**.
+- **Auth method:** authenticated storefront preview using **`.auth/shopify-storefront-preview.json`**.
+- **Routes tested:**
+  - **`https://dropshippoc.myshopify.com/search?preview_theme_id=151207542967`** ✓
+  - **`https://dropshippoc.myshopify.com/search?q=strainer&type=product&preview_theme_id=151207542967`** ✓
+- **Viewports tested:** Desktop **1366x768** ✓ | Mobile **390x844** ✓
+- **QA check results:**
+  1. **Preview unlock confirmation:** **PASS** — pages loaded without remaining on `/password`; actual storefront DOM reachable.
+  2. **CTA text result:** **PASS** — all visible `/search` result card CTAs show **`Preview only`**; no card CTA shows **`Add to Cart`**.
+  3. **CTA type="button" result:** **PASS** — all result-card CTAs are button elements with `type="button"` attribute.
+  4. **Disabled state result:** **PASS** — all result-card CTAs are disabled and click attempts do not trigger commerce actions.
+  5. **aria-disabled result:** **PASS** — all result-card CTAs include `aria-disabled="true"`.
+  6. **Add to Cart absence result:** **PASS** — no enabled-looking **`Add to Cart`** button remains in `/search` body; no `/cart/add` or checkout endpoints called.
+  7. **Layout/route contract result:** **PASS** — card grid, spacing, visual rhythm, and responsive layout preserved on desktop and mobile; `/search?q=strainer&type=product` route preserved query parameters; page titles correct.
+  8. **Network result:** **PASS** — no `/cart/add`, checkout, predictive search, facets, collection-scoped search, or new filtering service endpoints appeared.
+- **Chain closure:** **Slice 17J / 17K / 17L /search body honesty remediation chain is now closed as ACCEPTED** — Slice 17J remediated shell copy/badges/pricing; **Slice 17K** failed on card CTAs; **Slice 17L** remediated card CTA honesty and now passes authenticated rerun.
+- **Acceptance scope (bounded):** this acceptance covers **only** the `/search` card CTA preview-only honesty fix and **does not** approve launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, newsletter collection, account enablement, wishlist enablement, or any product claims.
+- **Preserved scope:** predictive search, Search & Discovery facets, collection-scoped search, new filtering services remain deferred; working `/search` route contract and **Slice 17G** search-select honesty remain intact.
+- **Recommended next owner:** **Product Owner** to choose next deferred-service decision slice.
 
 ## Slice 17G desktop search select honesty implementation
 
