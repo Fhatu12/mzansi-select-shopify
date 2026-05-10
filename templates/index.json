@@ -12,8 +12,8 @@
       "type": "featured-product-grid",
       "settings": {
         "anchor_id": "best-sellers",
-        "section_title": "Best",
-        "section_accent": "Sellers",
+        "section_title": "Selected",
+        "section_accent": "Picks",
         "section_link_label": "View all products",
         "section_link_url": "/collections/all",
         "background_style": "cream",
@@ -28,9 +28,9 @@
       "type": "feature-tile-grid",
       "settings": {
         "anchor_id": "new-in",
-        "section_title": "New",
-        "section_accent": "Arrivals",
-        "section_link_label": "View all new in"
+        "section_title": "Latest",
+        "section_accent": "Preview",
+        "section_link_label": "View latest preview"
       }
     },
     "kitchen_storage": {

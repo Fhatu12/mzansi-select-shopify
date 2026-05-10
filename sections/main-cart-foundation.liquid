@@ -35,14 +35,13 @@
             {% render 'cart-line-item',
               image_src: 'headphones-premium.jpg' | asset_url,
               image_alt: 'Premium headphones',
-              badge_label: 'Sale',
-              badge_tone: 'sale',
+              badge_label: 'Preview',
+              badge_tone: 'preview',
               product_type: 'Tech Accessories',
               product_name: 'Premium Over-Ear Headphones',
               option_summary: 'Matte Black · Headphones only',
               price_now: 'R 899',
               price_was: 'R 1 199',
-              price_save: '25% off',
               quantity_value: '1',
               line_total: 'R 899'
             %}
@@ -84,7 +83,7 @@
           </div>
 
           <div class="cart-summary-actions">
-            <button class="btn-dark cart-checkout-shell" type="button">Proceed to Checkout</button>
+            <button class="btn-dark cart-checkout-shell" type="button">Checkout preview</button>
             <button class="btn-ghost cart-secondary-shell" type="button">Save for Later</button>
           </div>
 
@@ -93,7 +92,7 @@
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
-              Secure payment methods are shown before live checkout wiring is approved.
+              Checkout preview only. Payment methods launch in a later approved slice.
             </div>
             <div class="cart-summary-note">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -113,7 +112,7 @@
         <p class="cart-support-copy">{{ section.settings.support_copy }}</p>
         <div class="cart-support-pills">
           <span class="cart-support-pill">Fast fulfilment</span>
-          <span class="cart-support-pill">Secure payments</span>
+          <span class="cart-support-pill">Payments later</span>
           <span class="cart-support-pill">Easy returns</span>
         </div>
       </div>
@@ -199,7 +198,7 @@
       "type": "text",
       "id": "support_title",
       "label": "Support title",
-      "default": "Need a hand before checkout?"
+      "default": "Need a hand before preview?"
     },
     {
       "type": "textarea",
