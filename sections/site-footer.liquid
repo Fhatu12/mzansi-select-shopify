@@ -78,13 +78,13 @@
       </div>
 
       <div>
-        <div class="f-col-title">Stay in the Loop</div>
-        <p class="nl-desc">Get preview updates, latest preview notes and helpful updates.</p>
-        <form class="nl-row" aria-label="Newsletter signup preview">
-          <label class="visually-hidden" for="nlEmail">Email address</label>
-          <input class="nl-input" id="nlEmail" type="email" placeholder="Enter your email" autocomplete="email" inputmode="email">
-          <button class="nl-btn" type="button">Subscribe</button>
-        </form>
+        <div class="f-col-title">Updates coming later</div>
+        <p class="nl-desc" id="nl-desc-desktop">We are not collecting email addresses during private preview.</p>
+        <div class="nl-row" role="group" aria-label="Email updates not available during private preview">
+          <label class="visually-hidden" for="nlEmail">Email updates (paused - not collecting)</label>
+          <input class="nl-input" id="nlEmail" type="email" placeholder="Email sign-up paused" autocomplete="off" inputmode="email" aria-describedby="nl-desc-desktop" disabled aria-disabled="true">
+          <button class="nl-btn" type="button" disabled aria-disabled="true">Coming later</button>
+        </div>
       </div>
     </div>
 
@@ -210,13 +210,13 @@
     </div>
 
     <div class="footer-nl">
-      <div class="f-col-title">Stay in the Loop</div>
-      <p class="nl-desc">Get preview updates, latest preview notes and helpful updates.</p>
-      <form class="nl-row" aria-label="Newsletter signup preview">
-        <label class="visually-hidden" for="nlEmailMobile">Email address</label>
-        <input class="nl-input" id="nlEmailMobile" type="email" placeholder="Enter your email" autocomplete="email" inputmode="email">
-        <button class="nl-btn" type="button">Subscribe</button>
-      </form>
+      <div class="f-col-title">Updates coming later</div>
+      <p class="nl-desc" id="nl-desc-mobile">We are not collecting email addresses during private preview.</p>
+      <div class="nl-row" role="group" aria-label="Email updates not available during private preview">
+        <label class="visually-hidden" for="nlEmailMobile">Email updates (paused - not collecting)</label>
+        <input class="nl-input" id="nlEmailMobile" type="email" placeholder="Email sign-up paused" autocomplete="off" inputmode="email" aria-describedby="nl-desc-mobile" disabled aria-disabled="true">
+        <button class="nl-btn" type="button" disabled aria-disabled="true">Coming later</button>
+      </div>
     </div>
 
     <div class="footer-bottom">

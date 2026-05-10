@@ -2907,6 +2907,14 @@ footer {
   border-color: var(--gold);
 }
 
+.nl-input:disabled {
+  color: var(--text-muted);
+  background: var(--cream);
+  cursor: not-allowed;
+  opacity: 1;
+  -webkit-text-fill-color: var(--text-muted);
+}
+
 .nl-btn {
   background: var(--black);
   color: var(--white);
@@ -2921,6 +2929,19 @@ footer {
 
 .nl-btn:hover {
   background: var(--gold);
+}
+
+.nl-btn:disabled,
+.nl-btn[aria-disabled="true"] {
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: .85;
+}
+
+.nl-btn:disabled:hover,
+.nl-btn[aria-disabled="true"]:hover {
+  background: var(--border);
 }
 
 .footer-bottom {
