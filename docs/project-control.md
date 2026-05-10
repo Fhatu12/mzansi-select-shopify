@@ -13,20 +13,21 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Current State
 
-- Active slice: **Slice 18B** — newsletter disabled/deferred copy and interaction state (**Senior UI/UX Designer**) — awaits theme implementation aligned to **Slice 18A** **Option 2**
-- Completed slice: **Slice 18A** — newsletter compliance and handling decision — **PASS WITH NOTES** — **approved Option 2** (keep visual newsletter/update section; honest disabled/deferred preview only — **private preview**: no newsletter/update email capture; disable collection + submit; **no** Shopify Email, Mailchimp, Klaviyo, Google Forms, apps, or other external capture; **no** tester/customer emails)
+- Active slice: **Senior Full-Stack Software Architect** — implement accepted **Slice 18B** footer newsletter deferred state (**bounded to `sections/site-footer.liquid` and minimal `assets/theme.css` if needed**)
+- Completed slice: **Slice 18B** — newsletter disabled/deferred copy and interaction state — **PASS WITH NOTES** — **UX specification recorded** (**Senior UI/UX Designer** docs pass accepted by **Product Owner**; see **`## Slice 18B`**)
+- Completed slice (prior): **Slice 18A** — newsletter compliance and handling decision — **PASS WITH NOTES** — **approved Option 2** (keep visual newsletter/update section; honest disabled/deferred preview only — **private preview**: no newsletter/update email capture; disable collection + submit; **no** Shopify Email, Mailchimp, Klaviyo, Google Forms, apps, or other external capture; **no** tester/customer emails)
 - Completed slice (prior): **Slice 17L** — authenticated preview regression for `/search` card CTA preview-commerce honesty — **PASS** — Product Owner acceptance is **bounded to preview-only CTA honesty** and does **not** approve public launch, production promotion, final pricing, supplier verification, delivery promises, checkout/payment enablement, or product claims
 - Next supplier proof backlog (Product Owner sequencing): **Slice 14A.1** baseline + **Slice 14 post-fix** regression confirm **P0** theme passes **14B**, **14D**, **14C** are **committed** and **QA-validated** — **supplier-proof remains separate from Slice 15A feedback** and may resume per Product Owner sequencing (not automatic) — **`Slice 13N.2`**, **`Ecomstock` Sink Strainer** backup proof closure, **`Gadgetgyz` acrylic `Slice 13L` gates`** — **`Cable Tidies Set`** **Slice 13O** (`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`) — **implementation sequencing (storefront):** **1.** **14B** **2.** **14D** **3.** **14C** — **all committed** — **4.** **14E** / **14G** (**P1**)
-- Active owner: **Senior UI/UX Designer** (**Slice 18B** UX pass — newsletter deferred copy + interaction state)
-- Next owner: **Senior UI/UX Designer** for **Slice 18B** — Newsletter disabled/deferred copy and interaction state
-- Last accepted slice: **Slice 18A** Newsletter compliance and handling decision — accepted **PASS WITH NOTES** (**Option 2** approved — see **`## Slice 18A`**); **prior last accepted slice:** **Slice 17L** authenticated preview **`/search` card CTA** honesty accepted **PASS** (**evidence: `artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`**) — **closes 17J / 17K / 17L** chain — acceptance **bounded** to preview CTA honesty only; earlier: **Slice 17I PASS WITH NOTES**; **Slice 17K FAIL** remediated (**`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`**); **Slice 17F PASS WITH NOTES**; **Slice 17A** under **`Slice 16B`** evidence label; **Slice 16D PASS WITH NOTES**
+- Active owner: **Senior Full-Stack Software Architect**
+- Next owner: **Senior Full-Stack Software Architect** — implement accepted **Slice 18B** footer deferred state, then return to **Product Owner** for acceptance
+- Last accepted slice: **Slice 18B** Newsletter disabled/deferred copy and interaction state — accepted **PASS WITH NOTES** (**approved visible copy + honest disabled/deferred interaction state recorded in `## Slice 18B`**); **prior last accepted slice:** **Slice 18A** Newsletter compliance and handling decision — **PASS WITH NOTES** (**Option 2** approved — see **`## Slice 18A`**); earlier: **Slice 17L** authenticated preview **`/search` card CTA** honesty accepted **PASS** (**evidence: `artifacts/qa/slice-17l-authenticated-preview-search-card-cta-honesty-20260510-143839/`**) — **closes 17J / 17K / 17L** chain — acceptance **bounded** to preview CTA honesty only; **Slice 17I PASS WITH NOTES**; **Slice 17K FAIL** remediated (**`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`**); **Slice 17F PASS WITH NOTES**; **Slice 17A** under **`Slice 16B`** evidence label; **Slice 16D PASS WITH NOTES**
 - Last committed slice: **Slice 17L** search card CTA preview-commerce remediation (**authenticated preview PASS**, hardens `/search` card CTA honesty while preserving the working search route and earlier search-shell treatments)
 - Last theme/code implementation slice: **Slice 17L** search card CTA preview-commerce remediation (authenticated preview PASS) — the `/search` page body now owns preview-only CTA semantics inside the section so search cards no longer rely on shared CTA parity for preview honesty
 - Current blockers:
   - The five approved preview-only products now exist in Shopify Admin with Slice 13G safety tags and placeholder pricing, are published to **Online Store** for preview review only, and remain `Supplier proof in progress` only — not `Supplier verified`, not import-approved, not final-priced, and not launch-approved; unauthenticated preview-theme URL checks still hit the storefront password wall, so visual PDP/collection confirmation generally requires an authenticated preview session — **Slice 14A.1** (**PASS WITH NOTES**, headed Playwright after manual unlock) **did** exercise themed UI on required desktop routes + mobile subset (**`/`**, **`/collections/all`**, **`/products/cable-tidies-set`**) with preview theme **`151207542967`** — **Slice 14 post-fix** regression (**PASS WITH NOTES**, same preview theme in harness) **re-validated** after **14B/14D/14C** commits
   - **Slice 16D** verified the HTML foundation blocker/high remediation set as **PASS WITH NOTES** with **7 findings remediated** and **1 deferred Product Owner decision**; the remaining deferred item is intentional legal/support placeholder gating only, evidenced at **`artifacts/security/slice-16d-html-foundation-remediation-verification/20260509-232645/`**
   - **Slice 16C** removes launch-surface exposure to placeholder legal/support content by replacing customer-facing help/company/contact fragments and dead social/account fragments with honest deferred text, adding `noindex,nofollow` to placeholder `about`/`contact` page handles, and preserving final publication as a separate Product Owner approval gate; **private-preview work may continue from the HTML-foundation perspective**, but **public launch remains blocked** until a later content/compliance slice completes publication-ready legal/support copy, approved routing, and Product Owner launch-preparation approval
-  - **Slice 17A** accepted the interaction-contract audit as **PASS WITH NOTES** without code fixes: **`View all new in`** still fell back to **`#`**, the static homepage **Add to Cart** button remained an unwired mock, newsletter/email capture framing required a later Product Owner decision (**now addressed in Slice 18A — PASS WITH NOTES, Option 2**; theme honesty pass remains **Slice 18B**), the search category select needs an honesty/wiring decision (**Slice 17F–17L** remediated **`/search` select + body + card honesty** where applicable), wishlist/hearts remain mostly honest/deferred but still need a consistent launch strategy, account exposure needs a Product Owner decision if customer accounts stay disabled, preview-only promo / Best Sellers / Gift Cards / Deals wording still needs honesty review, and social/external links still need final semantic / link-safety validation
+  - **Slice 17A** accepted the interaction-contract audit as **PASS WITH NOTES** without code fixes: **`View all new in`** still fell back to **`#`**, the static homepage **Add to Cart** button remained an unwired mock, newsletter/email capture framing required a later Product Owner decision (**Slice 18A — PASS WITH NOTES, Option 2** + **Slice 18B — PASS WITH NOTES UX spec recorded**; **theme implementation of 18B outstanding**), the search category select needs an honesty/wiring decision (**Slice 17F–17L** remediated **`/search` select + body + card honesty** where applicable), wishlist/hearts remain mostly honest/deferred but still need a consistent launch strategy, account exposure needs a Product Owner decision if customer accounts stay disabled, preview-only promo / Best Sellers / Gift Cards / Deals wording still needs honesty review, and social/external links still need final semantic / link-safety validation
   - **Slice 17B** resolves the section-level dead/hash link defect by removing the shared **`section-heading`** **`href="#"`** fallback and rendering blank section-link destinations as honest deferred copy instead; the New Arrivals heading no longer points to a dead hash, while section links with approved URLs remain live
   - **Slice 17C** resolves the static-card commerce honesty defect by replacing the unwired static **Add to Cart** button with a disabled **Preview only** control on static merchandising cards; no cart, checkout, or purchase workflow is enabled, and live product-card / PDP navigation remains unchanged
   - **Slice 17D** docs-only honesty review finds that unsupported promo and commerce language still overstates readiness on preview-only surfaces: **`Best Sellers`**, **`Deals`**, **`Gift Cards`**, **`Limited Time Offer`**, **`Up to 30% off`**, **`Shop the Sale`**, **`Shop now`**, **`Secure Checkout` / `Secure Payments`**, strong delivery / returns promises, newsletter incentive copy, and checkout-led cart wording should be replaced or deferred before wider private preview; preview-safe replacements are now documented in the LLD, while newsletter and account-service decisions remain sequenced separately under **Slices 17E** and **17G**
@@ -63,7 +64,7 @@ Mzansi Select Shopify MVP Theme Conversion
   - `Jewellery / accessory organiser` is now the preferred replacement-direction `Candidate`, but it must remain blocked until the commercial-readiness gates are met and Product Owner records formal replacement approval
   - Expansion-ready departments remain deferred as launch destinations until a later approved catalogue expansion pass
 - Deferred items:
-  - Newsletter / update **email capture** stays **disabled** for private preview under **Slice 18A** (**PASS WITH NOTES**, **Option 2**) until **Slice 18B** UX aligns honest deferred copy/state and a later approved slice may implement — **no** Shopify Email, Mailchimp, Klaviyo, Google Forms, apps, or other external capture connected; **no** tester/customer emails collected
+  - Newsletter / update **email capture** stays **disabled** for private preview under **Slice 18A** (**PASS WITH NOTES**, **Option 2**); **Slice 18B** UX copy/interaction spec is **accepted PASS WITH NOTES** — **theme implementation still outstanding** — **no** Shopify Email, Mailchimp, Klaviyo, Google Forms, apps, or other external capture connected; **no** tester/customer emails collected
   - Slice 12K preview catalogue product staging remains paused/deferred for automation-style flows; Slice 13I completed a **narrow** Product Owner–approved manual/API product staging pass for exactly five handles only
   - Shopify Admin automation and Playwright/Admin staging remain paused/deferred unless Product Owner explicitly approves a broader write-action scope
   - Product import remains deferred and unapproved
@@ -76,15 +77,15 @@ Mzansi Select Shopify MVP Theme Conversion
 - Product import status: Not approved for bulk/import workflows; Slice 13I created five **preview-only** catalogue rows in Admin only
 - Shopify push/publish status: No **live** theme publish, no live theme overwrite; five products published to **Online Store** sales channel only for password-gated preview (Slice 13I); Slice 13J used **targeted** CLI push to **unpublished** preview theme `151207542967` for QA only (does not publish live)
 - Artifacts policy: `artifacts/` must remain untracked and uncommitted unless separately approved
-- Last tracker update: 2026-05-10 **docs-only tracker sync** — Product Owner accepts **Slice 18A** Newsletter compliance and handling as **PASS WITH NOTES** (**Option 2**) — queues **Slice 18B** (Senior UI/UX Designer); **prior sync:** **Slice 17L** **`/search` card CTA** **PASS**, **17J/17K/17L** chain closed
-- Tracker status: **Slice 18A PASS WITH NOTES** (newsletter: **private preview**, **no capture**, **no integrations**) + **Slice 17K FAIL + Slice 17L remediation completed** — **Slice 14B / 14C / 14D**, **Slice 17B**, **Slice 17C**, **Slice 17E**, **Slice 17G**, and PDP preview-only safety remain intact; desktop **`/search` select/card** honest-deferred; working **`/search`** route intact
+- Last tracker update: 2026-05-10 **Slice 18B** — **PASS WITH NOTES** accepted for newsletter deferred footer-column UX specification (**Senior UI/UX Designer** handoff accepted by **Product Owner**; **`site-footer`** implementation next); **prior:** **Slice 18A PASS WITH NOTES**, **Slice 17L `/search` CTA PASS**
+- Tracker status: **Slice 18A PASS WITH NOTES** + **Slice 18B PASS WITH NOTES** (newsletter: **honest deferred preview**, **implementation pending**) + **Slice 17L** remediation completed — storefront **`/search`** honesty posture intact — **live theme newsletter column still resembles north-star signup until architect implements Slice 18B**
 - Catalogue plan status: **Slice 13O** (**`3bf260b…`**) + **`docs/catalogue`** companions **committed** — **canonical narrative** **`project-control`** + **`mzansi-select-25-product-readiness-v1`** + **`local-supplier-sourcing-matrix-v1`**
-- Documentation sync status: **current for `project-control`** after **Slice 18A** docs-only tracker sync (**newsletter compliance — PASS WITH NOTES**)
-- LLD status: **updated** for **Slice 18A** newsletter deferred-service Product Owner decision (see **Slice 18A** sections in **`docs/lld`** and **`project-control`**)
+- Documentation sync status: **current for `project-control`** after **Slice 18B** UX specification sync (**newsletter deferred copy + interaction**)
+- LLD status: **updated** for durable **Slice 18B** newsletter/update **preview-only UX rules** (**`docs/lld`** **Slice 18B** section)
 
 ## Current active pass
 
-**Docs-only tracker sync (this pass):** record Product Owner **PASS WITH NOTES** for **Slice 18A** — Newsletter compliance and handling — **Option 2** approved; private-preview posture, POPIA/privacy rationale, future capture gates, and **Slice 18B** handoff (**Senior UI/UX Designer**); no theme/code changes in this pass.
+**Documentation pass:** **Slice 18B** — record accepted **PASS WITH NOTES** UX specification for the newsletter/update footer column (**Option 2** honest deferred state); theme/Liquid/CSS/JS implementation remains a separate bounded slice.
 
 ## Slice 18A Newsletter compliance and handling decision (Product Owner PASS WITH NOTES)
 
@@ -110,7 +111,59 @@ Mzansi Select Shopify MVP Theme Conversion
   - unsubscribe / contact-to-stop expectation
   - POPIA / customer-trust review
 - **Bounded acceptance:** this decision **does not** approve launch, production promotion, final pricing, supplier verification, delivery promises, product claims, checkout/cart/payment enablement, customer accounts, wishlist/favourites, Shopify Admin edits, catalogue changes, **`/products`** import expansion, Shopify theme push/publish, live theme overwrite, email-service onboarding, tester/customer data collection, predictive search, facets/collection-scoped search, or Supplier verified posture.
-- **Recommended next owner:** **Senior UI/UX Designer** for **Slice 18B —** Newsletter disabled/deferred copy and interaction state (**theme implementation sequencing after UX sign-off**, still **minimal-diff** versus Option 2 when implemented).
+- **Recommended next owner (at 18A close):** **Senior UI/UX Designer** for **Slice 18B** — satisfied by **`## Slice 18B`** UX record.
+
+## Slice 18B Newsletter disabled/deferred copy and interaction state (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 18B** as **PASS WITH NOTES**.
+- **Pass type:** **UX / design specification only** — theme implementation remains separate and bounded.
+- **Product Owner basis:** **Slice 18A** **Option 2** — keep the **visual** newsletter/update column; make collection **honestly disabled/deferred** during private preview.
+- **North-star reference (`mzansi-select-theme.html` / `mzansi-select-mobile.html`):** fifth footer column title **Stay in the Loop**; body **Get exclusive offers, new arrivals and helpful updates.**; **`input.nl-input`** + **`button.nl-btn` Subscribe** with mock **`subscribe()`** — **do not** ship this copy or behaviour to the storefront; HTML remains **design reference**, not truthful preview copy.
+- **Current Shopify theme locate:** **`sections/site-footer.liquid`** — desktop grid newsletter column (**~lines 80–87**) and **`footer-mobile` `footer-nl`** block (**~lines 212–219**) — duplicated markup; **`assets/theme.css`** **`.nl-*`** rules style the row.
+- **UX verdict:** Adopt **Option A copy** with **Option C interaction pattern** — clearest honesty with **minimal layout change** (retain **`nl-row` / `nl-input` / `nl-btn`** silhouette).
+
+### Approved visible copy (desktop + mobile)
+
+| Element | Approved string |
+|---------|----------------|
+| Column title (**`f-col-title`**) | **Updates coming later** |
+| Description (**`nl-desc`**) | **We are not collecting email addresses during private preview.** |
+| Email control placeholder | **Email sign-up paused** |
+| Button visible label | **Coming later** |
+
+- **Banned customer-facing verbs/phrases for this preview state:** Subscribe, Sign up, Get updates, Join the list, Exclusive offers, Discounts, Launch alerts, Notify me, Newsletter signup (including **`aria-label`** values that imply signup).
+- **Helper / honesty:** one-line **`nl-desc`** above is sufficient; do **not** promise future email service, timelines, discounts, or product availability.
+
+### Interaction state
+
+- **Email field:** **`disabled`**, **`aria-disabled="true"`** — **not** `readonly` (readonly still invites typing expectation). Keep **`type="email"`** for visual parity. Remove **`name`** attribute if present to avoid accidental form payload usage. **`autocomplete="off"`** on private preview.
+- **Button:** **`type="button"`**, **`disabled`**, **`aria-disabled="true"`** — must **not** submit, POST, navigate, open mailto, nor trigger Shopify customer APIs.
+- **Container:** Prefer **`<div role="group" …>`** **or** keep **`<form novalidate>`** with **`onsubmit="return false"`** / **no `action`** — **no** `method="post"` to **`/contact`**, storefront API, Klaviyo, etc.
+- **`aria-label` / region:** Replace **Newsletter signup preview** with e.g. **Email updates — not available during private preview** (adjust wording if length breaks AT — keep “not available” + “preview” intent).
+
+### Accessibility
+
+- Visually-hidden **`<label>`** should reference the paused state, e.g. **Email updates (paused — not collecting)** paired with **`id`** on **`input`**.
+- Link **`nl-desc`** to field via **`aria-describedby`** on **`input`** (optional duplicate on **`role="group"`**).
+- **Focus:** disabled controls are **skipped** from tab order — acceptable; users read heading + description first.
+- **Contrast:** reuse existing **`nl-disabled`** / deferred styling patterns (**`opacity`**) consistent with **`f-social--deferred`** language in theme.
+
+### Visual fidelity
+
+- **Keep column** on **desktop grid** and **mobile `footer-nl`** — preserves north-star footer rhythm.
+- **Do not remove** **`nl-row`**; **avoid** shortening button to meaningless icon-only.
+- If disabled styling looks “broken,” adjust **CSS only** (**`:disabled`**) within existing token spacing — **no** layout flatten.
+
+### Senior Full-Stack Software Architect — implementation constraints
+
+- **Scope boundary:** **`sections/site-footer.liquid`** newsletter blocks (**desktop + mobile**); **`assets/theme.css`** **`.nl-input:disabled`** / **`.nl-btn:disabled`** (or shared deferred class) — **minimal diff**.
+- **Out of scope:** enabling capture, Shopify Email / apps, third-party snippets, **`customer`** mutation, AJAX subscribe, **`contact` form** backends, **`newsletter`** Liquid tag wiring, Checkout, cart, PDP, **`/search`**, hero/promos.
+- **Verify:** **`grep`** theme for **`Subscribe`**, **`nlEmail`**, **`newsletter`**, **`subscribe(`** — ensure no orphaned mock JS.
+- **QA spot-check:** authenticated preview DOM shows **both** controls disabled, button text honest, **`aria`** reflects paused collection, network shows **no** subscribe endpoints.
+
+### Handoff acknowledgement
+
+- **Recommended next owner:** **Senior Full-Stack Software Architect** — implement the accepted minimal theme slice, then return to **Product Owner** for storefront acceptance.
 
 ## Slice 17J search page body preview-commerce honesty remediation
 

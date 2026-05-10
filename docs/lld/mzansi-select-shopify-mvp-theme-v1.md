@@ -180,7 +180,22 @@ Out of boundary for this document pass:
 - **Compliance rationale:** enabling capture would engage **POPIA** and adjacent obligations (consent clarity, purpose limitation, privacy-notice alignment, retention/deletion, access control, breach/export posture, unsubscribe / stop-collection expectations, customer-trust review) that are **out of scope** for the current password-gated preview posture.
 - **Preconditions before any future capture approval:** consent wording; purpose of collection; privacy-notice linkage; responsible party / contact identity; consent timestamp / source capture; storage location; retention / deletion rule; access control; export / backup handling; unsubscribe / contact-to-stop expectation; **POPIA** / customer-trust review.
 - **Bounded:** does **not** authorize launch, catalogue/Admin changes, theme publish, checkout/cart/payment, accounts, wishlist wiring, product claims, pricing, delivery promises, external integrations, or **`Supplier verified`** posture.
-- **Recommended next slice:** **Slice 18B — Newsletter disabled/deferred copy and interaction state** (**Senior UI/UX Designer**).
+- **Recommended next slice:** **Slice 18B — Newsletter disabled/deferred copy and interaction state** (**Senior UI/UX Designer**) — **completed as UX spec** (see **`## Slice 18B`**).
+
+## Slice 18B Newsletter disabled/deferred copy and interaction state (PASS WITH NOTES durable rules)
+
+- **Verdict:** **PASS WITH NOTES** — Product Owner accepts this UX specification as the approved theme-implementation contract for private preview.
+- **Scope:** Footer newsletter/update **visual column only** — **`sections/site-footer.liquid`** (**desktop + mobile `footer-nl`**) + **`assets/theme.css`** **`.nl-*`** disabled styling as needed. **No capture**, **no integrations** — **Slice 18A Option 2**.
+- **Recommended customer copy (private preview):**
+  - Title: **Updates coming later**
+  - **`nl-desc`:** **We are not collecting email addresses during private preview.**
+  - **`input` placeholder:** **Email sign-up paused**
+  - **Button label:** **Coming later**
+- **Interaction contract:** **`input type="email"`** and **primary control** are **`disabled`** with **`aria-disabled="true"`**; **button** **`type="button"`**, **`disabled`** — **no** submit, **no** POST, **no** third-party endpoints, **no** mailto signup flow. **Prefer `disabled` over `readonly`** so focus/entry is not implied.
+- **Language guardrails:** Avoid Subscribe, Sign up, Get updates, Join, Exclusive offers, Discounts, Notify, Launch alerts, and **`aria-label`** text that reads as live signup.
+- **Accessibility:** Honest **`<label>`** (visually hidden) describing **paused / not collecting**; optional **`aria-describedby`** from **`nl-desc`**; group **`aria-label`** must **not** say “signup”. Disabled controls may sit outside tab order — heading + description supply context.
+- **Visual fidelity:** Preserve **`nl-row`** two-cell rhythm; match north-star **column presence** on **desktop + mobile** — adjust **opacity/cursor** via **`:disabled`** styling, not by deleting the module.
+- **Implementation sequencing:** **Senior Full-Stack Software Architect** after Product Owner accepts spec; **minimal-diff** theme slice only.
 
 ## Slice 17F search select honesty
 
