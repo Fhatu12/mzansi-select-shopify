@@ -16,14 +16,12 @@
         placeholder="{{ settings.search_placeholder | escape }}"
         autocomplete="off"
       >
-      <label class="visually-hidden" for="desktopSearchType">Browse category</label>
-      <select class="search-cat" id="desktopSearchType" name="type">
-        <option value="product">All categories</option>
-        <option value="product">Home &amp; Living</option>
-        <option value="product">Kitchen &amp; Storage</option>
-        <option value="product">Office &amp; Desk</option>
-        <option value="product">Tech Accessories</option>
+      <label class="visually-hidden" for="desktopSearchType">Preview category filter</label>
+      <input type="hidden" name="type" value="product">
+      <select class="search-cat search-cat--deferred" id="desktopSearchType" disabled aria-disabled="true" aria-describedby="desktopSearchTypeNote">
+        <option>All preview items</option>
       </select>
+      <span class="visually-hidden" id="desktopSearchTypeNote">Department filter coming soon. Search currently runs across all preview items.</span>
       <button class="search-btn" type="submit" aria-label="Search">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="8"></circle>

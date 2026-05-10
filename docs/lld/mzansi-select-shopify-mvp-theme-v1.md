@@ -134,7 +134,7 @@ Out of boundary for this document pass:
 - **Preview messaging variants that remain part of the durable contract:** preview surfaces may use **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`**; announcement / trust / footer copy may shift to cautious variants on preview routes; and **Slice 17D** now adds durable promo / nav / browse / purchase-copy rules for preview-only storefront surfaces.
 - **Static vs live card distinction:** static homepage merchandising cards may preserve the approved visual affordances before full commerce wiring, but they must not be mistaken for live product-form behaviour. The accepted audit records that the static homepage **Add to Cart** button still has no handler and **`View all new in`** still falls back to **`#`**. By contrast, live collection/PDP foundations continue to use the Slice **12J / 13G / 13J** preview-safety rules rather than pretending static commerce is complete.
 - **Deferred-service map:** newsletter collection remains deferred pending **Product Owner + Security / Compliance** handling approval; the search category select remains deferred pending an honesty/wiring decision; wishlist/hearts remain mostly honest/deferred but still need a consistent launch strategy; account exposure remains deferred pending a Product Owner decision if customer accounts are not enabled; social icons and external links remain subject to final semantic/link-safety validation; and live authenticated interaction verification remains deferred until password-gated preview access is available.
-- **Follow-up interaction-contract sequence:** **Slice 17B — Section link correctness**; **Slice 17C — Static card commerce honesty**; **Slice 17D — Promo/nav copy honesty** (**docs-only review + handoff recorded here**); **Slice 17E — Preview-safe copy implementation**; **Slice 17F — Search select honesty**; **Slice 17G — Newsletter/account/wishlist/social exposure decision**; **Slice 17H — Live regression after authenticated unlock**.
+- **Follow-up interaction-contract sequence:** **Slice 17B — Section link correctness**; **Slice 17C — Static card commerce honesty**; **Slice 17D — Promo/nav copy honesty** (**docs-only review + handoff recorded here**); **Slice 17E — Preview-safe copy implementation**; **Slice 17F — Search select honesty**; **Slice 17G — Desktop search select honesty implementation**; **Slice 17H — Newsletter/account/wishlist/social exposure decision**; **Slice 17I — Live regression after authenticated unlock**.
 
 ## Slice 17B section link correctness
 
@@ -169,7 +169,7 @@ Out of boundary for this document pass:
 - Department names such as **`Home & Living`**, **`Kitchen & Storage`**, **`Office & Desk`**, and **`Tech Accessories`** remain stable and may stay unchanged. Browse-first labels such as **`Shop All`**, **`Browse all products`**, **`Explore now`**, **`View product`**, **`Preview only`**, **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`** are acceptable while the storefront remains preview-only.
 - **`New In`** / **`New Arrivals`** may remain only when the wording is explicitly preview-qualified or clearly treated as a non-final merchandising rail rather than a live stock or launch claim.
 - Default global chrome must follow the same preview-safe rule set as preview-tagged PDP and collection surfaces. It is not sufficient for only preview routes to use cautious copy if the homepage, announcement bar, trust bar, promo strip, footer, or cart foundation still imply live commerce readiness.
-- Newsletter consent / handling wording and broader account / wishlist / social exposure decisions remain governed by **Slice 17G**, while **Slice 17D** establishes the wording standard that **Slice 17E** implements on bounded preview surfaces.
+- Newsletter consent / handling wording and broader account / wishlist / social exposure decisions remain governed by **Slice 17H**, while **Slice 17D** establishes the wording standard that **Slice 17E** implements on bounded preview surfaces.
 - This slice is documentation-only. It does **not** implement theme changes, enable services, or approve public launch.
 
 ## Slice 17F search select honesty
@@ -191,6 +191,14 @@ Out of boundary for this document pass:
   - keyboard focus should remain on the working search input and submit path rather than a fake filter
 - The search results template may remain a static-safe preview foundation while live search data stays deferred, but its visible controls must not overstate live query handling, ranking, category scoping, or filtering readiness.
 - **Recommended next implementation slice:** **Slice 17G** — minimal-diff desktop search select honesty implementation.
+
+## Slice 17G desktop search select honesty implementation
+
+- **Implementation result:** the approved minimal-diff desktop honesty change is now applied in the live theme code.
+- The desktop header keeps its working **GET** search form to **`routes.search_url`**, preserves the **`q`** input and submit button, and continues to scope searches through **`type=product`**.
+- The visible desktop category/select no longer presents as a working department filter. It now renders as a disabled preview-only control labelled **`All preview items`**, while a hidden **`type=product`** input preserves the existing search-route contract.
+- Deferred explanatory accessibility copy communicates that department filtering is still coming later, and mobile search remains unchanged because it never exposed the misleading desktop category select.
+- No predictive search, Search & Discovery facets, collection-scoped search, or new filtering service is introduced by this slice.
 
 ## Component / section inventory extracted from the HTML
 

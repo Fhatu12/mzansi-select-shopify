@@ -214,6 +214,14 @@ header {
   white-space: nowrap;
 }
 
+.search-cat--deferred,
+.search-cat--deferred:disabled {
+  color: var(--text-muted);
+  opacity: 1;
+  cursor: not-allowed;
+  -webkit-text-fill-color: var(--text-muted);
+}
+
 .search-btn {
   background: var(--black);
   border: none;
