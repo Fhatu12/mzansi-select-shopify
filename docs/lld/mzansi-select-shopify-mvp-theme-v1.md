@@ -200,6 +200,16 @@ Out of boundary for this document pass:
 - Deferred explanatory accessibility copy communicates that department filtering is still coming later, and mobile search remains unchanged because it never exposed the misleading desktop category select.
 - No predictive search, Search & Discovery facets, collection-scoped search, or new filtering service is introduced by this slice.
 
+## Slice 17I authenticated preview regression for search select honesty
+
+- **Acceptance verdict:** **Slice 17I** is accepted as **PASS WITH NOTES**.
+- **Evidence:** **`artifacts/qa/slice-17i-authenticated-preview-search-select-regression-rerun/20260510-142913/`**.
+- **Validated preview routes:** **`/?preview_theme_id=151207542967`**, **`/search?preview_theme_id=151207542967`**, and **`/search?q=strainer&type=product&preview_theme_id=151207542967`** on **`151207542967 / Mzansi Select MVP Preview / unpublished`**.
+- **Accepted results:** desktop search submit **PASS WITH NOTES**; **`type=product`** preservation **PASS**; disabled/deferred desktop search select honesty **PASS**; mobile search regression **PASS WITH NOTES**; no predictive search, facets, collection-scoped search, or new filtering service **PASS**; no obvious desktop or mobile header regression found.
+- **Validated interaction contract:** the real unpublished preview storefront now confirms that the desktop header search continues to submit to Shopify **`/search`**, preserves **`q`** and **`type=product`**, and keeps the visible desktop scope control in an honest disabled/deferred state labelled **`All preview items`** while mobile search remains unchanged.
+- **Separate follow-up gap:** the **`/search`** page body still renders the older static preview-search foundation with placeholder commerce cards and visible **Add to Cart** buttons. This is a **pre-existing search-surface honesty gap**, not a regression introduced by the **Slice 17G** header/select change.
+- **Recommended next slice:** **Slice 17J — Search page body preview-commerce honesty remediation**.
+
 ## Component / section inventory extracted from the HTML
 
 1. Top announcement bar with four trust/value points and inline SVG icons.
