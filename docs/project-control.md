@@ -92,6 +92,17 @@ Mzansi Select Shopify MVP Theme Conversion
 - **North-star fidelity:** the desktop header composition, search route, and overall chrome rhythm remain intact; the change is intentionally limited to truthful desktop control semantics and label copy.
 - **Recommended next owner:** **Product Owner** to accept **Slice 17G**, sequence **Slice 17H** deferred-service decisions, and keep authenticated live regression under **Slice 17I**.
 
+## Slice 17G selected-file preview push
+
+- **Status:** selected-file preview push completed for the accepted **Slice 17G** search-select honesty implementation.
+- **Target preview theme:** **`151207542967 / Mzansi Select MVP Preview / unpublished`**.
+- **Live theme:** **`148914077879 / Horizon`** remained live and untouched.
+- **Push scope:** the command selected only **`sections/site-header.liquid`** and **`assets/theme.css`**.
+- **Temp surface usage:** a clean temp theme surface was used only after the repo-root strict push was blocked by historical repo-root artifact/theme-check noise; the upload scope itself remained limited to the two approved files.
+- **Evidence folder:** **`artifacts/devops/slice-17g-selected-file-preview-push-20260510-140936/`**.
+- **Guardrails preserved:** no publish, no live overwrite, no Shopify Admin product or collection edits, no checkout/payment/newsletter/account/wishlist enablement, and no commercial approval change occurred in this pass.
+- **Recommended next owner:** **QA / Test Engineer** for **Slice 17I** — authenticated preview regression for search-select honesty and interaction-contract checks.
+
 ## Slice 17F search select honesty review and UX decision handoff
 
 - **Decision:** Product Owner accepted **Slice 17F — Search select honesty decision** as **PASS WITH NOTES**.
