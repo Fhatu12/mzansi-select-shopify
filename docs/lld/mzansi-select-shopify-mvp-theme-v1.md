@@ -131,10 +131,10 @@ Out of boundary for this document pass:
 - **Evidence folder:** **`artifacts/qa/slice-16b-html-interaction-contract-audit/2026-05-10T000307/`**.
 - **Audit inputs compared:** **`mzansi-select-theme.html`**, **`mzansi-select-mobile.html`**, **`mzansi-select-interactive-elements.txt`**, and the current Shopify theme/Liquid implementation.
 - **Live DOM limitation:** Playwright reached **`/password`** on every tested preview URL. Password-page output was not treated as storefront evidence, so live storefront DOM behaviour remains **INCONCLUSIVE** until a later authenticated rerun.
-- **Preview messaging variants that remain part of the durable contract:** preview surfaces may use **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`**; announcement/trust/footer copy may shift to cautious variants on preview routes; promo / Best Sellers / Gift Cards / Deals wording still needs honesty review while products remain preview-only and unapproved for launch claims.
+- **Preview messaging variants that remain part of the durable contract:** preview surfaces may use **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`**; announcement / trust / footer copy may shift to cautious variants on preview routes; and **Slice 17D** now adds durable promo / nav / browse / purchase-copy rules for preview-only storefront surfaces.
 - **Static vs live card distinction:** static homepage merchandising cards may preserve the approved visual affordances before full commerce wiring, but they must not be mistaken for live product-form behaviour. The accepted audit records that the static homepage **Add to Cart** button still has no handler and **`View all new in`** still falls back to **`#`**. By contrast, live collection/PDP foundations continue to use the Slice **12J / 13G / 13J** preview-safety rules rather than pretending static commerce is complete.
 - **Deferred-service map:** newsletter collection remains deferred pending **Product Owner + Security / Compliance** handling approval; the search category select remains deferred pending an honesty/wiring decision; wishlist/hearts remain mostly honest/deferred but still need a consistent launch strategy; account exposure remains deferred pending a Product Owner decision if customer accounts are not enabled; social icons and external links remain subject to final semantic/link-safety validation; and live authenticated interaction verification remains deferred until password-gated preview access is available.
-- **Follow-up interaction-contract sequence:** **Slice 17B — Section link correctness**; **Slice 17C — Static card commerce honesty**; **Slice 17D — Promo/nav copy honesty**; **Slice 17E — Newsletter compliance and handling decision**; **Slice 17F — Search select honesty**; **Slice 17G — Account/wishlist/social exposure decision**; **Slice 17H — Live regression after authenticated unlock**.
+- **Follow-up interaction-contract sequence:** **Slice 17B — Section link correctness**; **Slice 17C — Static card commerce honesty**; **Slice 17D — Promo/nav copy honesty** (**docs-only review + handoff recorded here**); **Slice 17E — Newsletter compliance and handling decision**; **Slice 17F — Search select honesty**; **Slice 17G — Account/wishlist/social exposure decision**; **Slice 17H — Live regression after authenticated unlock**.
 
 ## Slice 17B section link correctness
 
@@ -149,6 +149,28 @@ Out of boundary for this document pass:
 - When a static card is used only as a preview or placeholder merchandising surface, its primary commerce-style control must render as an honest disabled preview state instead of suggesting live purchase behaviour.
 - **Slice 17C** applies that contract to the shared **`static-product-card`** snippet by replacing the unwired **Add to Cart** button with a disabled **Preview only** control that exposes the deferred state accessibly.
 - This slice preserves live collection card links, homepage card-to-PDP navigation, PDP preview-only safety, and the earlier section-link contract from **Slice 17B**. It does **not** enable cart, checkout, payment, newsletter, account, or wishlist service wiring.
+
+## Slice 17D promo/nav copy honesty
+
+- Preview-only storefront copy must not claim verified demand, active discounts, active gift-card service, active checkout or payments, final delivery coverage, final return windows, or final pricing approval before those services and approvals exist.
+- Avoid unsupported preview-only wording such as **`Best Sellers`**, **`Deals`**, **`Gift Cards`**, **`Limited Time Offer`**, **`Up to 30% off`**, **`Sale`**, **`Shop the Sale`**, **`Shop now`**, **`Secure Checkout`**, **`Secure Payments`**, **`Proceed to Checkout`**, **`exclusive offers`**, and similar certainty or urgency claims unless the underlying data or service is live and approved.
+- Prefer browse-first preview wording instead:
+  - **`Best Sellers`** → **`Selected Picks`** or **`Featured Picks`**
+  - **`Deals`** → **`Featured Picks`** or **`Preview Picks`**
+  - **`Gift Cards`** → **`Gift Ideas`**
+  - **`New In`** / **`New Arrivals`** → **`New in Preview`** or **`Latest Preview`**
+  - **`Shop now`** → **`Browse now`**
+  - **`Shop the Sale`** → **`Browse preview picks`**
+  - **`Limited Time Offer`** → **`Preview highlight`**
+  - **`Up to 30% off`** → neutral editorial copy without a discount claim
+  - **`Secure Checkout`** / **`Secure Payments`** → preview-safe payment or checkout wording only after the relevant flow is approved; otherwise use a deferred preview label instead of a live-service claim
+  - **`Proceed to Checkout`** → **`Checkout preview`** or another clearly disabled preview label
+  - **`exclusive offers`** → **`preview updates`**
+- Department names such as **`Home & Living`**, **`Kitchen & Storage`**, **`Office & Desk`**, and **`Tech Accessories`** remain stable and may stay unchanged. Browse-first labels such as **`Shop All`**, **`Browse all products`**, **`Explore now`**, **`View product`**, **`Preview only`**, **`Preview item`**, **`Price to be confirmed`**, and **`Delivery details to be confirmed before launch.`** are acceptable while the storefront remains preview-only.
+- **`New In`** / **`New Arrivals`** may remain only when the wording is explicitly preview-qualified or clearly treated as a non-final merchandising rail rather than a live stock or launch claim.
+- Default global chrome must follow the same preview-safe rule set as preview-tagged PDP and collection surfaces. It is not sufficient for only preview routes to use cautious copy if the homepage, announcement bar, trust bar, promo strip, footer, or cart foundation still imply live commerce readiness.
+- Newsletter consent / handling wording remains governed by **Slice 17E** and account / wishlist / social exposure decisions remain governed by **Slice 17G**, but **Slice 17D** establishes the wording standard those later slices should follow.
+- This slice is documentation-only. It does **not** implement theme changes, enable services, or approve public launch.
 
 ## Component / section inventory extracted from the HTML
 
