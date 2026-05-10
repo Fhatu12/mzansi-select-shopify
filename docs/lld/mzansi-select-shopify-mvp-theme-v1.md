@@ -210,6 +210,13 @@ Out of boundary for this document pass:
 - **Separate follow-up gap:** the **`/search`** page body still renders the older static preview-search foundation with placeholder commerce cards and visible **Add to Cart** buttons. This is a **pre-existing search-surface honesty gap**, not a regression introduced by the **Slice 17G** header/select change.
 - **Recommended next slice:** **Slice 17J — Search page body preview-commerce honesty remediation**.
 
+## Slice 17J search page body preview-commerce honesty remediation
+
+- **Implementation result:** the `/search` page body keeps its approved static preview-search layout and route posture, but its placeholder commerce presentation is now aligned with preview-only honesty rules.
+- Static search-result cards in the search foundation must **not** present active purchase affordances, live discount framing, or final-looking price claims when the underlying search surface remains a placeholder. The accepted remediation therefore uses **`Preview item`** badges, **`Price to be confirmed`** placeholder pricing, and disabled preview-only CTA treatment on those cards.
+- The decorative body-level search utility inside the static search foundation must not read as a second live search or purchase step when it is only a shell. In this accepted remediation it remains visually present but exposes an honest disabled **`Preview only`** state.
+- This slice does **not** change the working search route contract owned by the header/mobile search forms: **`routes.search_url`**, **`q`**, and **`type=product`** behaviour remain intact, while predictive search, Search & Discovery facets, collection-scoped search, and new filtering services remain deferred.
+
 ## Component / section inventory extracted from the HTML
 
 1. Top announcement bar with four trust/value points and inline SVG icons.

@@ -23,7 +23,7 @@
           </svg>
           <input type="text" value="{{ section.settings.query_value }}" aria-label="Search preview query" readonly>
         </div>
-        <button class="btn-dark search-button-shell" type="button">Search</button>
+        <button class="btn-dark search-button-shell" type="button" disabled aria-disabled="true">Preview only</button>
       </div>
     </div>
 
@@ -46,48 +46,50 @@
         {% render 'static-product-card',
           image_src: 'headphones-premium.jpg' | asset_url,
           image_alt: 'Headphones',
-          badge_label: 'Preview',
+          badge_label: 'Preview item',
           badge_tone: 'preview',
           product_type: 'Tech Accessories',
           product_name: 'Premium Over-Ear Headphones',
           stars: '★★★★★',
           reviews: '(128)',
-          price_now: 'R 899',
-          price_was: 'R 1 199',
+          price_now: 'Price to be confirmed',
+          price_was: blank,
           price_save: blank
         %}
         {% render 'static-product-card',
           image_src: 'smart-watch-black-edition.jpg' | asset_url,
           image_alt: 'Watch',
+          badge_label: 'Preview item',
+          badge_tone: 'preview',
           product_type: 'Tech Accessories',
           product_name: 'Smart Watch – Black Edition',
           stars: '★★★★★',
           reviews: '(211)',
-          price_now: 'R 1 249',
-          price_was: 'R 1 599',
+          price_now: 'Price to be confirmed',
+          price_was: blank,
           price_save: blank
         %}
         {% render 'static-product-card',
           image_src: 'bamboo-storage-containers.jpg' | asset_url,
           image_alt: 'Storage',
-          badge_label: 'New',
-          badge_tone: 'new',
+          badge_label: 'Preview item',
+          badge_tone: 'preview',
           product_type: 'Kitchen & Storage',
           product_name: 'Bamboo Lid Storage Container Set',
           stars: '★★★★☆',
           reviews: '(64)',
-          price_now: 'R 349'
+          price_now: 'Price to be confirmed'
         %}
         {% render 'static-product-card',
           image_src: 'insulated-vacuum-flask.jpg' | asset_url,
           image_alt: 'Bottle',
-          badge_label: 'New',
-          badge_tone: 'new',
+          badge_label: 'Preview item',
+          badge_tone: 'preview',
           product_type: 'Kitchen & Storage',
           product_name: 'Insulated Vacuum Flask 500ml',
           stars: '★★★★☆',
           reviews: '(93)',
-          price_now: 'R 189'
+          price_now: 'Price to be confirmed'
         %}
       </div>
     {% endif %}
@@ -131,13 +133,13 @@
       "type": "textarea",
       "id": "search_intro",
       "label": "Search intro",
-      "default": "This static-safe search foundation keeps the approved Mzansi Select rhythm, premium-practical typography, and commerce-card consistency in place while real search wiring remains deferred."
+      "default": "This preview-safe search foundation keeps the approved Mzansi Select rhythm in place while live search results, final pricing, and purchase actions remain deferred."
     },
     {
       "type": "text",
       "id": "query_label",
       "label": "Query label",
-      "default": "Example query"
+      "default": "Preview query"
     },
     {
       "type": "text",
@@ -149,13 +151,13 @@
       "type": "textarea",
       "id": "summary_copy",
       "label": "Summary copy",
-      "default": "Showing a curated placeholder layout for a product-led results page. Final query handling, live results, and search behaviours remain deferred to a later approved slice."
+      "default": "Showing placeholder preview items only. Purchase actions are unavailable in preview, and live search ranking and fulfilment details remain deferred."
     },
     {
       "type": "text",
       "id": "results_heading",
       "label": "Results heading",
-      "default": "Popular matches"
+      "default": "Preview matches"
     },
     {
       "type": "select",
