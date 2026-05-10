@@ -217,6 +217,21 @@ Out of boundary for this document pass:
 - The decorative body-level search utility inside the static search foundation must not read as a second live search or purchase step when it is only a shell. In this accepted remediation it remains visually present but exposes an honest disabled **`Preview only`** state.
 - This slice does **not** change the working search route contract owned by the header/mobile search forms: **`routes.search_url`**, **`q`**, and **`type=product`** behaviour remain intact, while predictive search, Search & Discovery facets, collection-scoped search, and new filtering services remain deferred.
 
+## Slice 17K authenticated preview regression for search page body honesty
+
+- **QA verdict:** **FAIL**.
+- **Evidence:** **`artifacts/qa/slice-17k-authenticated-preview-search-body-honesty/20260510-154857/`**.
+- **Validated preview routes:** **`/search?preview_theme_id=151207542967`** and **`/search?q=strainer&type=product&preview_theme_id=151207542967`** on **`151207542967 / Mzansi Select MVP Preview / unpublished`**.
+- **Confirmed passes:** the `/search` shell rendered, the decorative body-search button stayed disabled as **`Preview only`**, **`Preview item`** badges rendered, **`Price to be confirmed`** rendered, no predictive search/facets/collection-scoped search/new filtering service appeared, and route/query preservation remained intact.
+- **Confirmed failure:** search-result card CTAs still rendered active-looking **`Add to Cart`** buttons in the real preview theme, so the page body remained commercially misleading even though the shell copy and placeholder pricing were correct.
+
+## Slice 17L search card CTA preview-commerce remediation
+
+- **Implementation result:** the `/search` section now owns its preview card CTA markup directly instead of depending on shared card CTA parity in the preview theme.
+- **Durable contract clarification:** for the static preview-search foundation, card CTA honesty must be enforced at the `/search` section source when selected-file preview pushes are expected to stage only search-surface files. This avoids preview drift where the shell is updated but an older shared snippet still exposes live-looking purchase CTAs.
+- Search-result cards in the `/search` foundation must therefore render disabled **`Preview only`** CTA buttons with explicit preview/deferred semantics directly from the section-level rendering path, while still preserving **`Preview item`** badges and **`Price to be confirmed`** placeholder pricing.
+- This slice still does **not** change the working search route contract owned by the header/mobile search forms: **`routes.search_url`**, **`q`**, and **`type=product`** remain intact, and predictive search, Search & Discovery facets, collection-scoped search, and new filtering services remain deferred.
+
 ## Component / section inventory extracted from the HTML
 
 1. Top announcement bar with four trust/value points and inline SVG icons.

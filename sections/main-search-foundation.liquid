@@ -43,54 +43,50 @@
     {% else %}
       {% render 'section-heading', title: section.settings.results_heading %}
       <div class="products-grid">
-        {% render 'static-product-card',
-          image_src: 'headphones-premium.jpg' | asset_url,
-          image_alt: 'Headphones',
-          badge_label: 'Preview item',
-          badge_tone: 'preview',
-          product_type: 'Tech Accessories',
-          product_name: 'Premium Over-Ear Headphones',
-          stars: '★★★★★',
-          reviews: '(128)',
-          price_now: 'Price to be confirmed',
-          price_was: blank,
-          price_save: blank
-        %}
-        {% render 'static-product-card',
-          image_src: 'smart-watch-black-edition.jpg' | asset_url,
-          image_alt: 'Watch',
-          badge_label: 'Preview item',
-          badge_tone: 'preview',
-          product_type: 'Tech Accessories',
-          product_name: 'Smart Watch – Black Edition',
-          stars: '★★★★★',
-          reviews: '(211)',
-          price_now: 'Price to be confirmed',
-          price_was: blank,
-          price_save: blank
-        %}
-        {% render 'static-product-card',
-          image_src: 'bamboo-storage-containers.jpg' | asset_url,
-          image_alt: 'Storage',
-          badge_label: 'Preview item',
-          badge_tone: 'preview',
-          product_type: 'Kitchen & Storage',
-          product_name: 'Bamboo Lid Storage Container Set',
-          stars: '★★★★☆',
-          reviews: '(64)',
-          price_now: 'Price to be confirmed'
-        %}
-        {% render 'static-product-card',
-          image_src: 'insulated-vacuum-flask.jpg' | asset_url,
-          image_alt: 'Bottle',
-          badge_label: 'Preview item',
-          badge_tone: 'preview',
-          product_type: 'Kitchen & Storage',
-          product_name: 'Insulated Vacuum Flask 500ml',
-          stars: '★★★★☆',
-          reviews: '(93)',
-          price_now: 'Price to be confirmed'
-        %}
+        {% assign search_preview_cards = 'headphones-premium.jpg|Headphones|Tech Accessories|Premium Over-Ear Headphones|★★★★★|(128),smart-watch-black-edition.jpg|Watch|Tech Accessories|Smart Watch – Black Edition|★★★★★|(211),bamboo-storage-containers.jpg|Storage|Kitchen & Storage|Bamboo Lid Storage Container Set|★★★★☆|(64),insulated-vacuum-flask.jpg|Bottle|Kitchen & Storage|Insulated Vacuum Flask 500ml|★★★★☆|(93)' | split: ',' %}
+        {% for card in search_preview_cards %}
+          {% assign card_parts = card | split: '|' %}
+          <div class="product-card">
+            <div class="prod-img">
+              <img
+                src="{{ card_parts[0] | asset_url }}"
+                alt="{{ card_parts[1] }}"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+              <span class="p-badge preview">Preview item</span>
+              <button
+                class="p-wish"
+                type="button"
+                disabled
+                aria-disabled="true"
+                aria-label="Wishlist coming soon. Favourites are not available yet."
+              >
+                <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="prod-info">
+              <div class="p-type">{{ card_parts[2] }}</div>
+              <div class="p-name">{{ card_parts[3] }}</div>
+              <div class="p-stars">{{ card_parts[4] }} <span class="p-rev">{{ card_parts[5] }}</span></div>
+              <div class="p-price is-placeholder">
+                <span class="p-now is-placeholder">Price to be confirmed</span>
+              </div>
+              <button
+                class="add-btn"
+                type="button"
+                disabled
+                aria-disabled="true"
+                aria-label="Preview only. Add to Cart is not available for this item yet."
+              >
+                Preview only
+              </button>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     {% endif %}
 
