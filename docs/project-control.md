@@ -204,6 +204,47 @@ Mzansi Select Shopify MVP Theme Conversion
   - Do not approve launch.
 - **Next approved pass:** **Slice 20D-1 — ZA Dropshipping paid-catalogue candidate capture**
 
+## Slice 20F Product Owner decision and docs sync — Gadgetgyz preview-candidate shortlist (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 20E — Gadgetgyz 5-product evidence closure before import decision** as **PASS WITH NOTES**.
+- **Scope:** Documentation sync only. No product import, no Shopify Admin edits, no preview staging, no theme push/publish, no `Supplier verified` promotion, and no final pricing / delivery promises / product claims / launch approval.
+- **Approved updated Gadgetgyz preview-candidate shortlist (preview candidates only; not approvals):**
+  1. `Acrylic Tablet or Phone Stand` — `DP0402`
+     - Current visible price signal: `R158.89`
+     - Stock signal: `In Stock`
+     - Status: `Preview candidate`
+     - Rough target retail band only (planning, not final pricing): `R229–R279`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+     - Current visible price signal: `R163.90`
+     - Stock signal: `In Stock`
+     - Status: `Preview candidate`
+     - Rough target retail band only (planning, not final pricing): `R249–R299`
+  3. `Gizzu USB to Type-C Cable 2m Poly` — `GCPU2C2`
+     - Current visible price signal: `R53.90`
+     - Stock signal: `In Stock`
+     - Status: `Preview candidate`
+     - Rough target retail band only (planning, not final pricing): `R99–R149`
+  4. `World Map Anti-Slip Extended Mouse Pad` — `74886`
+     - Current visible price signal: `R120.00`
+     - Stock signal: `In Stock`
+     - Status: `Preview candidate`
+     - Rough target retail band only (planning, not final pricing): `R189–R249`
+- **PCBuilder Cable Ties decision (downgrade):**
+  - `PCBuilder LOCKDOWN 150mm Cable Ties, 100 pcs — Black` — `PCB-CT-25150` is downgraded to **`Supplier proof needed`**.
+  - Reason: product/SKU evidence exists via Gadgetgyz-linked/search evidence and Bob Shop seller evidence, but a clean direct Gadgetgyz product page was not reconfirmed.
+  - Must not remain in the preview-candidate shortlist until direct Gadgetgyz product page, stock signal, and supplier-order path are captured.
+- **Important status boundary (explicit):** the 4 approved shortlist items are **preview candidates only**. They are not `Supplier verified`, not final-priced, not delivery-approved, not product-claim-approved, not imported, not preview-staged, and not launch-approved.
+- **Open blockers (record):**
+  - Product-specific shipping fee not confirmed.
+  - Product-specific stock reliability not confirmed beyond current visible stock signal.
+  - Product-specific return/warranty handling not confirmed.
+  - Image/content usage acceptance still needs final confirmation.
+  - Sample/product quality proof still needed.
+  - Final title/description not approved.
+  - Final pricing not approved.
+  - Final delivery wording not approved.
+  - Product claims not approved.
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).

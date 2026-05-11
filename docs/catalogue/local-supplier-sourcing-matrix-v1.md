@@ -83,6 +83,17 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - **`Cable Tidies Set` (`Slice 13N`/`Slice 13O`):** **`Gadgetgyz` canonical path** — **PCBuilder LOCKDOWN 150mm Cable Ties (100 pcs) — Black**, SKU **`PCB-CT-25150`** (**R20.90**, Cable Management, **In Stock**) — **documentation committed** (**`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`**) — **`ZA Dropshipping` backup excluded** — **`Supplier proof in progress` / preview-only** until gates per **`Slice 13O`** (**project-control**) close — **not** `Supplier verified`.
 - Continue stock, pricing, SLA, sample, image PO gates per **Slices 13L**/**13M**.
 
+#### Slice 20F Gadgetgyz preview-candidate shortlist update (Slice 20E PASS WITH NOTES; planning only)
+
+- **Preview candidates only:** the shortlist below is direction only. It does **not** approve `Supplier verified`, final pricing, delivery promises, product claims, import, preview staging, or launch.
+- **Approved updated preview-candidate shortlist:**
+  1. `Acrylic Tablet or Phone Stand` — `DP0402` — visible price `R158.89` — stock `In Stock` — status `Preview candidate` — rough target retail band only `R229–R279`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277` — visible price `R163.90` — stock `In Stock` — status `Preview candidate` — rough target retail band only `R249–R299`
+  3. `Gizzu USB to Type-C Cable 2m Poly` — `GCPU2C2` — visible price `R53.90` — stock `In Stock` — status `Preview candidate` — rough target retail band only `R99–R149`
+  4. `World Map Anti-Slip Extended Mouse Pad` — `74886` — visible price `R120.00` — stock `In Stock` — status `Preview candidate` — rough target retail band only `R189–R249`
+- **PCBuilder Cable Ties downgrade:** `PCBuilder LOCKDOWN 150mm Cable Ties, 100 pcs — Black` — `PCB-CT-25150` is downgraded to `Supplier proof needed` (clean direct Gadgetgyz product page + stock signal + supplier-order path not reconfirmed).
+- **Open blockers (unchanged):** shipping fee, stock reliability beyond current signal, return/warranty handling, image/content usage acceptance, samples/quality proof, final titles/descriptions, final pricing, final delivery wording, and claims remain unapproved.
+
 ## Conditional suppliers
 
 - `Men’s Republic`: verify supplier identity and current dropship / trade access before MVP reliance.
