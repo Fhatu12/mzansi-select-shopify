@@ -577,13 +577,16 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Non-approvals preserved:** no product import/staging/Admin edit, no checkout/payment/customer access enablement, no theme publish/live overwrite, no public launch approval, no `Supplier verified`/final pricing/delivery promise/product claim.
 - **Recommended next owner:** **QA / Test Engineer** for Slice 21H authenticated preview regression.
 
-## Slice 21H Homepage legacy promo wording remediation (theme source)
+## Slice 21H Homepage legacy promo wording (QA FAIL → bounded preview parity)
 
-- **Decision:** Slice 21H remediation in committed repo source is complete.
-- **Action taken:** audited homepage sources and removed legacy promo wording from active homepage theme files; preserved controlled pilot / preview posture and visual rhythm.
-- **Confirmation:** no prohibited homepage strings remain in active `sections/`, `snippets/`, `templates/`, `config/`, or `assets/` source files for the homepage route.
-- **Non-approvals preserved:** no product import/staging/Admin edit, no checkout/payment/customer access enablement, no theme publish/live overwrite, no public launch approval, no `Supplier verified`/final pricing/delivery promise/product claim.
-- **Recommended next owner:** **QA / Test Engineer** for authenticated preview regression verification.
+- **QA decision:** **Slice 21H** authenticated preview homepage regression is **FAIL** until preview theme content matches repo source for the remaining homepage paths.
+- **QA evidence:** `artifacts/qa/slice-21h-authenticated-preview-homepage-promo-wording-rerun/20260511-225653/`
+- **Preview theme:** `151207542967` / Mzansi Select MVP Preview (**unpublished**); **live** `148914077879` / Horizon **untouched**.
+- **Repo source (bounded remediation targets):** **local** `templates/index.json` already uses **Selected** / **Picks** for the `best_sellers` homepage section (not **Best** / **Sellers**). **Local** `sections/promo-banner-split.liquid` already uses preview-safe copy (**Preview highlight**, **Browse preview picks**, asset image) — **no** **Limited Time Offer**, **Shop the Sale**, or **30% off** strings.
+- **Preview drift (DevOps evidence):** `artifacts/devops/slice-21h-preview-parity-20260511-230541/` — remote `templates/index.json` still exposed **Best** / **Sellers**; remote `sections/promo-banner-split.liquid` still exposed legacy promo strings. **DevOps** pushed **`sections/featured-product-grid.liquid` only** (commit **`5ae32d4`** scope); post-push parity for that file is **PASS WITH NOTES**; **homepage QA rerun remains blocked** until the two files above are pushed from this repo to preview **`151207542967`** (selected-file push only — **no** publish, **no** live overwrite, **no** full-theme push).
+- **Bounded DevOps push handoff (next):** `shopify theme push --store dropshippoc.myshopify.com --theme 151207542967 --nodelete --strict` with **`--only`** **`templates/index.json`** and **`--only`** **`sections/promo-banner-split.liquid`** (and **no** `--publish` / **no** `--live`** / **no** `--allow-live`**).
+- **Non-approvals preserved:** no product import/staging, no Shopify Admin edits, no checkout/payment/customer-access enablement, no public launch approval, no **Supplier verified** / final pricing / delivery promise / product-claim approval.
+- **Recommended next owner:** **DevOps / Platform Engineer** for the bounded two-file preview push; then **QA / Test Engineer** to rerun **Slice 21H** on the preview homepage.
 
 ## Slice 18D Account, wishlist, and social exposure decision (Product Owner PASS WITH NOTES)
 
