@@ -51,6 +51,18 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Use only as a small pilot first because public Shopify app review confidence is weak.
 - **Slice 13M:** **Primary replacement path** for **Home / Kitchen / storage-style** Neat‑Freak‑historical SKUs (**Sink Strainer**, **Compact Organiser**, **Mini Divider**) — no-inventory / fulfilment positioning, sample-order signal — **blocked** by missing app/admin **product references**, **costs**, **shipping fee**, **delivery model**, **image usage**, **sample proof**.
 - **`Slice 13N` outcome (committed; see Slice 13N.1 tracker):** **public-facing** **`ZA Dropshipping`** SKU-to-handle references **not found** — **`ZA`** remains **primary** where **`Slice 13M`** applies — **authenticated app/admin** (**`Slice 13N.2`**) plausible next gate — **Shopify App Store** sparse reviews / tepid ratings remain reliance risk (**platform-level signals unchanged**: Shopify integration, local-stock framing, importer, no upfront inventory, **ZAD** sync, fulfilment after payment). **`Cable Tidies Set`** **excluded from active `ZA` sourcing** — **`Gadgetgyz`/`Slice 13O`**, SKU **`PCB-CT-25150`** **recorded docs** — **committed** (**`3bf260b830fcc4d4a55a7ed1314538ff748cb43f`**) — **`Supplier proof in progress`** continues — **not** `Supplier verified`.
+- **Slice 20D route/workflow document proof (PASS WITH NOTES; route posture only):**
+  - Verdict: PASS WITH NOTES for route/workflow document proof; **product catalogue proof remains incomplete** until paid catalogue products are manually inspected.
+  - Key findings:
+    1. ZA Dropshipping is app-dependent.
+    2. Product import is app-based.
+    3. Order fulfilment depends on Shopify order sync and PayStack payment.
+    4. Mixed product orders may incur R99 per different product type because items may ship from different warehouses.
+    5. Total customer timing can be 5–9 business days from payment reflection to receipt.
+    6. Fulfilled means handed to courier, not delivered.
+    7. ZAD does not communicate directly with the customer; Mzansi Select must relay tracking/customer updates.
+  - Constraints preserved: keep ZA Dropshipping as `Supplier proof in progress` only; **do not** connect Shopify, install apps, approve permissions, import products, stage preview products, promote `Supplier verified`, approve final pricing, approve delivery promises, approve product claims, or approve launch.
+  - Next approved pass: **Slice 20D-1 — ZA Dropshipping paid-catalogue candidate capture**
 
 ### 2. Neat Freak
 

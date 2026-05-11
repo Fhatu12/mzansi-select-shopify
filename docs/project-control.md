@@ -172,6 +172,38 @@ Mzansi Select Shopify MVP Theme Conversion
   - No launch approval exists.
   - No product import or preview staging is approved.
 
+## Slice 20D ZA Dropshipping route/workflow document proof (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 20D — ZA Dropshipping paid-access manual catalogue and route proof document review** as **PASS WITH NOTES**.
+- **Verdict:** **PASS WITH NOTES** for **route/workflow document proof**. **Product catalogue proof remains incomplete** until paid catalogue products are manually inspected.
+- **Evidence reviewed (documents):**
+  - HOW TO INSTALL THE ZAD APP instructions provided by user.
+  - HOW TO IMPORT PRODUCTS FROM THE ZAD APP to your SHOPIFY STORE.docx
+  - How to order on ZA Dropshipping - STEPS.docx
+  - SHIPPING.docx
+  - The Normal Processing Procedure.docx
+- **Key findings (record):**
+  1. ZA Dropshipping is app-dependent.
+  2. Product import is app-based.
+  3. Order fulfilment depends on Shopify order sync and PayStack payment.
+  4. Mixed product orders may incur R99 per different product type because items may ship from different warehouses.
+  5. Total customer timing can be 5–9 business days from payment reflection to receipt.
+  6. Fulfilled means handed to courier, not delivered.
+  7. ZAD does not communicate directly with the customer; Mzansi Select must relay tracking/customer updates.
+- **Product Owner decisions (record):**
+  - Keep ZA Dropshipping as `Supplier proof in progress` only.
+  - Do not connect ZA Dropshipping to Shopify.
+  - Do not install the ZAD app.
+  - Do not approve app permissions.
+  - Do not import products.
+  - Do not stage preview products.
+  - Do not approve `Supplier verified`.
+  - Do not approve final pricing.
+  - Do not approve delivery promises.
+  - Do not approve product claims.
+  - Do not approve launch.
+- **Next approved pass:** **Slice 20D-1 — ZA Dropshipping paid-catalogue candidate capture**
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).
