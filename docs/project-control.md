@@ -245,6 +245,51 @@ Mzansi Select Shopify MVP Theme Conversion
   - Final delivery wording not approved.
   - Product claims not approved.
 
+## Slice 20H Product Owner decision and docs sync — Gadgetgyz 4-product preview-staging readiness plan (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 20G — Gadgetgyz 4-product preview-staging readiness plan** as **PASS WITH NOTES**.
+- **Scope:** Documentation sync only. No product import, no Shopify Admin edits, no preview staging, no theme push/publish, no `Supplier verified` promotion, and no final pricing / delivery promises / product claims / launch approval.
+- **Approved readiness statuses (Ready for preview-staging decision only):**
+  1. `Acrylic Tablet or Phone Stand` — `DP0402`
+     - Status: `Ready for preview-staging decision`
+     - Preview-safe title: `Acrylic Tablet & Phone Stand`
+     - Rough target retail band only (planning, not final pricing): `R229–R279`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+     - Status: `Ready for preview-staging decision`
+     - Preview-safe title: `UGREEN 4-in-1 USB 2.0 Hub`
+     - Rough target retail band only (planning, not final pricing): `R249–R299`
+  3. `Gizzu USB to Type-C Cable 2m Poly` — `GCPU2C2`
+     - Status: `Ready for preview-staging decision`
+     - Preview-safe title: `Gizzu USB to Type-C Cable — 2m`
+     - Rough target retail band only (planning, not final pricing): `R99–R149`
+  4. `World Map Anti-Slip Extended Mouse Pad` — `74886`
+     - Status: `Ready for preview-staging decision`
+     - Preview-safe title: `World Map Extended Mouse Pad`
+     - Rough target retail band only (planning, not final pricing): `R189–R249`
+- **Important boundaries (explicit):**
+  - These products are not imported.
+  - These products are not preview-staged.
+  - These products are not `Supplier verified`.
+  - These products are not final-priced.
+  - No delivery promise is approved.
+  - No return/warranty wording is final.
+  - No product claim is approved.
+  - No public launch approval exists.
+- **Required blocker closures before any later import/staging slice:**
+  - Recheck current Gadgetgyz stock and supplier price.
+  - Confirm image/content-use basis remains acceptable.
+  - Keep rough retail bands non-final.
+  - Use `preview-only` product status.
+  - Avoid `Supplier verified` language.
+  - Use conservative product descriptions.
+  - Avoid unsupported claims.
+  - Avoid fixed delivery promises.
+  - Keep returns/warranty wording limited and non-final.
+  - Confirm whether staging would be manual or controlled Shopify product creation.
+  - Keep sample/quality proof mandatory before launch or `Supplier verified` promotion.
+- **Product Owner sequencing decision:** docs sync first; then open **Security / Compliance** review of Gadgetgyz preview product wording, delivery, returns, and claim posture. **No import/staging slice is approved yet.**
+- **Recommended next owner:** **Security / Compliance Engineer** — claim, delivery, returns, and preview-only wording review.
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).
