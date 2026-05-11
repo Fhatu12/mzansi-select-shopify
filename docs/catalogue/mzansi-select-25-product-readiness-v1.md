@@ -21,6 +21,31 @@ Slice 13J theme behaviour is **committed** (`cef5713412ef218bee4af56ae9767c78d63
 - **No status promotions:** Do **not** interpret route ranking as `Supplier verified`, preview staging approval, import approval, final pricing approval, delivery promise approval, product claim approval, or launch approval.
 - **Next approved discovery path:** **Slice 20B — Gadgetgyz 10-product batch proof and preview-candidate shortlist** (product-level proof remains gated and controlled).
 
+## Slice 20C Gadgetgyz batch proof docs sync (Slice 20B PASS WITH NOTES; no product promotions)
+
+- **Decision:** Product Owner accepts **Slice 20B** as **PASS WITH NOTES**.
+- **No promotions:** This records **candidate direction only**. No product is promoted to `Supplier verified` and nothing is treated as import-ready, preview-staging approved, final-priced, delivery-promised, claims-approved, or launch-approved.
+- **Gadgetgyz 10-product batch proof matrix (planning only):**
+  - **Preview-candidate direction only (accepted):**
+    1. `Acrylic Tablet or Phone Stand` — `DP0402`
+    2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+    3. `Gizzu USB to Type-C Cable 2m Poly` — `GCPU2C2`
+    4. `World Map Anti-Slip Extended Mouse Pad` — `74886`
+    5. `PCBuilder LOCKDOWN 150mm Cable Ties, 100 pcs — Black` — **conditional only** (must not proceed beyond conditional preview-candidate direction until exact SKU/page reconfirmation is completed)
+  - **Candidate (parked for later review):**
+    6. `HIKSEMI Pully 128GB USB3.2 Flash Drive`
+    7. `Earldom ET-EH53 Air Vent Magnet Holder`
+    8. `Wired Keyboard and Mouse Combo`
+  - **Supplier proof needed:**
+    9. `UGREEN LP121 Cable Protection Tube`
+  - **Rejected for current preview shortlist:**
+    10. `GIZZU Voltage Protector 16A` — rejected due to electrical/safety and claim-risk concerns
+- **ZA Dropshipping paid access (active, time-boxed):**
+  - Paid access is active.
+  - Working access window: **2026-05-11 → 2026-06-11** unless the supplier account shows a different expiry date.
+  - Next priority after this docs sync: controlled ZA Dropshipping authenticated/app/admin reference capture (permission assessment first; no Shopify connection/import approved).
+- **Open blockers remain:** shipping fee, stock reliability, returns/warranty handling, image/content usage acceptance, samples/quality proof, margin bands, product titles/descriptions, and delivery wording remain unapproved and must be closed before any later approval gate.
+
 Slice **13K** (**docs-only**, **committed** `cb61ee28fbb3e575669236310d4e5b131fc697bf`): supplier proof closure for the five preview-only handles — **remain preview-only staged**; **none** ready for **`Supplier verified`** or launch approval; **do not reject** concepts. **Neat Freak** path (historical): **FAQ `Supplier verified` blocker** (no reseller sales; no dropshipping); **`Slice 13M` removes Neat Freak from launch `Supplier verified` routing** — see **Slice 13M**. **`Gadgetgyz` / `Acrylic Tablet or Phone Stand`:** **Slice 13L** proof pack. **`Cable Tidies Set`:** **`Gadgetgyz`/`Slice 13O`** exact match **recorded docs-only** (**PCB-CT-25150**, **PCBuilder LOCKDOWN…**, **R20.90**) — **git** **`3bf260b…`** — handle **`cable-tidies-set`** — **still** `Supplier proof in progress` — **not** `Supplier verified` — until **Slice 13O** gates close — **`ZA` backup paused (`Slice 13N`)**. **Commercial summary:** replacement paths carry evidence gaps (**Slice 13M** / **Slice 13N**); copy **factual only**.
 
 Slice **13L** (**docs-only**, **committed** `a87e8c6124d9708967dfbf2c6a208b601fe6f608`; tracker `a33895a3bb242455c95da74a6c6f2c72bee946d6`): **`Acrylic Tablet or Phone Stand`** (`acrylic-tablet-phone-stand`) via **`Gadgetgyz`** (**Office & Desk** / **Tech Accessories**) — **stronger supplier proof** recorded — **keep `Supplier proof in progress` / preview-only staged**; **do not** move to **`Supplier verified` review**; **do not** approve final pricing, launch readiness, delivery promises, or claims. **Planning-only margins** (supplier **R158.89**): sell range **R329–R379**; product-only gross **~51.7%** / **~54.5%** / **~58.1%** at **R329** / **R349** / **R379**; **final margin unproven** until shipping fee and handling closed; **Deals** / **Best Sellers** gating per **Slice 13L**. **Remaining blockers:** exact **ZA** shipping fee; shipping-cost model; final margin after shipping; sample/quality; image-use PO sign-off; stock near launch; final sell price; return/refund wording; final PO decision.

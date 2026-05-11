@@ -33,6 +33,16 @@ This document records the approved local-first sourcing strategy for the MVP lau
   9. `Third Wave Distribution` (**deferred**)
 - **Explicit confusion warning:** Do **not** confuse **`Dropstore marketplace`** / `dropstore.co.za` (marketplace route under evaluation) with **`dropstoresa.co.za`** (rejected supplier marketplace route for this pass).
 
+## Slice 20C Gadgetgyz batch proof and ZA access window update (planning only)
+
+- **Status:** Slice 20B accepted **PASS WITH NOTES** (recorded in Slice 20C docs sync).
+- **ZA Dropshipping paid access (active):**
+  - Paid access is now active.
+  - Working access window: **2026-05-11 → 2026-06-11** unless the supplier account shows a different expiry date.
+  - Priority sequencing: ZA Dropshipping **authenticated/app/admin** reference capture should be prioritised soon after docs sync because the window is time-limited.
+  - This does **not** approve Shopify connection/import/app install; permissions must be assessed before any write actions.
+- **Route posture remains unchanged:** ranking is **route posture only** and must not be treated as `Supplier verified`, final pricing, delivery promise, product claim, import approval, preview staging approval, or launch approval.
+
 ## Primary recommended suppliers
 
 ### 1. ZA Dropshipping

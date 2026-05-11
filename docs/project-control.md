@@ -130,6 +130,48 @@ Mzansi Select Shopify MVP Theme Conversion
   - no preview staging
   - no paid subscription/reseller registration
 
+## Slice 20C Product Owner approval and docs sync — Gadgetgyz 10-product batch proof (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 20B** (**Gadgetgyz 10-product batch proof and preview-candidate shortlist**) as **PASS WITH NOTES**.
+- **Scope:** Documentation sync only (supplier/product evidence posture). **No** product import, **no** Shopify Admin edits, **no** supplier app installation/connection, **no** preview staging, **no** theme push/publish, and **no** supplier verification or commercial approvals.
+- **ZA Dropshipping paid access (status update):**
+  - Paid access is now **active**.
+  - Treat the current working access window as **2026-05-11 → 2026-06-11** unless the supplier account shows a different expiry date.
+  - Sequencing change: **prioritise ZA Dropshipping authenticated/app/admin reference capture soon after this docs sync** because the access window is time-limited.
+  - This does **not** approve any Shopify connection/import action; permissions must be assessed first.
+- **Gadgetgyz 10-product batch proof matrix (record; planning only):**
+  - **Preview-candidate direction only (accepted, not staged/imported/approved):**
+    1. `Acrylic Tablet or Phone Stand` — `DP0402`
+    2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+    3. `Gizzu USB to Type-C Cable 2m Poly` — `GCPU2C2`
+    4. `World Map Anti-Slip Extended Mouse Pad` — `74886`
+    5. `PCBuilder LOCKDOWN 150mm Cable Ties, 100 pcs — Black` — **conditional only** (must not proceed beyond conditional preview-candidate direction until exact SKU/page reconfirmation is completed)
+  - **Candidate (parked for later review):**
+    6. `HIKSEMI Pully 128GB USB3.2 Flash Drive` — `Candidate`
+    7. `Earldom ET-EH53 Air Vent Magnet Holder` — `Candidate`
+    8. `Wired Keyboard and Mouse Combo` — `Candidate`
+  - **Supplier proof needed:**
+    9. `UGREEN LP121 Cable Protection Tube` — `Supplier proof needed`
+  - **Rejected for current preview shortlist:**
+    10. `GIZZU Voltage Protector 16A` — **Rejected** (electrical/safety and claim-risk concerns)
+- **Open blockers (still open; record):**
+  - Product-specific shipping fee not confirmed.
+  - Product-specific stock reliability not confirmed.
+  - Product-specific return/warranty handling not confirmed.
+  - Image/content usage acceptance still needed.
+  - Sample/product quality proof still needed.
+  - Margin bands not approved.
+  - Product titles/descriptions not approved.
+  - No final delivery promise approved.
+  - ZA Dropshipping account/app/Admin permissions must be assessed before any Shopify connection/import action.
+- **Non-approvals (unchanged):**
+  - No product is `Supplier verified`.
+  - No product is final-priced.
+  - No delivery promise is approved.
+  - No product claim is approved.
+  - No launch approval exists.
+  - No product import or preview staging is approved.
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).
