@@ -14,6 +14,7 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - Active slice: **Product Owner / User** — continue **controlled Slice 15A-style feedback-only** private preview sharing (**Slice 19B PASS** — **wider private-preview sharing** pause **lifted** from **QA/readiness** perspective only; **no** public launch, checkout/payment testing, final pricing, delivery promises, product claims, **Supplier verified**, product import, Shopify Admin edits, or customer account / wishlist / newsletter / social **service** enablement — see **`## Slice 19B`**)
+- Completed slice: **Slice 21H** — authenticated preview homepage legacy promo wording regression — **PASS** — **Product Owner accepted** — evidence **`artifacts/qa/slice-21h-authenticated-preview-homepage-promo-wording-rerun/20260511-232806/`**; **Slice 21G / 21H** homepage legacy promo wording remediation **chain closed as accepted** — see **`## Slice 21G / 21H — Homepage legacy promo wording remediation chain (Product Owner closure)`**
 - Completed slice: **Slice 20A** — South Africa supplier route refresh and shortlist — **PASS WITH NOTES** — **Product Owner accepted** — documentation sync only (no Shopify Admin edits, no product import, no preview staging, no theme changes, no supplier verification, no pricing/delivery/claims/launch approvals)
 - Completed slice: **Slice 19B** — targeted manual QA review for **Slice 19A** notes — **PASS** — **Product Owner accepted** — evidence **`artifacts/qa/slice-19b-targeted-manual-review-slice-19a-notes/20260511-013042/`**; **clears** **Slice 19A** follow-up notes; see **`## Slice 19B`**
 - Completed slice (prior): **Slice 19A** — consolidated authenticated private-preview readiness sweep — **PASS WITH NOTES** — **Product Owner accepted** — **Slice 19A** follow-up notes **cleared** via **Slice 19B PASS** — evidence **`artifacts/qa/slice-19a-consolidated-authenticated-private-preview-readiness-sweep/20260511-003337/`** — preview theme **`151207542967 / Mzansi Select MVP Preview`** (**unpublished**); see **`## Slice 19A`**
@@ -566,27 +567,37 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Strict boundaries / non-approvals:** **no** public launch approval; **no** checkout/payment testing approval; **no** final pricing approval; **no** delivery promise approval; **no** product claim approval; **no** **Supplier verified** promotion; **no** product import approval; **no** Shopify Admin edit approval; **no** customer account / wishlist / newsletter / social **service** enablement approval.
 - **Recommended next owner:** **Product Owner / User** — continue controlled private-preview tester feedback collection (**Slice 15A**-style feedback-only sharing).
 
-## Slice 21G Authenticated preview homepage promo wording regression (QA FAIL)
+## Slice 21G / 21H — Homepage legacy promo wording remediation chain (Product Owner closure)
 
-- **Decision:** QA finds homepage legacy promo wording failure on `/` in authenticated preview across required viewports.
-- **Evidence:** `artifacts/qa/slice-21g-authenticated-preview-controlled-pilot-trust-wording/20260511-195823/`
+- **Chain closure:** Product Owner accepts closing the **Slice 21G / 21H homepage legacy promo wording remediation chain** as **accepted**.
+- **Slice 21H decision:** Product Owner accepts **Slice 21H** — authenticated preview homepage legacy promo wording regression — as **PASS**.
+- **QA evidence (PASS):** `artifacts/qa/slice-21h-authenticated-preview-homepage-promo-wording-rerun/20260511-232806/`
 - **Preview theme tested:** `151207542967` / Mzansi Select MVP Preview (**unpublished**)
-- **Findings:** homepage `/` exposed prohibited wording strings `Best Sellers`, `Shop the Sale`, and `Limited Time Offer`.
-- **Root cause/source:** legacy homepage promo wording on the homepage route; current committed source audit did not find active homepage source strings for the prohibited terms in `sections/`, `snippets/`, `templates/`, `config/`, or `assets/`; the issue appears tied to stale preview theme state or earlier homepage configuration.
-- **Remediation summary:** homepage source audit and copy verification confirmed no prohibited homepage strings remain in active source files; `sections/featured-product-grid.liquid` admin copy was aligned away from legacy "Best sellers" wording; homepage copy remains aligned to controlled pilot / preview posture.
-- **Non-approvals preserved:** no product import/staging/Admin edit, no checkout/payment/customer access enablement, no theme publish/live overwrite, no public launch approval, no `Supplier verified`/final pricing/delivery promise/product claim.
-- **Recommended next owner:** **QA / Test Engineer** for Slice 21H authenticated preview regression.
-
-## Slice 21H Homepage legacy promo wording (QA FAIL → bounded preview parity)
-
-- **QA decision:** **Slice 21H** authenticated preview homepage regression is **FAIL** until preview theme content matches repo source for the remaining homepage paths.
-- **QA evidence:** `artifacts/qa/slice-21h-authenticated-preview-homepage-promo-wording-rerun/20260511-225653/`
-- **Preview theme:** `151207542967` / Mzansi Select MVP Preview (**unpublished**); **live** `148914077879` / Horizon **untouched**.
-- **Repo source (bounded remediation targets):** **local** `templates/index.json` already uses **Selected** / **Picks** for the `best_sellers` homepage section (not **Best** / **Sellers**). **Local** `sections/promo-banner-split.liquid` already uses preview-safe copy (**Preview highlight**, **Browse preview picks**, asset image) — **no** **Limited Time Offer**, **Shop the Sale**, or **30% off** strings.
-- **Preview drift (DevOps evidence):** `artifacts/devops/slice-21h-preview-parity-20260511-230541/` — remote `templates/index.json` still exposed **Best** / **Sellers**; remote `sections/promo-banner-split.liquid` still exposed legacy promo strings. **DevOps** pushed **`sections/featured-product-grid.liquid` only** (commit **`5ae32d4`** scope); post-push parity for that file is **PASS WITH NOTES**; **homepage QA rerun remains blocked** until the two files above are pushed from this repo to preview **`151207542967`** (selected-file push only — **no** publish, **no** live overwrite, **no** full-theme push).
-- **Bounded DevOps push handoff (next):** `shopify theme push --store dropshippoc.myshopify.com --theme 151207542967 --nodelete --strict` with **`--only`** **`templates/index.json`** and **`--only`** **`sections/promo-banner-split.liquid`** (and **no** `--publish` / **no** `--live`** / **no** `--allow-live`**).
-- **Non-approvals preserved:** no product import/staging, no Shopify Admin edits, no checkout/payment/customer-access enablement, no public launch approval, no **Supplier verified** / final pricing / delivery promise / product-claim approval.
-- **Recommended next owner:** **DevOps / Platform Engineer** for the bounded two-file preview push; then **QA / Test Engineer** to rerun **Slice 21H** on the preview homepage.
+- **Store:** `dropshippoc.myshopify.com`
+- **Route tested:** `https://dropshippoc.myshopify.com/?preview_theme_id=151207542967`
+- **Viewports tested:** 390×844, 768×1024, 1366×768
+- **QA results:**
+  - **Actual storefront DOM tested:** PASS
+  - **Legacy promo wording result:** PASS
+    - `best seller`: absent
+    - `best sellers`: absent
+    - `shop the sale`: absent
+    - `limited time offer`: absent
+  - **Controlled preview/pilot wording result:** PASS
+  - **Visual/layout regression findings:** PASS — coherent layout, no overflow, stable grid and spacing across all required viewports
+- **Bounded preview parity (DevOps, no publish / no live overwrite):** `sections/featured-product-grid.liquid` parity — `artifacts/devops/slice-21h-preview-parity-20260511-230541/`; **`templates/index.json`** + **`sections/promo-banner-split.liquid`** — `artifacts/devops/slice-21h-two-file-preview-parity-push-20260511-232112/`
+- **Restricted-action confirmations (QA pass run):**
+  - No code/theme/docs changes were made by QA.
+  - No Shopify push/publish occurred.
+  - No live overwrite occurred.
+  - No Shopify Admin edit occurred.
+  - No product import/staging occurred.
+  - No checkout/payment/customer-access enablement occurred.
+  - No artifact commit occurred.
+  - No `zadropshipping/` commit occurred.
+  - No auth/secret exposure occurred.
+- **Non-approvals preserved (this tracker sync only):** no public launch approval; no **Supplier verified** approval; no final pricing approval; no delivery promise approval; no product claim approval; no checkout/payment/customer-access **service** enablement approval; no product import/staging approval; no Shopify Admin edit approval.
+- **Recommended next owner:** **Product Owner / User** — open the next controlled-pilot readiness slice.
 
 ## Slice 18D Account, wishlist, and social exposure decision (Product Owner PASS WITH NOTES)
 
