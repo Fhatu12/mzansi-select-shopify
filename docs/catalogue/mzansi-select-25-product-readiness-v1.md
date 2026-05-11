@@ -99,6 +99,26 @@ Slice 13J theme behaviour is **committed** (`cef5713412ef218bee4af56ae9767c78d63
   - `74886`: medium risk; anti-slip/professional-edge claims require proof or softened wording.
 - **Blockers before any import/staging decision:** supplier image/content-use basis, current price/stock capture, delivery fee/timing assumptions, return/warranty route, product specs/variants, unsupported-claim removal, preview-only non-purchasable copy, and no implied `Supplier verified`/final price/delivery/claim/launch status.
 
+## Slice 21J Gadgetgyz 4-product controlled pilot baseline (planning only; not import/staging approval)
+
+- **Decision:** Product Owner accepts **Slice 21J** as **implementation planning recorded** — **not** an approval to import, stage, enable checkout/payment, publish, or open customer access.
+- **Supplier route:** **Gadgetgyz only** for this pilot slice — **do not** use **ZA Dropshipping**, **Temu**, **Dropstore**, **KillerDeals**, **Calasca**, or **Ecomstock** for this pilot.
+- **Pilot SKUs and pilot-only prices (not final public pricing):**
+
+| Product (planning title) | SKU | Pilot price |
+|--------------------------|-----|-------------|
+| Acrylic Tablet & Phone Stand | `DP0402` | **R249** |
+| UGREEN 4-in-1 USB 2.0 Hub | `CR106-20277` | **R279** |
+| Gizzu USB to Type-C Cable — 2m | `GCPU2C2` | **R129** |
+| World Map Extended Mouse Pad | `74886` | **R219** |
+
+- **Delivery fee assumption:** **R99** separate flat **pilot** delivery fee — **pending** exact Gadgetgyz checkout/shipping confirmation; **not** a final delivery promise.
+- **Margins:** product margin calculations **exclude** delivery.
+- **Approved pilot delivery wording (exact):** “Pilot delivery is handled manually through our South African supplier route. Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.”
+- **Approved pilot returns/refund wording (exact):** “Returns and warranty handling are managed case by case during the controlled pilot. Statutory consumer rights are not limited. If an item arrives damaged, incorrect, or cannot be fulfilled, we will assist with a replacement, refund, or cancellation where applicable.”
+- **Non-approvals (explicit):** no **Supplier verified**; no final pricing; no final delivery promise; no final product claim; no public launch; no product import/staging; no Shopify Admin edits; no checkout/payment/customer-access enablement by this catalogue note alone.
+- **Canonical implementation plan:** **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`**
+
 Slice **13K** (**docs-only**, **committed** `cb61ee28fbb3e575669236310d4e5b131fc697bf`): supplier proof closure for the five preview-only handles — **remain preview-only staged**; **none** ready for **`Supplier verified`** or launch approval; **do not reject** concepts. **Neat Freak** path (historical): **FAQ `Supplier verified` blocker** (no reseller sales; no dropshipping); **`Slice 13M` removes Neat Freak from launch `Supplier verified` routing** — see **Slice 13M**. **`Gadgetgyz` / `Acrylic Tablet or Phone Stand`:** **Slice 13L** proof pack. **`Cable Tidies Set`:** **`Gadgetgyz`/`Slice 13O`** exact match **recorded docs-only** (**PCB-CT-25150**, **PCBuilder LOCKDOWN…**, **R20.90**) — **git** **`3bf260b…`** — handle **`cable-tidies-set`** — **still** `Supplier proof in progress` — **not** `Supplier verified` — until **Slice 13O** gates close — **`ZA` backup paused (`Slice 13N`)**. **Commercial summary:** replacement paths carry evidence gaps (**Slice 13M** / **Slice 13N**); copy **factual only**.
 
 Slice **13L** (**docs-only**, **committed** `a87e8c6124d9708967dfbf2c6a208b601fe6f608`; tracker `a33895a3bb242455c95da74a6c6f2c72bee946d6`): **`Acrylic Tablet or Phone Stand`** (`acrylic-tablet-phone-stand`) via **`Gadgetgyz`** (**Office & Desk** / **Tech Accessories**) — **stronger supplier proof** recorded — **keep `Supplier proof in progress` / preview-only staged**; **do not** move to **`Supplier verified` review**; **do not** approve final pricing, launch readiness, delivery promises, or claims. **Planning-only margins** (supplier **R158.89**): sell range **R329–R379**; product-only gross **~51.7%** / **~54.5%** / **~58.1%** at **R329** / **R349** / **R379**; **final margin unproven** until shipping fee and handling closed; **Deals** / **Best Sellers** gating per **Slice 13L**. **Remaining blockers:** exact **ZA** shipping fee; shipping-cost model; final margin after shipping; sample/quality; image-use PO sign-off; stock near launch; final sell price; return/refund wording; final PO decision.

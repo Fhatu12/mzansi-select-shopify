@@ -15,6 +15,7 @@ Mzansi Select Shopify MVP Theme Conversion
 
 - Active slice: **Product Owner / User** — continue **controlled Slice 15A-style feedback-only** private preview sharing (**Slice 19B PASS** — **wider private-preview sharing** pause **lifted** from **QA/readiness** perspective only; **no** public launch, checkout/payment testing, final pricing, delivery promises, product claims, **Supplier verified**, product import, Shopify Admin edits, or customer account / wishlist / newsletter / social **service** enablement — see **`## Slice 19B`**)
 - Completed slice: **Slice 21H** — authenticated preview homepage legacy promo wording regression — **PASS** — **Product Owner accepted** — evidence **`artifacts/qa/slice-21h-authenticated-preview-homepage-promo-wording-rerun/20260511-232806/`**; **Slice 21G / 21H** homepage legacy promo wording remediation **chain closed as accepted** — see **`## Slice 21G / 21H — Homepage legacy promo wording remediation chain (Product Owner closure)`**
+- Planning slice: **Slice 21J** — Gadgetgyz **4-product controlled pilot implementation planning** — **PASS WITH NOTES** — **Product Owner accepted** — **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`** + **`docs/catalogue/mzansi-select-25-product-readiness-v1.md` `## Slice 21J`**; prerequisite **Slice 21I** Security / Compliance — **PASS WITH NOTES** (**implementation planning only**); **customer access remains BLOCKED** — see **`## Slice 21I`** and **`## Slice 21J`**
 - Completed slice: **Slice 20A** — South Africa supplier route refresh and shortlist — **PASS WITH NOTES** — **Product Owner accepted** — documentation sync only (no Shopify Admin edits, no product import, no preview staging, no theme changes, no supplier verification, no pricing/delivery/claims/launch approvals)
 - Completed slice: **Slice 19B** — targeted manual QA review for **Slice 19A** notes — **PASS** — **Product Owner accepted** — evidence **`artifacts/qa/slice-19b-targeted-manual-review-slice-19a-notes/20260511-013042/`**; **clears** **Slice 19A** follow-up notes; see **`## Slice 19B`**
 - Completed slice (prior): **Slice 19A** — consolidated authenticated private-preview readiness sweep — **PASS WITH NOTES** — **Product Owner accepted** — **Slice 19A** follow-up notes **cleared** via **Slice 19B PASS** — evidence **`artifacts/qa/slice-19a-consolidated-authenticated-private-preview-readiness-sweep/20260511-003337/`** — preview theme **`151207542967 / Mzansi Select MVP Preview`** (**unpublished**); see **`## Slice 19A`**
@@ -598,6 +599,34 @@ Mzansi Select Shopify MVP Theme Conversion
   - No auth/secret exposure occurred.
 - **Non-approvals preserved (this tracker sync only):** no public launch approval; no **Supplier verified** approval; no final pricing approval; no delivery promise approval; no product claim approval; no checkout/payment/customer-access **service** enablement approval; no product import/staging approval; no Shopify Admin edit approval.
 - **Recommended next owner:** **Product Owner / User** — open the next controlled-pilot readiness slice.
+
+## Slice 21I Gadgetgyz controlled pilot — Security / Compliance review (PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 21I** — Security / Compliance review of Gadgetgyz controlled pilot wording and posture — as **PASS WITH NOTES** (**implementation planning only**).
+- **Customer access:** **BLOCKED** — this acceptance **does not** open storefront customer accounts, checkout, payments, or public launch.
+- **Scope of acceptance:** clears Security / Compliance for **bounded implementation planning** recorded under **Slice 21J** and **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`** only.
+- **Non-approvals preserved:** no **Supplier verified**; no final pricing; no final delivery promise; no final product claim; no public launch; no product import/staging; no Shopify Admin edits; no checkout/payment/customer-access **service** enablement.
+- **Recommended next owner:** **Product Owner / User** — review **Slice 21J** plan and sequence the next **explicit go/no-go** before any implementation or Admin slice.
+
+## Slice 21J Gadgetgyz 4-product controlled pilot — implementation planning (docs only)
+
+- **Decision:** Product Owner accepts **Slice 21J** as **PASS WITH NOTES** — **implementation planning recorded**; **no** execution in this slice.
+- **Canonical plan:** **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`**
+- **Catalogue record:** **`docs/catalogue/mzansi-select-25-product-readiness-v1.md` `## Slice 21J`**
+- **Approved controlled pilot planning baseline:**
+  - Controlled live pilot — **not** public launch.
+  - Invite-only controlled group.
+  - **10** total pilot orders initially.
+  - **Gadgetgyz only** — **not** ZA Dropshipping, Temu, Dropstore, KillerDeals, Calasca, or Ecomstock for this pilot.
+  - **Four pilot products:** (1) Acrylic Tablet & Phone Stand — **DP0402** — pilot price **R249**; (2) UGREEN 4-in-1 USB 2.0 Hub — **CR106-20277** — pilot price **R279**; (3) Gizzu USB to Type-C Cable — 2m — **GCPU2C2** — pilot price **R129**; (4) World Map Extended Mouse Pad — **74886** — pilot price **R219**.
+  - **R99** separate flat **pilot** delivery fee **assumption** — **pending** exact Gadgetgyz checkout/shipping confirmation.
+  - Product margins **exclude** delivery.
+  - Pricing is **pilot-only** and **not** final public pricing.
+- **Approved delivery wording (exact):** “Pilot delivery is handled manually through our South African supplier route. Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.”
+- **Approved returns/refund wording (exact):** “Returns and warranty handling are managed case by case during the controlled pilot. Statutory consumer rights are not limited. If an item arrives damaged, incorrect, or cannot be fulfilled, we will assist with a replacement, refund, or cancellation where applicable.”
+- **Customer access:** **BLOCKED** until a separate explicit go/no-go.
+- **Non-approvals (explicit):** no product import/staging; no Shopify Admin edits; no theme push/publish/live overwrite; no checkout/payment/customer-access enablement; no **Supplier verified**; no final pricing; no final delivery promise; no final product claim; no public launch approval.
+- **Recommended next owner:** **Product Owner / User** — accept or adjust implementation sequencing; then **Security / Compliance** + **DevOps** + **QA** as named in **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`** when a bounded implementation slice is opened.
 
 ## Slice 18D Account, wishlist, and social exposure decision (Product Owner PASS WITH NOTES)
 

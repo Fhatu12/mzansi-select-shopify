@@ -1208,6 +1208,13 @@ This section records a **planning-only** implementation approach for controlled 
 
 - Account, wishlist, newsletter, social remain deferred/disabled as before; no new routes or services; north-star HTML references unchanged.
 
+## Slice 21I and Slice 21J — Gadgetgyz controlled pilot planning (docs; customer access blocked)
+
+- **Slice 21I:** Security / Compliance review outcome — **PASS WITH NOTES** (**implementation planning only**); **customer access remains BLOCKED**.
+- **Slice 21J:** Bounded **implementation planning** for the **Gadgetgyz-only** four-SKU pilot (order cap **10**, **R99** pilot delivery fee **assumption** pending Gadgetgyz checkout confirmation, pilot-only pricing, manual fulfilment SOP add-ons, checkout/payment **readiness checks without enablement**, QA and DevOps checklists) — recorded in **`docs/pilot/mzansi-select-controlled-live-pilot-v1.md`** and the **Slice 21J** section of **`docs/catalogue/mzansi-select-25-product-readiness-v1.md`**.
+- **Theme contract:** until a later approved implementation slice, storefront behaviour remains as implemented under **Slice 21E** (`controlled_pilot_trust_mode`, pilot PDP/cart/search/footer/card copy); **Slice 21J** does **not** by itself change Liquid, Admin, or checkout state.
+- **Pilot-specific delivery/returns strings** for go-live copy are **canonical** in the pilot doc (they extend beyond the earlier preview-only security strings where the PO has now approved pilot wording).
+
 ## Department destination strategy
 
 **Slice 14B active theme contract:**
