@@ -17,6 +17,22 @@ This document records the approved local-first sourcing strategy for the MVP lau
 - Reason: reduce fulfilment risk, long delivery delays, refund risk, customer trust damage, and order-fulfilment uncertainty from international suppliers.
 - International and older candidate supplier paths are paused unless explicitly reopened.
 
+## Slice 20A supplier route refresh (South Africa shortlist posture)
+
+- **Status:** Slice 20A accepted **PASS WITH NOTES** as a **supplier-route refresh and shortlist** documentation sync only.
+- **Scope note:** This section records **route posture only**. It does **not** approve `Supplier verified`, final pricing, delivery promises, product claims, product import, Shopify Admin edits, preview staging, paid registration, or public launch.
+- **Supplier priority order (approved):**
+  1. `Gadgetgyz` (**top route**)
+  2. `KillerDeals` (**route-first proof candidate**, sequenced after Gadgetgyz batch proof)
+  3. `ZA Dropshipping` (**high-potential, proof-gated by authenticated access**)
+  4. `Calasca` (**deferred**; paid/reseller-route exploration only if explicitly approved)
+  5. `Dropstore marketplace` (**deferred until access/integration is proven**)
+  6. `Ecomstock` (**backup/manual comparison only**)
+  7. `Mantality` (**deferred**)
+  8. `Men’s Republic` (**deferred**)
+  9. `Third Wave Distribution` (**deferred**)
+- **Explicit confusion warning:** Do **not** confuse **`Dropstore marketplace`** / `dropstore.co.za` (marketplace route under evaluation) with **`dropstoresa.co.za`** (rejected supplier marketplace route for this pass).
+
 ## Primary recommended suppliers
 
 ### 1. ZA Dropshipping

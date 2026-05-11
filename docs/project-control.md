@@ -14,6 +14,7 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - Active slice: **Product Owner / User** — continue **controlled Slice 15A-style feedback-only** private preview sharing (**Slice 19B PASS** — **wider private-preview sharing** pause **lifted** from **QA/readiness** perspective only; **no** public launch, checkout/payment testing, final pricing, delivery promises, product claims, **Supplier verified**, product import, Shopify Admin edits, or customer account / wishlist / newsletter / social **service** enablement — see **`## Slice 19B`**)
+- Completed slice: **Slice 20A** — South Africa supplier route refresh and shortlist — **PASS WITH NOTES** — **Product Owner accepted** — documentation sync only (no Shopify Admin edits, no product import, no preview staging, no theme changes, no supplier verification, no pricing/delivery/claims/launch approvals)
 - Completed slice: **Slice 19B** — targeted manual QA review for **Slice 19A** notes — **PASS** — **Product Owner accepted** — evidence **`artifacts/qa/slice-19b-targeted-manual-review-slice-19a-notes/20260511-013042/`**; **clears** **Slice 19A** follow-up notes; see **`## Slice 19B`**
 - Completed slice (prior): **Slice 19A** — consolidated authenticated private-preview readiness sweep — **PASS WITH NOTES** — **Product Owner accepted** — **Slice 19A** follow-up notes **cleared** via **Slice 19B PASS** — evidence **`artifacts/qa/slice-19a-consolidated-authenticated-private-preview-readiness-sweep/20260511-003337/`** — preview theme **`151207542967 / Mzansi Select MVP Preview`** (**unpublished**); see **`## Slice 19A`**
 - Completed slice (prior): **Slice 18F** — authenticated preview account / wishlist / social deferred-state QA — **PASS WITH NOTES** — **Product Owner accepted** — evidence **`artifacts/qa/slice-18f-authenticated-preview-account-wishlist-social-deferred-state/20260510-202711/`** — preview theme **`151207542967 / Mzansi Select MVP Preview`** (**unpublished**); see **`## Slice 18F`**
@@ -89,6 +90,45 @@ Mzansi Select Shopify MVP Theme Conversion
 - Tracker status: **Slice 19B PASS** (clears **Slice 19A** notes; sharing pause **lifted** QA/readiness-only) + **Slice 19A PASS WITH NOTES** (consolidated preview readiness) + **Slice 18F PASS WITH NOTES** + **Slice 18E PASS WITH NOTES** + **preview theme updated (bounded push)** + **Slice 18D PASS WITH NOTES** + **Slices 18A–18C PASS WITH NOTES** (newsletter chain closed) — storefront **`/search`** honesty posture intact — account/wishlist/social deferral QA chain **closed as accepted**
 - Catalogue plan status: **Slice 13O** (**`3bf260b…`**) + **`docs/catalogue`** companions **committed** — **canonical narrative** **`project-control`** + **`mzansi-select-25-product-readiness-v1`** + **`local-supplier-sourcing-matrix-v1`**
 - Documentation sync status: **current for `project-control` + LLD** after **Slice 19B** tracker sync (**`docs/project-control.md` `## Slice 19B`** + updated **`## Slice 19A`**); LLD consolidated private-preview readiness posture unchanged (**existing preview-honesty + deferred-service sections** already cover theme contract; **Slice 19B** records QA/readiness sharing lift + strict non-approvals only)
+
+## Slice 20A South Africa supplier route refresh and shortlist (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 20A** as **PASS WITH NOTES**.
+- **Scope:** Documentation sync only (commercial/catalogue evidence posture). **No** product import, **no** Shopify Admin edits, **no** preview staging, **no** theme push/publish, and **no** supplier account creation.
+- **Supplier priority order (approved):**
+  1. `Gadgetgyz`
+  2. `KillerDeals`
+  3. `ZA Dropshipping`
+  4. `Calasca`
+  5. `Dropstore marketplace`
+  6. `Ecomstock`
+  7. `Mantality`
+  8. `Men’s Republic`
+  9. `Third Wave Distribution`
+- **Controlled batching model (approved):**
+  - Supplier route proof: **1 route at a time**
+  - Product proof batch: **up to 10 products at a time**
+  - Preview staging batch: **5–10 products at a time**
+  - Launch approval remains **product-by-product only**
+- **Next proof slice (approved after docs sync):** **Slice 20B — Gadgetgyz 10-product batch proof and preview-candidate shortlist**
+- **Deferred supplier decisions (record):**
+  - `ZA Dropshipping` authenticated app/admin reference capture should be reopened later, after Gadgetgyz batch proof.
+  - `KillerDeals` route-first supplier proof should follow after Gadgetgyz batch proof.
+  - `Calasca` remains deferred unless paid/reseller-route exploration is explicitly approved.
+  - `Dropstore marketplace` remains deferred until access/integration is proven.
+  - `Ecomstock` remains backup/manual comparison only.
+  - `Mantality`, `Men’s Republic`, and `Third Wave Distribution` remain deferred.
+  - `dropstoresa.co.za` is rejected as a supplier marketplace route for this pass.
+- **Current non-approval constraints (unchanged):**
+  - no `Supplier verified` product
+  - no final pricing
+  - no delivery promise
+  - no product claim
+  - no launch approval
+  - no product import
+  - no Shopify Admin edit
+  - no preview staging
+  - no paid subscription/reseller registration
 
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
