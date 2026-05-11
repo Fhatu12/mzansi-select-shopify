@@ -1113,6 +1113,78 @@ Merchandising rails remain distinct from departments:
 
 These may drive homepage merchandising, manual collections, or smart collections later, but they must not replace or dilute the stable department-led browse taxonomy.
 
+## Slice 21D Minimal-diff controlled pilot trust wording implementation planning (Slice 21C PASS WITH NOTES)
+
+This section records a **planning-only** implementation approach for controlled live pilot trust wording and interaction states. It does **not** approve theme implementation, product import, Shopify Admin edits, payments enablement, publish/live overwrite, or public launch.
+
+### Pilot scope (approved for planning)
+
+- Controlled live pilot (invite-only), not public launch
+- Initial cap: `10` total pilot orders
+- Supplier: `Gadgetgyz` only
+- Pilot products (4):
+  1. `Acrylic Tablet & Phone Stand` — `DP0402`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+  3. `Gizzu USB to Type-C Cable — 2m` — `GCPU2C2`
+  4. `World Map Extended Mouse Pad` — `74886`
+
+### Approved wording posture (constraints)
+
+- Honest controlled-pilot language only
+- No public-launch wording
+- No `Supplier verified` wording
+- No final pricing wording
+- No guaranteed delivery wording
+- No unsupported product claims
+- No Best Seller / Deals / Sale claims
+- No guaranteed stock wording
+
+### Files/surfaces likely affected (for a later bounded implementation slice)
+
+- `sections/site-header.liquid` (topbar/search shell trust cues)
+- `snippets/live-product-card.liquid`, `snippets/static-product-card.liquid` (product card badges/CTAs/pricing labels)
+- `sections/main-product-foundation.liquid` (pilot PDP trust band + preview-only/pilot copy)
+- `sections/main-cart-foundation.liquid` + `templates/cart.json` (cart/summary and checkout-adjacent wording)
+- `sections/main-search-foundation.liquid` + `templates/search.json` (search card/summary copy)
+- `templates/product.json` (PDP section composition)
+- Reference north-stars: `mzansi-select-theme.html`, `mzansi-select-mobile.html`, `mzansi-select-interactive-elements.txt`
+
+### Minimal implementation approach (planning)
+
+- Prefer **copy-first** minimal diffs localized to the above surfaces.
+- Introduce **one** pilot-state guard (theme setting or tag-driven convention) to switch between **preview** and **controlled pilot** trust language, without implicitly enabling purchase flows.
+- Preserve existing preview safety conventions (`preview-only`, `price-to-confirm`, placeholder pricing, disabled commerce controls) unless a later explicit go/no-go authorizes a bounded pilot purchase path.
+
+### Pilot wording/state map by surface (planning)
+
+- **Product cards**: show a controlled-pilot badge; avoid “Sale/Deals/Best Seller”; avoid stock guarantees; avoid checkout/payment promises.
+- **Pilot PDPs**: clearly distinguish “controlled pilot item” vs “public launch”; conservative delivery/returns wording; no claims beyond evidence; no `Supplier verified`.
+- **Cart-adjacent**: treat checkout/payment as deferred unless explicitly enabled; use pilot-only caution labels; avoid “secure checkout” language unless payments are enabled and validated.
+- **Footer/support/contact references**: frame support as invite-only pilot support; keep public-launch language out.
+
+### Disabled/deferred states that must remain until go/no-go
+
+- Add to Cart and checkout/payment enablement (unless explicitly approved in a later bounded slice)
+- Any import/staging/Admin automation beyond separately approved scope
+- Any claims implying final delivery SLAs, final returns policy, final pricing, or launch readiness
+
+### Validation plan (QA)
+
+- Confirm pilot surfaces never show public-launch, `Supplier verified`, final pricing, guaranteed delivery, unsupported claims, or sale/deals/best-seller signals.
+- Confirm pages remain non-purchasable unless a later slice explicitly enables a bounded pilot purchase path.
+- Confirm desktop/mobile parity and preservation of north-star visual rhythm.
+
+### DevOps preview/live safety considerations
+
+- If later implementation is approved: use bounded `shopify theme push --only` with strict file lists; do not publish/overwrite live theme without explicit Product Owner approval.
+- Keep `artifacts/` untracked and uncommitted.
+
+### Security/compliance risks or unresolved wording gaps
+
+- Checkout/payment language must reflect actual enabled capabilities (no “secure checkout” claims unless enabled/validated).
+- Delivery/returns wording must remain conservative and non-final until policy publication is approved.
+- Prohibit absolute/performance guarantees unless evidence is captured.
+
 ## Department destination strategy
 
 **Slice 14B active theme contract:**

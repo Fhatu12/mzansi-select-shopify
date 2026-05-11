@@ -338,6 +338,73 @@ Mzansi Select Shopify MVP Theme Conversion
   - preview-only non-purchasable copy prepared
   - no `Supplier verified`/final price/delivery/product claim/launch status implied
 
+## Slice 21D Minimal-diff controlled pilot trust wording implementation planning (Slice 21C PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts **Slice 21C — Controlled live pilot customer-facing trust wording and state guidance** as **PASS WITH NOTES**.
+- **Slice 21D status:** planning complete (minimal-diff implementation plan only).
+- **Approved pilot scope (record):**
+  - Controlled live pilot, not public launch.
+  - Invite-only controlled group.
+  - `10` total pilot orders initially.
+  - `Gadgetgyz` only.
+  - 4 pilot products:
+    1. `Acrylic Tablet & Phone Stand` — `DP0402`
+    2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+    3. `Gizzu USB to Type-C Cable — 2m` — `GCPU2C2`
+    4. `World Map Extended Mouse Pad` — `74886`
+- **Approved wording posture (record):**
+  - Honest controlled-pilot language.
+  - No public-launch wording.
+  - No `Supplier verified` wording.
+  - No final pricing wording.
+  - No guaranteed delivery wording.
+  - No unsupported product claims.
+  - No Best Seller / Deals / Sale claims.
+  - No guaranteed stock wording.
+- **No actions occurred (constraints preserved):** no implementation, import, staging, Shopify Admin edits, payments enablement, publish/push, or customer-access enablement occurred in this planning pass.
+- **Planning output (record):**
+  1. **Files likely affected (theme surfaces; do not modify until separately approved):**
+     - `sections/site-header.liquid` (topbar/search/utility trust cues)
+     - `sections/site-footer.liquid` (help/support/contact placeholders; trust/disclaimer language)
+     - `sections/main-product-foundation.liquid` (PDP trust band + preview-only messaging)
+     - `sections/main-search-foundation.liquid` (search-result card messaging + preview-only CTA posture)
+     - `sections/main-cart-foundation.liquid` (cart/summary/checkout-adjacent preview messaging)
+     - `snippets/live-product-card.liquid` (product card badge/price/CTA language)
+     - `snippets/static-product-card.liquid` (static card disabled CTA language)
+     - `templates/product.json`, `templates/search.json`, `templates/cart.json` (section composition)
+     - North-stars: `mzansi-select-theme.html`, `mzansi-select-mobile.html`, `mzansi-select-interactive-elements.txt` (visual/state reference; no direct runtime use)
+  2. **Proposed minimal implementation approach:**
+     - Add a single pilot-state guard (e.g. theme setting or tag-driven guard) that switches trust copy between **preview** and **controlled pilot** messaging **without enabling purchase** by default.
+     - Keep `preview-only`/placeholder price guards and disabled commerce controls intact unless a later go/no-go explicitly authorizes a bounded pilot checkout flow.
+     - Keep changes copy-first and surface-local (no new routes, no new services, no new integrations).
+  3. **Pilot wording/state map by surface (customer-facing):**
+     - Product cards (`snippets/live-product-card.liquid`, `snippets/static-product-card.liquid`): pilot badge + “Invite-only pilot” style copy; never show Sale/Deals/Best Seller; no stock guarantees.
+     - Pilot PDP (`sections/main-product-foundation.liquid`): clearly label controlled pilot item; conservative delivery/returns wording; no claims; no `Supplier verified`.
+     - Cart-adjacent (`sections/main-cart-foundation.liquid`): keep checkout-adjacent wording as **not approved** unless later authorized; use pilot-only caution labels; avoid “secure checkout” promises unless payment is actually enabled.
+     - Checkout-adjacent wording (cart CTA + any near-checkout copy): treat as deferred unless explicit go/no-go; must not imply payment approval.
+     - Footer/support/contact (`sections/site-footer.liquid`): pilot support framing for invite-only group; keep public-launch language out.
+     - Delivery wording: estimated/non-guaranteed; no fixed delivery promises.
+     - Returns/refund wording: limited/non-final; no final policy claims.
+     - Pilot-only pricing labels: explicitly non-final and pilot-only; avoid implying final pricing.
+  4. **What remains disabled/deferred (must remain until go/no-go):**
+     - Add to Cart, checkout/payment enablement, and any purchase flow.
+     - Any Shopify Admin automation/import/staging beyond separately approved bounded scope.
+     - Any “secure checkout”/payment claims unless payments are enabled and validated.
+  5. **Validation plan (QA):**
+     - Confirm every pilot surface shows controlled-pilot wording and never shows public-launch, Sale/Deals/Best Seller, `Supplier verified`, final pricing, guaranteed delivery, or claims.
+     - Confirm pages remain non-purchasable unless a later slice explicitly enables a bounded pilot purchase path.
+     - Verify desktop + mobile parity against north-star rhythm and existing preview-safety conventions.
+  6. **DevOps preview/live safety considerations:**
+     - Use bounded `shopify theme push --only` for minimal paths if later implementation is approved; never publish/overwrite live theme without explicit approval.
+     - Maintain artifacts policy: do not commit `artifacts/`.
+  7. **Security/compliance risks or unresolved wording gaps:**
+     - Payment/checkout wording must reflect actual enabled capability (no “secure checkout” language unless enabled/validated).
+     - Delivery/returns wording must remain conservative and non-final until policy publication is approved.
+     - Claims must remain evidence-backed only; prohibit absolute/performance guarantees.
+  8. **Documentation updates required:** `docs/project-control.md` (this section) and `docs/lld/mzansi-select-shopify-mvp-theme-v1.md` (pilot state contract planning rules, if materially defined).
+  9. **Confirmation no implementation/import/Admin/payment/publish action occurred:** yes.
+  10. **Recommended next owner:** Product Owner to choose whether to approve a bounded implementation slice after planning.
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).
