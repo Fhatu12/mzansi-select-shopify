@@ -70,6 +70,35 @@ Slice 13J theme behaviour is **committed** (`cef5713412ef218bee4af56ae9767c78d63
 - **Required blocker closures before any later import/staging slice:** recheck stock/price, reconfirm image/content-use basis, keep retail bands non-final, keep `preview-only` status, avoid `Supplier verified` language, conservative descriptions, avoid unsupported claims, avoid fixed delivery promises, keep returns/warranty wording limited and non-final, decide whether staging would be manual vs controlled Shopify product creation, and keep sample/quality proof mandatory before launch or `Supplier verified` promotion.
 - **Sequencing:** docs sync first; then Security / Compliance review of wording, delivery, returns, and claim posture. **No import/staging slice is approved yet.**
 
+## Gadgetgyz Security / Compliance wording assessment (PASS WITH NOTES; preview-only wording guardrails)
+
+- **Decision:** Product Owner accepts the Gadgetgyz claim, delivery, returns, and preview-only wording assessment as **PASS WITH NOTES**.
+- **Products reviewed (may continue toward preview-staging consideration only):**
+  1. `Acrylic Tablet & Phone Stand` — `DP0402`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+  3. `Gizzu USB to Type-C Cable — 2m` — `GCPU2C2`
+  4. `World Map Extended Mouse Pad` — `74886`
+- **Non-approvals (explicit):** no import, no preview staging, no Shopify Admin edits, no `Supplier verified` promotion, no final pricing, no delivery promises, no return/warranty finalisation, no product claims, and no public launch.
+- **Required preview-only rules:**
+  - Use `Preview candidate` or `Supplier proof in progress`.
+  - State that pricing, availability, delivery, returns, and product details are not final.
+  - Keep pages non-purchasable.
+  - Do not imply `Supplier verified` status or launch readiness.
+  - Do not publish unsupported product claims.
+- **Approved conservative delivery wording (exact):** “Delivery timing will be confirmed before launch. This preview item is not yet available for purchase.”
+- **Approved conservative returns/warranty wording (exact):** “Returns and warranty handling will be confirmed before launch. Statutory consumer rights are not limited by this preview page.”
+- **Product claim restrictions:**
+  - Do not use absolute performance claims.
+  - Do not use “premium,” “best,” “guaranteed,” or “professional-grade” unless verified.
+  - Do not use “fast charging,” “66W,” “480Mbps,” or universal compatibility unless supplier/manufacturer evidence is captured.
+  - Do not use anti-slip/durability claims as guarantees.
+- **Product-specific notes:**
+  - `DP0402`: low-to-medium risk; keep copy factual as an acrylic desk stand.
+  - `CR106-20277`: medium risk; describe as USB 2.0 hub only; avoid performance guarantees.
+  - `GCPU2C2`: medium risk; 66W/480Mbps claims require proof before publication.
+  - `74886`: medium risk; anti-slip/professional-edge claims require proof or softened wording.
+- **Blockers before any import/staging decision:** supplier image/content-use basis, current price/stock capture, delivery fee/timing assumptions, return/warranty route, product specs/variants, unsupported-claim removal, preview-only non-purchasable copy, and no implied `Supplier verified`/final price/delivery/claim/launch status.
+
 Slice **13K** (**docs-only**, **committed** `cb61ee28fbb3e575669236310d4e5b131fc697bf`): supplier proof closure for the five preview-only handles — **remain preview-only staged**; **none** ready for **`Supplier verified`** or launch approval; **do not reject** concepts. **Neat Freak** path (historical): **FAQ `Supplier verified` blocker** (no reseller sales; no dropshipping); **`Slice 13M` removes Neat Freak from launch `Supplier verified` routing** — see **Slice 13M**. **`Gadgetgyz` / `Acrylic Tablet or Phone Stand`:** **Slice 13L** proof pack. **`Cable Tidies Set`:** **`Gadgetgyz`/`Slice 13O`** exact match **recorded docs-only** (**PCB-CT-25150**, **PCBuilder LOCKDOWN…**, **R20.90**) — **git** **`3bf260b…`** — handle **`cable-tidies-set`** — **still** `Supplier proof in progress` — **not** `Supplier verified` — until **Slice 13O** gates close — **`ZA` backup paused (`Slice 13N`)**. **Commercial summary:** replacement paths carry evidence gaps (**Slice 13M** / **Slice 13N**); copy **factual only**.
 
 Slice **13L** (**docs-only**, **committed** `a87e8c6124d9708967dfbf2c6a208b601fe6f608`; tracker `a33895a3bb242455c95da74a6c6f2c72bee946d6`): **`Acrylic Tablet or Phone Stand`** (`acrylic-tablet-phone-stand`) via **`Gadgetgyz`** (**Office & Desk** / **Tech Accessories**) — **stronger supplier proof** recorded — **keep `Supplier proof in progress` / preview-only staged**; **do not** move to **`Supplier verified` review**; **do not** approve final pricing, launch readiness, delivery promises, or claims. **Planning-only margins** (supplier **R158.89**): sell range **R329–R379**; product-only gross **~51.7%** / **~54.5%** / **~58.1%** at **R329** / **R349** / **R379**; **final margin unproven** until shipping fee and handling closed; **Deals** / **Best Sellers** gating per **Slice 13L**. **Remaining blockers:** exact **ZA** shipping fee; shipping-cost model; final margin after shipping; sample/quality; image-use PO sign-off; stock near launch; final sell price; return/refund wording; final PO decision.

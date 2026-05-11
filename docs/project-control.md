@@ -290,6 +290,54 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Product Owner sequencing decision:** docs sync first; then open **Security / Compliance** review of Gadgetgyz preview product wording, delivery, returns, and claim posture. **No import/staging slice is approved yet.**
 - **Recommended next owner:** **Security / Compliance Engineer** — claim, delivery, returns, and preview-only wording review.
 
+## Gadgetgyz Security / Compliance wording assessment (Product Owner PASS WITH NOTES)
+
+- **Decision:** Product Owner accepts the Gadgetgyz claim, delivery, returns, and preview-only wording assessment as **PASS WITH NOTES**.
+- **Products reviewed:**
+  1. `Acrylic Tablet & Phone Stand` — `DP0402`
+  2. `UGREEN 4-in-1 USB 2.0 Hub` — `CR106-20277`
+  3. `Gizzu USB to Type-C Cable — 2m` — `GCPU2C2`
+  4. `World Map Extended Mouse Pad` — `74886`
+- **Decision to record:** the four Gadgetgyz products may continue toward Product Owner **preview-staging consideration only**.
+- **Do not approve (explicit):**
+  - product import
+  - preview staging
+  - Shopify Admin edits
+  - `Supplier verified` promotion
+  - final pricing
+  - delivery promises
+  - return/warranty finalisation
+  - product claims
+  - public launch
+- **Required preview-only rules:**
+  - Use `Preview candidate` or `Supplier proof in progress`.
+  - State that pricing, availability, delivery, returns, and product details are not final.
+  - Keep pages non-purchasable.
+  - Do not imply `Supplier verified` status.
+  - Do not imply launch readiness.
+  - Do not publish unsupported product claims.
+- **Approved conservative delivery wording (exact):** “Delivery timing will be confirmed before launch. This preview item is not yet available for purchase.”
+- **Approved conservative returns/warranty wording (exact):** “Returns and warranty handling will be confirmed before launch. Statutory consumer rights are not limited by this preview page.”
+- **Product claim restrictions:**
+  - Do not use absolute performance claims.
+  - Do not use “premium,” “best,” “guaranteed,” or “professional-grade” unless verified.
+  - Do not use “fast charging,” “66W,” “480Mbps,” or universal compatibility unless supplier/manufacturer evidence is captured.
+  - Do not use anti-slip/durability claims as guarantees.
+- **Product-specific notes:**
+  - `DP0402`: low-to-medium risk; keep copy factual as an acrylic desk stand.
+  - `CR106-20277`: medium risk; describe as USB 2.0 hub only; avoid performance guarantees.
+  - `GCPU2C2`: medium risk; 66W/480Mbps claims require proof before publication.
+  - `74886`: medium risk; anti-slip/professional-edge claims require proof or softened wording.
+- **Blockers before any import/staging decision:**
+  - supplier image/content-use basis confirmed
+  - current price/stock captured
+  - delivery fee/timing assumptions captured
+  - return/warranty route captured
+  - product specs/variants captured
+  - unsupported claims removed
+  - preview-only non-purchasable copy prepared
+  - no `Supplier verified`/final price/delivery/product claim/launch status implied
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).
