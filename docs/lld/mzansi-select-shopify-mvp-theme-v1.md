@@ -1185,6 +1185,29 @@ This section records a **planning-only** implementation approach for controlled 
 - Delivery/returns wording must remain conservative and non-final until policy publication is approved.
 - Prohibit absolute/performance guarantees unless evidence is captured.
 
+## Slice 21E Minimal-diff controlled pilot trust wording implementation (theme)
+
+**Slice 21E** implements the **Slice 21D** plan in the theme (repo) with **no** payments, **no** checkout enablement, **no** Shopify push/publish, **no** Admin/import/staging actions in this slice.
+
+### Storefront guard
+
+- Theme setting **`controlled_pilot_trust_mode`** in **`config/settings_schema.json`** (`Slice 1 shell` group), default **`true`**. When **`false`**, sections fall back to the prior generic private-preview copy paths where dual wording exists.
+
+### Files changed (implementation)
+
+- `config/settings_schema.json` — pilot trust checkbox
+- `sections/main-product-foundation.liquid` — pilot PDP copy, badges, reassurance, support band, availability line; suppress compare-at “sale” presentation when pilot mode is on
+- `sections/main-search-foundation.liquid` — pilot placeholder cards, schema defaults, search CTA label
+- `sections/main-cart-foundation.liquid` — pilot cart summary, returns row, checkout button disabled + honest copy, support pills, line badges, schema defaults
+- `sections/site-footer.liquid` — pilot footer descriptions and help `visually-hidden` hints (desktop + mobile)
+- `snippets/live-product-card.liquid` — pilot badges, suppress sale badge and compare strikethrough when pilot mode is on; pilot price note
+- `snippets/static-product-card.liquid` — pilot badges, strip promotional was/save when pilot mode is on; CTA label/aria
+- `templates/product.json`, `templates/search.json`, `templates/cart.json` — section setting defaults aligned to pilot copy
+
+### Behaviour preserved
+
+- Account, wishlist, newsletter, social remain deferred/disabled as before; no new routes or services; north-star HTML references unchanged.
+
 ## Department destination strategy
 
 **Slice 14B active theme contract:**

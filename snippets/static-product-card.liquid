@@ -1,7 +1,25 @@
+{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
+{% assign sc_badge_label = badge_label %}
+{% assign sc_badge_tone = badge_tone %}
+{% if pilot_trust %}
+  {% if badge_tone == 'new' %}
+    {% assign sc_badge_label = 'Pilot preview' %}
+    {% assign sc_badge_tone = 'preview' %}
+  {% elsif badge_tone == 'preview' and badge_label != blank %}
+    {% assign sc_badge_label = 'Pilot preview' %}
+  {% endif %}
+{% endif %}
+{% assign sc_price_was = price_was %}
+{% assign sc_price_save = price_save %}
+{% if pilot_trust %}
+  {% assign sc_price_was = blank %}
+  {% assign sc_price_save = blank %}
+{% endif %}
+
 <div class="product-card">
   <div class="prod-img">
     <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" width="{{ image_width | default: 600 }}" height="{{ image_height | default: 600 }}">
-    {% render 'product-badge', label: badge_label, tone: badge_tone %}
+    {% render 'product-badge', label: sc_badge_label, tone: sc_badge_tone %}
     <button
       class="p-wish"
       type="button"
@@ -18,15 +36,15 @@
     <div class="p-type">{{ product_type }}</div>
     <div class="p-name">{{ product_name }}</div>
     <div class="p-stars">{{ stars }} <span class="p-rev">{{ reviews }}</span></div>
-    {% render 'price-stack', price_now: price_now, price_was: price_was, price_save: price_save %}
+    {% render 'price-stack', price_now: price_now, price_was: sc_price_was, price_save: sc_price_save %}
     <button
       class="add-btn"
       type="button"
       disabled
       aria-disabled="true"
-      aria-label="Preview only. Add to Cart is not available for this item yet."
+      aria-label="{% if pilot_trust %}Invite-only pilot. Add to Cart is not available yet.{% else %}Preview only. Add to Cart is not available for this item yet.{% endif %}"
     >
-      Preview only
+      {% if pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}
     </button>
   </div>
 </div>

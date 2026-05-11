@@ -50,6 +50,15 @@
 {% endunless %}
 {% assign related_collection = product.collections.first %}
 {% assign related_products_found = 0 %}
+{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
+{% if pilot_trust %}
+  {% assign current_product_price_was = blank %}
+  {% assign current_product_price_save = blank %}
+{% endif %}
+{% assign product_price_supporting_note = blank %}
+{% if pilot_trust and current_product_use_placeholder_price %}
+  {% assign product_price_supporting_note = 'Pilot price — not final' %}
+{% endif %}
 
 <section class="product-main-shell">
   <div class="section-inner">
@@ -95,9 +104,15 @@
 
         <div class="product-main-badge-row">
           {% if current_product_preview_only %}
-            {% render 'product-badge', label: 'Preview item', tone: 'preview' %}
+            {% if pilot_trust %}
+              {% render 'product-badge', label: 'Pilot item', tone: 'preview' %}
+            {% else %}
+              {% render 'product-badge', label: 'Preview item', tone: 'preview' %}
+            {% endif %}
           {% elsif current_variant.compare_at_price > current_variant.price and current_product_use_placeholder_price == false %}
-            {% render 'product-badge', label: 'Sale', tone: 'sale' %}
+            {% unless pilot_trust %}
+              {% render 'product-badge', label: 'Sale', tone: 'sale' %}
+            {% endunless %}
           {% endif %}
         </div>
 
@@ -108,10 +123,15 @@
           price_was: current_product_price_was,
           price_save: current_product_price_save,
           price_is_placeholder: current_product_use_placeholder_price,
-          supporting_note: blank
+          supporting_note: product_price_supporting_note
         %}
-        {% if current_product_preview_only %}
+        {% if current_product_preview_only and pilot_trust %}
+          <p class="product-preview-note">Delivery timing will be confirmed before launch. This preview item is not yet available for purchase.</p>
+          <p class="product-preview-note">Returns and warranty handling will be confirmed before launch. Statutory consumer rights are not limited by this preview page.</p>
+        {% elsif current_product_preview_only %}
           <p class="product-preview-note">Delivery details to be confirmed before launch.</p>
+        {% elsif pilot_trust %}
+          <p class="product-preview-note">Controlled pilot view — not a public launch. Delivery and returns will be confirmed before any order fulfilment.</p>
         {% endif %}
 
         <p class="product-main-intro">{{ current_product_intro }}</p>
@@ -129,7 +149,13 @@
           {% endfor %}
         {% endunless %}
 
-        <p class="product-purchase-note">Preview visibility only. Cart and checkout actions remain disabled in this slice.</p>
+        <p class="product-purchase-note">
+          {% if pilot_trust %}
+            Invite-only controlled pilot visibility. Not a public launch. Cart and checkout remain disabled until a separate Product Owner go/no-go.
+          {% else %}
+            Preview visibility only. Cart and checkout actions remain disabled in this slice.
+          {% endif %}
+        </p>
         <div class="product-purchase-shell">
           <div class="product-qty-wrap">
             <div class="product-option-label">Quantity</div>
@@ -140,7 +166,7 @@
             </div>
           </div>
           <div class="product-action-row">
-            <button class="add-btn product-main-add" type="button" disabled>Preview only</button>
+            <button class="add-btn product-main-add" type="button" disabled>{% if pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}</button>
             <button class="btn-ghost product-main-save" type="button" disabled aria-disabled="true" aria-label="Favourites paused. Save feature coming later during private preview.">Favourites paused</button>
           </div>
         </div>
@@ -153,7 +179,9 @@
               <circle cx="5.5" cy="18.5" r="2.5"></circle>
               <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
-            {% if current_product_preview_only or current_product_use_placeholder_price %}
+            {% if pilot_trust %}
+              Invite-only pilot: live titles and layout may render for review. Pricing is not final; this is not a full catalogue launch.
+            {% elsif current_product_preview_only or current_product_use_placeholder_price %}
               Live Shopify product titles and catalog layout render in preview; price is not final until separately approved.
             {% else %}
               Live Shopify product title, media, and pricing now render in preview
@@ -163,14 +191,22 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
             </svg>
-            Final pricing, delivery, and launch approval remain pending
+            {% if pilot_trust %}
+              Final pricing, guaranteed delivery, and public launch approval are not granted on this page.
+            {% else %}
+              Final pricing, delivery, and launch approval remain pending
+            {% endif %}
           </div>
           <div class="product-reassurance-item">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <polyline points="1 4 1 10 7 10"></polyline>
               <path d="M3.51 15a9 9 0 1 0 .49-4.95"></path>
             </svg>
-            Add to Cart, wishlist, and checkout behaviour remain deferred
+            {% if pilot_trust %}
+              Add to Cart, wishlist, checkout, and payments stay disabled here.
+            {% else %}
+              Add to Cart, wishlist, and checkout behaviour remain deferred
+            {% endif %}
           </div>
         </div>
       </div>
@@ -195,7 +231,7 @@
             {% if product.type != blank %}
               <li>Type: {{ product.type }}</li>
             {% endif %}
-            <li>Availability: {% if current_product_preview_only %}Preview item{% elsif product.available %}Available in preview{% else %}Currently unavailable{% endif %}</li>
+            <li>Availability: {% if current_product_preview_only %}{% if pilot_trust %}Pilot preview item{% else %}Preview item{% endif %}{% elsif product.available %}Shown for preview — not a stock guarantee{% else %}Currently unavailable{% endif %}</li>
             <li>Variant count: {{ product.variants.size }}</li>
             {% unless product.has_only_default_variant %}
               <li>Options: {{ product.options | join: ', ' }}</li>
@@ -217,16 +253,34 @@
 
     <div class="product-support-band">
       <div class="product-support-item">
-        <div class="product-support-title">Need help before ordering?</div>
-        <div class="product-support-copy">Use this preview to review live product titles, media, and description coverage before any launch-readiness decision is requested.</div>
+        <div class="product-support-title">{% if pilot_trust %}Controlled pilot support{% else %}Need help before ordering?{% endif %}</div>
+        <div class="product-support-copy">
+          {% if pilot_trust %}
+            This invite-only pilot is not a public launch. Use these pages to review titles, media, and descriptions; operational support is limited until checkout is separately approved.
+          {% else %}
+            Use this preview to review live product titles, media, and description coverage before any launch-readiness decision is requested.
+          {% endif %}
+        </div>
       </div>
       <div class="product-support-item">
-        <div class="product-support-title">Straightforward value</div>
-        <div class="product-support-copy">Final pricing, fulfilment, returns, and sales claims still need separate commercial and operational approval.</div>
+        <div class="product-support-title">{% if pilot_trust %}Pricing and claims{% else %}Straightforward value{% endif %}</div>
+        <div class="product-support-copy">
+          {% if pilot_trust %}
+            No final pricing, no supplier-verified labelling, and no unsupported product claims are implied here. Commercial sign-off stays separate.
+          {% else %}
+            Final pricing, fulfilment, returns, and sales claims still need separate commercial and operational approval.
+          {% endif %}
+        </div>
       </div>
       <div class="product-support-item">
-        <div class="product-support-title">Ready for later wiring</div>
-        <div class="product-support-copy">Live cart, checkout, and other transactional behaviours remain intentionally deferred for a later approved slice.</div>
+        <div class="product-support-title">{% if pilot_trust %}Checkout and accounts{% else %}Ready for later wiring{% endif %}</div>
+        <div class="product-support-copy">
+          {% if pilot_trust %}
+            Cart, checkout, payments, customer accounts, wishlist, and newsletter capture remain disabled or deferred unless a later go/no-go enables them.
+          {% else %}
+            Live cart, checkout, and other transactional behaviours remain intentionally deferred for a later approved slice.
+          {% endif %}
+        </div>
       </div>
     </div>
 
@@ -262,7 +316,7 @@
       "type": "text",
       "id": "product_label",
       "label": "Product label",
-      "default": "Product Preview"
+      "default": "Controlled pilot preview"
     },
     {
       "type": "text",

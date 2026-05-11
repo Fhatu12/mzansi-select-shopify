@@ -1,3 +1,4 @@
+{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
 <section class="cart-main-shell">
   <div class="section-inner">
     <div class="cart-hero">
@@ -32,11 +33,22 @@
           {% render 'section-heading', title: 'Items in your bag', link_label: 'Continue shopping', link_url: routes.root_url %}
 
           <div class="cart-lines-list">
+            {% liquid
+              assign cart_line1_badge = 'Preview'
+              assign cart_line1_tone = 'preview'
+              assign cart_line2_badge = 'New'
+              assign cart_line2_tone = 'new'
+              if pilot_trust
+                assign cart_line1_badge = 'Pilot preview'
+                assign cart_line2_badge = 'Pilot preview'
+                assign cart_line2_tone = 'preview'
+              endif
+            %}
             {% render 'cart-line-item',
               image_src: 'headphones-premium.jpg' | asset_url,
               image_alt: 'Premium headphones',
-              badge_label: 'Preview',
-              badge_tone: 'preview',
+              badge_label: cart_line1_badge,
+              badge_tone: cart_line1_tone,
               product_type: 'Tech Accessories',
               product_name: 'Premium Over-Ear Headphones',
               option_summary: 'Matte Black · Headphones only',
@@ -48,8 +60,8 @@
             {% render 'cart-line-item',
               image_src: 'bamboo-storage-containers.jpg' | asset_url,
               image_alt: 'Storage containers',
-              badge_label: 'New',
-              badge_tone: 'new',
+              badge_label: cart_line2_badge,
+              badge_tone: cart_line2_tone,
               product_type: 'Kitchen & Storage',
               product_name: 'Bamboo Lid Storage Container Set',
               option_summary: 'Set of 3 · Natural finish',
@@ -63,6 +75,12 @@
         <aside class="cart-summary-card">
           <div class="cart-summary-label">{{ section.settings.summary_label }}</div>
           <div class="cart-summary-stack">
+            {% if pilot_trust %}
+              <div class="cart-summary-row">
+                <span>Pilot note</span>
+                <span>Illustrative totals — not final pricing</span>
+              </div>
+            {% endif %}
             <div class="cart-summary-row">
               <span>Subtotal</span>
               <strong>R 1 597</strong>
@@ -73,7 +91,7 @@
             </div>
             <div class="cart-summary-row">
               <span>Returns</span>
-              <span>7-day window</span>
+              <span>{% if pilot_trust %}To be confirmed before launch{% else %}7-day window{% endif %}</span>
             </div>
           </div>
 
@@ -83,8 +101,8 @@
           </div>
 
           <div class="cart-summary-actions">
-            <button class="btn-dark cart-checkout-shell" type="button">Checkout preview</button>
-            <button class="btn-ghost cart-secondary-shell" type="button">Save for Later</button>
+            <button class="btn-dark cart-checkout-shell" type="button" disabled aria-disabled="true">{% if pilot_trust %}Checkout not available{% else %}Checkout preview{% endif %}</button>
+            <button class="btn-ghost cart-secondary-shell" type="button" disabled aria-disabled="true">Save for Later</button>
           </div>
 
           <div class="cart-summary-notes">
@@ -92,7 +110,11 @@
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
-              Checkout preview only. Payment methods launch in a later approved slice.
+              {% if pilot_trust %}
+                Invite-only controlled pilot: checkout and payments are not enabled. No broad public checkout is implied.
+              {% else %}
+                Checkout preview only. Payment methods launch in a later approved slice.
+              {% endif %}
             </div>
             <div class="cart-summary-note">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -101,7 +123,11 @@
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
               </svg>
-              Delivery timelines stay aligned to the accepted trust language across the storefront.
+              {% if pilot_trust %}
+                Delivery timing is not guaranteed; it will be confirmed before launch or before any order fulfilment.
+              {% else %}
+                Delivery timelines stay aligned to the accepted trust language across the storefront.
+              {% endif %}
             </div>
           </div>
         </aside>
@@ -111,9 +137,15 @@
         <div class="cart-support-title">{{ section.settings.support_title }}</div>
         <p class="cart-support-copy">{{ section.settings.support_copy }}</p>
         <div class="cart-support-pills">
-          <span class="cart-support-pill">Fast fulfilment</span>
-          <span class="cart-support-pill">Payments later</span>
-          <span class="cart-support-pill">Easy returns</span>
+          {% if pilot_trust %}
+            <span class="cart-support-pill">Pilot fulfilment — timing not final</span>
+            <span class="cart-support-pill">Payments not enabled</span>
+            <span class="cart-support-pill">Returns — to be confirmed</span>
+          {% else %}
+            <span class="cart-support-pill">Fast fulfilment</span>
+            <span class="cart-support-pill">Payments later</span>
+            <span class="cart-support-pill">Easy returns</span>
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -146,7 +178,7 @@
       "type": "textarea",
       "id": "cart_intro",
       "label": "Cart intro",
-      "default": "This static-safe cart foundation keeps the approved Mzansi Select premium-practical tone in place with clear line items, a calm order summary, and supportive reassurance while live cart and checkout wiring remain deferred."
+      "default": "Invite-only controlled pilot cart shell — not a public launch. Line items are illustrative; checkout and payments stay disabled until separately approved."
     },
     {
       "type": "text",
@@ -198,13 +230,13 @@
       "type": "text",
       "id": "support_title",
       "label": "Support title",
-      "default": "Need a hand before preview?"
+      "default": "Pilot support (limited)"
     },
     {
       "type": "textarea",
       "id": "support_copy",
       "label": "Support copy",
-      "default": "Our team is available seven days a week to help with delivery timing, returns, and choosing practical everyday essentials."
+      "default": "This invite-only pilot is not full customer operations. Delivery and returns will be confirmed before launch or before any fulfilment; no seven-day service commitment is implied."
     }
   ]
 }

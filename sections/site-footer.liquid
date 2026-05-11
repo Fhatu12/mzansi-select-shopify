@@ -4,8 +4,13 @@
       <div>
         <div class="f-logo-row">Mzansi <em>Select</em></div>
         <div class="f-logo-tag">{{ settings.brand_tagline }}</div>
-        <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
-        <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
+        {% if settings.controlled_pilot_trust_mode %}
+          <p class="f-desc f-desc-default">Invite-only controlled pilot — not a public launch. A narrow Gadgetgyz-focused pilot range; not a full catalogue.</p>
+          <p class="f-desc f-desc-cautious">Delivery, returns, and support details are not final until confirmed before launch or before any order fulfilment. Accounts, wishlist, newsletter, and social links stay paused.</p>
+        {% else %}
+          <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
+          <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
+        {% endif %}
         <div class="f-socials">
           <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -47,11 +52,11 @@
       <div>
         <div class="f-col-title">Help</div>
         <ul class="f-links">
-          <li><span class="f-link-deferred">Shipping <span class="visually-hidden">(pending launch approval)</span></span></li>
-          <li><span class="f-link-deferred">Returns <span class="visually-hidden">(pending launch approval)</span></span></li>
-          <li><span class="f-link-deferred">FAQ <span class="visually-hidden">(pending launch approval)</span></span></li>
-          <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">(pending launch approval)</span></span></li>
-          <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(pending launch approval)</span></span></li>
+          <li><span class="f-link-deferred">Shipping <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+          <li><span class="f-link-deferred">Returns <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+          <li><span class="f-link-deferred">FAQ <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+          <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+          <li><span class="f-link-deferred">Track Order <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
         </ul>
       </div>
 
@@ -106,8 +111,13 @@
     <div class="footer-brand">
       <div class="f-logo-row">Mzansi <em>Select</em></div>
       <div class="f-logo-tag">{{ settings.brand_tagline }}</div>
-      <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
-      <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
+      {% if settings.controlled_pilot_trust_mode %}
+        <p class="f-desc f-desc-default">Invite-only controlled pilot — not a public launch. A narrow Gadgetgyz-focused pilot range; not a full catalogue.</p>
+        <p class="f-desc f-desc-cautious">Delivery, returns, and support details are not final until confirmed before launch or before any order fulfilment. Accounts, wishlist, newsletter, and social links stay paused.</p>
+      {% else %}
+        <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
+        <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
+      {% endif %}
       <div class="f-socials">
         <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -163,11 +173,11 @@
         </summary>
         <div class="f-acc-body">
           <ul class="f-links">
-            <li><span class="f-link-deferred">Shipping <span class="visually-hidden">(pending launch approval)</span></span></li>
-            <li><span class="f-link-deferred">Returns <span class="visually-hidden">(pending launch approval)</span></span></li>
-            <li><span class="f-link-deferred">FAQ <span class="visually-hidden">(pending launch approval)</span></span></li>
-            <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">(pending launch approval)</span></span></li>
-            <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(pending launch approval)</span></span></li>
+            <li><span class="f-link-deferred">Shipping <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+            <li><span class="f-link-deferred">Returns <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+            <li><span class="f-link-deferred">FAQ <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+            <li><span class="f-link-deferred">Contact Us <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
+            <li><span class="f-link-deferred">Track Order <span class="visually-hidden">({% if settings.controlled_pilot_trust_mode %}controlled pilot — not final{% else %}pending launch approval{% endif %})</span></span></li>
           </ul>
         </div>
       </details>

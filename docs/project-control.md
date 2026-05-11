@@ -405,6 +405,15 @@ Mzansi Select Shopify MVP Theme Conversion
   9. **Confirmation no implementation/import/Admin/payment/publish action occurred:** yes.
   10. **Recommended next owner:** Product Owner to choose whether to approve a bounded implementation slice after planning.
 
+## Slice 21E Minimal-diff controlled pilot trust wording implementation (Product Owner approved bounded theme slice)
+
+- **Decision:** Product Owner approves **Slice 21E** as a **bounded theme implementation** for controlled pilot trust wording only.
+- **Implementation status:** committed in repo (see git); **no** product import, **no** staging, **no** Shopify Admin edits, **no** payments enablement, **no** checkout/customer-access enablement, **no** theme push/publish, **no** live theme overwrite.
+- **Storefront guard:** theme setting **`controlled_pilot_trust_mode`** (`config/settings_schema.json`, default **on**) toggles invite-only controlled-pilot copy vs generic private-preview wording where dual paths exist.
+- **Theme files touched:** `config/settings_schema.json`, `sections/main-product-foundation.liquid`, `sections/main-search-foundation.liquid`, `sections/main-cart-foundation.liquid`, `sections/site-footer.liquid`, `snippets/live-product-card.liquid`, `snippets/static-product-card.liquid`, `templates/product.json`, `templates/search.json`, `templates/cart.json`.
+- **Pilot posture (unchanged from Slice 21C/21D):** controlled live pilot, not public launch; invite-only; `10` pilot orders initially; `Gadgetgyz` only; four SKUs (`DP0402`, `CR106-20277`, `GCPU2C2`, `74886`) — **documentation record only** in theme (no Admin SKU wiring in this slice).
+- **Non-approvals preserved:** no public launch, no `Supplier verified`, no final pricing approval, no guaranteed delivery, no final product claims, no broad catalogue implication, no account/wishlist/newsletter/social service enablement.
+
 ## Slice 18E Account, wishlist, and social deferred storefront implementation (Product Owner PASS WITH NOTES + bounded preview push)
 
 - **Decision:** Product Owner accepts **Slice 18E** as **PASS WITH NOTES** (bounded deferral chrome + **no** service enablement).

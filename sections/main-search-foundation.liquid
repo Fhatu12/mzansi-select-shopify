@@ -1,3 +1,4 @@
+{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
 <section class="search-main-shell">
   <div class="section-inner">
     <div class="search-hero">
@@ -23,7 +24,7 @@
           </svg>
           <input type="text" value="{{ section.settings.query_value }}" aria-label="Search preview query" readonly>
         </div>
-        <button class="btn-dark search-button-shell" type="button" disabled aria-disabled="true">Preview only</button>
+        <button class="btn-dark search-button-shell" type="button" disabled aria-disabled="true">{% if pilot_trust %}Pilot view only{% else %}Preview only{% endif %}</button>
       </div>
     </div>
 
@@ -55,7 +56,7 @@
                 width="600"
                 height="600"
               >
-              <span class="p-badge preview">Preview item</span>
+              <span class="p-badge preview">{% if pilot_trust %}Pilot preview{% else %}Preview item{% endif %}</span>
               <button
                 class="p-wish"
                 type="button"
@@ -129,7 +130,7 @@
       "type": "textarea",
       "id": "search_intro",
       "label": "Search intro",
-      "default": "This preview-safe search foundation keeps the approved Mzansi Select rhythm in place while live search results, final pricing, and purchase actions remain deferred."
+      "default": "Invite-only controlled pilot search shell — not a public launch. Live ranking and final pricing remain deferred; purchase actions stay disabled."
     },
     {
       "type": "text",
@@ -147,7 +148,7 @@
       "type": "textarea",
       "id": "summary_copy",
       "label": "Summary copy",
-      "default": "Showing placeholder preview items only. Purchase actions are unavailable in preview, and live search ranking and fulfilment details remain deferred."
+      "default": "Placeholder results only — not a full catalogue view. Purchase actions are unavailable; delivery and fulfilment details are not final."
     },
     {
       "type": "text",
@@ -205,7 +206,7 @@
       "type": "textarea",
       "id": "browse_copy",
       "label": "Browse copy",
-      "default": "Browse the same trusted departments already established across the homepage and collection foundations while live search data and ranking remain out of scope for this slice."
+      "default": "Browse launch-department links for orientation only — controlled pilot does not imply the full catalogue is available."
     }
   ]
 }

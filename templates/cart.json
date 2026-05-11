@@ -6,15 +6,15 @@
         "cart_label": "Cart Preview",
         "cart_title": "Your",
         "cart_accent": "Basket",
-        "cart_intro": "This static-safe cart foundation keeps the approved Mzansi Select premium-practical tone in place with clear line items, a calm order summary, and supportive reassurance while live cart and checkout wiring remain deferred.",
+        "cart_intro": "Invite-only controlled pilot cart shell — not a public launch. Line items are illustrative; checkout and payments stay disabled until separately approved.",
         "summary_label": "Order summary",
         "view_state": "filled",
         "empty_badge": "Cart Preview",
         "empty_title": "Your basket is still empty",
         "empty_description": "The empty-cart experience is now in place, but live cart items, totals, and checkout behaviour remain intentionally deferred until a later approved slice.",
         "empty_action_label": "Continue browsing",
-        "support_title": "Need a hand before preview?",
-        "support_copy": "Our team is available seven days a week to help with delivery timing, returns, and choosing practical everyday essentials."
+        "support_title": "Pilot support (limited)",
+        "support_copy": "This invite-only pilot is not full customer operations. Delivery and returns will be confirmed before launch or before any fulfilment; no seven-day service commitment is implied."
       }
     }
   },

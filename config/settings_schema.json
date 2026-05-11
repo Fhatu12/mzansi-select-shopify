@@ -19,6 +19,13 @@
         "id": "footer_country_label",
         "label": "Footer country label",
         "default": "Proudly South African"
+      },
+      {
+        "type": "checkbox",
+        "id": "controlled_pilot_trust_mode",
+        "label": "Controlled pilot trust wording",
+        "default": true,
+        "info": "Shows invite-only controlled pilot copy (not public launch). Turn off for generic private-preview wording only."
       }
     ]
   }
