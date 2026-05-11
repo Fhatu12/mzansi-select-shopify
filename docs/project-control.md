@@ -566,6 +566,25 @@ Mzansi Select Shopify MVP Theme Conversion
 - **Strict boundaries / non-approvals:** **no** public launch approval; **no** checkout/payment testing approval; **no** final pricing approval; **no** delivery promise approval; **no** product claim approval; **no** **Supplier verified** promotion; **no** product import approval; **no** Shopify Admin edit approval; **no** customer account / wishlist / newsletter / social **service** enablement approval.
 - **Recommended next owner:** **Product Owner / User** — continue controlled private-preview tester feedback collection (**Slice 15A**-style feedback-only sharing).
 
+## Slice 21G Authenticated preview homepage promo wording regression (QA FAIL)
+
+- **Decision:** QA finds homepage legacy promo wording failure on `/` in authenticated preview across required viewports.
+- **Evidence:** `artifacts/qa/slice-21g-authenticated-preview-controlled-pilot-trust-wording/20260511-195823/`
+- **Preview theme tested:** `151207542967` / Mzansi Select MVP Preview (**unpublished**)
+- **Findings:** homepage `/` exposed prohibited wording strings `Best Sellers`, `Shop the Sale`, and `Limited Time Offer`.
+- **Root cause/source:** legacy homepage promo wording on the homepage route; current committed source audit did not find active homepage source strings for the prohibited terms in `sections/`, `snippets/`, `templates/`, `config/`, or `assets/`; the issue appears tied to stale preview theme state or earlier homepage configuration.
+- **Remediation summary:** homepage source audit and copy verification confirmed no prohibited homepage strings remain in active source files; `sections/featured-product-grid.liquid` admin copy was aligned away from legacy "Best sellers" wording; homepage copy remains aligned to controlled pilot / preview posture.
+- **Non-approvals preserved:** no product import/staging/Admin edit, no checkout/payment/customer access enablement, no theme publish/live overwrite, no public launch approval, no `Supplier verified`/final pricing/delivery promise/product claim.
+- **Recommended next owner:** **QA / Test Engineer** for Slice 21H authenticated preview regression.
+
+## Slice 21H Homepage legacy promo wording remediation (theme source)
+
+- **Decision:** Slice 21H remediation in committed repo source is complete.
+- **Action taken:** audited homepage sources and removed legacy promo wording from active homepage theme files; preserved controlled pilot / preview posture and visual rhythm.
+- **Confirmation:** no prohibited homepage strings remain in active `sections/`, `snippets/`, `templates/`, `config/`, or `assets/` source files for the homepage route.
+- **Non-approvals preserved:** no product import/staging/Admin edit, no checkout/payment/customer access enablement, no theme publish/live overwrite, no public launch approval, no `Supplier verified`/final pricing/delivery promise/product claim.
+- **Recommended next owner:** **QA / Test Engineer** for authenticated preview regression verification.
+
 ## Slice 18D Account, wishlist, and social exposure decision (Product Owner PASS WITH NOTES)
 
 - **Decision:** Product Owner accepts **Slice 18D** as **PASS WITH NOTES**.
