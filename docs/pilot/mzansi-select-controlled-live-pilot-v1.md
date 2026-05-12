@@ -2,11 +2,11 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** supplier-checkout signal; **Slice 21L** delivery wording + fee posture (**PASS WITH NOTES**).  
+**Updated:** 2026-05-12 — **Slice 21K** / **21L** / **21M** (supplier signal; delivery posture; **Shopify** shipping/checkout **configuration planning** — **§12**).  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** — **PASS WITH NOTES**. **Slice 21K** — **PASS WITH NOTES** — partial supplier-checkout evidence. **Slice 21L** — **PASS WITH NOTES** — updated controlled-pilot **delivery wording** + **delivery-fee posture** (docs only). **No** Shopify Admin execution, **no** product import/staging, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED** until a separate explicit go/no-go. **Shopify** shipping/checkout **configuration is not performed in this pass** — see **§6A**. **R89** is the **current controlled-pilot delivery planning signal** only (**Slice 21L**); **not** final public delivery pricing. Checkout-displayed **3 to 5 business days** (**Slice 21K**) stays **supplier signal / docs-only** — **must not** appear in customer-facing copy.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES** (**Product Owner**). **Slice 21M** — **planning recorded** (DevOps / Platform Engineer; **no** Admin execution until **Product Owner** accepts **§12**). **No** Shopify Admin configuration in **Slice 21M**, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED**. **Shopify** shipping/checkout remains **unconfigured** until **Product Owner** accepts the **Slice 21M** plan and a **separate** execution go/no-go. **R89** = **current planning signal** only; **not** final public delivery pricing. **3–5 business days** = **supplier/docs only** — **not** customer-facing. Planning detail: **§6A** + **§12**.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I**, **Slice 21J**, **Slice 21K**, **Slice 21L**.  
+**Related tracker:** `docs/project-control.md` — **Slice 21I**, **Slice 21J**, **Slice 21K**, **Slice 21L**, **Slice 21M**.  
 **Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** baseline + **Slice 21K** / **Slice 21L** delivery posture.
 
 ---
@@ -148,9 +148,11 @@
 
 **Explicit:** these are **readiness and gap-identification** steps only. **No** checkout or payment **enablement** is approved by **Slice 21J** / **Slice 21L**.
 
-**Admin / staging / checkout:** **not approved** in **Slice 21J** / **Slice 21K** / **Slice 21L**. **Do not configure** **Shopify** shipping or checkout in this pass — **§6A** is **planning only**. Shopify Admin edits, product import/staging, checkout/payment enablement, and theme publish require a **separate bounded slice** after **§6A** checks and **§6B** blockers are cleared and **Product Owner** go/no-go — see **`docs/project-control.md` `## Slice 21J`**, **`## Slice 21K`**, and **`## Slice 21L`**.
+**Admin / staging / checkout:** **not approved** in **Slice 21J** / **Slice 21K** / **Slice 21L** / **Slice 21M** (**Slice 21M** = **planning only**). **Do not configure** **Shopify** shipping or checkout in this pass — **§6A** + **§12**. Shopify Admin edits, product import/staging, checkout/payment enablement, and theme publish require a **separate execution slice** after **Product Owner** accepts the **Slice 21M** plan and **§6B** / **§12.H** gates — see **`docs/project-control.md` `## Slice 21J`**, **`## Slice 21K`**, **`## Slice 21L`**, **`## Slice 21M`**.
 
 ### 6A. Bounded Shopify shipping and checkout configuration (planning only — **do not configure yet**)
+
+Full DevOps / platform plan: **§12 (Slice 21M)** — this subsection remains the **high-level gate**; **§12** expands Admin touchpoints, rate options, rollback, QA, risks, and **Product Owner** execution approvals.
 
 - **Do not configure** **Shopify** shipping rates, profiles, markets, taxes, payments, or checkout in this documentation pass.
 - **Proposed visible rate label** (if checkout later requires a visible pilot shipping rate and an implementation slice approves it): **Pilot courier delivery — R89** (exact string in **§1**).
@@ -256,13 +258,122 @@
 - **Slice 21K still open:** whether basket **R745.70** contained **exactly** the four approved pilot products; whether delivery fee varies by **destination**, **quantity**, or **mixed basket**; whether **free shipping** threshold was visible; whether fee is shown **before payment** **without** placing an order.
 - **R89** / **3–5 business days** (checkout display) remain **supplier / planning context** — **Slice 21L** accepts **R89** as **current planning signal** only; **not** final public delivery pricing; **3–5 business days** **not** customer-facing.
 - **Slice 21L:** customer-facing strings in **§1** are **approved for planning** — **not** an instruction to publish theme copy or enable checkout without a later implementation slice + **§6B** closure.
+- **Slice 21M:** DevOps **bounded Shopify** shipping/checkout **configuration planning** recorded (**§12**) — **no** Admin execution until **Product Owner** accepts this plan.
 - Stock volatility on **74886** / **GCPU2C2** evidence gaps from prior Security notes.
 - Operator roster and POPIA-aligned retention schedule for pilot order evidence.
 - Whether pilot orders use **draft orders** vs **live checkout** — **undecided**; affects payment PCI scope.
 
 ---
 
+## 12. Slice 21M — Bounded Shopify shipping/checkout configuration plan (DevOps / Platform Engineer; **planning only**)
+
+**Prerequisite:** **Slice 21L** accepted docs commit **`bc5fb304f56204bb65e25a00a9499750766b4781`**. This section is **planning only** — **no** Shopify Admin edits, **no** shipping configuration, **no** payment/checkout enablement, **no** customer access.
+
+### A. Planning verdict
+
+- **Recommended approach:** create a **controlled-pilot** shipping setup **only after** **Product Owner** **execution** approval (separate slice from **Slice 21M** planning acceptance).
+- **Preferred operational posture:** keep storefront **password** / **invite-only** controls active; **do not** open public access.
+- **Pilot rate** must be clearly labelled as **pilot** / **manual order review** — **not** final public pricing (**§1** rate label + primary/supporting delivery strings).
+
+### B. Shopify Admin areas that would be touched in a **later execution slice** (identification only)
+
+- **Settings → Shipping and delivery** (store-level shipping settings entry).
+- **Shipping profiles** (general profile and/or a **pilot-only** profile if adopted).
+- **Shipping zones** and **rates** (manual/custom pilot rate placement; region match for South Africa / pilot geography).
+- **Markets** — if **South Africa** (or target region) availability / rate visibility requires market alignment.
+- **Settings → Payments** — **readiness review only** (provider status, manual capture / review posture if available — **not** enabling public launch).
+- **Checkout** settings — **readiness review only** (**not** checkout customization in **Slice 21M**).
+- **Locations** — only if shipping profile / calculated rate behaviour depends on **fulfilment location** setup.
+- **Products / Collections** — only if a **later approved** slice requires confirming **pilot SKU** inclusion in a profile-bound set; **no** product edits in **Slice 21M**.
+
+### C. Recommended pilot shipping-rate setup
+
+- **Preferred:** after PO approval, add a **controlled-pilot manual/custom shipping rate** in a **narrow** shipping profile (pilot-only profile **or** carefully scoped zone in the general profile).
+- **Label (if later approved):** **Pilot courier delivery — R89** (exact; **§1**).
+- **Pairing:** surface **§1** customer-facing copy that **delivery cost and timing** are **confirmed during order review before fulfilment** — adjacent PDP/cart/checkout policy snippets as approved in a later slice.
+- **Do not** use **3 to 5 business days** in customer-facing checkout or storefront copy.
+- **Do not** present **R89** as final public delivery pricing.
+- **Operational containment:** password / invite-only access, **approved pilot products only**, **Gadgetgyz** / local route assumptions validated against **Markets** / zones before go-live.
+
+**Options evaluation:**
+
+| Option | When useful | Caveat |
+|--------|-------------|--------|
+| **Pilot-only shipping profile** | Safest if only pilot SKUs should see the pilot rate and mapping stays clean | Requires clean product↔profile association |
+| **Manual/custom rate** | Simplest when zone + profile are already correct | Wrong zone = missing/wrong rate at checkout |
+| **Product-specific profile** | Useful only if pilot products are isolated from non-pilot catalogue | Mixed carts can split rates or confuse shoppers |
+| **Market/location-limited rate** | When rate visibility depends on active **Market** / **Location** | Misaligned market hides rate or shows wrong region |
+| **Password / invite-only control** | **Required regardless** of rate — shipping labels alone do **not** stop public discovery if storefront access widens | Primary access gate alongside technical rate setup |
+
+### D. Can **Pilot courier delivery — R89** be configured without implying final public delivery pricing?
+
+- **Yes, only if:** it stays behind **controlled pilot** access and is accompanied by **§1** wording that cost/timing are **confirmed during order review**; refund/cancellation + support strings visible **before** payment where practical.
+- **Risk:** checkout labels are short; shoppers may read **R89** as a **live final** charge if access leaks beyond pilot.
+- **Mitigation:** **customer access remains blocked** until final go/no-go; **no** public delivery/pricing claims; enforce **§6B** + **§12.H** approvals before widening access.
+
+### E. Checkout / payment readiness checks before customer access
+
+- Confirm **payment provider** readiness **without** enabling public launch.
+- Confirm **payment capture** / manual review posture if available and **PO**-approved.
+- Confirm **order cancellation** / **refund** workflow in **Shopify** + payment provider.
+- Confirm **pilot order support** workflow (who responds; channels; SLAs from **§7**).
+- Confirm **no** public customer can reach checkout before **PO** go/no-go (password, draft checkout, or equivalent).
+- Confirm cart/PDP still communicate **pilot / manual review** honestly (**Slice 21E** + **§1**).
+- Confirm **no** final delivery **timing** promise appears customer-facing.
+- Confirm **no** final product / pricing claim appears.
+- Confirm **10-order** cap and operational handling are **documented** and assigned.
+
+### F. Rollback plan (if pilot shipping rate is misconfigured)
+
+1. **Remove or disable** the pilot rate / revert profile-zone edits to the **captured pre-change** state (Admin screenshots / settings notes — **no secrets** in repo).
+2. **Re-affirm** customer-access block if any widening occurred.
+3. **Pause** pilot ordering.
+4. **Notify** any affected pilot testers **before** fulfilment continues.
+5. **Cancel / refund / offer alternative** per **§1** approved wording and **Shopify**-native paths only.
+6. **Record** incident + validation evidence under **`artifacts/`** only — **uncommitted**.
+
+### G. QA validation plan (**later execution slice only**)
+
+- Capture **pre-change** Admin screenshots / settings notes (**no** credentials, tokens, or payment payloads in repo).
+- Validate **cart → checkout** path in **gated** environment.
+- Validate **checkout shipping-rate** display (correct rate, correct zone).
+- Validate **mobile** and **desktop** checkout paths.
+- Validate rate label **exactly** if approved: **Pilot courier delivery — R89**.
+- Validate **no** **3 to 5 business days** appears customer-facing.
+- Validate **payment readiness** without accidental public launch.
+- Validate **password / invite-only** access remains enforced.
+- Validate **no** live/public launch signals in theme or checkout.
+- Validate **rollback** by removing/disabling the test rate in a controlled way if a dry-run requires it.
+- Store evidence under **`artifacts/`** only — **uncommitted**.
+
+### H. Product Owner approvals required before **execution**
+
+Explicit **written** approval required for:
+
+- Admin **shipping profile / rate** change.
+- Whether **Pilot courier delivery — R89** may appear in checkout.
+- Whether **R89** remains acceptable after supplier re-confirmation.
+- **Pilot-product scope** and product↔profile mapping.
+- **Market / location** scope for rates.
+- **Payment readiness / capture** posture.
+- **Customer access** go/no-go.
+- **Refund / cancellation** handling before live pilot orders.
+- **QA pass** before pilot invite / customer access.
+
+### I. Risks / blockers
+
+- **Shopify plan** / **payment provider** limitations may block payment readiness.
+- **Markets** / **shipping zones** may hide or mis-apply rates.
+- **Product-specific** profiles can create **split** or **missing** rates if carts mix pilot and non-pilot items.
+- **R89** could be read as final pricing if access leaks beyond pilot.
+- **3–5 business days** must remain **supplier/docs-only** — never customer-facing.
+- **Store password** / invite access remains the **primary** public-access control.
+- Misconfigured shipping may show **no rate**, **wrong rate**, or **wrong region**.
+- **Product readiness** and **Supplier verified** remain **separate** gates from shipping planning.
+
+---
+
 ## Document control
 
-- **Version:** 1.3  
-- **Next review:** **Product Owner / User** — close **§5** / **§6A** open items; then **DevOps** / implementation owner — **bounded Shopify** shipping/checkout **configuration** slice only after explicit approval (**planning:** **`docs/project-control.md` `## Slice 21L`**).
+- **Version:** 1.4  
+- **Next review:** **Product Owner / User** — **accept** the **Slice 21M** plan (**planning**); then **DevOps** — **execution** slice only after **written** PO approval and **§6B** / **§12.H** closure.
