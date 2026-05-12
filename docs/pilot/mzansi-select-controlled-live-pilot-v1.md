@@ -2,12 +2,12 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** … **21P** (through **§15** controlled Admin **product-staging implementation plan** — **docs only**; **no** Admin execution).  
+**Updated:** 2026-05-12 — **Slice 21K** … **21Q-B1** (through **§15A** exact controlled Admin **product-staging write plan** — **docs only**; **no** Admin execution).  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**; intended **Shopify** handles + collection/tags/SKU mapping **recorded** for planning (**not** Admin execution). **Slice 21P** — **bounded implementation plan recorded** (**§15**) — **no** Shopify Admin product staging, import, shipping, checkout, payment, theme, or customer-access execution in this pass. **Customer access remains BLOCKED**. **Shipping:** **product-specific profile only**; **general-profile fallback blocked** unless **separately** approved. **Pilot courier delivery — R89** — **conditional**; **controlled checkout testing only** when later approved; **R89** **supplier re-check** before customer access; **no** final delivery promise. **Payment/capture** **blocked** pending separate checks. **Refund/cancellation** per **§1** remains accepted.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **No** Shopify Admin product staging, import, shipping, checkout, payment, theme, or customer-access execution occurred in this pass. **Customer access remains BLOCKED**. **Shipping:** **product-specific profile only**; **general-profile fallback blocked** unless **separately** approved. **Pilot courier delivery — R89** — **conditional**; **controlled checkout testing only** when later approved; **R89** **supplier re-check** before customer access; **no** final delivery promise. **Payment/capture** **blocked** pending separate checks. **Refund/cancellation** per **§1** remains accepted.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21P**.  
-**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** pilot staging planning (handles, tags, collection, prices).
+**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21Q-B1**.  
+**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** pilot staging planning (handles, tags, collection, prices, reuse/create direction).
 
 ---
 
@@ -545,7 +545,7 @@ The **§14** checklist items are **specified** in **§15** as a **bounded implem
 
 | # | Title | Intended handle | Variant | SKU | Pilot price (ZAR) | Compare-at | Tags / collection | Vendor | Product type (suggested) | Media | Copy / delivery | Inventory assumption | Visibility |
 |---|------|-----------------|---------|-----|---------------------|------------|-------------------|--------|-------------------------|-------|------------------|----------------------|------------|
-| 1 | Acrylic Tablet & Phone Stand | `acrylic-tablet-or-phone-stand` | Default Title | `DP0402` | **249** | **blank** | **§15.D** + **Controlled Pilot** | **Gadgetgyz** | **Tech Accessories** (or **Office & Desk** per PO) | **Only** after **PO**-approved image/content-use basis | **§1** pilot delivery + returns + refund/support; **no** **Supplier verified**; **no** final claims | Manual stock confirmation before fulfilment; policy **TBD** in execution slice | **Draft / unpublished / restricted** until **PO** go/no-go — **non-purchasable** until checkout/payment separately approved |
+| 1 | Acrylic Tablet & Phone Stand | `acrylic-tablet-phone-stand` | Default Title | `DP0402` | **249** | **blank** | **§15.D** + **Controlled Pilot** | **Gadgetgyz** | **Tech Accessories** (or **Office & Desk** per PO) | **Only** after **PO**-approved image/content-use basis | **§1** pilot delivery + returns + refund/support; **no** **Supplier verified**; **no** final claims | Manual stock confirmation before fulfilment; policy **TBD** in execution slice | **Draft / unpublished / restricted** until **PO** go/no-go — **non-purchasable** until checkout/payment separately approved |
 | 2 | UGREEN 4-in-1 USB 2.0 Hub | `ugreen-4-in-1-usb-2-0-hub` | Default Title | `CR106-20277` | **279** | **blank** | **§15.D** | **Gadgetgyz** | **Tech Accessories** | As above | As row 1 | As row 1 | As row 1 |
 | 3 | Gizzu USB to Type-C Cable — 2m | `gizzu-usb-to-type-c-cable-2m` | Default Title | `GCPU2C2` | **129** | **blank** | **§15.D** | **Gadgetgyz** | **Tech Accessories** | As above | As row 1 | As row 1 | As row 1 |
 | 4 | World Map Extended Mouse Pad | `world-map-extended-mouse-pad` | Default Title | `74886` | **219** | **blank** | **§15.D** | **Gadgetgyz** | **Office & Desk** / **Tech Accessories** per **§4** / PO | As above | As row 1 | As row 1 | As row 1 |
@@ -585,6 +585,274 @@ The **§14** checklist items are **specified** in **§15** as a **bounded implem
 - **Timing** for **product-specific shipping** profile work relative to product QA.
 - **QA route / viewport matrix** for post-staging validation.
 - **Final go/no-go** before customer access (with **§6B** + payment + shipping gates).
+
+## 15A. Slice 21Q-B1 Controlled pilot product-staging exact write plan (docs only; **non-executable**)
+
+**Product Owner decision — Slice 21Q-B1:** prepare the exact write plan first; **do not** execute Shopify Admin product staging yet. This section is **non-executable** planning only. It **does not** approve or perform Shopify Admin writes, shipping configuration, checkout/payment/customer-access enablement, or theme push/publish.
+
+### A. Product-by-product write plan
+
+| Product | Action after later PO execution approval | Current discovery posture | Locked / intended handle |
+|---------|-------------------------------------------|---------------------------|--------------------------|
+| Acrylic Tablet & Phone Stand | **Update existing row only**; **do not create duplicate** | Existing close-title row found: **`Acrylic Tablet or Phone Stand`**; handle **`acrylic-tablet-phone-stand`**; SKU blank; **ACTIVE / published**; price **0.00**; collections **Office & Desk** + **Tech Accessories** | **`acrylic-tablet-phone-stand`** locked unless PO later changes it |
+| UGREEN 4-in-1 USB 2.0 Hub | **Create new draft / unpublished / restricted row only** | Not found in Slice 21Q-A discovery | **`ugreen-4-in-1-usb-2-0-hub`** |
+| Gizzu USB to Type-C Cable — 2m | **Create new draft / unpublished / restricted row only** | Not found in Slice 21Q-A discovery | **`gizzu-usb-to-type-c-cable-2m`** |
+| World Map Extended Mouse Pad | **Create new draft / unpublished / restricted row only** | Not found in Slice 21Q-A discovery | **`world-map-extended-mouse-pad`** |
+
+### B. Exact update/create decision per product
+
+1. **Acrylic Tablet & Phone Stand / `DP0402`:** update the existing close-title row only after **Product Owner** approves execution. Reuse the current row; **do not create a duplicate**.
+2. **UGREEN 4-in-1 USB 2.0 Hub / `CR106-20277`:** create a new **draft / unpublished / restricted** row only after **Product Owner** approves execution.
+3. **Gizzu USB to Type-C Cable — 2m / `GCPU2C2`:** create a new **draft / unpublished / restricted** row only after **Product Owner** approves execution.
+4. **World Map Extended Mouse Pad / `74886`:** create a new **draft / unpublished / restricted** row only after **Product Owner** approves execution.
+
+### C. Exact field list per product
+
+#### Acrylic Tablet & Phone Stand
+
+- Action: update existing row only after later execution approval.
+- Current row: **`Acrylic Tablet or Phone Stand`**; handle **`acrylic-tablet-phone-stand`**; SKU blank; **ACTIVE / published**; price **0.00**.
+- Planned fields:
+  - title: **Acrylic Tablet & Phone Stand**
+  - handle: **`acrylic-tablet-phone-stand`**
+  - variant: **Default Title**
+  - SKU: **`DP0402`**
+  - pilot price: **R249**
+  - compare-at price: **blank**
+  - status/visibility: **draft / unpublished / restricted** before go/no-go
+  - tags: **`pilot`**, **`pilot-gadgetgyz`**, **`pilot-21`**, **`supplier-gadgetgyz`**, **`manual-fulfilment`**
+  - collection: **Controlled Pilot**
+  - vendor/supplier reference: **Gadgetgyz**
+  - product type/category: **Tech Accessories / Office & Desk accessory**, or approved Shopify category if available
+  - short description: **Acrylic stand for holding a compatible phone or tablet on a desk, counter, or bedside surface.**
+  - delivery wording: **Pilot delivery is handled manually through our South African supplier route. Delivery cost and timing will be confirmed during order review before fulfilment.**
+  - supporting wording: **Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.**
+  - refund/cancellation wording: **If we cannot fulfil your pilot order, or if delivery cost or supplier stock changes materially before fulfilment, we will contact you and arrange a cancellation, refund, or alternative where applicable.**
+  - image/content-use status: **requires Product Owner approval before execution**
+
+#### UGREEN 4-in-1 USB 2.0 Hub
+
+- Action: create new **draft / unpublished / restricted** row only after later execution approval.
+- Planned fields:
+  - title: **UGREEN 4-in-1 USB 2.0 Hub**
+  - handle: **`ugreen-4-in-1-usb-2-0-hub`**
+  - variant: **Default Title**
+  - SKU: **`CR106-20277`**
+  - pilot price: **R279**
+  - compare-at price: **blank**
+  - status/visibility: **draft / unpublished / restricted** before go/no-go
+  - tags: **`pilot`**, **`pilot-gadgetgyz`**, **`pilot-21`**, **`supplier-gadgetgyz`**, **`manual-fulfilment`**
+  - collection: **Controlled Pilot**
+  - vendor/supplier reference: **Gadgetgyz**
+  - product type/category: **Tech Accessories**
+  - short description: **USB 2.0 hub for connecting compatible USB devices.**
+  - delivery wording: **Pilot delivery is handled manually through our South African supplier route. Delivery cost and timing will be confirmed during order review before fulfilment.**
+  - supporting wording: **Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.**
+  - refund/cancellation wording: **If we cannot fulfil your pilot order, or if delivery cost or supplier stock changes materially before fulfilment, we will contact you and arrange a cancellation, refund, or alternative where applicable.**
+  - image/content-use status: **requires Product Owner approval before execution**
+
+#### Gizzu USB to Type-C Cable — 2m
+
+- Action: create new **draft / unpublished / restricted** row only after later execution approval.
+- Planned fields:
+  - title: **Gizzu USB to Type-C Cable — 2m**
+  - handle: **`gizzu-usb-to-type-c-cable-2m`**
+  - variant: **Default Title**
+  - SKU: **`GCPU2C2`**
+  - pilot price: **R129**
+  - compare-at price: **blank**
+  - status/visibility: **draft / unpublished / restricted** before go/no-go
+  - tags: **`pilot`**, **`pilot-gadgetgyz`**, **`pilot-21`**, **`supplier-gadgetgyz`**, **`manual-fulfilment`**
+  - collection: **Controlled Pilot**
+  - vendor/supplier reference: **Gadgetgyz**
+  - product type/category: **Tech Accessories**
+  - short description: **2m USB to Type-C cable for compatible devices.**
+  - delivery wording: **Pilot delivery is handled manually through our South African supplier route. Delivery cost and timing will be confirmed during order review before fulfilment.**
+  - supporting wording: **Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.**
+  - refund/cancellation wording: **If we cannot fulfil your pilot order, or if delivery cost or supplier stock changes materially before fulfilment, we will contact you and arrange a cancellation, refund, or alternative where applicable.**
+  - image/content-use status: **requires Product Owner approval before execution**
+
+#### World Map Extended Mouse Pad
+
+- Action: create new **draft / unpublished / restricted** row only after later execution approval.
+- Planned fields:
+  - title: **World Map Extended Mouse Pad**
+  - handle: **`world-map-extended-mouse-pad`**
+  - variant: **Default Title**
+  - SKU: **`74886`**
+  - pilot price: **R219**
+  - compare-at price: **blank**
+  - status/visibility: **draft / unpublished / restricted** before go/no-go
+  - tags: **`pilot`**, **`pilot-gadgetgyz`**, **`pilot-21`**, **`supplier-gadgetgyz`**, **`manual-fulfilment`**
+  - collection: **Controlled Pilot**
+  - vendor/supplier reference: **Gadgetgyz**
+  - product type/category: **Office & Desk accessory**
+  - short description: **Extended desk mat/mouse pad with world map print and anti-slip backing.**
+  - delivery wording: **Pilot delivery is handled manually through our South African supplier route. Delivery cost and timing will be confirmed during order review before fulfilment.**
+  - supporting wording: **Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.**
+  - refund/cancellation wording: **If we cannot fulfil your pilot order, or if delivery cost or supplier stock changes materially before fulfilment, we will contact you and arrange a cancellation, refund, or alternative where applicable.**
+  - image/content-use status: **requires Product Owner approval before execution**
+
+### D. Draft NON-EXECUTABLE Shopify GraphQL mutation templates
+
+**Important:** templates below are **NON-EXECUTABLE planning drafts only**. They use placeholders and must **not** be run from this slice.
+
+```graphql
+# NON-EXECUTABLE DRAFT ONLY
+mutation UpdateExistingAcrylicPilotProduct {
+  productUpdate(
+    input: {
+      id: "<existing_acrylic_product_gid>"
+      title: "Acrylic Tablet & Phone Stand"
+      handle: "acrylic-tablet-phone-stand"
+      vendor: "Gadgetgyz"
+      productType: "Tech Accessories / Office & Desk accessory"
+      tags: [
+        "pilot"
+        "pilot-gadgetgyz"
+        "pilot-21"
+        "supplier-gadgetgyz"
+        "manual-fulfilment"
+      ]
+      descriptionHtml: "<approved_pilot_copy_with_delivery_support_refund_wording>"
+      collectionsToJoin: ["<controlled_pilot_collection_gid>"]
+      status: DRAFT
+    }
+  ) {
+    product {
+      id
+      handle
+      title
+      status
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+```graphql
+# NON-EXECUTABLE DRAFT ONLY
+mutation UpdateExistingAcrylicPilotVariant {
+  productVariantsBulkUpdate(
+    productId: "<existing_acrylic_product_gid>"
+    variants: [
+      {
+        id: "<existing_acrylic_default_variant_gid>"
+        price: "249.00"
+        compareAtPrice: null
+        inventoryItem: { sku: "DP0402" }
+      }
+    ]
+  ) {
+    productVariants {
+      id
+      price
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+```graphql
+# NON-EXECUTABLE DRAFT ONLY
+mutation CreateNewPilotProductRows {
+  productCreate(
+    product: {
+      title: "<product_title>"
+      handle: "<product_handle>"
+      vendor: "Gadgetgyz"
+      productType: "<product_type>"
+      tags: [
+        "pilot"
+        "pilot-gadgetgyz"
+        "pilot-21"
+        "supplier-gadgetgyz"
+        "manual-fulfilment"
+      ]
+      descriptionHtml: "<approved_pilot_copy_with_delivery_support_refund_wording>"
+      status: DRAFT
+      productOptions: [{ name: "Title", values: [{ name: "Default Title" }] }]
+    }
+  ) {
+    product {
+      id
+      handle
+      title
+      status
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+```graphql
+# NON-EXECUTABLE DRAFT ONLY
+mutation UpdateNewPilotVariantAndCollection {
+  productVariantsBulkUpdate(
+    productId: "<new_product_gid>"
+    variants: [
+      {
+        id: "<new_default_variant_gid>"
+        price: "<pilot_price>"
+        compareAtPrice: null
+        inventoryItem: { sku: "<intended_sku>" }
+      }
+    ]
+  ) {
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+### E. Safer manual Admin step list for a later execution slice
+
+1. Search existing products by exact SKU, handle, and title before writing.
+2. For **Acrylic**, open the existing row only if **Product Owner** approves reuse.
+3. For the other three products, create rows as **draft / unpublished / restricted** only after **Product Owner** approves execution.
+4. Apply SKU, pilot price, tags, collection, vendor, approved copy, and approved image fields exactly as recorded here.
+5. Keep compare-at price **blank**.
+6. Keep products **non-public / non-purchasable** until final go/no-go.
+7. Do **not** configure shipping in this product-staging slice.
+8. Record sanitized row handles and statuses after execution only.
+
+### F. Conflict risks
+
+- The acrylic row is currently **ACTIVE / published** with old title, blank SKU, and **0.00** price; updating it may alter a visible preview row, so **Product Owner** must approve the exact visibility/status treatment before execution.
+- Duplicate risk exists if a new acrylic row is created instead of reusing the existing row.
+- **Controlled Pilot** collection/tagging depends on that collection already existing or receiving later creation/reuse approval.
+- Image/content-use basis remains unapproved until the execution gate.
+- Shipping profile setup remains dependent on locked product rows and handles.
+- Pilot pricing remains **pilot-only**, not final public pricing.
+
+### G. Product Owner approvals required before execution
+
+- Approve acrylic reuse/update and the exact visibility/status treatment for the existing row.
+- Approve create-new **draft / unpublished / restricted** rows for **UGREEN**, **Gizzu**, and **World Map**.
+- Approve the exact image/content-use basis.
+- Approve the exact product descriptions and pilot wording.
+- Approve **Controlled Pilot** collection creation/reuse if needed.
+- Approve the exact tag set.
+- Approve whether product pages remain **draft**, **unpublished**, or otherwise **restricted** before go/no-go.
+- Approve the later bounded Shopify Admin execution slice.
+- Approve the post-staging QA matrix.
+- Confirm **no** checkout/payment/customer access until final go/no-go.
+
+### H. Safety confirmation
+
+- **No Shopify Admin write action occurred** in **Slice 21Q-B1**.
+- **No** product create/update/delete/import/staging occurred in **Slice 21Q-B1**.
 
 ---
 
