@@ -791,6 +791,7 @@ Slice 3 addition:
   - Carries the approved hero copy, CTA shell, collage grid, and value badge.
 - `sections/category-strip.liquid`
   - Carries the approved horizontal department/service strip; Slice **14B** applies **`launch-collection-url`** to the first four department tiles (**Shipping / Returns / FAQ anchors unchanged**).
+  - Deferred service/support tiles must keep preview-safe subcopy. Avoid unsupported reassurance such as **`Easy returns`**; use cautious help/review wording instead (for example **`Help before fulfilment`**).
 - `sections/featured-product-grid.liquid`
   - Reuses **`static-product-card`** fallbacks and **`live-product-card`** for **Slice 13I** preview handles when **`all_products[handle]`** resolves (**Slice 14D**); section heading link defaults to **`all-products`** when **`section_link_url`** unset.
 - `sections/promo-banner-split.liquid`
