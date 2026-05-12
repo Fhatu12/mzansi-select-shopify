@@ -2,12 +2,12 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Product Owner operational pilot decisions** recorded (SLAs, evidence handling, **R99** confirmation gate, Admin/staging/checkout deferral).  
+**Updated:** 2026-05-12 — **Product Owner operational pilot decisions** recorded (SLAs, evidence handling, shipping gate, Admin/staging/checkout deferral). **2026-05-12 (Slice 21K):** partial **Gadgetgyz** supplier-checkout shipping signal (**R89** Economy; **not** final customer-facing promise).  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** — **PASS WITH NOTES** — planning + operational controls recorded in docs. **No** Shopify Admin execution, **no** product import/staging, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED** until a separate explicit go/no-go. **Gadgetgyz R99** delivery/shipping mechanism must be **confirmed** in a **separate bounded pass** before customer access; **Admin/staging/checkout** remain **not approved** until after that confirmation and SOP controls are recorded in docs.
+**Status:** **Slice 21J** — **PASS WITH NOTES** — planning + operational controls recorded in docs. **Slice 21K** — **PASS WITH NOTES** — **partial** supplier-checkout shipping evidence only. **No** Shopify Admin execution, **no** product import/staging, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED** until a separate explicit go/no-go. **Gadgetgyz** pilot delivery: prior **R99** flat assumption **withdrawn as confirmed**; observed **R89** Economy + checkout-displayed **3–5 business days** are **supplier signals only** — see **§5**. **Admin/staging/checkout** remain **not approved** until basket/setup confirmation and SOP controls are recorded in docs.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I** (Security / Compliance — **PASS WITH NOTES**, implementation planning only) and **Slice 21J**.  
-**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** baseline.
+**Related tracker:** `docs/project-control.md` — **Slice 21I** (Security / Compliance — **PASS WITH NOTES**, implementation planning only), **Slice 21J**, and **Slice 21K** (partial Gadgetgyz shipping evidence).  
+**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** baseline + **Slice 21K** delivery gate wording.
 
 ---
 
@@ -19,13 +19,15 @@
 | Access | Invite-only controlled group |
 | Order cap | **10** total pilot orders initially |
 | Supplier | **Gadgetgyz only** — do **not** route this pilot through ZA Dropshipping, Temu, Dropstore, KillerDeals, Calasca, or Ecomstock |
-| Delivery fee assumption | **R99** separate flat **pilot** delivery fee — **pending** exact Gadgetgyz checkout/shipping confirmation |
+| Delivery fee (planning) | **Slice 21K (partial):** supplier-checkout observation — **Courier Door to Door Delivery — Economy**, **R89.00**; checkout-displayed timing **3 to 5 business days** (**supplier timing signal only**, **not** guaranteed customer-facing delivery). Basket total shown **R745.70**. Prior **R99** flat pilot assumption **no longer accepted as confirmed** — **do not** use **R99** in pilot planning unless later supplier evidence explains a different scenario. Conservative customer-facing wording remains **§1** until exact pilot basket and delivery setup are confirmed. |
 | Margins | Product margins **exclude** delivery |
 | Pricing | **Pilot-only** — **not** final public pricing |
 
 ### Approved delivery wording (pilot; exact)
 
 > Pilot delivery is handled manually through our South African supplier route. Delivery timing is not guaranteed and will be confirmed after order review and supplier stock confirmation.
+
+**Slice 21K note:** keep using this string for customer-facing posture until the **exact** pilot basket/product mix and **Gadgetgyz** delivery setup are confirmed. **Do not** add **guaranteed** delivery dates or fee promises from supplier checkout readouts alone.
 
 ### Approved returns/refund wording (pilot; exact)
 
@@ -56,7 +58,7 @@
 **Shopify Admin (future slice only; not executed here):**
 
 - Product records for the four SKUs: title, body HTML, SKU, price, inventory policy, tags (`preview-only` / `price-to-confirm` evolution must be explicitly decided), collections, media.
-- Shipping profile / delivery profile — to validate **R99** pilot flat fee against Gadgetgyz checkout behaviour (research-only until approved).
+- Shipping profile / delivery profile — to validate **observed Gadgetgyz** supplier-checkout fee (**R89** Economy in **Slice 21K** capture) against future Shopify configuration — **research-only** until approved; **not** a final delivery promise.
 - Checkout / payments / markets — **readiness review only**; **no** enablement without explicit go/no-go.
 
 ---
@@ -84,16 +86,37 @@
 
 ---
 
-## 5. R99 pilot delivery fee — handling and verification (planning)
+## 5. Pilot delivery — Gadgetgyz supplier checkout evidence (**Slice 21K** partial)
+
+### 5.1 Observed supplier-checkout signal (sanitized; **not** a customer-facing promise)
+
+| Field | Value |
+|-------|--------|
+| Shipping option (as shown) | **Courier Door to Door Delivery — Economy** |
+| Fee shown | **R89.00** |
+| Timing shown at checkout | **3 to 5 business days** — **supplier checkout timing signal only**; **do not** treat as **guaranteed** delivery wording |
+| Basket total shown | **R745.70** |
+
+### 5.2 Product Owner interpretation (planning only)
+
+- The prior **R99** flat pilot delivery **assumption** is **no longer accepted as confirmed**.
+- **R89** is the **observed Gadgetgyz** delivery fee for **this** supplier-checkout capture; it **appears** to apply to the tested basket — **non-final** until the basket is verified against the four approved pilot SKUs.
+- **R99** should **not** be used in pilot planning unless **later supplier evidence** explains a different scenario.
+- **3–5 business days** remains a **supplier checkout display** signal only — **not** a Mzansi Select **guaranteed** delivery commitment.
+
+### 5.3 Handling and verification (planning)
 
 | Step | Action |
 |------|--------|
-| V1 | Record **R99** as **assumption** in cart/checkout copy experiments **on paper** or in **preview** theme only after approval — not in this slice. |
-| V2 | Capture Gadgetgyz checkout shipping line items (screenshot / order test in **supplier** context only — **no** customer payment in this planning phase) to confirm whether **R99** flat maps to supplier behaviour or needs adjustment. |
-| V3 | Decide implementation: Shopify **shipping rate** draft, **line-item property**, or **manual invoice** adjustment — **decision deferred** to implementation slice; must not imply guaranteed delivery. |
-| V4 | PDP/cart must show pilot delivery as **non-final** and **manually confirmed** until V2 closes. |
+| V1 | Record **R89** + timing as **supplier evidence** in docs only — **Slice 21K** (this pass). |
+| V2 | Confirm whether **R745.70** equals **exactly** the four approved pilot products (quantities, variants). |
+| V3 | Confirm fee sensitivity: **destination**, **quantity**, **mixed basket**. |
+| V4 | Confirm **free shipping** threshold visibility (if any) at supplier checkout. |
+| V5 | Confirm fee visibility **before payment** and **without placing an order**. |
+| V6 | Decide Shopify implementation (shipping rate draft, line item, or manual adjustment) only in a **later approved slice** — must **not** imply guaranteed delivery. |
+| V7 | PDP/cart must show pilot delivery as **non-final** and **manually confirmed** until **V2–V5** close. |
 
-**Product Owner gate — before any customer access:** the **R99** pilot flat delivery **assumption** does **not** become **customer-facing** delivery policy until **Gadgetgyz** checkout/shipping mechanism is **verified** in a **separate bounded pass** (no widening of storefront/checkout access until then).
+**Product Owner gate — before any customer access:** **R89**, **R745.70**, and **3–5 business days** do **not** become **customer-facing** delivery policy until **exact** pilot basket/product mix and **Gadgetgyz** delivery setup are confirmed. Customer-facing copy stays **§1** (conservative, **not guaranteed**) until an explicit go/no-go updates it.
 
 ---
 
@@ -109,7 +132,7 @@
 
 **Explicit:** these are **readiness and gap-identification** steps only. **No** checkout or payment **enablement** is approved by **Slice 21J**.
 
-**Admin / staging / checkout:** **not approved** in **Slice 21J**. Shopify Admin edits, product import/staging, checkout/payment enablement, and theme publish require a **separate bounded slice** opened only **after** the **R99** Gadgetgyz shipping mechanism is **confirmed** in docs and **SOP** controls (including SLAs below) are **recorded** — see **`docs/project-control.md` `## Slice 21J`**.
+**Admin / staging / checkout:** **not approved** in **Slice 21J** / **Slice 21K**. Shopify Admin edits, product import/staging, checkout/payment enablement, and theme publish require a **separate bounded slice** opened only after **Gadgetgyz** pilot **basket composition** and delivery-setup questions in **§5** are **closed** in docs and **SOP** controls (including **§7** SLAs) are **recorded** — see **`docs/project-control.md` `## Slice 21J`** and **`## Slice 21K`**.
 
 ---
 
@@ -151,7 +174,7 @@
 
 - **PII minimisation:** collect only what checkout requires when enabled.
 - **No** shadow databases of payment credentials.
-- **Repository hygiene:** treat **repo docs + local project notes** as **non-systems-of-record** for customer/order PII — align with **§7.3** and **`docs/project-control.md` `## Slice 21J`**.
+- **Repository hygiene:** treat **repo docs + local project notes** as **non-systems-of-record** for customer/order PII — align with **§7.3** and **`docs/project-control.md` `## Slice 21J`** / **`## Slice 21K`**.
 - **Access logging:** recommend Admin audit log review cadence during pilot (implementation detail later).
 - **Support channels:** pilot support contact method must not exfiltrate card data via chat/email.
 
@@ -163,7 +186,7 @@
 |------|------------|
 | PDP | Desktop + mobile — pilot copy, **pilot price**, delivery/returns strings, **no** prohibited promo language, **no** accidental purchasable state until approved. |
 | Product cards | Desktop + mobile — pilot badges, **no** sale/compare-at abuse, deferred CTAs. |
-| Cart | Pilot delivery line visibility; **R99** shown as pilot assumption where designed; checkout button state honest. |
+| Cart | Pilot delivery line visibility; show **observed supplier fee / timing** only as **non-final** pilot planning where designed — **no** guaranteed delivery or final-fee claims; checkout button state honest. |
 | Checkout path | **Only** after explicit approval — smoke test in gated environment; **no** public traffic. |
 | Payment readiness | Gateway configuration review — **no** live charges without approval. |
 | Service leakage | Confirm **no** accidental account / wishlist / newsletter / social **service** enablement. |
@@ -183,8 +206,8 @@
 
 ## 11. Unresolved risks / gaps
 
-- **Gadgetgyz R99** pilot delivery mechanism **unconfirmed** — must close in a **separate bounded pass** before customer access or customer-facing delivery policy.
-- Exact Gadgetgyz shipping fee mapping vs **R99** flat pilot fee.
+- **Slice 21K still open:** whether basket **R745.70** contained **exactly** the four approved pilot products; whether delivery fee varies by **destination**, **quantity**, or **mixed basket**; whether **free shipping** threshold was visible; whether fee is shown **before payment** **without** placing an order.
+- **R89** / **3–5 business days** remain **supplier checkout signals** — **not** approved as final customer-facing delivery promise.
 - Stock volatility on **74886** / **GCPU2C2** evidence gaps from prior Security notes.
 - Operator roster and POPIA-aligned retention schedule for pilot order evidence.
 - Whether pilot orders use **draft orders** vs **live checkout** — **undecided**; affects payment PCI scope.
@@ -193,5 +216,5 @@
 
 ## Document control
 
-- **Version:** 1.1  
-- **Next review:** Product Owner — **Gadgetgyz R99** delivery/shipping mechanism confirmation pass; then prior to any **Slice 21K+** implementation or Admin staging slice.
+- **Version:** 1.2  
+- **Next review:** **Product Owner / User** — close **Slice 21K** basket/setup questions — **or** **Product Manager** — pilot delivery recommendation (docs only); then prior to any implementation or Admin staging slice after explicit go/no-go.
