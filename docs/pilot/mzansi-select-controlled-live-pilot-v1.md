@@ -2,8 +2,9 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
+**Updated:** 2026-05-12 — **Product Owner operational pilot decisions** recorded (SLAs, evidence handling, **R99** confirmation gate, Admin/staging/checkout deferral).  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** — planning recorded. **No** Shopify Admin execution, **no** product import/staging, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED** until a separate explicit go/no-go.
+**Status:** **Slice 21J** — **PASS WITH NOTES** — planning + operational controls recorded in docs. **No** Shopify Admin execution, **no** product import/staging, **no** checkout/payment/customer access enablement, **no** theme push/publish/live overwrite. **Customer access remains BLOCKED** until a separate explicit go/no-go. **Gadgetgyz R99** delivery/shipping mechanism must be **confirmed** in a **separate bounded pass** before customer access; **Admin/staging/checkout** remain **not approved** until after that confirmation and SOP controls are recorded in docs.
 
 **Related tracker:** `docs/project-control.md` — **Slice 21I** (Security / Compliance — **PASS WITH NOTES**, implementation planning only) and **Slice 21J**.  
 **Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** baseline.
@@ -92,6 +93,8 @@
 | V3 | Decide implementation: Shopify **shipping rate** draft, **line-item property**, or **manual invoice** adjustment — **decision deferred** to implementation slice; must not imply guaranteed delivery. |
 | V4 | PDP/cart must show pilot delivery as **non-final** and **manually confirmed** until V2 closes. |
 
+**Product Owner gate — before any customer access:** the **R99** pilot flat delivery **assumption** does **not** become **customer-facing** delivery policy until **Gadgetgyz** checkout/shipping mechanism is **verified** in a **separate bounded pass** (no widening of storefront/checkout access until then).
+
 ---
 
 ## 6. Checkout / payment readiness checks (**no** enablement)
@@ -106,19 +109,41 @@
 
 **Explicit:** these are **readiness and gap-identification** steps only. **No** checkout or payment **enablement** is approved by **Slice 21J**.
 
+**Admin / staging / checkout:** **not approved** in **Slice 21J**. Shopify Admin edits, product import/staging, checkout/payment enablement, and theme publish require a **separate bounded slice** opened only **after** the **R99** Gadgetgyz shipping mechanism is **confirmed** in docs and **SOP** controls (including SLAs below) are **recorded** — see **`docs/project-control.md` `## Slice 21J`**.
+
 ---
 
-## 7. Manual fulfilment SOP additions (planning)
+## 7. Manual fulfilment SOP additions (planning) — **Product Owner operational SLAs**
 
-| Topic | Plan |
+### 7.1 Stock-failure / refund SLA (**approved**)
+
+| Rule | Target |
+|------|--------|
+| Order review | **Within 1 business day** of pilot order receipt. |
+| Supplier stock | **Gadgetgyz** stock recheck **must** occur **before** supplier order/payment is placed. |
+| Stock failure — customer notice | **Within 1 business day** of **confirming** the stock issue to the customer. |
+| Cannot fulfil | Offer **refund/cancellation** or **Product Owner–approved** alternative. |
+| Refund initiation | **Within 1 business day** after refund **decision**, via **approved Shopify/payment refund path only**. |
+| Payment data | **No** manual card/payment data handling. |
+
+### 7.2 Customer update SLA (**approved**)
+
+| Event | Action |
+|-------|--------|
+| After stock/fulfilment confirmation | Send customer update. |
+| Supplier tracking received | Send tracking update **within 1 business day**. |
+| Tracking delayed | Send status update **within 3 business days** of order review **or** supplier order placement (per operational timeline). |
+
+### 7.3 Order cap, data access, evidence retention / deletion (**approved**)
+
+| Topic | Rule |
 |-------|------|
 | **10-order cap** | **Product Owner** owns the running count and go/no-go pause at **10** unless another owner is **explicitly** assigned in writing before go-live. |
-| **Order evidence** | Store operational evidence only in **approved project evidence locations** (e.g. `artifacts/` policy-compliant folders); **no** card numbers, CVV, full PAN, or payment gateway raw tokens in tickets/docs. |
-| **Payment data** | **No** manual card/payment detail collection or storage. Use Shopify-native capture only when/if checkout is formally enabled. |
-| **Gadgetgyz stock failure** | Before customer access: define **refund/cancellation SLA** (target communication window, e.g. within **24–48 business hours** of internal confirmation — **to be finalized** in go/no-go) and who executes the refund in Shopify. |
-| **Customer updates** | Define proactive update timeframes (e.g. order received, supplier confirmed, shipped, delay) **before** opening access. |
-| **Data access** | Only **approved operators** (named role list TBD at go/no-go) may access customer order PII; least-privilege Admin accounts. |
-| **Retention / deletion** | Evidence and order-related exports: retention window and secure deletion expectation **must** be defined before customer access (align with POPIA posture in `project-control` / Security guidance). |
+| **Order / customer evidence** | Keep customer/order evidence in **approved operational systems only** (e.g. Shopify, payment, order records). **Do not** store customer personal data in **repository** documentation, committed artifacts, screenshots as project deliverables, or local project notes. |
+| **Project documentation** | May record **sanitized** order counts/statuses only. |
+| **Temporary local exports/screenshots** | Delete after reconciliation unless legally or operationally required to retain elsewhere under approved systems. |
+| **Data access** | **Product Owner** controls access to customer/order data during the pilot; only **approved operators** (named list at go/no-go) and least-privilege Admin accounts when/if Admin access is approved in a future slice. |
+| **Payment data** | **No** manual card/payment detail collection or storage. Use Shopify-native paths only when/if checkout is formally enabled. |
 
 ---
 
@@ -126,6 +151,7 @@
 
 - **PII minimisation:** collect only what checkout requires when enabled.
 - **No** shadow databases of payment credentials.
+- **Repository hygiene:** treat **repo docs + local project notes** as **non-systems-of-record** for customer/order PII — align with **§7.3** and **`docs/project-control.md` `## Slice 21J`**.
 - **Access logging:** recommend Admin audit log review cadence during pilot (implementation detail later).
 - **Support channels:** pilot support contact method must not exfiltrate card data via chat/email.
 
@@ -157,6 +183,7 @@
 
 ## 11. Unresolved risks / gaps
 
+- **Gadgetgyz R99** pilot delivery mechanism **unconfirmed** — must close in a **separate bounded pass** before customer access or customer-facing delivery policy.
 - Exact Gadgetgyz shipping fee mapping vs **R99** flat pilot fee.
 - Stock volatility on **74886** / **GCPU2C2** evidence gaps from prior Security notes.
 - Operator roster and POPIA-aligned retention schedule for pilot order evidence.
@@ -166,5 +193,5 @@
 
 ## Document control
 
-- **Version:** 1.0  
-- **Next review:** Product Owner prior to any **Slice 21K+** implementation or Admin staging slice.
+- **Version:** 1.1  
+- **Next review:** Product Owner — **Gadgetgyz R99** delivery/shipping mechanism confirmation pass; then prior to any **Slice 21K+** implementation or Admin staging slice.
