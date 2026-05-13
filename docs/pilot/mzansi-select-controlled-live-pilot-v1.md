@@ -2,12 +2,12 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**. **2026-05-13** — **Slice 21T** bounded Shopify Admin shipping-profile execution recorded under **§15C**. **2026-05-13** — **Slice 21U** controlled pilot **shipping isolation QA** **PASS WITH NOTES** (**Product Owner accepted**) under **§15D**; evidence **`artifacts/qa/slice-21u-controlled-pilot-shipping-isolation-validation/20260513-223303/`**.  
+**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**. **2026-05-13** — **Slice 21T** bounded Shopify Admin shipping-profile execution recorded under **§15C**. **2026-05-13** — **Slice 21U** controlled pilot **shipping isolation QA** **PASS WITH NOTES** (**Product Owner accepted**) under **§15D**; evidence **`artifacts/qa/slice-21u-controlled-pilot-shipping-isolation-validation/20260513-223303/`**. **2026-05-13** — **Slice 21V** **Gadgetgyz** **4-SKU** supplier re-check evidence **PASS WITH NOTES / CONDITIONAL** under **§15E** (same-day **Gadgetgyz** basket/delivery signal recheck required before any **no-payment** checkout/shipping-rate validation window — **Slice 21W**).  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **Slice 21T** — **PASS WITH NOTES** (**§15C**; bounded Shopify Admin shipping-profile execution recorded). **Slice 21U** — **PASS WITH NOTES** (**§15D**; read-only isolation QA; **Product Owner accepted**; **mixed-cart** checkout-rate validation **BLOCKED** pending separate test boundary). Shopify Admin shipping is configured as an isolated pilot-only/product-specific profile: **`Mzansi Select Controlled Pilot — Gadgetgyz`** with **South Africa** (**ZA**) and **`Pilot courier delivery`** at **ZAR 89.0** for exactly the four locked **Gadgetgyz** draft pilot variants. **Customer access remains BLOCKED**. **Checkout/payment** remain **blocked / not enabled**. **R89** remains a **controlled-pilot planning/test rate**, **not** a final public delivery promise, and still requires supplier re-check before customer access. **Refund/cancellation** per **§1** remains accepted.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **Slice 21T** — **PASS WITH NOTES** (**§15C**; bounded Shopify Admin shipping-profile execution recorded). **Slice 21U** — **PASS WITH NOTES** (**§15D**; read-only isolation QA; **Product Owner accepted**; **mixed-cart** checkout-rate validation **BLOCKED** pending separate test boundary). **Slice 21V** — **PASS WITH NOTES / CONDITIONAL** (**§15E**; **Gadgetgyz** **4-SKU** supplier re-check evidence; **Product Manager** verdict; **Product Owner** conditional acceptance **pending docs closure**; **R89** **not** freshly basket-validated; **same-day** manual **Gadgetgyz** basket + delivery signal recheck **before** any **no-payment** checkout/shipping-rate test window). **Slice 21W** — **recommended next** — **Product Owner** decision on bounded **no-payment** checkout/shipping-rate validation window (**prerequisite:** **Slice 21V** same-day recheck). Shopify Admin shipping is configured as an isolated pilot-only/product-specific profile: **`Mzansi Select Controlled Pilot — Gadgetgyz`** with **South Africa** (**ZA**) and **`Pilot courier delivery`** at **ZAR 89.0** for exactly the four locked **Gadgetgyz** draft pilot variants. **Customer access remains BLOCKED**. **Checkout/payment** remain **blocked / not enabled**. **R89** remains a **controlled-pilot planning/test rate**, **not** a final public delivery promise, and still requires supplier re-check before customer access. **Refund/cancellation** per **§1** remains accepted.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21U**.  
-**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** pilot staging planning (handles, tags, collection, prices, reuse/create direction).
+**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21W** (**21W** = next **Product Owner** decision slice).  
+**Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** / **21V** pilot staging planning (handles, tags, collection, prices, reuse/create direction, supplier re-check signals).
 
 ---
 
@@ -1014,9 +1014,9 @@ mutation UpdateNewPilotVariantAndCollection {
 - **Final product claims** remain **BLOCKED**.
 - **R89** remains a **controlled pilot shipping configuration**, **not** a public/final delivery promise.
 
-### E. Next recommended gate
+### E. Next recommended gate (superseded by **§15E**)
 
-- **Product Manager** — supplier re-check and readiness planning **before** any checkout/shipping-rate test window (**reason:** confirm supplier readiness, stock/availability, fulfilment path, **R89** support, handling expectations, and pilot communication constraints).
+- **Product Manager** supplier re-check and readiness planning **before** any checkout/shipping-rate test window — **completed as evidence posture** in **Slice 21V** (**§15E**); **next** gate is **Slice 21W** (**Product Owner** decision) with **same-day Gadgetgyz** basket/delivery recheck prerequisite.
 
 ### F. LLD
 
@@ -1024,7 +1024,62 @@ mutation UpdateNewPilotVariantAndCollection {
 
 ---
 
+## 15E. Slice 21V — Gadgetgyz 4-SKU supplier re-check evidence capture (Product Manager / Product Owner conditional acceptance)
+
+**Verdict:** **PASS WITH NOTES / CONDITIONAL** — **Product Manager** verdict **PASS WITH NOTES / CONDITIONAL**; **Product Owner** conditional acceptance **in substance** **pending docs closure**. **Docs-only**; **no** Shopify Admin, theme, product rows, shipping configuration, checkout/payment, or customer-access changes in this slice.
+
+### A. Accepted SKU-level evidence (Gadgetgyz signals; not final pricing or claims)
+
+| SKU | Storefront title / handle | Supplier price signal | Stock signal | Recommendation |
+|-----|----------------------------|------------------------|--------------|----------------|
+| **DP0402** | Acrylic Tablet & Phone Stand / `acrylic-tablet-phone-stand` | **R158.89** | **In Stock** | **Conditionally ready** |
+| **CR106-20277** | UGREEN 4-in-1 USB 2.0 Hub / `ugreen-4-in-1-usb-2-0-hub` | **R163.90** | **In Stock** | **Conditionally ready with claim caution** |
+| **GCPU2C2** | Gizzu USB to Type-C Cable — 2m / `gizzu-usb-to-type-c-cable-2m` | **R53.90** | **In Stock** | **Conditionally ready with claim caution** |
+| **74886** | World Map Extended Mouse Pad / `world-map-extended-mouse-pad` | **R120.00** | **In Stock** | **Conditionally ready with softened claim wording** |
+
+### B. R89 courier / delivery posture
+
+- **Accepted project setup remains:** profile **`Mzansi Select Controlled Pilot — Gadgetgyz`**; zone **South Africa** (**ZA**); rate **`Pilot courier delivery`** — **ZAR 89.0** (**Slice 21T** Shopify configuration).
+- **Slice 21V** did **not** freshly validate a current **Gadgetgyz** checkout basket showing **R89**.
+- **R89** remains **conditional** and must be treated as a **supplier checkout / planning signal**, **not** a **final delivery promise**.
+- **Same-day manual Gadgetgyz basket + delivery signal recheck** is **required** before any **no-payment** checkout/shipping-rate validation window.
+
+### C. Manual fulfilment posture (workable with controls)
+
+- **Product Owner** rechecks stock and supplier price.
+- **Product Owner** places supplier order manually.
+- **Product Owner** captures supplier order/reference/tracking.
+- **Product Owner** communicates status to customer.
+- **Product Owner** handles refund/cancellation if stock, supplier price, or delivery changes.
+
+### D. Claim / safety / warranty posture
+
+- **No** new high-risk product/safety issue identified.
+- Keep claims **conservative**.
+- **Do not** use unsupported fast-charge, **66W**, **480Mbps**, universal compatibility, guaranteed anti-slip, professional-grade, durability, or warranty claims.
+- Customer wording remains **non-final**.
+
+### E. Current blockers (preserve)
+
+- **Customer access** remains **BLOCKED**.
+- **Checkout / payment** remain **BLOCKED**.
+- **Public launch** remains **BLOCKED**.
+- **`Supplier verified`** remains **BLOCKED**.
+- **Final delivery promise** remains **BLOCKED**.
+- **Product claims** remain **BLOCKED**.
+- **No-payment checkout/shipping-rate validation window** is **not yet approved**.
+
+### F. Recommended next slice
+
+- **Slice 21W** — **Product Owner** decision on a **bounded no-payment checkout/shipping-rate validation window**, requiring the **same-day Gadgetgyz basket/delivery signal recheck** **first**.
+
+### G. LLD
+
+- **Unchanged** unless a direct contradiction is found — **Slice 21V** did **not** change checkout, Admin, theme, storefront, shipping configuration, payment, or customer-access behaviour.
+
+---
+
 ## Document control
 
-- **Version:** 1.11  
-- **Next review:** **Product Manager** — supplier re-check / readiness planning **before** any bounded checkout/shipping-rate test window (**per §15D**); **QA / Product Owner** — verify controlled checkout behaviour only under an **explicitly approved** test boundary while customer access remains blocked; **DevOps** — prepare rollback only if QA or Product Owner rejects profile behaviour; **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15A** / **§15C** / **§15D** as living execution specs until checkout/payment follow-on slices are accepted.
+- **Version:** 1.12  
+- **Next review:** **Product Owner / User** — **Slice 21W** — approve or defer **bounded no-payment** checkout/shipping-rate validation **only after** **same-day Gadgetgyz** basket/delivery signal recheck (**§15E** / **`docs/catalogue/...` `## Slice 21V`**); **QA / DevOps** — execute only under **written** scope while access remains blocked; **Product Manager** — maintain supplier evidence discipline; **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15A** / **§15C** / **§15D** / **§15E** as living execution specs until follow-on slices are accepted.
