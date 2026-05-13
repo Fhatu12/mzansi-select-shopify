@@ -2,11 +2,11 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**. **2026-05-13** — **Slice 21T** bounded Shopify Admin shipping-profile execution recorded under **§15C**.  
+**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**. **2026-05-13** — **Slice 21T** bounded Shopify Admin shipping-profile execution recorded under **§15C**. **2026-05-13** — **Slice 21U** controlled pilot **shipping isolation QA** **PASS WITH NOTES** (**Product Owner accepted**) under **§15D**; evidence **`artifacts/qa/slice-21u-controlled-pilot-shipping-isolation-validation/20260513-223303/`**.  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **Slice 21T** — **PASS WITH NOTES** (**§15C**; bounded Shopify Admin shipping-profile execution recorded). Shopify Admin shipping is now configured as an isolated pilot-only/product-specific profile: **`Mzansi Select Controlled Pilot — Gadgetgyz`** with **South Africa** (**ZA**) and **`Pilot courier delivery`** at **ZAR 89.0** for exactly the four locked **Gadgetgyz** draft pilot variants. **Customer access remains BLOCKED**. **Checkout/payment** remain **blocked / not enabled**. **R89** remains a **controlled-pilot planning/test rate**, **not** a final public delivery promise, and still requires supplier re-check before customer access. **Refund/cancellation** per **§1** remains accepted.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **Slice 21T** — **PASS WITH NOTES** (**§15C**; bounded Shopify Admin shipping-profile execution recorded). **Slice 21U** — **PASS WITH NOTES** (**§15D**; read-only isolation QA; **Product Owner accepted**; **mixed-cart** checkout-rate validation **BLOCKED** pending separate test boundary). Shopify Admin shipping is configured as an isolated pilot-only/product-specific profile: **`Mzansi Select Controlled Pilot — Gadgetgyz`** with **South Africa** (**ZA**) and **`Pilot courier delivery`** at **ZAR 89.0** for exactly the four locked **Gadgetgyz** draft pilot variants. **Customer access remains BLOCKED**. **Checkout/payment** remain **blocked / not enabled**. **R89** remains a **controlled-pilot planning/test rate**, **not** a final public delivery promise, and still requires supplier re-check before customer access. **Refund/cancellation** per **§1** remains accepted.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21T**.  
+**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21U**.  
 **Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** pilot staging planning (handles, tags, collection, prices, reuse/create direction).
 
 ---
@@ -966,7 +966,65 @@ mutation UpdateNewPilotVariantAndCollection {
 
 ---
 
+## 15D. Slice 21U — Controlled pilot shipping isolation QA (read-only validation)
+
+**Verdict:** **PASS WITH NOTES** — **Product Owner accepted**. **Docs-only** tracker/pilot sync; **no** Shopify Admin, theme, product-row, checkout, payment, or customer-access changes in this slice.
+
+**Evidence:** `artifacts/qa/slice-21u-controlled-pilot-shipping-isolation-validation/20260513-223303/`
+
+### A. Accepted QA matrix (summary)
+
+| Area | Result |
+|------|--------|
+| Documentation sync | **PASS** |
+| Pilot profile / rate / zone validation | **PASS** |
+| Pilot product assignment | **PASS WITH NOTES** |
+| Non-pilot product isolation | **PASS WITH NOTES** |
+| Mixed-cart behaviour | **BLOCKED** (requires cart/checkout or shipping-rate calculation — separate safe test boundary) |
+| Commerce / customer-access signals | **PASS WITH NOTES** |
+
+### B. Validated shipping configuration (read-only Admin GraphQL)
+
+- **Profile:** **`Mzansi Select Controlled Pilot — Gadgetgyz`**
+- **Zone:** **South Africa** (**ZA**)
+- **Rate:** **`Pilot courier delivery`** — **ZAR 89.0**
+- **Assigned pilot products (exact four):**
+  1. **`DP0402`** / Acrylic Tablet & Phone Stand / `acrylic-tablet-phone-stand`
+  2. **`CR106-20277`** / UGREEN 4-in-1 USB 2.0 Hub / `ugreen-4-in-1-usb-2-0-hub`
+  3. **`GCPU2C2`** / Gizzu USB to Type-C Cable — 2m / `gizzu-usb-to-type-c-cable-2m`
+  4. **`74886`** / World Map Extended Mouse Pad / `world-map-extended-mouse-pad`
+
+### C. Accepted notes
+
+- All four locked pilot products resolved to the controlled pilot shipping profile in read-only Admin GraphQL.
+- Representative non-pilot products remained on **`General profile`**.
+- No store-wide reassignment to the pilot profile was observed.
+- Mixed-cart validation requires cart/checkout or shipping-rate calculation interaction and remains **BLOCKED** until a separate safe test boundary is approved.
+- Passive preview routes redirected to **`/password`**, consistent with customer access remaining blocked.
+- No **`/cart/add`**, checkout, payment, customer, newsletter, or wishlist request signals were observed.
+- Current shipping-zone state showed **ZA** only, with **`includeRestOfWorld=false`**.
+
+### D. Safety posture (unchanged)
+
+- **Customer access** remains **BLOCKED**.
+- **Checkout / payment** remain **BLOCKED**.
+- **Public launch** remains **BLOCKED**.
+- **`Supplier verified`** remains **BLOCKED**.
+- **Final delivery promise** remains **BLOCKED**.
+- **Final product claims** remain **BLOCKED**.
+- **R89** remains a **controlled pilot shipping configuration**, **not** a public/final delivery promise.
+
+### E. Next recommended gate
+
+- **Product Manager** — supplier re-check and readiness planning **before** any checkout/shipping-rate test window (**reason:** confirm supplier readiness, stock/availability, fulfilment path, **R89** support, handling expectations, and pilot communication constraints).
+
+### F. LLD
+
+- **Likely unchanged** unless a direct contradiction is found: **Slice 21U** validated existing configuration; **no** Admin configuration, storefront contracts, theme code, checkout/payment behaviour, or customer-access behaviour changed.
+
+---
+
 ## Document control
 
-- **Version:** 1.10  
-- **Next review:** **QA / Product Owner** — verify controlled checkout behaviour with the bounded pilot profile while customer access remains blocked; **DevOps** — prepare rollback only if QA or Product Owner rejects the new profile; **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15A** / **§15C** as the living execution spec until checkout/payment follow-on slices are accepted.
+- **Version:** 1.11  
+- **Next review:** **Product Manager** — supplier re-check / readiness planning **before** any bounded checkout/shipping-rate test window (**per §15D**); **QA / Product Owner** — verify controlled checkout behaviour only under an **explicitly approved** test boundary while customer access remains blocked; **DevOps** — prepare rollback only if QA or Product Owner rejects profile behaviour; **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15A** / **§15C** / **§15D** as living execution specs until checkout/payment follow-on slices are accepted.
