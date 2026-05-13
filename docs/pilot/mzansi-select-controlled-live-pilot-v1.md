@@ -2,11 +2,11 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**.  
+**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**. **2026-05-13** — **Slice 21T** bounded Shopify Admin shipping-profile execution recorded under **§15C**.  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **No** Shopify Admin product staging, import, shipping, checkout, payment, theme, or customer-access execution occurred in this pass. **Customer access remains BLOCKED**. **Shipping:** **product-specific profile only**; **general-profile fallback blocked** unless **separately** approved. **Pilot courier delivery — R89** — **conditional**; **controlled checkout testing only** when later approved; **R89** **supplier re-check** before customer access; **no** final delivery promise. **Payment/capture** **blocked** pending separate checks. **Refund/cancellation** per **§1** remains accepted.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **Slice 21T** — **PASS WITH NOTES** (**§15C**; bounded Shopify Admin shipping-profile execution recorded). Shopify Admin shipping is now configured as an isolated pilot-only/product-specific profile: **`Mzansi Select Controlled Pilot — Gadgetgyz`** with **South Africa** (**ZA**) and **`Pilot courier delivery`** at **ZAR 89.0** for exactly the four locked **Gadgetgyz** draft pilot variants. **Customer access remains BLOCKED**. **Checkout/payment** remain **blocked / not enabled**. **R89** remains a **controlled-pilot planning/test rate**, **not** a final public delivery promise, and still requires supplier re-check before customer access. **Refund/cancellation** per **§1** remains accepted.
 
-**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21S**.  
+**Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21T**.  
 **Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** pilot staging planning (handles, tags, collection, prices, reuse/create direction).
 
 ---
@@ -900,7 +900,73 @@ mutation UpdateNewPilotVariantAndCollection {
 
 ---
 
+## 15C. Slice 21T — Controlled pilot product-specific shipping setup execution gate (DevOps / Platform Engineer)
+
+**Verdict:** **PASS WITH NOTES** — bounded Shopify Admin shipping-profile execution completed; checkout/payment/customer access remain blocked.
+
+**Evidence:** `artifacts/devops/slice-21t-controlled-pilot-product-specific-shipping-setup/20260513-221127/`
+
+### A. Pre-change state reconfirmed
+
+- **`General profile`** was still the only visible profile in the initial readiness-style query.
+- The visible default-profile zone was **South Africa** (**ZA**).
+- The visible default-profile active rate was **`Standard shipping`** at **ZAR 99.0**.
+- All four locked **Gadgetgyz** pilot rows still validated as **draft** with exact approved handles, SKUs, pilot prices, and expected tags.
+- All four locked pilot variants still resolved to **`General profile`** before execution.
+
+### B. Execution gate confirmations used
+
+- Strategy remained **pilot-only / product-specific shipping profile only**.
+- Exact profile name used: **`Mzansi Select Controlled Pilot — Gadgetgyz`**.
+- Exact assignments used: the four locked pilot variants only (**`DP0402`**, **`CR106-20277`**, **`GCPU2C2`**, **`74886`**).
+- Exact zone used: **South Africa** (**ZA**) only.
+- Exact rate used: **`Pilot courier delivery`** at **ZAR 89.0**.
+- Rate posture remained **controlled-pilot planning/test only**, **not** a final public delivery promise.
+- Rollback path was prepared before write execution:
+  - **Preferred full rollback:** remove the new profile with **`deliveryProfileRemove`**.
+  - **Narrow rollback:** use **`deliveryProfileUpdate`** with **`variantsToDissociate`** so the four pilot variants move back to the default profile, then remove the pilot profile if safe.
+  - Restore anchor: captured pre-change **`General profile`** state under the evidence folder.
+- Execution did **not** require or enable checkout/payment/customer access/public launch.
+
+### C. Admin changes made
+
+- Created delivery profile **`Mzansi Select Controlled Pilot — Gadgetgyz`** (`gid://shopify/DeliveryProfile/102254641335`).
+- Added the existing **`Shop location`** origin (`gid://shopify/Location/81872421047`) to the new profile.
+- Added **South Africa** zone (`gid://shopify/DeliveryZone/428803883191`) with **`includeAllProvinces: true`**.
+- Added active fixed rate **`Pilot courier delivery`** (`gid://shopify/DeliveryMethodDefinition/775970619575`) at **ZAR 89.0**.
+- Associated exactly four locked pilot variants to the new profile:
+  - **`DP0402`** / **`Acrylic Tablet & Phone Stand`** / **`acrylic-tablet-phone-stand`**
+  - **`CR106-20277`** / **`UGREEN 4-in-1 USB 2.0 Hub`** / **`ugreen-4-in-1-usb-2-0-hub`**
+  - **`GCPU2C2`** / **`Gizzu USB to Type-C Cable — 2m`** / **`gizzu-usb-to-type-c-cable-2m`**
+  - **`74886`** / **`World Map Extended Mouse Pad`** / **`world-map-extended-mouse-pad`**
+
+### D. Notes and after-state verification
+
+- The first create attempt was rejected because **ZA** required province coverage; the successful create used **`includeAllProvinces: true`**.
+- After-state verification confirmed:
+  - the new profile exists and is non-default
+  - all four pilot variants now resolve to the new profile
+  - **`General profile`** remains the default profile
+  - **`General profile`** still carries **South Africa** (**ZA**) with active **`Standard shipping`** at **ZAR 99.0**
+  - **`shop.countriesInShippingZones`** remains **ZA** only and **`includeRestOfWorld`** remains **false**
+- **`markets`** GraphQL inspection was not available because the current local stored auth lacks **`read_markets`**. No market settings were changed in this slice; ZA-only scope was inferred from the shipping-zone context plus the unchanged blocked customer-access posture.
+
+### E. Safety and rollback / recovery notes
+
+- **No** checkout/payment/customer-access/public-launch enablement occurred.
+- **No** theme push/publish occurred.
+- **No** product create/update/delete/import/staging occurred.
+- **No** product data changed except shipping-profile assignment.
+- **No** customer/order/payment data, supplier account data, tokens, cookies, or raw Admin payloads were stored in repo docs.
+- If rollback is needed later:
+  1. remove the pilot profile with **`deliveryProfileRemove`**, or first dissociate the four pilot variants back to default with **`deliveryProfileUpdate`**
+  2. confirm each pilot variant resolves back to **`General profile`**
+  3. confirm **`General profile`** still shows **South Africa** (**ZA**) and **`Standard shipping`** **ZAR 99.0**
+  4. keep checkout/payment/customer access blocked throughout
+
+---
+
 ## Document control
 
-- **Version:** 1.9  
-- **Next review:** **Product Owner / User** — decide whether to approve a **pilot-only / product-specific** shipping-profile **execution** slice after **§15B** **Product Owner–accepted** readiness outcome; **DevOps** / operator — execute **only** after written approval with exact profile scope + rollback; **Product Owner** — bounded Shopify Admin product-staging execution slice when ready (**§15** satisfied + **§15.J**); **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15** / **§15B** as living execution specs until slice completion.
+- **Version:** 1.10  
+- **Next review:** **QA / Product Owner** — verify controlled checkout behaviour with the bounded pilot profile while customer access remains blocked; **DevOps** — prepare rollback only if QA or Product Owner rejects the new profile; **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15A** / **§15C** as the living execution spec until checkout/payment follow-on slices are accepted.
