@@ -2,9 +2,9 @@
 
 **Document type:** Controlled pilot implementation plan (planning only)  
 **Prepared:** 2026-05-11  
-**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution).  
+**Updated:** 2026-05-12 — **Slice 21K** … **21S** (through **§15B** controlled pilot shipping-configuration readiness-only review — **docs only**; **no** Admin execution). **2026-05-13** — **Slice 21S** **Product Owner closure / tracker hygiene** — **`docs/project-control.md`** + **§15B** aligned; readiness docs commit **`3d1511b`**.  
 **Owner:** Product Owner  
-**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; pending **Product Owner** review). **No** Shopify Admin product staging, import, shipping, checkout, payment, theme, or customer-access execution occurred in this pass. **Customer access remains BLOCKED**. **Shipping:** **product-specific profile only**; **general-profile fallback blocked** unless **separately** approved. **Pilot courier delivery — R89** — **conditional**; **controlled checkout testing only** when later approved; **R89** **supplier re-check** before customer access; **no** final delivery promise. **Payment/capture** **blocked** pending separate checks. **Refund/cancellation** per **§1** remains accepted.
+**Status:** **Slice 21J** / **21K** / **21L** — **PASS WITH NOTES**. **Slice 21M** — **planning recorded** (**§12**). **Slice 21N** — **PASS WITH NOTES** (**§13**; commit **`417e78f…`**). **Slice 21O** — **PASS WITH NOTES** — product-staging readiness (**§14**) **accepted**. **Slice 21P** — **bounded implementation plan recorded** (**§15**). **Slice 21Q-B1** — **exact write plan recorded for Product Owner review** (**§15A**) — **staging execution not approved yet**. **Slice 21S** — **PASS WITH NOTES** (**§15B**; readiness-only; **Product Owner accepted**; tracker commit **`3d1511b`**). **No** Shopify Admin product staging, import, shipping, checkout, payment, theme, or customer-access execution occurred in this pass. **Customer access remains BLOCKED**. **Shipping:** **product-specific profile only**; **general-profile fallback blocked** unless **separately** approved. **Pilot courier delivery — R89** — **conditional**; **controlled checkout testing only** when later approved; **R89** **supplier re-check** before customer access; **no** final delivery promise. **Payment/capture** **blocked** pending separate checks. **Refund/cancellation** per **§1** remains accepted.
 
 **Related tracker:** `docs/project-control.md` — **Slice 21I** … **Slice 21S**.  
 **Catalogue cross-reference:** `docs/catalogue/mzansi-select-25-product-readiness-v1.md` — **Slice 21J** / **21O** / **21P** / **21Q-B1** pilot staging planning (handles, tags, collection, prices, reuse/create direction).
@@ -858,7 +858,9 @@ mutation UpdateNewPilotVariantAndCollection {
 
 ## 15B. Slice 21S — Controlled pilot shipping-configuration readiness/execution pass (DevOps / Platform Engineer)
 
-**Verdict:** **PASS WITH NOTES** — **readiness-only**; **pending Product Owner review**. **No Shopify Admin shipping execution occurred in this slice.**
+**Verdict:** **PASS WITH NOTES** — **readiness-only**; **Product Owner accepted** (tracker hygiene **`docs/project-control.md`** + **§15B**). **No Shopify Admin shipping execution occurred in this slice.**
+
+**Readiness docs commit:** **`3d1511b`** — `docs: record controlled pilot shipping readiness`
 
 **Evidence:** `artifacts/devops/slice-21s-controlled-pilot-shipping-configuration-readiness/20260512-205422/`
 
@@ -900,5 +902,5 @@ mutation UpdateNewPilotVariantAndCollection {
 
 ## Document control
 
-- **Version:** 1.8  
-- **Next review:** **Product Owner / User** — decide whether to approve a **pilot-only / product-specific** shipping-profile execution slice after **§15B** readiness-only review; **DevOps** / operator — execute **only** after written approval with exact profile scope + rollback; **Product Owner** — bounded Shopify Admin product-staging execution slice when ready (**§15** satisfied + **§15.J**); **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15** / **§15B** as living execution specs until slice completion.
+- **Version:** 1.9  
+- **Next review:** **Product Owner / User** — decide whether to approve a **pilot-only / product-specific** shipping-profile **execution** slice after **§15B** **Product Owner–accepted** readiness outcome; **DevOps** / operator — execute **only** after written approval with exact profile scope + rollback; **Product Owner** — bounded Shopify Admin product-staging execution slice when ready (**§15** satisfied + **§15.J**); **Product Manager** or **Senior Full-Stack Software Architect** — maintain **§15** / **§15B** as living execution specs until slice completion.
