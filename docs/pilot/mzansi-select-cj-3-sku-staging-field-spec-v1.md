@@ -2,20 +2,20 @@
 
 **Document type:** Bounded manual Shopify product staging — **exact field values** (planning record only)  
 **Prepared:** 2026-05-14  
-**Updated:** 2026-05-14 (**Slice 21AF-C** — execution-complete field spec for a later bounded **Slice 21AF-D** retry)  
+**Updated:** 2026-05-14 (**Slice 21AF-C** — execution-complete field spec; **Slice 21AF-D** — staging **PASS**; **Slice 21AG** — staged-row **QA** **PASS WITH NOTES**)  
 **Owner:** Product Owner  
 **Slice:** **21AE** — **PASS WITH NOTES** (Product Owner accepted; **docs-only** — **no** Shopify Admin execution implied by this document alone)  
 **Related plan:** [mzansi-select-cj-imported-supplier-staging-plan-v1.md](mzansi-select-cj-imported-supplier-staging-plan-v1.md)  
-**Related tracker:** [docs/project-control.md](../project-control.md) — **`## Slice 21AE`**, **`## Slice 21AF-C`**
+**Related tracker:** [docs/project-control.md](../project-control.md) — **`## Slice 21AE`**, **`## Slice 21AF-C`**, **`## Slice 21AG`**
 
 ---
 
 ## 1. Scope and non-approvals
 
-- This file records **exact** intended **Shopify Admin** field values for a **later** bounded **Slice 21AF-D** manual staging execution (**DevOps** retry), **only** after **Product Owner** go/no-go on that execution slice.
+- This file records **exact** intended **Shopify Admin** field values used for bounded **Slice 21AF-D** manual staging (**DevOps**; **PASS**) and **Product Owner** **Slice 21AG** **QA** validation of the resulting draft rows (**PASS WITH NOTES**). Any **Admin** change beyond that scope requires a **separate** approved execution slice.
 - **Does not** approve: **CJ** app install; Shopify authorization; import/sync; checkout/payment; customer access; public launch; **`Supplier verified`**; **final** pricing; **final** delivery promises; **final** product claims; theme publish; or purchasable/live catalogue exposure.
 - **Posture:** **Draft / restricted only** for the three SKUs below. **Not purchasable** until **Product Owner** go/no-go on customer-facing enablement.
-- **Media:** **No** images/media for **21AF-D** retry. **CJ** image references remain **blocked** pending a **separate** **Product Owner** media/content-use decision.
+- **Media:** **No** images/media for **21AF-D** staging / **21AG** validation window. **CJ** image references remain **blocked** pending a **separate** **Product Owner** media/content-use decision.
 - **The following remain blocked (unchanged):**
   - **No** **CJ** app install.
   - **No** Shopify/**CJ** authorization.
@@ -262,14 +262,14 @@ Assemble the product **description** (body HTML) **in this order** for each SKU:
 
 ## 11. Next slice (record)
 
-- **Slice 21AF-D** — bounded **DevOps** manual **Shopify** staging **retry** using **this** completed field specification — **separate** **Product Owner** execution go/no-go; **no** **Admin** work in **21AF-C** (**docs-only**).
+- **Slice 21AH** — **Security / Compliance** post-staging review of **CJ** **3**-**SKU** imported-supplier **draft** posture — **docs-only** unless a direct contradiction requires **LLD** amendment (**separate** slice; **no** **Admin** work implied here).
 
 ---
 
 ## 12. Document control
 
-- **Version:** 1.1 (**Slice 21AF-C** — execution-complete field spec)  
-- **Next review:** **DevOps / Platform Engineer** — **Slice 21AF-D** execution only after **Product Owner** go/no-go.
+- **Version:** 1.1 (**Slice 21AF-C** — execution-complete field spec; **Slice 21AG** tracker sync)  
+- **Next review:** **Security / Compliance Engineer** — **Slice 21AH** (post-staging **CJ** **3**-**SKU** draft posture; **docs-only** unless contradicted).
 
 ---
 
@@ -312,3 +312,17 @@ Assemble the product **description** (body HTML) **in this order** for each SKU:
 - **Execution summary:** new draft rows created; exact **Color** variant values applied (**Blue** / **Coffee Bear** / **Gun Gray**); **CJ** reference stored **only** in variant **SKU**; exact field-spec body copy used; exact approved tags used; existing **`controlled-pilot`** collection assigned; **no** media/images attached.  
 - **Posture confirmed:** all three rows remain **`DRAFT`**; **publication count `0`** for all three; **media count `0`** for all three; **no** **`Supplier verified`** wording; **no** final pricing approval; **no** final delivery promise; **no** final claim approval; **no** checkout/payment/customer-access/public-launch change.  
 - **Evidence pointer:** **`artifacts/devops/slice-21af-d-cj-manual-product-staging-retry/20260514-151847/`** (local only; **not** committed).  
+
+---
+
+## 17. Slice 21AG QA validation note (staged draft rows; Product Owner PASS WITH NOTES; docs only)
+
+- **Date:** 2026-05-14  
+- **Result:** **PASS WITH NOTES** — **Product Owner** accepted **QA** validation of staged **Shopify** draft rows against **this** field specification (**docs-only**; **no** Admin/theme/product/shipping/checkout/payment/customer-access changes in this pass).  
+- **Evidence pointer:** **`artifacts/qa/slice-21ag-cj-3-sku-draft-row-validation/20260514-154224/`** (local only; **not** committed).  
+- **Validated SKUs / variants / draft prices:** **CJYD230000901AZ** — **Color** / **Blue** — **R249**; **CJYD211196101AZ** — **Color** / **Coffee Bear** — **R279**; **CJYD245830501AZ** — **Color** / **Gun Gray** — **R699**.  
+- **Accepted QA matrix:** product-row validation table **PASS**; field-spec alignment **PASS**; draft/restricted posture **PASS**; collection/tagging **PASS WITH NOTES**; SKU/variant mapping **PASS**; no-media posture **PASS**; claim/delivery/pricing wording **PASS**; public exposure / checkout exposure **PASS**.  
+- **Collection hygiene (NOTE only — not a 21AG blocker):** **`controlled-pilot`** also contains four unrelated draft products — **`world-map-extended-mouse-pad`**, **`gizzu-usb-to-type-c-cable-2m`**, **`ugreen-4-in-1-usb-2-0-hub`**, **`acrylic-tablet-phone-stand`**. **Tracker blocker:** collection hygiene **must** be resolved before **public** collection exposure, **customer-access** go/no-go, or **`controlled-pilot`** collection **preview** validation.  
+- **Preserved gates:** **no** checkout/payment enablement; **no** customer-access enablement; **no** **`Supplier verified`** approval; **no** final pricing/delivery/claims/public-launch approval; **no** media approval; **no** **CJ** app install/import/sync approval.  
+- **Next slice (record):** **Slice 21AH** — **Security / Compliance** post-staging review — **`project-control`** **`## Slice 21AH`**.  
+- **LLD:** **unchanged** — **Slice 21AG** validated existing staged rows only.
