@@ -301,3 +301,14 @@ Assemble the product **description** (body HTML) **in this order** for each SKU:
 - **Result:** **PASS WITH NOTES** — **docs-only**; **no** Shopify Admin, theme, product rows, shipping, checkout/payment, or customer-access changes.  
 - **What changed:** **§2** **CJ** reference storage (**variant SKU** only); **§3** exact per-SKU body assembly; **§4** blocked-claim lists; **§5** collection handling; **§6** rollback/removal; **§11** next **Slice 21AF-D**; non-approvals restated in **§1**.  
 - **LLD:** **unchanged** — documentation only.
+
+---
+
+## 16. Slice 21AF-D execution note (bounded Shopify staging completion)
+
+- **Date:** 2026-05-14  
+- **Result:** **PASS** — bounded **Shopify Admin** staging completed for the three approved **CJ** draft rows.  
+- **Products staged:** **CJYD230000901AZ** / **`beverage-bottle-oil-bottle-handle-holder`**; **CJYD211196101AZ** / **`usb-bag-sealer`**; **CJYD245830501AZ** / **`foldable-magnetic-phone-holder-desktop-tablet-stand`**.  
+- **Execution summary:** new draft rows created; exact **Color** variant values applied (**Blue** / **Coffee Bear** / **Gun Gray**); **CJ** reference stored **only** in variant **SKU**; exact field-spec body copy used; exact approved tags used; existing **`controlled-pilot`** collection assigned; **no** media/images attached.  
+- **Posture confirmed:** all three rows remain **`DRAFT`**; **publication count `0`** for all three; **media count `0`** for all three; **no** **`Supplier verified`** wording; **no** final pricing approval; **no** final delivery promise; **no** final claim approval; **no** checkout/payment/customer-access/public-launch change.  
+- **Evidence pointer:** **`artifacts/devops/slice-21af-d-cj-manual-product-staging-retry/20260514-151847/`** (local only; **not** committed).  
