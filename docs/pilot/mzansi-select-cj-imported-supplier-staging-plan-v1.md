@@ -226,3 +226,17 @@
 
 - LLD unchanged.
 - Reason: this is docs-only supplier-route staging planning and does not materially change storefront, Admin, import, checkout, payment, or customer-access behaviour contracts.
+
+## 14. Execution note — manual staging gate check
+
+- Execution attempt date: `2026-05-14`
+- Result: `BLOCKED` before any Shopify Admin change.
+- Reason: the planning document does not provide exact staged field values for all three approved SKUs.
+- Exact missing execution decisions:
+  - Exact handles are not defined for `CJYD230000901AZ`, `CJYD211196101AZ`, or `CJYD245830501AZ`.
+  - Exact body/description copy is not defined; only description approach and claim controls are defined.
+  - Exact price values are not approved for staging; the plan explicitly keeps final price blocked and only references later pilot-price review.
+  - Exact tags, collections, metafields, and support-path field values are not defined.
+  - Exact image/media approvals are not defined; the plan only allows media after image/content-use basis review.
+  - Exact variant selection values are not defined; the plan requires same-day variant recheck before any later staging.
+- Safety confirmation: no CJ app install, no Shopify authorization, no import/sync, no Shopify Admin edit, no product staging, no publication change, and no checkout/payment/customer-access change occurred in this blocked execution attempt.
