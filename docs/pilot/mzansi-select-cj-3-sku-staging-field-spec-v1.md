@@ -137,3 +137,15 @@ Append to the product **description** (body HTML) in this order:
 - **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.
 - **Evidence pointer:** **`artifacts/devops/slice-21af-cj-manual-product-staging-retry/20260514-143635/`** (local only; **not** committed).
 - **Next owner:** **Product Owner / User** to resolve the missing exact decisions before any later bounded **Slice 21AF** retry.
+
+---
+
+## 10. Slice 21AF-B execution note (blocked before Shopify Admin review)
+
+- **Date:** 2026-05-14
+- **Result:** **BLOCKED** before any **Shopify Admin** review or mutation.
+- **Context:** **Product Owner** mapping decisions were provided in the **Slice 21AF-B** execution brief, but the approved source-of-truth doc still does **not** contain all exact per-SKU staging fields required by the execution gate.
+- **Why execution stopped:** this document still lacks exact per-SKU product-specific approved body copy, exact per-SKU blocked-claim lists, exact rollback/removal notes, and exact controlled-pilot collection handling rules. **`CJYD230000901AZ`** also still carries an ambiguous **CJ** reference storage line (“store as SKU or metafield per **Slice 21AF** execution checklist”).
+- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.
+- **Evidence pointer:** **`artifacts/devops/slice-21af-b-cj-manual-product-staging-retry/20260514-145118/`** (local only; **not** committed).
+- **Next owner:** **Product Owner / User** to update the approved source-of-truth doc with the missing exact per-SKU fields before any later bounded retry.
