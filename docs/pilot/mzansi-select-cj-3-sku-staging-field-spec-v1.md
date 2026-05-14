@@ -121,3 +121,19 @@ Append to the product **description** (body HTML) in this order:
 
 - **Version:** 1.0  
 - **Next review:** **DevOps / Platform Engineer** — **Slice 21AF** execution planning only until **Product Owner** approves bounded staging retry.
+
+---
+
+## 9. Slice 21AF execution note (blocked before Shopify Admin change)
+
+- **Date:** 2026-05-14
+- **Result:** **BLOCKED** before any **Shopify Admin** access or mutation.
+- **Why execution stopped:** under the **Slice 21AF** rule to use **only** this field-spec doc as the exact staging source of truth, the following execution-critical mappings remain ambiguous:
+  - exact **CJ** reference storage mapping (**SKU** vs **metafield**), especially for **`CJYD230000901AZ`** where the current row explicitly says “store as SKU or metafield per **Slice 21AF** execution checklist”
+  - exact product-body payload rule for each SKU beyond the global appended wording blocks in **§2**
+  - exact execution source for claim controls / blocked claims
+  - exact rollback/removal notes source
+  - exact **`controlled-pilot`** collection handling rule if that collection is absent or differs in **Admin**
+- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.
+- **Evidence pointer:** **`artifacts/devops/slice-21af-cj-manual-product-staging-retry/20260514-143635/`** (local only; **not** committed).
+- **Next owner:** **Product Owner / User** to resolve the missing exact decisions before any later bounded **Slice 21AF** retry.
