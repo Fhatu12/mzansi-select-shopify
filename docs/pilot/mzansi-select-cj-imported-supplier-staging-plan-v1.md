@@ -9,7 +9,8 @@
 **CJ route posture:** Long-delivery imported-supplier controlled pilot route only  
 **Fast/local fulfilment replacement:** No  
 **Related tracker:** [docs/project-control.md](d:/dev/mzansi-select-shopify/docs/project-control.md)  
-**Related accepted risk review:** `621a6f6361d76b3aba69554c67b096fe04cd8e10` (`docs: record cj imported pilot risk review`)
+**Related accepted risk review:** `621a6f6361d76b3aba69554c67b096fe04cd8e10` (`docs: record cj imported pilot risk review`)  
+**Exact field specification (Product Owner — Slice 21AE PASS WITH NOTES):** [mzansi-select-cj-3-sku-staging-field-spec-v1.md](mzansi-select-cj-3-sku-staging-field-spec-v1.md) — handles, titles, variants, types, **draft** staging prices, collections, tags, global description blocks, pricing posture, reserve/reject list, and **next** **Slice 21AF** (**DevOps** bounded manual staging retry). **No** Shopify Admin execution is implied by the field spec alone; **21AF** remains a **separate** go/no-go.
 
 ---
 
