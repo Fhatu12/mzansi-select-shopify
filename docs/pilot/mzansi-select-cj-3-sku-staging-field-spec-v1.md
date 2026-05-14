@@ -2,25 +2,97 @@
 
 **Document type:** Bounded manual Shopify product staging — **exact field values** (planning record only)  
 **Prepared:** 2026-05-14  
+**Updated:** 2026-05-14 (**Slice 21AF-C** — execution-complete field spec for a later bounded **Slice 21AF-D** retry)  
 **Owner:** Product Owner  
 **Slice:** **21AE** — **PASS WITH NOTES** (Product Owner accepted; **docs-only** — **no** Shopify Admin execution implied by this document alone)  
 **Related plan:** [mzansi-select-cj-imported-supplier-staging-plan-v1.md](mzansi-select-cj-imported-supplier-staging-plan-v1.md)  
-**Related tracker:** [docs/project-control.md](../project-control.md) — **`## Slice 21AE`**
+**Related tracker:** [docs/project-control.md](../project-control.md) — **`## Slice 21AE`**, **`## Slice 21AF-C`**
 
 ---
 
 ## 1. Scope and non-approvals
 
-- This file records **exact** intended **Shopify Admin** field values for a **later** bounded **Slice 21AF** manual staging execution (**DevOps** retry), **only** after **Product Owner** go/no-go on that execution slice.
+- This file records **exact** intended **Shopify Admin** field values for a **later** bounded **Slice 21AF-D** manual staging execution (**DevOps** retry), **only** after **Product Owner** go/no-go on that execution slice.
 - **Does not** approve: **CJ** app install; Shopify authorization; import/sync; checkout/payment; customer access; public launch; **`Supplier verified`**; **final** pricing; **final** delivery promises; **final** product claims; theme publish; or purchasable/live catalogue exposure.
 - **Posture:** **Draft / restricted only** for the three SKUs below. **Not purchasable** until **Product Owner** go/no-go on customer-facing enablement.
-- **Media:** **No** images/media for **Slice 21AF**. **CJ** image references remain **blocked** pending a **separate** **Product Owner** media/content-use decision.
+- **Media:** **No** images/media for **21AF-D** retry. **CJ** image references remain **blocked** pending a **separate** **Product Owner** media/content-use decision.
+- **The following remain blocked (unchanged):**
+  - **No** **CJ** app install.
+  - **No** Shopify/**CJ** authorization.
+  - **No** import/sync.
+  - **No** reserve/rejected products (**§9**, **§10** — do **not** stage).
+  - **No** media/images.
+  - **No** checkout/payment.
+  - **No** customer access.
+  - **No** **`Supplier verified`**.
+  - **No** final pricing.
+  - **No** final delivery promise.
+  - **No** final product claims.
+  - **No** public launch.
 
 ---
 
-## 2. Global product body copy (all three SKUs)
+## 2. CJ reference storage (exact — all three SKUs)
 
-Append to the product **description** (body HTML) in this order:
+For **each** of the three approved SKUs, store the **CJ** reference **only** in the Shopify **variant SKU** field:
+
+| Variant SKU value (exact) |
+| --- |
+| `CJYD230000901AZ` |
+| `CJYD211196101AZ` |
+| `CJYD245830501AZ` |
+
+- **Do not** store **CJ** references in **metafields**.
+- **Do not** create new **CJ**-reference **tags**.
+- **Do not** place **CJ** references in the product **title** or **body** copy.
+
+---
+
+## 3. Full product body (description) — exact assembly order
+
+Assemble the product **description** (body HTML) **in this order** for each SKU: **(1)** product-specific body copy **exactly** as below; **(2)** imported-route wording **exactly** as below; **(3)** controlled-pilot wording **exactly** as below; **(4)** refund/cancellation/support wording **exactly** as below.
+
+### 3.1 `CJYD230000901AZ` — Beverage & Oil Bottle Handle Holder
+
+**Product-specific body copy (exact):**
+
+> A simple bottle handle holder for selected beverage or oil bottles. It is intended for everyday kitchen use where a compatible bottle shape allows easier holding or pouring support. Fit depends on the bottle size, shape, and neck design, so suitability must be confirmed before fulfilment.
+
+**Imported route — delivery (exact):**
+
+> Imported supplier-route item. Delivery timing varies by supplier, warehouse, product attributes, and courier method. Final delivery estimate must be confirmed before fulfilment.
+
+**Controlled pilot (exact):**
+
+> This item is part of a controlled pilot and may have extended imported-supplier delivery timing. Delivery estimate will be confirmed before fulfilment.
+
+**Refund / cancellation / support — imported route (exact):**
+
+> This controlled pilot item is fulfilled through an imported supplier route. If fulfilment cannot proceed because of stock, supplier cost, delivery availability, or fulfilment constraints, we may contact you before fulfilment to confirm next steps, replacement options, cancellation, or refund where applicable.
+
+### 3.2 `CJYD211196101AZ` — USB Bag Sealer
+
+**Product-specific body copy (exact):**
+
+> A compact USB bag sealer for resealing suitable light snack or storage bags during everyday home use. Suitability depends on the bag material, thickness, and condition. It is not positioned for safety-critical sealing, industrial use, liquid storage, or guaranteed food preservation.
+
+**Imported route — delivery (exact):**
+
+> Imported supplier-route item. Delivery timing varies by supplier, warehouse, product attributes, and courier method. Final delivery estimate must be confirmed before fulfilment.
+
+**Controlled pilot (exact):**
+
+> This item is part of a controlled pilot and may have extended imported-supplier delivery timing. Delivery estimate will be confirmed before fulfilment.
+
+**Refund / cancellation / support — imported route (exact):**
+
+> This controlled pilot item is fulfilled through an imported supplier route. If fulfilment cannot proceed because of stock, supplier cost, delivery availability, or fulfilment constraints, we may contact you before fulfilment to confirm next steps, replacement options, cancellation, or refund where applicable.
+
+### 3.3 `CJYD245830501AZ` — Foldable Magnetic Phone Holder & Desktop Tablet Stand
+
+**Product-specific body copy (exact):**
+
+> A foldable desktop holder for everyday phone or small tablet desk use. Suitability depends on the device size, weight, case, and the surface where it is used. Compatibility and practical fit must be confirmed before fulfilment.
 
 **Imported route — delivery (exact):**
 
@@ -36,65 +108,142 @@ Append to the product **description** (body HTML) in this order:
 
 ---
 
-## 3. Pricing posture (all three SKUs)
+## 4. Blocked-claim lists (exact — do not use in title, body, or tags)
 
-- Listed **draft staging prices** below are **exact draft staging prices only**.
+### 4.1 `CJYD230000901AZ` — block
+
+- universal fit
+- fits all bottles
+- spill-proof
+- leak-proof
+- food-grade certification
+- dishwasher-safe
+- heat-resistant
+- guaranteed easier pouring
+- anti-slip guarantee
+- heavy-duty durability
+- child-safe
+- brand compatibility
+- warranty claims
+
+### 4.2 `CJYD211196101AZ` — block
+
+- airtight seal
+- vacuum seal
+- keeps food fresh
+- preserves freshness
+- works on all bags or plastics
+- waterproof
+- food-safe certification
+- child-safe
+- burn-safe or heat-safe
+- industrial or commercial use
+- professional-grade sealing
+- guaranteed seal strength
+- battery/charging performance claims unless separately verified
+- warranty claims
+
+### 4.3 `CJYD245830501AZ` — block
+
+- compatible with all phones/tablets
+- guaranteed magnetic strength
+- MagSafe-certified
+- anti-slip guarantee
+- supports all tablets
+- car-safe mounting
+- driving use
+- vacuum mount claims
+- heavy-duty durability
+- military-grade
+- charging support
+- universal compatibility
+- warranty claims
+
+---
+
+## 5. Controlled-pilot collection handling (exact)
+
+- Use **only** the existing collection handle **`controlled-pilot`**.
+- **Do not** create a new collection.
+- **Do not** publish any product to create or expose the collection.
+- If the existing **`controlled-pilot`** collection can be assigned while the product remains **Draft** / **restricted** / **non-public**, assign it.
+- If assignment requires product **publication**, **customer access**, **sales-channel exposure**, or **collection creation**, **skip** collection assignment and **report** the SKU as staged with **collection assignment blocked**.
+- Collection assignment failure **must not** trigger public exposure or publication.
+
+---
+
+## 6. Rollback / removal (exact)
+
+- Before staging, **DevOps** must capture **pre-change Shopify product-state evidence** for each SKU.
+- If a product row is **newly created**, rollback means **deleting/removing** that created **draft** row.
+- If an **existing** row is **updated**, rollback means **restoring** the exact pre-change **title**, **handle**, **variant SKU**, **price**, **body**, **tags**, **product type**, **collection assignment**, **status**, and **publication/access state** captured in evidence.
+- If pre-change evidence **cannot** be captured for a SKU, that SKU **must not** be staged.
+- If rollback **cannot** be confidently defined for a SKU, that SKU **must not** be staged.
+
+---
+
+## 7. Pricing posture (all three SKUs)
+
+- Listed **draft staging prices** in **§8** are **exact draft staging prices only**.
 - They are **not** final public prices.
 - They **do not** approve final pricing.
 - They **must** be rechecked against **CJ** landed cost, **FX**, support buffer, and **Product Owner** commercial acceptance **before** customer access.
 
 ---
 
-## 4. Per-SKU field matrix
+## 8. Per-SKU field matrix (approved fields — unchanged)
 
-### 4.1 `CJYD230000901AZ` — Beverage & Oil Bottle Handle Holder
+### 8.1 `CJYD230000901AZ` — Beverage & Oil Bottle Handle Holder
 
 | Field | Value |
 | --- | --- |
 | **Handle** | `beverage-bottle-oil-bottle-handle-holder` |
 | **Title** | Beverage & Oil Bottle Handle Holder |
 | **Variant option** | **Color** = **Blue** |
+| **Variant SKU** | `CJYD230000901AZ` (**only** location for **CJ** reference — see **§2**) |
 | **Product type** | Kitchen & Storage |
 | **Draft staging price** | **R249** |
-| **Collection** | `controlled-pilot` |
+| **Collection** | `controlled-pilot` (subject to **§5**) |
 | **Tags** | `pilot`, `pilot-cj`, `imported-supplier`, `manual-review`, `controlled-pilot`, `kitchen-storage` |
-| **CJ reference** | `CJYD230000901AZ` (internal / planning; store as SKU or metafield per **Slice 21AF** execution checklist) |
 | **Visibility** | Draft / restricted only — not purchasable until **Product Owner** go/no-go |
-| **Media** | None for **21AF** |
+| **Media** | None for **21AF-D** retry |
+| **Body** | **§3.1** (exact order) |
 
-### 4.2 `CJYD211196101AZ` — USB Bag Sealer
+### 8.2 `CJYD211196101AZ` — USB Bag Sealer
 
 | Field | Value |
 | --- | --- |
 | **Handle** | `usb-bag-sealer` |
 | **Title** | USB Bag Sealer |
 | **Variant option** | **Color** = **Coffee Bear** |
+| **Variant SKU** | `CJYD211196101AZ` (**only** location for **CJ** reference — see **§2**) |
 | **Product type** | Kitchen & Storage |
 | **Draft staging price** | **R279** |
-| **Collection** | `controlled-pilot` |
+| **Collection** | `controlled-pilot` (subject to **§5**) |
 | **Tags** | `pilot`, `pilot-cj`, `imported-supplier`, `manual-review`, `controlled-pilot`, `kitchen-storage`, `claim-caution` |
-| **CJ reference** | `CJYD211196101AZ` |
 | **Visibility** | Draft / restricted only — not purchasable until **Product Owner** go/no-go |
-| **Media** | None for **21AF** |
+| **Media** | None for **21AF-D** retry |
+| **Body** | **§3.2** (exact order) |
 
-### 4.3 `CJYD245830501AZ` — Foldable Magnetic Phone Holder & Desktop Tablet Stand
+### 8.3 `CJYD245830501AZ` — Foldable Magnetic Phone Holder & Desktop Tablet Stand
 
 | Field | Value |
 | --- | --- |
 | **Handle** | `foldable-magnetic-phone-holder-desktop-tablet-stand` |
 | **Title** | Foldable Magnetic Phone Holder & Desktop Tablet Stand |
 | **Variant option** | **Color** = **Gun Gray** |
+| **Variant SKU** | `CJYD245830501AZ` (**only** location for **CJ** reference — see **§2**) |
 | **Product type** | Tech Accessories |
 | **Draft staging price** | **R699** |
-| **Collection** | `controlled-pilot` |
+| **Collection** | `controlled-pilot` (subject to **§5**) |
 | **Tags** | `pilot`, `pilot-cj`, `imported-supplier`, `manual-review`, `controlled-pilot`, `tech-accessories`, `claim-caution` |
-| **CJ reference** | `CJYD245830501AZ` |
 | **Visibility** | Draft / restricted only — not purchasable until **Product Owner** go/no-go |
-| **Media** | None for **21AF** |
+| **Media** | None for **21AF-D** retry |
+| **Body** | **§3.3** (exact order) |
 
 ---
 
-## 5. Reserve only (no staging in 21AF)
+## 9. Reserve only (no staging)
 
 | CJ reference | Working title |
 | --- | --- |
@@ -102,7 +251,7 @@ Append to the product **description** (body HTML) in this order:
 
 ---
 
-## 6. Rejected / deferred (no staging)
+## 10. Rejected / deferred (no staging)
 
 | CJ reference | Reason |
 | --- | --- |
@@ -111,41 +260,44 @@ Append to the product **description** (body HTML) in this order:
 
 ---
 
-## 7. Next slice (record)
+## 11. Next slice (record)
 
-- **Slice 21AF** — bounded **DevOps** manual **Shopify** staging **retry** for the approved **CJ** **3**-**SKU** field values in this document — **separate** **Product Owner** execution go/no-go; **no** **Admin** work in **21AE**.
-
----
-
-## 8. Document control
-
-- **Version:** 1.0  
-- **Next review:** **DevOps / Platform Engineer** — **Slice 21AF** execution planning only until **Product Owner** approves bounded staging retry.
+- **Slice 21AF-D** — bounded **DevOps** manual **Shopify** staging **retry** using **this** completed field specification — **separate** **Product Owner** execution go/no-go; **no** **Admin** work in **21AF-C** (**docs-only**).
 
 ---
 
-## 9. Slice 21AF execution note (blocked before Shopify Admin change)
+## 12. Document control
 
-- **Date:** 2026-05-14
-- **Result:** **BLOCKED** before any **Shopify Admin** access or mutation.
-- **Why execution stopped:** under the **Slice 21AF** rule to use **only** this field-spec doc as the exact staging source of truth, the following execution-critical mappings remain ambiguous:
-  - exact **CJ** reference storage mapping (**SKU** vs **metafield**), especially for **`CJYD230000901AZ`** where the current row explicitly says “store as SKU or metafield per **Slice 21AF** execution checklist”
-  - exact product-body payload rule for each SKU beyond the global appended wording blocks in **§2**
-  - exact execution source for claim controls / blocked claims
-  - exact rollback/removal notes source
-  - exact **`controlled-pilot`** collection handling rule if that collection is absent or differs in **Admin**
-- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.
-- **Evidence pointer:** **`artifacts/devops/slice-21af-cj-manual-product-staging-retry/20260514-143635/`** (local only; **not** committed).
-- **Next owner:** **Product Owner / User** to resolve the missing exact decisions before any later bounded **Slice 21AF** retry.
+- **Version:** 1.1 (**Slice 21AF-C** — execution-complete field spec)  
+- **Next review:** **DevOps / Platform Engineer** — **Slice 21AF-D** execution only after **Product Owner** go/no-go.
 
 ---
 
-## 10. Slice 21AF-B execution note (blocked before Shopify Admin review)
+## 13. Slice 21AF execution note (blocked before Shopify Admin change)
 
-- **Date:** 2026-05-14
-- **Result:** **BLOCKED** before any **Shopify Admin** review or mutation.
-- **Context:** **Product Owner** mapping decisions were provided in the **Slice 21AF-B** execution brief, but the approved source-of-truth doc still does **not** contain all exact per-SKU staging fields required by the execution gate.
-- **Why execution stopped:** this document still lacks exact per-SKU product-specific approved body copy, exact per-SKU blocked-claim lists, exact rollback/removal notes, and exact controlled-pilot collection handling rules. **`CJYD230000901AZ`** also still carries an ambiguous **CJ** reference storage line (“store as SKU or metafield per **Slice 21AF** execution checklist”).
-- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.
-- **Evidence pointer:** **`artifacts/devops/slice-21af-b-cj-manual-product-staging-retry/20260514-145118/`** (local only; **not** committed).
-- **Next owner:** **Product Owner / User** to update the approved source-of-truth doc with the missing exact per-SKU fields before any later bounded retry.
+- **Date:** 2026-05-14  
+- **Result:** **BLOCKED** before any **Shopify Admin** access or mutation.  
+- **Why execution stopped:** under the **Slice 21AF** rule to use **only** this field-spec doc as the exact staging source of truth, the following execution-critical mappings remained ambiguous at that time: **CJ** reference storage; per-SKU body beyond global blocks; blocked-claim lists; rollback notes; **`controlled-pilot`** collection rules.  
+- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.  
+- **Evidence pointer:** **`artifacts/devops/slice-21af-cj-manual-product-staging-retry/20260514-143635/`** (local only; **not** committed).  
+
+---
+
+## 14. Slice 21AF-B execution note (blocked before Shopify Admin review)
+
+- **Date:** 2026-05-14  
+- **Result:** **BLOCKED** before any **Shopify Admin** review or mutation — field spec was **not** execution-complete.  
+- **Accepted blocked commit (record):** **`d47b71bf2274f646f9e784ce7b53ab11866c3d9f`**.  
+- **Context:** **Product Owner** mapping decisions were provided in the **Slice 21AF-B** execution brief, but the approved source-of-truth doc still did **not** contain all exact per-SKU staging fields required by the execution gate.  
+- **Why execution stopped:** missing exact per-SKU product-specific body copy, per-SKU blocked-claim lists, rollback/removal notes, controlled-pilot collection handling rules, and unambiguous **CJ** reference storage (**§2**–**§6** now close these gaps in **Slice 21AF-C**).  
+- **No execution occurred:** no product create/update; no publication; no collection mutation; no media/image upload; no **CJ** image reference use; no app install; no Shopify/CJ authorization; no import/sync; no checkout/payment/customer-access/public-launch change.  
+- **Evidence pointer:** **`artifacts/devops/slice-21af-b-cj-manual-product-staging-retry/20260514-145118/`** (local only; **not** committed).  
+
+---
+
+## 15. Slice 21AF-C docs closure (field spec completion)
+
+- **Date:** 2026-05-14  
+- **Result:** **PASS WITH NOTES** — **docs-only**; **no** Shopify Admin, theme, product rows, shipping, checkout/payment, or customer-access changes.  
+- **What changed:** **§2** **CJ** reference storage (**variant SKU** only); **§3** exact per-SKU body assembly; **§4** blocked-claim lists; **§5** collection handling; **§6** rollback/removal; **§11** next **Slice 21AF-D**; non-approvals restated in **§1**.  
+- **LLD:** **unchanged** — documentation only.
