@@ -7,7 +7,7 @@
 
 ## Purpose
 
-Provide a short, repeatable Ubuntu-shell command for **Slice 21AR** authenticated controlled-preview QA without pasting a long Playwright script into the terminal.
+Provide a short, repeatable Ubuntu-shell command for **Slice 21AR** authenticated controlled-preview QA without pasting a long Playwright script into the terminal or manually inspecting JSON to learn the verdict.
 
 Tracked harness:
 
@@ -22,6 +22,9 @@ Tracked harness:
 - The harness does **not** write storageState, cookies, HARs, traces, videos, or browser-profile data.
 - `artifacts/` remains evidence-only and must not be committed.
 - Browser QA must run directly from the Ubuntu shell, not inside the Codex sandbox.
+- The harness prints the final structured QA report directly to terminal and writes the same report to `qa-report.md`.
+- The harness prints the evidence path and final `git status` directly to terminal.
+- The harness exits non-zero for **FAIL** or **BLOCKED**, and zero for **PASS** or **PASS WITH NOTES**.
 
 ## Short QA command
 
@@ -46,6 +49,8 @@ SLICE21AR_INCLUDE_TABLET=1 MZANSI_STOREFRONT_PASSWORD="$MZANSI_STOREFRONT_PASSWO
 
 The tracked harness is safe to commit because it contains no secrets and no runtime evidence.
 
+Each real run writes exactly one timestamped evidence folder. The `_runner/` directory is only an artifact-local dependency/bootstrap area when needed; it is **not** a result folder.
+
 ## Playwright package handling
 
 The repo may not have a tracked `package.json`. The harness therefore:
@@ -55,6 +60,8 @@ The repo may not have a tracked `package.json`. The harness therefore:
 3. installs Chromium there only if it is missing.
 
 That fallback stays inside `artifacts/` and is not part of the tracked repo surface.
+
+Bootstrap logs are printed distinctly before the final QA report so they do not get confused with the test verdict.
 
 ## Validation scope
 
@@ -70,6 +77,41 @@ The harness is designed for the **Slice 21AR** authenticated rerun boundary:
 - no customer/newsletter/wishlist activation
 - desktop/mobile layout coherence and overflow checks
 - sanitized network + console summary only
+
+## Terminal output contract
+
+At the end of every real run, the harness prints:
+
+```text
+=== Slice 21AR Authenticated Controlled Preview QA ===
+Verdict: <PASS|PASS WITH NOTES|FAIL|BLOCKED>
+Evidence: artifacts/qa/slice-21ar-authenticated-controlled-preview-validation-rerun/<timestamp>/
+Git status:
+<git status --short --branch>
+
+Summary:
+- Controlled-pilot collection:
+- PDP validation:
+- Preview-safe wording:
+- Prohibited wording:
+- Media:
+- Commerce actions:
+- Checkout/customer access:
+- Desktop/mobile layout:
+- Network/console:
+- Blockers/regressions:
+```
+
+The same terminal report is also written to:
+
+- `artifacts/qa/slice-21ar-authenticated-controlled-preview-validation-rerun/<timestamp>/qa-report.md`
+
+The harness also writes:
+
+- `git-status-after.txt`
+- the required JSON summaries
+- `console-errors.txt`
+- safe screenshots under `screenshots/`
 
 ## LLD
 
