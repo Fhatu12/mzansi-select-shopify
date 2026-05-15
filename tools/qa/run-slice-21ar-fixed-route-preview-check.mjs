@@ -16,6 +16,7 @@ const STORE_ORIGIN = 'https://dropshippoc.myshopify.com';
 const PASSWORD_URL = `${STORE_ORIGIN}/password`;
 const PREVIEW_THEME_ID = '151207542967';
 const UNLOCK_CHECK_URL = `${STORE_ORIGIN}/?preview_theme_id=${PREVIEW_THEME_ID}`;
+const MANUAL_UNLOCK_TIMEOUT_MS = 5 * 60 * 1000;
 
 const evidenceRoot = path.join(repoRoot, 'artifacts', 'qa', 'slice-21ar-fixed-route-preview-check');
 
@@ -23,29 +24,25 @@ const routes = [
   {
     key: 'controlled-pilot',
     path: `/collections/controlled-pilot?preview_theme_id=${PREVIEW_THEME_ID}`,
-    kind: 'collection',
-    expectAllCj: true
+    kind: 'collection'
   },
   {
     key: 'beverage-pdp',
     path: `/products/beverage-bottle-oil-bottle-handle-holder?preview_theme_id=${PREVIEW_THEME_ID}`,
     kind: 'pdp',
-    handle: 'beverage-bottle-oil-bottle-handle-holder',
-    titleFragment: 'Beverage & Oil Bottle Holder'
+    handle: 'beverage-bottle-oil-bottle-handle-holder'
   },
   {
     key: 'sealer-pdp',
     path: `/products/usb-bag-sealer?preview_theme_id=${PREVIEW_THEME_ID}`,
     kind: 'pdp',
-    handle: 'usb-bag-sealer',
-    titleFragment: 'USB Bag Sealer'
+    handle: 'usb-bag-sealer'
   },
   {
     key: 'stand-pdp',
     path: `/products/foldable-magnetic-phone-holder-desktop-tablet-stand?preview_theme_id=${PREVIEW_THEME_ID}`,
     kind: 'pdp',
-    handle: 'foldable-magnetic-phone-holder-desktop-tablet-stand',
-    titleFragment: 'Foldable Magnetic Phone Holder & Desktop Tablet Stand'
+    handle: 'foldable-magnetic-phone-holder-desktop-tablet-stand'
   }
 ];
 
@@ -70,15 +67,76 @@ const gadgetgyzSignals = [
 const commercePatterns =
   /\/cart|\/cart\/add|\/checkout|\/checkouts|\/account|customer|login|register|recover|payment|order/i;
 
+function parseArgs(argv) {
+  const args = { manualUnlock: false, envUnlock: false, help: false };
+  for (const arg of argv) {
+    if (arg === '--manual-unlock') {
+      args.manualUnlock = true;
+    } else if (arg === '--env-unlock') {
+      args.envUnlock = true;
+    } else if (arg === '--help' || arg === '-h') {
+      args.help = true;
+    } else {
+      throw new Error(`Unknown argument: ${arg}`);
+    }
+  }
+  return args;
+}
+
+function printHelp() {
+  console.log(`Slice 21AR fixed-route preview check
+
+Recommended:
+  node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --manual-unlock
+
+Opens a headed browser on the Shopify password page. Enter the storefront password
+only in the browser window (never in the terminal). The script waits up to 5 minutes,
+then runs fixed-route checks in the same browser context.
+
+Secondary (not recommended):
+  MZANSI_STOREFRONT_PASSWORD=... node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --env-unlock
+
+Options:
+  --manual-unlock   Headed browser; human unlocks password page manually
+  --env-unlock      Automated unlock via MZANSI_STOREFRONT_PASSWORD (secondary)
+  --help            Show this message
+`);
+}
+
 function main() {
-  const password = process.env[PASSWORD_ENV];
-  if (!password) {
-    printBlocked('MZANSI_STOREFRONT_PASSWORD is missing.');
+  let args;
+  try {
+    args = parseArgs(process.argv.slice(2));
+  } catch (error) {
+    printBlocked(error.message);
+    process.exit(2);
+  }
+
+  if (args.help) {
+    printHelp();
+    return;
+  }
+
+  if (!args.manualUnlock && !args.envUnlock) {
+    printHelp();
+    printBlocked('No unlock mode selected. Re-run with --manual-unlock (recommended).');
+    process.exit(2);
+  }
+
+  if (args.manualUnlock && args.envUnlock) {
+    printBlocked('Use only one unlock mode: --manual-unlock or --env-unlock.');
+    process.exit(2);
+  }
+
+  const unlockMode = args.manualUnlock ? 'manual' : 'env';
+  const password = unlockMode === 'env' ? process.env[PASSWORD_ENV] : '';
+  if (unlockMode === 'env' && !password) {
+    printBlocked(`${PASSWORD_ENV} is missing for --env-unlock. Use --manual-unlock instead.`);
     process.exit(2);
   }
 
   resolvePlaywright()
-    .then(({ playwright }) => runVerifier(password, playwright))
+    .then(({ playwright }) => runVerifier({ playwright, unlockMode, password }))
     .catch((error) => {
       printBlocked(error.message);
       process.exit(2);
@@ -99,7 +157,7 @@ function resolvePlaywright() {
   }
 }
 
-async function runVerifier(password, playwright) {
+async function runVerifier({ playwright, unlockMode, password }) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-').replace('T', '-').slice(0, 15);
   const runDir = path.join(evidenceRoot, timestamp);
   const screenshotsDir = path.join(runDir, 'screenshots');
@@ -109,9 +167,17 @@ async function runVerifier(password, playwright) {
   const routeResults = [];
   let unlockVerified = false;
 
-  const browser = await playwright.chromium.launch({
-    headless: process.env.SLICE21AR_HEADFUL === '1' ? false : true
-  });
+  const headless = unlockMode !== 'manual';
+  let browser;
+  try {
+    browser = await playwright.chromium.launch({ headless });
+  } catch (error) {
+    throw new Error(
+      unlockMode === 'manual'
+        ? `Headed Chromium could not launch for manual unlock: ${error.message}`
+        : `Chromium could not launch: ${error.message}`
+    );
+  }
 
   try {
     const context = await browser.newContext({
@@ -120,9 +186,16 @@ async function runVerifier(password, playwright) {
     const page = await context.newPage();
     attachConsoleCapture(page, consoleErrors, password);
 
-    const unlock = await unlockStorefront(page, password);
-    if (!unlock.ok) {
-      throw new Error(unlock.reason || 'Password unlock failed.');
+    if (unlockMode === 'manual') {
+      const unlock = await waitForManualUnlock(page);
+      if (!unlock.ok) {
+        throw new Error(unlock.reason || 'Manual unlock failed.');
+      }
+    } else {
+      const unlock = await unlockStorefrontWithEnv(page, password);
+      if (!unlock.ok) {
+        throw new Error(unlock.reason || 'Password unlock failed.');
+      }
     }
     unlockVerified = true;
 
@@ -152,12 +225,13 @@ async function runVerifier(password, playwright) {
     await writeEvidence(runDir, {
       overallVerdict,
       unlockVerified,
+      unlockMode,
       routeResults,
       consoleErrors,
       gitStatus,
       timestamp
     });
-    printFinalSummary({ overallVerdict, runDir, routeResults, unlockVerified, gitStatus });
+    printFinalSummary({ overallVerdict, runDir, routeResults, unlockVerified, unlockMode, gitStatus });
 
     if (overallVerdict === 'FAIL' || overallVerdict === 'BLOCKED') {
       process.exitCode = 1;
@@ -169,6 +243,7 @@ async function runVerifier(password, playwright) {
     await writeFailureEvidence(runDir, {
       overallVerdict,
       unlockVerified,
+      unlockMode,
       routeResults,
       consoleErrors,
       gitStatus,
@@ -179,16 +254,47 @@ async function runVerifier(password, playwright) {
       runDir,
       routeResults,
       unlockVerified,
+      unlockMode,
       gitStatus,
       error: error.message
     });
     process.exitCode = 1;
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   }
 }
 
-async function unlockStorefront(page, password) {
+async function waitForManualUnlock(page) {
+  await page.goto(PASSWORD_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+
+  console.log('');
+  console.log('=== Manual storefront unlock ===');
+  console.log(
+    'Enter the storefront password in the opened browser window. Do not paste it into terminal. The script will continue after unlock.'
+  );
+  console.log(`Waiting up to ${MANUAL_UNLOCK_TIMEOUT_MS / 60000} minutes...`);
+  console.log('');
+
+  const started = Date.now();
+  while (Date.now() - started < MANUAL_UNLOCK_TIMEOUT_MS) {
+    await page.waitForTimeout(2000);
+
+    if (!(await isPasswordGate(page))) {
+      await page.goto(UNLOCK_CHECK_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await page.waitForTimeout(1000);
+      if (!(await isPasswordGate(page))) {
+        console.log('Manual unlock detected. Continuing with fixed-route checks.');
+        return { ok: true };
+      }
+    }
+  }
+
+  return { ok: false, reason: 'Manual unlock did not complete within 5 minutes.' };
+}
+
+async function unlockStorefrontWithEnv(page, password) {
   await page.goto(PASSWORD_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForTimeout(800);
 
@@ -223,7 +329,7 @@ async function unlockStorefront(page, password) {
   await page.waitForTimeout(1000);
 
   if (await isPasswordGate(page)) {
-    return { ok: false, reason: 'Storefront still shows the password gate after unlock submit.' };
+    return { ok: false, reason: 'Storefront still shows the password gate after env unlock submit.' };
   }
 
   return { ok: true };
@@ -241,12 +347,12 @@ async function inspectRoute({ page, route, viewport, password, screenshotsDir, t
   const textSnippet = bodyText.slice(0, 220);
 
   const cjVisibility = evaluateCjVisibility(route, bodyText, page.url());
-  const gadgetgyzAbsent = !gadgetgyzSignals.some(
-    (signal) => bodyTextIncludesSignal(bodyText, page.url(), signal)
+  const gadgetgyzAbsent = !gadgetgyzSignals.some((signal) =>
+    bodyTextIncludesSignal(bodyText, page.url(), signal)
   );
 
   const commerce = await detectCommerceSignals(page);
-  const media = await detectCjProductMedia(page, route);
+  const media = await detectCjProductMedia(page);
 
   const checks = [];
   if (!unlocked) {
@@ -369,13 +475,11 @@ async function detectCommerceSignals(page) {
 
   return {
     addToCartBuyNowAbsent: activePurchase.length === 0,
-    checkoutCustomerAbsent: activeCheckoutCustomer.length === 0,
-    activePurchaseCount: activePurchase.length,
-    activeCheckoutCustomerCount: activeCheckoutCustomer.length
+    checkoutCustomerAbsent: activeCheckoutCustomer.length === 0
   };
 }
 
-async function detectCjProductMedia(page, route) {
+async function detectCjProductMedia(page) {
   const candidates = await page
     .locator(
       '.product-card img[src], .prod-img img[src], .product-gallery-main img[src], .product-gallery-strip img[src], main img[src]'
@@ -392,7 +496,7 @@ async function detectCjProductMedia(page, route) {
           src.startsWith('data:image') ||
           /placeholder|icon|logo|badge|svg/i.test(src) ||
           /placeholder|no media|preview/i.test(alt);
-        return { src, alt, inProductSurface, isPlaceholder };
+        return { inProductSurface, isPlaceholder };
       })
     );
 
@@ -404,8 +508,7 @@ async function detectCjProductMedia(page, route) {
   return {
     mediaPresent: supplierProductMedia.length > 0,
     supplierProductMediaPresent: supplierProductMedia.length > 0,
-    onlyGenericPlaceholderVisuals,
-    candidateCount: productSurfaceImages.length
+    onlyGenericPlaceholderVisuals
   };
 }
 
@@ -413,10 +516,7 @@ function computeOverallVerdict(routeResults, unlockVerified) {
   if (!unlockVerified) {
     return 'BLOCKED';
   }
-  if (routeResults.some((result) => !result.unlocked)) {
-    return 'FAIL';
-  }
-  if (routeResults.some((result) => result.verdict === 'FAIL')) {
+  if (routeResults.some((result) => !result.unlocked || result.verdict === 'FAIL')) {
     return 'FAIL';
   }
   if (routeResults.some((result) => result.verdict === 'PASS WITH NOTES')) {
@@ -426,12 +526,14 @@ function computeOverallVerdict(routeResults, unlockVerified) {
 }
 
 async function writeEvidence(runDir, payload) {
-  const { overallVerdict, unlockVerified, routeResults, consoleErrors, gitStatus, timestamp } = payload;
+  const { overallVerdict, unlockVerified, unlockMode, routeResults, consoleErrors, gitStatus, timestamp } =
+    payload;
   const relDir = path.relative(repoRoot, runDir);
 
   const report = buildMarkdownReport({
     overallVerdict,
     unlockVerified,
+    unlockMode,
     routeResults,
     consoleErrors,
     relDir,
@@ -470,7 +572,11 @@ async function writeEvidence(runDir, payload) {
 
   await Promise.all([
     fsp.writeFile(path.join(runDir, 'qa-fixed-route-report.md'), report, 'utf8'),
-    fsp.writeFile(path.join(runDir, 'route-results.json'), JSON.stringify({ overallVerdict, unlockVerified, routeResults }, null, 2) + '\n', 'utf8'),
+    fsp.writeFile(
+      path.join(runDir, 'route-results.json'),
+      JSON.stringify({ overallVerdict, unlockVerified, unlockMode, routeResults }, null, 2) + '\n',
+      'utf8'
+    ),
     fsp.writeFile(path.join(runDir, 'route-results.csv'), [csvHeader, ...csvRows].join('\n') + '\n', 'utf8'),
     fsp.writeFile(
       path.join(runDir, 'console-errors.txt'),
@@ -483,16 +589,14 @@ async function writeEvidence(runDir, payload) {
 
 async function writeFailureEvidence(runDir, payload) {
   await fsp.mkdir(runDir, { recursive: true });
-  await writeEvidence(runDir, {
-    ...payload,
-    timestamp: path.basename(runDir)
-  });
+  await writeEvidence(runDir, { ...payload, timestamp: path.basename(runDir) });
 }
 
-function buildMarkdownReport({ overallVerdict, unlockVerified, routeResults, consoleErrors, relDir, timestamp }) {
+function buildMarkdownReport({ overallVerdict, unlockVerified, unlockMode, routeResults, consoleErrors, relDir, timestamp }) {
   return `# Slice 21AR fixed-route preview check
 
 **Verdict:** ${overallVerdict}
+**Unlock mode:** ${unlockMode}
 **Unlock verified before routes:** ${unlockVerified ? 'yes' : 'no'}
 **Evidence:** \`${relDir}/\`
 **Generated:** ${timestamp}
@@ -515,8 +619,9 @@ ${consoleErrors.length ? consoleErrors.map((entry) => `- ${entry.text}`).join('\
 ## Notes
 
 - Fixed routes only; no crawl or link following.
-- Password is never written to evidence.
-- Same browser context reused for unlock and all route checks.
+- Manual unlock: password entered only in the headed browser by the human operator.
+- No password, cookies, storageState, HAR, trace, video, or browser profile saved.
+- Same browser context reused after unlock for all route checks.
 `;
 }
 
@@ -526,6 +631,7 @@ function printRouteLine(result) {
       `route=${result.route}`,
       `viewport=${result.viewport}`,
       `unlocked=${result.unlocked ? 'yes' : 'no'}`,
+      `title="${result.title.slice(0, 80)}${result.title.length > 80 ? '…' : ''}"`,
       `snippet="${result.textSnippet.slice(0, 120)}${result.textSnippet.length > 120 ? '…' : ''}"`,
       `cj=${result.expectedCjVisible}`,
       `gadgetgyz_absent=${result.gadgetgyzAbsent ? 'yes' : 'no'}`,
@@ -537,9 +643,10 @@ function printRouteLine(result) {
   );
 }
 
-function printFinalSummary({ overallVerdict, runDir, routeResults, unlockVerified, gitStatus, error }) {
+function printFinalSummary({ overallVerdict, runDir, routeResults, unlockVerified, unlockMode, gitStatus, error }) {
   console.log('\n=== Slice 21AR Fixed-Route Preview Check ===');
   console.log(`Verdict: ${overallVerdict}`);
+  console.log(`Unlock mode: ${unlockMode}`);
   console.log(`Evidence: ${path.relative(repoRoot, runDir)}/`);
   console.log(`Unlock verified before route checks: ${unlockVerified ? 'yes' : 'no'}`);
   console.log(`Route records: ${routeResults.length}`);
@@ -551,7 +658,7 @@ function printFinalSummary({ overallVerdict, runDir, routeResults, unlockVerifie
 }
 
 function printBlocked(reason) {
-  console.log('=== Slice 21AR Fixed-Route Preview Check ===');
+  console.log('\n=== Slice 21AR Fixed-Route Preview Check ===');
   console.log('Verdict: BLOCKED');
   console.log(`Reason: ${reason}`);
   console.log('Evidence: (not created)');
@@ -581,7 +688,7 @@ function attachConsoleCapture(page, target, password) {
   });
 }
 
-function sanitizeText(value, password = process.env[PASSWORD_ENV] || '') {
+function sanitizeText(value, password = '') {
   let next = String(value ?? '');
   if (password) {
     next = next.split(password).join('[REDACTED_PASSWORD]');
