@@ -3361,6 +3361,17 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Write posture preserved:** no Shopify Admin mutation, no publication/visibility change, no theme publish, no product import/sync, no media enablement, and no checkout/payment/customer-order change occurred.
 - **Next owner:** **Product Owner** — decide whether to open a later tightly bounded Admin/write proposal using the 21AX checkpoint as the pre-write baseline.
 
+## Slice 21AY Admin baseline security / compliance review
+
+- **Verdict:** **PASS WITH NOTES** — **Security / Compliance** (**docs-only**).
+- **Review created:** `docs/security/slice-21ay-admin-baseline-security-review.md`.
+- **Assessment:** the accepted **21AX** baseline is acceptable for the current controlled-pilot posture because it remains read-only, preserves the exact three-product boundary, and shows strong non-purchasable signals. No immediate mitigation is required from the 21AX evidence alone.
+- **Important risk meaning recorded:** all three rows are `ACTIVE` and show one `Online Store` publication with `isPublished=true`, while `onlineStoreUrl` remains `null`. Security / Compliance treats this as a visibility ambiguity — not proof of public launch, but not proof of safe invisibility either.
+- **Current posture remains acceptable:** no direct checkout/customer/payment exposure is evidenced by **21AX**; the captured tags and first-variant signals still support the current restricted preview-safe and non-sellable posture.
+- **Safer next step recommended before any later write proposal:** a read-only visibility / URL validation pass to confirm how the current publication metadata maps to actual storefront reachability across live, preview, and password-gated contexts.
+- **Required controls preserved:** exact three-product scope only; no live theme publish; no checkout/payment/customer-order enablement; no app install/import/sync; no media enablement unless separately approved; no final supplier/pricing/delivery/stock/warranty claims; and rollback plus post-change QA still mandatory before any write.
+- **Next owner:** **Product Owner** — decide whether to request the recommended read-only visibility / URL validation pass before opening any future Admin/write proposal.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
