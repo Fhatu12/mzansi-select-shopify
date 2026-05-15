@@ -9,90 +9,131 @@
 
 **BLOCKED**
 
+Publication scopes are now sufficient, and bounded Admin mutations succeeded through **Online Store** publication for all three CJ rows. Execution was **rolled back** because post-mutation validation failed the required **`availableForSale: false`** contract: all three variants remained **`availableForSale: true`** while **`inventoryItem.tracked`** remained **`false`**. Enabling inventory tracking requires **`write_inventory`**, which is **not** present on stored CLI auth.
+
 ## 2. Execution method
 
-- **Phase 1:** Repo/theme safety gate — **PASS** (read-only).
-- **Phase 2:** Sanitized pre-change Admin snapshot via **`shopify store execute`** (read-only GraphQL) — **PASS**.
-- **Phase 3:** Bounded Admin execution — **BLOCKED** at **Online Store publication** step.
-- **Tool:** Shopify CLI **`shopify store execute --store dropshippoc.myshopify.com`** with **`--allow-mutations`** for attempted product updates only.
+- **Phase 1:** Repo/theme safety gate — **PASS** (read-only; unchanged from first attempt).
+- **Phase 2:** Sanitized pre-change Admin snapshot via **`shopify store execute`** — **PASS** (`20260515-132109-retry/`).
+- **Phase 3:** Bounded Admin execution — **partial success then rollback**.
+- **Tool:** Shopify CLI **`shopify store execute --store dropshippoc.myshopify.com`** with **`--allow-mutations`**.
 
-## 3. Theme / repo preview-safety marker support
+## 3. Publication-scope / auth verification
 
-**Confirmed PASS** before any intended publish step:
+**PASS** on retry (no re-auth run; operator had already re-authenticated):
+
+| Scope | Present |
+| --- | --- |
+| `read_products` | Yes |
+| `write_products` | Yes |
+| `read_publications` | Yes |
+| `write_publications` | Yes |
+| `write_inventory` | **No** — required for `inventoryItemUpdate` / tracked inventory |
+
+**Online Store publication ID:** `gid://shopify/Publication/169105293495`
+
+**Read-only publication query:** succeeded.
+
+## 4. Theme / repo preview-safety marker support
+
+**Confirmed PASS** before mutation:
 
 | Control | Theme support |
 | --- | --- |
 | `preview-only` | **Yes** — `sections/main-product-foundation.liquid`, `snippets/live-product-card.liquid` |
 | `price-to-confirm` | **Yes** — placeholder price `Price to be confirmed` |
 | `non-purchasable` / purchase UI | **Yes** — PDP add-to-cart disabled globally; collection cards use **View product** only |
-| `controlled-pilot` route | **Yes** — `templates/collection.json` + `sections/main-collection-foundation.liquid` render `collection.products` |
+| `controlled-pilot` route | **Yes** — collection template renders `collection.products` |
 | Media suppression | **Yes** — `preview-only` without `image-permission-confirmed` hides catalog media |
 
-Theme does **not** rely on **DRAFT** status alone for price safety; **`preview-only`** + **`price-to-confirm`** are required for non-final price treatment (aligned with **Slice 21AQ** finding and **Product Owner** approved tag set).
+Theme does **not** rely on **DRAFT** status alone for price safety; **`preview-only`** + **`price-to-confirm`** are required (aligned with **Slice 21AQ**).
 
-## 4. Pre-change snapshot summary
+## 5. Pre-change snapshot summary (retry)
 
 | Item | State |
 | --- | --- |
 | **Products** | All **3** CJ rows **DRAFT**, **unpublished**, **media count 0** |
-| **Tags** | CJ pilot set (`pilot`, `pilot-cj`, `imported-supplier`, …) — **not** yet the approved preview-safety set |
-| **Inventory** | **0** qty, **`DENY`** policy on all variants |
-| **`availableForSale`** | **true** on all three variants pre-change (note: requires explicit post-publish validation) |
-| **`controlled-pilot`** | **3** members via **`products.edges`**; **`productsCount.count` = 3** |
-| **Removed handles** | All **`inCollection: false`** |
-| **Stored auth scopes** | `read_products`, `write_products` only |
+| **Tags** | CJ pilot set (`pilot`, `pilot-cj`, `imported-supplier`, …) — not yet approved preview-safety set |
+| **Inventory** | **0** qty, **`DENY`** policy; **`inventoryItem.tracked: false`** |
+| **`availableForSale`** | **true** pre-change (known; must be validated **false** post-mutation) |
+| **`controlled-pilot`** | **3** members; **`productsCount.count` = 3** |
+| **Removed Gadgetgyz handles** | All **`inCollection: false`** |
 
-**Evidence (local; not committed):** `artifacts/devops/slice-21ar-cj-publish-for-preview-execution/20260515-131150/`
+**Evidence (local; not committed):** `artifacts/devops/slice-21ar-cj-publish-for-preview-execution/20260515-132109-retry/`
 
-## 5. Admin changes attempted
+## 6. Admin changes attempted (retry)
 
-1. **`productUpdate`** on **`beverage-bottle-oil-bottle-handle-holder`** — set **`ACTIVE`** + approved tag set — **succeeded** (probe).
-2. **`publishablePublish`** to **Online Store** — **BLOCKED** — missing **`write_publications`** scope on stored CLI auth.
-3. **No** changes applied to the other two CJ rows.
-4. **No** collection membership changes.
-5. **No** media uploads.
+For each of the three CJ rows:
 
-## 6. Rollback
+1. **`productUpdate`** — **`ACTIVE`** + approved tag set (`controlled-pilot`, `preview-only`, `price-to-confirm`, `cj-imported-supplier`, `non-purchasable`, plus category/claim tags) — **succeeded**.
+2. **`productVariantsBulkUpdate`** — **`inventoryPolicy: DENY`**, qty **0** — **succeeded**; **`availableForSale`** still **true**.
+3. **`publishablePublish`** to **Online Store** — **succeeded** for all three.
+4. **`inventoryItemUpdate`** (`tracked: true`) — **BLOCKED** — missing **`write_inventory`**.
+5. **No** collection membership changes; **no** media uploads.
 
-**Yes — performed.**
+Brief intermediate state: all three rows were **ACTIVE**, published to **Online Store**, with approved preview tags, then restored.
 
-After publication blocker confirmed, the probed product was restored to:
+## 7. Post-change validation summary
 
-- **Status:** **DRAFT**
-- **Tags:** pre-change CJ pilot set (`controlled-pilot`, `imported-supplier`, `kitchen-storage`, `manual-review`, `pilot`, `pilot-cj`)
+| Check | Result |
+| --- | --- |
+| Approved tag set on all three | **PASS** (during execution window) |
+| **ACTIVE** + **Online Store** published | **PASS** (during execution window) |
+| Media count **0** | **PASS** |
+| **`controlled-pilot`** exactly **3** CJ rows | **PASS** |
+| Gadgetgyz-era handles absent | **PASS** |
+| **`availableForSale: false`** | **FAIL** — all three remained **true** (`tracked: false`) |
+| Theme non-purchasable UI | **Not re-tested on live published PDP** — execution rolled back before QA handoff |
 
-Post-rollback verification: product **DRAFT**; collection membership unchanged at **3** CJ rows.
+Validation failure triggered immediate rollback per slice rules.
 
-## 7. Blocker and required human action
+## 8. Rollback
 
-**Blocker:** Stored Shopify CLI auth for `dropshippoc.myshopify.com` lacks **`write_publications`** (and **`read_publications`**) required for **`publishablePublish`**.
+**Yes — performed** for all three CJ rows.
+
+| Restore target | Result |
+| --- | --- |
+| **`publishableUnpublish`** from **Online Store** | **PASS** |
+| **Status** **DRAFT** | **PASS** |
+| Pre-change tag sets | **PASS** |
+| **`inventoryPolicy` DENY**, qty **0** | **PASS** (unchanged) |
+| Media **0** | **PASS** |
+| **`controlled-pilot`** membership | **PASS** — still exactly **3** CJ rows |
+
+Post-rollback: all three **DRAFT**, **unpublished**, pre-change tags restored; Gadgetgyz handles remain **`inCollection: false`**.
+
+## 9. Blocker and required human action
+
+**Blocker:** Stored Shopify CLI auth lacks **`write_inventory`** (and likely **`read_inventory`**) required to set **`inventoryItem.tracked: true`**, which is needed for **`availableForSale: false`** when qty is **0** and policy is **DENY**.
 
 **Human-only action (do not store credentials in repo):**
 
-Re-authenticate with publication scopes, then rerun **Slice 21AR** or a retry slice:
+Re-authenticate with inventory scopes, then rerun bounded publish-for-preview execution:
 
 ```bash
-shopify store auth --store dropshippoc.myshopify.com --scopes read_products,write_products,read_publications,write_publications
+shopify store auth --store dropshippoc.myshopify.com --scopes read_products,write_products,read_publications,write_publications,read_inventory,write_inventory
 ```
 
-## 8. Post-change validation summary
+**Do not** run `shopify store auth` again unless auth fails on the next attempt.
 
-**Not applicable** — execution blocked before publication; rollback restored pre-change posture.
+## 10. First attempt (20260515-131150) — historical
 
-## 9. Preserved gates
+First attempt blocked on missing **`write_publications`** before publication could succeed for all three rows. One product was probed then rolled back. Documented in commit **`e8005d0`**.
+
+## 11. Preserved gates
 
 Customer access, checkout/payment, public launch, **`Supplier verified`**, final pricing/delivery/claims, media exposure, and app install/import/sync remain **BLOCKED**.
 
-## 10. LLD status
+## 12. LLD status
 
-**Unchanged** — no storefront visibility widening occurred; rollback restored pre-execution Admin posture.
+**Unchanged** — rollback restored pre-execution Admin posture; no durable storefront visibility widening.
 
-## 11. Recommended next owner
+## 13. Recommended next owner
 
-**DevOps / Platform Engineer** — after operator re-auth with **`write_publications`**, rerun bounded publish-for-preview execution with the same approved tag set and pre-snapshot discipline.
+**DevOps / Platform Engineer** — after operator re-auth with **`write_inventory`**, rerun bounded publish-for-preview with the same approved tag set, pre-snapshot discipline, and **`availableForSale`** validation.
 
-Then **QA / Test Engineer** for post-execution controlled preview validation.
+Then **QA / Test Engineer** for post-execution controlled preview validation (password-gated storefront, collection/PDP routes).
 
-## 12. Confirmation no out-of-scope action occurred
+## 14. Confirmation no out-of-scope action occurred
 
-Confirmed: no successful Online Store publication; no purchasability enablement; no customer-access/checkout/payment/public-launch widening; no media upload; no collection membership change beyond verification; no changes to non-CJ products after rollback (one CJ row briefly probed then restored).
+Confirmed after rollback: no durable Online Store publication; no collection membership change; no media upload; no checkout/payment/customer-access/public-launch widening; no changes outside the three CJ rows beyond the rolled-back execution window.
