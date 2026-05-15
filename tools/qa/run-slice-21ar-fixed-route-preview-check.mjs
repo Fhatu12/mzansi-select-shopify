@@ -491,7 +491,9 @@ async function detectCjProductMedia(page) {
         const inProductSurface = Boolean(
           img.closest('.product-card, .prod-img, .product-gallery-main, .product-gallery-strip, .product-main-shell')
         );
+        const loaded = img.complete && img.naturalWidth > 1 && img.naturalHeight > 1;
         const isPlaceholder =
+          !loaded ||
           !src ||
           src.startsWith('data:image') ||
           /placeholder|icon|logo|badge|svg/i.test(src) ||
