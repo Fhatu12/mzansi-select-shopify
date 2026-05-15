@@ -3305,6 +3305,17 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Slice 21AS guardrails preserved:** no Shopify Admin mutation, no publish, no product import/sync, and no checkout/payment/customer-access change occurred in the harness validation pass; `artifacts/` and `zadropshipping/` remain uncommitted. **Watch item only:** console/resource noise, including one **503**, remains visible in QA evidence but is **not** a Slice 21AS blocker.
 - **Next owner:** **Product Owner** to choose **Slice 21AT**.
 
+## Slice 21AT controlled-pilot publish-for-preview planning
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Plan created:** `docs/pilot/slice-21at-controlled-pilot-publish-for-preview-plan.md`.
+- **Planning objective:** prepare the next product-level controlled-pilot decision using the accepted **21AR / 21AS** QA posture: the three CJ PDP preview routes are the valid success surfaces, while `/collections/controlled-pilot` remains an accepted **informational/non-blocking 404** under the Product Owner route contract.
+- **Current accepted evidence baseline:** harness implementation commit `271cee4bcba0a44631ecb24add40c2264f1b9c23`; QA evidence `artifacts/qa/slice-21ar-fixed-route-preview-check/2026-05-15-20-3/`; all three CJ PDP routes passed on **desktop 1366x768** and **mobile 390x844** with expected CJ PDP visible, **Gadgetgyz absent**, **Add to Cart / Buy Now absent**, **checkout/customer absent**, **media=no**, and **onlyGenericPlaceholderVisuals=true**.
+- **21AT planning posture:** define what a future restricted **publish-for-preview** step would mean and would not mean, keep the pilot boundary on the exact three CJ products, preserve preview-only / imported-supplier guardrails, and keep public launch, checkout/payment, real customer orders, app install/import/sync, Shopify Admin mutation, and live-theme publish **blocked** unless separately approved.
+- **Recommended next gate:** **Product Owner** chooses one of three paths — remain preview-only, approve a tightly bounded DevOps/Admin planning pass, or defer until supplier/pricing/delivery evidence improves.
+- **Guardrails preserved:** docs-only; no theme edits, no Shopify Admin change, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
+- **Next owner:** **Product Owner** to choose **Slice 21AT** follow-through / next controlled-pilot step.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
