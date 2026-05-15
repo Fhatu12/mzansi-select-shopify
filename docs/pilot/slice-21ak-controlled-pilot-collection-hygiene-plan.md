@@ -77,4 +77,4 @@ A later cleanup pass is acceptable only if it confirms all of the following:
 
 ## 10. Follow-up owner after Product Owner acceptance
 
-**DevOps / Platform Engineer** — execute a later bounded Shopify Admin collection-membership cleanup pass only after explicit Product Owner acceptance.
+**DevOps / Platform Engineer** — **Slice 21AL** execution attempted 2026-05-15 — **BLOCKED** (no stored `shopify store auth` for `dropshippoc.myshopify.com`). See **`docs/devops/slice-21al-controlled-pilot-collection-cleanup.md`** for operator retry checklist. **Next after successful cleanup:** **QA / Test Engineer** — validate cleaned **`controlled-pilot`** state.
