@@ -377,8 +377,13 @@ async function inspectRoute({ page, route, viewport, password, screenshotsDir, t
     checks.push('cj-product-media-present');
   }
 
+  const httpStatus = response ? response.status() : null;
+  const contractAssessment = assessRouteContract({ route, httpStatus, unlocked });
+
   let verdict = 'PASS';
-  if (!unlocked || checks.length > 0) {
+  if (!contractAssessment.blocking) {
+    verdict = 'INFO';
+  } else if (!unlocked || checks.length > 0) {
     verdict = 'FAIL';
   } else if (media.onlyGenericPlaceholderVisuals) {
     verdict = 'PASS WITH NOTES';
@@ -393,7 +398,7 @@ async function inspectRoute({ page, route, viewport, password, screenshotsDir, t
     routeKey: route.key,
     viewport: viewport.key,
     finalUrl: page.url(),
-    httpStatus: response ? response.status() : null,
+    httpStatus,
     unlocked,
     title,
     textSnippet,
@@ -403,8 +408,28 @@ async function inspectRoute({ page, route, viewport, password, screenshotsDir, t
     checkoutCustomerAbsent: commerce.checkoutCustomerAbsent,
     mediaPresent: media.mediaPresent,
     onlyGenericPlaceholderVisuals: media.onlyGenericPlaceholderVisuals,
+    contractClassification: contractAssessment.classification,
+    blocking: contractAssessment.blocking,
+    contractNote: contractAssessment.note,
     failedChecks: checks,
     verdict
+  };
+}
+
+function assessRouteContract({ route, httpStatus, unlocked }) {
+  if (route.key === 'controlled-pilot' && unlocked && httpStatus === 404) {
+    return {
+      classification: 'informational/non-blocking 404',
+      blocking: false,
+      note:
+        '/collections/controlled-pilot is informational only under the accepted Product Owner contract while Shopify serves it through 404 handling.'
+    };
+  }
+
+  return {
+    classification: 'blocking',
+    blocking: true,
+    note: ''
   };
 }
 
@@ -518,10 +543,11 @@ function computeOverallVerdict(routeResults, unlockVerified) {
   if (!unlockVerified) {
     return 'BLOCKED';
   }
-  if (routeResults.some((result) => !result.unlocked || result.verdict === 'FAIL')) {
+  const blockingResults = routeResults.filter((result) => result.blocking !== false);
+  if (blockingResults.some((result) => !result.unlocked || result.verdict === 'FAIL')) {
     return 'FAIL';
   }
-  if (routeResults.some((result) => result.verdict === 'PASS WITH NOTES')) {
+  if (blockingResults.some((result) => result.verdict === 'PASS WITH NOTES')) {
     return 'PASS WITH NOTES';
   }
   return 'PASS';
@@ -553,6 +579,8 @@ async function writeEvidence(runDir, payload) {
     'add_to_cart_buy_now_absent',
     'checkout_customer_absent',
     'media_present',
+    'contract_classification',
+    'blocking',
     'verdict'
   ].join(',');
 
@@ -568,6 +596,8 @@ async function writeEvidence(runDir, payload) {
       result.addToCartBuyNowAbsent,
       result.checkoutCustomerAbsent,
       result.mediaPresent,
+      csvEscape(result.contractClassification),
+      result.blocking,
       csvEscape(result.verdict)
     ].join(',')
   );
@@ -605,12 +635,12 @@ function buildMarkdownReport({ overallVerdict, unlockVerified, unlockMode, route
 
 ## Route results
 
-| Route | Viewport | Unlocked | CJ | Gadgetgyz absent | Commerce absent | Media | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| Route | Viewport | Unlocked | CJ | Gadgetgyz absent | Commerce absent | Media | Contract | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 ${routeResults
   .map(
     (result) =>
-      `| ${result.route} | ${result.viewport} | ${result.unlocked ? 'yes' : 'no'} | ${result.expectedCjVisible} | ${result.gadgetgyzAbsent ? 'yes' : 'no'} | ${result.addToCartBuyNowAbsent && result.checkoutCustomerAbsent ? 'yes' : 'no'} | ${result.mediaPresent ? 'yes' : 'no'} | ${result.verdict} |`
+      `| ${result.route} | ${result.viewport} | ${result.unlocked ? 'yes' : 'no'} | ${result.expectedCjVisible} | ${result.gadgetgyzAbsent ? 'yes' : 'no'} | ${result.addToCartBuyNowAbsent && result.checkoutCustomerAbsent ? 'yes' : 'no'} | ${result.mediaPresent ? 'yes' : 'no'} | ${result.contractClassification} | ${result.verdict} |`
   )
   .join('\n')}
 
@@ -624,6 +654,7 @@ ${consoleErrors.length ? consoleErrors.map((entry) => `- ${entry.text}`).join('\
 - Manual unlock: password entered only in the headed browser by the human operator.
 - No password, cookies, storageState, HAR, trace, video, or browser profile saved.
 - Same browser context reused after unlock for all route checks.
+- Contract-aware verdicting: \`/collections/controlled-pilot\` remains recorded honestly, but when it is unlocked and still served through Shopify 404 handling it is treated as informational/non-blocking under the accepted Product Owner contract; overall verdicting is based on the three CJ PDP preview routes.
 `;
 }
 
@@ -640,6 +671,7 @@ function printRouteLine(result) {
       `add_to_cart_buy_now_absent=${result.addToCartBuyNowAbsent ? 'yes' : 'no'}`,
       `checkout_customer_absent=${result.checkoutCustomerAbsent ? 'yes' : 'no'}`,
       `media=${result.mediaPresent ? 'yes' : 'no'}`,
+      `contract=${result.contractClassification}`,
       `verdict=${result.verdict}`
     ].join(' | ')
   );
