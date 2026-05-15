@@ -3338,6 +3338,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails preserved:** docs-only; no Shopify Admin changes, no theme edits, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
 - **Next owner:** **Product Owner** — accept **21AV** and decide whether to open a later bounded execution-readiness slice.
 
+## Slice 21AW controlled-pilot Admin execution-readiness pack
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Pack created:** `docs/pilot/slice-21aw-controlled-pilot-admin-execution-readiness-pack.md`.
+- **Purpose:** prepare a future bounded Shopify Admin/write pass without approving it. The pack records the exact **3-product boundary**, the pre-write checkpoint template, proposed future write steps marked **not approved yet**, rollback checklist, post-write QA checklist, no-go list, and the exact Product Owner approval wording required before any actual Admin/write action.
+- **Execution boundary preserved:** readiness only — no Shopify Admin change, no theme edit, no publish, no product import/sync, no checkout/payment/customer-order enablement, and no broad catalogue exposure in **21AW**.
+- **Post-write QA kept explicit:** fixed-route harness; desktop **1366x768**; mobile **390x844**; all three CJ PDP routes; and `/collections/controlled-pilot` still treated as informational if Shopify continues to serve it through **404** handling.
+- **Guardrails preserved:** no live theme publish, no public launch, no app install/import/sync, no media enablement unless separately approved, and no final supplier/pricing/delivery/stock/warranty claims.
+- **Next owner:** **Product Owner**.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
