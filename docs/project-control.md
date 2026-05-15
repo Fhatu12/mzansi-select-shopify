@@ -3408,6 +3408,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Sensitivity note included:** do not record or share passwords, secrets, tokens, cookies, customer/order/payment data, supplier credentials, or raw auth/session material.
 - **Next owner:** **Product Owner** — decide whether to use the reviewer pack for a bounded internal feedback round.
 
+## Slice 21BC restricted-preview feedback capture template
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Template created:** `docs/pilot/slice-21bc-restricted-preview-feedback-capture.md`.
+- **Purpose:** provide a simple internal feedback capture template so reviewers can record useful product feedback without drifting into launch, purchase, fulfilment, or Admin-change assumptions.
+- **Template scope fixed:** exactly the three approved handles — `beverage-bottle-oil-bottle-handle-holder`, `usb-bag-sealer`, and `foldable-magnetic-phone-holder-desktop-tablet-stand`.
+- **Reviewer inputs structured:** reviewer identity placeholder, review date, product reviewed, device/viewport used, and a simple rating scale (`clear`, `partly clear`, `unclear`, `not applicable`).
+- **Feedback sections included:** product clarity, preview-only clarity, pricing/delivery uncertainty clarity, perceived fit for the Mzansi Select pilot audience, wording that feels misleading, mobile readability, desktop readability, trust concerns, and suggested wording improvements.
+- **Product Manager synthesis included:** strongest pilot candidates, weak/unclear candidates, wording changes needed, evidence gaps, and recommended next Product Owner decision.
+- **Sensitivity and behaviour reminders included:** products are not purchasable; do not test checkout/payment; do not share preview access publicly; do not change Shopify Admin; and do not record passwords, secrets, tokens, cookies, customer/order/payment data, or supplier credentials.
+- **Source truth preserved:** the template reflects the accepted restricted-preview posture from **21AY**, **21AZ**, **21BA**, and **21BB** without inventing launch, fulfilment, or commercial claims.
+- **Next owner:** **Product Owner** — use the template for a bounded feedback round if desired.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
