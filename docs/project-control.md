@@ -3348,6 +3348,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails preserved:** no live theme publish, no public launch, no app install/import/sync, no media enablement unless separately approved, and no final supplier/pricing/delivery/stock/warranty claims.
 - **Next owner:** **Product Owner**.
 
+## Slice 21AX controlled-pilot Admin pre-touch checkpoint
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**, **read-only Shopify inspection**).
+- **Checkpoint created:** `docs/pilot/slice-21ax-controlled-pilot-admin-pre-touch-checkpoint.md`.
+- **Current git baseline captured before inspection:** branch `master`, commit `c8efb4bbebf848379421ea4c7e85241ca369115a`, clean status (`## master`).
+- **Exact three-product scope confirmed:** `beverage-bottle-oil-bottle-handle-holder`, `usb-bag-sealer`, and `foldable-magnetic-phone-holder-desktop-tablet-stand`.
+- **Read-only product state captured through existing authenticated CLI tooling:** all three rows are currently `ACTIVE`; each shows one exact `Online Store` publication with `isPublished=true`; each still carries `controlled-pilot`, `cj-imported-supplier`, `non-purchasable`, `preview-only`, and `price-to-confirm` tags; and each remains non-sellable at the first-variant layer (`inventoryQuantity=0`, `inventoryPolicy=DENY`, `availableForSale=false`).
+- **Preview theme checkpoint captured:** `151207542967 / Mzansi Select MVP Preview / unpublished`.
+- **Important uncertainty recorded honestly:** `onlineStoreUrl` remains `null` for all three rows, so the checkpoint confirms publication metadata but does not over-claim a public live exposure path.
+- **Rollback baseline status:** materially useful pre-touch baseline captured, but a full rollback script remains incomplete because no write delta exists yet in 21AX.
+- **Write posture preserved:** no Shopify Admin mutation, no publication/visibility change, no theme publish, no product import/sync, no media enablement, and no checkout/payment/customer-order change occurred.
+- **Next owner:** **Product Owner** — decide whether to open a later tightly bounded Admin/write proposal using the 21AX checkpoint as the pre-write baseline.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
