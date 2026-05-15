@@ -3326,6 +3326,18 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails preserved:** docs-only; no theme edits, no Shopify Admin change, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
 - **Next owner:** **Product Owner** — accept **21AU** and, if still aligned with Option **B**, open a tightly bounded **DevOps / Admin planning** slice only.
 
+## Slice 21AV controlled-pilot Admin readiness planning
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Plan created:** `docs/pilot/slice-21av-controlled-pilot-admin-readiness-plan.md`.
+- **Operational objective:** prepare a future tightly bounded Shopify Admin/write planning lane for restricted controlled-pilot preview exposure only, using the accepted **3-product CJ boundary** and the accepted **21AT / 21AU** guardrails.
+- **Future write-path scope (planning only):** define the exact pre-write checklist, rollback notes, target IDs, non-purchasable checks, no-live-publish rules, no-commerce rules, and post-change QA expectations for any later bounded write slice — without performing any write in 21AV.
+- **Post-change QA requirement kept explicit:** desktop **1366x768**, mobile **390x844**, all three CJ PDP routes, and `/collections/controlled-pilot` still treated as informational if Shopify continues to serve it through **404** handling.
+- **Security / Compliance triggers preserved:** re-review is still required if customer access widens, checkout/payment changes, product claims change, media is enabled, or supplier/pricing/delivery wording changes.
+- **No-go list preserved:** no public launch, no live theme publish, no checkout/payment, no real customer orders, no product import/sync, no app install, and no broad catalogue exposure.
+- **Guardrails preserved:** docs-only; no Shopify Admin changes, no theme edits, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
+- **Next owner:** **Product Owner** — accept **21AV** and decide whether to open a later bounded execution-readiness slice.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
