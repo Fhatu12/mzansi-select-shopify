@@ -3396,6 +3396,18 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Write posture preserved:** no Shopify Admin mutation, no publication/visibility change, no theme edit, no publish, no product import/sync, no app install, no media enablement, and no checkout/payment/customer-order enablement occurred.
 - **Next owner:** **Product Owner** — decide whether the combined **21AZ + 21BA** evidence is sufficient for any later tightly bounded Admin/write proposal or whether the current restricted-preview posture should simply remain in place.
 
+## Slice 21BB restricted-preview reviewer pack
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Pack created:** `docs/pilot/slice-21bb-restricted-preview-reviewer-pack.md`.
+- **Purpose:** provide a practical internal reviewer guide for the current controlled-pilot CJ three-product preview without implying public launch, purchasability, Admin execution, or any broader pilot change.
+- **Reviewer scope fixed:** exactly the three approved handles — `beverage-bottle-oil-bottle-handle-holder`, `usb-bag-sealer`, and `foldable-magnetic-phone-holder-desktop-tablet-stand`.
+- **Reviewer guidance included:** what to check (page opens after unlock, wording clarity, preview-only/non-purchasable clarity, pricing/delivery honesty, desktop/mobile readability), what not to do (no checkout/payment attempts, no public sharing of preview access, no Admin/app/import changes), and the exact feedback questions to answer.
+- **Known limitations preserved honestly:** password-gated preview, no product media, no final pricing/delivery/supplier verification, and `/collections/controlled-pilot` may remain informational / `404`-routed.
+- **Source evidence recorded:** the pack is grounded in **21AZ** (anonymous access blocked by password gate) and **21BA** (restricted post-unlock reviewer access to the three PDPs remains safe and non-purchasable).
+- **Sensitivity note included:** do not record or share passwords, secrets, tokens, cookies, customer/order/payment data, supplier credentials, or raw auth/session material.
+- **Next owner:** **Product Owner** — decide whether to use the reviewer pack for a bounded internal feedback round.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
