@@ -1,6 +1,6 @@
 {% assign controlled_preview_route = false %}
 {% assign controlled_preview_handles = 'beverage-bottle-oil-bottle-handle-holder,usb-bag-sealer,foldable-magnetic-phone-holder-desktop-tablet-stand' | split: ',' %}
-{% if request.path == '/collections/controlled-pilot' %}
+{% if request.path == '/collections/controlled-pilot' or canonical_url contains '/collections/controlled-pilot' %}
   {% assign controlled_preview_route = true %}
 {% endif %}
 
@@ -24,10 +24,58 @@
         {% render 'section-heading', title: 'Controlled pilot items' %}
         <div class="products-grid">
           {% for controlled_preview_handle in controlled_preview_handles %}
-            {% assign product = all_products[controlled_preview_handle] %}
-            {% if product != blank %}
-              {% render 'live-product-card', product: product %}
-            {% endif %}
+            {% assign controlled_preview_title = blank %}
+            {% case controlled_preview_handle %}
+              {% when 'beverage-bottle-oil-bottle-handle-holder' %}
+                {% assign controlled_preview_title = 'Beverage & Oil Bottle Holder' %}
+              {% when 'usb-bag-sealer' %}
+                {% assign controlled_preview_title = 'USB Bag Sealer' %}
+              {% when 'foldable-magnetic-phone-holder-desktop-tablet-stand' %}
+                {% assign controlled_preview_title = 'Foldable Magnetic Phone Holder & Desktop Tablet Stand' %}
+            {% endcase %}
+            {% assign controlled_preview_url = '/products/' | append: controlled_preview_handle %}
+            <div class="product-card">
+              <div class="prod-img">
+                <a href="{{ controlled_preview_url }}" aria-label="View {{ controlled_preview_title }}">
+                  {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
+                </a>
+                {% render 'product-badge', label: 'Preview only', tone: 'preview' %}
+                <button
+                  class="p-wish"
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  aria-label="Favourites paused. Save feature coming later during private preview."
+                >
+                  <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="prod-info">
+                <div class="p-type">Imported supplier route under review</div>
+                <div class="p-name">
+                  <a href="{{ controlled_preview_url }}">
+                    {{ controlled_preview_title }}
+                    <span class="visually-hidden">{{ controlled_preview_handle }}</span>
+                  </a>
+                </div>
+                {% render 'price-stack',
+                  price_now: 'Price to be confirmed',
+                  price_is_placeholder: true,
+                  supporting_note: 'Delivery timing still being validated'
+                %}
+                <button
+                  class="add-btn"
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  aria-label="Preview only. Add to Cart is not available for this item yet."
+                >
+                  Preview only
+                </button>
+              </div>
+            </div>
           {% endfor %}
         </div>
       </div>

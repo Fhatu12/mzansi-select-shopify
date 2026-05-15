@@ -21,7 +21,7 @@
         break
       endif
     endfor
-  elsif request.path == '/collections/controlled-pilot'
+  elsif request.path == '/collections/controlled-pilot' or canonical_url contains '/collections/controlled-pilot'
     assign preview_route_cautious = true
   endif
 %}

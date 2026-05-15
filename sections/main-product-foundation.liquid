@@ -45,7 +45,7 @@
   {% assign current_show_catalog_media = false %}
 {% endif %}
 {% assign cj_controlled_preview_handles = 'beverage-bottle-oil-bottle-handle-holder,usb-bag-sealer,foldable-magnetic-phone-holder-desktop-tablet-stand' | split: ',' %}
-{% if current_product_preview_only and cj_controlled_preview_handles contains product.handle %}
+{% if cj_controlled_preview_handles contains product.handle %}
   {% assign current_show_catalog_media = false %}
 {% endif %}
 {% assign current_media = current_variant.featured_media | default: product.featured_media | default: product.media.first %}

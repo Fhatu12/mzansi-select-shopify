@@ -13,13 +13,21 @@
     {% if gated_support_page %}
       <meta name="robots" content="noindex,nofollow">
     {% endif %}
+    {% assign controlled_preview_route = false %}
+    {% if canonical_url contains '/collections/controlled-pilot' %}
+      {% assign controlled_preview_route = true %}
+    {% endif %}
     <title>
-      {{ page_title }}
-      {% if current_tags %}
-        {%- assign meta_tags = current_tags | join: ', ' -%}
-        &ndash; Tagged "{{ meta_tags }}"
+      {% if controlled_preview_route %}
+        Controlled pilot preview
+      {% else %}
+        {{ page_title }}
+        {% if current_tags %}
+          {%- assign meta_tags = current_tags | join: ', ' -%}
+          &ndash; Tagged "{{ meta_tags }}"
+        {% endif %}
+        {% if current_page != 1 %}&ndash; Page {{ current_page }}{% endif %}
       {% endif %}
-      {% if current_page != 1 %}&ndash; Page {{ current_page }}{% endif %}
       {% unless page_title contains shop.name %}&ndash; {{ shop.name }}{% endunless %}
     </title>
     {% if page_description %}
