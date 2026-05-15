@@ -5,146 +5,93 @@
 **Owner:** DevOps / Platform Engineer  
 **Store:** `dropshippoc.myshopify.com`  
 **Product Owner decision:** Slice 21AL **APPROVED**  
-**Prior plan:** **`docs/pilot/slice-21ak-controlled-pilot-collection-hygiene-plan.md`** (**Slice 21AK** commit **`46d2e6e5e25c6e97f77f2a79a4b31dea96d2ea15`**)
+**Prior plan:** **`docs/pilot/slice-21ak-controlled-pilot-collection-hygiene-plan.md`** (**Slice 21AK** commit **`46d2e6e5e25c6e97f77f2a79a4b31dea96d2ea15`**)  
+**Prior blocker commit:** **`28ef589e6917829cb7a61181ae0ba82409def921`** (auth missing)  
+**Completion commit:** (this retry — see tracker after docs commit)
 
 ## 1. DevOps verdict
 
-**BLOCKED** — Admin collection-membership cleanup **not executed** in this pass because **no stored Shopify CLI store authentication** exists for `dropshippoc.myshopify.com` on the active working copy host. Operator-safe checklist and validated CLI workflow are recorded below for human retry after interactive `shopify store auth`.
+**PASS** — bounded **`controlled-pilot`** collection membership cleanup **executed** 2026-05-15 after successful **`shopify store auth`**. **`collectionRemoveProducts`** removed four older Gadgetgyz-era draft rows from the collection **only**. **3** CJ draft rows remain. All **7** affected products remain **`DRAFT`**.
 
-## 2. Cleanup method (intended)
+## 2. Cleanup method used
 
-**Shopify CLI `shopify store execute`** with Admin GraphQL — **read** pre-membership, **`collectionRemoveProducts`** mutation for four handles only, **read** post-membership and draft/restricted posture. **No** Shopify Admin UI automation, **no** credential storage in repo, **no** theme/checkout/payment/customer-access changes.
+**Shopify CLI `shopify store execute`** with Admin GraphQL on **`dropshippoc.myshopify.com`**:
 
-**Execution status this pass:** **not run** (auth missing).
+1. Auth verify: `query { shop { name id } }`
+2. Pre-read: `collectionByHandle(handle: "controlled-pilot")`
+3. Mutation: `collectionRemoveProducts` (four product GIDs only)
+4. Post-read: collection membership + `productByHandle` status for four removed rows
 
-## 3. Pre-cleanup collection membership summary (documented baseline)
+**No** Shopify Admin UI automation, **no** credential storage in repo, **no** product publish/archive/delete, **no** theme/checkout/payment/customer-access changes.
 
-From accepted **Slice 21AG** / **21AH** / **21AK** records — **`controlled-pilot`** collection (**handle:** `controlled-pilot`) is expected to contain **seven** draft rows:
+## 3. Pre-cleanup collection membership summary (live Admin read)
 
-| Keep in collection (3 CJ staged rows) | CJ variant SKU | Handle |
-| --- | --- | --- |
-| Beverage & Oil Bottle Handle Holder | `CJYD230000901AZ` | `beverage-bottle-oil-bottle-handle-holder` |
-| USB Bag Sealer | `CJYD211196101AZ` | `usb-bag-sealer` |
-| Foldable Magnetic Phone Holder & Desktop Tablet Stand | `CJYD245830501AZ` | `foldable-magnetic-phone-holder-desktop-tablet-stand` |
+**Collection:** `controlled-pilot` (**Controlled Pilot**) — **7** members — **all `DRAFT`** — matches documented **Slice 21AK** baseline (**no drift**).
 
-| Remove from collection only (4 older unrelated draft rows) | Historical SKU | Handle |
-| --- | --- | --- |
-| World Map Extended Mouse Pad | `74886` | `world-map-extended-mouse-pad` |
-| Gizzu USB to Type-C Cable — 2m | `GCPU2C2` | `gizzu-usb-to-type-c-cable-2m` |
-| UGREEN 4-in-1 USB 2.0 Hub | `CR106-20277` | `ugreen-4-in-1-usb-2-0-hub` |
-| Acrylic Tablet & Phone Stand | `DP0402` | `acrylic-tablet-phone-stand` |
+| Action | SKU | Handle | Status |
+| --- | --- | --- | --- |
+| Keep | `CJYD230000901AZ` | `beverage-bottle-oil-bottle-handle-holder` | DRAFT |
+| Keep | `CJYD211196101AZ` | `usb-bag-sealer` | DRAFT |
+| Keep | `CJYD245830501AZ` | `foldable-magnetic-phone-holder-desktop-tablet-stand` | DRAFT |
+| Remove from collection | `74886` | `world-map-extended-mouse-pad` | DRAFT |
+| Remove from collection | `GCPU2C2` | `gizzu-usb-to-type-c-cable-2m` | DRAFT |
+| Remove from collection | `CR106-20277` | `ugreen-4-in-1-usb-2-0-hub` | DRAFT |
+| Remove from collection | `DP0402` | `acrylic-tablet-phone-stand` | DRAFT |
 
-**Note:** Pre-cleanup live Admin membership was **not** re-read in this pass (auth blocked).
+## 4. Post-cleanup collection membership summary (live Admin read)
 
-## 4. Post-cleanup collection membership summary
+**Collection:** `controlled-pilot` — **3** members — **all `DRAFT`**.
 
-**Not achieved in this pass.** Target post-state:
+| SKU | Handle | Status | In `controlled-pilot` |
+| --- | --- | --- | --- |
+| `CJYD230000901AZ` | `beverage-bottle-oil-bottle-handle-holder` | DRAFT | Yes |
+| `CJYD211196101AZ` | `usb-bag-sealer` | DRAFT | Yes |
+| `CJYD245830501AZ` | `foldable-magnetic-phone-holder-desktop-tablet-stand` | DRAFT | Yes |
 
-- **`controlled-pilot`** contains **exactly** the **3** CJ draft rows in §3.
-- The **4** older unrelated draft rows are **not** members of **`controlled-pilot`**.
+**Removed from collection (products unchanged):**
 
-## 5. Target acceptance (for retry or QA)
+| SKU | Handle | Status | In `controlled-pilot` |
+| --- | --- | --- | --- |
+| `74886` | `world-map-extended-mouse-pad` | DRAFT | No |
+| `GCPU2C2` | `gizzu-usb-to-type-c-cable-2m` | DRAFT | No |
+| `CR106-20277` | `ugreen-4-in-1-usb-2-0-hub` | DRAFT | No |
+| `DP0402` | `acrylic-tablet-phone-stand` | DRAFT | No |
 
-1. **`controlled-pilot`** contains exactly the **3** CJ draft rows listed above.
-2. The **4** older unrelated products are removed from **`controlled-pilot`** membership **only**.
-3. All **7** affected products remain **`DRAFT`** / restricted / non-public / non-purchasable.
-4. **No** publish, archive, delete, reject, media, pricing, delivery, stock, warranty, claim, checkout, payment, or customer-access changes.
-5. Sanitized evidence captured under `artifacts/devops/slice-21al-controlled-pilot-collection-cleanup/<runStamp>/` — **not** committed.
+**Mutation result:** `collectionRemoveProducts` — `userErrors: []`.
 
-## 6. Operator-safe retry checklist (human-only auth)
+## 5. Acceptance confirmations
 
-### Step A — Authenticate (interactive terminal only)
+1. **`controlled-pilot`** contains exactly the **3** CJ draft rows — **confirmed**.
+2. Four older unrelated products removed from collection membership **only** — **confirmed**.
+3. All **7** affected products remain **`DRAFT`** — **confirmed**.
+4. **No** publish, archive, delete, reject, media, pricing, delivery, stock, warranty, claim, checkout, payment, or customer-access changes in this pass.
+5. **Collection preview validation** remains a **separate** follow-up gate (not auto-approved by cleanup alone).
 
-```bash
-export NVM_DIR="$HOME/.nvm"
-. "$NVM_DIR/nvm.sh"
-nvm use --lts
-shopify store auth --store dropshippoc.myshopify.com --scopes read_products,write_products
-```
+## 6. Prior blocked attempt (2026-05-15)
 
-Complete Shopify Admin login and MFA in the browser flow. **Do not** paste tokens into repo files.
+First **Slice 21AL** attempt **BLOCKED** — no stored CLI auth. Documented in commit **`28ef589`**. Operator completed interactive auth; retry succeeded.
 
-### Step B — Pre-read membership (sanitized output to evidence file only)
-
-```bash
-shopify store execute --store dropshippoc.myshopify.com --query '
-{
-  collectionByHandle(handle: "controlled-pilot") {
-    id
-    title
-    handle
-    products(first: 20) {
-      nodes {
-        id
-        handle
-        title
-        status
-      }
-    }
-  }
-}'
-```
-
-Record handles + `status` only in local evidence. **Do not** commit raw Admin JSON if it could contain unexpected fields.
-
-### Step C — Remove four products from collection only
-
-Resolve collection GID and the four product GIDs from Step B, then run **one** bounded mutation (example shape — replace GIDs from Step B):
-
-```bash
-shopify store execute --store dropshippoc.myshopify.com --allow-mutations --query '
-mutation RemoveUnrelatedControlledPilotMembers($collectionId: ID!, $productIds: [ID!]!) {
-  collectionRemoveProducts(id: $collectionId, productIds: $productIds) {
-    job { id }
-    userErrors { field message }
-  }
-}' --variables '{
-  "collectionId": "<controlled_pilot_collection_gid>",
-  "productIds": [
-    "<world_map_product_gid>",
-    "<gizzu_product_gid>",
-    "<ugreen_product_gid>",
-    "<acrylic_product_gid>"
-  ]
-}'
-```
-
-**Do not** use `productDelete`, `productUpdate` with `status: ACTIVE`, publication changes, or collection deletes.
-
-### Step D — Post-verify
-
-Re-run Step B query. Confirm:
-
-- **3** CJ handles remain in **`controlled-pilot`**.
-- **4** Gadgetgyz-era handles are absent from collection membership.
-- All **7** products still show **`DRAFT`** (or equivalent restricted draft posture).
-
-### Step E — Docs sync
-
-After successful execution, update **`docs/project-control.md`**, this note (verdict → **PASS**), and hand off to **QA / Test Engineer** for collection-state validation.
-
-## 7. Safety confirmations (this pass)
+## 7. Safety confirmations
 
 | Check | Status |
 | --- | --- |
-| No products published | **Confirmed** — no Admin write |
+| Collection membership only | **Confirmed** |
+| No products published | **Confirmed** |
 | No checkout/payment/customer access enabled | **Confirmed** |
 | No app install/import/sync | **Confirmed** |
 | No Supplier verified / final pricing / delivery / claims approval | **Confirmed** |
-| Windows repo unchanged | **Confirmed** (no cross-repo writes) |
 | No credentials/tokens/Admin payloads in repo | **Confirmed** |
 
-## 8. Evidence
+## 8. Evidence (local; not committed)
 
-**Path (local; not committed):** `artifacts/devops/slice-21al-controlled-pilot-collection-cleanup/<runStamp>/`  
-**This pass:** `blocker.txt` only — auth missing.
+`artifacts/devops/slice-21al-controlled-pilot-collection-cleanup/20260515-131842/`
+
+Sanitized summaries: `pre-membership-summary.txt`, `post-membership-summary.txt`. Raw CLI output retained locally only.
 
 ## 9. LLD status
 
-**LLD unchanged** — no collection cleanup executed; no app/import/sync/storefront/checkout/payment/customer-access behaviour change.
+**LLD unchanged** — collection membership cleanup only; no app/import/sync/storefront/checkout/payment/customer-access behaviour change.
 
 ## 10. Recommended next owner
 
-**Product Owner / Operator** — complete interactive `shopify store auth`, then **DevOps** retries bounded cleanup **or** **QA / Test Engineer** validates if operator performs Admin UI equivalent manually per checklist.
-
-After cleanup succeeds: **QA / Test Engineer** — final validation of cleaned **`controlled-pilot`** collection state.
+**QA / Test Engineer** — validate cleaned **`controlled-pilot`** collection state (membership, draft/restricted posture, no unintended public/checkout exposure). **Does not** approve collection preview, customer access, or launch.

@@ -536,7 +536,7 @@ The **§14** checklist items are **specified** in **§15** as a **bounded implem
 
 - **Collection title:** Controlled Pilot  
 - **Collection handle:** `controlled-pilot`  
-- **Current hygiene decision:** **Slice 21AK** recommends this collection contain only the three staged **CJ** draft rows; see **`slice-21ak-controlled-pilot-collection-hygiene-plan.md`**. **Slice 21AL** (**Product Owner** approved) attempted bounded Admin cleanup — **BLOCKED** (no CLI store auth); operator checklist at **`docs/devops/slice-21al-controlled-pilot-collection-cleanup.md`**. Collection hygiene **remains open** until cleanup succeeds.  
+- **Current hygiene decision:** **Slice 21AK** / **Slice 21AL** — **`controlled-pilot`** contains only the three staged **CJ** draft rows (**Slice 21AL** **PASS**, 2026-05-15). Four older Gadgetgyz-era drafts removed from collection membership only (remain **DRAFT**). See **`docs/devops/slice-21al-controlled-pilot-collection-cleanup.md`**. **Collection preview validation** remains a separate QA gate.  
 - **Tags (all pilot rows):** `pilot`, `pilot-gadgetgyz`, `pilot-21`, `supplier-gadgetgyz`, `manual-fulfilment`  
 - **Additional safety tags** (e.g. `preview-only`, `price-to-confirm`) remain subject to **Product Owner** / execution slice alignment with **Slice 13G** / **Slice 21E** conventions — **not** relaxed by this plan alone.
 
