@@ -3421,6 +3421,20 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Source truth preserved:** the template reflects the accepted restricted-preview posture from **21AY**, **21AZ**, **21BA**, and **21BB** without inventing launch, fulfilment, or commercial claims.
 - **Next owner:** **Product Owner** — use the template for a bounded feedback round if desired.
 
+## Slice 21BD restricted-preview review session plan
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**).
+- **Plan created:** `docs/pilot/slice-21bd-restricted-preview-review-session-plan.md`.
+- **Purpose:** provide a practical internal runbook for a small restricted-preview reviewer pass using the accepted **21BB** reviewer pack and **21BC** feedback template.
+- **Review objective fixed:** gather internal feedback on clarity, trust, pilot fit, and wording only — not purchasing, checkout/payment, fulfilment, supplier readiness, or public-launch validation.
+- **Reviewer profile fixed:** internal stakeholders only; no public/customer distribution; no supplier/customer access.
+- **Review boundary fixed:** exact three products only; post-unlock restricted preview only; no Shopify Admin changes; no checkout/payment/order testing; no app install/import/sync.
+- **Review flow defined:** prepare session, unlock preview manually, open the three approved PDPs, inspect on mobile and/or desktop, complete the feedback template, and avoid all no-go actions.
+- **Success signals defined:** preview-only status understood; non-purchasable posture understood; pricing/delivery uncertainty understood; wording not misleading; and at least one product receives credible pilot-fit feedback.
+- **Stop conditions defined:** pause/escalate if unlock cannot be done safely, the product appears purchasable, checkout/payment/customer routes appear, media or supplier claims appear unexpectedly, or reviewer confusion creates trust risk.
+- **Feedback triage defined:** classify reviewer input as wording issue, product-fit issue, trust issue, evidence gap, or no action.
+- **Next owner:** **Product Owner** — decide whether to run the bounded internal review session or keep the current restricted-preview posture as documentation only.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
