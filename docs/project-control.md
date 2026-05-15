@@ -3286,6 +3286,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 
 **Footer Standard For This Pass:** Slice 13I controlled Shopify Admin preview-only product staging recorded locally. Five products created with approved tags, placeholder pricing, and Online Store publication for preview only; no theme code change in this pass; broader automation still gated by Product Owner; `artifacts/` remains untracked and uncommitted pending Product Owner review before any docs commit.
 
+## Slice 21AR fixed-route authenticated preview triage/remediation
+
+- **Verdict:** **MIXED: THEME + PREVIEW PARITY**. The captured fixed-route run at `artifacts/qa/slice-21ar-fixed-route-preview-check/2026-05-15-16-4/` showed the controlled-pilot route on the generic 404 foundation, one real active cart path on that route, and real PDP product-gallery `<img>` surfaces on the three CJ handles.
+- **Controlled-pilot root cause:** the 16:04 evidence was taken before the later 18:09 selected preview parity repair, and the local recovery logic still depended on a populated `collections['controlled-pilot']` object while Shopify was serving the path through the 404 template. The local route is now hardened to render only the exact approved three-handle allowlist through `all_products[...]`, so Gadgetgyz-era handles cannot leak through that fallback.
+- **Commerce-signal root cause:** `checkout_customer_absent=no` was a true positive in the captured run, not wording over-classification: the missing cautious-route state left live cart anchors in chrome on `/collections/controlled-pilot`. The route is now cautious by path alone, so cart chrome remains deferred even if Shopify exposes no collection object.
+- **PDP-media root cause:** the screenshots show broken real gallery image elements rather than logo/icon chrome or placeholder SVG treatment. The three approved CJ preview-only handles now force generic placeholder rendering on cards and PDPs even if media exists or an image-permission tag is present.
+- **Preview parity note:** a later local evidence bundle, `artifacts/devops/slice-21ar-preview-parity-20260515-180927/`, records the 18:09 selected-file preview parity repair for the earlier controlled-route files; the new local hardening still requires a later selected preview push before authenticated rerun.
+- **Guardrails preserved:** no Shopify Admin edits, no product import/sync/staging, no publish/live overwrite, and no checkout/payment/customer-access enablement in this pass.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.

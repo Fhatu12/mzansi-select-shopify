@@ -49,6 +49,10 @@
 {% if card_preview_only and card_image_permission_confirmed == false %}
   {% assign card_show_catalog_media = false %}
 {% endif %}
+{% assign cj_controlled_preview_handles = 'beverage-bottle-oil-bottle-handle-holder,usb-bag-sealer,foldable-magnetic-phone-holder-desktop-tablet-stand' | split: ',' %}
+{% if card_preview_only and cj_controlled_preview_handles contains product.handle %}
+  {% assign card_show_catalog_media = false %}
+{% endif %}
 {% assign card_price_note = blank %}
 {% if pilot_trust and card_use_placeholder_price %}
   {% assign card_price_note = 'Pilot price — not final' %}

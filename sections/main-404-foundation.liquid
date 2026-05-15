@@ -1,13 +1,10 @@
-{% assign controlled_preview_collection = blank %}
+{% assign controlled_preview_route = false %}
+{% assign controlled_preview_handles = 'beverage-bottle-oil-bottle-handle-holder,usb-bag-sealer,foldable-magnetic-phone-holder-desktop-tablet-stand' | split: ',' %}
 {% if request.path == '/collections/controlled-pilot' %}
-  {% assign controlled_preview_collection = collections['controlled-pilot'] %}
-{% endif %}
-{% assign controlled_preview_collection_live = false %}
-{% if controlled_preview_collection != blank and controlled_preview_collection.all_products_count > 0 %}
-  {% assign controlled_preview_collection_live = true %}
+  {% assign controlled_preview_route = true %}
 {% endif %}
 
-{% if controlled_preview_collection_live %}
+{% if controlled_preview_route %}
   <section class="collection-shell collection-shell--controlled-preview-fallback">
     <div class="section-inner">
       <div class="collection-hero">
@@ -17,7 +14,7 @@
           </svg>
           Controlled pilot preview
         </div>
-        <h1 class="collection-title">{{ controlled_preview_collection.title }}</h1>
+        <h1 class="collection-title">Controlled pilot</h1>
         <p class="collection-intro">
           Invite-only controlled pilot visibility only. Exact approved CJ preview items may render here for review while cart, checkout, and customer access remain disabled.
         </p>
@@ -26,8 +23,11 @@
       <div class="collection-body">
         {% render 'section-heading', title: 'Controlled pilot items' %}
         <div class="products-grid">
-          {% for product in controlled_preview_collection.products %}
-            {% render 'live-product-card', product: product, collection_context: controlled_preview_collection %}
+          {% for controlled_preview_handle in controlled_preview_handles %}
+            {% assign product = all_products[controlled_preview_handle] %}
+            {% if product != blank %}
+              {% render 'live-product-card', product: product %}
+            {% endif %}
           {% endfor %}
         </div>
       </div>

@@ -21,19 +21,8 @@
         break
       endif
     endfor
-  elsif request.path == '/collections/controlled-pilot' and collections['controlled-pilot'] != blank
-    for coll_product in collections['controlled-pilot'].products limit: 48
-      for tag in coll_product.tags
-        assign nt = tag | downcase | strip | replace: ' ', '-'
-        if nt == 'preview-only'
-          assign preview_route_cautious = true
-          break
-        endif
-      endfor
-      if preview_route_cautious
-        break
-      endif
-    endfor
+  elsif request.path == '/collections/controlled-pilot'
+    assign preview_route_cautious = true
   endif
 %}
 {% if preview_route_cautious %}preview-route-cautious{% endif %}
