@@ -62,3 +62,41 @@ PASS WITH NOTES — git HEAD, branch, tracked file count (73), `docs/project-con
 
 ## Final recommendation
 Accept migration parity for repository content and git state. Install Node.js LTS in Ubuntu-Dev before switching active development. Retain Windows repo until Product Owner explicitly accepts Ubuntu-Dev as primary working copy. Remove untracked `*:Zone.Identifier` files on Ubuntu when convenient (optional hygiene).
+
+---
+
+## Slice 21AJ — Ubuntu-Dev tooling readiness (2026-05-15)
+
+### Node.js install method
+**nvm** (`$HOME/.nvm`, official install script v0.40.4 if missing; `~/.bashrc` already contained nvm initialization — no duplicate appended).
+
+### Tool validation (Ubuntu-Dev, after nvm `use --lts`)
+| Tool | Result |
+|------|--------|
+| **node** | **v24.15.0** (nvm LTS; `nvm which current` → `$HOME/.nvm/versions/node/v24.15.0/bin/node`) |
+| **npm** | **11.12.1** |
+| **git** | **git version 2.43.0** |
+| **Shopify CLI** | **3.94.3** — `shopify version` only; **no** other Shopify commands run |
+| **Playwright** | **Not locally validated** — repo has **no** `package.json`; `npx --no-install playwright --version` failed (no local `playwright` package). **No** `npm install`, browser install, or tests run in this slice. |
+
+### Repo tooling
+- Theme-only repo: **no** `package.json` / `package-lock.json`.
+- Present: `.theme-check.yml`; standard theme dirs (`assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/`).
+- **No** `shopify.theme.toml` / `theme.toml` at repo root (shallow scan).
+
+### Zone.Identifier cleanup
+- **Before:** 2 untracked files (`mzansi-select-interactive-elements.txt:Zone.Identifier`, `mzansi-select-mobile.html:Zone.Identifier`).
+- **Action:** deleted both (untracked hygiene only).
+- **After:** none found.
+
+### Sensitive/runtime scan (maxdepth 4)
+- **No** `.env`, `.env.*`, `storageState.json`, `*.har`, `node_modules`, or `.auth` under repo root scan.
+
+### Live Shopify / Admin / storefront
+- **No** live Shopify, Admin, storefront, theme list/pull/push/publish/dev, authentication, app install, import/sync, staging, checkout/payment/customer-access, or supplier/launch approvals in this slice.
+
+### Ubuntu-Dev active working copy recommendation
+**Conditional — recommend Product Owner acceptance before switch.** Node.js LTS and Shopify CLI version check are ready on Ubuntu-Dev. **Remaining notes:** Playwright not validated without a project `package.json`/local dependency; ensure interactive shells source nvm before theme/CLI work (Cursor-embedded `node` on PATH can differ from nvm until `nvm use`). Windows repo **`D:\dev\mzansi-select-shopify`** retained unchanged.
+
+### Evidence (local; not committed)
+`artifacts/devops/slice-21aj-ubuntu-dev-tooling-readiness/20260515-114721/`
