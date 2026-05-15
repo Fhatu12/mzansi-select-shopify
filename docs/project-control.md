@@ -3384,6 +3384,18 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Controlled-pilot rule preserved:** `/collections/controlled-pilot` remains informational only if Shopify still serves it through **404** handling after unlock; 21AZ did not attempt to bypass the password gate to reclassify that route.
 - **Next owner:** **Product Owner** — decide whether the 21AZ result is sufficient for later bounded Admin/write planning or whether an additional authenticated post-unlock visibility note is wanted first.
 
+## Slice 21BA authenticated post-unlock visibility note
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**, **read-only authenticated storefront observation**).
+- **Note created:** `docs/pilot/slice-21ba-authenticated-post-unlock-visibility-note.md`.
+- **Evidence source:** `artifacts/qa/slice-21ar-fixed-route-preview-check/2026-05-15-21-1/` from `node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --manual-unlock`.
+- **PDP visibility after unlock:** all three approved CJ PDP preview routes were reviewable on desktop `1366x768` and mobile `390x844`, each returned `httpStatus=200`, and each showed the expected CJ PDP signal with preview-safe catalogue wording visible.
+- **Restricted posture preserved on all three PDPs:** Gadgetgyz absent; `Add to Cart` / `Buy Now` absent; checkout/customer absent; `media=no`; and `onlyGenericPlaceholderVisuals=true`.
+- **Controlled-pilot route remained informational:** after unlock, `/collections/controlled-pilot?preview_theme_id=151207542967` still resolved as `404 Not Found – DropShipPOC`, `0/3 CJ signals visible`, `checkout_customer_absent=no`, and `contract=informational/non-blocking 404`; this remained non-blocking under the accepted Product Owner contract.
+- **Interpretation:** combined with **21AZ**, the current posture is now clearly split: anonymous storefront access remains password-gated, while authenticated restricted-preview reviewers can inspect the three approved CJ PDPs without commerce, customer, or media escalation.
+- **Write posture preserved:** no Shopify Admin mutation, no publication/visibility change, no theme edit, no publish, no product import/sync, no app install, no media enablement, and no checkout/payment/customer-order enablement occurred.
+- **Next owner:** **Product Owner** — decide whether the combined **21AZ + 21BA** evidence is sufficient for any later tightly bounded Admin/write proposal or whether the current restricted-preview posture should simply remain in place.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
