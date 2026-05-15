@@ -3316,6 +3316,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails preserved:** docs-only; no theme edits, no Shopify Admin change, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
 - **Next owner:** **Product Owner** to choose **Slice 21AT** follow-through / next controlled-pilot step.
 
+## Slice 21AU controlled-pilot publish-for-preview security / compliance review
+
+- **Verdict:** **PASS WITH NOTES** — **Security / Compliance** (**docs-only**).
+- **Review created:** `docs/security/slice-21au-controlled-pilot-preview-security-review.md`.
+- **Finding:** Slice **21AT** is safe as a planning document because it keeps the accepted **3-product CJ boundary**, preserves preview-only / non-purchasable / restricted-access posture, treats `/collections/controlled-pilot` as an accepted **informational/non-blocking 404**, and does not authorise publish, Admin mutation, checkout/payment, customer access, app install/import/sync, live publish, or public launch.
+- **Required controls before any later DevOps/Admin pass:** preserve exact three-product scope, keep planning/readiness/execution explicitly separated, preserve no-commerce and password-gated boundaries, keep media blocked by default, forbid final supplier/pricing/delivery claims, document rollback before any write, require post-change desktop/mobile QA, and require further Security / Compliance review before any customer-access or checkout widening.
+- **Risk summary:** current posture is controlled; the main watch items are confusion between planning and execution, media/source-use drift, delivery/pricing confidence, and product-claim drift — especially for **USB Bag Sealer**. Console/resource noise remains a watch item, not a blocker.
+- **Guardrails preserved:** docs-only; no theme edits, no Shopify Admin change, no publish, no product import/sync, and no commit of `artifacts/` or `zadropshipping/`.
+- **Next owner:** **Product Owner** — accept **21AU** and, if still aligned with Option **B**, open a tightly bounded **DevOps / Admin planning** slice only.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
