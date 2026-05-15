@@ -3372,6 +3372,18 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Required controls preserved:** exact three-product scope only; no live theme publish; no checkout/payment/customer-order enablement; no app install/import/sync; no media enablement unless separately approved; no final supplier/pricing/delivery/stock/warranty claims; and rollback plus post-change QA still mandatory before any write.
 - **Next owner:** **Product Owner** — decide whether to request the recommended read-only visibility / URL validation pass before opening any future Admin/write proposal.
 
+## Slice 21AZ controlled-pilot visibility / URL validation
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**docs-only**, **read-only Shopify + storefront inspection**).
+- **Validation created:** `docs/pilot/slice-21az-controlled-pilot-visibility-url-validation.md`.
+- **Metadata reconfirmed:** all three CJ rows remain `ACTIVE`; `onlineStoreUrl=null`; each still shows one `Online Store` publication with `isPublished=true`; preview-safe/non-purchasable tags remain present; and the first-variant layer remains non-sellable (`availableForSale=false`, `inventoryQuantity=0`, `inventoryPolicy=DENY`).
+- **Direct live PDP finding:** all three exact `/products/...` routes redirected through the storefront password gate and terminated at `/password` with no product content, no commerce controls, and no checkout/customer signals visible in passive unauthenticated HTML.
+- **Direct preview PDP finding:** all three exact `/products/...?...preview_theme_id=151207542967` routes also terminated at `/password` without product content in passive unauthenticated HTML.
+- **Search/collection finding:** the exact tested search route and both tested `controlled-pilot` collection routes also terminated at `/password` with no CJ product content visible in passive unauthenticated HTML.
+- **Interpretation:** the three CJ products are not anonymously reachable as product content through the tested live, preview, search, or collection routes. This resolves the public-visibility ambiguity in favour of a password-gated storefront posture, while preserving the accepted **21AS** note that preview PDPs remain reviewable after manual unlock in the restricted preview context.
+- **Controlled-pilot rule preserved:** `/collections/controlled-pilot` remains informational only if Shopify still serves it through **404** handling after unlock; 21AZ did not attempt to bypass the password gate to reclassify that route.
+- **Next owner:** **Product Owner** — decide whether the 21AZ result is sufficient for later bounded Admin/write planning or whether an additional authenticated post-unlock visibility note is wanted first.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
