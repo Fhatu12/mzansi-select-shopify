@@ -20,7 +20,6 @@ const evidenceRoot = path.join(
   'qa',
   'slice-21ar-authenticated-controlled-preview-validation-rerun'
 );
-const runnerRoot = path.join(evidenceRoot, '_runner');
 const timestamp = new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, '').replace('T', '-');
 const runDir = path.join(evidenceRoot, timestamp);
 const screenshotsDir = path.join(runDir, 'screenshots');
@@ -184,8 +183,6 @@ const runNotes = {
   runDir: path.relative(repoRoot, runDir),
   passwordEnvPresent: false,
   playwrightSource: null,
-  runnerRoot: path.relative(repoRoot, runnerRoot),
-  browserInstallAttempted: false,
   browserLaunchValidated: false,
   storageStateSaved: false,
   harSaved: false,
@@ -221,10 +218,9 @@ async function main() {
 
   let playwrightBundle;
   try {
-    playwrightBundle = await resolvePlaywright();
+    playwrightBundle = await resolvePlaywrightLocalOnly();
     runNotes.playwrightSource = playwrightBundle.source;
     runNotes.playwrightModuleRoot = path.relative(repoRoot, playwrightBundle.moduleRoot);
-    await ensureChromiumInstall(playwrightBundle);
     const launchResult = await validateChromiumLaunch(playwrightBundle.playwright);
     runNotes.browserLaunchValidated = launchResult.ok;
     summary.notes.push(launchResult.note);
@@ -315,52 +311,15 @@ function timestampForFilename() {
   return new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, '').replace('T', '-');
 }
 
-async function resolvePlaywright() {
+async function resolvePlaywrightLocalOnly() {
   const requireFromHere = createRequire(import.meta.url);
   const local = tryLoadPlaywright(() => requireFromHere('playwright'), 'local');
   if (local) {
     return local;
   }
-
-  console.log('=== Slice 21AR Authenticated Controlled Preview QA ===');
-  console.log('Bootstrap: local Playwright not found; preparing artifact-local runner under artifacts/.../_runner/');
-
-  await ensureDir(runnerRoot);
-  const packageJsonPath = path.join(runnerRoot, 'package.json');
-  if (!fs.existsSync(packageJsonPath)) {
-    await fsp.writeFile(
-      packageJsonPath,
-      JSON.stringify(
-        {
-          name: 'slice-21ar-auth-preview-runner',
-          private: true
-        },
-        null,
-        2
-      ) + '\n',
-      'utf8'
-    );
-  }
-
-  const runnerPackageRoot = path.join(runnerRoot, 'node_modules', 'playwright');
-  if (!fs.existsSync(path.join(runnerPackageRoot, 'package.json'))) {
-    console.log('Bootstrap: installing Playwright into artifact-local runner...');
-    const install = spawnSync('npm', ['install', '--no-save', '--no-audit', '--no-fund', 'playwright@1.55.0'], {
-      cwd: runnerRoot,
-      stdio: 'inherit',
-      env: process.env
-    });
-    if (install.status !== 0) {
-      throw new Error('BLOCKED: failed to install artifact-local Playwright runner under artifacts/_runner.');
-    }
-  }
-
-  const runnerRequire = createRequire(path.join(runnerRoot, 'package.json'));
-  const runner = tryLoadPlaywright(() => runnerRequire('playwright'), 'artifact-runner', runnerPackageRoot);
-  if (!runner) {
-    throw new Error('BLOCKED: Playwright could not be loaded from the artifact-local runner directory.');
-  }
-  return runner;
+  throw new Error(
+    'BLOCKED: local Playwright dependency is not resolvable from the repo runtime. Run `npm install` in the repo before QA execution.'
+  );
 }
 
 function tryLoadPlaywright(loader, source, packageRootOverride = null) {
@@ -374,25 +333,6 @@ function tryLoadPlaywright(loader, source, packageRootOverride = null) {
     return { playwright, source, moduleRoot };
   } catch {
     return null;
-  }
-}
-
-async function ensureChromiumInstall(bundle) {
-  const executablePath = bundle.playwright.chromium.executablePath();
-  if (executablePath && fs.existsSync(executablePath)) {
-    return;
-  }
-
-  runNotes.browserInstallAttempted = true;
-  console.log('Bootstrap: installing Chromium for Playwright runner...');
-  const cliPath = path.join(bundle.moduleRoot, 'cli.js');
-  const install = spawnSync(process.execPath, [cliPath, 'install', 'chromium'], {
-    cwd: path.dirname(bundle.moduleRoot),
-    stdio: 'inherit',
-    env: process.env
-  });
-  if (install.status !== 0) {
-    throw new Error('BLOCKED: failed to install Chromium for the Playwright runner.');
   }
 }
 

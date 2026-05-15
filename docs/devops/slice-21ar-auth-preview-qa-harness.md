@@ -16,6 +16,7 @@ Tracked harness:
 ## Constraints
 
 - Read-only storefront QA only.
+- Playwright is now a tracked repo `devDependency`.
 - Password is read from `MZANSI_STOREFRONT_PASSWORD` **only**.
 - The harness never prints, saves, echoes, or commits the password.
 - The harness uses an in-memory browser context only.
@@ -44,24 +45,20 @@ SLICE21AR_INCLUDE_TABLET=1 MZANSI_STOREFRONT_PASSWORD="$MZANSI_STOREFRONT_PASSWO
 
 - Run-specific evidence:
   - `artifacts/qa/slice-21ar-authenticated-controlled-preview-validation-rerun/<timestamp>/`
-- Artifact-local Playwright fallback runner, if needed:
-  - `artifacts/qa/slice-21ar-authenticated-controlled-preview-validation-rerun/_runner/`
 
 The tracked harness is safe to commit because it contains no secrets and no runtime evidence.
 
-Each real run writes exactly one timestamped evidence folder. The `_runner/` directory is only an artifact-local dependency/bootstrap area when needed; it is **not** a result folder.
+Each real run writes exactly one timestamped evidence folder.
 
 ## Playwright package handling
 
-The repo may not have a tracked `package.json`. The harness therefore:
+Playwright is now part of the tracked repo QA tooling surface:
 
-1. tries to load an existing Playwright module if one is already resolvable; otherwise
-2. bootstraps an artifact-local Playwright runner under `artifacts/.../_runner/`; and
-3. installs Chromium there only if it is missing.
+1. the repo carries a tracked `package.json`;
+2. `playwright` is declared as a repo `devDependency`; and
+3. QA should not see artifact-local bootstrap during normal validation.
 
-That fallback stays inside `artifacts/` and is not part of the tracked repo surface.
-
-Bootstrap logs are printed distinctly before the final QA report so they do not get confused with the test verdict.
+If the local dependency is missing anyway, the harness fails clearly with a **BLOCKED** setup message instead of trying to bootstrap dependencies during QA execution.
 
 ## Validation scope
 
