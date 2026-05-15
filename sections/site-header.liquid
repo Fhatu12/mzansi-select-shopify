@@ -1,3 +1,9 @@
+{% capture preview_route_state %}{% render 'preview-route-body-class' %}{% endcapture %}
+{% assign preview_route_cautious = false %}
+{% if preview_route_state contains 'preview-route-cautious' %}
+  {% assign preview_route_cautious = true %}
+{% endif %}
+
 <header class="site-header-desktop" data-shell="desktop-header">
   <div class="header-inner">
     <a class="logo" href="{{ routes.root_url }}">
@@ -44,15 +50,27 @@
         </svg>
         Wishlist
       </span>
-      <a class="hdr-action" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
-        <span class="cart-dot" id="cart-count">{{ cart.item_count }}</span>
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        Cart
-      </a>
+      {% if preview_route_cautious %}
+        <span class="hdr-action hdr-action--deferred" aria-disabled="true" aria-label="Cart preview paused. Cart and checkout remain disabled during controlled preview.">
+          <span class="cart-dot" id="cart-count">{{ cart.item_count }}</span>
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          Cart
+        </span>
+      {% else %}
+        <a class="hdr-action" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
+          <span class="cart-dot" id="cart-count">{{ cart.item_count }}</span>
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          Cart
+        </a>
+      {% endif %}
     </div>
   </div>
 </header>
@@ -76,14 +94,25 @@
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
         </svg>
       </span>
-      <a class="mob-icon-btn" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
-        <span class="cart-badge-mob">{{ cart.item_count }}</span>
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-      </a>
+      {% if preview_route_cautious %}
+        <span class="mob-icon-btn mob-icon-btn--deferred" aria-disabled="true" aria-label="Cart preview paused. Cart and checkout remain disabled during controlled preview.">
+          <span class="cart-badge-mob">{{ cart.item_count }}</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </span>
+      {% else %}
+        <a class="mob-icon-btn" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
+          <span class="cart-badge-mob">{{ cart.item_count }}</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </a>
+      {% endif %}
     </div>
   </div>
 

@@ -1,3 +1,39 @@
+{% assign controlled_preview_collection = blank %}
+{% if request.path == '/collections/controlled-pilot' %}
+  {% assign controlled_preview_collection = collections['controlled-pilot'] %}
+{% endif %}
+{% assign controlled_preview_collection_live = false %}
+{% if controlled_preview_collection != blank and controlled_preview_collection.all_products_count > 0 %}
+  {% assign controlled_preview_collection_live = true %}
+{% endif %}
+
+{% if controlled_preview_collection_live %}
+  <section class="collection-shell collection-shell--controlled-preview-fallback">
+    <div class="section-inner">
+      <div class="collection-hero">
+        <div class="collection-kicker">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Controlled pilot preview
+        </div>
+        <h1 class="collection-title">{{ controlled_preview_collection.title }}</h1>
+        <p class="collection-intro">
+          Invite-only controlled pilot visibility only. Exact approved CJ preview items may render here for review while cart, checkout, and customer access remain disabled.
+        </p>
+      </div>
+
+      <div class="collection-body">
+        {% render 'section-heading', title: 'Controlled pilot items' %}
+        <div class="products-grid">
+          {% for product in controlled_preview_collection.products %}
+            {% render 'live-product-card', product: product, collection_context: controlled_preview_collection %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% else %}
 <section class="not-found-main-shell">
   <div class="section-inner">
     <div class="not-found-hero">
@@ -40,6 +76,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {
