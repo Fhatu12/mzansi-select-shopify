@@ -365,16 +365,17 @@ Mzansi Select Shopify MVP Theme Conversion
 
 ## Slice 21AR CJ 3-SKU publish-for-preview execution (BLOCKED; DevOps)
 
-- **Decision:** **Slice 21AR** is **BLOCKED** — bounded execution approved by **Product Owner** but stopped before Online Store publication.
+- **Decision:** **Slice 21AR** is **BLOCKED** — bounded execution approved by **Product Owner**; retry reached **Online Store** publication for all **3** CJ rows, then **rolled back** because **`availableForSale: false`** validation failed.
 - **Theme gate:** **PASS** — `preview-only`, `price-to-confirm`, disabled purchase UI, collection live-card rendering confirmed.
-- **Pre-snapshot:** **PASS** — 3 CJ rows **DRAFT**; `controlled-pilot` = 3 members; removed handles absent; media 0.
-- **Blocker:** stored CLI auth lacks **`write_publications`** (and **`read_publications`**) for **`publishablePublish`**.
-- **Probe + rollback:** `beverage-bottle-oil-bottle-handle-holder` briefly **ACTIVE** with approved tags; restored **DRAFT** + pre-change tags.
-- **Human action:** `shopify store auth --store dropshippoc.myshopify.com --scopes read_products,write_products,read_publications,write_publications`
+- **Pre-snapshot (retry):** **PASS** — 3 CJ rows **DRAFT**; `controlled-pilot` = 3 members; removed handles absent; media 0.
+- **Publication scopes (retry):** **PASS** — `read_publications`, `write_publications`; **`publishablePublish`** succeeded for all **3**.
+- **Blocker (retry):** stored CLI auth lacks **`write_inventory`** — **`inventoryItemUpdate`** (`tracked: true`) required for **`availableForSale: false`** when qty **0** + **`DENY`**.
+- **Rollback:** all **3** rows restored **DRAFT**, unpublished, pre-change tags; collection membership unchanged at **3** CJ rows.
+- **Human action:** `shopify store auth --store dropshippoc.myshopify.com --scopes read_products,write_products,read_publications,write_publications,read_inventory,write_inventory`
 - **Execution note:** **`docs/pilot/slice-21ar-cj-publish-for-preview-execution.md`**
-- **Evidence (local; not committed):** **`artifacts/devops/slice-21ar-cj-publish-for-preview-execution/20260515-131150/`**
-- **Next owner:** **DevOps / Platform Engineer** after re-auth; then **QA / Test Engineer**
-- **LLD:** **unchanged** — no successful storefront visibility widening
+- **Evidence (local; not committed):** **`artifacts/devops/slice-21ar-cj-publish-for-preview-execution/20260515-132109-retry/`** (+ first attempt **`20260515-131150/`**)
+- **Next owner:** **DevOps / Platform Engineer** after inventory-scope re-auth; then **QA / Test Engineer**
+- **LLD:** **unchanged** — rollback restored pre-execution posture; no durable storefront visibility widening
 
 ## Slice 21AQ CJ publish-for-preview execution readiness check (BLOCKED; DevOps; docs only)
 
