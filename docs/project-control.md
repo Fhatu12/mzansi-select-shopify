@@ -3482,6 +3482,17 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Validation posture:** no Shopify Admin mutation, no publish, no product visibility/publication change, no checkout/payment/customer-order enablement, no product import/sync, and no app install occurred in this slice.
 - **Next owner:** **QA / Test Engineer** — visual and interaction validation on desktop `1366x768` and mobile `390x844`.
 
+## Slice 21BK unpublished preview-theme sync for 21BI
+
+- **Verdict:** **PASS WITH NOTES** — **DevOps / Platform Engineer** (**bounded selected-file preview sync**).
+- **Reason:** **Slice 21BJ** authenticated rendered validation showed the unpublished preview theme was stale relative to the local **21BI** safe-state implementation.
+- **Target theme confirmed before sync:** **`151207542967 / Mzansi Select MVP Preview / unpublished`** on **`dropshippoc.myshopify.com`**; live theme confirmed separately as **`148914077879 / Horizon / live`**.
+- **Files pushed only:** **`sections/site-header.liquid`**, **`sections/primary-navigation.liquid`**, **`sections/category-strip.liquid`**, and **`assets/theme.css`**.
+- **Push method:** bounded Shopify CLI selected-file push using repeated **`--only`** flags, **`--nodelete`**, and **`--strict`**; no full-theme push was used.
+- **Post-push confirmation:** Shopify CLI returned the target theme as **`151207542967 / Mzansi Select MVP Preview / unpublished`** with the preview/editor URLs for that same theme ID.
+- **Safety confirmations:** no publish, no live-theme overwrite, no full-theme push, no Shopify Admin product mutation, no product visibility/publication change, no checkout/payment/customer-order enablement, no product import/sync, no app install, and no media enablement occurred in this slice.
+- **Next owner:** **QA / Test Engineer** — rerun **Slice 21BJ** authenticated rendered validation against the updated unpublished preview theme.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.
