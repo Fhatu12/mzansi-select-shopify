@@ -3,6 +3,7 @@
   if section.settings.background_style == 'cream'
     assign section_classes = section_classes | append: ' section-cream'
   endif
+  assign section_classes = section_classes | append: ' section--product-rail'
 %}
 <section id="{{ section.settings.anchor_id | escape }}" class="{{ section_classes }}">
   <div class="section-inner">
@@ -12,7 +13,7 @@
       link_label: section.settings.section_link_label,
       link_url: section.settings.section_link_url | default: routes.all_products_collection_url
     %}
-    <div class="products-grid">
+    <div class="products-grid products-grid--{{ section.settings.content_preset }}">
       {% if section.settings.content_preset == 'kitchen_storage' %}
         {% assign kitchen_handles = 'cable-tidies-set,sink-strainer-stainless-steel,compact-organiser-basket,mini-plastic-divider-basket' | split: ',' %}
         {% for handle in kitchen_handles %}

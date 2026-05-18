@@ -16,7 +16,7 @@
   {% assign sc_price_save = blank %}
 {% endif %}
 
-<div class="product-card">
+<div class="product-card product-card--static">
   <div class="prod-img">
     <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" width="{{ image_width | default: 600 }}" height="{{ image_height | default: 600 }}">
     {% render 'product-badge', label: sc_badge_label, tone: sc_badge_tone %}
@@ -38,7 +38,7 @@
     <div class="p-stars">{{ stars }} <span class="p-rev">{{ reviews }}</span></div>
     {% render 'price-stack', price_now: price_now, price_was: sc_price_was, price_save: sc_price_save %}
     <button
-      class="add-btn"
+      class="add-btn add-btn--disabled"
       type="button"
       disabled
       aria-disabled="true"

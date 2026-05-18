@@ -10,7 +10,7 @@
   assign tech_accessories_url = tech_accessories_url | strip
 %}
 
-<section id="{{ section.settings.anchor_id | escape }}" class="section section-cream section-no-top">
+<section id="{{ section.settings.anchor_id | escape }}" class="section section-cream section-no-top section--feature-tiles">
   <div class="section-inner">
     {% render 'section-heading',
       title: section.settings.section_title,
@@ -18,7 +18,7 @@
       link_label: section.settings.section_link_label,
       link_url: section.settings.section_link_url
     %}
-    <div class="arrivals-grid">
+    <div class="arrivals-grid arrivals-grid--homepage">
       <div class="arr-card">
         <img src="{{ 'modern-living-room.jpg' | asset_url }}" alt="Living room" loading="lazy" width="900" height="720">
         <div class="arr-overlay">
