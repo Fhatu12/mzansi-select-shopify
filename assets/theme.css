@@ -1536,6 +1536,12 @@ button.drawer-btn-outline[disabled] {
   color: var(--white);
 }
 
+.arr-link--deferred {
+  background: rgba(255, 255, 255, .88);
+  color: var(--text-muted);
+  cursor: default;
+}
+
 .collection-shell {
   padding: 52px 0 64px;
   background: var(--white);

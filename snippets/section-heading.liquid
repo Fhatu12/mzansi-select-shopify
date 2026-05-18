@@ -1,3 +1,10 @@
+{% liquid
+  assign normalized_link_url = link_url | default: '' | strip
+  if normalized_link_url == '#'
+    assign normalized_link_url = ''
+  endif
+%}
+
 <div class="section-head">
   <h2 class="section-title">
     {{ title }}
@@ -6,8 +13,8 @@
     {% endif %}
   </h2>
   {% if link_label != blank %}
-    {% if link_url != blank %}
-      <a class="section-link" href="{{ link_url }}">
+    {% if normalized_link_url != blank %}
+      <a class="section-link" href="{{ normalized_link_url }}">
         {{ link_label }}
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"></line>

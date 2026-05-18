@@ -1,3 +1,15 @@
+{% liquid
+  capture home_living_url
+    render 'launch-collection-url', handle: 'home-living'
+  endcapture
+  assign home_living_url = home_living_url | strip
+
+  capture tech_accessories_url
+    render 'launch-collection-url', handle: 'tech-accessories'
+  endcapture
+  assign tech_accessories_url = tech_accessories_url | strip
+%}
+
 <section id="{{ section.settings.anchor_id | escape }}" class="section section-cream section-no-top">
   <div class="section-inner">
     {% render 'section-heading',
@@ -12,13 +24,24 @@
         <div class="arr-overlay">
           <div class="arr-cat">Home &amp; Living</div>
           <div class="arr-name">Modern Living Room Collection</div>
-          <a class="arr-link" href="{% render 'launch-collection-url', handle: 'home-living' %}">
-            Explore now
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          {% if home_living_url != blank and home_living_url != '#' %}
+            <a class="arr-link" href="{{ home_living_url }}">
+              Explore now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          {% else %}
+            <span class="arr-link arr-link--deferred" aria-disabled="true">
+              Explore now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              <span class="visually-hidden">Browse link pending destination approval.</span>
+            </span>
+          {% endif %}
         </div>
       </div>
       <div class="arr-card">
@@ -26,13 +49,24 @@
         <div class="arr-overlay">
           <div class="arr-cat">Tech Accessories</div>
           <div class="arr-name">Tech Essentials Preview</div>
-          <a class="arr-link" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">
-            Explore now
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          {% if tech_accessories_url != blank and tech_accessories_url != '#' %}
+            <a class="arr-link" href="{{ tech_accessories_url }}">
+              Explore now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          {% else %}
+            <span class="arr-link arr-link--deferred" aria-disabled="true">
+              Explore now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              <span class="visually-hidden">Browse link pending destination approval.</span>
+            </span>
+          {% endif %}
         </div>
       </div>
     </div>
