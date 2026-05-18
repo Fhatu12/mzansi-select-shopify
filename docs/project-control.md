@@ -3468,6 +3468,20 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Deferred connection steps remain blocked:** Storefront API tokens, cart API wiring, checkout URL generation, Buy Button JS, Hydrogen, JS Buy SDK, supplier/product import, and sync.
 - **Next owner:** **Senior Full-Stack Software Architect**.
 
+## Slice 21BI north-star parity shell implementation
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**minimal-diff theme implementation**).
+- **Theme files changed:** **`sections/site-header.liquid`**, **`sections/primary-navigation.liquid`**, **`sections/category-strip.liquid`**, and **`assets/theme.css`**.
+- **Shell/header/nav parity:** desktop and mobile cart chrome now stays honestly paused across the shared shell; account and wishlist remain deferred; approved browse routes remain intact.
+- **Hero/category strip parity:** the existing hero structure stayed in place because it already matched the north-star direction closely; the category strip now keeps shipping, returns, and FAQ cards explicitly deferred with non-active copy.
+- **Product-card rail parity:** homepage rail structure and preview-safe product-card treatment stayed in place; no Add to Cart or Buy Now enablement was introduced.
+- **Mobile drawer/bottom-bar behaviour:** drawer account/cart controls and the centre bottom-bar cart control now render as disabled/deferred preview states instead of route entry points.
+- **Footer/newsletter/account/wishlist honesty:** the existing paused newsletter/account/wishlist/social posture remained intact; no email capture, customer-account routing, or helper-route enablement was introduced.
+- **CTA/link honesty:** unapproved expansion-ready department items no longer route to broad browse pages while implying exact department destinations; they now render as deferred states.
+- **Homepage integration:** **`templates/index.json`** composition remains unchanged and continues to assemble the intended homepage sections safely.
+- **Validation posture:** no Shopify Admin mutation, no publish, no product visibility/publication change, no checkout/payment/customer-order enablement, no product import/sync, and no app install occurred in this slice.
+- **Next owner:** **QA / Test Engineer** — visual and interaction validation on desktop `1366x768` and mobile `390x844`.
+
 ## Slice 15M preview push
 
 - Slice 15M final strict-safe clean theme-surface selected-file push completed.

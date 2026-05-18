@@ -378,6 +378,19 @@ nav {
   border-left-color: var(--gold);
 }
 
+.dept-item--deferred {
+  cursor: default;
+  color: var(--text-muted);
+}
+
+.dept-item--deferred:hover,
+.dept-item--deferred:focus-visible {
+  background: transparent;
+  color: var(--text-muted);
+  border-left-color: transparent;
+  outline: none;
+}
+
 .dept-item-icon {
   font-size: 17px;
   width: 24px;
@@ -752,6 +765,16 @@ button.drawer-btn[disabled] {
   color: var(--text-muted);
 }
 
+button.drawer-btn-filled:disabled,
+button.drawer-btn-filled[disabled] {
+  background: var(--border);
+}
+
+button.drawer-btn-outline:disabled,
+button.drawer-btn-outline[disabled] {
+  background: var(--white);
+}
+
 .bottom-bar {
   position: fixed;
   left: 0;
@@ -797,6 +820,12 @@ button.drawer-btn[disabled] {
   justify-content: center;
   position: relative;
   box-shadow: 0 4px 14px rgba(26, 40, 24, .4);
+}
+
+.bb-center.bb-item--deferred {
+  background: var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
 }
 
 .bb-cart-badge {
@@ -1065,6 +1094,10 @@ button.drawer-btn[disabled] {
 
 .cat-item--deferred {
   cursor: default;
+}
+
+.cat-item--deferred .cat-sub {
+  color: var(--text-muted);
 }
 
 .cat-item--deferred:hover .cat-icon {
