@@ -431,6 +431,15 @@ nav {
   background: var(--gold);
 }
 
+.nav-link-deferred {
+  display: block;
+  padding: 13px 17px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  cursor: default;
+}
+
 .nav-right {
   margin-left: auto;
   display: flex;

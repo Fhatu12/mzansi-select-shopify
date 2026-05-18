@@ -1,3 +1,9 @@
+{% liquid
+  assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
+  assign preview_latest_url = routes.root_url | append: '#new-in'
+  assign preview_picks_url = routes.root_url | append: '#deals'
+%}
+
 <footer>
   <div class="footer-desktop" data-shell="desktop-footer">
     <div class="footer-inner">
@@ -42,10 +48,10 @@
         <div class="f-col-title">Shop</div>
         <ul class="f-links">
           <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
-          <li><a href="{{ routes.all_products_collection_url }}">New in Preview</a></li>
-          <li><a href="{{ routes.all_products_collection_url }}">Selected Picks</a></li>
-          <li><a href="{{ routes.root_url }}#deals">Preview Picks</a></li>
-          <li><a href="{{ routes.all_products_collection_url }}">Gift Ideas</a></li>
+          <li><a href="{{ preview_latest_url }}">New in Preview</a></li>
+          <li><a href="{{ preview_selected_picks_url }}">Selected Picks</a></li>
+          <li><a href="{{ preview_picks_url }}">Preview Picks</a></li>
+          <li><span class="f-link-deferred">Gift ideas coming later <span class="visually-hidden">(browse destination pending approval)</span></span></li>
         </ul>
       </div>
 
@@ -156,10 +162,10 @@
         <div class="f-acc-body">
           <ul class="f-links">
             <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
-            <li><a href="{{ routes.all_products_collection_url }}">New in Preview</a></li>
-            <li><a href="{{ routes.all_products_collection_url }}">Selected Picks</a></li>
-            <li><a href="{{ routes.root_url }}#deals">Preview Picks</a></li>
-            <li><a href="{{ routes.all_products_collection_url }}">Gift Ideas</a></li>
+            <li><a href="{{ preview_latest_url }}">New in Preview</a></li>
+            <li><a href="{{ preview_selected_picks_url }}">Selected Picks</a></li>
+            <li><a href="{{ preview_picks_url }}">Preview Picks</a></li>
+            <li><span class="f-link-deferred">Gift ideas coming later <span class="visually-hidden">(browse destination pending approval)</span></span></li>
           </ul>
         </div>
       </details>

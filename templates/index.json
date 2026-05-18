@@ -40,7 +40,7 @@
         "section_title": "Kitchen &",
         "section_accent": "Storage",
         "section_link_label": "View all",
-        "section_link_url": "/collections/all",
+        "section_link_url": "/collections/kitchen-storage",
         "background_style": "white",
         "content_preset": "kitchen_storage"
       }

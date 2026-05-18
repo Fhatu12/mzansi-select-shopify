@@ -1,3 +1,7 @@
+{% liquid
+  assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
+%}
+
 <section id="deals" class="section section-no-top">
   <div class="section-inner">
     <div class="promo-banner promo-banner--homepage">
@@ -5,7 +9,7 @@
         <div class="promo-eyebrow">Preview highlight</div>
         <div class="promo-h">Tech &amp; Home<br>Preview Picks</div>
         <div class="promo-sub">Preview picks for the products you actually need — selected for South African homes.</div>
-        <a class="promo-cta" href="{{ routes.all_products_collection_url }}">
+        <a class="promo-cta" href="{{ preview_selected_picks_url }}">
           Browse preview picks
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>

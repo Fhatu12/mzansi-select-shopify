@@ -1,3 +1,9 @@
+{% liquid
+  assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
+  assign preview_latest_url = routes.root_url | append: '#new-in'
+  assign preview_picks_url = routes.root_url | append: '#deals'
+%}
+
 <nav class="site-nav-desktop" data-shell="desktop-nav">
   <div class="nav-inner">
     <div class="dept-wrap">
@@ -22,10 +28,10 @@
     <ul class="nav-links">
       <li><a href="{{ routes.root_url }}" class="active">Home</a></li>
       <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
-      <li><a href="{{ routes.all_products_collection_url }}">New in Preview</a></li>
-      <li><a href="{{ routes.all_products_collection_url }}">Selected Picks</a></li>
-      <li><a href="{{ routes.root_url }}#deals">Preview Picks</a></li>
-      <li><a href="{{ routes.all_products_collection_url }}">Brands</a></li>
+      <li><a href="{{ preview_latest_url }}">New in Preview</a></li>
+      <li><a href="{{ preview_selected_picks_url }}">Selected Picks</a></li>
+      <li><a href="{{ preview_picks_url }}">Preview Picks</a></li>
+      <li><span class="nav-link-deferred" aria-disabled="true">Brands</span></li>
     </ul>
 
     <div class="nav-right">
@@ -95,22 +101,22 @@
     <span class="drawer-link-icon">◫</span>
     Shop All
   </a>
-  <a class="drawer-link mob-drawer-link" href="{{ routes.all_products_collection_url }}">
+  <a class="drawer-link mob-drawer-link" href="{{ preview_latest_url }}">
     <span class="drawer-link-icon">✦</span>
     New in Preview
   </a>
-  <a class="drawer-link mob-drawer-link" href="{{ routes.all_products_collection_url }}">
+  <a class="drawer-link mob-drawer-link" href="{{ preview_selected_picks_url }}">
     <span class="drawer-link-icon">★</span>
     Selected Picks
   </a>
-  <a class="drawer-link mob-drawer-link" href="{{ routes.root_url }}#deals">
+  <a class="drawer-link mob-drawer-link" href="{{ preview_picks_url }}">
     <span class="drawer-link-icon">%</span>
     Preview Picks
   </a>
-  <a class="drawer-link mob-drawer-link" href="{{ routes.all_products_collection_url }}">
+  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">◌</span>
     Brands
-  </a>
+  </span>
 
   <div class="drawer-divider"></div>
 
