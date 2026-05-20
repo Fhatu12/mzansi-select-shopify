@@ -653,6 +653,8 @@ Slice 9 explicitly defers:
 - customer accounts, authentication, or address-management flows
 - Shopify push, publish, checkout customization, product import, or broader live catalogue wiring
 
+**Slice 21CC** (2026-05-20): `/collections/controlled-pilot` remains a **theme-level 404 fallback** when Shopify does not serve a native collection template for that handle. `sections/main-404-foundation.liquid` detects the path and renders an honest controlled-pilot preview surface: route-notice copy (404/fallback, not purchasable, Admin native route deferred), up to three approved CJ handles via `all_products[handle]` → `live-product-card` when storefront-visible, otherwise placeholder fallback cards with **View product** only, and recovery links to homepage plus approved department collections — **no** broad `/collections/all` routing from this surface. Native live collection grid alignment requires a **separately approved Shopify Admin** collection publication slice; **21CC** does not mutate Admin collections or products.
+
 Slice 9.5 404/generic empty-state QA closure note:
 
 - The uncommitted Slice 9 404/generic empty-state foundation was reviewed and accepted as PASS WITH NOTES.

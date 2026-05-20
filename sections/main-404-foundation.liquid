@@ -5,6 +5,15 @@
 {% endif %}
 
 {% if controlled_preview_route %}
+  {% assign pilot_trust = settings.controlled_pilot_trust_mode %}
+  {% assign controlled_preview_live_count = 0 %}
+  {% for controlled_preview_handle in controlled_preview_handles %}
+    {% assign controlled_preview_product = all_products[controlled_preview_handle] %}
+    {% if controlled_preview_product != blank %}
+      {% assign controlled_preview_live_count = controlled_preview_live_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
   <section class="collection-shell collection-shell--controlled-preview-fallback">
     <div class="section-inner">
       <div class="collection-hero">
@@ -16,67 +25,106 @@
         </div>
         <h1 class="collection-title">Controlled pilot</h1>
         <p class="collection-intro">
-          Invite-only controlled pilot visibility only. Exact approved CJ preview items may render here for review while cart, checkout, and customer access remain disabled.
+          {% if pilot_trust %}
+            Invite-only restricted preview for the exact three approved CJ pilot items. This is not a public launch, not a full catalogue collection, and not available for purchase.
+          {% else %}
+            Invite-only controlled pilot visibility only. Exact approved CJ preview items may render here for review while cart, checkout, and customer access remain disabled.
+          {% endif %}
         </p>
       </div>
 
+      <div class="controlled-preview-notice" role="note" aria-label="Controlled pilot route notice">
+        <p class="controlled-preview-notice__title">Why this may look like a missing page</p>
+        <p class="controlled-preview-notice__copy">
+          Shopify still serves <strong>/collections/controlled-pilot</strong> through the theme <strong>404</strong> template on this preview — not as a native live collection grid yet. This fallback surface is intentional for restricted preview review only. A true native collection route would need a separately approved Shopify Admin collection publication slice; this theme slice does not create or change Admin collections.
+        </p>
+        {% if controlled_preview_live_count > 0 %}
+          <p class="controlled-preview-notice__copy">
+            {% if controlled_preview_live_count == 1 %}
+              One approved pilot product is visible on the storefront and renders with live preview-safe product cards below.
+            {% else %}
+              {{ controlled_preview_live_count }} approved pilot products are visible on the storefront and render with live preview-safe product cards below.
+            {% endif %}
+            {% if controlled_preview_live_count < controlled_preview_handles.size %}
+              Remaining cards use honest placeholder treatment until those rows are visible in preview.
+            {% endif %}
+          </p>
+        {% else %}
+          <p class="controlled-preview-notice__copy">
+            Cards below use approved pilot titles and <strong>View product</strong> links to the three CJ PDPs. Pricing is not final and purchase actions stay disabled.
+          </p>
+        {% endif %}
+      </div>
+
       <div class="collection-body">
-        {% render 'section-heading', title: 'Controlled pilot items' %}
-        <div class="products-grid">
+        {% render 'section-heading', title: 'Controlled pilot items (preview only)' %}
+        <div class="products-grid controlled-preview-grid">
           {% for controlled_preview_handle in controlled_preview_handles %}
-            {% assign controlled_preview_title = blank %}
-            {% case controlled_preview_handle %}
-              {% when 'beverage-bottle-oil-bottle-handle-holder' %}
-                {% assign controlled_preview_title = 'Beverage & Oil Bottle Holder' %}
-              {% when 'usb-bag-sealer' %}
-                {% assign controlled_preview_title = 'USB Bag Sealer' %}
-              {% when 'foldable-magnetic-phone-holder-desktop-tablet-stand' %}
-                {% assign controlled_preview_title = 'Foldable Magnetic Phone Holder & Desktop Tablet Stand' %}
-            {% endcase %}
-            {% assign controlled_preview_url = '/products/' | append: controlled_preview_handle %}
-            <div class="product-card">
-              <div class="prod-img">
-                <a href="{{ controlled_preview_url }}" aria-label="View {{ controlled_preview_title }}">
-                  {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
-                </a>
-                {% render 'product-badge', label: 'Preview only', tone: 'preview' %}
-                <button
-                  class="p-wish"
-                  type="button"
-                  disabled
-                  aria-disabled="true"
-                  aria-label="Favourites paused. Save feature coming later during private preview."
-                >
-                  <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="prod-info">
-                <div class="p-type">Imported supplier route under review</div>
-                <div class="p-name">
-                  <a href="{{ controlled_preview_url }}">
-                    {{ controlled_preview_title }}
-                    <span class="visually-hidden">{{ controlled_preview_handle }}</span>
+            {% assign controlled_preview_product = all_products[controlled_preview_handle] %}
+            {% if controlled_preview_product != blank %}
+              {% render 'live-product-card', product: controlled_preview_product %}
+            {% else %}
+              {% assign controlled_preview_title = blank %}
+              {% case controlled_preview_handle %}
+                {% when 'beverage-bottle-oil-bottle-handle-holder' %}
+                  {% assign controlled_preview_title = 'Beverage & Oil Bottle Holder' %}
+                {% when 'usb-bag-sealer' %}
+                  {% assign controlled_preview_title = 'USB Bag Sealer' %}
+                {% when 'foldable-magnetic-phone-holder-desktop-tablet-stand' %}
+                  {% assign controlled_preview_title = 'Foldable Magnetic Phone Holder & Desktop Tablet Stand' %}
+              {% endcase %}
+              {% assign controlled_preview_url = '/products/' | append: controlled_preview_handle %}
+              <div class="product-card product-card--controlled-fallback">
+                <div class="prod-img">
+                  <a href="{{ controlled_preview_url }}" aria-label="View {{ controlled_preview_title }}">
+                    {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
                   </a>
+                  {% if pilot_trust %}
+                    {% render 'product-badge', label: 'Pilot item', tone: 'preview' %}
+                  {% else %}
+                    {% render 'product-badge', label: 'Preview only', tone: 'preview' %}
+                  {% endif %}
+                  <button
+                    class="p-wish"
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    aria-label="Favourites paused. Save feature coming later during private preview."
+                  >
+                    <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                  </button>
                 </div>
-                {% render 'price-stack',
-                  price_now: 'Price to be confirmed',
-                  price_is_placeholder: true,
-                  supporting_note: 'Delivery timing still being validated'
-                %}
-                <button
-                  class="add-btn"
-                  type="button"
-                  disabled
-                  aria-disabled="true"
-                  aria-label="Preview only. Add to Cart is not available for this item yet."
-                >
-                  Preview only
-                </button>
+                <div class="prod-info">
+                  <div class="p-type">Imported supplier route under review</div>
+                  <div class="p-name">
+                    <a href="{{ controlled_preview_url }}">{{ controlled_preview_title }}</a>
+                  </div>
+                  {% render 'price-stack',
+                    price_now: 'Price to be confirmed',
+                    price_is_placeholder: true,
+                    supporting_note: 'Pilot price — not final'
+                  %}
+                  <a class="add-btn add-btn--browse" href="{{ controlled_preview_url }}">View product</a>
+                </div>
               </div>
-            </div>
+            {% endif %}
           {% endfor %}
+        </div>
+      </div>
+
+      <div class="controlled-preview-recovery">
+        <div class="controlled-preview-recovery__title">Continue preview review</div>
+        <p class="controlled-preview-recovery__copy">
+          Use approved preview surfaces only. This route does not imply the full catalogue is available, that checkout is enabled, or that final pricing and delivery are confirmed.
+        </p>
+        <div class="controlled-preview-recovery__links">
+          <a class="controlled-preview-recovery__link" href="{{ routes.root_url }}">Homepage preview</a>
+          <a class="controlled-preview-recovery__link" href="{% render 'launch-collection-url', handle: 'home-living' %}">Home &amp; Living</a>
+          <a class="controlled-preview-recovery__link" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}">Kitchen &amp; Storage</a>
+          <a class="controlled-preview-recovery__link" href="{% render 'launch-collection-url', handle: 'office-desk' %}">Office &amp; Desk</a>
+          <a class="controlled-preview-recovery__link" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">Tech Accessories</a>
         </div>
       </div>
     </div>
