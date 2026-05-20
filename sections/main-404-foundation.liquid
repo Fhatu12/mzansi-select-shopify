@@ -1,7 +1,15 @@
 {% assign controlled_preview_route = false %}
 {% assign controlled_preview_handles = 'beverage-bottle-oil-bottle-handle-holder,usb-bag-sealer,foldable-magnetic-phone-holder-desktop-tablet-stand' | split: ',' %}
-{% if request.path == '/collections/controlled-pilot' or canonical_url contains '/collections/controlled-pilot' %}
+{% assign controlled_preview_route_path = '/collections/controlled-pilot' %}
+{% assign controlled_preview_pageurl = blank %}
+{% if request.path == controlled_preview_route_path or canonical_url contains controlled_preview_route_path %}
   {% assign controlled_preview_route = true %}
+{% elsif request.page_type == '404' and content_for_header contains '"pageurl":"' %}
+  {% # theme-check-disable-next-line ContentForHeaderModification %}
+  {% assign controlled_preview_pageurl = content_for_header | split: '"pageurl":"' | last | split: '"' | first | replace: '\\/', '/' | replace: '\\u0026', '&' %}
+  {% if controlled_preview_pageurl contains controlled_preview_route_path %}
+    {% assign controlled_preview_route = true %}
+  {% endif %}
 {% endif %}
 
 {% if controlled_preview_route %}

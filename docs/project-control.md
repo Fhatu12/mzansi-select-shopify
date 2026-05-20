@@ -3617,6 +3617,18 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Safety confirmations:** **no** publish; **no** live-theme overwrite; **no** full-theme push; **no** Shopify Admin product mutation; **no** product visibility/publication change; **no** checkout/payment/customer-order enablement; **no** product import/sync; **no** app install; **no** media enablement.
 - **Next owner:** **QA / Test Engineer** — rendered validation of **Slice 21CC** controlled-pilot route on unpublished preview theme **`151207542967`**.
 
+## Slice 21CF controlled-pilot 404 route detection fix (theme PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**bounded theme-only detection fix**).
+- **Trigger:** **Slice 21CC** rendered QA validation **FAIL** on preview theme **`151207542967`**; evidence: **`artifacts/qa/slice-21cc-controlled-pilot-rendered-validation/2026-05-20-19-5/`**.
+- **Root cause:** the **21CC** guard trusted **`request.path`** and **`canonical_url`** to identify **`/collections/controlled-pilot`** inside the **404** template. On Shopify **404** routes, **`request.path`** can be absent and the rendered canonical signal did not retain the missing collection path in preview, so the controlled-pilot branch never activated and the generic 404 shell rendered instead.
+- **Detection fix:** broadened the route signature in **`sections/main-404-foundation.liquid`**, **`layout/theme.liquid`**, and **`snippets/preview-route-body-class.liquid`**. The guard still prefers direct **`request.path`** / **`canonical_url`** matches, then adds a narrow **404-only** fallback that reads the original request **`pageurl`** signature from Shopify’s header payload and matches only **`/collections/controlled-pilot`**.
+- **Fallback content preserved:** route notice, restricted preview wording, non-purchasable wording, CJ live/placeholder card handling, and recovery links remain unchanged.
+- **Generic 404 preserved:** non-controlled missing routes still render the normal **`templates/404.json`** → **`main-404-foundation`** experience.
+- **Safety preserved:** **no** Add to Cart, **no** Buy Now, **no** checkout/payment/customer/cart-route enablement, **no** Shopify Admin mutation, **no** publish, **no** preview sync, **no** product visibility/publication change, **no** import/sync, **no** app install, **no** media enablement.
+- **LLD impact:** none material; fallback contract unchanged, so **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`** stays unchanged in this slice.
+- **Next owner:** **DevOps / Platform Engineer** — selected-file unpublished preview sync, then **QA / Test Engineer** rerender validation on theme **`151207542967`**.
+
 ## Slice 21CB rendered preview-safe search validation (QA PASS)
 
 - **Verdict:** **PASS** — **QA / Test Engineer** (**authenticated rendered validation** after **Slice 21CD**).
