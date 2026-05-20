@@ -946,8 +946,8 @@ Slice 5 note:
 
 Slice 6 note:
 
-- `templates/search.json` is now implemented to represent a static-safe search/results foundation only.
-- No live search-object JavaScript, query loops, predictive search, or product/cart wiring was added for search content sections.
+- `templates/search.json` hosts the search/results foundation via `sections/main-search-foundation.liquid`.
+- **Slice 21CB** (2026-05-20): search now uses native Liquid `search.terms`, `search.performed`, `search.results`, and `paginate search.results` with `live-product-card` rendering — preview-safe, non-purchasable, **View product** browse CTAs only. Static demo product cards were removed. No predictive search JavaScript, Storefront API, cart forms, or checkout wiring was added.
 
 Slice 7 note:
 

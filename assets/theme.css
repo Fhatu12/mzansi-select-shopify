@@ -2111,6 +2111,45 @@ button.drawer-btn-outline[disabled] {
   line-height: 1.7;
 }
 
+.search-body {
+  margin-bottom: 28px;
+}
+
+.search-empty-wrap {
+  margin-top: 8px;
+}
+
+.search-results-grid {
+  margin-bottom: 8px;
+}
+
+.search-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.search-pagination-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.search-pagination-link:hover {
+  text-decoration: underline;
+}
+
+.search-pagination-status {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
 .search-browse-prompt {
   margin-top: 30px;
   border: 1px solid var(--border);

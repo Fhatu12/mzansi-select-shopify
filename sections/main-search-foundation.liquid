@@ -1,4 +1,8 @@
 {% assign pilot_trust = settings.controlled_pilot_trust_mode %}
+{% assign search_query = search.terms | strip %}
+{% assign search_performed = search.performed %}
+{% assign search_results_count = search.results_count %}
+
 <section class="search-main-shell">
   <div class="section-inner">
     <div class="search-hero">
@@ -9,87 +13,121 @@
         {{ section.settings.search_label }}
       </div>
       <h1 class="search-title">
-        {{ section.settings.search_title }}
-        {% if section.settings.search_accent != blank %}
-          <span class="gold">{{ section.settings.search_accent }}</span>
+        {% if search_query != blank %}
+          {{ section.settings.search_title }}
+          <span class="gold">“{{ search_query | escape }}”</span>
+        {% else %}
+          {{ section.settings.search_title }}
+          {% if section.settings.search_accent != blank %}
+            <span class="gold">{{ section.settings.search_accent }}</span>
+          {% endif %}
         {% endif %}
       </h1>
-      <p class="search-intro">{{ section.settings.search_intro }}</p>
+      <p class="search-intro">
+        {% if pilot_trust %}
+          Invite-only preview search — not a public launch. Results show only items visible in this password-gated preview. Final pricing, delivery, and purchase remain disabled.
+        {% else %}
+          {{ section.settings.search_intro }}
+        {% endif %}
+      </p>
 
-      <div class="search-utility">
+      <form
+        class="search-utility"
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        aria-label="Preview product search"
+      >
         <div class="search-field-shell">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" value="{{ section.settings.query_value }}" aria-label="Search preview query" readonly>
+          <label class="visually-hidden" for="SearchPageQuery">Search preview catalogue</label>
+          <input
+            id="SearchPageQuery"
+            type="search"
+            name="q"
+            value="{{ search_query | escape }}"
+            placeholder="{{ settings.search_placeholder | default: 'Search preview products' | escape }}"
+            autocomplete="off"
+          >
         </div>
-        <button class="btn-dark search-button-shell" type="button" disabled aria-disabled="true">{% if pilot_trust %}Pilot view only{% else %}Preview only{% endif %}</button>
-      </div>
+        <input type="hidden" name="type" value="product">
+        <button class="btn-dark search-button-shell" type="submit">
+          {% if pilot_trust %}Search preview{% else %}Search{% endif %}
+        </button>
+      </form>
     </div>
 
     <div class="search-summary-card">
       <div class="search-summary-label">{{ section.settings.query_label }}</div>
-      <p class="search-summary-copy">{{ section.settings.summary_copy }}</p>
+      <p class="search-summary-copy">
+        {% if search_performed and search_query != blank %}
+          {% if search_results_count > 0 %}
+            {% if search_results_count == 1 %}
+              One preview match for “{{ search_query | escape }}”. This is not the full catalogue. Purchase actions stay unavailable; pricing and delivery are not final.
+            {% else %}
+              {{ search_results_count }} preview matches for “{{ search_query | escape }}”. This is not the full catalogue. Purchase actions stay unavailable; pricing and delivery are not final.
+            {% endif %}
+          {% else %}
+            No preview products matched “{{ search_query | escape }}”. Try another preview search term or browse the approved departments below.
+          {% endif %}
+        {% elsif search_query != blank %}
+          Press Search preview to run this query across visible preview products only.
+        {% else %}
+          Enter a preview search term above. Results use live Shopify product data where published to this preview — not static demo cards.
+        {% endif %}
+      </p>
     </div>
 
-    {% if section.settings.view_state == 'empty' %}
-      {% render 'empty-state',
-        badge: section.settings.empty_badge,
-        title: section.settings.empty_title,
-        description: section.settings.empty_description,
-        action_label: section.settings.empty_action_label,
-        action_url: routes.root_url
-      %}
-    {% else %}
-      {% render 'section-heading', title: section.settings.results_heading %}
-      <div class="products-grid">
-        {% assign search_preview_cards = 'headphones-premium.jpg|Headphones|Tech Accessories|Premium Over-Ear Headphones|★★★★★|(128),smart-watch-black-edition.jpg|Watch|Tech Accessories|Smart Watch – Black Edition|★★★★★|(211),bamboo-storage-containers.jpg|Storage|Kitchen & Storage|Bamboo Lid Storage Container Set|★★★★☆|(64),insulated-vacuum-flask.jpg|Bottle|Kitchen & Storage|Insulated Vacuum Flask 500ml|★★★★☆|(93)' | split: ',' %}
-        {% for card in search_preview_cards %}
-          {% assign card_parts = card | split: '|' %}
-          <div class="product-card">
-            <div class="prod-img">
-              <img
-                src="{{ card_parts[0] | asset_url }}"
-                alt="{{ card_parts[1] }}"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
-              <span class="p-badge preview">{% if pilot_trust %}Pilot preview{% else %}Preview item{% endif %}</span>
-              <button
-                class="p-wish"
-                type="button"
-                disabled
-                aria-disabled="true"
-                aria-label="Favourites paused. Save feature coming later during private preview."
-              >
-                <svg width="14" height="14" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </button>
+    <div class="search-body">
+      {% if search_performed and search_query != blank %}
+        {% if search_results_count > 0 %}
+          {% paginate search.results by 24 %}
+            {% render 'section-heading', title: section.settings.results_heading %}
+            <div class="products-grid search-results-grid">
+              {% for item in search.results %}
+                {% if item.object_type == 'product' %}
+                  {% render 'live-product-card', product: item %}
+                {% endif %}
+              {% endfor %}
             </div>
-            <div class="prod-info">
-              <div class="p-type">{{ card_parts[2] }}</div>
-              <div class="p-name">{{ card_parts[3] }}</div>
-              <div class="p-stars">{{ card_parts[4] }} <span class="p-rev">{{ card_parts[5] }}</span></div>
-              <div class="p-price is-placeholder">
-                <span class="p-now is-placeholder">Price to be confirmed</span>
-              </div>
-              <button
-                class="add-btn"
-                type="button"
-                disabled
-                aria-disabled="true"
-                aria-label="Preview only. Add to Cart is not available for this item yet."
-              >
-                Preview only
-              </button>
-            </div>
+            {% if paginate.pages > 1 %}
+              <nav class="search-pagination" aria-label="Search results pages">
+                {% if paginate.previous %}
+                  <a class="search-pagination-link" href="{{ paginate.previous.url }}">Previous</a>
+                {% endif %}
+                <span class="search-pagination-status">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+                {% if paginate.next %}
+                  <a class="search-pagination-link" href="{{ paginate.next.url }}">Next</a>
+                {% endif %}
+              </nav>
+            {% endif %}
+          {% endpaginate %}
+        {% else %}
+          <div class="search-empty-wrap">
+            {% render 'empty-state',
+              badge: section.settings.empty_badge,
+              title: 'No preview matches',
+              description: 'Try another preview search term. This search only covers products visible in the restricted preview — not the full catalogue, final pricing, or orderability.',
+              action_label: section.settings.empty_action_label,
+              action_url: routes.root_url
+            %}
           </div>
-        {% endfor %}
-      </div>
-    {% endif %}
+        {% endif %}
+      {% else %}
+        <div class="search-empty-wrap search-empty-wrap--prompt">
+          {% render 'empty-state',
+            badge: section.settings.empty_badge,
+            title: 'Start a preview search',
+            description: 'Use the field above to search preview catalogue products. Add to Cart, checkout, and customer account flows remain disabled.',
+            action_label: blank,
+            action_url: routes.root_url
+          %}
+        </div>
+      {% endif %}
+    </div>
 
     <div class="search-browse-prompt">
       <div class="search-browse-title">{{ section.settings.browse_title }}</div>
@@ -130,7 +168,7 @@
       "type": "textarea",
       "id": "search_intro",
       "label": "Search intro",
-      "default": "Invite-only controlled pilot search shell — not a public launch. Live ranking and final pricing remain deferred; purchase actions stay disabled."
+      "default": "Invite-only controlled pilot search — not a public launch. Live results use Shopify product data visible in preview. Final ranking, pricing, and purchase actions remain disabled."
     },
     {
       "type": "text",
@@ -140,55 +178,15 @@
     },
     {
       "type": "text",
-      "id": "query_value",
-      "label": "Query value",
-      "default": "wireless headphones"
-    },
-    {
-      "type": "textarea",
-      "id": "summary_copy",
-      "label": "Summary copy",
-      "default": "Placeholder results only — not a full catalogue view. Purchase actions are unavailable; delivery and fulfilment details are not final."
-    },
-    {
-      "type": "text",
       "id": "results_heading",
       "label": "Results heading",
       "default": "Preview matches"
-    },
-    {
-      "type": "select",
-      "id": "view_state",
-      "label": "View state",
-      "default": "filled",
-      "options": [
-        {
-          "value": "filled",
-          "label": "Filled"
-        },
-        {
-          "value": "empty",
-          "label": "Empty"
-        }
-      ]
     },
     {
       "type": "text",
       "id": "empty_badge",
       "label": "Empty badge",
       "default": "Search Preview"
-    },
-    {
-      "type": "text",
-      "id": "empty_title",
-      "label": "Empty title",
-      "default": "No products found yet"
-    },
-    {
-      "type": "textarea",
-      "id": "empty_description",
-      "label": "Empty description",
-      "default": "The no-results experience is now in place, but live search terms, product results, and browse recovery behaviour remain intentionally deferred."
     },
     {
       "type": "text",
