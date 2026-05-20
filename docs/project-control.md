@@ -3642,6 +3642,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Repo hygiene:** the untracked QA harness remained **uncommitted** in this DevOps slice.
 - **Next owner:** **QA / Test Engineer** — rendered validation of **Slice 21CF** on unpublished preview theme **`151207542967`**.
 
+## Slice 21CH controlled-pilot 404 fallback reveal fix (theme PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** (**bounded theme-only fallback reveal fix**).
+- **Trigger:** **Slice 21CF** and **Slice 21CG** still failed rendered QA on preview theme **`151207542967`**: Shopify continued to render the generic **`Page Missing`** 404 experience on **`/collections/controlled-pilot`** and the controlled-pilot fallback shell never appeared.
+- **Root cause:** the route-specific fallback could not be made reliable from server-rendered Liquid signals alone on this Shopify **404** route. Even after preview sync, the rendered request still reached the section without a dependable Liquid route marker for **`/collections/controlled-pilot`**, so the controlled shell stayed absent.
+- **Implementation change:** **`sections/main-404-foundation.liquid`** now renders both the generic **404** shell and the controlled-pilot fallback shell safely in the same section. The generic shell remains visible by default; the controlled shell is hidden by default with **`hidden`** / **`aria-hidden`**.
+- **Deterministic reveal rule:** a small inline browser-side script reads **`window.location.pathname`**, normalises trailing slashes, and only when the path equals **`/collections/controlled-pilot`** it hides the generic shell, reveals the controlled fallback shell, and adds a body marker class. It performs **no redirect** and does nothing on unrelated missing routes.
+- **Fallback content preserved:** route notice, restricted-preview wording, non-purchasable wording, native collection/Admin deferral wording, three approved CJ live/placeholder cards, and safe recovery links remain intact.
+- **Generic 404 preserved:** unrelated missing routes continue to show the normal generic **404** experience by default; this slice does **not** pretend the route is a native live collection grid.
+- **Safety preserved:** **no** Add to Cart, **no** Buy Now, **no** checkout/payment/customer/cart-route enablement, **no** Shopify Admin mutation, **no** publish, **no** preview sync, **no** product visibility/publication change, **no** import/sync, **no** app install, **no** media enablement.
+- **LLD impact:** none material; the reviewer-facing fallback contract is unchanged, so **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`** remains unchanged in this slice.
+- **Next owner:** **DevOps / Platform Engineer** — selected-file unpublished preview sync, then **QA / Test Engineer** rerender validation on theme **`151207542967`**.
+
 ## Slice 21CB rendered preview-safe search validation (QA PASS)
 
 - **Verdict:** **PASS** — **QA / Test Engineer** (**authenticated rendered validation** after **Slice 21CD**).
