@@ -3629,6 +3629,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **LLD impact:** none material; fallback contract unchanged, so **`docs/lld/mzansi-select-shopify-mvp-theme-v1.md`** stays unchanged in this slice.
 - **Next owner:** **DevOps / Platform Engineer** — selected-file unpublished preview sync, then **QA / Test Engineer** rerender validation on theme **`151207542967`**.
 
+## Slice 21CG unpublished preview-theme sync for 21CF controlled-pilot detection fix (DevOps PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — **DevOps / Platform Engineer** (**bounded selected-file preview sync**).
+- **Reason:** **Slice 21CF** controlled-pilot 404 detection fix (**`332e6123ecb2b55a561706bd5d1d7b4ac576e657`**) required unpublished preview reflection before rendered QA rerun.
+- **Pre-sync checks:** **`git status --short --branch`** showed only the expected untracked QA harness **`tools/qa/run-slice-21cc-controlled-pilot-rendered-validation.mjs`**; **`git log -5 --oneline`** confirmed **`332e612`** on **`HEAD`**; merge-base check returned **`commit-present=yes`**; theme list confirmed **`151207542967 / Mzansi Select MVP Preview / unpublished`** and **`148914077879 / Horizon / live`** on **`dropshippoc.myshopify.com`**.
+- **Files pushed only:** **`sections/main-404-foundation.liquid`**, **`layout/theme.liquid`**, **`snippets/preview-route-body-class.liquid`**.
+- **Not pushed:** **`docs/project-control.md`**, **`templates/404.json`**, **`templates/collection.json`**, unrelated sections/snippets/assets, **`docs/`**, **`artifacts/`**, **`zadropshipping/`**, and the untracked QA harness.
+- **Push method:** **`shopify theme push --store dropshippoc.myshopify.com --theme 151207542967`** with three **`--only`** flags, **`--nodelete`**, **`--strict`**, **`--json`**, **`--no-color`**; Theme Check returned warnings only (**OrphanedSnippet** / **UnusedAssign**); **zero** errors; upload completed for the target preview theme only.
+- **Post-sync confirmation:** CLI upload JSON returned theme **`id` 151207542967**, **`name` Mzansi Select MVP Preview**, **`role` unpublished**; post-sync theme list remained unchanged with **`Horizon`** still **live** and **`Mzansi Select MVP Preview`** still **unpublished**.
+- **Safety confirmations:** **no** publish; **no** live-theme overwrite; **no** full-theme push; **no** Shopify Admin product mutation; **no** product visibility/publication change; **no** checkout/payment/customer-order enablement; **no** product import/sync; **no** app install; **no** media enablement.
+- **Repo hygiene:** the untracked QA harness remained **uncommitted** in this DevOps slice.
+- **Next owner:** **QA / Test Engineer** — rendered validation of **Slice 21CF** on unpublished preview theme **`151207542967`**.
+
 ## Slice 21CB rendered preview-safe search validation (QA PASS)
 
 - **Verdict:** **PASS** — **QA / Test Engineer** (**authenticated rendered validation** after **Slice 21CD**).
