@@ -1,10 +1,10 @@
 # Mzansi Select restricted preview application walkthrough
 
 **Document Type:** Application walkthrough guide / click-through navigation guide  
-**Prepared:** 2026-05-19  
+**Prepared:** 2026-05-20  
 **Owner:** Product Owner  
-**Status:** Internal restricted-preview walkthrough only. This is not a public customer guide and not a launch guide. It is intended to help internal reviewers move through the current preview safely, observe the right surfaces, and avoid treating the storefront as purchasable or launch-ready. Some browse-link behaviour accepted locally in **Slice 21BQ** still requires preview-side rendered confirmation and is marked here as the **current preview expectation** or **to be confirmed** where relevant.  
-**Version:** 1.0
+**Status:** Internal restricted-preview walkthrough only. This is not a public customer guide and not a launch guide. It reflects the accepted preview state after **Slice 21CB** preview-safe search (**PASS**) and **Slice 21CH** controlled-pilot client-side fallback (**PASS WITH NOTES**) on unpublished preview theme **`151207542967`**. Homepage and department route honesty remain accepted from **Slice 21BQ** (**PASS WITH NOTES**).  
+**Version:** 2.0 (**Slice 21CK** refresh)
 
 ## 1. Document status
 
@@ -12,6 +12,7 @@
 - This is **not** a public customer guide.
 - This is **not** a launch guide.
 - This walkthrough is for internal reviewers and stakeholders only.
+- The preview remains **password-gated**, **non-purchasable**, and **not launch-ready**.
 
 ## 2. Before you start
 
@@ -20,102 +21,138 @@
 - Do not enter real customer, order, or payment data.
 - Do not store passwords, tokens, cookies, secrets, supplier credentials, or raw auth/session files.
 - Treat the preview as a browse-and-feedback surface only.
+- Use preview theme **`151207542967`** (Mzansi Select MVP Preview) when testing routes.
 
 ## 3. Walkthrough path
 
 ### Step 1: Open the restricted preview
 
-- Click or open only the approved internal restricted-preview route.
+- Open the approved internal restricted-preview route with theme context as directed by your Product Owner.
 - Expected result: the preview opens only after the approved internal access step.
 - Observe: the preview should remain clearly internal and non-public.
 - Problem if: the preview asks for real customer, order, or payment information; exposes sensitive data; or appears publicly open without the approved restricted-access path.
-- [Screenshot placeholder: restricted preview entry]
+- Screenshot to be refreshed: restricted preview entry screen (not captured in current QA evidence set).
 
 ### Step 2: Review the desktop homepage
 
-- Open the homepage in a desktop viewport.
-- Expected result: you should see the desktop header, search bar, department navigation, hero area, category strip, product rails, promo block, trust row, and footer.
+- Open the homepage in a desktop viewport (**1366×768** recommended).
+- Expected result: desktop header, search bar, department navigation, hero area, category strip, product rails, promo block, trust row, and footer.
 - Observe: the page should read as a restricted preview, not a public launch or live checkout surface.
 - Problem if: the homepage looks publicly launched, overly final, or implies that products are immediately purchasable.
 - [Screenshot: desktop homepage]
-- Safe evidence reference: `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-desktop-1366x768.png`
 
 ### Step 3: Review the mobile homepage
 
-- Open the homepage in a mobile viewport.
-- Expected result: you should see the mobile header, below-header search, stacked content rhythm, mobile product rails, trust blocks, accordion-style footer areas, and bottom bar.
-- Observe: the layout should remain readable on mobile and still present the preview as browse-first and non-purchasable.
-- Problem if: the mobile page becomes hard to read, collapses into misleading commerce controls, or hides deferred states in a confusing way.
+- Open the homepage in a mobile viewport (**390×844** recommended).
+- Expected result: mobile header, below-header search, stacked content rhythm, mobile product rails, trust blocks, accordion-style footer areas, and bottom bar.
+- Observe: layout remains readable and browse-first; cart, account, and wishlist remain paused or deferred.
+- Problem if: the mobile page collapses into misleading commerce controls or hides deferred states.
 - [Screenshot: mobile homepage]
-- Safe evidence reference: `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-mobile-390x844.png`
 
-### Step 4: Use the header search carefully
+### Step 4: Preview-safe search (accepted **Slice 21CB**)
 
-- Enter a simple preview-safe product term in the search input and submit the search.
-- Expected result: search should submit as a browse/search action across preview items.
-- Observe: the desktop category select should remain paused or disabled rather than pretending to be a live department filter.
-- Problem if: the search category select appears active when it is not, search suggests checkout or purchasing, or the results posture becomes misleading.
-- To be confirmed: detailed rendered validation of every latest route-honesty refinement outside the already accepted preview-safe search posture.
+#### 4a. Search with a query
 
-### Step 5: Use the approved department links
+- Navigate to search with a preview-safe term, for example **`organiser`** (`/search?q=organiser&type=product&preview_theme_id=151207542967`).
+- Expected result: the page shows the query in the title/summary area and renders **live preview-safe product cards** from **`search.results`**.
+- Observe: results use **View product** only; **no** static demo headphones, watches, or unrelated placeholder products.
+- Problem if: the query is ignored, static unrelated demo products appear, or purchase controls look active.
+- [Screenshot: search query results desktop]
 
-- Open the approved department links one at a time.
-- Approved departments:
-- Home & Living
-- Kitchen & Storage
-- Office & Desk
-- Tech Accessories
-- Expected result: these should behave as the approved browse departments for the current preview.
+#### 4b. Bare search (no query)
+
+- Open **`/search?preview_theme_id=151207542967`** without a query.
+- Expected result: an honest **Start a preview search** prompt; **no** fake product grid.
+- Problem if: unrelated demo products appear without a query.
+- [Screenshot: search no-query desktop]
+
+#### 4c. No-match search
+
+- Search for a term unlikely to match, for example **`zzzz-no-match-preview`**.
+- Expected result: honest **No preview matches** / try-another-search copy; **zero** product cards.
+- Problem if: fake results or static demo cards appear on a no-match query.
+- [Screenshot: search no-match desktop]
+
+#### Search safety reminders
+
+- Search uses a GET form only — **no** cart or checkout enablement.
+- Desktop category filter remains paused where applicable.
+- Mobile search behaviour should mirror the same honest states (use the desktop evidence set as the primary reference unless you are doing a live mobile pass).
+
+### Step 5: Controlled-pilot fallback route (accepted **Slice 21CH**)
+
+- Open **`/collections/controlled-pilot?preview_theme_id=151207542967`**.
+- Expected result after the page loads:
+  - The **controlled-pilot fallback** surface appears (client-side reveal).
+  - Generic **Page Missing** is **not** the dominant experience.
+  - A route notice explains this is served through **404** handling, not a native live collection grid.
+  - Copy states **restricted preview**, **not available for purchase**, and that **Shopify Admin** collection publication work is **deferred**.
+  - **Three** CJ controlled-pilot items render as live preview-safe cards or honest placeholders with **View product** only.
+  - Recovery links point to homepage preview and the approved department quartet only.
+- Observe: HTTP **404** may still apply at the network level — that is expected. The theme fallback is intentional for internal review.
+- Problem if: only generic **404** copy appears with no controlled-pilot section; controlled-pilot copy appears on unrelated missing routes; **Add to Cart** / **Buy Now** / checkout / customer routes appear.
+- [Screenshot: controlled-pilot fallback desktop]
+- [Screenshot: controlled-pilot fallback mobile]
+
+#### Controlled-pilot regression check (optional)
+
+- Open **`/collections/not-a-real-controlled-pilot?preview_theme_id=151207542967`**.
+- Expected result: normal generic **404** only; controlled-pilot fallback shell **must not** appear.
+
+### Step 6: Use the approved department links
+
+- Open the approved department links one at a time:
+  - Home & Living
+  - Kitchen & Storage
+  - Office & Desk
+  - Tech Accessories
+- Expected result: approved browse departments for the current preview (**Slice 21BQ** accepted).
 - Observe: each route should feel like a browse destination, not a purchase funnel.
-- Problem if: an approved department leads to a broken destination, a misleading placeholder, or a customer-ready purchase state.
+- Problem if: a department leads to a broken destination, misleading placeholder, or customer-ready purchase state.
 - [Screenshot: desktop department menu]
-- Safe evidence reference: `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-desktop-department-menu.png`
 
-### Step 6: Open the mobile drawer
+### Step 7: Open the mobile drawer
 
 - Tap the mobile menu button and open the drawer.
-- Expected result: the drawer should expose departments, browse links, and paused help/account states in a readable mobile layout.
-- Observe: the approved department quartet should be visible; `Brands` and helper routes should remain deferred where no approved destination exists.
-- Problem if: drawer links look active but are not, deferred states are unclear, or paused account/cart controls appear live.
+- Expected result: departments, browse links, and paused help/account states in a readable mobile layout.
+- Observe: approved department quartet visible; **Brands** and helper routes remain deferred where no approved destination exists.
+- Problem if: drawer links look active but are not, or paused cart/account controls appear live.
 - [Screenshot: mobile drawer open]
-- Safe evidence reference: `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-mobile-drawer-open-390x844.png`
 
-### Step 7: Review bottom-bar behaviour
+### Step 8: Review bottom-bar behaviour
 
 - On mobile, review the bottom bar without treating it as a commerce control row.
-- Expected result: Home should remain a normal navigation control and Search should remain a browse utility. Cart, Wishlist, and Account should remain paused or deferred.
-- Observe: the bottom bar should support navigation review without implying customer account or checkout readiness.
-- Problem if: Cart, Wishlist, or Account opens a live customer flow or suggests that checkout is available.
+- Expected result: Home and Search remain navigation/browse utilities; Cart, Wishlist, and Account remain paused or deferred.
+- Problem if: Cart, Wishlist, or Account opens a live customer flow or suggests checkout is available.
 
-### Step 8: Review product-card rails
+### Step 9: Review product-card rails
 
 - Scroll through the homepage product-card rails.
-- Expected result: the rails should work as browse and review surfaces.
-- Observe: some cards may open product pages where a live preview-safe product route exists; static cards should remain non-purchasable and clearly not act as Add to Cart controls.
-- Problem if: a card acts like a live purchase button, hides preview-only pricing uncertainty, or makes a static card look orderable.
+- Expected result: rails work as browse and review surfaces.
+- Observe: live cards may open preview-safe PDPs; static cards remain non-purchasable.
+- Problem if: a card acts like a live purchase button or hides preview-only pricing uncertainty.
 - [Screenshot: product-card rail]
-- Safe evidence reference: the latest safe homepage screenshots above show the current product-rail presentation on both desktop and mobile.
 
-### Step 9: Open available product pages where approved
+### Step 10: Open available product pages where approved
 
-- Open product pages only where a product card exposes a live preview-safe browse path or where the accepted restricted-preview review set already names an approved PDP route.
-- Expected result: the page should open as a review surface, not a purchase surface.
-- Observe: the page should keep preview-only, non-purchasable posture clear.
-- Problem if: `Add to Cart`, `Buy Now`, checkout, payment, or customer-account flow appears.
-- Important boundary: the accepted structured PDP review pack in **21BB / 21BC / 21BD** remains anchored to the three approved CJ pilot products. Any broader PDP click-through should still be treated cautiously and only where the preview currently exposes it safely.
+- Open product pages only where a card exposes a live preview-safe browse path or where the accepted review set names an approved PDP route.
+- Expected result: review surface, not a purchase surface.
+- Observe: preview-only, non-purchasable posture; **Price to be confirmed** where applicable; no supplier media on CJ pilot rows.
+- Problem if: **Add to Cart**, **Buy Now**, checkout, payment, or customer-account flow appears.
+- Important boundary: the structured PDP review pack in **21BB / 21BC / 21BD** remains anchored to the three approved CJ pilot products unless Product Owner expands scope.
 
-### Step 10: Review promo, trust, and footer areas
+### Step 11: Review promo, trust, and footer areas
 
-- Review the promo banner, trust/support messaging, footer link groups, social shells, account/help states, and newsletter area.
-- Expected result: these should behave as browse/support review surfaces and paused shells, not active launch services.
-- Observe: promo and trust wording should remain clear and not overclaim delivery, payment, support, or launch readiness.
-- Problem if: newsletter capture looks live, helper routes look approved when they are not, or footer/social/account areas imply customer-ready services.
+- Review promo banner, trust/support messaging, footer link groups, social shells, account/help states, and newsletter area.
+- Expected result: browse/support review surfaces and paused shells, not active launch services.
+- Observe: wording must not overclaim delivery, payment, support, or launch readiness.
+- Problem if: newsletter capture looks live, helper routes look approved when they are not, or footer/account areas imply customer-ready services.
 
-### Step 11: Complete the feedback template
+### Step 12: Complete the feedback template
 
 - Complete the accepted feedback template after the walkthrough.
 - Use: `docs/pilot/slice-21bc-restricted-preview-feedback-capture.md`
-- Expected result: reviewers capture feedback about navigation, clarity, trust, readability, wording, and misleading states.
+- Expected result: reviewers capture navigation, clarity, trust, readability, wording, and misleading states.
 - Problem if: feedback notes include sensitive information or drift into unsupported launch/commercial claims.
 
 ## 4. Navigation guidance
@@ -133,87 +170,59 @@
 - Bath & Bedroom
 - Cleaning & Laundry
 
-### Browse-link posture
+### Browse-link posture (**Slice 21BQ** accepted on preview theme)
 
-- `Home` should return to the homepage.
-- `Shop All` may remain intentionally broad as a general browse route.
-- `New in Preview`, `Selected Picks`, and `Preview Picks` are the **current preview expectation** for anchored browse behaviour and should be treated cautiously until the relevant rendered validation is confirmed in the latest preview state.
-- `Brands` should remain deferred where no approved destination exists.
+- `Home` returns to the homepage.
+- `Shop All` may remain intentionally broad.
+- `New in Preview`, `Selected Picks`, and `Preview Picks` use anchored homepage sections or approved specific destinations as implemented in **21BQ**.
+- `Brands` remains deferred where no approved destination exists.
 
 ## 5. What each click should do
 
-### Homepage and shell clicks
-
-- Logo:
-  Expected destination or state: homepage.
-  Reviewer should observe: stable return to the main browse surface.
-  Problem if: the logo leads somewhere unexpected or broken.
-
-- Desktop department button:
-  Expected destination or state: opens the department menu.
-  Reviewer should observe: approved quartet live, deferred departments still clearly paused.
-  Problem if: deferred departments behave like live routes.
-
-- Mobile menu button:
-  Expected destination or state: opens the drawer.
-  Reviewer should observe: departments and browse links remain readable and appropriately scoped.
-  Problem if: drawer content suggests live account, checkout, or support service paths.
-
 ### Search clicks
 
-- Search submit:
-  Expected destination or state: search browse surface.
-  Reviewer should observe: search behaves like a preview browse helper.
-  Problem if: the search posture suggests final search/filter capability that is not really present.
+- Search submit with query:
+  Expected: live preview-safe results for matching preview catalogue items.
+  Problem if: static unrelated demo products appear or query is ignored.
 
-- Desktop search category select:
-  Expected destination or state: paused or disabled.
-  Reviewer should observe: honest non-filter state.
-  Problem if: the select appears live and misleading.
+- Bare `/search`:
+  Expected: start-search prompt only.
+  Problem if: fake product grid without a query.
 
-### Product and section clicks
+### Controlled-pilot route
 
-- Product `View product` link where available:
-  Expected destination or state: product detail page browse surface.
-  Reviewer should observe: non-purchasable preview posture.
-  Problem if: purchase controls or customer-order flow appears.
+- `/collections/controlled-pilot`:
+  Expected: controlled-pilot fallback reveal with three CJ items and safe recovery links.
+  Problem if: generic **404** only, or native collection grid implying full catalogue/checkout readiness.
 
-- Static product-card action:
-  Expected destination or state: disabled or preview-only state.
-  Reviewer should observe: non-purchasable card treatment.
-  Problem if: a static card acts like Add to Cart.
+### Product clicks
 
-- Promo or section browse link:
-  Expected destination or state: approved browse surface or honest deferred state.
-  Reviewer should observe: the click result matches the visible wording.
-  Problem if: the link is dead, misleading, or over-specific without a real destination.
-
-### Footer and support clicks
-
-- Newsletter area:
-  Expected destination or state: disabled or paused.
-  Reviewer should observe: no email capture.
-  Problem if: a live sign-up flow appears.
-
-- Social, helper, account, and company items:
-  Expected destination or state: deferred or paused where no approved route exists.
-  Reviewer should observe: honest non-live state.
-  Problem if: these areas look customer-ready or route to misleading placeholders.
+- **View product** on live cards:
+  Expected: non-purchasable PDP browse surface.
+  Problem if: purchase or customer-order flow appears.
 
 ## 6. What must stay disabled or deferred
 
-- cart
 - checkout
 - payment
+- cart (live add / checkout path)
 - customer accounts
 - wishlist persistence
 - newsletter capture
+- native Shopify Admin **`controlled-pilot`** collection publication (deferred separate slice)
+- product import / sync
+- app installs
+- public launch
 - unavailable departments
 - helper, social, and account routes without approved destinations
 
-If any of these become active-looking in a way that suggests a real customer flow, treat that as a review issue.
+If any of these become active-looking as real customer flows, treat that as a review issue.
 
-## 7. Screenshot placeholders
+## 7. Screenshot references (source-backed)
+
+Current rendered QA evidence used for the refreshed PDF export (**Slice 21CK**):
+
+### Homepage and navigation (**21BJ** / **21BQ** class)
 
 - [Screenshot: desktop homepage]
 - [Screenshot: desktop department menu]
@@ -221,12 +230,34 @@ If any of these become active-looking in a way that suggests a real customer flo
 - [Screenshot: mobile drawer open]
 - [Screenshot: product-card rail]
 
-Current safe and source-backed rendered QA references:
+Evidence paths:
 
 - `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-desktop-1366x768.png`
 - `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-desktop-department-menu.png`
 - `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-mobile-390x844.png`
 - `artifacts/qa/slice-21bj-rerun-after-21bm-auth-rendered-validation/2026-05-18-20-19-59/screenshots/homepage-mobile-drawer-open-390x844.png`
+
+### Search (**21CB** rendered validation)
+
+- [Screenshot: search query results desktop]
+- [Screenshot: search no-query desktop]
+- [Screenshot: search no-match desktop]
+
+Evidence paths:
+
+- `artifacts/qa/slice-21cb-search-rendered-validation/2026-05-20-19-1/screenshots/organiser-desktop-2026-05-20-19-1.png`
+- `artifacts/qa/slice-21cb-search-rendered-validation/2026-05-20-19-1/screenshots/no-query-desktop-2026-05-20-19-1.png`
+- `artifacts/qa/slice-21cb-search-rendered-validation/2026-05-20-19-1/screenshots/no-match-desktop-2026-05-20-19-1.png`
+
+### Controlled-pilot fallback (**21CH** rendered validation)
+
+- [Screenshot: controlled-pilot fallback desktop]
+- [Screenshot: controlled-pilot fallback mobile]
+
+Evidence paths:
+
+- `artifacts/qa/slice-21ch-controlled-pilot-rendered-validation/2026-05-20-20-5/screenshots/controlled-pilot-desktop-2026-05-20-20-5.png`
+- `artifacts/qa/slice-21ch-controlled-pilot-rendered-validation/2026-05-20-20-5/screenshots/controlled-pilot-mobile-2026-05-20-20-5.png`
 
 These references are safe evidence only. They are not new source truth beyond the accepted preview state.
 
@@ -234,6 +265,8 @@ These references are safe evidence only. They are not new source truth beyond th
 
 - navigation is clear
 - preview-only status is clear
+- search honours queries and honest empty states
+- controlled-pilot fallback is understandable
 - products do not appear purchasable
 - wording is not misleading
 - mobile layout is readable
@@ -242,13 +275,14 @@ These references are safe evidence only. They are not new source truth beyond th
 
 ## 9. Stop conditions
 
-- product appears purchasable
-- checkout, payment, or customer flow appears
+Pause the walkthrough and escalate if any of these occur:
+
+- a product appears purchasable
+- checkout, payment, or customer flow appears active
+- route wording is misleading (for example generic **404** on controlled-pilot when fallback should appear, or controlled-pilot fallback on unrelated routes)
 - preview access asks for sensitive data
 - reviewer sees real customer, order, or payment data
 - confusing wording creates a trust risk
-
-Pause the walkthrough and escalate if any of these occur.
 
 ## 10. Feedback handoff
 
@@ -260,6 +294,7 @@ Where useful, reviewers may also work alongside:
 
 - `docs/pilot/slice-21bb-restricted-preview-reviewer-pack.md`
 - `docs/pilot/slice-21bd-restricted-preview-review-session-plan.md`
+- `docs/checkpoints/slice-21cj-restricted-preview-readiness-checkpoint.md`
 
 ## 11. Sensitivity and privacy
 
