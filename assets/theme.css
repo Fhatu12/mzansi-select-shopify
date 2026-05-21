@@ -23,6 +23,12 @@ html {
   font-size: 14px;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--white);
@@ -78,7 +84,9 @@ summary:focus-visible {
 
 .page-shell {
   background: var(--white);
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-x: clip;
 }
 
@@ -103,13 +111,19 @@ body.mobile-nav-open {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  contain: layout style;
+  min-width: 0;
+  position: relative;
+  contain: layout paint style;
+  isolation: isolate;
 }
 
 .topbar-panel {
   display: none;
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow: hidden;
+  contain: paint;
 }
 
 .topbar-copy-default {
@@ -133,7 +147,9 @@ body.mobile-nav-open {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   position: relative;
+  contain: paint;
 }
 
 .topbar-track {
@@ -3521,6 +3537,7 @@ footer {
 @media (max-width: 900px) {
   body {
     padding-bottom: var(--bottom-bar);
+    overflow-x: clip;
   }
 
   header.site-header-desktop,
@@ -3550,6 +3567,20 @@ footer {
     overflow-x: clip;
   }
 
+  .topbar,
+  .topbar-panel,
+  header.mob-header,
+  nav.bottom-bar,
+  .page-shell,
+  .hero,
+  .section,
+  .trust-bar,
+  footer {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
+
   .topbar {
     max-width: 100%;
     padding: 8px 0;
@@ -3575,6 +3606,8 @@ footer {
 
   .hero-inner,
   .section-inner {
+    min-width: 0;
+    max-width: 100%;
     padding-left: 16px;
     padding-right: 16px;
   }
