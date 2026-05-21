@@ -1165,13 +1165,19 @@ button.drawer-btn-outline[disabled] {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 32px;
-  display: flex;
   overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cat-strip-inner::-webkit-scrollbar {
   display: none;
+}
+
+.cat-strip-track {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
 }
 
 .cat-item {
@@ -3724,23 +3730,14 @@ footer {
   }
 
   .cat-strip {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .cat-strip::-webkit-scrollbar {
-    display: none;
+    overflow: hidden;
   }
 
   .cat-strip-inner {
-    width: max-content;
-    min-width: 100%;
     max-width: none;
     margin: 0;
     padding: 0 16px;
-    overflow: visible;
+    width: 100%;
   }
 
   .cat-item {

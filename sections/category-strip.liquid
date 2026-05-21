@@ -1,69 +1,71 @@
 <div class="cat-strip">
   <div class="cat-strip-inner">
-    <a class="cat-item" href="{% render 'launch-collection-url', handle: 'home-living' %}">
-      <div class="cat-icon">
-        {% render 'decorative-image', asset: 'modern-living-room.jpg', alt: 'Decorative home department preview', width: 120, height: 120 %}
-      </div>
-      <div class="cat-name">Home &amp;<br>Living</div>
-      <div class="cat-sub">Browse now &rarr;</div>
-    </a>
-    <a class="cat-item" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}">
-      <div class="cat-icon">
-        {% render 'decorative-image', asset: 'stainless-french-press.jpg', alt: 'Decorative kitchen department preview', width: 120, height: 120 %}
-      </div>
-      <div class="cat-name">Kitchen &amp;<br>Storage</div>
-      <div class="cat-sub">Browse now &rarr;</div>
-    </a>
-    <a class="cat-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}">
-      <div class="cat-icon">
-        {% render 'decorative-image', asset: 'office-desk-category.jpg', alt: 'Decorative office department preview', width: 120, height: 120 %}
-      </div>
-      <div class="cat-name">Office &amp;<br>Desk</div>
-      <div class="cat-sub">Browse now &rarr;</div>
-    </a>
-    <a class="cat-item" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">
-      <div class="cat-icon">
-        {% render 'decorative-image', asset: 'headphones-premium.jpg', alt: 'Decorative tech department preview', width: 120, height: 120 %}
-      </div>
-      <div class="cat-name">Tech<br>Accessories</div>
-      <div class="cat-sub">Browse now &rarr;</div>
-    </a>
-    <span class="cat-item cat-item--deferred" aria-disabled="true">
-      <div class="cat-icon svg-only">
-        <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="1" y="3" width="15" height="13" rx="1"></rect>
-          <path d="M16 8h5l2 5v4h-7V8z"></path>
-          <circle cx="5.5" cy="18.5" r="2.5"></circle>
-          <circle cx="18.5" cy="18.5" r="2.5"></circle>
-        </svg>
-      </div>
-      <div class="cat-name">Shipping</div>
-      <div class="cat-sub">Coming later</div>
-      <span class="visually-hidden">Shipping guidance is pending launch approval.</span>
-    </span>
-    <span class="cat-item cat-item--deferred" aria-disabled="true">
-      <div class="cat-icon svg-only">
-        <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="1 4 1 10 7 10"></polyline>
-          <path d="M3.51 15a9 9 0 1 0 .49-4.95"></path>
-        </svg>
-      </div>
-      <div class="cat-name">Returns</div>
-      <div class="cat-sub">Coming later</div>
-      <span class="visually-hidden">Returns guidance is pending launch approval.</span>
-    </span>
-    <span class="cat-item cat-item--deferred" aria-disabled="true">
-      <div class="cat-icon svg-only">
-        <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-      </div>
-      <div class="cat-name">FAQ</div>
-      <div class="cat-sub">Coming later</div>
-      <span class="visually-hidden">FAQ content is pending launch approval.</span>
-    </span>
+    <div class="cat-strip-track">
+      <a class="cat-item" href="{% render 'launch-collection-url', handle: 'home-living' %}">
+        <div class="cat-icon">
+          {% render 'decorative-image', asset: 'modern-living-room.jpg', alt: 'Decorative home department preview', width: 120, height: 120 %}
+        </div>
+        <div class="cat-name">Home &amp;<br>Living</div>
+        <div class="cat-sub">Browse now &rarr;</div>
+      </a>
+      <a class="cat-item" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}">
+        <div class="cat-icon">
+          {% render 'decorative-image', asset: 'stainless-french-press.jpg', alt: 'Decorative kitchen department preview', width: 120, height: 120 %}
+        </div>
+        <div class="cat-name">Kitchen &amp;<br>Storage</div>
+        <div class="cat-sub">Browse now &rarr;</div>
+      </a>
+      <a class="cat-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}">
+        <div class="cat-icon">
+          {% render 'decorative-image', asset: 'office-desk-category.jpg', alt: 'Decorative office department preview', width: 120, height: 120 %}
+        </div>
+        <div class="cat-name">Office &amp;<br>Desk</div>
+        <div class="cat-sub">Browse now &rarr;</div>
+      </a>
+      <a class="cat-item" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">
+        <div class="cat-icon">
+          {% render 'decorative-image', asset: 'headphones-premium.jpg', alt: 'Decorative tech department preview', width: 120, height: 120 %}
+        </div>
+        <div class="cat-name">Tech<br>Accessories</div>
+        <div class="cat-sub">Browse now &rarr;</div>
+      </a>
+      <span class="cat-item cat-item--deferred" aria-disabled="true">
+        <div class="cat-icon svg-only">
+          <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+            <path d="M16 8h5l2 5v4h-7V8z"></path>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <div class="cat-name">Shipping</div>
+        <div class="cat-sub">Coming later</div>
+        <span class="visually-hidden">Shipping guidance is pending launch approval.</span>
+      </span>
+      <span class="cat-item cat-item--deferred" aria-disabled="true">
+        <div class="cat-icon svg-only">
+          <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 .49-4.95"></path>
+          </svg>
+        </div>
+        <div class="cat-name">Returns</div>
+        <div class="cat-sub">Coming later</div>
+        <span class="visually-hidden">Returns guidance is pending launch approval.</span>
+      </span>
+      <span class="cat-item cat-item--deferred" aria-disabled="true">
+        <div class="cat-icon svg-only">
+          <svg width="24" height="24" fill="none" stroke="#999" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <div class="cat-name">FAQ</div>
+        <div class="cat-sub">Coming later</div>
+        <span class="visually-hidden">FAQ content is pending launch approval.</span>
+      </span>
+    </div>
   </div>
 </div>
 
