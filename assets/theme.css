@@ -3724,15 +3724,23 @@ footer {
   }
 
   .cat-strip {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-strip::-webkit-scrollbar {
+    display: none;
   }
 
   .cat-strip-inner {
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
     max-width: none;
     margin: 0;
     padding: 0 16px;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
   }
 
   .cat-item {
