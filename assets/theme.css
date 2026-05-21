@@ -78,6 +78,8 @@ summary:focus-visible {
 
 .page-shell {
   background: var(--white);
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body.mobile-nav-open {
@@ -98,9 +100,18 @@ body.mobile-nav-open {
   font-size: 11.5px;
   padding: 9px 0;
   letter-spacing: .02em;
+  overflow: hidden;
 }
 
-.topbar-inner {
+.topbar-panel {
+  display: none;
+}
+
+.topbar-copy-default {
+  display: block;
+}
+
+.topbar-static .topbar-inner {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 32px;
@@ -108,6 +119,74 @@ body.mobile-nav-open {
   align-items: center;
   justify-content: center;
   gap: 28px;
+  flex-wrap: nowrap;
+}
+
+.topbar-marquee {
+  display: none;
+  overflow: hidden;
+}
+
+.topbar-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+  padding-left: 16px;
+  will-change: transform;
+}
+
+.topbar-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes topbar-ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1080px) {
+  .topbar-static {
+    display: none;
+  }
+
+  .topbar-marquee {
+    display: block;
+  }
+
+  .topbar-track {
+    animation: topbar-ticker 28s linear infinite;
+  }
+}
+
+@media (min-width: 1081px) {
+  .topbar-marquee {
+    display: none;
+  }
+
+  .topbar-static {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar-track {
+    animation: none;
+    transform: none;
+  }
+
+  .topbar-marquee {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .topbar-marquee::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .tb-item {
@@ -3012,7 +3091,7 @@ button.drawer-btn-outline[disabled] {
 }
 
 .preview-route-cautious .topbar-copy-cautious {
-  display: flex;
+  display: block;
 }
 
 .preview-route-cautious .f-desc-cautious {
@@ -3296,6 +3375,39 @@ footer {
   border-bottom: 1px solid var(--border);
 }
 
+.back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 24px;
+  z-index: 240;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  pointer-events: none;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top svg {
+  flex-shrink: 0;
+}
+
 .toast {
   position: fixed;
   bottom: 24px;
@@ -3416,32 +3528,27 @@ footer {
     display: flex !important;
   }
 
+  html {
+    overflow-x: clip;
+  }
+
   .topbar {
     max-width: 100%;
-    overflow: hidden;
     padding: 8px 0;
   }
 
-  .topbar-inner {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0 16px;
-    justify-content: flex-start;
-    gap: 24px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    white-space: nowrap;
-  }
-
-  .topbar-inner::-webkit-scrollbar {
-    display: none;
+  .topbar-track {
+    padding-left: 16px;
   }
 
   .tb-item,
   .tb-sep {
     flex-shrink: 0;
+  }
+
+  .back-to-top {
+    right: 12px;
+    bottom: calc(var(--bottom-bar) + 16px);
   }
 
   .hero-inner,
@@ -3502,16 +3609,22 @@ footer {
   .hero-visual {
     height: auto;
     animation: none;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .collage-grid {
     position: static;
     inset: auto;
+    width: 100%;
+    max-width: 100%;
     padding: 0 0 0 16px;
     display: flex;
     gap: 10px;
     overflow-x: auto;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .collage-grid::-webkit-scrollbar {

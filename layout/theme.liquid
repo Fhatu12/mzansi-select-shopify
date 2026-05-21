@@ -185,6 +185,12 @@
 
     {% section 'trust-bar' %}
     {% section 'site-footer' %}
+    <button type="button" class="back-to-top" id="backToTop" hidden aria-label="Back to top">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V5"></path>
+        <path d="M5 12l7-7 7 7"></path>
+      </svg>
+    </button>
     {% render 'toast-feedback' %}
     <script>
       (() => {
@@ -275,6 +281,32 @@
         } else if (mobileMedia.addListener) {
           mobileMedia.addListener(syncDrawerState);
         }
+      })();
+
+      (() => {
+        const backToTop = document.getElementById('backToTop');
+        const main = document.getElementById('MainContent');
+        if (!backToTop || !main) return;
+
+        const showAfter = 400;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        const syncVisibility = () => {
+          const show = window.scrollY > showAfter;
+          backToTop.hidden = !show;
+          backToTop.classList.toggle('is-visible', show);
+        };
+
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: reducedMotion.matches ? 'auto' : 'smooth'
+          });
+          main.focus({ preventScroll: true });
+        });
+
+        window.addEventListener('scroll', syncVisibility, { passive: true });
+        syncVisibility();
       })();
     </script>
   </body>
