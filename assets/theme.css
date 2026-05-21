@@ -182,6 +182,11 @@ body.mobile-nav-open {
   .topbar-marquee {
     display: block;
     height: 22px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    clip-path: inset(0);
+    contain: strict;
   }
 
   .topbar-track {
@@ -189,6 +194,7 @@ body.mobile-nav-open {
     left: 0;
     top: 0;
     height: 100%;
+    margin: 0;
     animation: topbar-ticker 28s linear infinite;
   }
 }
@@ -212,6 +218,8 @@ body.mobile-nav-open {
   }
 
   .topbar-marquee {
+    contain: none;
+    clip-path: none;
     height: auto;
     min-height: 22px;
     overflow-x: auto;
@@ -1159,6 +1167,9 @@ button.drawer-btn-outline[disabled] {
   background: var(--white);
   border-bottom: 1px solid var(--border);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .02);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .cat-strip-inner {
@@ -3543,7 +3554,7 @@ footer {
 @media (max-width: 900px) {
   body {
     padding-bottom: var(--bottom-bar);
-    overflow-x: clip;
+    overflow-x: hidden;
   }
 
   header.site-header-desktop,
@@ -3570,7 +3581,8 @@ footer {
   }
 
   html {
-    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   .topbar,
@@ -3583,7 +3595,7 @@ footer {
   .trust-bar,
   footer {
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     overflow-x: clip;
   }
 
@@ -3730,14 +3742,32 @@ footer {
   }
 
   .cat-strip {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    width: 100%;
+    contain: layout style;
+  }
+
+  .cat-strip::-webkit-scrollbar {
+    display: none;
   }
 
   .cat-strip-inner {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
     max-width: none;
     margin: 0;
     padding: 0 16px;
-    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .cat-strip-track {
+    display: contents;
   }
 
   .cat-item {
