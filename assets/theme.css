@@ -101,14 +101,20 @@ body.mobile-nav-open {
   padding: 9px 0;
   letter-spacing: .02em;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  contain: layout style;
 }
 
 .topbar-panel {
   display: none;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .topbar-copy-default {
   display: block;
+  max-width: 100%;
 }
 
 .topbar-static .topbar-inner {
@@ -125,6 +131,9 @@ body.mobile-nav-open {
 .topbar-marquee {
   display: none;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 .topbar-track {
@@ -156,9 +165,14 @@ body.mobile-nav-open {
 
   .topbar-marquee {
     display: block;
+    height: 22px;
   }
 
   .topbar-track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
     animation: topbar-ticker 28s linear infinite;
   }
 }
@@ -175,11 +189,15 @@ body.mobile-nav-open {
 
 @media (prefers-reduced-motion: reduce) {
   .topbar-track {
+    position: static;
+    height: auto;
     animation: none;
     transform: none;
   }
 
   .topbar-marquee {
+    height: auto;
+    min-height: 22px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -3535,6 +3553,10 @@ footer {
   .topbar {
     max-width: 100%;
     padding: 8px 0;
+  }
+
+  .topbar-marquee {
+    height: 20px;
   }
 
   .topbar-track {
