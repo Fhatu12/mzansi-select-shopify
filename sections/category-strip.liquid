@@ -2,28 +2,28 @@
   <div class="cat-strip-inner">
     <a class="cat-item" href="{% render 'launch-collection-url', handle: 'home-living' %}">
       <div class="cat-icon">
-        <img src="{{ 'modern-living-room.jpg' | asset_url }}" alt="Home" width="120" height="120">
+        {% render 'decorative-image', asset: 'modern-living-room.jpg', alt: 'Decorative home department preview', width: 120, height: 120 %}
       </div>
       <div class="cat-name">Home &amp;<br>Living</div>
       <div class="cat-sub">Browse now &rarr;</div>
     </a>
     <a class="cat-item" href="{% render 'launch-collection-url', handle: 'kitchen-storage' %}">
       <div class="cat-icon">
-        <img src="{{ 'stainless-french-press.jpg' | asset_url }}" alt="Kitchen" width="120" height="120">
+        {% render 'decorative-image', asset: 'stainless-french-press.jpg', alt: 'Decorative kitchen department preview', width: 120, height: 120 %}
       </div>
       <div class="cat-name">Kitchen &amp;<br>Storage</div>
       <div class="cat-sub">Browse now &rarr;</div>
     </a>
     <a class="cat-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}">
       <div class="cat-icon">
-        <img src="{{ 'office-desk-category.jpg' | asset_url }}" alt="Office" width="120" height="120">
+        {% render 'decorative-image', asset: 'office-desk-category.jpg', alt: 'Decorative office department preview', width: 120, height: 120 %}
       </div>
       <div class="cat-name">Office &amp;<br>Desk</div>
       <div class="cat-sub">Browse now &rarr;</div>
     </a>
     <a class="cat-item" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}">
       <div class="cat-icon">
-        <img src="{{ 'headphones-premium.jpg' | asset_url }}" alt="Tech" width="120" height="120">
+        {% render 'decorative-image', asset: 'headphones-premium.jpg', alt: 'Decorative tech department preview', width: 120, height: 120 %}
       </div>
       <div class="cat-name">Tech<br>Accessories</div>
       <div class="cat-sub">Browse now &rarr;</div>

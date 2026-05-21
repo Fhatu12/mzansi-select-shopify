@@ -655,6 +655,8 @@ Slice 9 explicitly defers:
 
 **Slice 21CC** (2026-05-20): `/collections/controlled-pilot` remains a **theme-level 404 fallback** when Shopify does not serve a native collection template for that handle. `sections/main-404-foundation.liquid` detects the path and renders an honest controlled-pilot preview surface: route-notice copy (404/fallback, not purchasable, Admin native route deferred), up to three approved CJ handles via `all_products[handle]` → `live-product-card` when storefront-visible, otherwise placeholder fallback cards with **View product** only, and recovery links to homepage plus approved department collections — **no** broad `/collections/all` routing from this surface. Native live collection grid alignment requires a **separately approved Shopify Admin** collection publication slice; **21CC** does not mutate Admin collections or products.
 
+**Slice 21CN** (2026-05-20): Homepage **decorative north-star** rasters (hero collage, category strip quartet icons, promo visual, feature tiles, static merchandising fallbacks) render through **`snippets/decorative-image.liquid`** using existing local **`assets/*.jpg`** filenames mapped from the approved north-star HTML. When a decorative asset URL fails to load, the snippet swaps to **`assets/decorative-placeholder.svg`** (neutral local SVG; no third-party hosts). Alt text on decorative surfaces stays preview-safe and non-claiming. **Product/catalog media behaviour is unchanged:** `live-product-card` and PDP foundations still suppress catalog media under preview-only rules; this slice does not enable supplier or Admin product imagery.
+
 Slice 9.5 404/generic empty-state QA closure note:
 
 - The uncommitted Slice 9 404/generic empty-state foundation was reviewed and accepted as PASS WITH NOTES.
@@ -822,7 +824,7 @@ Slice 4 addition:
 
 Theme Check blocker-fix addition:
 
-- `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/promo-banner-split.liquid`, and `snippets/static-product-card.liquid`
+- `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/promo-banner-split.liquid`, `snippets/decorative-image.liquid`, and `snippets/static-product-card.liquid`
   - Now include explicit image `width` and `height` attributes to satisfy Shopify Theme Check without changing sources, wrappers, classes, or layout intent.
 - `sections/main-collection-foundation.liquid`
   - Schema name shortened from `Main collection foundation` to `Collection main` to satisfy Shopify Theme Check name-length rules.

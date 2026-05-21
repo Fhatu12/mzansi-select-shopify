@@ -20,7 +20,7 @@
     %}
     <div class="arrivals-grid arrivals-grid--homepage">
       <div class="arr-card">
-        <img src="{{ 'modern-living-room.jpg' | asset_url }}" alt="Living room" loading="lazy" width="900" height="720">
+        {% render 'decorative-image', asset: 'modern-living-room.jpg', alt: 'Decorative home collection preview', width: 900, height: 720 %}
         <div class="arr-overlay">
           <div class="arr-cat">Home &amp; Living</div>
           <div class="arr-name">Modern Living Room Collection</div>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="arr-card">
-        <img src="{{ 'smart-watch-black-edition.jpg' | asset_url }}" alt="Tech" loading="lazy" width="900" height="720">
+        {% render 'decorative-image', asset: 'smart-watch-black-edition.jpg', alt: 'Decorative tech collection preview', width: 900, height: 720 %}
         <div class="arr-overlay">
           <div class="arr-cat">Tech Accessories</div>
           <div class="arr-name">Tech Essentials Preview</div>

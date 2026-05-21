@@ -2838,6 +2838,36 @@ button.drawer-btn-outline[disabled] {
   color: #d8cfbf;
 }
 
+.decorative-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.decorative-img--fallback {
+  object-fit: contain;
+  padding: 12%;
+  background: var(--cream);
+}
+
+.cg-item .decorative-img--fallback,
+.promo-visual .decorative-img--fallback,
+.arr-card .decorative-img--fallback {
+  object-fit: cover;
+  padding: 0;
+}
+
+.cat-icon .decorative-img--fallback {
+  object-fit: cover;
+  padding: 0;
+}
+
+.prod-img .decorative-img--fallback {
+  object-fit: cover;
+  padding: 0;
+}
+
 .product-detail-copy > * + * {
   margin-top: 12px;
 }

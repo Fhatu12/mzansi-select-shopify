@@ -18,7 +18,12 @@
 
 <div class="product-card product-card--static">
   <div class="prod-img">
-    <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" width="{{ image_width | default: 600 }}" height="{{ image_height | default: 600 }}">
+    {% render 'decorative-image',
+      src: image_src,
+      alt: image_alt | default: 'Decorative product preview',
+      width: image_width | default: 600,
+      height: image_height | default: 600
+    %}
     {% render 'product-badge', label: sc_badge_label, tone: sc_badge_tone %}
     <button
       class="p-wish"

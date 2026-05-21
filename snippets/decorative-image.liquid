@@ -1,0 +1,35 @@
+{%- liquid
+  assign deco_src = src
+  if asset != blank
+    assign deco_src = asset | asset_url
+  endif
+  assign deco_alt = alt | default: 'Decorative preview image'
+  assign deco_width = width | default: 600
+  assign deco_height = height | default: 600
+  assign deco_loading = loading | default: 'lazy'
+  assign deco_class = class | default: ''
+  assign deco_fallback = 'decorative-placeholder.svg' | asset_url
+-%}
+{%- if deco_src != blank -%}
+  <img
+    class="decorative-img{% if deco_class != blank %} {{ deco_class }}{% endif %}"
+    src="{{ deco_src }}"
+    alt="{{ deco_alt | escape }}"
+    width="{{ deco_width }}"
+    height="{{ deco_height }}"
+    loading="{{ deco_loading }}"
+    decoding="async"
+    data-decorative-fallback="{{ deco_fallback }}"
+    onerror="if(this.dataset.decorativeFallback){this.onerror=null;this.src=this.dataset.decorativeFallback;this.classList.add('decorative-img--fallback');}"
+  >
+{%- else -%}
+  <img
+    class="decorative-img decorative-img--fallback{% if deco_class != blank %} {{ deco_class }}{% endif %}"
+    src="{{ deco_fallback }}"
+    alt="{{ deco_alt | escape }}"
+    width="{{ deco_width }}"
+    height="{{ deco_height }}"
+    loading="{{ deco_loading }}"
+    decoding="async"
+  >
+{%- endif -%}
