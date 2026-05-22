@@ -4,136 +4,38 @@
     assign section_classes = section_classes | append: ' section-cream'
   endif
   assign section_classes = section_classes | append: ' section--product-rail'
+
+  assign max_products = section.settings.max_products | default: 4
+  if section.settings.collection_handle != blank
+    assign rail_collection = collections[section.settings.collection_handle]
+  elsif section.settings.content_preset == 'kitchen_storage'
+    assign rail_collection = collections['kitchen-storage']
+  else
+    assign rail_collection = collections.all
+  endif
 %}
-<section id="{{ section.settings.anchor_id | escape }}" class="{{ section_classes }}">
-  <div class="section-inner">
-    {% render 'section-heading',
-      title: section.settings.section_title,
-      accent: section.settings.section_accent,
-      link_label: section.settings.section_link_label,
-      link_url: section.settings.section_link_url | default: routes.all_products_collection_url
-    %}
-    <div class="products-grid products-grid--{{ section.settings.content_preset }}">
-      {% if section.settings.content_preset == 'kitchen_storage' %}
-        {% assign kitchen_handles = 'cable-tidies-set,sink-strainer-stainless-steel,compact-organiser-basket,mini-plastic-divider-basket' | split: ',' %}
-        {% for handle in kitchen_handles %}
-          {% assign slot_product = all_products[handle] %}
-          {% if slot_product != blank %}
-            {% render 'live-product-card', product: slot_product, cta_label: 'View product' %}
-          {% else %}
-            {% case forloop.index %}
-              {% when 1 %}
-                {% render 'static-product-card',
-                  image_src: 'stainless-french-press.jpg' | asset_url,
-                  image_alt: 'Decorative kitchen preview',
-                  product_type: 'Kitchen & Storage',
-                  product_name: 'Stainless Steel French Press',
-                  stars: '★★★★★',
-                  reviews: '(57)',
-                  price_now: 'R 299'
-                %}
-              {% when 2 %}
-                {% render 'static-product-card',
-                  image_src: 'insulated-vacuum-flask.jpg' | asset_url,
-                  image_alt: 'Decorative kitchen preview',
-                  badge_label: 'New',
-                  badge_tone: 'new',
-                  product_type: 'Kitchen & Storage',
-                  product_name: 'Insulated Vacuum Flask 500ml',
-                  stars: '★★★★☆',
-                  reviews: '(93)',
-                  price_now: 'R 189'
-                %}
-              {% when 3 %}
-                {% render 'static-product-card',
-                  image_src: 'fabric-storage-cube.jpg' | asset_url,
-                  image_alt: 'Decorative storage preview',
-                  product_type: 'Kitchen & Storage',
-                  product_name: 'Fabric Storage Cube Organiser',
-                  stars: '★★★★★',
-                  reviews: '(34)',
-                  price_now: 'R 149',
-                  price_was: 'R 199'
-                %}
-              {% else %}
-                {% render 'static-product-card',
-                  image_src: 'indoor-plant-pot.jpg' | asset_url,
-                  image_alt: 'Decorative home preview',
-                  product_type: 'Home & Living',
-                  product_name: 'Indoor Plant Pot Set – Terracotta',
-                  stars: '★★★★☆',
-                  reviews: '(48)',
-                  price_now: 'R 179'
-                %}
-            {% endcase %}
-          {% endif %}
+
+{% if rail_collection != blank and rail_collection.products_count > 0 %}
+  <section id="{{ section.settings.anchor_id | escape }}" class="{{ section_classes }}">
+    <div class="section-inner">
+      {% render 'section-heading',
+        title: section.settings.section_title,
+        accent: section.settings.section_accent,
+        link_label: section.settings.section_link_label,
+        link_url: section.settings.section_link_url | default: routes.all_products_collection_url
+      %}
+      <div class="products-grid products-grid--live-rail products-grid--{{ section.settings.content_preset }}">
+        {% for product in rail_collection.products limit: max_products %}
+          {% render 'live-product-card',
+            product: product,
+            collection_context: rail_collection,
+            cta_label: 'View product'
+          %}
         {% endfor %}
-      {% else %}
-        {% assign best_handles = 'cable-tidies-set,acrylic-tablet-phone-stand,sink-strainer-stainless-steel,compact-organiser-basket' | split: ',' %}
-        {% for handle in best_handles %}
-          {% assign slot_product = all_products[handle] %}
-          {% if slot_product != blank %}
-            {% render 'live-product-card', product: slot_product, cta_label: 'View product' %}
-          {% else %}
-            {% case forloop.index %}
-              {% when 1 %}
-                {% render 'static-product-card',
-                  image_src: 'headphones-premium.jpg' | asset_url,
-                  image_alt: 'Decorative tech preview',
-                  badge_label: 'Preview',
-                  badge_tone: 'preview',
-                  product_type: 'Tech Accessories',
-                  product_name: 'Premium Over-Ear Headphones',
-                  stars: '★★★★★',
-                  reviews: '(128)',
-                  price_now: 'R 899',
-                  price_was: 'R 1 199',
-                  price_save: blank
-                %}
-              {% when 2 %}
-                {% render 'static-product-card',
-                  image_src: 'bamboo-storage-containers.jpg' | asset_url,
-                  image_alt: 'Decorative storage preview',
-                  badge_label: 'New',
-                  badge_tone: 'new',
-                  product_type: 'Kitchen & Storage',
-                  product_name: 'Bamboo Lid Storage Container Set',
-                  stars: '★★★★☆',
-                  reviews: '(64)',
-                  price_now: 'R 349'
-                %}
-              {% when 3 %}
-                {% render 'static-product-card',
-                  image_src: 'smart-watch-black-edition.jpg' | asset_url,
-                  image_alt: 'Decorative tech preview',
-                  product_type: 'Tech Accessories',
-                  product_name: 'Smart Watch – Black Edition',
-                  stars: '★★★★★',
-                  reviews: '(211)',
-                  price_now: 'R 1 249',
-                  price_was: 'R 1 599',
-                  price_save: blank
-                %}
-              {% else %}
-                {% render 'static-product-card',
-                  image_src: 'touch-lamp-warm-led.jpg' | asset_url,
-                  image_alt: 'Decorative home preview',
-                  badge_label: 'Preview',
-                  badge_tone: 'preview',
-                  product_type: 'Home & Living',
-                  product_name: 'Touch Lamp – Warm LED Dimmable',
-                  stars: '★★★★☆',
-                  reviews: '(89)',
-                  price_now: 'R 229',
-                  price_was: 'R 299'
-                %}
-            {% endcase %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+{% endif %}
 
 {% schema %}
 {
@@ -199,6 +101,21 @@
           "label": "Kitchen and storage"
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "collection_handle",
+      "label": "Collection handle (optional override)",
+      "info": "Defaults to all products for curated picks, or kitchen-storage for the kitchen preset."
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maximum products",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
     }
   ],
   "presets": [

@@ -14,8 +14,9 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Senior Full-Stack Software Architect** — **21EU** homepage placeholder removal (collection-driven rails; preview **`151207542967`**).
-- Completed slice: **Slice 21ET** — homepage placeholder source audit (read-only) — **PASS** — **Product Manager**. **Created:** **`docs/catalogue/slice-21et-homepage-placeholder-source-audit.md`**. **Root cause:** **`featured-product-grid.liquid`** **`static-product-card`** fallbacks when **`all_products[handle]`** missing after **21EO**/**21EQ**/**21ES**. **Recommended:** **B+D** collection-driven visible products, no static demo fallbacks. **No** Admin/theme mutation in **21ET**.
+- Active slice: **Product Owner** — accept **21EU** homepage rails; approve commerce-gating before launch.
+- Completed slice: **Slice 21EU** — homepage placeholder removal — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21eu-homepage-placeholder-removal.md`**. **Theme:** **`sections/featured-product-grid.liquid`** — collection-driven **`live-product-card`** only; no **`static-product-card`** on rails; hide empty collections. **Preview push:** **`151207542967`** (`featured-product-grid.liquid` only). **Evidence:** **`artifacts/catalogue/slice-21eu/2026-05-22T07-25-02/`** (gitignored). **Upstream audit:** **21ET** (`b910660`).
+- Completed slice: **Slice 21ET** — homepage placeholder source audit (read-only) — **PASS** — **Product Manager**. **Created:** **`docs/catalogue/slice-21et-homepage-placeholder-source-audit.md`**. **Commit:** **`b910660`**. **Root cause:** **`featured-product-grid.liquid`** **`static-product-card`** fallbacks when **`all_products[handle]`** missing after **21EO**/**21EQ**/**21ES**. **No** Admin/theme mutation in **21ET**.
 - Completed slice: **Slice 21ES** — catalogue removal round 2 (post-**21EQ**) — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21es-catalogue-removal-round-2.md`**. **PO:** hide **5** more from **Online Store** (four **21EJ** previews + one legacy paper-towel holder). **Admin:** `publishableUnpublish` × **5**. **Post:** **17** visible (**22** → **17**); **11** total hidden (**6** **21EQ** + **5** **21ES**). **Evidence:** `artifacts/catalogue/slice-21es/` (gitignored). **LLD:** **unchanged**.
 - Completed slice: **Slice 21EQ** — catalogue visibility restore (post-**21EO**) — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21eq-catalogue-visibility-restore.md`**. **Commit:** **`cfb0358`**. **Superseded visible count by** **21ES** (**17**). **Evidence:** `artifacts/catalogue/slice-21eq/` (gitignored). **LLD:** **unchanged**.
 - Completed slice: **Slice 21EO** — live-prep catalogue simplification — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21eo-live-prep-catalogue-simplification.md`**. **Commit:** **`16f0447`**. **Superseded for visible catalogue by** **21EQ**. **Evidence:** `artifacts/catalogue/slice-21eo/` (gitignored). **LLD:** **unchanged**.
@@ -3747,7 +3748,20 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
 
+## Slice 21EU homepage placeholder removal (PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**.
+- **Created:** **`docs/qa/slice-21eu-homepage-placeholder-removal.md`**.
+- **Root cause (21ET):** static **`static-product-card`** fallbacks when configured handles unpublished.
+- **Fix:** **`sections/featured-product-grid.liquid`** — **`collections.all`** (Selected Picks), **`collections['kitchen-storage']`** (Kitchen & Storage); **`live-product-card`** only; omit section when collection empty.
+- **Preview push:** theme **`151207542967`**, file **`sections/featured-product-grid.liquid`** only; live **`148914077879`** unchanged.
+- **Rendered:** homepage desktop/mobile — **8** demo names **absent**, **0** static cards, live rails; mobile overflow **PASS**.
+- **Note:** Add to Cart / checkout gating **unresolved** (out of scope).
+- **Evidence:** **`artifacts/catalogue/slice-21eu/2026-05-22T07-25-02/`**.
+
 ## Slice 21ET homepage placeholder source audit (PASS)
+
+- **Commit:** **`b910660`**.
 
 - **Verdict:** **PASS** — **Product Manager** (**read-only**).
 - **Created:** **`docs/catalogue/slice-21et-homepage-placeholder-source-audit.md`**.
