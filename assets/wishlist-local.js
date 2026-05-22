@@ -1,5 +1,6 @@
 (() => {
   const STORAGE_KEY = 'mzansi-wishlist-v1';
+  let delegated = false;
 
   const readStore = () => {
     try {
@@ -37,6 +38,11 @@
     btn.classList.toggle('is-saved', saved);
   };
 
+  const syncButton = (btn) => {
+    if (!btn || !btn.dataset.productHandle) return;
+    setLabel(btn, isSaved(btn.dataset.productHandle));
+  };
+
   const syncHandle = (handle) => {
     const saved = isSaved(handle);
     document.querySelectorAll(`[data-wishlist-toggle][data-product-handle="${handle}"]`).forEach((btn) => {
@@ -60,18 +66,25 @@
     syncHandle(item.handle);
   };
 
-  const init = () => {
+  const syncAll = () => {
     document.querySelectorAll('[data-wishlist-toggle]').forEach((btn) => {
-      if (!btn.dataset.productHandle) return;
-      setLabel(btn, isSaved(btn.dataset.productHandle));
-      if (btn.dataset.wishlistBound === 'true') return;
-      btn.dataset.wishlistBound = 'true';
-      btn.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        toggle(btn);
-      });
+      syncButton(btn);
     });
+  };
+
+  const handleDelegatedClick = (event) => {
+    const btn = event.target.closest('[data-wishlist-toggle]');
+    if (!btn || !document.contains(btn)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    toggle(btn);
+  };
+
+  const init = () => {
+    syncAll();
+    if (delegated) return;
+    delegated = true;
+    document.addEventListener('click', handleDelegatedClick);
   };
 
   if (document.readyState === 'loading') {
@@ -81,4 +94,5 @@
   }
 
   document.addEventListener('shopify:section:load', init);
+  window.addEventListener('pageshow', syncAll);
 })();
