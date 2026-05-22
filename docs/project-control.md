@@ -14,7 +14,8 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — accept **21FA** **FAIL**; approve **21FA-B** live theme fixes (mobile collection gate, `handmade-cotton` PDP, **13**-SKU visibility alignment) or delayed **21FA** re-run if cache-only.
+- Active slice: **Product Owner** — accept **21FA-B** commerce-gate **PASS WITH NOTES**; approve Admin/follow-up for **13**-card `/collections/all` count (four **21EZ** SKUs still in grid HTML).
+- Completed slice: **Slice 21FA-B** — live **13**-SKU storefront fix — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21fa-b-live-13-sku-storefront-fix.md`**. **Live push:** Horizon gate + listing blocks + **`main-collection`** / **`search-results`** / **`product-list`** handle skips → **`148914077879`**. **QA:** **13/13** PDP commerce **PASS**; collection grid commerce **PASS** (desktop scoped); grid count **17** (visibility **FAIL WITH NOTES**). **Evidence:** **`artifacts/catalogue/slice-21fa-b/2026-05-22T09-30-48/`** (gitignored). **Upstream:** **21FA** (`fcc77cd`).
 - Completed slice: **Slice 21FA** — live **13**-SKU storefront QA — **FAIL** — **QA / Test Engineer**. **Created:** **`docs/qa/slice-21fa-live-13-sku-storefront-qa.md`**. **Rendered:** **17** links on `/collections/all`; **21EZ** four removals still visible; **12/13** PDP commerce gate **PASS**; **mobile** `/collections/all` **17** cart forms. **Evidence:** **`artifacts/catalogue/slice-21fa/2026-05-22T09-07-03/`** (gitignored). **Upstream:** **21EZ** (`0af08e3`).
 - Completed slice: **Slice 21EZ** — catalogue reduction after readiness audit — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21ez-catalogue-reduction-after-readiness-audit.md`**. **Admin:** `publishableUnpublish` × **4** (Online Store only). **Post:** **13** visible / **15** hidden; commerce tags **13/13** ✓. **Repo hygiene:** nine Horizon pull files → **`artifacts/theme-pulls/slice-21ez/`** (gitignored). **Evidence:** **`artifacts/catalogue/slice-21ez/2026-05-22T09-01-30/`** (gitignored). **Upstream:** **21EY** (`b16e644`).
 - Completed slice: **Slice 21EY** — visible catalogue launch-readiness audit (read-only) — **PASS WITH NOTES** — **Product Manager**. **Created:** **`docs/catalogue/slice-21ey-visible-catalogue-launch-readiness-audit.md`**. **Baseline:** **17** visible / **11** hidden confirmed; commerce tags **17/17** ✓; **0/17** commerce-ready; **4** hide-before-launch recommended. **Evidence:** **`artifacts/catalogue/slice-21ey/2026-05-22T08-54-55/`** (gitignored). **Superseded visible count by** **21EZ** (**13**). **Upstream:** **21EX-B** (`6a449d2`).
@@ -3754,6 +3755,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21FA-B live 13-SKU storefront fix (PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — commerce gate restored; visible grid count still **17**.
+- **Created:** **`docs/qa/slice-21fa-b-live-13-sku-storefront-fix.md`**.
+- **Live:** **`148914077879`** — bounded `--only` pushes (gate blocks + collection/search/home loops).
+- **QA:** **13/13** PDP **PASS**; `#ResultsList` **0** cart forms (desktop); **four** **21EZ** handles still in grid.
+- **Evidence:** **`artifacts/catalogue/slice-21fa-b/2026-05-22T09-30-48/`** (gitignored).
+- **Next owner:** **Product Owner** — visibility propagation / Admin collection membership.
 
 ## Slice 21FA live 13-SKU storefront QA (FAIL)
 

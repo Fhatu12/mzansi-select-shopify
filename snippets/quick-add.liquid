@@ -7,9 +7,9 @@
   @param {string} [color_scheme] - The color scheme to use
 {%- enddoc -%}
 
-{% include 'product-commerce-gate', gate_product: product %}
+{% assign gate_commerce_blocked = false %}
 {% liquid
-  if gate_commerce_blocked != true and product != blank
+  if product != blank
     for tag in product.tags
       assign gate_nt = tag | downcase | strip | replace: ' ', '-'
       if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
@@ -19,6 +19,9 @@
     endfor
   endif
   if section.type == 'product-recommendations'
+    assign gate_commerce_blocked = true
+  endif
+  if template.name == 'collection' or template.name == 'search' or template.name == 'index'
     assign gate_commerce_blocked = true
   endif
 %}

@@ -13,18 +13,16 @@
   assign id = 'BuyButtons-ProductSubmitButton-' | append: block.id
   assign gate_product = closest.product
 %}
-{% include 'product-commerce-gate', gate_product: gate_product %}
-{% liquid
-  if gate_commerce_blocked != true and gate_product != blank
-    for tag in gate_product.tags
-      assign gate_nt = tag | downcase | strip | replace: ' ', '-'
-      if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
-        assign gate_commerce_blocked = true
-        break
-      endif
-    endfor
-  endif
-%}
+{% assign gate_commerce_blocked = false %}
+{% if gate_product != blank %}
+  {% for tag in gate_product.tags %}
+    {% assign gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only' %}
+      {% assign gate_commerce_blocked = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 <span
   {{ block.shopify_attributes }}

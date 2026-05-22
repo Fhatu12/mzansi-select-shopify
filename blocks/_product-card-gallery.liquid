@@ -1,20 +1,19 @@
 
 
 {% assign product = closest.product %}
-{% include 'product-commerce-gate', gate_product: product %}
+{% assign gate_commerce_blocked = false %}
+{% if product != blank %}
+  {% for tag in product.tags %}
+    {% assign gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only' %}
+      {% assign gate_commerce_blocked = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 {% liquid
-    if gate_commerce_blocked != true
-    if section.type == 'product-recommendations' or section.id contains 'product_recommendations'
-      assign gate_commerce_blocked = true
-    elsif product != blank
-      for tag in product.tags
-        assign gate_nt = tag | downcase | strip | replace: ' ', '-'
-        if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
-          assign gate_commerce_blocked = true
-          break
-        endif
-      endfor
-    endif
+  if section.type == 'product-recommendations' or section.id contains 'product_recommendations'
+    assign gate_commerce_blocked = true
   endif
 %}
 
@@ -44,7 +43,11 @@
     </div>
     {% liquid
       assign render_quick_add = false
-      if gate_commerce_blocked == false and template.name != 'collection'
+      assign listing_template = false
+      if template.name == 'collection' or template.name == 'search' or template.name == 'index'
+        assign listing_template = true
+      endif
+      if listing_template == false and gate_commerce_blocked == false
         if settings.quick_add or settings.mobile_quick_add
           assign render_quick_add = true
         endif

@@ -17,7 +17,16 @@
     assign product = collections.all.products.first
   endif
 %}
-{% include 'product-commerce-gate', gate_product: product %}
+{% assign gate_commerce_blocked = false %}
+{% if product != blank %}
+  {% for tag in product.tags %}
+    {% assign gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only' %}
+      {% assign gate_commerce_blocked = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {% capture accelerated_checkout_button %}
   {% if product != blank and form_obj != blank %}

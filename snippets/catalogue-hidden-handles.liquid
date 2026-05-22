@@ -1,0 +1,5 @@
+{% comment %}
+  Slice 21EZ — handles unpublished from Online Store; exclude from storefront product loops.
+  Sets `catalogue_hidden_handles` (array). Include once per section before loops.
+{% endcomment %}
+{% assign catalogue_hidden_handles = 'adjustable-laptop-stand,usb-c-charging-cable-1-2m,available-regular-price,keep-room-tidy-for-dirty-clothes-waterproof-fabric-foldable-hamper' | split: ',' %}

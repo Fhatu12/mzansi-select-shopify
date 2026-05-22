@@ -22,7 +22,11 @@
 
 {% liquid
   assign has_quick_add = false
-  if settings.quick_add and product.available
+  assign listing_template = false
+  if template.name == 'collection' or template.name == 'search' or template.name == 'index'
+    assign listing_template = true
+  endif
+  if listing_template == false and settings.quick_add and product.available
     assign has_quick_add = true
   endif
 
@@ -55,7 +59,14 @@
 %}
 
 {% unless onboarding %}
-  {% include 'product-commerce-gate', gate_product: product %}
+  {% assign gate_commerce_blocked = false %}
+  {% for tag in product.tags %}
+    {% assign gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only' %}
+      {% assign gate_commerce_blocked = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
   {% if gate_commerce_blocked %}
     {% assign has_quick_add = false %}
     {% assign has_mobile_quick_add = false %}
