@@ -4,11 +4,28 @@
   {% assign card_product_url = product.url | within: collection_context %}
 {% endif %}
 
-{% include 'product-commerce-gate', gate_product: product %}
-{% assign card_preview_only = gate_preview_only %}
-{% assign card_price_to_confirm = gate_price_to_confirm %}
-{% assign card_non_purchasable = gate_non_purchasable %}
-{% assign card_commerce_blocked = gate_commerce_blocked %}
+{% comment %} Slice 21FC-A: inline tag gate — include is not allowed when this snippet is rendered via {% render %}. {% endcomment %}
+{% assign card_non_purchasable = false %}
+{% assign card_price_to_confirm = false %}
+{% assign card_preview_only = false %}
+{% if product != blank %}
+  {% for tag in product.tags %}
+    {% assign card_gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if card_gate_nt == 'non-purchasable' %}
+      {% assign card_non_purchasable = true %}
+    {% endif %}
+    {% if card_gate_nt == 'price-to-confirm' %}
+      {% assign card_price_to_confirm = true %}
+    {% endif %}
+    {% if card_gate_nt == 'preview-only' %}
+      {% assign card_preview_only = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign card_commerce_blocked = false %}
+{% if card_non_purchasable or card_price_to_confirm or card_preview_only %}
+  {% assign card_commerce_blocked = true %}
+{% endif %}
 {% assign card_image_permission_confirmed = false %}
 {% for tag in product.tags %}
   {% assign card_nt = tag | downcase | strip | replace: ' ', '-' %}
