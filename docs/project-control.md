@@ -14,8 +14,9 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — decide **21EY** hide list (**4** recommended) vs keep **13** as gated catalogue-only; approve next supplier/image programme slice.
-- Completed slice: **Slice 21EY** — visible catalogue launch-readiness audit (read-only) — **PASS WITH NOTES** — **Product Manager**. **Created:** **`docs/catalogue/slice-21ey-visible-catalogue-launch-readiness-audit.md`**. **Baseline:** **17** visible / **11** hidden confirmed; commerce tags **17/17** ✓; **0/17** commerce-ready; **4** hide-before-launch recommended. **Evidence:** **`artifacts/catalogue/slice-21ey/2026-05-22T08-54-55/`** (gitignored). **Upstream:** **21EX-B** (`6a449d2`).
+- Active slice: **Product Owner** — accept **21EZ** **13**-product catalogue baseline; approve image-rights, supplier-proof, or **13**-SKU live commerce-gate QA slice.
+- Completed slice: **Slice 21EZ** — catalogue reduction after readiness audit — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21ez-catalogue-reduction-after-readiness-audit.md`**. **Admin:** `publishableUnpublish` × **4** (Online Store only). **Post:** **13** visible / **15** hidden; commerce tags **13/13** ✓. **Repo hygiene:** nine Horizon pull files → **`artifacts/theme-pulls/slice-21ez/`** (gitignored). **Evidence:** **`artifacts/catalogue/slice-21ez/2026-05-22T09-01-30/`** (gitignored). **Upstream:** **21EY** (`b16e644`).
+- Completed slice: **Slice 21EY** — visible catalogue launch-readiness audit (read-only) — **PASS WITH NOTES** — **Product Manager**. **Created:** **`docs/catalogue/slice-21ey-visible-catalogue-launch-readiness-audit.md`**. **Baseline:** **17** visible / **11** hidden confirmed; commerce tags **17/17** ✓; **0/17** commerce-ready; **4** hide-before-launch recommended. **Evidence:** **`artifacts/catalogue/slice-21ey/2026-05-22T08-54-55/`** (gitignored). **Superseded visible count by** **21EZ** (**13**). **Upstream:** **21EX-B** (`6a449d2`).
 - Completed slice: **Slice 21EX-B** — live Horizon commerce-gate follow-up — **PASS** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ex-b-live-commerce-gate-follow-up.md`**. **Live push:** **seven** files across **four** bounded waves → **`148914077879`**. **Post-fix QA (`2026-05-22T08-48-50`):** **17/17** PDPs **PASS**; **`/collections/all`** **0** `cart/add` forms; homepage + search **PASS**. **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-48-50/`** (gitignored). **Upstream:** **21EX** (`95c67fb`), **9c39d81**.
 - Completed slice: **Slice 21EX** — live Horizon commerce-gate wiring + post-wave QA — **FAIL** (closed by **21EX-B**) — **`95c67fb`**, **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**, **`9c39d81`**.
 - Completed slice: **Slice 21EW** — bounded live commerce-gate sync — **FAIL WITH NOTES** — **DevOps / Platform Engineer** / **QA**. **Created:** **`docs/qa/slice-21ew-live-commerce-gate-sync.md`**. **Push:** **four** files to live **`148914077879`** (**PASS**). **Rendered live commerce gate:** **FAIL** — Horizon **`product-information`** templates unwired to **`main-product-foundation`**. **Evidence:** **`artifacts/catalogue/slice-21ew/2026-05-22T07-59-10/`** (gitignored). **Upstream:** **21EV** (`ef234c0`).
@@ -3752,6 +3753,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21EZ catalogue reduction after readiness audit (PASS WITH NOTES)
+
+- **Verdict:** **PASS WITH NOTES** — **DevOps / Platform Engineer**.
+- **Created:** **`docs/catalogue/slice-21ez-catalogue-reduction-after-readiness-audit.md`**.
+- **Admin:** `publishableUnpublish` × **4**; publication **169105293495** only.
+- **Post:** **13** visible / **15** hidden; commerce tags **13/13** on visible set.
+- **Unpublished:** `adjustable-laptop-stand`, `usb-c-charging-cable-1-2m`, `available-regular-price`, `keep-room-tidy-for-dirty-clothes-waterproof-fabric-foldable-hamper`.
+- **Evidence:** **`artifacts/catalogue/slice-21ez/2026-05-22T09-01-30/`** (gitignored).
+- **Next owner:** **Product Owner** — accept baseline; image-rights / supplier-proof / live QA on **13**.
 
 ## Slice 21EY visible catalogue launch-readiness audit (PASS WITH NOTES)
 
