@@ -15,7 +15,10 @@ const STORE_ORIGIN = 'https://dropshippoc.myshopify.com';
 const PASSWORD_URL = `${STORE_ORIGIN}/password`;
 const UNLOCK_CHECK_URL = `${STORE_ORIGIN}/?preview_theme_id=${PREVIEW_THEME_ID}`;
 const MANUAL_UNLOCK_TIMEOUT_MS = 12 * 60 * 1000;
-const evidenceRoot = path.join(repoRoot, 'artifacts', 'qa', 'slice-21el-four-product-media-pdp-validation');
+const evidenceSubdir =
+  process.env.SLICE_QA_EVIDENCE || 'slice-21el-four-product-media-pdp-validation';
+const sliceLabel = evidenceSubdir.includes('21en') ? '21EN' : '21EL';
+const evidenceRoot = path.join(repoRoot, 'artifacts', 'qa', evidenceSubdir);
 
 const localHandles = [
   {
@@ -100,7 +103,7 @@ async function isPasswordGate(page) {
 
 async function waitForManualUnlock(page) {
   await page.goto(PASSWORD_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
-  console.log('\n=== Manual storefront unlock (Slice 21EL) ===');
+  console.log(`\n=== Manual storefront unlock (Slice ${sliceLabel}) ===`);
   console.log('Enter the password in Chromium only. Do not paste into terminal.');
   console.log(`Unlock check: ${UNLOCK_CHECK_URL}\n`);
   const started = Date.now();
@@ -152,6 +155,21 @@ async function inspectPdp(page, handleMeta, viewport, shotsDir) {
   const url = `${STORE_ORIGIN}/products/${handleMeta.handle}?preview_theme_id=${PREVIEW_THEME_ID}`;
   const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForTimeout(1500);
+  const heroImg = page.locator('.product-gallery-main img').first();
+  await heroImg.waitFor({ state: 'visible', timeout: 10000 }).catch(() => null);
+  await heroImg
+    .evaluate(async (img) => {
+      if (!img) return 0;
+      if (img.complete && img.naturalWidth > 1) return img.naturalWidth;
+      await new Promise((resolve) => {
+        const done = () => resolve(img.naturalWidth);
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+        setTimeout(done, 12000);
+      });
+      return img.naturalWidth;
+    })
+    .catch(() => 0);
 
   if (await isPasswordGate(page)) {
     return {
@@ -199,44 +217,84 @@ async function inspectPdp(page, handleMeta, viewport, shotsDir) {
   const themePlaceholder = await page.locator('.product-gallery-placeholder, .product-gallery-main svg').count();
   if (themePlaceholder > 0) notes.push('theme-placeholder-active');
 
+  const heroImages = await page.locator('.product-gallery-main img').evaluateAll((imgs) =>
+    imgs.map((img) => {
+      const src = img.getAttribute('src') || '';
+      const srcset = img.getAttribute('srcset') || '';
+      const combined = `${src} ${srcset}`;
+      return {
+        src,
+        srcset,
+        combined,
+        alt: (img.getAttribute('alt') || '').trim(),
+        naturalWidth: img.naturalWidth,
+        offsetWidth: img.offsetWidth,
+        complete: img.complete,
+        visible: window.getComputedStyle(img).display !== 'none' && img.offsetWidth > 0
+      };
+    })
+  ).catch(() => []);
+
   const productImages = await page
     .locator(
       '.product-gallery-main img, .product-gallery-strip img, .product__media img, .product-gallery img, [data-product-media] img'
     )
     .evaluateAll((imgs) =>
-      imgs.map((img) => ({
-        src: img.getAttribute('src') || '',
-        alt: (img.getAttribute('alt') || '').trim(),
-        naturalWidth: img.naturalWidth,
-        complete: img.complete,
-        visible: window.getComputedStyle(img).display !== 'none' && img.offsetWidth > 0
-      }))
+      imgs.map((img) => {
+        const src = img.getAttribute('src') || '';
+        const srcset = img.getAttribute('srcset') || '';
+        const combined = `${src} ${srcset}`;
+        return {
+          src,
+          srcset,
+          combined,
+          alt: (img.getAttribute('alt') || '').trim(),
+          naturalWidth: img.naturalWidth,
+          offsetWidth: img.offsetWidth,
+          complete: img.complete,
+          visible: window.getComputedStyle(img).display !== 'none' && img.offsetWidth > 0
+        };
+      })
     )
     .catch(() => []);
 
-  const shopifyMedia = productImages.filter(
-    (img) =>
-      img.visible &&
-      img.naturalWidth > 80 &&
-      /cdn\.shopify\.com/i.test(img.src) &&
-      /\/files\//i.test(img.src)
-  );
+  const isShopifyProductCdn = (combined) => {
+    const s = String(combined || '');
+    if (/placeholder|decorative-placeholder|data:image/i.test(s)) return false;
+    if (/cdn\.shopify\.com/i.test(s) && /\/files\//i.test(s)) return true;
+    if (/\/cdn\/shop\/files\//i.test(s)) return true;
+    return false;
+  };
+
+  const shopifyMedia = heroImages.filter((img) => {
+    if (!img.visible || !isShopifyProductCdn(img.combined)) return false;
+    const rendered =
+      img.naturalWidth > 80 || (img.complete && img.offsetWidth > 80) || img.offsetWidth > 80;
+    return rendered;
+  });
   const decorativePlaceholder = productImages.filter(
     (img) => img.visible && /decorative-placeholder|placeholder\.svg/i.test(img.src)
   );
 
-  if (shopifyMedia.length === 0) notes.push('no-shopify-product-media');
-  if (shopifyMedia.length === 0 && (themePlaceholder > 0 || decorativePlaceholder.length > 0)) {
+  const heroLoaded = shopifyMedia.length > 0;
+
+  if (!heroLoaded) notes.push('no-shopify-product-media');
+  if (!heroLoaded && (themePlaceholder > 0 || decorativePlaceholder.length > 0)) {
     notes.push('theme-catalog-media-suppressed');
   }
-  if (shopifyMedia.length > 1) notes.push(`gallery-count-${shopifyMedia.length}`);
+  const stripImages = productImages.filter(
+    (img) => img.visible && isShopifyProductCdn(img.combined) && img.offsetWidth > 40
+  );
+  if (stripImages.length > shopifyMedia.length + 1) {
+    notes.push(`gallery-strip-extra-${stripImages.length}`);
+  }
 
   const hero = shopifyMedia[0];
   if (hero) {
     if (!hero.complete || hero.naturalWidth < 80) notes.push('hero-broken-or-small');
-    if (handleMeta.handle === 'cable-tidies-set' && /100\s*pcs/i.test(hero.alt)) {
-      notes.push('alt-100pcs-overclaim');
-    }
+  if (handleMeta.handle === 'cable-tidies-set' && hero && /100\s*pcs/i.test(hero.alt)) {
+    notes.push('alt-100pcs-overclaim');
+  }
   }
 
   const mediaScopeText = normalizeText(
@@ -285,6 +343,7 @@ async function inspectPdp(page, handleMeta, viewport, shotsDir) {
     shopifyMediaCount: shopifyMedia.length,
     themePlaceholderCount: themePlaceholder.length,
     heroAlt: hero?.alt?.slice(0, 120) ?? null,
+    heroNaturalWidth: hero?.naturalWidth ?? 0,
     commerce,
     overflow,
     notes,
@@ -432,7 +491,7 @@ async function main() {
 
     const verdict = overallVerdict(checks);
     const summary = {
-      slice: '21EL',
+      slice: sliceLabel,
       capturedAt: new Date().toISOString(),
       previewThemeId: PREVIEW_THEME_ID,
       unlockMode: 'manual-unlock',
@@ -444,7 +503,7 @@ async function main() {
     await fsp.writeFile(
       path.join(runDir, 'notes.md'),
       [
-        '# Slice 21EL run notes',
+        `# Slice ${sliceLabel} run notes`,
         '',
         `**Verdict:** ${verdict}`,
         `**Captured:** ${summary.capturedAt}`,
