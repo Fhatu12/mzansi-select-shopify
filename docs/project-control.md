@@ -14,7 +14,8 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — accept **21FB** MVP preview publish-readiness **PASS WITH NOTES**; approve **bounded publish** of theme **`151207542967`** (separate execution slice) **or** defer and continue image-rights / supplier-proof gates.
+- Active slice: **Product Owner** — decide **21FC-B** split-theme remediation on live **`151207542967`** vs **rollback** to Horizon **`148914077879`** (rollback documented only; **not** executed).
+- Completed slice: **Slice 21FC** — MVP preview publish + live QA — **publish PASS** / **live QA FAIL** — **DevOps** / **QA**. **Created:** **`docs/qa/slice-21fc-mvp-preview-publish-and-live-qa.md`**. **Published:** **`151207542967`** live via `shopify theme publish --force`; previous live **`148914077879`**. **Live QA:** homepage + search on MVP **PASS**; **`/collections/all`** still **Horizon** (**17** cards, mobile commerce leak); **10/13** PDPs MVP **PASS**, **3** Horizon **FAIL**. **Evidence:** **`artifacts/catalogue/slice-21fc/2026-05-22T10-25-37/`** (gitignored). **Upstream:** **21FB** (`60b7166`).
 - Completed slice: **Slice 21FB** — MVP preview publish-readiness audit (read-only) — **PASS WITH NOTES** — **QA / Test Engineer**. **Created:** **`docs/qa/slice-21fb-mvp-preview-publish-readiness-audit.md`**. **Preview:** **`151207542967`** — **13/13** collection count, hidden absence, commerce gate, mobile overflow **PASS** on tested routes. **vs live Horizon:** MVP preview **safer** for catalogue-only MVP (**21FA**/**21FA-B** grid **17**, hidden SKUs on live). **Evidence:** **`artifacts/catalogue/slice-21fb/2026-05-22T10-19-21/`** (gitignored). **Not performed:** publish, live push, Admin mutation. **Upstream:** **21FA-B** (`0285154`).
 - Completed slice: **Slice 21FA-B** — live **13**-SKU storefront fix — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21fa-b-live-13-sku-storefront-fix.md`**. **Live push:** Horizon gate + listing blocks + **`main-collection`** / **`search-results`** / **`product-list`** handle skips → **`148914077879`**. **QA:** **13/13** PDP commerce **PASS**; collection grid commerce **PASS** (desktop scoped); grid count **17** (visibility **FAIL WITH NOTES**). **Evidence:** **`artifacts/catalogue/slice-21fa-b/2026-05-22T09-30-48/`** (gitignored). **Upstream:** **21FA** (`fcc77cd`).
 - Completed slice: **Slice 21FA** — live **13**-SKU storefront QA — **FAIL** — **QA / Test Engineer**. **Created:** **`docs/qa/slice-21fa-live-13-sku-storefront-qa.md`**. **Rendered:** **17** links on `/collections/all`; **21EZ** four removals still visible; **12/13** PDP commerce gate **PASS**; **mobile** `/collections/all` **17** cart forms. **Evidence:** **`artifacts/catalogue/slice-21fa/2026-05-22T09-07-03/`** (gitignored). **Upstream:** **21EZ** (`0af08e3`).
@@ -3756,6 +3757,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21FC MVP preview publish and live QA (publish PASS / live QA FAIL)
+
+- **Verdict:** **Publish PASS**; **live QA FAIL** — split-theme rendering after publish.
+- **Created:** **`docs/qa/slice-21fc-mvp-preview-publish-and-live-qa.md`**.
+- **Published:** **`151207542967`** live; **`148914077879`** unpublished.
+- **Live QA:** MVP on `/` + search; **Horizon** still on `/collections/all` (**17** products, mobile cart/quick-add leak); **10/13** PDPs MVP, **3** Horizon.
+- **Evidence:** **`artifacts/catalogue/slice-21fc/2026-05-22T10-25-37/`** (gitignored).
+- **Rollback (not run):** `shopify theme publish --theme 148914077879 --force`.
+- **Next owner:** **Product Owner** — **21FC-B** remediation vs rollback approval.
 
 ## Slice 21FB MVP preview publish-readiness audit (PASS WITH NOTES)
 
