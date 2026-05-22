@@ -10,16 +10,28 @@
 
 **Product Owner approval:** Patch actual live Horizon buy-box / product-card / cart-entry paths only — **no** full sync, **no** publish, **no** Admin product mutation, **no** preview-to-live promotion.
 
-**Evidence (local; not committed):** `artifacts/catalogue/slice-21ex/2026-05-22T08-17-40/`  
-**Harness (local; not committed):** `artifacts/catalogue/slice-21ex/run-live-horizon-commerce-validation.mjs`
+**Evidence (wave 1):** `artifacts/catalogue/slice-21ex/2026-05-22T08-17-40/` (gitignored)  
+**Evidence (post-wave 2–3 re-validation):** `artifacts/catalogue/slice-21ex/2026-05-22T08-27-50/` (gitignored)  
+**Harness (local; not committed):** `artifacts/catalogue/slice-21ex/run-live-horizon-commerce-validation.mjs`  
+**Implementation commit:** `95c67fb`
 
 ---
 
 ## 1. Executive verdict
 
-**FAIL WITH NOTES** (post-implementation; re-validation recommended after push wave 2)
+**FAIL** — post-wave 2–3 re-validation (**2026-05-22T08-27-50**)
 
-Bounded wiring to live Horizon **`product-information`** / **`buy-buttons`** / card surfaces was implemented and pushed in **three** `--only` waves. An authenticated rendered pass (**2026-05-22T08-17-40**) after wave 1 showed **11/17** PDPs **PASS** and listing routes still **FAIL** on `cart/add` form counts (installment `payment-terms` forms and card gallery quick-add were the likely contributors). Wave 2 gated **`blocks/price.liquid`** installments and **`blocks/_product-card-gallery.liquid`** quick-add; wave 3 gated **`blocks/accelerated-checkout.liquid`**. **QA must re-run** the harness after manual storefront unlock to confirm **17/17** PDPs and listing routes at **0** commerce forms.
+Waves 2–3 improved homepage and search listing surfaces and raised PDP pass rate from **11/17** to **12/17**, but commerce-gate acceptance criteria are **not** met:
+
+| Criterion | Result |
+| --- | --- |
+| **17/17** PDPs — no ATC / dynamic checkout / `cart/add` | **12/17 PASS** — **5 FAIL** |
+| Listings — **0** `cart/add` forms | **FAIL** on `/collections/all` (**17** forms desktop + mobile) |
+| Homepage + search listings | **PASS** (`cartForms` **0**) |
+| Supplier verified / hidden / demo | **PASS** on all tested routes |
+| Mobile root overflow | **PASS** (harness `mobileOverflow: true` = within viewport) |
+
+**Recommended follow-up:** bounded slice **21EX-B** — gate collection-grid card commerce (live `templates/collection.json` / card `buy-buttons` block wiring), fix **four** PDPs with an exposed main buy box, and gate **`product-recommendations`** card forms on **`usb-c-charging-cable-1-2m`** (4 related-product forms).
 
 ---
 
@@ -128,25 +140,45 @@ shopify theme push --store dropshippoc.myshopify.com --theme 148914077879 --allo
 
 ---
 
-## 7. Live rendered validation (wave 1 sample — re-run required)
+## 7. Live rendered validation
 
-**Method:** Playwright headed; manual password unlock on live URLs (**no** `preview_theme_id`).  
-**Viewports:** desktop **1366×768**, mobile **390×844**.
+### 7.1 Wave 1 (pre-wave 2–3) — `2026-05-22T08-17-40`
 
-| Route | Desktop | Mobile | Notes |
-| --- | --- | --- | --- |
-| `/` | **FAIL** | **FAIL** | `cartForms` 7–8 (card installment/quick-add suspected) |
-| `/collections/all` | **FAIL** | **FAIL** | `cartForms` 17 |
-| `/search?q=organiser&type=product` | **FAIL** | **FAIL** | `cartForms` 7 |
-| **17** PDPs | **11 PASS** / **6 FAIL** | — | See below |
+| Route | Desktop | Mobile |
+| --- | --- | --- |
+| `/` | **FAIL** (`cartForms` 7–8) | **FAIL** |
+| `/collections/all` | **FAIL** (`cartForms` 17) | **FAIL** |
+| `/search?q=organiser&type=product` | **FAIL** (`cartForms` 7) | **FAIL** |
+| **17** PDPs | **11 PASS** / **6 FAIL** | — |
 
-**PDP FAIL handles (wave 1):** `kitchen-utensil-holder`, `usb-c-charging-cable-1-2m`, `1pc-self-adhesive-wall-mounted-paper-tissue-rack-…`, `available-regular-price`, `handmade-cotton-organizer-basket-…`, `handwoven-cotton-organizer-basket` — signals included enabled ATC, dynamic checkout, missing `.product-commerce-gate-notice` on some samples.
+### 7.2 Post-wave 2–3 re-validation — `2026-05-22T08-27-50`
 
-**PDP PASS sample:** `adjustable-laptop-stand` — notice present, `cartForms` 0, no enabled ATC / dynamic pay.
+**Method:** `node artifacts/catalogue/slice-21ex/run-live-horizon-commerce-validation.mjs` — Playwright headed; manual storefront unlock; live URLs only (**no** `preview_theme_id`).  
+**Viewports:** desktop **1366×768**, mobile **390×844**.  
+**QA type:** read-only — **no** theme push, Admin mutation, or password capture.
 
-**Sub-checks (where measured):** no **Supplier verified**; hidden handles not linked on listings; no north-star demo product names on homepage sample; **mobile root overflow** still **FAIL** on several routes (pre-existing; not commerce-blocking per PO checklist).
+| Route | Desktop | Mobile | `cartForms` | `enabledAtc` | `dynamicPay` |
+| --- | --- | --- | --- | --- | --- |
+| `/` | **PASS** | **PASS** | 0 | 0 | 0 |
+| `/collections/all` | **FAIL** | **FAIL** | **17** | 0 | 0 |
+| `/search?q=organiser&type=product` | **PASS** | **PASS** | 0 | 0 | 0 |
+| **17** PDPs (desktop) | **12 PASS** / **5 FAIL** | — | — | — | — |
 
-**Re-validation command (local):**
+**PDP PASS (12):** `adjustable-laptop-stand`, `kitchen-utensil-holder`, `1pcs-upgradation-adjustable-flatware-…`, `2-tier-under-sink-sliding-storage-basket-…`, `adjustable-pantry-organizer-…`, `available-regular-price`, `handwoven-cotton-organizer-basket`, `modern-kitchen-accessories-soap-dispenser-set-…`, `paper-towel-holders-stainless-steel-…`, `silicone-cup-sleeve-…`, `soap-dispenser-box-…`, `under-cabinet-paper-towel-holder` — `.product-commerce-gate-notice` present; `cartForms` **0**; no enabled ATC / dynamic checkout.
+
+**PDP FAIL (5):**
+
+| Handle | `cartForms` | `enabledAtc` | `dynamicPay` | Notice | Likely source |
+| --- | --- | --- | --- | --- | --- |
+| `usb-c-charging-cable-1-2m` | 4 | 0 | 0 | 1 | Main buy box gated; **product-recommendations** related cards still emit forms |
+| `1pc-self-adhesive-wall-mounted-paper-tissue-rack-…` | 1 | 2 | 1 | 0 | Main **`buy-buttons`** path not gated on rendered PDP |
+| `adjustable-expandable-bamboo-drawer-organizer-…` | 1 | 2 | 1 | 0 | Same |
+| `handmade-cotton-organizer-basket-vegetable-platter-…` | 1 | 2 | 1 | 0 | Same |
+| `keep-room-tidy-for-dirty-clothes-waterproof-fabric-foldable-hamper` | 1 | 2 | 1 | 0 | Same |
+
+**Sub-checks (all routes):** no **Supplier verified**; hidden handles not linked; no north-star demo names; mobile root overflow within harness tolerance.
+
+**Harness command:**
 
 ```bash
 node artifacts/catalogue/slice-21ex/run-live-horizon-commerce-validation.mjs
@@ -164,23 +196,35 @@ node artifacts/catalogue/slice-21ex/run-live-horizon-commerce-validation.mjs
 
 ## 9. Remaining launch blockers
 
-- Live commerce gate **not fully verified** after wave 2/3 — **QA re-run** required.
+- **`/collections/all`** still renders **17** `cart/add` forms (one per visible product card) — collection template / card **`buy-buttons`** wiring on live Horizon not fully gated.
+- **5/17** PDPs still expose commerce paths (**4** main buy box regressions; **1** recommendations rail).
 - Live Horizon homepage still **Horizon `index.json`**, not MVP `featured-product-grid` assembly (**21EU** scope separate).
 - Checkout, payments, markets, shipping rates, supplier proof, media, final pricing — unchanged and **blocked**.
-- Mobile horizontal overflow on some live routes — track under mobile UX slices; not resolved in **21EX**.
 
 ---
 
-## 10. Next owner
+## 10. Recommended follow-up slice (21EX-B)
+
+**Scope (minimal):**
+
+1. Pull and audit live **`templates/collection.json`** + **`sections/main-collection.liquid`** card block order; gate or remove **`buy-buttons`** / **`add-to-cart`** on collection product cards.
+2. Investigate **four** PDP handles where main buy box renders with **no** `.product-commerce-gate-notice` (possible alternate block instance or stale section cache).
+3. Gate **`sections/product-recommendations.liquid`** card children (related-product forms on PDPs such as **`usb-c-charging-cable-1-2m`**).
+4. Bounded `--only` live push + QA re-run — **no** template publish, Admin mutation, or full theme sync.
+
+---
+
+## 11. Next owner
 
 | Role | Action |
 | --- | --- |
-| **QA / Test Engineer** | Re-run §7 harness after waves 2–3; target **17/17** PDP + listing **0** `cart/add` forms |
-| **Product Owner** | Accept **PASS** or approve follow-up slice if any PDP still exposes commerce paths |
-| **DevOps** | Rollback from theme versions if re-validation **FAIL** persists |
+| **Product Owner** | Approve **21EX-B** bounded fix scope |
+| **Senior Full-Stack Software Architect** | Implement collection + recommendations + residual PDP gates |
+| **DevOps** | Bounded live push of approved files only |
+| **QA / Test Engineer** | Re-run §7.2 harness after **21EX-B** |
 
 ---
 
-## 11. Safety
+## 12. Safety
 
 No credentials, cookies, tokens, customer/order/payment payloads, or raw Admin secrets are stored in this document. Evidence remains under gitignored `artifacts/`.
