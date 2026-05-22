@@ -33,7 +33,7 @@
     btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
     btn.setAttribute(
       'aria-label',
-      saved ? `Remove ${title} from wishlist` : `Add ${title} to wishlist`
+      saved ? `Remove ${title} from saved items` : `Add ${title} to saved items`
     );
     btn.classList.toggle('is-saved', saved);
   };
