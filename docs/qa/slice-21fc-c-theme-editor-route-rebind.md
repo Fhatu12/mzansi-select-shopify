@@ -97,7 +97,7 @@ No credentials were requested, printed, stored, captured, or committed.
 - `/search?q=organiser&type=product`
 - `low-delay-wireless-tws-games-sports-headset`
 
-Unlock method was a fresh headed Chromium context with manual password entry in the browser only.
+Unlock method was a fresh headed Chromium context with manual storefront unlock in the browser only.
 
 ---
 
@@ -259,7 +259,46 @@ None of those actions were performed in this slice.
 
 ---
 
-## 12. Evidence path
+## 12. Manual verification update — 2026-05-22
+
+This report remains an accurate record of the automated post-rebind run, which failed at the time. However, the Product Owner later completed a separate manual browser-console verification on the live storefront and the previously failing route symptoms did **not** reproduce in that session.
+
+### Product Owner manual verification evidence
+
+#### Desktop `/collections/all`
+
+- `Shopify.theme.id`: `151207542967`
+- `Shopify.theme.name`: `Mzansi Select MVP Preview`
+- product handle count: `15`
+- checked **21EZ** hidden handles present: `false` for all four checked
+- `/cart/add` forms: `0`
+- quick-add nodes: `0`
+- Liquid errors: `0`
+
+#### Previously problematic PDP
+
+- route: `/products/modern-kitchen-accessories-soap-dispenser-set-liquid-hand-soap-dispenser-pump-bottle-brushes-holds-and-stores-sponges-scrubbers-1`
+- `Shopify.theme.id`: `151207542967`
+- `/cart/add` forms: `0`
+- visible risky commerce elements: `0`
+- Liquid errors: `0`
+- `Price to be confirmed`: `true`
+
+### Manual resolution status
+
+Based on that manual verification evidence, the remaining split-theme issue from **21FC-C** is now treated as **manually resolved** in the Product Owner browser session.
+
+The earlier automated **FAIL** verdict remains part of the audit trail, but its blocker status is superseded by the later manual confirmation.
+
+### Current recommendation
+
+- Shopify Support escalation is **no longer the immediate default next step**
+- one fresh automated confirmation may still be run later if the Product Owner wants final machine-captured proof
+- until that optional rerun is requested, the remaining split-theme issue should be treated as **resolved manually**
+
+---
+
+## 13. Evidence path
 
 Primary evidence:
 

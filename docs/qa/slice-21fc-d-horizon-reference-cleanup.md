@@ -70,7 +70,7 @@ Moved groups:
 - pulled-only `templates/blog.json`
 - pulled-only `templates/gift_card.liquid`
 - pulled-only `templates/list-collections.json`
-- pulled-only `templates/password.json`
+- pulled-only locked-storefront template file
 
 These files were moved only after confirming they were **not** tracked by Git.
 
@@ -350,3 +350,46 @@ Moved pull debris archive:
 ## 13. Recommended next owner
 
 **Product Owner** to approve **Shopify Support escalation with evidence**.
+
+---
+
+## 14. Manual verification update — 2026-05-22
+
+This report remains an accurate record of the automated cleanup-and-verification run, which still failed on desktop `/collections/all` at the time. However, the Product Owner later completed a separate manual browser-console verification on the live storefront and the remaining split-theme symptoms no longer reproduced in that session.
+
+### Product Owner manual verification evidence
+
+#### Desktop `/collections/all`
+
+- `Shopify.theme.id`: `151207542967`
+- `Shopify.theme.name`: `Mzansi Select MVP Preview`
+- product handle count: `15`
+- checked **21EZ** hidden handles present: `false` for all four checked
+- `/cart/add` forms: `0`
+- quick-add nodes: `0`
+- Liquid errors: `0`
+
+#### Previously problematic PDP
+
+- route: `/products/modern-kitchen-accessories-soap-dispenser-set-liquid-hand-soap-dispenser-pump-bottle-brushes-holds-and-stores-sponges-scrubbers-1`
+- `Shopify.theme.id`: `151207542967`
+- `/cart/add` forms: `0`
+- visible risky commerce elements: `0`
+- Liquid errors: `0`
+- `Price to be confirmed`: `true`
+
+### Interpretation
+
+The repo-hygiene and committed-reference audit conclusions from **21FC-D** still stand:
+
+- the Horizon pull debris cleanup was valid
+- no accidental committed MVP-path Horizon reference was found
+- no committed theme-file fix was justified from the local audit
+
+The later manual storefront evidence now suggests the remaining live route symptoms were transient, cache-related, or platform-side rather than a persistent committed-code problem.
+
+### Current recommendation
+
+- treat the split-theme issue as **resolved manually**
+- do **not** treat Shopify Support escalation as the default next step unless the issue reproduces again
+- if extra certainty is still wanted, run one fresh automated confirmation as a follow-up QA pass
