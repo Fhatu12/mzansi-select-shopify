@@ -4,23 +4,20 @@
   {% assign card_product_url = product.url | within: collection_context %}
 {% endif %}
 
-{% assign card_preview_only = false %}
-{% assign card_price_to_confirm = false %}
+{% include 'product-commerce-gate', gate_product: product %}
+{% assign card_preview_only = gate_preview_only %}
+{% assign card_price_to_confirm = gate_price_to_confirm %}
+{% assign card_non_purchasable = gate_non_purchasable %}
+{% assign card_commerce_blocked = gate_commerce_blocked %}
 {% assign card_image_permission_confirmed = false %}
 {% for tag in product.tags %}
   {% assign card_nt = tag | downcase | strip | replace: ' ', '-' %}
-  {% if card_nt == 'preview-only' %}
-    {% assign card_preview_only = true %}
-  {% endif %}
-  {% if card_nt == 'price-to-confirm' %}
-    {% assign card_price_to_confirm = true %}
-  {% endif %}
   {% if card_nt == 'image-permission-confirmed' %}
     {% assign card_image_permission_confirmed = true %}
   {% endif %}
 {% endfor %}
 {% assign card_use_placeholder_price = false %}
-{% if card_preview_only or card_price_to_confirm %}
+{% if card_commerce_blocked %}
   {% assign card_use_placeholder_price = true %}
 {% endif %}
 {% assign card_vendor_norm = product.vendor | downcase | strip %}
@@ -73,7 +70,7 @@
         {{ 'product-1' | placeholder_svg_tag: 'product-placeholder-svg' }}
       {% endif %}
     </a>
-    {% if card_preview_only %}
+    {% if card_commerce_blocked %}
       {% if pilot_trust %}
         {% render 'product-badge', label: 'Pilot item', tone: 'preview' %}
       {% else %}
@@ -107,5 +104,8 @@
       supporting_note: card_price_note
     %}
     <a class="add-btn add-btn--browse" href="{{ card_product_url }}">{{ cta_label | default: 'View product' }}</a>
+    {% if card_commerce_blocked %}
+      <p class="p-commerce-note">Price to be confirmed. This product is being prepared for launch.</p>
+    {% endif %}
   </div>
 </div>

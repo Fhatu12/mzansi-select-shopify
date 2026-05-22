@@ -6,23 +6,20 @@
   {% assign current_product_intro = section.settings.product_intro %}
 {% endif %}
 {% assign current_product_description = product.description | strip %}
-{% assign current_product_preview_only = false %}
-{% assign current_product_price_to_confirm = false %}
+{% include 'product-commerce-gate', gate_product: product %}
+{% assign current_product_preview_only = gate_preview_only %}
+{% assign current_product_price_to_confirm = gate_price_to_confirm %}
+{% assign current_product_non_purchasable = gate_non_purchasable %}
+{% assign current_product_commerce_blocked = gate_commerce_blocked %}
 {% assign current_image_permission_confirmed = false %}
 {% for tag in product.tags %}
   {% assign current_nt = tag | downcase | strip | replace: ' ', '-' %}
-  {% if current_nt == 'preview-only' %}
-    {% assign current_product_preview_only = true %}
-  {% endif %}
-  {% if current_nt == 'price-to-confirm' %}
-    {% assign current_product_price_to_confirm = true %}
-  {% endif %}
   {% if current_nt == 'image-permission-confirmed' %}
     {% assign current_image_permission_confirmed = true %}
   {% endif %}
 {% endfor %}
 {% assign current_product_use_placeholder_price = false %}
-{% if current_product_preview_only or current_product_price_to_confirm %}
+{% if current_product_commerce_blocked %}
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
 {% assign current_vendor_norm = product.vendor | downcase | strip %}
@@ -107,7 +104,7 @@
         </div>
 
         <div class="product-main-badge-row">
-          {% if current_product_preview_only %}
+          {% if current_product_commerce_blocked %}
             {% if pilot_trust %}
               {% render 'product-badge', label: 'Pilot item', tone: 'preview' %}
             {% else %}
@@ -132,8 +129,8 @@
         {% if current_product_preview_only and pilot_trust %}
           <p class="product-preview-note">Delivery timing will be confirmed before launch. This preview item is not yet available for purchase.</p>
           <p class="product-preview-note">Returns and warranty handling will be confirmed before launch. Statutory consumer rights are not limited by this preview page.</p>
-        {% elsif current_product_preview_only %}
-          <p class="product-preview-note">Delivery details to be confirmed before launch.</p>
+        {% elsif current_product_commerce_blocked %}
+          <p class="product-preview-note">This product is being prepared for launch. Delivery details to be confirmed before launch.</p>
         {% elsif pilot_trust %}
           <p class="product-preview-note">Controlled pilot view — not a public launch. Delivery and returns will be confirmed before any order fulfilment.</p>
         {% endif %}
@@ -154,7 +151,9 @@
         {% endunless %}
 
         <p class="product-purchase-note">
-          {% if pilot_trust %}
+          {% if current_product_commerce_blocked %}
+            Price to be confirmed. This product is being prepared for launch. Cart, checkout, and payments are not available.
+          {% elsif pilot_trust %}
             Invite-only controlled pilot visibility. Not a public launch. Cart and checkout remain disabled until a separate Product Owner go/no-go.
           {% else %}
             Preview visibility only. Cart and checkout actions remain disabled in this slice.
@@ -170,7 +169,7 @@
             </div>
           </div>
           <div class="product-action-row">
-            <button class="add-btn product-main-add" type="button" disabled>{% if pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}</button>
+            <button class="add-btn product-main-add" type="button" disabled aria-disabled="true"{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}</button>
             <button class="btn-ghost product-main-save" type="button" disabled aria-disabled="true" aria-label="Favourites paused. Save feature coming later during private preview.">Favourites paused</button>
           </div>
         </div>
@@ -235,7 +234,7 @@
             {% if product.type != blank %}
               <li>Type: {{ product.type }}</li>
             {% endif %}
-            <li>Availability: {% if current_product_preview_only %}{% if pilot_trust %}Pilot preview item{% else %}Preview item{% endif %}{% elsif product.available %}Shown for preview — not a stock guarantee{% else %}Currently unavailable{% endif %}</li>
+            <li>Availability: {% if current_product_commerce_blocked %}{% if pilot_trust %}Pilot preview item{% else %}Preview catalogue item — not available to buy{% endif %}{% elsif product.available %}Shown for preview — not a stock guarantee{% else %}Currently unavailable{% endif %}</li>
             <li>Variant count: {{ product.variants.size }}</li>
             {% unless product.has_only_default_variant %}
               <li>Options: {{ product.options | join: ', ' }}</li>

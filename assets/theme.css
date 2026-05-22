@@ -1484,6 +1484,13 @@ button.drawer-btn-outline[disabled] {
   min-height: 38px;
 }
 
+.p-commerce-note {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
 .p-name a {
   color: inherit;
 }

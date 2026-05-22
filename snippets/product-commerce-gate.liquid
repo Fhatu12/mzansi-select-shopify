@@ -1,0 +1,26 @@
+{% comment %}
+  Sets commerce-gate flags for the passed `gate_product` (defaults to `product`).
+  Normalises tags before comparison (Slice 13J pattern).
+{% endcomment %}
+{% assign gate_product = gate_product | default: product %}
+{% assign gate_non_purchasable = false %}
+{% assign gate_price_to_confirm = false %}
+{% assign gate_preview_only = false %}
+{% if gate_product != blank %}
+  {% for tag in gate_product.tags %}
+    {% assign gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if gate_nt == 'non-purchasable' %}
+      {% assign gate_non_purchasable = true %}
+    {% endif %}
+    {% if gate_nt == 'price-to-confirm' %}
+      {% assign gate_price_to_confirm = true %}
+    {% endif %}
+    {% if gate_nt == 'preview-only' %}
+      {% assign gate_preview_only = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign gate_commerce_blocked = false %}
+{% if gate_non_purchasable or gate_price_to_confirm or gate_preview_only %}
+  {% assign gate_commerce_blocked = true %}
+{% endif %}
