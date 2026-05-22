@@ -6,8 +6,21 @@
     assign product = collections.all.products.first
   endif
 %}
-{% include 'product-commerce-gate', gate_product: product %}
 {% liquid
+  assign gate_product_check = closest.product | default: product
+  assign gate_commerce_blocked = false
+  if gate_product_check != blank
+    for tag in gate_product_check.tags
+      assign gate_nt = tag | downcase | strip | replace: ' ', '-'
+      if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
+        assign gate_commerce_blocked = true
+        break
+      endif
+    endfor
+  endif
+  if section.type == 'product-recommendations'
+    assign gate_commerce_blocked = true
+  endif
   assign variant = closest.product.selected_or_first_available_variant
   assign inventory_quantity = variant.inventory_quantity
   assign inventory_policy = variant.inventory_policy

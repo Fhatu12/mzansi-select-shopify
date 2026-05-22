@@ -31,7 +31,7 @@ Waves 2–3 improved homepage and search listing surfaces and raised PDP pass ra
 | Supplier verified / hidden / demo | **PASS** on all tested routes |
 | Mobile root overflow | **PASS** (harness `mobileOverflow: true` = within viewport) |
 
-**Recommended follow-up:** bounded slice **21EX-B** — gate collection-grid card commerce (live `templates/collection.json` / card `buy-buttons` block wiring), fix **four** PDPs with an exposed main buy box, and gate **`product-recommendations`** card forms on **`usb-c-charging-cable-1-2m`** (4 related-product forms).
+**Follow-up:** **Slice 21EX-B** — **PASS** — see **`docs/qa/slice-21ex-b-live-commerce-gate-follow-up.md`** and evidence **`artifacts/catalogue/slice-21ex/2026-05-22T08-48-50/`**.
 
 ---
 

@@ -14,8 +14,9 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — approve **21EX-B** bounded fix for collection grid + residual PDP/recommendations commerce paths.
-- Completed slice: **Slice 21EX** — live Horizon commerce-gate wiring + post-wave QA re-validation — **FAIL** — **QA / Test Engineer** (re-validation) / **Senior Full-Stack Software Architect** / **DevOps**. **Commit:** **`95c67fb`**. **Created:** **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**. **Live push:** **nine** files, **three** waves → **`148914077879`**. **Post-wave QA (`2026-05-22T08-27-50`):** **12/17** PDPs **PASS**; **`/collections/all`** **FAIL** (**17** `cart/add` forms); homepage + search **PASS**; **5** PDPs still fail (4 main buy box, 1 recommendations). **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-27-50/`** (gitignored). **Follow-up:** **21EX-B** (collection card + recommendations + residual PDP gates).
+- Active slice: **Product Owner** — accept **21EX-B** live commerce gate **PASS** or direct next programme slice.
+- Completed slice: **Slice 21EX-B** — live Horizon commerce-gate follow-up — **PASS** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ex-b-live-commerce-gate-follow-up.md`**. **Live push:** **seven** files across **four** bounded waves → **`148914077879`**. **Post-fix QA (`2026-05-22T08-48-50`):** **17/17** PDPs **PASS**; **`/collections/all`** **0** `cart/add` forms; homepage + search **PASS**. **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-48-50/`** (gitignored). **Upstream:** **21EX** (`95c67fb`), **9c39d81**.
+- Completed slice: **Slice 21EX** — live Horizon commerce-gate wiring + post-wave QA — **FAIL** (closed by **21EX-B**) — **`95c67fb`**, **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**, **`9c39d81`**.
 - Completed slice: **Slice 21EW** — bounded live commerce-gate sync — **FAIL WITH NOTES** — **DevOps / Platform Engineer** / **QA**. **Created:** **`docs/qa/slice-21ew-live-commerce-gate-sync.md`**. **Push:** **four** files to live **`148914077879`** (**PASS**). **Rendered live commerce gate:** **FAIL** — Horizon **`product-information`** templates unwired to **`main-product-foundation`**. **Evidence:** **`artifacts/catalogue/slice-21ew/2026-05-22T07-59-10/`** (gitignored). **Upstream:** **21EV** (`ef234c0`).
 - Completed slice: **Slice 21EV** — commerce gating preparation (17-product catalogue) — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ev-commerce-gating-prep.md`**. **Admin:** `tagsAdd` **`non-purchasable`** + **`price-to-confirm`** on **17** visible products (existing tags preserved). **Theme:** **`snippets/product-commerce-gate.liquid`**, **`live-product-card`**, **`main-product-foundation`**, **`theme.css`**. **Preview push:** **`151207542967`**. **Rendered:** **17/17** PDPs + listing routes **PASS**. **Evidence:** **`artifacts/catalogue/slice-21ev/2026-05-22T07-39-31/`** (gitignored). **Upstream:** **21EU** (`27a5bb7`).
 - Completed slice: **Slice 21EU** — homepage placeholder removal — **PASS WITH NOTES** — **Product Owner accepted** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21eu-homepage-placeholder-removal.md`**. **Theme:** **`sections/featured-product-grid.liquid`** — collection-driven **`live-product-card`** only; no **`static-product-card`** on rails; hide empty collections. **Preview push:** **`151207542967`** (`featured-product-grid.liquid` only). **Evidence:** **`artifacts/catalogue/slice-21eu/2026-05-22T07-25-02/`** (gitignored). **Upstream audit:** **21ET** (`b910660`).
@@ -3751,9 +3752,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
 
-## Slice 21EX live Horizon commerce-gate wiring (FAIL — QA re-validation closed)
+## Slice 21EX-B live Horizon commerce-gate follow-up (PASS)
 
-- **Verdict:** **FAIL** — implementation **`95c67fb`**; post-wave 2–3 QA re-validation **`2026-05-22T08-27-50`**.
+- **Verdict:** **PASS** — live rendered validation **`2026-05-22T08-48-50`**.
+- **Created:** **`docs/qa/slice-21ex-b-live-commerce-gate-follow-up.md`**.
+- **Root cause:** Collection quick-add (theme default **on**); block-scope gate variable loss; recommendations card commerce; `closest.product` tag read on one PDP.
+- **Fix:** Inline tag gates, disable quick-add on collection template, recommendations section block, gated `add-to-cart` block.
+- **Live push:** **`148914077879`** — seven files, four bounded `--only` waves.
+- **QA:** **17/17** PDPs; listings **0** `cart/add` forms.
+- **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-48-50/`** (gitignored).
+
+## Slice 21EX live Horizon commerce-gate wiring (FAIL — superseded by 21EX-B PASS)
+
+- **Verdict:** **FAIL** — implementation **`95c67fb`**; post-wave 2–3 QA **`2026-05-22T08-27-50`**; **closed** by **21EX-B**.
 - **Created:** **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**.
 - **Root cause (from 21EW):** Live **`templates/product.json`** uses **`product-information`** + **`buy-buttons`**, not MVP **`main-product-foundation`**.
 - **Fix (21EX):** Gate **`buy-buttons`**, **`blocks/price`** installments, **`quick-add`** / card gallery, **`accelerated-checkout`**, **`snippets/price`**, sticky ATC via **`product-commerce-gate`** + **`{% include %}`**.

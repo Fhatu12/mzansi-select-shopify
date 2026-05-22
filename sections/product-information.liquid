@@ -24,7 +24,19 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% include 'product-commerce-gate', gate_product: product %}
+{% liquid
+  assign gate_product_for_section = product | default: closest.product
+  assign gate_commerce_blocked = false
+  if gate_product_for_section != blank
+    for tag in gate_product_for_section.tags
+      assign gate_nt = tag | downcase | strip | replace: ' ', '-'
+      if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
+        assign gate_commerce_blocked = true
+        break
+      endif
+    endfor
+  endif
+%}
 {% if section.settings.enable_sticky_add_to_cart and gate_commerce_blocked == false %}
   {% liquid
     assign current_variant = product.selected_or_first_available_variant

@@ -8,6 +8,20 @@
 {%- enddoc -%}
 
 {% include 'product-commerce-gate', gate_product: product %}
+{% liquid
+  if gate_commerce_blocked != true and product != blank
+    for tag in product.tags
+      assign gate_nt = tag | downcase | strip | replace: ' ', '-'
+      if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
+        assign gate_commerce_blocked = true
+        break
+      endif
+    endfor
+  endif
+  if section.type == 'product-recommendations'
+    assign gate_commerce_blocked = true
+  endif
+%}
 {% unless gate_commerce_blocked %}
 {% liquid
   assign product_form_id = 'QuickAdd-ProductForm-' | append: product.id | append: '-' | append: block.id

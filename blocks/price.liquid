@@ -6,6 +6,17 @@
   assign selected_variant = product_resource.selected_or_first_available_variant
 -%}
 {% include 'product-commerce-gate', gate_product: product_resource %}
+{% liquid
+  if gate_commerce_blocked != true and product_resource != blank
+    for tag in product_resource.tags
+      assign gate_nt = tag | downcase | strip | replace: ' ', '-'
+      if gate_nt == 'non-purchasable' or gate_nt == 'price-to-confirm' or gate_nt == 'preview-only'
+        assign gate_commerce_blocked = true
+        break
+      endif
+    endfor
+  endif
+%}
 
 {% liquid
   if block_settings.type_preset == 'rte' or block_settings.type_preset == 'paragraph'

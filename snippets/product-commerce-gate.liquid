@@ -24,3 +24,7 @@
 {% if gate_non_purchasable or gate_price_to_confirm or gate_preview_only %}
   {% assign gate_commerce_blocked = true %}
 {% endif %}
+{% comment %} Slice 21EX-B: product-recommendations may surface untagged related products — block all card commerce there. {% endcomment %}
+{% if section.type == 'product-recommendations' or section.id contains 'product_recommendations' %}
+  {% assign gate_commerce_blocked = true %}
+{% endif %}
