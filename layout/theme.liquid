@@ -60,10 +60,10 @@
     </script>
     {{ content_for_header }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ 'wishlist-local.js' | asset_url | script_tag: defer: true }}
+    <script src="{{ 'wishlist-local.js' | asset_url }}" defer></script>
     {% if template.name == 'product' %}
-      {{ 'product-gallery.js' | asset_url | script_tag: defer: true }}
-      {{ 'product-options-preview.js' | asset_url | script_tag: defer: true }}
+      <script src="{{ 'product-gallery.js' | asset_url }}" defer></script>
+      <script src="{{ 'product-options-preview.js' | asset_url }}" defer></script>
     {% endif %}
     <style>
       @font-face {
