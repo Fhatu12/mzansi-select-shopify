@@ -60,6 +60,11 @@
     </script>
     {{ content_for_header }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'wishlist-local.js' | asset_url | script_tag: defer: true }}
+    {% if template.name == 'product' %}
+      {{ 'product-gallery.js' | asset_url | script_tag: defer: true }}
+      {{ 'product-options-preview.js' | asset_url | script_tag: defer: true }}
+    {% endif %}
     <style>
       @font-face {
         font-family: 'DM Sans';

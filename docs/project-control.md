@@ -14,7 +14,8 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — approve **21FC-C** Theme Editor rebind (or Support) after **21FC-B** **FAIL** — split-theme persists on `/collections/all` + majority of PDPs despite live **`151207542967`**.
+- Active slice: **Product Owner** — approve copy changes from **21FD** §6 table before any Admin title/description slice; optional **21FC-C** Theme Editor rebind after **21FC-B** **FAIL**.
+- Completed slice: **Slice 21FD** — product experience + copy audit — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21fd-product-experience-and-copy-audit.md`**. **Theme:** localStorage wishlist, PDP gallery (zoom/arrows/thumbs), real-option preview selectors — **no** checkout/cart/Admin copy. **Pushed:** live **`151207542967`** — **8** files (`wishlist-button`, `wishlist-local.js`, `product-gallery.js`, `product-options-preview.js`, `live-product-card`, `main-product-foundation`, `theme.liquid`, `theme.css`). **Copy audit:** **15** published rows proposed (read-only); **no** Admin mutation. **Rendered QA:** password-gated — harness `artifacts/catalogue/slice-21fd/run-rendered-qa.mjs` (operator re-run). **Evidence:** `artifacts/catalogue/slice-21fd/2026-05-22T11-51-55/` (gitignored). **Upstream:** **21FC-A** (`4a0e941`); **21FC-B** split-theme **unchanged**.
 - Completed slice: **Slice 21FC-B** — split-theme routing investigation — **FAIL** — **DevOps** / **QA**. **Created:** **`docs/qa/slice-21fc-b-split-theme-routing-fix.md`**. **Finding:** CLI live MVP correct; storefront still binds **`/collections/all`** + **9/13** PDPs to Horizon **`148914077879`** template instances; bounded template push + republish **did not** fix. **Stopped before** Admin product/collection mutation. **Evidence:** **`artifacts/catalogue/slice-21fc-b/2026-05-22T11-05-55/`** (gitignored). **Upstream:** **21FC-A** (`4a0e941`).
 - Completed slice: **Slice 21FC-A** — Liquid include hotfix — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21fc-a-liquid-include-hotfix.md`**. **Commit:** **`4a0e941`**. **Fix:** inline tag gate in **`snippets/live-product-card.liquid`** (removed invalid `{% include %}`). **Pushed:** live **`151207542967`** — `snippets/live-product-card.liquid` only. **QA:** homepage + search **PASS** (no live-product-card Liquid error); collection still **Horizon** (**21FC**). **Upstream:** **21FC** (`128c141`).
 - Completed slice: **Slice 21FC** — MVP preview publish + live QA — **publish PASS** / **live QA FAIL** — **DevOps** / **QA**. **Created:** **`docs/qa/slice-21fc-mvp-preview-publish-and-live-qa.md`**. **Published:** **`151207542967`** live via `shopify theme publish --force`; previous live **`148914077879`**. **Live QA:** homepage + search on MVP **PASS**; **`/collections/all`** still **Horizon** (**17** cards, mobile commerce leak); **10/13** PDPs MVP **PASS**, **3** Horizon **FAIL**. **Evidence:** **`artifacts/catalogue/slice-21fc/2026-05-22T10-25-37/`** (gitignored). **Upstream:** **21FB** (`60b7166`).
@@ -3759,6 +3760,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21FC-B split-theme routing investigation (FAIL)
+
+- **Verdict:** **FAIL** — split-theme persists; theme-file remediation insufficient.
+- **Created:** **`docs/qa/slice-21fc-b-split-theme-routing-fix.md`**.
+- **CLI:** live **`151207542967`**; Horizon **`148914077879`** unpublished.
+- **Storefront:** `/` + search **MVP**; `/collections/all` **Horizon** (**17** products); **9/13** PDPs **Horizon**.
+- **Remediation tried:** bounded push of **10** theme files + `theme publish --force` — **no** routing fix.
+- **Next:** **21FC-C** Theme Editor rebind (PO approval) — **not** executed in **21FC-B**.
+- **Evidence:** **`artifacts/catalogue/slice-21fc-b/2026-05-22T11-05-55/`** (gitignored).
 
 ## Slice 21FC-A Liquid include hotfix (PASS WITH NOTES)
 

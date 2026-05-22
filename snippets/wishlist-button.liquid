@@ -1,0 +1,20 @@
+{% comment %}
+  Local-browser wishlist toggle (Slice 21FD). No accounts, email, or server storage.
+  Requires: product with handle.
+{% endcomment %}
+{% if product != blank and product.handle != blank %}
+  <button
+    type="button"
+    class="p-wish"
+    data-wishlist-toggle
+    data-product-handle="{{ product.handle | escape }}"
+    data-product-title="{{ product.title | escape }}"
+    data-product-url="{{ product.url }}"
+    aria-pressed="false"
+    aria-label="Add {{ product.title | escape }} to wishlist"
+  >
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+  </button>
+{% endif %}
