@@ -14,7 +14,8 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — accept **21EZ** **13**-product catalogue baseline; approve image-rights, supplier-proof, or **13**-SKU live commerce-gate QA slice.
+- Active slice: **Product Owner** — accept **21FA** **FAIL**; approve **21FA-B** live theme fixes (mobile collection gate, `handmade-cotton` PDP, **13**-SKU visibility alignment) or delayed **21FA** re-run if cache-only.
+- Completed slice: **Slice 21FA** — live **13**-SKU storefront QA — **FAIL** — **QA / Test Engineer**. **Created:** **`docs/qa/slice-21fa-live-13-sku-storefront-qa.md`**. **Rendered:** **17** links on `/collections/all`; **21EZ** four removals still visible; **12/13** PDP commerce gate **PASS**; **mobile** `/collections/all` **17** cart forms. **Evidence:** **`artifacts/catalogue/slice-21fa/2026-05-22T09-07-03/`** (gitignored). **Upstream:** **21EZ** (`0af08e3`).
 - Completed slice: **Slice 21EZ** — catalogue reduction after readiness audit — **PASS WITH NOTES** — **DevOps / Platform Engineer**. **Created:** **`docs/catalogue/slice-21ez-catalogue-reduction-after-readiness-audit.md`**. **Admin:** `publishableUnpublish` × **4** (Online Store only). **Post:** **13** visible / **15** hidden; commerce tags **13/13** ✓. **Repo hygiene:** nine Horizon pull files → **`artifacts/theme-pulls/slice-21ez/`** (gitignored). **Evidence:** **`artifacts/catalogue/slice-21ez/2026-05-22T09-01-30/`** (gitignored). **Upstream:** **21EY** (`b16e644`).
 - Completed slice: **Slice 21EY** — visible catalogue launch-readiness audit (read-only) — **PASS WITH NOTES** — **Product Manager**. **Created:** **`docs/catalogue/slice-21ey-visible-catalogue-launch-readiness-audit.md`**. **Baseline:** **17** visible / **11** hidden confirmed; commerce tags **17/17** ✓; **0/17** commerce-ready; **4** hide-before-launch recommended. **Evidence:** **`artifacts/catalogue/slice-21ey/2026-05-22T08-54-55/`** (gitignored). **Superseded visible count by** **21EZ** (**13**). **Upstream:** **21EX-B** (`6a449d2`).
 - Completed slice: **Slice 21EX-B** — live Horizon commerce-gate follow-up — **PASS** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ex-b-live-commerce-gate-follow-up.md`**. **Live push:** **seven** files across **four** bounded waves → **`148914077879`**. **Post-fix QA (`2026-05-22T08-48-50`):** **17/17** PDPs **PASS**; **`/collections/all`** **0** `cart/add` forms; homepage + search **PASS**. **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-48-50/`** (gitignored). **Upstream:** **21EX** (`95c67fb`), **9c39d81**.
@@ -3753,6 +3754,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21FA live 13-SKU storefront QA (FAIL)
+
+- **Verdict:** **FAIL** — **QA / Test Engineer** (read-only rendered QA).
+- **Created:** **`docs/qa/slice-21fa-live-13-sku-storefront-qa.md`**.
+- **Admin at QA:** **13** visible (spot-check **PASS**); **storefront:** **17** on `/collections/all`; **21EZ** four removals still linked.
+- **Commerce gate:** **12/13** PDP **PASS**; **mobile** collection **17** cart forms — **FAIL**.
+- **Evidence:** **`artifacts/catalogue/slice-21fa/2026-05-22T09-07-03/`** (gitignored).
+- **Next owner:** **Product Owner** — **21FA-B** theme fix + re-run, or cache-delayed re-run.
 
 ## Slice 21EZ catalogue reduction after readiness audit (PASS WITH NOTES)
 
