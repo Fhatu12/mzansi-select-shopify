@@ -14,7 +14,8 @@ Mzansi Select Shopify MVP Theme Conversion
 ## Current State
 
 - **Working copies:** Windows source retained at **`D:\dev\mzansi-select-shopify`** (unchanged); Ubuntu-Dev target at **`/home/fhatu/dev/mzansi-select-shopify`** (**Slice 21AI** migration parity **PASS WITH NOTES**; **Slice 21AJ** tooling readiness **PASS WITH NOTES** — Node.js LTS via **nvm**, Shopify CLI version check **3.94.3** native on Ubuntu-Dev; Playwright **not** locally validated — **no** `package.json`). **Ubuntu-Dev active working copy:** **recommended for Product Owner acceptance** — toolchain baseline ready; **not** switched automatically. **`artifacts/`** and **`zadropshipping/`** remain uncommitted (**`artifacts/`** local on Ubuntu only; **`zadropshipping/`** Windows-only untracked).
-- Active slice: **Product Owner** — approve live template wiring or MVP theme promotion after **21EW** finding.
+- Active slice: **QA / Test Engineer** — re-run live Horizon commerce-gate validation after **21EX** push waves 2–3.
+- Completed slice: **Slice 21EX** — live Horizon commerce-gate wiring — **FAIL WITH NOTES** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**. **Wiring:** live **`product-information`** → **`buy-buttons`**, **`blocks/price`** installments, card **`quick-add`** / **`buy-buttons`** via **`{% include 'product-commerce-gate' %}`**. **Live push:** **nine** Horizon paths across **three** `--only` waves to **`148914077879`** (**PASS**; no `--strict`). **Rendered (wave 1):** **11/17** PDPs **PASS**; listing routes **FAIL** on `cart/add` counts — wave 2/3 target installments + gallery quick-add + accelerated checkout. **Evidence:** **`artifacts/catalogue/slice-21ex/2026-05-22T08-17-40/`** (gitignored). **Upstream:** **21EW** (`ffc915d`).
 - Completed slice: **Slice 21EW** — bounded live commerce-gate sync — **FAIL WITH NOTES** — **DevOps / Platform Engineer** / **QA**. **Created:** **`docs/qa/slice-21ew-live-commerce-gate-sync.md`**. **Push:** **four** files to live **`148914077879`** (**PASS**). **Rendered live commerce gate:** **FAIL** — Horizon **`product-information`** templates unwired to **`main-product-foundation`**. **Evidence:** **`artifacts/catalogue/slice-21ew/2026-05-22T07-59-10/`** (gitignored). **Upstream:** **21EV** (`ef234c0`).
 - Completed slice: **Slice 21EV** — commerce gating preparation (17-product catalogue) — **PASS WITH NOTES** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**. **Created:** **`docs/qa/slice-21ev-commerce-gating-prep.md`**. **Admin:** `tagsAdd` **`non-purchasable`** + **`price-to-confirm`** on **17** visible products (existing tags preserved). **Theme:** **`snippets/product-commerce-gate.liquid`**, **`live-product-card`**, **`main-product-foundation`**, **`theme.css`**. **Preview push:** **`151207542967`**. **Rendered:** **17/17** PDPs + listing routes **PASS**. **Evidence:** **`artifacts/catalogue/slice-21ev/2026-05-22T07-39-31/`** (gitignored). **Upstream:** **21EU** (`27a5bb7`).
 - Completed slice: **Slice 21EU** — homepage placeholder removal — **PASS WITH NOTES** — **Product Owner accepted** — **Senior Full-Stack Software Architect** / **QA**. **Created:** **`docs/qa/slice-21eu-homepage-placeholder-removal.md`**. **Theme:** **`sections/featured-product-grid.liquid`** — collection-driven **`live-product-card`** only; no **`static-product-card`** on rails; hide empty collections. **Preview push:** **`151207542967`** (`featured-product-grid.liquid` only). **Evidence:** **`artifacts/catalogue/slice-21eu/2026-05-22T07-25-02/`** (gitignored). **Upstream audit:** **21ET** (`b910660`).
@@ -3749,6 +3750,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fallback:** failed raster loads swap to neutral local SVG — avoids broken-image chrome; alt text preview-safe.
 - **Explicitly unchanged:** PDP product media gates, live-product-card catalog rules, checkout/cart/payment/customer, Admin, publish, import/sync, app install, supplier media.
 - **Preview push:** **Slice 21CO** (**PASS WITH NOTES**).
+
+## Slice 21EX live Horizon commerce-gate wiring (FAIL WITH NOTES)
+
+- **Verdict:** **FAIL WITH NOTES** — **Senior Full-Stack Software Architect** / **DevOps** / **QA**.
+- **Created:** **`docs/qa/slice-21ex-live-horizon-commerce-gate-wiring.md`**.
+- **Root cause (from 21EW):** Live **`templates/product.json`** uses **`product-information`** + **`buy-buttons`**, not MVP **`main-product-foundation`**.
+- **Fix:** Gate **`buy-buttons`**, **`blocks/price`** installments, **`quick-add`** / card gallery, **`accelerated-checkout`**, **`snippets/price`**, sticky ATC in **`product-information`** via **`product-commerce-gate`** + **`{% include %}`**.
+- **Live push:** **`148914077879`** — **three** bounded `--only` waves (**nine** files); **no** publish; **no** template JSON push.
+- **Rendered (wave 1 evidence):** **11/17** PDPs **PASS**; `/`, `/collections/all`, search still **`cart/add` forms** — re-run QA after wave 2/3.
+- **Next owner:** **QA** re-validation; **Product Owner** acceptance.
 
 ## Slice 21EW bounded live commerce-gate sync (FAIL WITH NOTES)
 
