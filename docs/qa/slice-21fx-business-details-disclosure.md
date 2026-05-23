@@ -1,9 +1,10 @@
 # Slice 21FX Business Details Disclosure (South Africa)
 
 - **Date:** 2026-05-23
-- **Verdict:** **BLOCKED**
+- **Verdict:** **PASS WITH NOTES**
 - **Scope:** Extract public company details from approved certificates folder and add storefront disclosure
 - **Live theme:** `151207542967` / `Mzansi Select MVP Preview`
+- **Run context:** retry after initial extraction blocker
 
 ## Pre-check
 
@@ -11,7 +12,7 @@
 - Branch: `master`
 - `artifacts/` ignore rule confirmed
 - `tools/catalogue/` remained untracked and uncommitted
-- No checkout/payment enablement, product mutation, import/sync, `Supplier verified`, media upload, theme publish, or full theme sync was performed or planned for this slice
+- No checkout/payment enablement, product mutation, import/sync, `Supplier verified`, media upload, theme publish, or full theme sync was performed
 
 ## Source Folder Used
 
@@ -26,43 +27,79 @@
 - `COR15.1A.pdf` (355,851 bytes; 2026-02-26 11:02)
 - `WELCOME.pdf` (98,338 bytes; 2026-02-26 11:02)
 
-## Extraction Attempt
+## Extraction Method
 
-- Text extraction utilities were not available in this environment:
-  - `pdftotext`: not available
-  - `pdfinfo`: not available
-  - `qpdf`, `mutool`, `gs`, `pdftk`: not available
-- A conservative fallback (`strings`) did not produce readable text for these PDFs, indicating the content is likely compressed and/or image-based.
-- OCR was not attempted in this slice to avoid repeated OCR and unintended capture of private certificate metadata.
+- Native PDF tools were unavailable in this environment.
+- A temporary Node-based parser (`pdfjs-dist`) was installed outside the repo (`/tmp/...`) and used only for text extraction.
+- No certificate files were copied into the repository.
+- Only required public disclosure fields were recorded.
 
-## Required Public Details (Blocked)
+## Public Details Extracted
 
-The documents could not be safely parsed here, so the following fields are **missing/unconfirmed**:
+- Trading/store name: `Mzansi Select`
+- Full legal company name: `SIKHWARI GROUP (PTY) LTD`
+- Registration number: `2026/166219/07`
+- Director name (clearly present): `Fhatuwani Sikhwari`
+- Registered address (clearly present): `Unit 93 Amber Hill, 26 Lemonwood St, Centurion, Gauteng, 0144`
+- Support contact: existing storefront `Contact Us` route (no support email/phone added)
 
-- Full legal company name: **MISSING**
-- Company registration number: **MISSING**
-- Director name(s) (if present): **MISSING**
-- Registered/physical operating address (if present): **MISSING**
+## Missing / Uncertain Fields
 
-Notes:
-- Trading/store name is known: `Mzansi Select` (approved)
-- Support email/phone was not pulled from certificates and is not introduced in this slice
+- Additional director names: not added because only one director was clearly surfaced in extracted records.
+- Dedicated support email/phone: not added because no already-approved values were present in project sources.
 
-## Theme / Storefront Changes
+## Storefront Implementation
 
-- **None** (stop condition reached; no guessing)
-- No theme push performed
+- Added new section: `sections/business-details-foundation.liquid`
+- Added template: `templates/page.business-details.json` (for future dedicated page use)
+- Added disclosure surface to the existing contact route by updating `templates/page.contact.json`
+- Added footer link label **Business Details** (desktop and mobile company lists) pointing to `/pages/contact#business-details`
+- Added compact footer legal line with legal entity and registration number
 
-## Safety Confirmation
+## Route / Link Result
 
-- No certificate files were copied into the repo
-- No certificate contents were committed
-- No personal identifiers, signing marks, private addresses, or certificate metadata were added to the project
-- Commerce posture unchanged (catalogue-only)
+- Business Details link: `/pages/contact#business-details`
+- Existing contact route remains the primary disclosure surface in this slice
+- Dedicated `/pages/business-details` creation through Admin API is blocked by current API scope (`pages` access denied), so this slice uses the existing page route safely
 
-## Next Owner / Unblock Options
+## Files Changed
 
-To complete 21FX, one of the following is needed:
+- `sections/business-details-foundation.liquid`
+- `templates/page.contact.json`
+- `templates/page.business-details.json`
+- `sections/site-footer.liquid`
+- `docs/qa/slice-21fx-business-details-disclosure.md`
+- `docs/project-control.md`
 
-1. Provide an explicit approved text snippet (legal name, registration number, directors if applicable, registered address) in the slice approval thread so it can be added without parsing certificates.
-2. Install/approve a local text extraction toolchain for PDFs (for example `pdftotext` or a trusted PDF parser) and rerun extraction, still recording only the required public fields.
+## Files Pushed To Live Theme
+
+- `sections/business-details-foundation.liquid`
+- `templates/page.contact.json`
+- `templates/page.business-details.json`
+- `sections/site-footer.liquid`
+
+Push command:
+
+```bash
+shopify theme push --store dropshippoc.myshopify.com --theme 151207542967 --allow-live --nodelete --json --no-color --only sections/business-details-foundation.liquid --only templates/page.contact.json --only templates/page.business-details.json --only sections/site-footer.liquid
+```
+
+## Safety Result
+
+- No private certificate artifacts were copied into repo
+- No personal identifiers beyond director name were added
+- No product/admin product changes
+- No checkout/payment/customer-flow enablement
+- No `Supplier verified` claim added
+- Newsletter/email capture remains disabled from prior slice
+- No Add to Cart, cart/add, quick-add, or dynamic checkout behaviour was introduced by this slice
+
+## Validation Notes
+
+- `shopify theme check --fail-level error` reran and remained blocked by pre-existing repo-wide issues (`305` offences, `264` errors, `41` warnings)
+- Storefront lock still blocks unauthenticated public route rendering checks in this environment
+
+## Remaining Go-Live Blockers
+
+- Storefront access lock still blocks full public route validation in this environment.
+- If a separate dedicated `/pages/business-details` page is mandatory, an auth with `pages` write scope (or manual Admin page creation) is still needed.

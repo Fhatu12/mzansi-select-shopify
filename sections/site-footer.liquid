@@ -79,21 +79,22 @@
         </ul>
       </div>
 
-	      <div>
-	        <div class="f-col-title">Company</div>
-	        <ul class="f-links">
-	          <li><a href="{{ about_page_url }}#about-us">About Us</a></li>
-	          <li><a href="{{ about_page_url }}#privacy-policy">Privacy Policy</a></li>
-	          <li><a href="{{ about_page_url }}#terms">Terms &amp; Conditions</a></li>
-	          <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
-	          <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
-	        </ul>
-	      </div>
+      <div>
+        <div class="f-col-title">Company</div>
+        <ul class="f-links">
+          <li><a href="{{ about_page_url }}#about-us">About Us</a></li>
+          <li><a href="{{ contact_page_url | split: '#contact' | first }}#business-details">Business Details</a></li>
+          <li><a href="{{ about_page_url }}#privacy-policy">Privacy Policy</a></li>
+          <li><a href="{{ about_page_url }}#terms">Terms &amp; Conditions</a></li>
+          <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
+          <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
+        </ul>
+      </div>
 
-	    </div>
+    </div>
 
     <div class="footer-bottom">
-      <div class="f-copy">&copy; 2025 Mzansi Select. All rights reserved.</div>
+      <div class="f-copy">&copy; 2025 Mzansi Select. All rights reserved. Legal entity: SIKHWARI GROUP (PTY) LTD (2026/166219/07).</div>
       <div class="pay-methods">
         <span class="pay-pill">VISA</span>
         <span class="pay-pill">Mastercard</span>
@@ -209,6 +210,7 @@
         <div class="f-acc-body">
           <ul class="f-links">
             <li><a href="{{ about_page_url }}#about-us">About Us</a></li>
+            <li><a href="{{ contact_page_url | split: '#contact' | first }}#business-details">Business Details</a></li>
             <li><a href="{{ about_page_url }}#privacy-policy">Privacy Policy</a></li>
             <li><a href="{{ about_page_url }}#terms">Terms &amp; Conditions</a></li>
             <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
@@ -227,7 +229,7 @@
         <span class="pay-pill">Mobicred</span>
         <span class="pay-pill">PayFlex</span>
       </div>
-      <div class="f-copy">&copy; 2025 Mzansi Select. All rights reserved.</div>
+      <div class="f-copy">&copy; 2025 Mzansi Select. All rights reserved. Legal entity: SIKHWARI GROUP (PTY) LTD (2026/166219/07).</div>
       <div class="f-sa">{{ settings.footer_country_label }} &#127487;&#127462;</div>
     </div>
   </div>

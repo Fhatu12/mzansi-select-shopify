@@ -4940,8 +4940,12 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 
 - **Decision:** add a Business Details disclosure surface for South Africa compliance using public fields from approved company certificates.
 - **Source folder:** `/mnt/d/PTY LTD/Certificates` (read-only; filenames logged only).
-- **Status:** **BLOCKED** — certificate PDFs could not be safely text-extracted in this environment (no `pdftotext`/PDF utilities available; `strings` did not yield readable text).
-- **Missing fields:** full legal company name, registration number, director name(s) (if present), registered/operating address (if present).
-- **Theme/Admin changes:** none (stop condition reached; no guessing).
+- **Retry outcome:** **PASS WITH NOTES** — public fields were extracted using a temporary off-repo Node PDF parser and applied to storefront disclosure surfaces.
+- **Public fields disclosed:** legal entity `SIKHWARI GROUP (PTY) LTD`, registration number `2026/166219/07`, director `Fhatuwani Sikhwari`, registered address `Unit 93 Amber Hill, 26 Lemonwood St, Centurion, Gauteng, 0144`, trading name `Mzansi Select`.
+- **Theme files changed:** `sections/business-details-foundation.liquid`, `templates/page.contact.json`, `templates/page.business-details.json`, `sections/site-footer.liquid`.
+- **Theme push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `sections/business-details-foundation.liquid`, `templates/page.contact.json`, `templates/page.business-details.json`, and `sections/site-footer.liquid`.
+- **Route/link implementation:** footer **Business Details** link now points to `/pages/contact#business-details`; disclosure surface is rendered on the existing contact route.
+- **Scope note:** dedicated Shopify page creation via Admin API remains scope-blocked on current auth (`pages` access denied), so this slice uses the existing contact route safely.
+- **Safety:** no certificate files committed; no private certificate metadata published; no product/commercial flow changes.
 - **Evidence:** `docs/qa/slice-21fx-business-details-disclosure.md`
-- **Next owner:** Product Owner / DevOps to unblock by providing approved public details text or enabling a safe PDF text-extraction toolchain.
+- **Next owner:** Product Owner (decide whether `/pages/contact#business-details` is sufficient, or perform manual Admin creation of a dedicated `business-details` page).

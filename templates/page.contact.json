@@ -8,9 +8,14 @@
         "support_accent": "Us",
         "support_intro": "This static-safe support foundation keeps the approved Mzansi Select rhythm in place with clear help pathways, South Africa-first delivery guidance, and honest placeholder messaging while live contact handling remains deferred."
       }
+    },
+    "business_details": {
+      "type": "business-details-foundation",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "business_details"
   ]
 }

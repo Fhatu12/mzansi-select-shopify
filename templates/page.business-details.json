@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "business-details-foundation",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

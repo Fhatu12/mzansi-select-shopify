@@ -1,0 +1,76 @@
+{% liquid
+  assign business_page_url = '/pages/business-details'
+  assign support_page_url = '/pages/contact#contact'
+%}
+
+<section class="support-main-shell">
+  <div class="section-inner">
+    <div class="support-hero" id="business-details">
+      <div class="support-kicker">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Business Details
+      </div>
+      <h1 class="support-title">Mzansi <span class="gold">Select</span></h1>
+      <p class="support-intro">Public company details for storefront disclosure. This storefront remains catalogue-only and checkout is not currently enabled.</p>
+    </div>
+
+    <div class="support-channel-grid">
+      <article class="support-card">
+        <div class="page-card-label">Trading Name</div>
+        <h2 class="support-card-title">Mzansi Select</h2>
+        <p class="support-card-copy">Trading/store name used on this storefront.</p>
+      </article>
+      <article class="support-card">
+        <div class="page-card-label">Legal Entity</div>
+        <h2 class="support-card-title">SIKHWARI GROUP (PTY) LTD</h2>
+        <p class="support-card-copy">South African private company entity.</p>
+      </article>
+      <article class="support-card">
+        <div class="page-card-label">Registration Number</div>
+        <h2 class="support-card-title">2026/166219/07</h2>
+        <p class="support-card-copy">Company registration number.</p>
+      </article>
+    </div>
+
+    <div class="support-layout">
+      <div class="support-detail-card">
+        {% render 'section-heading', title: 'Director', accent: 'Details' %}
+        <div class="support-detail-stack">
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Director</h3>
+            <p class="support-detail-copy">Fhatuwani Sikhwari</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-detail-card">
+        {% render 'section-heading', title: 'Registered', accent: 'Address' %}
+        <div class="support-detail-stack">
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Address</h3>
+            <p class="support-detail-copy">Unit 93 Amber Hill, 26 Lemonwood St, Centurion, Gauteng, 0144</p>
+          </div>
+          <div class="support-detail-item">
+            <h3 class="support-detail-title">Support contact</h3>
+            <p class="support-detail-copy">Use the <a href="{{ support_page_url }}">Contact Us</a> page for current support routing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-policy-band">
+      <div class="support-policy-title">Catalogue-only notice</div>
+      <p class="support-policy-copy">This storefront is publicly browseable as a catalogue. Checkout, payment, and customer account flows are not currently enabled.</p>
+      <p class="support-policy-copy"><a href="{{ business_page_url }}">Business Details</a> are provided here as a public disclosure surface.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Business details",
+  "settings": []
+}
+{% endschema %}
