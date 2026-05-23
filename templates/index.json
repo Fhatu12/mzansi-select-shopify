@@ -12,8 +12,8 @@
       "type": "featured-product-grid",
       "settings": {
         "anchor_id": "best-sellers",
-        "section_title": "Selected",
-        "section_accent": "Picks",
+        "section_title": "Best",
+        "section_accent": "Sellers",
         "section_link_label": "View all products",
         "section_link_url": "/collections/all",
         "background_style": "cream",
@@ -28,9 +28,9 @@
       "type": "feature-tile-grid",
       "settings": {
         "anchor_id": "new-in",
-        "section_title": "Latest",
-        "section_accent": "Preview",
-        "section_link_label": "View latest preview"
+        "section_title": "New",
+        "section_accent": "Arrivals",
+        "section_link_label": "View all new in"
       }
     },
     "kitchen_storage": {
@@ -44,6 +44,34 @@
         "background_style": "white",
         "content_preset": "kitchen_storage"
       }
+    },
+    "retro_vault_showcase": {
+      "type": "category-showcase",
+      "settings": {
+        "anchor_id": "retro-vault",
+        "showcase_style": "retro_vault",
+        "collection_handle": "retro-vault-consoles-classics",
+        "section_title": "The Retro",
+        "section_accent": "Vault",
+        "section_description": "Consoles & Classics — relive the golden age of gaming",
+        "section_link_label": "View all",
+        "background_style": "white",
+        "max_products": 4
+      }
+    },
+    "games_toys_showcase": {
+      "type": "category-showcase",
+      "settings": {
+        "anchor_id": "games-toys",
+        "showcase_style": "games_toys",
+        "collection_handle": "games-toys",
+        "section_title": "Games",
+        "section_accent": "& Toys",
+        "section_description": "For all ages — board games, puzzles, outdoor fun & more",
+        "section_link_label": "View all",
+        "background_style": "cream",
+        "max_products": 4
+      }
     }
   },
   "order": [
@@ -52,6 +80,8 @@
     "best_sellers",
     "promo_banner",
     "new_arrivals",
-    "kitchen_storage"
+    "kitchen_storage",
+    "retro_vault_showcase",
+    "games_toys_showcase"
   ]
 }

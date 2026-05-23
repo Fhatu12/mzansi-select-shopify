@@ -4868,3 +4868,17 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Verification:** both imported files now contain the Product Owner additions for `The Retro Vault`, `Consoles & Classics`, and `Games & Toys`.
 - **Theme/Admin safety:** no Liquid or CSS changes; no theme push; no publish; no Shopify Admin/product mutation; no checkout/payment/customer-flow enablement; no `Supplier verified` change.
 - **Next owner:** implement **Slice 21FR** theme adoption using the imported north-star files as the visual source of truth.
+
+## Slice 21FR north-star adoption and section unblock pass (Product Owner approved)
+
+- **Decision:** Product Owner approved adopting the imported desktop and mobile north-star HTML files as the storefront visual source of truth for this slice, while keeping the storefront catalogue-only and commerce-gated.
+- **North-star files used:** `/home/fhatu/dev/mzansi-select-shopify/mzansi-select-theme.html` and `/home/fhatu/dev/mzansi-select-shopify/mzansi-select-mobile.html`.
+- **Pre-check:** `HEAD` includes accepted import commit `2991e307`; `artifacts/` ignore confirmed; `tools/catalogue/` remains untracked; no Shopify Admin mutation, product mutation, theme publish, checkout/payment enablement, import/sync, app install, media upload, deletion, or `Supplier verified` change was performed or planned.
+- **Sections opened/unblocked:** homepage `Shipping info` CTA; category-strip `Shipping`, `Returns`, and `FAQ` browse tiles; dedicated homepage showcase sections for `The Retro Vault` and `Games & Toys`; mobile drawer help links; footer help/company browse links; newsletter chrome visually updated while submission stays disabled.
+- **Theme files changed:** `assets/theme.css`, `templates/index.json`, `sections/category-showcase.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/primary-navigation.liquid`, `sections/site-footer.liquid`, `sections/site-header.liquid`.
+- **Live push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `assets/theme.css`, `templates/index.json`, `sections/category-showcase.liquid`, `sections/category-strip.liquid`, `sections/feature-tile-grid.liquid`, `sections/hero-collage.liquid`, `sections/primary-navigation.liquid`, `sections/site-footer.liquid`, and `sections/site-header.liquid`.
+- **Commerce safety:** PASS — no Add to Cart, no `/cart/add`, no quick-add, no dynamic checkout, no checkout/payment/customer-flow enablement, no product/Admin mutation, and no `Supplier verified` claim introduced; price-to-confirm posture remains on product surfaces.
+- **Checks:** `shopify theme check --fail-level error` ran and reported substantial pre-existing repo-wide failures outside the slice scope; `templates/index.json` remained valid JSON after the section update.
+- **Rendered validation:** full desktop/mobile route validation remains blocked in this environment because the storefront still resolves to the Shopify password page and no unlock token/password was available.
+- **Evidence:** `docs/qa/slice-21fr-north-star-adoption.md`
+- **Next owner:** Product Owner for live visual review and acceptance.

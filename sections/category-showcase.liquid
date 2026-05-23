@@ -1,0 +1,224 @@
+{% liquid
+  assign section_classes = 'section section--category-showcase'
+  if section.settings.background_style == 'cream'
+    assign section_classes = section_classes | append: ' section-cream'
+  endif
+  assign section_classes = section_classes | append: ' section--category-showcase-' | append: section.settings.showcase_style
+
+  capture collection_url
+    render 'launch-collection-url', handle: section.settings.collection_handle
+  endcapture
+  assign collection_url = collection_url | strip
+
+  assign showcase_collection = collections[section.settings.collection_handle]
+  assign max_products = section.settings.max_products | default: 4
+  assign has_products = false
+  if showcase_collection != blank and showcase_collection.products_count > 0
+    assign has_products = true
+  endif
+%}
+
+<section id="{{ section.settings.anchor_id | escape }}" class="{{ section_classes }}">
+  <div class="section-inner">
+    <div class="section-head category-showcase__head">
+      <div class="category-showcase__intro">
+        <h2 class="section-title">
+          {{ section.settings.section_title }}
+          {% if section.settings.section_accent != blank %}
+            <span class="gold">{{ section.settings.section_accent }}</span>
+          {% endif %}
+        </h2>
+        {% if section.settings.section_description != blank %}
+          <p class="category-showcase__description">{{ section.settings.section_description }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.section_link_label != blank %}
+        <a class="section-link" href="{{ collection_url }}">
+          {{ section.settings.section_link_label }}
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.showcase_style == 'retro_vault' %}
+      <div class="category-showcase__panel category-showcase__panel--retro">
+        <div class="category-showcase__retro-copy">
+          <div class="category-showcase__eyebrow">Now In Stock</div>
+          <div class="category-showcase__hero-title">Classic Consoles,<br>Cartridges &amp; More</div>
+          <p class="category-showcase__hero-copy">Authentic retro hardware sourced &amp; tested for South African collectors.</p>
+          <a class="category-showcase__cta" href="{{ collection_url }}">
+            Enter the Vault
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-showcase__retro-visual">
+          {% render 'decorative-image',
+            src: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=1200&q=80&auto=format&fit=crop',
+            alt: 'Decorative retro console showcase',
+            width: 1200,
+            height: 720
+          %}
+        </div>
+      </div>
+    {% else %}
+      <div class="category-showcase__features">
+        <a class="category-showcase__feature" href="{{ collection_url }}">
+          {% render 'decorative-image',
+            src: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=1200&q=80&auto=format&fit=crop',
+            alt: 'Decorative board games showcase',
+            width: 1200,
+            height: 720
+          %}
+          <div class="category-showcase__feature-overlay">
+            <div class="category-showcase__feature-kicker">Family Fun</div>
+            <div class="category-showcase__feature-title">Board Games &amp; Puzzles</div>
+            <span class="category-showcase__feature-cta">
+              Shop now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+        </a>
+        <a class="category-showcase__feature category-showcase__feature--secondary" href="{{ collection_url }}">
+          {% render 'decorative-image',
+            src: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&q=80&auto=format&fit=crop',
+            alt: 'Decorative outdoor toys showcase',
+            width: 1200,
+            height: 720
+          %}
+          <div class="category-showcase__feature-overlay">
+            <div class="category-showcase__feature-kicker">Get Outside</div>
+            <div class="category-showcase__feature-title">Outdoor &amp; Active Toys</div>
+            <span class="category-showcase__feature-cta">
+              Shop now
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    {% endif %}
+
+    {% if has_products %}
+      <div class="products-grid products-grid--live-rail category-showcase__products">
+        {% for product in showcase_collection.products limit: max_products %}
+          {% render 'live-product-card',
+            product: product,
+            collection_context: showcase_collection,
+            cta_label: 'View product'
+          %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="category-showcase__empty">
+        {% render 'empty-state',
+          badge: 'Coming soon',
+          title: 'This category is being prepared',
+          description: 'This collection is being prepared for the public catalogue. Check back soon for its first products.',
+          action_label: 'View collection',
+          action_url: collection_url
+        %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "default": "category-showcase"
+    },
+    {
+      "type": "select",
+      "id": "showcase_style",
+      "label": "Showcase style",
+      "default": "retro_vault",
+      "options": [
+        {
+          "value": "retro_vault",
+          "label": "Retro Vault"
+        },
+        {
+          "value": "games_toys",
+          "label": "Games and Toys"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "collection_handle",
+      "label": "Collection handle",
+      "default": "retro-vault-consoles-classics"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "The Retro"
+    },
+    {
+      "type": "text",
+      "id": "section_accent",
+      "label": "Section accent",
+      "default": "Vault"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section description",
+      "default": "Consoles & Classics — relive the golden age of gaming"
+    },
+    {
+      "type": "text",
+      "id": "section_link_label",
+      "label": "Section link label",
+      "default": "View all"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background style",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "White"
+        },
+        {
+          "value": "cream",
+          "label": "Cream"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maximum products",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category showcase"
+    }
+  ]
+}
+{% endschema %}

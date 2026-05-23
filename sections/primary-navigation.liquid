@@ -2,6 +2,8 @@
   assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
   assign preview_latest_url = routes.root_url | append: '#new-in'
   assign preview_picks_url = routes.root_url | append: '#deals'
+  assign about_page_url = '/pages/about'
+  assign contact_page_url = '/pages/contact#contact'
 %}
 
 <nav class="site-nav-desktop" data-shell="desktop-nav">
@@ -20,7 +22,7 @@
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'office-desk' %}"><span class="dept-item-icon">💼</span> Office &amp; Desk</a>
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'tech-accessories' %}"><span class="dept-item-icon">🎧</span> Tech Accessories</a>
         <a class="dept-item" href="{% render 'launch-collection-url', handle: 'retro-vault-consoles-classics' %}"><span class="dept-item-icon">🕹️</span> The Retro Vault</a>
-        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'games-toys' %}"><span class="dept-item-icon">🎲</span> Games &amp; Toys</a>
+        <a class="dept-item" href="{% render 'launch-collection-url', handle: 'games-toys' %}"><span class="dept-item-icon">🎮</span> Games &amp; Toys</a>
         <span class="dept-item dept-item--deferred" aria-disabled="true"><span class="dept-item-icon">🌿</span> Garden &amp; Outdoor</span>
         <span class="dept-item dept-item--deferred" aria-disabled="true"><span class="dept-item-icon">🛁</span> Bath &amp; Bedroom</span>
         <span class="dept-item dept-item--deferred" aria-disabled="true"><span class="dept-item-icon">🧹</span> Cleaning &amp; Laundry</span>
@@ -30,9 +32,9 @@
     <ul class="nav-links">
       <li><a href="{{ routes.root_url }}" class="active">Home</a></li>
       <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
-      <li><a href="{{ preview_latest_url }}">New in Preview</a></li>
-      <li><a href="{{ preview_selected_picks_url }}">Selected Picks</a></li>
-      <li><a href="{{ preview_picks_url }}">Preview Picks</a></li>
+      <li><a href="{{ preview_latest_url }}">New In</a></li>
+      <li><a href="{{ preview_selected_picks_url }}">Best Sellers</a></li>
+      <li><a href="{{ preview_picks_url }}">Deals</a></li>
       <li><span class="nav-link-deferred" aria-disabled="true">Brands</span></li>
     </ul>
 
@@ -97,7 +99,7 @@
     <span class="drawer-link-arrow">&rsaquo;</span>
   </a>
   <a class="drawer-link mob-drawer-link" href="{% render 'launch-collection-url', handle: 'games-toys' %}">
-    <span class="drawer-link-icon">🎲</span>
+    <span class="drawer-link-icon">🎮</span>
     Games &amp; Toys
     <span class="drawer-link-arrow">&rsaquo;</span>
   </a>
@@ -115,15 +117,15 @@
   </a>
   <a class="drawer-link mob-drawer-link" href="{{ preview_latest_url }}">
     <span class="drawer-link-icon">✦</span>
-    New in Preview
+    New In
   </a>
   <a class="drawer-link mob-drawer-link" href="{{ preview_selected_picks_url }}">
     <span class="drawer-link-icon">★</span>
-    Selected Picks
+    Best Sellers
   </a>
   <a class="drawer-link mob-drawer-link" href="{{ preview_picks_url }}">
     <span class="drawer-link-icon">%</span>
-    Preview Picks
+    Deals
   </a>
   <span class="drawer-link drawer-link--deferred" aria-disabled="true">
     <span class="drawer-link-icon">◌</span>
@@ -133,26 +135,22 @@
   <div class="drawer-divider"></div>
 
   <div class="drawer-section-label">Help</div>
-  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
+  <a class="drawer-link mob-drawer-link" href="{{ about_page_url }}#shipping">
     <span class="drawer-link-icon">🚚</span>
     Shipping
-    <span class="visually-hidden">Support shipping information is pending launch approval.</span>
-  </span>
-  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
+  </a>
+  <a class="drawer-link mob-drawer-link" href="{{ about_page_url }}#returns">
     <span class="drawer-link-icon">↺</span>
     Returns
-    <span class="visually-hidden">Returns guidance is pending launch approval.</span>
-  </span>
-  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
+  </a>
+  <a class="drawer-link mob-drawer-link" href="{{ about_page_url }}#faq">
     <span class="drawer-link-icon">?</span>
     FAQ
-    <span class="visually-hidden">FAQ content is pending launch approval.</span>
-  </span>
-  <span class="drawer-link drawer-link--deferred" aria-disabled="true">
+  </a>
+  <a class="drawer-link mob-drawer-link" href="{{ contact_page_url }}">
     <span class="drawer-link-icon">✆</span>
     Contact Us
-    <span class="visually-hidden">Contact support routing is pending launch approval.</span>
-  </span>
+  </a>
 
   <div class="drawer-account">
     <p>Customer accounts are paused during private preview.</p>
