@@ -7,6 +7,17 @@
 {% if collection != blank and collection.all_products_count > 0 %}
   {% assign has_live_collection_products = true %}
 {% endif %}
+{% assign collection_empty_badge = section.settings.empty_badge %}
+{% assign collection_empty_title = section.settings.empty_title %}
+{% assign collection_empty_description = section.settings.empty_description %}
+{% if collection != blank and has_live_collection_products == false %}
+  {% assign collection_empty_badge = 'Products coming soon.' %}
+  {% assign collection_empty_title = 'This category is being prepared.' %}
+  {% assign collection_empty_description = collection.description | strip_html | strip %}
+  {% if collection_empty_description == blank %}
+    {% assign collection_empty_description = 'This category is being prepared for the public catalogue. Check back soon for its first products.' %}
+  {% endif %}
+{% endif %}
 
 <section class="collection-shell">
   <div class="section-inner">
@@ -30,9 +41,9 @@
       {% if has_live_collection_products == false %}
         <div class="collection-empty-wrap">
           {% render 'empty-state',
-            badge: section.settings.empty_badge,
-            title: collection.title | default: section.settings.empty_title,
-            description: collection.description | strip_html | strip | default: section.settings.empty_description,
+            badge: collection_empty_badge,
+            title: collection_empty_title,
+            description: collection_empty_description,
             action_label: section.settings.empty_action_label,
             action_url: routes.root_url
           %}

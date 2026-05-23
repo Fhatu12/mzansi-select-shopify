@@ -4894,3 +4894,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Evidence:** `docs/qa/slice-21fs-live-visual-acceptance.md` and local run output under `artifacts/qa/slice-21fs-live-visual-acceptance/2026-05-23T13-19-32-728Z/` (gitignored).
 - **Product Owner decision:** pending after QA findings.
 - **Next owner:** Theme engineer / Product Owner triage on collection-route wiring and PDP commerce-gate regression.
+
+## Slice 21FT critical go-live blocker fix (Product Owner approved)
+
+- **Decision:** bounded critical blocker fix executed before any catalogue-only public go-live decision.
+- **Admin root cause:** approved collections `retro-vault-consoles-classics` and `games-toys` already existed with exact handles but had empty `resourcePublicationsV2`, so both routes 404ed because they were not published to Online Store.
+- **Admin fix:** `publishablePublish` applied to collection `gid://shopify/Collection/326118899895` and collection `gid://shopify/Collection/326118932663` for publication `gid://shopify/Publication/169105293495` (`Online Store`) only; no product membership change; both collections remain empty.
+- **Theme root cause:** sampled live PDP catalogue-only posture depended on product tags; read-only Admin check on the three sampled live handles returned empty tag sets, so the expected non-purchasable / price-to-confirm branch was unreliable.
+- **Theme files changed:** `sections/main-collection-foundation.liquid`, `sections/main-product-foundation.liquid`.
+- **Theme push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `sections/main-collection-foundation.liquid` and `sections/main-product-foundation.liquid`.
+- **Collection-route result:** PASS — both approved collection routes now return valid non-404 catalogue pages with honest empty-state messaging.
+- **PDP result:** PARTIAL / FAIL — theme copy was updated to remove visible `Add to Cart` wording and enforce catalogue-only posture by default, but final rerun still showed inconsistent live PDP posture on 2 of the 3 sampled products.
+- **Commerce safety:** FAIL — collection blockers closed; no cart/add forms, no quick-add, no dynamic checkout, no checkout/payment/customer-flow enablement, no `Supplier verified` claim, and no mobile overflow were observed; however PDP catalogue-only wording remained inconsistent on 2 sampled live products.
+- **Checks:** `shopify theme check --fail-level error` reran and remained blocked by the same pre-existing repo-wide failures (`305` offences / `264` errors / `41` warnings).
+- **Evidence:** `docs/qa/slice-21ft-critical-go-live-blocker-fix.md`; local validation runs under `artifacts/qa/slice-21ft-validation/` and `artifacts/qa/slice-21ft-validation-rerun/` (gitignored).
+- **Go-live recommendation:** password removal remains blocked; do not proceed to public go-live until the remaining PDP divergence is isolated and re-validated.
+- **Next owner:** Theme engineer / Product Owner follow-on slice for PDP rendering divergence.

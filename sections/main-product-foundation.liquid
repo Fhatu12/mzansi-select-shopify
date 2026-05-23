@@ -26,6 +26,9 @@
 {% if current_product_use_placeholder_price == false and current_variant.price <= 0 and current_vendor_norm == 'mzansi select preview' %}
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
+{% comment %} Slice 21FT: keep all live PDPs catalogue-only even when product tags drift. {% endcomment %}
+{% assign current_product_commerce_blocked = true %}
+{% assign current_product_use_placeholder_price = true %}
 {% assign current_product_price = current_variant.price | money_without_trailing_zeros %}
 {% assign current_product_price_was = blank %}
 {% assign current_product_price_save = blank %}
@@ -160,11 +163,11 @@
           price_is_placeholder: current_product_use_placeholder_price,
           supporting_note: product_price_supporting_note
         %}
-        {% if current_product_preview_only and pilot_trust %}
+        {% if current_product_commerce_blocked %}
+          <p class="product-preview-note">This product is being prepared for launch. Delivery details to be confirmed before launch.</p>
+        {% elsif current_product_preview_only and pilot_trust %}
           <p class="product-preview-note">Delivery timing will be confirmed before launch. This preview item is not yet available for purchase.</p>
           <p class="product-preview-note">Returns and warranty handling will be confirmed before launch. Statutory consumer rights are not limited by this preview page.</p>
-        {% elsif current_product_commerce_blocked %}
-          <p class="product-preview-note">This product is being prepared for launch. Delivery details to be confirmed before launch.</p>
         {% elsif pilot_trust %}
           <p class="product-preview-note">Controlled pilot view — not a public launch. Delivery and returns will be confirmed before any order fulfilment.</p>
         {% endif %}
@@ -233,7 +236,7 @@
 
         <p class="product-purchase-note">
           {% if current_product_commerce_blocked %}
-            Price to be confirmed. This product is being prepared for launch. Cart, checkout, and payments are not available.
+            Price to be confirmed. This product is being prepared for launch.
           {% elsif pilot_trust %}
             Invite-only controlled pilot visibility. Not a public launch. Cart and checkout remain disabled until a separate Product Owner go/no-go.
           {% else %}
@@ -287,9 +290,9 @@
               <path d="M3.51 15a9 9 0 1 0 .49-4.95"></path>
             </svg>
             {% if pilot_trust %}
-              Add to Cart, wishlist, checkout, and payments stay disabled here.
+              Browse details, wishlist, checkout, and payments stay disabled here.
             {% else %}
-              Add to Cart, wishlist, and checkout behaviour remain deferred
+              Browse details, wishlist, and checkout behaviour remain deferred.
             {% endif %}
           </div>
         </div>
