@@ -4935,3 +4935,13 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Commerce safety:** PASS — no Add to Cart, no cart/add forms, no quick-add, no dynamic checkout, and no checkout/payment enablement introduced.
 - **Evidence:** `docs/qa/slice-21fw-a-newsletter-removal.md`
 - **Next owner:** Product Owner (resume 21FV go-live when storefront access lock is removed).
+
+## Slice 21FX South Africa business details disclosure (Product Owner approved)
+
+- **Decision:** add a Business Details disclosure surface for South Africa compliance using public fields from approved company certificates.
+- **Source folder:** `/mnt/d/PTY LTD/Certificates` (read-only; filenames logged only).
+- **Status:** **BLOCKED** — certificate PDFs could not be safely text-extracted in this environment (no `pdftotext`/PDF utilities available; `strings` did not yield readable text).
+- **Missing fields:** full legal company name, registration number, director name(s) (if present), registered/operating address (if present).
+- **Theme/Admin changes:** none (stop condition reached; no guessing).
+- **Evidence:** `docs/qa/slice-21fx-business-details-disclosure.md`
+- **Next owner:** Product Owner / DevOps to unblock by providing approved public details text or enabling a safe PDF text-extraction toolchain.
