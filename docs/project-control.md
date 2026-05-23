@@ -4882,3 +4882,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Rendered validation:** full desktop/mobile route validation remains blocked in this environment because the storefront still resolves to the Shopify password page and no unlock token/password was available.
 - **Evidence:** `docs/qa/slice-21fr-north-star-adoption.md`
 - **Next owner:** Product Owner for live visual review and acceptance.
+
+## Slice 21FS live visual acceptance QA (Product Owner approved; read-only)
+
+- **Decision:** read-only live visual acceptance QA executed after **Slice 21FR** with manual browser unlock by the Product Owner and no stored unlock details.
+- **Scope safety:** no Shopify Admin mutation, theme push, theme publish, checkout/payment/customer-flow enablement, product import/sync, app installation, `Supplier verified` change, deletion, or media upload.
+- **Routes/viewports tested:** `/`, `/search?q=organiser&type=product`, `/collections/retro-vault-consoles-classics`, `/collections/games-toys`, and three sampled PDPs at `1366x768` and `390x844`.
+- **Visual result:** homepage and mobile drawer north-star sections rendered as intended; `Retro Vault` and `Games & Toys` homepage blocks were visible on desktop and mobile; support/footer links rendered; no mobile horizontal overflow or Liquid error text observed.
+- **Failures:** `Retro Vault` and `Games & Toys` collection routes both returned the 404 foundation; all three sampled PDPs still displayed `Add to Cart` text in desktop and mobile, failing the catalogue-only commerce gate; repeated live font-asset 404s observed.
+- **Commerce safety:** FAIL — no dynamic checkout or `Supplier verified` claim was found, but `Add to Cart` wording remained visible on sampled live PDPs.
+- **Evidence:** `docs/qa/slice-21fs-live-visual-acceptance.md` and local run output under `artifacts/qa/slice-21fs-live-visual-acceptance/2026-05-23T13-19-32-728Z/` (gitignored).
+- **Product Owner decision:** pending after QA findings.
+- **Next owner:** Theme engineer / Product Owner triage on collection-route wiring and PDP commerce-gate regression.
