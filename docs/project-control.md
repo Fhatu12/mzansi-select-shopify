@@ -4849,3 +4849,22 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Remaining blockers:** password-gated storefront access, no public launch/customer access approval.
 - **Next owner:** Product Owner.
 
+## Slice 21FR-A north-star import and verification (Product Owner approved)
+
+- **Decision:** Product Owner approved importing the updated north-star HTML pair into the active WSL repo before the 21FR theme adoption pass.
+- **Repo pre-check:** `## master`; `artifacts/` ignore confirmed; `tools/catalogue/` remains untracked; no theme push, Shopify Admin mutation, product mutation, publish, checkout/payment/customer-flow enablement, or `Supplier verified` change was performed or planned in this slice.
+- **Active repo files before import:**
+  - `mzansi-select-theme.html` — `46,136` bytes, `2026-05-03 20:24`, SHA-256 `c4b815505facd4ba73b2d36121c47deba116a48f1a611f5c2e6b2e08ee35be1f`
+  - `mzansi-select-mobile.html` — `53,557` bytes, `2026-05-09 23:17`, SHA-256 `a7cefdb0b06a67c0b5acf07e05e4dded7a55073046c817d7ce79a619a12307f7`
+- **Source files used:**
+  - `/mnt/d/dev/mzansi-select-shopify/mzansi-select-theme.html` — `60,404` bytes, `2026-05-23 14:27`, SHA-256 `ffecc95f2ae50e30735d85e3b329fa57c44322dcdcfa3a6364e43a0a721db507`
+  - `/mnt/d/dev/mzansi-select-shopify/mzansi-select-mobile.html` — `66,383` bytes, `2026-05-23 14:25`, SHA-256 `ce84c24d336a125847649d8f4740e52972eae48f9e3b90f7edef5b0eec6f9f94`
+- **Source selection result:** `/mnt/d` pair was already newer and different from the active repo copies, so no wider Windows search was needed.
+- **Backup path:** `artifacts/north-star/slice-21fr-a/` with pre-import copies of both repo files; `artifacts/` remains uncommitted.
+- **Imported files:** `mzansi-select-theme.html`, `mzansi-select-mobile.html` only.
+- **Post-import hashes:**
+  - `mzansi-select-theme.html` -> `ffecc95f2ae50e30735d85e3b329fa57c44322dcdcfa3a6364e43a0a721db507`
+  - `mzansi-select-mobile.html` -> `ce84c24d336a125847649d8f4740e52972eae48f9e3b90f7edef5b0eec6f9f94`
+- **Verification:** both imported files now contain the Product Owner additions for `The Retro Vault`, `Consoles & Classics`, and `Games & Toys`.
+- **Theme/Admin safety:** no Liquid or CSS changes; no theme push; no publish; no Shopify Admin/product mutation; no checkout/payment/customer-flow enablement; no `Supplier verified` change.
+- **Next owner:** implement **Slice 21FR** theme adoption using the imported north-star files as the visual source of truth.
