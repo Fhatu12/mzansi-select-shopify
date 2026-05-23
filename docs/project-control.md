@@ -4910,3 +4910,17 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Evidence:** `docs/qa/slice-21ft-critical-go-live-blocker-fix.md`; local validation runs under `artifacts/qa/slice-21ft-validation/` and `artifacts/qa/slice-21ft-validation-rerun/` (gitignored).
 - **Go-live recommendation:** password removal remains blocked; do not proceed to public go-live until the remaining PDP divergence is isolated and re-validated.
 - **Next owner:** Theme engineer / Product Owner follow-on slice for PDP rendering divergence.
+
+## Slice 21FU hard-lock catalogue-only PDP commerce (Product Owner approved)
+
+- **Decision:** bounded critical go-live blocker fix executed to remove PDP commerce leakage at theme level rather than relying on product tags.
+- **Theme root cause:** 21FT confirmed the sampled live PDPs had empty product tag sets, so tag-only gating was insufficient for an MVP that must stay catalogue-only across all PDPs.
+- **Theme files changed:** `assets/pdp-catalogue-lock.js`, `layout/theme.liquid`, `sections/main-product-foundation.liquid`, `snippets/toast-feedback.liquid`.
+- **Theme push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `assets/pdp-catalogue-lock.js`, `layout/theme.liquid`, `sections/main-product-foundation.liquid`, and `snippets/toast-feedback.liquid`.
+- **Implementation result:** PDP commerce controls are now hard-locked in the theme shell; no quantity selector, no active cart/add form, no dynamic checkout path, and no shared toast copy that says `Added to cart!`.
+- **Collection regression:** PASS — 21FT collection-route fixes for `retro-vault-consoles-classics` and `games-toys` remained intact and 21FU made no routing changes.
+- **PDP commerce result:** PASS WITH NOTES — the catalogue-only posture is now enforced at theme level; targeted unlocked browser checks supported the fix, while fresh non-browser sessions still resolve to the storefront lock page unless an unlocked browser session is active.
+- **Checks:** `shopify theme check --fail-level error` remained blocked by the same pre-existing repo-wide failures (`305` offences / `264` errors / `41` warnings); `node --check assets/pdp-catalogue-lock.js` passed.
+- **Evidence:** `docs/qa/slice-21fu-hard-catalogue-only-pdp-lock.md`
+- **Go-live recommendation:** ready for Product Owner final unlocked visual confirmation before any storefront password-removal decision.
+- **Next owner:** Product Owner for final live unlocked catalogue-only confirmation.

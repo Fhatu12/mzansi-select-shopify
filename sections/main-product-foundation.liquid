@@ -244,14 +244,6 @@
           {% endif %}
         </p>
         <div class="product-purchase-shell">
-          <div class="product-qty-wrap">
-            <div class="product-option-label">Quantity</div>
-            <div class="product-qty-shell" aria-label="Quantity selector">
-              <button class="product-qty-btn" type="button" aria-label="Decrease quantity" disabled>−</button>
-              <div class="product-qty-value">1</div>
-              <button class="product-qty-btn" type="button" aria-label="Increase quantity" disabled>+</button>
-            </div>
-          </div>
           <div class="product-action-row">
             <button class="add-btn product-main-add" type="button" disabled aria-disabled="true"{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}</button>
             {% render 'wishlist-button', product: product %}
@@ -318,7 +310,7 @@
             {% if product.type != blank %}
               <li>Type: {{ product.type }}</li>
             {% endif %}
-            <li>Availability: {% if current_product_commerce_blocked %}{% if pilot_trust %}Pilot preview item{% else %}Preview catalogue item — not available to buy{% endif %}{% elsif product.available %}Shown for preview — not a stock guarantee{% else %}Currently unavailable{% endif %}</li>
+            <li>Availability: Preview catalogue item — not available to buy</li>
             <li>Variant count: {{ product.variants.size }}</li>
             {% unless product.has_only_default_variant %}
               <li>Options: {{ product.options | join: ', ' }}</li>
