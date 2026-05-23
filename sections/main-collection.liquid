@@ -48,8 +48,13 @@
       {% assign products_per_page = section.settings.products_per_page %}
     {% endif %}
 
-    {% paginate collection.products by products_per_page %}
-      {% capture children %}
+    {% if collection.products_count == 0 %}
+      <div class="collection-empty-state">
+        {% render 'empty-state', badge: 'Coming soon', title: 'Category being prepared', description: 'This category is being prepared for the public catalogue. Check back soon for its first products.', action_label: 'Browse all products', action_url: routes.all_products_collection_url %}
+      </div>
+    {% else %}
+      {% paginate collection.products by products_per_page %}
+        {% capture children %}
         {% for product in collection.products %}
           {%- if product.handle == 'adjustable-laptop-stand' or product.handle == 'usb-c-charging-cable-1-2m' or product.handle == 'available-regular-price' or product.handle == 'keep-room-tidy-for-dirty-clothes-waterproof-fabric-foldable-hamper' -%}
             {%- continue -%}
@@ -76,6 +81,7 @@
         enable_infinite_scroll: section.settings.enable_infinite_scroll
       %}
     {% endpaginate %}
+    {% endif %}
   </div>
 </results-list>
 

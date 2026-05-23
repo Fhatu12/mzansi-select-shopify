@@ -4814,3 +4814,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Slice 15A posture:** private preview sharing is re-enabled from the QA mobile-readiness perspective and remains **feedback-only private preview testing**.
 - **Guardrails preserved:** **no** public launch approval, **no** checkout/payment testing approval, **no** product import approval, **no** Shopify Admin edit approval, **no** **`Supplier verified`** promotion, **no** final pricing approval, **no** delivery promise approval, and **no** product-claim approval.
 - **Next recommended owner:** **Product Owner / user** to execute controlled **Slice 15A** private preview sharing.
+
+## Slice 21FO Category expansion (Product Owner approved)
+
+- **Decision:** Product Owner approved adding two new catalogue categories/sections for the public catalogue-only MVP with no commerce enablement.
+- **Collections created:** `retro-vault-consoles-classics`, `games-toys`.
+- **Theme files changed:** `sections/category-strip.liquid`, `sections/primary-navigation.liquid`, `sections/main-collection.liquid`.
+- **Route entry points added:** `/collections/retro-vault-consoles-classics`, `/collections/games-toys`.
+- **Empty-state behaviour:** honest deferred copy is rendered for empty collections; no fake/demo products are shown.
+- **Commerce safety:** preserved catalogue-only gate; no Add to Cart, cart/add, quick-add, dynamic checkout, checkout/payment, or Supplier verified claim changes.
+- **Launch blockers:** no customer access approval, no checkout/payment enablement, no product import/sync, no app install, no media upload, no Supplier verified status, no price/inventory/warranty/stock/delivery/claim changes.
+- **Next owner:** Product Owner.
+
