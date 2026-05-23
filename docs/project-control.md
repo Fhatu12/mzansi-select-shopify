@@ -4826,3 +4826,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Launch blockers:** no customer access approval, no checkout/payment enablement, no product import/sync, no app install, no media upload, no Supplier verified status, no price/inventory/warranty/stock/delivery/claim changes.
 - **Next owner:** Product Owner.
 
+## Slice 21FP Category strip link cleanup (Product Owner approved)
+
+- **Decision:** Product Owner approved a bounded UI cleanup for the new category strip entries added in Slice 21FO.
+- **Files changed:** `sections/category-strip.liquid`, `docs/project-control.md`, `docs/qa/slice-21fp-category-strip-link-cleanup.md`.
+- **Fix:** updated Retro Vault card title to `The Retro Vault: Consoles & Classics` and CTA to `Browse now →`.
+- **Route:** `/collections/retro-vault-consoles-classics`.
+- **Games & Toys:** CTA pattern preserved with `Browse now →`.
+- **Commerce safety:** no Add to Cart, cart/add, quick-add, dynamic checkout, checkout/payment enablement, or Supplier verified changes.
+- **Theme push:** only `sections/category-strip.liquid` pushed to live theme `#151207542967`.
+- **Remaining blockers:** password-gated storefront access, no public launch/customer access approval.
+- **Next owner:** Product Owner.
+
