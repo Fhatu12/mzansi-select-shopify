@@ -4924,3 +4924,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Evidence:** `docs/qa/slice-21fu-hard-catalogue-only-pdp-lock.md`
 - **Go-live recommendation:** ready for Product Owner final unlocked visual confirmation before any storefront password-removal decision.
 - **Next owner:** Product Owner for final live unlocked catalogue-only confirmation.
+
+## Slice 21FW-A remove newsletter surfaces (Product Owner approved)
+
+- **Decision:** remove newsletter signup surfaces completely so the MVP does not imply email collection.
+- **Theme surfaces removed:** footer newsletter block (desktop + mobile), disabled email input, disabled Subscribe button, and deferred newsletter wording.
+- **Theme files changed:** `sections/site-footer.liquid`, `sections/main-product-foundation.liquid`, `assets/theme.css`.
+- **Theme push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `sections/site-footer.liquid`, `sections/main-product-foundation.liquid`, and `assets/theme.css`.
+- **Customer-data safety:** PASS — no email input or newsletter/subscribe wording remains on theme surfaces.
+- **Commerce safety:** PASS — no Add to Cart, no cart/add forms, no quick-add, no dynamic checkout, and no checkout/payment enablement introduced.
+- **Evidence:** `docs/qa/slice-21fw-a-newsletter-removal.md`
+- **Next owner:** Product Owner (resume 21FV go-live when storefront access lock is removed).
