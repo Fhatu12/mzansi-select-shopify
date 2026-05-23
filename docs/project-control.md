@@ -4949,3 +4949,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Safety:** no certificate files committed; no private certificate metadata published; no product/commercial flow changes.
 - **Evidence:** `docs/qa/slice-21fx-business-details-disclosure.md`
 - **Next owner:** Product Owner (decide whether `/pages/contact#business-details` is sufficient, or perform manual Admin creation of a dedicated `business-details` page).
+
+## Slice 21FY support contact disclosure (Product Owner approved)
+
+- **Decision:** add approved support email + phone disclosure on the existing Contact / Business Details surface and footer Help areas.
+- **Support contact added:**
+  - Email: `Fhatuwani.Sikhwari@sikhwarigroup.co.za`
+  - Phone: `+27 82 997 4112`
+- **Theme files changed:** `sections/business-details-foundation.liquid`, `sections/site-footer.liquid`.
+- **Theme push:** selected-file-only push to live theme `151207542967` with `--allow-live` and `--nodelete`; pushed files were `sections/business-details-foundation.liquid` and `sections/site-footer.liquid`.
+- **Customer-data safety:** PASS — mailto/tel links only; no forms or capture surfaces added.
+- **Commerce safety:** PASS — no cart/checkout/payment enablement introduced.
+- **Evidence:** `docs/qa/slice-21fy-support-contact-disclosure.md`
+- **Next owner:** Product Owner (continue go-live gate decisions separately).

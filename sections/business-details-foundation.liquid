@@ -1,6 +1,9 @@
 {% liquid
   assign business_page_url = '/pages/business-details'
   assign support_page_url = '/pages/contact#contact'
+  assign support_email = 'Fhatuwani.Sikhwari@sikhwarigroup.co.za'
+  assign support_phone_display = '+27 82 997 4112'
+  assign support_phone_tel = '+27829974112'
 %}
 
 <section class="support-main-shell">
@@ -54,7 +57,11 @@
           </div>
           <div class="support-detail-item">
             <h3 class="support-detail-title">Support contact</h3>
-            <p class="support-detail-copy">Use the <a href="{{ support_page_url }}">Contact Us</a> page for current support routing.</p>
+            <p class="support-detail-copy">
+              Email: <a href="mailto:{{ support_email }}">{{ support_email }}</a><br>
+              Phone: <a href="tel:{{ support_phone_tel }}">{{ support_phone_display }}</a>
+            </p>
+            <p class="support-detail-copy">You can also use the <a href="{{ support_page_url }}">Contact Us</a> page for the latest support routing notes.</p>
           </div>
         </div>
       </div>
