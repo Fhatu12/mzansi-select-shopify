@@ -4838,3 +4838,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Remaining blockers:** password-gated storefront access, no public launch/customer access approval.
 - **Next owner:** Product Owner.
 
+## Slice 21FQ Retro Vault card sizing cleanup (Product Owner approved)
+
+- **Decision:** Product Owner approved a bounded layout cleanup for the category strip title sizing.
+- **Files changed:** `assets/theme.css`, `docs/project-control.md`, `docs/qa/slice-21fq-retro-vault-card-sizing.md`.
+- **Fix:** added a minimal wrap rule for `.cat-name` so `The Retro Vault: Consoles & Classics` balances cleanly with the other category blocks.
+- **Live push:** only `assets/theme.css` pushed to live theme `#151207542967`.
+- **Verification:** homepage loads, Retro Vault title wraps cleanly, category blocks remain visually even, and Browse now links still work.
+- **Commerce safety:** no Add to Cart, cart/add, quick-add, dynamic checkout, checkout/payment enablement, product mutation, Supplier verified, or theme publish changes.
+- **Remaining blockers:** password-gated storefront access, no public launch/customer access approval.
+- **Next owner:** Product Owner.
+

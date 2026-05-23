@@ -3903,6 +3903,9 @@ footer {
 
   .cat-name {
     font-size: 11px;
+    max-width: 100px;
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 
   .cat-sub {
