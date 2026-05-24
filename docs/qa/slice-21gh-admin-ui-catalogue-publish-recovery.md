@@ -26,6 +26,8 @@ The repo now includes an operator-assisted Playwright harness for this slice:
 - Script: `tools/qa/run-slice-21gh-admin-ui-recovery.mjs`
 - NPM shortcut: `npm run qa:slice-21gh-admin-ui-recovery`
 - Safe login mode: `--manual-admin-ready` (alias: `--attach-after-login`)
+- WSL-safe verification mode: `--verify-storefront-only`
+- WSL-safe npm shortcut: `npm run qa:slice-21gh-storefront-verify`
 
 The harness:
 
@@ -39,6 +41,13 @@ The harness:
 - opens the storefront and waits for manual storefront password unlock
 - runs the approved `/collections/all`, search, and PDP checks
 
+In WSL-safe storefront mode it:
+
+- does **not** open Shopify Admin
+- does **not** navigate to Shopify login
+- does **not** attempt Admin UI automation
+- only verifies storefront routes after the Product Owner completes Admin work manually in Windows Chrome/Edge
+
 It uses the approved safe pattern:
 
 - headed browser with manual login pause
@@ -46,6 +55,13 @@ It uses the approved safe pattern:
 - no credentials, cookies, storage state, trace, HAR, or video saved
 
 ## Admin UI Runbook
+
+## WSL-safe Decision
+
+For this project running in WSL:
+
+- Shopify Admin login/MFA should be handled manually in normal Windows Chrome/Edge
+- WSL/Codex should use `--verify-storefront-only` for storefront verification after the Admin step is complete
 
 ### 1. Login / MFA (manual)
 
@@ -77,6 +93,17 @@ Goal: ensure all current products are available on **Online Store**.
    - publish now (Online Store only), only if this is clearly the reason products are not visible.
 5. Save/apply changes.
 
+### 3A. Manual Admin step for WSL-safe verification-only mode
+
+Use Windows Chrome/Edge manually:
+
+1. Open Shopify Admin.
+2. Go to **Products**.
+3. Select the current products.
+4. Use the Admin bulk action to make them available on **Online Store**.
+5. Save.
+6. Do not change product list or prices.
+
 ### 4. Spot-check a few products
 
 Pick 5 products and confirm inside each product record:
@@ -94,21 +121,39 @@ Pick 5 products and confirm inside each product record:
 
 ## Storefront Verification (Unlocked Session Required)
 
-If using the Playwright harness, it will open the storefront password page and wait for manual unlock in the same browser session.
+If using the Playwright harness in WSL-safe mode, run:
+
+- `npm run qa:slice-21gh-storefront-verify`
+
+It will open the storefront password page and wait for manual unlock in the same browser session.
 
 If running manually, use a fresh browser tab (storefront unlocked as needed):
 
+- `/`
 - `/collections/all`
 - `/search?q=organiser&type=product`
-- Open at least 5 PDPs from product cards/links
+- `/collections/retro-vault-consoles-classics`
+- `/collections/games-toys`
+- Open at least 5 PDPs from visible product links, if product links are present
 
 Confirm:
 
+- homepage loads
 - `/collections/all` shows product cards/links (not zero)
 - search returns results when query matches the catalogue (as applicable)
+- Retro Vault route loads without 404
+- Games & Toys route loads without 404
 - PDPs return 200 (no 404)
 - prices display as-is
-- catalogue-only safety remains (no Add to Cart/cart-add/quick-add/dynamic checkout)
+- no Add to Cart
+- no cart/add
+- no quick-add
+- no dynamic checkout
+- no checkout/payment/customer-flow path
+- no Supplier verified claim
+- no newsletter/email capture
+- no Liquid errors
+- no mobile overflow
 
 ## Results Capture
 
@@ -124,10 +169,14 @@ Confirm:
 
 | Route | Result (PASS/FAIL) | Notes |
 |---|---|---|
+| `/` |  |  |
 | `/collections/all` |  |  |
 | `/search?q=organiser&type=product` |  |  |
-| 5 PDPs open (200) |  |  |
+| `/collections/retro-vault-consoles-classics` |  |  |
+| `/collections/games-toys` |  |  |
+| 5 PDPs open (200), if visible |  |  |
 | No Add to Cart/cart-add/quick-add/dynamic checkout |  |  |
+| No Supplier verified / newsletter / Liquid errors / mobile overflow |  |  |
 
 ## Stop Condition / Escalation
 

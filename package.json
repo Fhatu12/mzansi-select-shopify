@@ -5,7 +5,8 @@
   "scripts": {
     "qa:slice-21ar-auth-preview": "node tools/qa/run-slice-21ar-auth-preview.mjs",
     "qa:slice-21ar-fixed-route-preview-check": "node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --manual-unlock",
-    "qa:slice-21gh-admin-ui-recovery": "node tools/qa/run-slice-21gh-admin-ui-recovery.mjs --manual-admin-ready"
+    "qa:slice-21gh-admin-ui-recovery": "node tools/qa/run-slice-21gh-admin-ui-recovery.mjs --manual-admin-ready",
+    "qa:slice-21gh-storefront-verify": "node tools/qa/run-slice-21gh-admin-ui-recovery.mjs --verify-storefront-only"
   },
   "devDependencies": {
     "playwright": "1.55.0"

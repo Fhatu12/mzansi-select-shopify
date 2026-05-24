@@ -62,12 +62,13 @@ function resolvePlaywright() {
 function printHelp() {
   console.log(
     [
-      'Usage: node tools/qa/run-slice-21gh-admin-ui-recovery.mjs [--manual-admin-ready|--attach-after-login]',
+      'Usage: node tools/qa/run-slice-21gh-admin-ui-recovery.mjs [--manual-admin-ready|--attach-after-login|--verify-storefront-only]',
       '',
       'Operator-assisted Playwright harness for Slice 21GH.',
-      'It launches a headed Chromium browser, pauses for manual Shopify Admin login/MFA,',
+      'In Admin mode it launches a headed Chromium browser, pauses for manual Shopify Admin login/MFA,',
       'tries to bulk-enable Online Store availability for the current products, waits for indexing,',
       'then opens the storefront and waits for manual password unlock before route checks.',
+      'In WSL-safe storefront mode it skips Shopify Admin entirely and only verifies storefront routes.',
       '',
       'Safety:',
       '- No credentials are read from terminal input or environment variables.',
@@ -79,12 +80,19 @@ function printHelp() {
 
 function parseArgs(argv) {
   const args = {
-    manualAdminReady: true
+    mode: 'manual-admin-ready'
   };
 
   for (const arg of argv) {
     if (arg === '--help') continue;
-    if (arg === '--manual-admin-ready' || arg === '--attach-after-login') continue;
+    if (arg === '--manual-admin-ready' || arg === '--attach-after-login') {
+      args.mode = 'manual-admin-ready';
+      continue;
+    }
+    if (arg === '--verify-storefront-only') {
+      args.mode = 'verify-storefront-only';
+      continue;
+    }
     throw new Error(`Unknown argument: ${arg}`);
   }
 
@@ -437,7 +445,7 @@ async function run() {
     printHelp();
     return;
   }
-  parseArgs(argv);
+  const args = parseArgs(argv);
 
   const playwright = resolvePlaywright();
   const runDir = path.join(evidenceRoot, stamp());
@@ -449,10 +457,12 @@ async function run() {
     adminProductsUrl: ADMIN_PRODUCTS_URL,
     storefrontOrigin: STOREFRONT_ORIGIN,
     indexWaitMs: INDEX_WAIT_MS,
+    mode: args.mode,
     sampleHandles,
     admin: {
       loginHandledManually: true,
-      loginMode: 'manual-admin-ready',
+      loginMode: args.mode === 'verify-storefront-only' ? 'skipped' : 'manual-admin-ready',
+      skipped: args.mode === 'verify-storefront-only',
       productsPageDetected: false,
       productCountSignal: null,
       steps: [],
@@ -473,36 +483,45 @@ async function run() {
     const context = await browser.newContext({
       viewport: { width: 1440, height: 960 }
     });
-    const adminPage = await context.newPage();
+    if (args.mode !== 'verify-storefront-only') {
+      const adminPage = await context.newPage();
 
-    const adminReady = await waitForAdminReady(adminPage);
-    if (!adminReady.ok) {
-      throw new Error(adminReady.reason);
+      const adminReady = await waitForAdminReady(adminPage);
+      if (!adminReady.ok) {
+        throw new Error(adminReady.reason);
+      }
+
+      summary.admin.productsPageDetected = true;
+      summary.admin.productCountSignal = await extractProductCountSignal(adminPage);
+
+      const selected = await ensureAllProductsSelected(adminPage, summary.admin.steps);
+      summary.admin.steps.push(`selected-products:${selected ? 'yes' : 'no'}`);
+
+      const dialogOpened = await openAvailabilityDialog(adminPage, summary.admin.steps);
+      summary.admin.availabilityDialogOpened = dialogOpened;
+
+      if (dialogOpened) {
+        const onlineStoreEnabled = await ensureOnlineStoreEnabled(adminPage, summary.admin.steps);
+        summary.admin.onlineStoreToggleTouched = onlineStoreEnabled;
+
+        const saveTriggered = await saveAvailabilityDialog(adminPage, summary.admin.steps);
+        summary.admin.saveActionTriggered = saveTriggered;
+      }
+
+      console.log('');
+      console.log(`Waiting ${Math.round(INDEX_WAIT_MS / 1000)} seconds for Shopify indexing...`);
+      console.log('');
+      await adminPage.waitForTimeout(INDEX_WAIT_MS);
+      await adminPage.reload({ waitUntil: 'domcontentloaded', timeout: 45_000 });
+      summary.admin.productCountSignalAfterWait = await extractProductCountSignal(adminPage);
+    } else {
+      summary.admin.steps.push('admin-skipped:wsl-safe-storefront-verification-only');
+      console.log('');
+      console.log('=== WSL-safe storefront verification only ===');
+      console.log('Complete Shopify Admin product availability work manually in Windows Chrome/Edge first.');
+      console.log('This WSL run will skip Admin and verify storefront routes only.');
+      console.log('');
     }
-
-    summary.admin.productsPageDetected = true;
-    summary.admin.productCountSignal = await extractProductCountSignal(adminPage);
-
-    const selected = await ensureAllProductsSelected(adminPage, summary.admin.steps);
-    summary.admin.steps.push(`selected-products:${selected ? 'yes' : 'no'}`);
-
-    const dialogOpened = await openAvailabilityDialog(adminPage, summary.admin.steps);
-    summary.admin.availabilityDialogOpened = dialogOpened;
-
-    if (dialogOpened) {
-      const onlineStoreEnabled = await ensureOnlineStoreEnabled(adminPage, summary.admin.steps);
-      summary.admin.onlineStoreToggleTouched = onlineStoreEnabled;
-
-      const saveTriggered = await saveAvailabilityDialog(adminPage, summary.admin.steps);
-      summary.admin.saveActionTriggered = saveTriggered;
-    }
-
-    console.log('');
-    console.log(`Waiting ${Math.round(INDEX_WAIT_MS / 1000)} seconds for Shopify indexing...`);
-    console.log('');
-    await adminPage.waitForTimeout(INDEX_WAIT_MS);
-    await adminPage.reload({ waitUntil: 'domcontentloaded', timeout: 45_000 });
-    summary.admin.productCountSignalAfterWait = await extractProductCountSignal(adminPage);
 
     const storefrontPage = await context.newPage();
     const storefrontReady = await waitForStorefrontUnlock(storefrontPage);
@@ -511,17 +530,41 @@ async function run() {
     }
     summary.storefront.unlockDetected = true;
 
-    const routes = [
+    const browseRoutes = [
+      { key: 'home', path: '/' },
       { key: 'collections-all', path: '/collections/all' },
       { key: 'search-organiser', path: '/search?q=organiser&type=product' },
-      ...sampleHandles.map((handle) => ({ key: `pdp:${handle}`, path: `/products/${handle}` }))
+      { key: 'retro-vault', path: '/collections/retro-vault-consoles-classics' },
+      { key: 'games-toys', path: '/collections/games-toys' }
     ];
 
-    for (const route of routes) {
+    for (const route of browseRoutes) {
       const result = await inspectStorefrontRoute(storefrontPage, route);
       summary.storefront.routes.push(result);
       console.log(
         `[${route.key}] status=${result.status ?? 'n/a'} productLinks=${result.productLinkCount} ` +
+          `addToCart=${result.addToCartVisible ? 'yes' : 'no'} priceToConfirm=${result.priceToConfirmVisible ? 'yes' : 'no'}`
+      );
+    }
+
+    const pdpCandidates = [];
+    for (const routeResult of summary.storefront.routes) {
+      for (const href of routeResult.productLinks || []) {
+        if (/\/products\//i.test(href) && !pdpCandidates.includes(href)) {
+          pdpCandidates.push(href);
+        }
+        if (pdpCandidates.length >= 5) break;
+      }
+      if (pdpCandidates.length >= 5) break;
+    }
+
+    for (const href of pdpCandidates.slice(0, 5)) {
+      const path = href.startsWith('http') ? new URL(href).pathname : href;
+      const key = `pdp:${path.split('/').filter(Boolean).pop()}`;
+      const result = await inspectStorefrontRoute(storefrontPage, { key, path });
+      summary.storefront.routes.push(result);
+      console.log(
+        `[${key}] status=${result.status ?? 'n/a'} productLinks=${result.productLinkCount} ` +
           `addToCart=${result.addToCartVisible ? 'yes' : 'no'} priceToConfirm=${result.priceToConfirmVisible ? 'yes' : 'no'}`
       );
     }
