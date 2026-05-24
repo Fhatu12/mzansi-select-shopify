@@ -5012,3 +5012,9 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Mutations applied:** added `non-purchasable` + `price-to-confirm` tags to all current products (no other product fields touched).
 - **Result:** Admin still reports `onlineStoreUrl: null` for all products even while publication state reports published; storefront “0 products” blocker likely platform/indexing/catalogue availability rather than missing tags/publish toggles.
 - **Evidence:** `docs/qa/slice-21gd-automated-catalogue-availability-recovery.md` (raw snapshots in `artifacts/qa/...` are not committed).
+
+## Slice 21GH Admin UI catalogue publish recovery (Product Owner approved; manual runbook)
+
+- **Decision:** attempt Shopify Admin UI bulk “make available on Online Store” recovery because Admin API publication state did not resolve storefront visibility.
+- **Constraint:** Codex environment does not include browser automation tooling; Product Owner must execute Admin UI steps manually.
+- **Runbook:** `docs/qa/slice-21gh-admin-ui-catalogue-publish-recovery.md`
