@@ -4974,3 +4974,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Major blocker surfaced:** sampled PDP routes returned 404 in unlocked smoke run; `/collections/all` exposed 0 product links; `/search?q=organiser&type=product` returned 0 results in the smoke run. Treat as go-live blocker for catalogue browsing.
 - **Evidence:** `docs/qa/slice-21fz-final-locked-store-polish.md`
 - **Next owner:** Product Owner / DevOps (resolve PDP/publication availability before paid plan + password removal).
+
+## Slice 21GA current catalogue smoke QA (Product Owner approved; read-only)
+
+- **Decision:** read-only smoke QA against the current Product Owner CJ/DSers test baseline; no product mutations permitted.
+- **Admin read-only snapshot:** `ACTIVE` products = `40` (current auth cannot read publication fields; `read_product_listings` missing).
+- **Storefront snapshot (unlocked):** `/collections/all` returned `200` but rendered `0` product links/cards (desktop + mobile).
+- **Visible/hidden (inferred):** visible `0`; hidden/unpublished `40` (inferred from storefront rendering vs Admin ACTIVE count).
+- **Scope note:** unable to test 5 current visible PDPs because storefront exposes no product links; no product visibility/publication changes were performed.
+- **Commerce safety:** PASS on tested routes (no Add to Cart/cart-add/quick-add/dynamic checkout surfaced).
+- **Customer-data safety:** PASS (no newsletter/email capture surfaces).
+- **Evidence:** `docs/qa/slice-21ga-current-catalogue-smoke-qa.md`
+- **Next owner:** Product Owner / DevOps (resolve Online Store product publication/visibility before public catalogue go-live decisions).
