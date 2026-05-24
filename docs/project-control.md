@@ -5003,3 +5003,12 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails:** no product/API mutation in this slice; prices and product list remain unchanged.
 - **Checklist + record sheet:** `docs/qa/slice-21gc-manual-catalogue-availability-verification.md`
 - **Next owner:** Product Owner (complete Admin checks and record outcomes; perform Admin bulk availability action only if it does not affect prices/list).
+
+## Slice 21GD automated catalogue availability recovery (Product Owner approved; bounded mutations)
+
+- **Decision:** run an automated recovery pass via Shopify CLI/Admin API while preserving product list and prices.
+- **Invariants:** product count unchanged (40); all variant prices unchanged (verified via before/after diff).
+- **Online Store publication:** `gid://shopify/Publication/169105293495`
+- **Mutations applied:** added `non-purchasable` + `price-to-confirm` tags to all current products (no other product fields touched).
+- **Result:** Admin still reports `onlineStoreUrl: null` for all products even while publication state reports published; storefront “0 products” blocker likely platform/indexing/catalogue availability rather than missing tags/publish toggles.
+- **Evidence:** `docs/qa/slice-21gd-automated-catalogue-availability-recovery.md` (raw snapshots in `artifacts/qa/...` are not committed).
