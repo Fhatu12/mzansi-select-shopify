@@ -5019,3 +5019,9 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Update:** operator-assisted Playwright harness now uses manual Admin readiness pause mode (`--manual-admin-ready` / `--attach-after-login`) so the Product Owner completes Shopify login/MFA first, navigates to Products, and confirms readiness in the terminal before any UI automation continues.
 - **WSL-safe path:** added storefront-verification-only mode (`--verify-storefront-only`) for use after the Product Owner completes Admin availability work manually in Windows Chrome/Edge.
 - **Runbook:** `docs/qa/slice-21gh-admin-ui-catalogue-publish-recovery.md`
+
+## Slice 21GI limit PDP product gallery media (Product Owner approved; theme-only)
+
+- **Decision:** cap PDP-rendered product media to a maximum of 5 items to prevent slow/infinite loading on imported products with many images.
+- **Behaviour:** main gallery + thumbnails render ≤5 media items; arrows/zoom operate only over the rendered set; variant gallery sync no longer swaps to media outside the rendered thumbs.
+- **Evidence:** `docs/qa/slice-21gi-limit-product-gallery-media.md`

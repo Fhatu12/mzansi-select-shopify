@@ -48,7 +48,20 @@
 {% if cj_controlled_preview_handles contains product.handle %}
   {% assign current_show_catalog_media = false %}
 {% endif %}
+{% assign gallery_media_limit = 5 %}
+{% assign gallery_media = product.media | slice: 0, gallery_media_limit %}
 {% assign current_media = current_variant.featured_media | default: product.featured_media | default: product.media.first %}
+{% if gallery_media.size > 0 %}
+  {% assign current_media_in_gallery = false %}
+  {% for media in gallery_media %}
+    {% if current_media and media.id == current_media.id %}
+      {% assign current_media_in_gallery = true %}
+    {% endif %}
+  {% endfor %}
+  {% unless current_media_in_gallery %}
+    {% assign current_media = gallery_media.first %}
+  {% endunless %}
+{% endif %}
 {% unless current_show_catalog_media %}
   {% assign current_media = blank %}
 {% endunless %}
@@ -70,7 +83,7 @@
       <div
         class="product-gallery"
         data-product-gallery
-        {% if product.media.size > 1 and current_show_catalog_media %}data-gallery-multiple="true"{% endif %}
+        {% if gallery_media.size > 1 and current_show_catalog_media %}data-gallery-multiple="true"{% endif %}
         tabindex="0"
         aria-label="Product images"
       >
@@ -92,7 +105,7 @@
           {% else %}
             {{ 'product-1' | placeholder_svg_tag: 'product-gallery-placeholder' }}
           {% endif %}
-          {% if product.media.size > 1 and current_show_catalog_media %}
+          {% if gallery_media.size > 1 and current_show_catalog_media %}
             <button type="button" class="product-gallery-nav product-gallery-nav--prev" data-gallery-prev aria-label="Previous image">
               <span aria-hidden="true">‹</span>
             </button>
@@ -101,9 +114,9 @@
             </button>
           {% endif %}
         </div>
-        {% if product.media.size > 0 and current_show_catalog_media %}
+        {% if gallery_media.size > 0 and current_show_catalog_media %}
           <div class="product-gallery-strip" role="tablist" aria-label="Product image thumbnails">
-            {% for media in product.media %}
+            {% for media in gallery_media %}
               {% assign thumb_src = media.preview_image | image_url: width: 180 %}
               {% assign thumb_full = media.preview_image | image_url: width: 1200 %}
               <button
@@ -117,7 +130,7 @@
                 data-media-height="{{ media.preview_image.height }}"
                 role="tab"
                 aria-selected="{% if current_media and media.id == current_media.id %}true{% else %}false{% endif %}"
-                aria-label="View image {{ forloop.index }} of {{ product.media.size }}"
+                aria-label="View image {{ forloop.index }} of {{ gallery_media.size }}"
               >
                 <img
                   src="{{ thumb_src }}"

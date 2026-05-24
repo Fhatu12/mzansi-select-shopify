@@ -54,10 +54,9 @@
       matchingThumb.click();
       return;
     }
-    if (mainImg) {
-      mainImg.src = variant.featuredSrc;
-      if (variant.featuredAlt) mainImg.alt = variant.featuredAlt;
-    }
+    // Respect the Liquid-rendered gallery cap: do not swap in media that isn't rendered as a thumb.
+    // This keeps navigation/zoom bounded to the same set of media items.
+    return;
   };
 
   optionGroups.forEach((group) => {
