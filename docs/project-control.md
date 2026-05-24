@@ -4996,3 +4996,10 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Mutations:** none applied broadly in 21GB (a single publish retry test did not immediately change `onlineStoreUrl`; no price/tag/list mutations were applied).
 - **Evidence:** `docs/qa/slice-21gb-online-store-visibility-recovery.md`
 - **Next owner:** Product Owner / DevOps (manual unlocked storefront verification and Shopify Online Store indexing/listing investigation if browse surfaces remain empty).
+
+## Slice 21GC manual catalogue availability verification (Product Owner approved; no API mutations)
+
+- **Decision:** run a manual Shopify Admin verification for why `ACTIVE` + Online Store–published products are not appearing on storefront browse routes.
+- **Guardrails:** no product/API mutation in this slice; prices and product list remain unchanged.
+- **Checklist + record sheet:** `docs/qa/slice-21gc-manual-catalogue-availability-verification.md`
+- **Next owner:** Product Owner (complete Admin checks and record outcomes; perform Admin bulk availability action only if it does not affect prices/list).
