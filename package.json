@@ -4,7 +4,8 @@
   "description": "Local QA tooling for authenticated preview validation.",
   "scripts": {
     "qa:slice-21ar-auth-preview": "node tools/qa/run-slice-21ar-auth-preview.mjs",
-    "qa:slice-21ar-fixed-route-preview-check": "node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --manual-unlock"
+    "qa:slice-21ar-fixed-route-preview-check": "node tools/qa/run-slice-21ar-fixed-route-preview-check.mjs --manual-unlock",
+    "qa:slice-21gh-admin-ui-recovery": "node tools/qa/run-slice-21gh-admin-ui-recovery.mjs"
   },
   "devDependencies": {
     "playwright": "1.55.0"

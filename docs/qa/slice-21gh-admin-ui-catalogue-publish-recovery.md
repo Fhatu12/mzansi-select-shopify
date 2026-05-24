@@ -4,7 +4,7 @@
 **Store:** `dropshippoc.myshopify.com`  
 **Live theme:** `151207542967` (Mzansi Select MVP Preview)  
 **Repo:** `/home/fhatu/dev/mzansi-select-shopify`  
-**Execution:** Codex-only (no browser automation tools available in this environment)  
+**Execution:** Codex-only with operator-assisted Playwright harness  
 
 ## Goal
 
@@ -19,17 +19,30 @@ Use Shopify Admin UI (bulk actions) to make the current products available on th
 - Do not enable checkout/payment/customer flows.
 - Do not mark Supplier verified.
 
-## Important Note (Blocking Constraint)
+## Playwright Harness
 
-Codex does not have access to a browser automation tool in this environment, so it cannot click through Shopify Admin UI directly.
+The repo now includes an operator-assisted Playwright harness for this slice:
 
-This slice therefore provides a **manual Admin UI runbook** for the Product Owner to execute, plus fields to record what happened and the storefront results.
+- Script: `tools/qa/run-slice-21gh-admin-ui-recovery.mjs`
+- NPM shortcut: `npm run qa:slice-21gh-admin-ui-recovery`
 
-## Admin UI Runbook (Product Owner Performs)
+The harness:
 
-### 1. Login (manual)
+- opens Shopify Admin Products in headed Chromium
+- waits for Product Owner manual login/MFA in the browser window only
+- attempts the approved bulk Online Store availability flow
+- waits for indexing
+- opens the storefront and waits for manual storefront password unlock
+- runs the approved `/collections/all`, search, and PDP checks
 
-- Open Shopify Admin for `dropshippoc.myshopify.com`.
+It does **not** save credentials, cookies, storage state, trace, HAR, or video.
+
+## Admin UI Runbook
+
+### 1. Login / MFA (manual)
+
+- Preferred: run `npm run qa:slice-21gh-admin-ui-recovery`.
+- The harness will open Shopify Admin for `dropshippoc.myshopify.com`.
 - If login/MFA is required, complete it manually.
 - Do not share or paste credentials into chat.
 
@@ -65,12 +78,15 @@ Pick 5 products and confirm inside each product record:
 
 ### 5. Wait for indexing
 
-- Wait 2 to 5 minutes.
+- The Playwright harness waits automatically by default.
+- If running manually, wait 2 to 5 minutes.
 - Refresh the Products page once.
 
 ## Storefront Verification (Unlocked Session Required)
 
-In a fresh browser tab (storefront unlocked as needed):
+If using the Playwright harness, it will open the storefront password page and wait for manual unlock in the same browser session.
+
+If running manually, use a fresh browser tab (storefront unlocked as needed):
 
 - `/collections/all`
 - `/search?q=organiser&type=product`
@@ -84,7 +100,7 @@ Confirm:
 - prices display as-is
 - catalogue-only safety remains (no Add to Cart/cart-add/quick-add/dynamic checkout)
 
-## Results Capture (Fill In After Manual Run)
+## Results Capture
 
 ### Admin UI action performed
 
@@ -111,5 +127,4 @@ If products still do not appear on `/collections/all` and `/search` after the Ad
 - Escalate to Shopify Support as an Online Store listing/indexing/catalogue availability issue (CJ/DSers/testing side-effects possible).
 - Use Slice 21GD evidence: Admin API shows `ACTIVE` + published, but `onlineStoreUrl` remains null for all products.
 
-**21GH verdict:** _(to be set after Product Owner runs the Admin UI steps)_.
-
+**21GH verdict:** pending operator-assisted run.
