@@ -4962,3 +4962,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Commerce safety:** PASS — no cart/checkout/payment enablement introduced.
 - **Evidence:** `docs/qa/slice-21fy-support-contact-disclosure.md`
 - **Next owner:** Product Owner (continue go-live gate decisions separately).
+
+## Slice 21FZ final locked-store polish and launch readiness (Product Owner approved)
+
+- **Decision:** final locked-store polish and readiness snapshot before paid plan activation.
+- **Font 404 result:** pushed committed local font assets for `DM Sans` and `Playfair Display` to live theme `151207542967`.
+- **Track Order result:** clarified as deferred/non-functional with wording “Order tracking will be available once checkout is enabled.”
+- **Compliance/support:** Business Details and support contact remain visible under `/pages/contact#business-details`; footer link remains correct.
+- **Collection routes:** `/collections/retro-vault-consoles-classics` and `/collections/games-toys` remain non-404 and honest.
+- **Commerce safety:** PASS — no Add to Cart/cart-add/quick-add/dynamic checkout surfaced in locked-store smoke checks.
+- **Major blocker surfaced:** sampled PDP routes returned 404 in unlocked smoke run; `/collections/all` exposed 0 product links; `/search?q=organiser&type=product` returned 0 results in the smoke run. Treat as go-live blocker for catalogue browsing.
+- **Evidence:** `docs/qa/slice-21fz-final-locked-store-polish.md`
+- **Next owner:** Product Owner / DevOps (resolve PDP/publication availability before paid plan + password removal).
