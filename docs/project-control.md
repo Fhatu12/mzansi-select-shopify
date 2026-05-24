@@ -4986,3 +4986,13 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Customer-data safety:** PASS (no newsletter/email capture surfaces).
 - **Evidence:** `docs/qa/slice-21ga-current-catalogue-smoke-qa.md`
 - **Next owner:** Product Owner / DevOps (resolve Online Store product publication/visibility before public catalogue go-live decisions).
+
+## Slice 21GB online store visibility recovery (Product Owner approved; bounded product recovery)
+
+- **Decision:** recover Online Store catalogue visibility for the current CJ/DSers test products while keeping the product list and all prices unchanged.
+- **Admin audit (read-only):** 40 products total; all sampled products show `status: ACTIVE`; publication state reports published to `Online Store`.
+- **Price baseline:** captured in `docs/qa/slice-21gb-online-store-visibility-recovery.md` (must remain unchanged).
+- **Key finding:** Admin API returned `onlineStoreUrl: null` for sampled products even while publication state reports published; this suggests the empty `/collections/all` + empty search symptom may be an Online Store listing/indexing issue rather than a simple “not published” toggle.
+- **Mutations:** none applied broadly in 21GB (a single publish retry test did not immediately change `onlineStoreUrl`; no price/tag/list mutations were applied).
+- **Evidence:** `docs/qa/slice-21gb-online-store-visibility-recovery.md`
+- **Next owner:** Product Owner / DevOps (manual unlocked storefront verification and Shopify Online Store indexing/listing investigation if browse surfaces remain empty).
