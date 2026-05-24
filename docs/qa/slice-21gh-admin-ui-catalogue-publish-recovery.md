@@ -144,6 +144,7 @@ Confirm:
 - Retro Vault route loads without 404
 - Games & Toys route loads without 404
 - PDPs return 200 (no 404)
+- PDP checks use canonical URLs: `/products/<handle>` (not collection-prefixed product URLs)
 - prices display as-is
 - no Add to Cart
 - no cart/add

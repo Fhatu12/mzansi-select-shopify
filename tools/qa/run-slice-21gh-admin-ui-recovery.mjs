@@ -22,6 +22,7 @@ const STOREFRONT_READY_TIMEOUT_MS = Number(
   process.env.SLICE_21GH_STOREFRONT_READY_TIMEOUT_MS || 10 * 60 * 1000
 );
 const INDEX_WAIT_MS = Number(process.env.SLICE_21GH_INDEX_WAIT_MS || 120 * 1000);
+const PDP_NAV_TIMEOUT_MS = Number(process.env.SLICE_21GH_PDP_NAV_TIMEOUT_MS || 25_000);
 
 const evidenceRoot = path.join(
   repoRoot,
@@ -401,12 +402,22 @@ async function detectCommerceIssues(page) {
 }
 
 async function inspectStorefrontRoute(page, route) {
-  const response = await page.goto(`${STOREFRONT_ORIGIN}${route.path}`, {
-    waitUntil: 'domcontentloaded',
-    timeout: 45_000
-  });
-  await page.waitForTimeout(1000);
+  const attemptedUrl = `${STOREFRONT_ORIGIN}${route.path}`;
+  let response = null;
+  let navigationError = null;
+  try {
+    response = await page.goto(attemptedUrl, {
+      waitUntil: 'domcontentloaded',
+      timeout: route.timeoutMs ?? 45_000
+    });
+    // Prefer "content present" over network-idle. Keeps the run bounded on heavy PDPs.
+    await page.waitForSelector('main', { state: 'attached', timeout: 10_000 }).catch(() => {});
+    await page.waitForTimeout(800);
+  } catch (error) {
+    navigationError = error?.message || String(error);
+  }
 
+  const finalUrl = page.url();
   const bodyText = normalizeText(await page.locator('body').innerText().catch(() => ''));
   const productLinks = await page
     .locator('main a[href*="/products/"], a.product-link, .product-card a[href*="/products/"]')
@@ -415,15 +426,19 @@ async function inspectStorefrontRoute(page, route) {
     )
     .catch(() => []);
   const commerce = await detectCommerceIssues(page);
-  const horizontalOverflow = await page.evaluate(() => {
-    const doc = document.documentElement;
-    return doc.scrollWidth > doc.clientWidth + 2;
-  });
+  const horizontalOverflow = await page
+    .evaluate(() => {
+      const doc = document.documentElement;
+      return doc.scrollWidth > doc.clientWidth + 2;
+    })
+    .catch(() => false);
 
   return {
     key: route.key,
-    url: page.url(),
+    attemptedUrl,
+    finalUrl,
     status: response ? response.status() : null,
+    navigationError,
     productLinkCount: productLinks.length,
     productLinks: productLinks.slice(0, 20),
     priceToConfirmVisible: /price to be confirmed/i.test(bodyText),
@@ -436,6 +451,18 @@ async function inspectStorefrontRoute(page, route) {
     supplierVerifiedVisible: /supplier verified/i.test(bodyText),
     horizontalOverflow
   };
+}
+
+function canonicalizePdpHandleFromHref(href) {
+  try {
+    const url = href.startsWith('http') ? new URL(href) : new URL(href, STOREFRONT_ORIGIN);
+    const parts = url.pathname.split('/').filter(Boolean);
+    const productsIndex = parts.lastIndexOf('products');
+    if (productsIndex !== -1 && parts[productsIndex + 1]) return parts[productsIndex + 1];
+    return null;
+  } catch {
+    return null;
+  }
 }
 
 async function run() {
@@ -547,24 +574,47 @@ async function run() {
       );
     }
 
-    const pdpCandidates = [];
+    const pdpHandles = [];
     for (const routeResult of summary.storefront.routes) {
       for (const href of routeResult.productLinks || []) {
-        if (/\/products\//i.test(href) && !pdpCandidates.includes(href)) {
-          pdpCandidates.push(href);
-        }
-        if (pdpCandidates.length >= 5) break;
+        if (!/\/products\//i.test(href)) continue;
+        const handle = canonicalizePdpHandleFromHref(href);
+        if (handle && !pdpHandles.includes(handle)) pdpHandles.push(handle);
+        if (pdpHandles.length >= 5) break;
       }
-      if (pdpCandidates.length >= 5) break;
+      if (pdpHandles.length >= 5) break;
     }
 
-    for (const href of pdpCandidates.slice(0, 5)) {
-      const path = href.startsWith('http') ? new URL(href).pathname : href;
-      const key = `pdp:${path.split('/').filter(Boolean).pop()}`;
-      const result = await inspectStorefrontRoute(storefrontPage, { key, path });
+    // Prefer canonical /products/<handle> PDP URLs. Treat each PDP as independent and bounded.
+    for (const handle of pdpHandles.slice(0, 5)) {
+      const key = `pdp:${handle}`;
+      const path = `/products/${handle}`;
+      let result;
+      try {
+        result = await inspectStorefrontRoute(storefrontPage, { key, path, timeoutMs: PDP_NAV_TIMEOUT_MS });
+      } catch (error) {
+        result = {
+          key,
+          attemptedUrl: `${STOREFRONT_ORIGIN}${path}`,
+          finalUrl: storefrontPage.url(),
+          status: null,
+          navigationError: error?.message || String(error),
+          productLinkCount: 0,
+          productLinks: [],
+          priceToConfirmVisible: false,
+          launchNoteVisible: false,
+          addToCartVisible: false,
+          quickAddVisible: false,
+          dynamicCheckoutVisible: false,
+          cartPathVisible: false,
+          newsletterVisible: false,
+          supplierVerifiedVisible: false,
+          horizontalOverflow: false
+        };
+      }
       summary.storefront.routes.push(result);
       console.log(
-        `[${key}] status=${result.status ?? 'n/a'} productLinks=${result.productLinkCount} ` +
+        `[${key}] status=${result.status ?? 'n/a'} error=${result.navigationError ? 'yes' : 'no'} ` +
           `addToCart=${result.addToCartVisible ? 'yes' : 'no'} priceToConfirm=${result.priceToConfirmVisible ? 'yes' : 'no'}`
       );
     }
