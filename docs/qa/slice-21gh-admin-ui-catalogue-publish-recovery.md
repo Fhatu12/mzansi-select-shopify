@@ -25,17 +25,25 @@ The repo now includes an operator-assisted Playwright harness for this slice:
 
 - Script: `tools/qa/run-slice-21gh-admin-ui-recovery.mjs`
 - NPM shortcut: `npm run qa:slice-21gh-admin-ui-recovery`
+- Safe login mode: `--manual-admin-ready` (alias: `--attach-after-login`)
 
 The harness:
 
 - opens Shopify Admin Products in headed Chromium
-- waits for Product Owner manual login/MFA in the browser window only
+- pauses for Product Owner manual login/MFA in the browser window only
+- waits for terminal confirmation after the Product Owner has navigated to **Products**
+- verifies the current page is Shopify Admin Products before continuing
+- stops with a clear message if the browser is still on Shopify login after the manual pause
 - attempts the approved bulk Online Store availability flow
 - waits for indexing
 - opens the storefront and waits for manual storefront password unlock
 - runs the approved `/collections/all`, search, and PDP checks
 
-It does **not** save credentials, cookies, storage state, trace, HAR, or video.
+It uses the approved safe pattern:
+
+- headed browser with manual login pause
+- no saved storage state
+- no credentials, cookies, storage state, trace, HAR, or video saved
 
 ## Admin UI Runbook
 
@@ -44,6 +52,8 @@ It does **not** save credentials, cookies, storage state, trace, HAR, or video.
 - Preferred: run `npm run qa:slice-21gh-admin-ui-recovery`.
 - The harness will open Shopify Admin for `dropshippoc.myshopify.com`.
 - If login/MFA is required, complete it manually.
+- Navigate to **Products** before returning to the terminal.
+- Press Enter in the terminal only once Shopify Admin Products is visible.
 - Do not share or paste credentials into chat.
 
 ### 2. Products list (confirm baseline)

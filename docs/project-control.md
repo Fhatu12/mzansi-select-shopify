@@ -5016,5 +5016,5 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 ## Slice 21GH Admin UI catalogue publish recovery (Product Owner approved; manual runbook)
 
 - **Decision:** attempt Shopify Admin UI bulk “make available on Online Store” recovery because Admin API publication state did not resolve storefront visibility.
-- **Update:** operator-assisted Playwright harness added at `tools/qa/run-slice-21gh-admin-ui-recovery.mjs` with npm shortcut `qa:slice-21gh-admin-ui-recovery`.
+- **Update:** operator-assisted Playwright harness now uses manual Admin readiness pause mode (`--manual-admin-ready` / `--attach-after-login`) so the Product Owner completes Shopify login/MFA first, navigates to Products, and confirms readiness in the terminal before any UI automation continues.
 - **Runbook:** `docs/qa/slice-21gh-admin-ui-catalogue-publish-recovery.md`

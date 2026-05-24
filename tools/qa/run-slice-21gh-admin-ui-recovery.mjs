@@ -4,6 +4,7 @@ import fsp from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { createRequire } from 'node:module';
+import readline from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,6 @@ const ADMIN_PRODUCTS_URL = `https://admin.shopify.com/store/dropshippoc/products
 const STOREFRONT_ORIGIN = `https://${STORE_DOMAIN}`;
 const STOREFRONT_PASSWORD_URL = `${STOREFRONT_ORIGIN}/password`;
 
-const ADMIN_READY_TIMEOUT_MS = Number(process.env.SLICE_21GH_ADMIN_READY_TIMEOUT_MS || 15 * 60 * 1000);
 const STOREFRONT_READY_TIMEOUT_MS = Number(
   process.env.SLICE_21GH_STOREFRONT_READY_TIMEOUT_MS || 10 * 60 * 1000
 );
@@ -62,10 +62,10 @@ function resolvePlaywright() {
 function printHelp() {
   console.log(
     [
-      'Usage: node tools/qa/run-slice-21gh-admin-ui-recovery.mjs',
+      'Usage: node tools/qa/run-slice-21gh-admin-ui-recovery.mjs [--manual-admin-ready|--attach-after-login]',
       '',
       'Operator-assisted Playwright harness for Slice 21GH.',
-      'It launches a headed Chromium browser, waits for manual Shopify Admin login/MFA,',
+      'It launches a headed Chromium browser, pauses for manual Shopify Admin login/MFA,',
       'tries to bulk-enable Online Store availability for the current products, waits for indexing,',
       'then opens the storefront and waits for manual password unlock before route checks.',
       '',
@@ -75,6 +75,20 @@ function printHelp() {
       '- Summary evidence is written under artifacts/ only.'
     ].join('\n')
   );
+}
+
+function parseArgs(argv) {
+  const args = {
+    manualAdminReady: true
+  };
+
+  for (const arg of argv) {
+    if (arg === '--help') continue;
+    if (arg === '--manual-admin-ready' || arg === '--attach-after-login') continue;
+    throw new Error(`Unknown argument: ${arg}`);
+  }
+
+  return args;
 }
 
 async function isAdminProductsReady(page) {
@@ -91,11 +105,34 @@ async function isAdminProductsReady(page) {
   return /products/i.test(heading);
 }
 
+async function isLikelyShopifyLoginPage(page) {
+  const url = page.url();
+  if (/accounts\.shopify\.com|\/auth\/login|\/login|challenge/i.test(url)) return true;
+
+  const body = normalizeText(await page.locator('body').innerText().catch(() => ''));
+  return /email continue|enter your email|shopify login|log in|sign in|two-step authentication|verification code/i.test(
+    body
+  );
+}
+
 async function isStorefrontPasswordGate(page) {
   const url = page.url();
   if (/\/password(?:[?#]|$)/.test(url)) return true;
   const body = normalizeText(await page.locator('body').innerText().catch(() => ''));
   return /enter store using password|store password|enter using password/i.test(body);
+}
+
+async function waitForEnter(message) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  try {
+    await rl.question(message);
+  } finally {
+    rl.close();
+  }
 }
 
 async function waitForAdminReady(page) {
@@ -104,19 +141,39 @@ async function waitForAdminReady(page) {
   console.log('');
   console.log('=== Manual Shopify Admin login ===');
   console.log('Complete Shopify Admin login and MFA in the Chromium window only.');
+  console.log('Navigate to Shopify Admin Products before returning to the terminal.');
   console.log('Do not paste credentials into the terminal.');
-  console.log(`Waiting up to ${Math.round(ADMIN_READY_TIMEOUT_MS / 60000)} minutes for Products to load...`);
   console.log('');
+  await waitForEnter('Log into Shopify manually in the opened browser. Complete MFA. Navigate to Products. Press Enter in terminal when ready. ');
 
-  const started = Date.now();
-  while (Date.now() - started < ADMIN_READY_TIMEOUT_MS) {
-    await page.waitForTimeout(2000);
-    if (await isAdminProductsReady(page)) {
-      console.log('Products page detected. Continuing with Admin UI recovery.');
-      return true;
-    }
+  if (await isLikelyShopifyLoginPage(page)) {
+    return {
+      ok: false,
+      reason: 'Still on Shopify login after manual pause. Complete login/MFA and navigate to Products before pressing Enter.'
+    };
   }
-  return false;
+
+  if (!(await isAdminProductsReady(page))) {
+    await page.goto(ADMIN_PRODUCTS_URL, { waitUntil: 'domcontentloaded', timeout: 45_000 }).catch(() => {});
+    await page.waitForTimeout(1500);
+  }
+
+  if (await isLikelyShopifyLoginPage(page)) {
+    return {
+      ok: false,
+      reason: 'Shopify Admin is still showing the login page after retrying Products. The harness stopped without mutating anything.'
+    };
+  }
+
+  if (!(await isAdminProductsReady(page))) {
+    return {
+      ok: false,
+      reason: `Current page is not Shopify Admin Products after manual pause. Current URL: ${page.url()}`
+    };
+  }
+
+  console.log('Products page confirmed. Continuing with Admin UI recovery.');
+  return { ok: true };
 }
 
 async function waitForStorefrontUnlock(page) {
@@ -374,11 +431,13 @@ async function inspectStorefrontRoute(page, route) {
 }
 
 async function run() {
-  const args = new Set(process.argv.slice(2));
-  if (args.has('--help')) {
+  const argv = process.argv.slice(2);
+  const argsSet = new Set(argv);
+  if (argsSet.has('--help')) {
     printHelp();
     return;
   }
+  parseArgs(argv);
 
   const playwright = resolvePlaywright();
   const runDir = path.join(evidenceRoot, stamp());
@@ -393,6 +452,7 @@ async function run() {
     sampleHandles,
     admin: {
       loginHandledManually: true,
+      loginMode: 'manual-admin-ready',
       productsPageDetected: false,
       productCountSignal: null,
       steps: [],
@@ -416,8 +476,8 @@ async function run() {
     const adminPage = await context.newPage();
 
     const adminReady = await waitForAdminReady(adminPage);
-    if (!adminReady) {
-      throw new Error('Timed out waiting for manual Shopify Admin login and Products page readiness.');
+    if (!adminReady.ok) {
+      throw new Error(adminReady.reason);
     }
 
     summary.admin.productsPageDetected = true;
