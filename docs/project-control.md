@@ -5147,3 +5147,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **21GQ sampled 404 handles:** all three absent from current Admin baseline, explaining those exact PDP 404s.
 - **Diagnosis:** unauthenticated storefront extraction still under-represents catalog visibility; next step is unlocked rendered parity check against this 41-handle baseline.
 - **Evidence doc:** `docs/qa/slice-21gu-store-api-product-export.md`
+
+## Slice 21GX - Store Context Guardrails (2026-05-28)
+- Verdict: **PASS** (context guardrails applied to active QA execution surface).
+- Active-target requirement enforced for this slice:
+  - Store: `sikhwarigroupdev.myshopify.com`
+  - Preview target: `?preview_theme_id=162429075681`
+- Active script/package command audit performed for stale tokens `dropshippoc` and `151207542967`.
+- Updated active script targets:
+  - `tools/qa/run-slice-21gj-pdp-pending-load-diagnostics.mjs`
+  - `tools/qa/run-slice-21ar-auth-preview.mjs`
+  - `tools/qa/run-slice-21ar-fixed-route-preview-check.mjs`
+  - `tools/qa/run-slice-21gh-admin-ui-recovery.mjs`
+- Historical references in older docs were intentionally left unchanged as historical records.
+- Verification:
+  - `shopify theme list --store sikhwarigroupdev.myshopify.com`
+  - Observed `Horizon [live] #158396285153` and `Mzansi Select MVP Restored [unpublished] #162429075681`.
