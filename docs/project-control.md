@@ -1,21 +1,17 @@
-# Project Control Update - Slice 21HD-WIN
+# Project Control Update - Slice 21HE
 
 Date: 2026-05-28
 
 ## Objective
-Create and publish two missing live collection routes:
-- /collections/retro-vault-consoles-classics
-- /collections/games-toys
+Record the accepted live catalogue-only launch checkpoint after 21HD.
 
 ## Execution summary
-- Re-authenticated Store Admin API with required write scopes.
-- Confirmed both target handles were missing.
-- Created both approved manual collections using exact titles/handles/descriptions.
-- Published both collections to Online Store publication.
-- Verified both live routes now return 200.
-- Ran regression smoke on home, all collections, search, and one current PDP.
-- Commerce safety checks remained compliant.
+- Captured live store domain, live theme, and previous Horizon rollback anchor.
+- Recorded post-21HD route and storefront outcomes for product visibility, search, PDP, and fixed collection routes.
+- Confirmed catalogue-only commerce safety posture from latest accepted checks.
+- Reconfirmed checkout/payment/customer-flow remains disabled in this checkpoint.
+- Added explicit rollback note and next-step recommendations (domain, payments planning, legal/support review).
 
 ## Decision
 Status: complete.
-Recommendation: launch accepted.
+Recommendation: launch state recorded and accepted for catalogue-only operation.
