@@ -5113,3 +5113,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Handle-map outcome:** partial only; no deterministic stale hardcoded product-handle set proven from current code scan; strongest current root-cause signal remains visibility/indexing/session gating mismatch.
 - **Evidence doc:** `docs/qa/slice-21gr-admin-baseline-handle-map.md`
 - **Next owner:** Product Owner / DevOps for an interactive Windows auth-complete rerun and authoritative Admin+storefront handle baseline capture.
+
+## Slice 21GS-WIN authenticated paid-store handle-map and catalogue diagnosis (Product Owner requested; read-only)
+
+- **Execution lane:** Windows-only (`D:\dev\mzansi-select-shopify-winqa`).
+- **Theme verification:** confirmed via CLI — `Horizon` `[live]` `#158396285153`; `Mzansi Select MVP Restored` `[unpublished]` `#162429075681`.
+- **Admin export status:** blocked in unattended run because `shopify store execute` requires stored Store API auth, and `shopify store auth --scopes read_products` timed out pending interactive completion.
+- **Draft preview handle extraction:** HTTP `200` on `/collections/all?preview_theme_id=162429075681`, but extracted product handles `0` in non-unlocked fetch context.
+- **Theme hardcoded product-link scan:** no hardcoded `/products/<handle>` links detected in current code scan.
+- **Diagnosis:** strongest signal remains Online Store visibility/indexing/session-gating mismatch (not proven hardcoded-handle drift).
+- **Evidence doc:** `docs/qa/slice-21gs-windows-authenticated-handle-map.md`
+- **Next owner:** Product Owner / DevOps for interactive Store API auth completion and authoritative handle export rerun.
