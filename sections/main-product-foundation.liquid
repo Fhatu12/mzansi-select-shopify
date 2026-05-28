@@ -304,15 +304,7 @@
       </div>
     </div>
 
-    <div class="product-detail-grid">
-      <div class="product-detail-card">
-        <div class="product-detail-title">{{ section.settings.description_title }}</div>
-        {% if current_product_description != blank %}
-          <div class="product-detail-copy">{{ product.description }}</div>
-        {% else %}
-          <p class="product-detail-copy">{{ section.settings.description_copy }}</p>
-        {% endif %}
-      </div>
+    <div class="product-detail-grid product-detail-grid--specs-only">
       <div class="product-detail-card">
         <div class="product-detail-title">{{ section.settings.specs_title }}</div>
         <ul class="product-spec-list">

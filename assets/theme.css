@@ -2417,6 +2417,10 @@ button.drawer-btn-outline[disabled] {
   margin-bottom: 20px;
 }
 
+.product-detail-grid--specs-only {
+  grid-template-columns: 1fr;
+}
+
 .product-detail-card {
   border: 1px solid var(--border);
   border-radius: 12px;

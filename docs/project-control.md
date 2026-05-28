@@ -1,17 +1,19 @@
-# Project Control Update - Slice 21HE
+# Project Control Update - Slice 21HF
 
 Date: 2026-05-28
 
 ## Objective
-Record the accepted live catalogue-only launch checkpoint after 21HD.
+Remove PDP Product Overview and widen Specifications to full detail width on the live theme.
 
 ## Execution summary
-- Captured live store domain, live theme, and previous Horizon rollback anchor.
-- Recorded post-21HD route and storefront outcomes for product visibility, search, PDP, and fixed collection routes.
-- Confirmed catalogue-only commerce safety posture from latest accepted checks.
-- Reconfirmed checkout/payment/customer-flow remains disabled in this checkpoint.
-- Added explicit rollback note and next-step recommendations (domain, payments planning, legal/support review).
+- Verified active store/theme context for `mzansiselect.myshopify.com` and live theme `#162429075681`.
+- Removed Product Overview card rendering from PDP detail grid.
+- Preserved Specifications rendering and changed PDP detail grid to single-column when specs-only.
+- Pushed only `sections/main-product-foundation.liquid` and `assets/theme.css` to the live theme.
+- Ran live route checks on three PDPs plus home/collections/search.
+- Confirmed Overview absent and Specifications present on tested PDP HTML.
+- Confirmed no new commerce-enablement markers introduced.
 
 ## Decision
 Status: complete.
-Recommendation: launch state recorded and accepted for catalogue-only operation.
+Recommendation: accepted for catalogue-only PDP presentation, with optional follow-up mobile visual pass in a browser-enabled QA environment.
