@@ -1,21 +1,20 @@
-# Project Control Update - Slice 21HB-WIN
+# Project Control Update - Slice 21HC-WIN
 
 Date: 2026-05-28
 
 ## Objective
-Publish Mzansi Select MVP Restored theme #162429075681 to live and run live storefront QA without preview parameters.
+Resolve live 404s for collection routes:
+- /collections/retro-vault-consoles-classics
+- /collections/games-toys
 
 ## Execution summary
-- Pre-check confirmed expected theme roles.
-- Published only approved theme ID using CLI force confirm.
-- Post-check confirmed role switch success.
-- Executed live route and PDP QA against production storefront URLs.
-- Preserved hard rules: no product, price, domain, app, checkout/payment, or supplier-signal changes.
-
-## Outcome
-- Publish succeeded.
-- Core storefront and required PDP routes passed.
-- Two required collection URLs currently return 404 and block full launch acceptance.
+- Confirmed live theme remained Mzansi Select MVP Restored.
+- Audited collection handles via Admin GraphQL; both are missing.
+- Attempted to create both approved manual collections with exact handle/title/description.
+- Mutation blocked by access control: missing write_products scope in current CLI auth.
+- Verified route status remains 404 for both target routes.
+- Ran regression checks on home, all collections, search, and one PDP; all passed.
 
 ## Decision
-Recommendation: fix first (collection handle availability) before launch acceptance.
+Status: blocked.
+Recommendation: fix first by granting appropriate Admin/API scope and rerunning collection create/publish step.
