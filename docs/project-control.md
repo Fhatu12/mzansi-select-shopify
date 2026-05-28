@@ -5182,3 +5182,13 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
   - `shopify theme push --store sikhwarigroupdev.myshopify.com --theme 162429075681 --nodelete --only assets/pdp-catalogue-lock.js --json --no-color`
 - Commerce posture preserved: no add-to-cart enablement, no checkout/payment/customer-flow enablement, no product/price changes.
 - Verification note: route probes on required PDP/collection/search/contact paths return expected password-gate redirects (`302`) without unlocked session capture; runtime rendered checks (click/back/spinner non-blocking confirmation) remain a follow-up QA step.
+
+## Slice 21GY - post-PDP-fix rendered QA (Windows lane sync)
+
+- **Date:** 2026-05-28
+- **Source sync:** Imported from Windows working copy `D:\dev\mzansi-select-shopify` into WSL source-of-truth.
+- **Result:** **BLOCKED** in unattended execution because storefront remained password-gated for rendered assertions.
+- **Scope notes:** HTTP route reachability checks passed for tested preview URLs; rendered storefront assertions (navigation, PDP content, search/catalogue rendering, mobile overflow, and commerce-control rendering checks) remained blocked behind password wall.
+- **Guardrails preserved:** no publish, no password removal, no product/price/domain/app/checkout/payment changes, no live-theme edits, and no draft-theme push in this slice.
+- **Canonical QA record:** `docs/qa/slice-21gy-post-pdp-fix-rendered-qa.md`.
+- **Follow-up:** re-run the same route/PDP matrix in an authenticated local browser-driven session where storefront rendering is verifiably unlocked, then finalize publish/fix decision.
