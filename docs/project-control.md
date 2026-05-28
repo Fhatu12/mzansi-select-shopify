@@ -5067,3 +5067,21 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Mobile result:** FAIL (horizontal overflow flagged on all checked routes in this run).
 - **Evidence:** `docs/qa/slice-21gn-c-windows-preview-qa.md`; safe local summary at `D:\dev\mzansi-select-shopify-winqa\artifacts\qa\slice-21gn-c-windows-preview-qa\2026-05-28-09-06-32\summary.json`.
 - **Release recommendation:** **fix first**; do not publish draft and do not remove storefront password until catalogue visibility, route 404s, and mobile overflow are resolved.
+
+## Slice 21GP reset transferred-store assumption and new-store rebuild plan (Product Owner approved; docs-only)
+
+- **Decision:** close the transferred-catalogue recovery path for the paid store context as an invalid assumption.
+- **Root cause:** the old `fhatu.sikhwari@gmail.com` store is a Shopify development/testing store and is not a transferable production catalogue source in the assumed path.
+- **Paid store context:** `sikhwarigroupdev.myshopify.com` is a separate active Basic store/account with its own catalogue state.
+- **Theme state confirmed:** `Horizon` `#158396285153` is live; `Mzansi Select MVP Restored` `#162429075681` remains unpublished.
+- **Password state:** storefront password remains enabled.
+- **Catalogue state:** absence of migrated products in the paid store explains `/collections/all` = `0` products and sampled PDP `404` results.
+- **Path reset:** previous product visibility recovery attempts tied to transfer assumptions are now obsolete for this store context.
+- **Active plan:** new paid-store rebuild/migration setup is the current path; product baseline import/add is deferred to separate explicit approval.
+- **Rebuild options (next approval):**
+  - A) manual CJ/DSers product add
+  - B) controlled CSV export/import (if available)
+  - C) later approved DSers/CJ app-install route
+- **Release guardrails unchanged:** no draft publish, no password removal, no checkout/payment/customer-flow enablement until product baseline + preview/public QA gates pass.
+- **Evidence:** `docs/qa/slice-21gp-store-transfer-reset.md`
+- **Next owner:** Product Owner + DevOps planning for approved product-baseline rebuild path.
