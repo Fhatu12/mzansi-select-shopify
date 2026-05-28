@@ -1,5 +1,7 @@
 (() => {
   const PRODUCT_ROOT_SELECTOR = '.product-main-shell';
+  let observer = null;
+  let observerTicking = false;
 
   const replaceTextNodes = (root, pattern, replacement) => {
     if (!root) return;
@@ -67,10 +69,26 @@
     const root = document.querySelector(PRODUCT_ROOT_SELECTOR);
     if (!root) return;
 
-    const observer = new MutationObserver(() => {
-      enforceCatalogueLock();
+    if (observer) observer.disconnect();
+    observer = new MutationObserver(() => {
+      if (observerTicking) return;
+      observerTicking = true;
+      window.requestAnimationFrame(() => {
+        observerTicking = false;
+        enforceCatalogueLock();
+      });
     });
-    observer.observe(root, { childList: true, subtree: true, characterData: true });
+    observer.observe(root, { childList: true, subtree: true });
+
+    // Fail-soft cleanup: never leave global loading/busy states blocking navigation.
+    window.setTimeout(() => {
+      document.documentElement.removeAttribute('aria-busy');
+      document.body.removeAttribute('aria-busy');
+      document.documentElement.classList.remove('is-loading', 'loading', 'page-loading');
+      document.body.classList.remove('is-loading', 'loading', 'page-loading');
+      document.documentElement.style.pointerEvents = '';
+      document.body.style.pointerEvents = '';
+    }, 1200);
   };
 
   if (document.readyState === 'loading') {
@@ -79,6 +97,6 @@
     init();
   }
 
-  document.addEventListener('shopify:section:load', enforceCatalogueLock);
-  window.addEventListener('pageshow', enforceCatalogueLock);
+  document.addEventListener('shopify:section:load', init);
+  window.addEventListener('pageshow', init);
 })();

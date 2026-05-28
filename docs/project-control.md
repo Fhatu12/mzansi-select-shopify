@@ -5163,3 +5163,22 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - Verification:
   - `shopify theme list --store sikhwarigroupdev.myshopify.com`
   - Observed `Horizon [live] #158396285153` and `Mzansi Select MVP Restored [unpublished] #162429075681`.
+
+## Slice 21GW - PDP loading/navigation stabilisation (2026-05-28)
+- Verdict: **PASS WITH NOTES** (draft-only fix implemented and pushed; authenticated rendered QA still pending due password-gated storefront and no secret/session capture rule).
+- Active execution path clarification applied:
+  - stale old-store references remain in legacy/inactive QA scripts only
+  - active 21GW path locked to `sikhwarigroupdev.myshopify.com` and `preview_theme_id=162429075681`
+  - no legacy bulk retarget performed to avoid noisy risky edits
+- Root cause identified in `assets/pdp-catalogue-lock.js`: unbounded MutationObserver (`characterData` + subtree) retriggered by self DOM/text mutations, causing potential continuous mutation churn and unstable PDP navigation state.
+- Fix applied (minimal theme-only):
+  - single observer instance + disconnect/rebind
+  - removed `characterData` observe mode
+  - requestAnimationFrame throttling guard for observer callback
+  - fail-soft timeout clears stale `aria-busy`/loading classes and inline pointer-event blockers on `html`/`body`
+  - lifecycle listeners switched to `init` so bounded setup and cleanup run on section load/pageshow
+- Push target: unpublished draft only.
+- Exact push command:
+  - `shopify theme push --store sikhwarigroupdev.myshopify.com --theme 162429075681 --nodelete --only assets/pdp-catalogue-lock.js --json --no-color`
+- Commerce posture preserved: no add-to-cart enablement, no checkout/payment/customer-flow enablement, no product/price changes.
+- Verification note: route probes on required PDP/collection/search/contact paths return expected password-gate redirects (`302`) without unlocked session capture; runtime rendered checks (click/back/spinner non-blocking confirmation) remain a follow-up QA step.
