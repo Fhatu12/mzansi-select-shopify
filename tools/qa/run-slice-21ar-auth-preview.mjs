@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 
 const PASSWORD_ENV = 'MZANSI_STOREFRONT_PASSWORD';
-const previewThemeId = '151207542967';
+const previewThemeId = '162429075681';
 const evidenceRoot = path.join(
   repoRoot,
   'artifacts',
@@ -123,46 +123,46 @@ const routes = [
     key: 'collection',
     kind: 'collection',
     required: true,
-    url: `https://dropshippoc.myshopify.com/collections/controlled-pilot?preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/collections/controlled-pilot?preview_theme_id=${previewThemeId}`
   },
   {
     key: 'bottle-pdp',
     kind: 'pdp',
     handle: 'beverage-bottle-oil-bottle-handle-holder',
     required: true,
-    url: `https://dropshippoc.myshopify.com/products/beverage-bottle-oil-bottle-handle-holder?preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/products/beverage-bottle-oil-bottle-handle-holder?preview_theme_id=${previewThemeId}`
   },
   {
     key: 'sealer-pdp',
     kind: 'pdp',
     handle: 'usb-bag-sealer',
     required: true,
-    url: `https://dropshippoc.myshopify.com/products/usb-bag-sealer?preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/products/usb-bag-sealer?preview_theme_id=${previewThemeId}`
   },
   {
     key: 'stand-pdp',
     kind: 'pdp',
     handle: 'foldable-magnetic-phone-holder-desktop-tablet-stand',
     required: true,
-    url: `https://dropshippoc.myshopify.com/products/foldable-magnetic-phone-holder-desktop-tablet-stand?preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/products/foldable-magnetic-phone-holder-desktop-tablet-stand?preview_theme_id=${previewThemeId}`
   },
   {
     key: 'search-beverage',
     kind: 'search',
     required: false,
-    url: `https://dropshippoc.myshopify.com/search?q=beverage&type=product&preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/search?q=beverage&type=product&preview_theme_id=${previewThemeId}`
   },
   {
     key: 'search-sealer',
     kind: 'search',
     required: false,
-    url: `https://dropshippoc.myshopify.com/search?q=sealer&type=product&preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/search?q=sealer&type=product&preview_theme_id=${previewThemeId}`
   },
   {
     key: 'search-magnetic',
     kind: 'search',
     required: false,
-    url: `https://dropshippoc.myshopify.com/search?q=magnetic&type=product&preview_theme_id=${previewThemeId}`
+    url: `https://sikhwarigroupdev.myshopify.com/search?q=magnetic&type=product&preview_theme_id=${previewThemeId}`
   }
 ];
 
@@ -339,7 +339,7 @@ function tryLoadPlaywright(loader, source, packageRootOverride = null) {
 async function validateChromiumLaunch(playwright) {
   const browser = await playwright.chromium.launch({ headless: true });
   const page = await browser.newPage();
-  await page.goto('https://dropshippoc.myshopify.com/password', { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.goto('https://sikhwarigroupdev.myshopify.com/password', { waitUntil: 'domcontentloaded', timeout: 45000 });
   const title = sanitizeText(await page.title());
   await browser.close();
   return {

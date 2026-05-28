@@ -12,9 +12,9 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 
 const PASSWORD_ENV = 'MZANSI_STOREFRONT_PASSWORD';
-const STORE_ORIGIN = 'https://dropshippoc.myshopify.com';
+const STORE_ORIGIN = 'https://sikhwarigroupdev.myshopify.com';
 const PASSWORD_URL = `${STORE_ORIGIN}/password`;
-const PREVIEW_THEME_ID = '151207542967';
+const PREVIEW_THEME_ID = '162429075681';
 const UNLOCK_CHECK_URL = `${STORE_ORIGIN}/?preview_theme_id=${PREVIEW_THEME_ID}`;
 const MANUAL_UNLOCK_TIMEOUT_MS = 5 * 60 * 1000;
 

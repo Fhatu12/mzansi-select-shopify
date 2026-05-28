@@ -13,8 +13,8 @@ const repoRoot = path.resolve(__dirname, '..', '..');
 
 const requireFromHere = createRequire(import.meta.url);
 
-const STORE_DOMAIN = 'dropshippoc.myshopify.com';
-const ADMIN_PRODUCTS_URL = `https://admin.shopify.com/store/dropshippoc/products`;
+const STORE_DOMAIN = 'sikhwarigroupdev.myshopify.com';
+const ADMIN_PRODUCTS_URL = `https://admin.shopify.com/store/sikhwarigroupdev/products`;
 const STOREFRONT_ORIGIN = `https://${STORE_DOMAIN}`;
 const STOREFRONT_PASSWORD_URL = `${STOREFRONT_ORIGIN}/password`;
 
