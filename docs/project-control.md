@@ -5027,6 +5027,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Behaviour:** main gallery + thumbnails render ≤5 media items; arrows/zoom operate only over the rendered set; variant gallery sync no longer swaps to media outside the rendered thumbs.
 - **Evidence:** `docs/qa/slice-21gi-limit-product-gallery-media.md`
 
+## Slice 21GM transferred-store draft preview smoke QA (Product Owner approved; QA-only)
+
+- **Store/theme state confirmed:** `sikhwarigroupdev.myshopify.com`; live `Horizon` `#158396285153`; draft `Mzansi Select MVP Restored` `#162429075681` remains unpublished.
+- **Execution outcome:** rendered smoke run in Codex-headed browser was **BLOCKED** by repeated captcha failures during storefront password unlock.
+- **Non-destructive checks completed:** route and section wiring for Retro Vault/Games & Toys, business-details anchor/footer links, support contact visibility wiring, catalogue-only/price-to-confirm posture, and commerce-gating code posture remained intact.
+- **Evidence:** `docs/qa/slice-21gm-transferred-store-draft-preview-qa.md`
+- **Release recommendation:** **do not publish yet; complete a successful unlocked rendered smoke pass first**.
+
 ## Slice 21GL transferred-store draft theme push fix (Product Owner approved; theme-only)
 
 - **Store:** `sikhwarigroupdev.myshopify.com` (transferred to company account).
