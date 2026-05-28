@@ -81,3 +81,13 @@ Safety confirmation:
 - No Shopify Admin/product mutation was performed.
 - No changes to prices, collections, theme files, checkout/payment settings, or apps.
 - Artifacts retained under `artifacts/` and left uncommitted.
+
+## 2026-05-28 - Slice 21HJ-A handle reconciliation
+- Scope: read-only reconciliation of 18 approved 21HI handles to live Shopify Admin product IDs.
+- Public catalogue products: 41.
+- Admin catalogue products: 41.
+- Approved checked: 18.
+- Matched: 18.
+- Unresolved: 0.
+- Safety: No product mutations performed; safe to retry updates using verified Admin IDs only.
+
