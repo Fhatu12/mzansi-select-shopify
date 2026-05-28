@@ -5085,3 +5085,19 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Release guardrails unchanged:** no draft publish, no password removal, no checkout/payment/customer-flow enablement until product baseline + preview/public QA gates pass.
 - **Evidence:** `docs/qa/slice-21gp-store-transfer-reset.md`
 - **Next owner:** Product Owner + DevOps planning for approved product-baseline rebuild path.
+
+## Slice 21GQ new paid-store product baseline and draft preview QA (Product Owner approved)
+
+- **Store/theme state:** `sikhwarigroupdev.myshopify.com`; live `Horizon` `#158396285153`; draft `Mzansi Select MVP Restored` `#162429075681` remained unpublished.
+- **Password state:** password gate remained enabled; no password-removal action taken.
+- **Read-only product audit status:** **BLOCKED** — `shopify store execute` lacked stored app auth for this store in this environment, so full Admin field baseline export (status/price/variants/media/tags/publication/url) could not be completed in this pass.
+- **Rendered draft preview QA:** Windows headed lane run completed with manual unlock.
+- **Catalogue result:** `/collections/all` returned `200` with **41** visible product links (new paid-store baseline now visibly present).
+- **Search result:** `/search?q=organiser&type=product` returned `200` with **0** product links.
+- **Route result:** `/collections/retro-vault-consoles-classics` and `/collections/games-toys` returned `404`.
+- **PDP sample result:** 3 sampled PDP handles returned `404` in this run context.
+- **Commerce safety:** PASS (no Add to Cart/cart-add/quick-add/dynamic checkout/checkout paths; no Supplier verified; no newsletter capture; no Liquid errors).
+- **Mobile result:** FAIL (overflow flags remained on key routes).
+- **Assessment:** storefront is no longer “empty catalogue”; remaining failures are consistent with route/collection/link-target mismatch and search/index/query mismatch rather than a purely empty product baseline.
+- **Evidence:** `docs/qa/slice-21gq-new-paid-store-product-baseline-preview-qa.md`.
+- **Release recommendation:** **fix first**; keep draft unpublished and password enabled until Admin baseline export is unblocked and route/search/PDP QA passes.
