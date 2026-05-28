@@ -5035,6 +5035,14 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Evidence:** `docs/qa/slice-21gm-transferred-store-draft-preview-qa.md`
 - **Release recommendation:** **do not publish yet; complete a successful unlocked rendered smoke pass first**.
 
+## Slice 21GN Playwright Windows Chrome CDP retry for `/collections/all` (Product Owner approved; QA-only)
+
+- **Store/theme state confirmed:** `sikhwarigroupdev.myshopify.com`; live `Horizon` `#158396285153`; draft `Mzansi Select MVP Restored` `#162429075681` still unpublished.
+- **Harness delivered:** `tools/qa/run-slice-21gn-collections-all-cdp-check.mjs` + npm script `qa:slice-21gn-collections-all-cdp`; output restricted to gitignored `artifacts/qa/slice-21gn-collections-all-cdp-check/.../summary.json`.
+- **Execution result:** **BLOCKED_CDP_UNAVAILABLE**; Windows Chrome launch path was attempted from WSL, but CDP endpoint was not reachable (`cdp_endpoint_not_ready`) so rendered `/collections/all` assertions did not execute.
+- **Evidence:** `docs/qa/slice-21gn-collections-all-cdp-check.md`
+- **Release recommendation:** **blocked / fix first; do not publish** until CDP connectivity is resolved and rendered checks complete.
+
 ## Slice 21GL transferred-store draft theme push fix (Product Owner approved; theme-only)
 
 - **Store:** `sikhwarigroupdev.myshopify.com` (transferred to company account).
