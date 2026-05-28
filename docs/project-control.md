@@ -46,3 +46,20 @@ Status: completed.
 
 ### Safety confirmation
 No mutation was performed on products, prices, collections, tags, checkout/payment, apps, or theme files.
+## 2026-05-28 - Slice 21HH (Department collection apply)
+
+Applied approved 21HG-B product-to-department mapping to Shopify manual collections via Windows Shopify CLI against `sikhwarigroupdev.myshopify.com`.
+
+Completed:
+- Ensured department collections exist (created missing: Tech Accessories, Office & Desk, Kitchen & Storage, Home & Living)
+- Published all six department collections to Online Store
+- Reconciled mapped product membership to exact one-primary-department among six department collections
+- Excluded both Unclassified/Needs review products from all six public department collections
+- Verified final department counts match expected: 8/11/17/1/2/0
+- Verified collection routes return 200 on customer-facing store
+
+Notes:
+- No product content/price/media mutations performed.
+- No theme push, checkout/payment, app install, or domain changes performed.
+- Raw operation outputs were saved under local Windows repo `artifacts/` per runbook.
+- Automated smoke-string checks for commerce safety were inconclusive/noisy; manual browser QA is still required for final UX assertions.
