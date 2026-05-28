@@ -5026,3 +5026,11 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Decision:** cap PDP-rendered product media to a maximum of 5 items to prevent slow/infinite loading on imported products with many images.
 - **Behaviour:** main gallery + thumbnails render ≤5 media items; arrows/zoom operate only over the rendered set; variant gallery sync no longer swaps to media outside the rendered thumbs.
 - **Evidence:** `docs/qa/slice-21gi-limit-product-gallery-media.md`
+
+## Slice 21GL transferred-store draft theme push fix (Product Owner approved; theme-only)
+
+- **Store:** `sikhwarigroupdev.myshopify.com` (transferred to company account).
+- **Themes:** live `Horizon` `#158396285153` unchanged; draft `Mzansi Select MVP Restored` `#162429075681` remains unpublished.
+- **Fix:** restore missing theme blocks referenced by `sections/product-list.liquid` presets so Shopify CLI pushes validate cleanly (no commerce enablement; no publish).
+- **Push:** `shopify theme push --store sikhwarigroupdev.myshopify.com --theme 162429075681`
+- **Evidence:** `docs/qa/slice-21gl-draft-theme-push-fix.md`

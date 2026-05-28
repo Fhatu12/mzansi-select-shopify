@@ -1,0 +1,39 @@
+
+{%- liquid
+  assign block_settings = block.settings
+  assign closest_collection = closest.collection
+  assign label = block_settings.label
+
+  assign href = ''
+  if closest_collection != blank
+    assign href = closest_collection.url
+  endif
+-%}
+
+{% if label != blank %}
+  <a
+    class="button button--{{ block_settings.style_class }}"
+    {% if href != blank %}href="{{ href }}"{% endif %}
+    {% if block_settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+    style="--width: {{ block_settings.width | default: 'fit-content' }};"
+    {{ block.shopify_attributes }}
+  >
+    {{ label }}
+  </a>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:names.button",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "label", "label": "t:settings.label", "default": "View all" },
+    { "type": "checkbox", "id": "open_in_new_tab", "label": "t:settings.open_in_new_tab", "default": false },
+    { "type": "select", "id": "style_class", "label": "t:settings.style", "default": "link", "options": [ { "value": "link", "label": "t:options.link" }, { "value": "primary", "label": "t:options.primary" }, { "value": "secondary", "label": "t:options.secondary" } ] },
+    { "type": "select", "id": "width", "label": "t:settings.width", "default": "fit-content", "options": [ { "value": "fit-content", "label": "t:options.fit_content" }, { "value": "fill", "label": "t:options.fill" } ] },
+    { "type": "range", "id": "custom_width", "label": "t:settings.custom_width", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 100 },
+    { "type": "select", "id": "width_mobile", "label": "t:settings.width_mobile", "default": "fit-content", "options": [ { "value": "fit-content", "label": "t:options.fit_content" }, { "value": "fill", "label": "t:options.fill" } ] },
+    { "type": "range", "id": "custom_width_mobile", "label": "t:settings.custom_width_mobile", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 100 }
+  ]
+}
+{% endschema %}
