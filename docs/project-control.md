@@ -5134,3 +5134,16 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Diagnosis:** continued evidence of storefront visibility/indexing/session-gating mismatch; no mutations performed.
 - **Evidence doc:** `docs/qa/slice-21gt-authenticated-store-api-baseline.md`
 - **Next owner:** Product Owner / DevOps to complete same-session `shopify store auth` and rerun export.
+
+## Slice 21GU-WIN same-session Store API auth and product export (Product Owner requested; read-only)
+
+- **Execution lane:** Windows-only (`D:\dev\mzansi-select-shopify-winqa`).
+- **Theme auth:** PASS (`Horizon` live `#158396285153`; `Mzansi Select MVP Restored` unpublished `#162429075681`).
+- **Store API auth:** PASS in same session via `shopify store auth --scopes read_products,read_publications`.
+- **Tiny Store API test:** PASS (`shop { name id }` returned `Mzansi Select`, `gid://shopify/Shop/80681926881`).
+- **Admin baseline export:** PASS after correcting publication handling (old hardcoded publication ID was invalid; current Online Store publication is `gid://shopify/Publication/183141630177`; export used publication-agnostic `resourcePublications`).
+- **Admin count:** `41` products / `41` unique handles.
+- **Draft `/collections/all` fetch extraction:** HTTP `200`, extracted product handles `0` in unauthenticated fetch context.
+- **21GQ sampled 404 handles:** all three absent from current Admin baseline, explaining those exact PDP 404s.
+- **Diagnosis:** unauthenticated storefront extraction still under-represents catalog visibility; next step is unlocked rendered parity check against this 41-handle baseline.
+- **Evidence doc:** `docs/qa/slice-21gu-store-api-product-export.md`
