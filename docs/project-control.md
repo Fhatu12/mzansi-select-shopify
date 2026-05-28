@@ -63,3 +63,21 @@ Notes:
 - No theme push, checkout/payment, app install, or domain changes performed.
 - Raw operation outputs were saved under local Windows repo `artifacts/` per runbook.
 - Automated smoke-string checks for commerce safety were inconclusive/noisy; manual browser QA is still required for final UX assertions.
+
+## 2026-05-28 - Slice 21HI (Product wording cleanup approval pack)
+
+Objective:
+- Review current live product wording from the public storefront catalogue and prepare cleaned, customer-ready copy for Product Owner approval, without mutating Shopify.
+
+Execution summary:
+- Read-only source used: `https://mzansiselect.myshopify.com/products.json?limit=250`.
+- Saved raw fetch to `artifacts/catalogue/slice-21hi-products-raw.json`.
+- Reviewed 41 products and extracted title, handle, description/body, plus available product metadata.
+- Drafted concise, factual South African English wording proposals in:
+  - `docs/catalogue/slice-21hi-product-wording-cleanup-approval-pack.md`
+- Flagged products with risky or unclear claims as `needs review` for Product Owner decision before any Shopify updates.
+
+Safety confirmation:
+- No Shopify Admin/product mutation was performed.
+- No changes to prices, collections, theme files, checkout/payment settings, or apps.
+- Artifacts retained under `artifacts/` and left uncommitted.
