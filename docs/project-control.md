@@ -5050,3 +5050,20 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Fix:** restore missing theme blocks referenced by `sections/product-list.liquid` presets so Shopify CLI pushes validate cleanly (no commerce enablement; no publish).
 - **Push:** `shopify theme push --store sikhwarigroupdev.myshopify.com --theme 162429075681`
 - **Evidence:** `docs/qa/slice-21gl-draft-theme-push-fix.md`
+
+## Slice 21GN-C Windows-native draft preview QA (Product Owner approved; QA-only)
+
+- **Execution lane:** Windows-native Codex QA lane (temporary folder `D:\dev\mzansi-select-shopify-winqa`), no WSL CDP.
+- **Store/theme under test:** `sikhwarigroupdev.myshopify.com`; live `Horizon` `#158396285153` unchanged; draft `Mzansi Select MVP Restored` `#162429075681` remained unpublished.
+- **Preview URL:** `https://sikhwarigroupdev.myshopify.com?preview_theme_id=162429075681`
+- **Repo parity:** Windows QA lane HEAD matched WSL source HEAD (`8fefcf67adb73b24f3aedb23baed2ab085883b87`) before run.
+- **Routes tested:** `/`, `/collections/all`, `/search?q=organiser&type=product`, `/pages/contact#business-details`, `/collections/retro-vault-consoles-classics`, `/collections/games-toys`, plus 3 sampled canonical PDPs.
+- **Visual result:** Mzansi Select signals visible; Business Details anchor and support contact visible.
+- **Catalogue result:** `/collections/all` returned `200` with **0 product links**; search returned `200` with **0 product links**.
+- **Category route result:** `retro-vault` and `games-toys` routes returned `404` in this run.
+- **PDP result:** 3 sampled canonical PDPs opened as `/products/<handle>` but returned `404` in this run context.
+- **PDP spinner result:** no active spinner detected by selector checks (`initial=0`, `after3s=0`) for sampled PDPs.
+- **Commerce safety:** PASS (no Add to Cart, no cart/add forms, no quick-add, no dynamic checkout, no checkout/payment path, no Supplier verified claim, no newsletter capture, no Liquid errors detected).
+- **Mobile result:** FAIL (horizontal overflow flagged on all checked routes in this run).
+- **Evidence:** `docs/qa/slice-21gn-c-windows-preview-qa.md`; safe local summary at `D:\dev\mzansi-select-shopify-winqa\artifacts\qa\slice-21gn-c-windows-preview-qa\2026-05-28-09-06-32\summary.json`.
+- **Release recommendation:** **fix first**; do not publish draft and do not remove storefront password until catalogue visibility, route 404s, and mobile overflow are resolved.
