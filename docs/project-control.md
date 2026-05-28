@@ -5124,3 +5124,13 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Diagnosis:** strongest signal remains Online Store visibility/indexing/session-gating mismatch (not proven hardcoded-handle drift).
 - **Evidence doc:** `docs/qa/slice-21gs-windows-authenticated-handle-map.md`
 - **Next owner:** Product Owner / DevOps for interactive Store API auth completion and authoritative handle export rerun.
+
+## Slice 21GT-WIN authenticated Store API product baseline (Product Owner requested; read-only)
+
+- **Execution lane:** Windows-only (`D:\dev\mzansi-select-shopify-winqa`).
+- **Theme auth check:** PASS — `Horizon` live `#158396285153`; `Mzansi Select MVP Restored` unpublished `#162429075681`.
+- **Store API baseline export:** BLOCKED in this run — `shopify store execute` reported no stored app authentication for `sikhwarigroupdev.myshopify.com`.
+- **Draft `/collections/all` extraction:** HTTP `200`; extracted product handles `0`.
+- **Diagnosis:** continued evidence of storefront visibility/indexing/session-gating mismatch; no mutations performed.
+- **Evidence doc:** `docs/qa/slice-21gt-authenticated-store-api-baseline.md`
+- **Next owner:** Product Owner / DevOps to complete same-session `shopify store auth` and rerun export.
