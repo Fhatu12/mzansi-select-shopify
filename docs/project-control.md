@@ -1,20 +1,21 @@
-# Project Control Update - Slice 21HC-WIN
+# Project Control Update - Slice 21HD-WIN
 
 Date: 2026-05-28
 
 ## Objective
-Resolve live 404s for collection routes:
+Create and publish two missing live collection routes:
 - /collections/retro-vault-consoles-classics
 - /collections/games-toys
 
 ## Execution summary
-- Confirmed live theme remained Mzansi Select MVP Restored.
-- Audited collection handles via Admin GraphQL; both are missing.
-- Attempted to create both approved manual collections with exact handle/title/description.
-- Mutation blocked by access control: missing write_products scope in current CLI auth.
-- Verified route status remains 404 for both target routes.
-- Ran regression checks on home, all collections, search, and one PDP; all passed.
+- Re-authenticated Store Admin API with required write scopes.
+- Confirmed both target handles were missing.
+- Created both approved manual collections using exact titles/handles/descriptions.
+- Published both collections to Online Store publication.
+- Verified both live routes now return 200.
+- Ran regression smoke on home, all collections, search, and one current PDP.
+- Commerce safety checks remained compliant.
 
 ## Decision
-Status: blocked.
-Recommendation: fix first by granting appropriate Admin/API scope and rerunning collection create/publish step.
+Status: complete.
+Recommendation: launch accepted.
