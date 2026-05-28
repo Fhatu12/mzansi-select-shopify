@@ -5101,3 +5101,15 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Assessment:** storefront is no longer “empty catalogue”; remaining failures are consistent with route/collection/link-target mismatch and search/index/query mismatch rather than a purely empty product baseline.
 - **Evidence:** `docs/qa/slice-21gq-new-paid-store-product-baseline-preview-qa.md`.
 - **Release recommendation:** **fix first**; keep draft unpublished and password enabled until Admin baseline export is unblocked and route/search/PDP QA passes.
+
+## Slice 21GR-WIN Windows-native Admin baseline and handle-map recovery (Product Owner requested; read-only)
+
+- **Execution lane:** Windows-only (`D:\dev\mzansi-select-shopify-winqa`) for Shopify auth/Admin/listing checks.
+- **Guardrails:** no publish, no password removal, no product/price/import/sync mutation, no app install, no checkout/payment/customer-flow enablement, no domain change.
+- **Auth status:** `shopify auth logout` succeeded; `shopify auth login` timed out pending interactive browser/captcha completion.
+- **Theme-list status:** blocked in this run due to unresolved auth session.
+- **Admin baseline export:** blocked in this run (auth-gated).
+- **Draft preview fetch (`/collections/all?preview_theme_id=162429075681`):** HTTP 200 but zero extracted product handles in non-unlocked fetch context; consistent with password/challenge-gated shell capture.
+- **Handle-map outcome:** partial only; no deterministic stale hardcoded product-handle set proven from current code scan; strongest current root-cause signal remains visibility/indexing/session gating mismatch.
+- **Evidence doc:** `docs/qa/slice-21gr-admin-baseline-handle-map.md`
+- **Next owner:** Product Owner / DevOps for an interactive Windows auth-complete rerun and authoritative Admin+storefront handle baseline capture.
