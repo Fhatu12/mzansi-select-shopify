@@ -5198,3 +5198,8 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - Captured blocked-session telemetry only: collections/search counts were 0, no commerce controls exposed, and no Liquid errors seen.
 - Wrote run summary to `docs/qa/slice-21gz-authenticated-rendered-qa.md`.
 - Recommended follow-up: confirm storefront password env var in active Windows shell and re-run pass.
+## 2026-05-28 — Slice 21GZ-B-WIN rerun attempt
+- Verified same-shell `MZANSI_STOREFRONT_PASSWORD` presence by length only.
+- Result was `MISSING:0`, so authenticated draft QA rerun could not proceed.
+- Marked run blocked and captured required output fields as n/a where execution was not possible.
+- Added `docs/qa/slice-21gz-b-authenticated-rendered-qa.md`.
