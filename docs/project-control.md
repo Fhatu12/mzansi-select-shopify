@@ -5192,3 +5192,9 @@ Slice 13I executed a Product Owner–approved **narrow** Shopify Admin pass: fiv
 - **Guardrails preserved:** no publish, no password removal, no product/price/domain/app/checkout/payment changes, no live-theme edits, and no draft-theme push in this slice.
 - **Canonical QA record:** `docs/qa/slice-21gy-post-pdp-fix-rendered-qa.md`.
 - **Follow-up:** re-run the same route/PDP matrix in an authenticated local browser-driven session where storefront rendering is verifiably unlocked, then finalize publish/fix decision.
+## 2026-05-28 — Slice 21GZ-WIN rendered QA after PDP loading fix
+- Ran Windows-only rendered QA from `D:\dev\mzansi-select-shopify-winqa` against draft theme `#162429075681`.
+- Password gate remained active across required preview routes, so authenticated sign-off was blocked.
+- Captured blocked-session telemetry only: collections/search counts were 0, no commerce controls exposed, and no Liquid errors seen.
+- Wrote run summary to `docs/qa/slice-21gz-authenticated-rendered-qa.md`.
+- Recommended follow-up: confirm storefront password env var in active Windows shell and re-run pass.
