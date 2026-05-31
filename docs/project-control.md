@@ -162,3 +162,5 @@ Safety confirmation:
 - No product, price, media, collection, checkout/payment, domain, app, or Supplier verified changes.
 - No artifacts committed.
 
+
+- 2026-05-31: Slice 21HO-WIN inspected top/header wishlist capture behavior on live storefront. Result: FAIL (no dedicated saved-items route/view; unstable/potentially non-persistent captured list behavior). See docs/qa/slice-21ho-top-wishlist-captured-items.md.
