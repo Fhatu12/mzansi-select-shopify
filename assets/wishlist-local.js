@@ -76,9 +76,17 @@
     store.forEach((item) => {
       const row = document.createElement('li');
       row.className = 'wishlist-drawer-item';
+      const itemTitle = item.title || item.handle;
+      const itemUrl = item.url || `/products/${item.handle}`;
+      const thumb = item.image
+        ? `<img class="wishlist-drawer-thumb-image" src="${item.image}" alt="${itemTitle}" loading="lazy" width="52" height="52">`
+        : `<span class="wishlist-drawer-thumb-fallback" aria-hidden="true">${itemTitle.charAt(0).toUpperCase()}</span>`;
       row.innerHTML = `
-        <a class="wishlist-drawer-link" href="${item.url || '/products/' + item.handle}">${item.title || item.handle}</a>
-        <button type="button" class="wishlist-drawer-remove" data-wishlist-remove="${item.handle}" aria-label="Remove ${item.title || item.handle} from saved items">Remove</button>
+        <a class="wishlist-drawer-link" href="${itemUrl}">
+          <span class="wishlist-drawer-thumb">${thumb}</span>
+          <span class="wishlist-drawer-title">${itemTitle}</span>
+        </a>
+        <button type="button" class="wishlist-drawer-remove" data-wishlist-remove="${item.handle}" aria-label="Remove ${itemTitle} from saved items">Remove</button>
       `;
       list.appendChild(row);
     });

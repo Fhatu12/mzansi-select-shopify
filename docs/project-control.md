@@ -200,3 +200,21 @@ Execution summary:
 Safety confirmation:
 - No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes.
 - No artifacts committed.
+
+## 2026-05-31 - Slice 21HR (Wishlist drawer mini images)
+
+Objective:
+- Add visual mini product images to local saved-items wishlist drawer for faster product recognition.
+
+Execution summary:
+- Confirmed live theme target `Mzansi Select MVP Restored` `#162429075681`.
+- Identified missing feature: button payload lacked image data and drawer renderer had no thumbnail output.
+- Added `data-product-image` in `snippets/wishlist-button.liquid` sourced from product featured media.
+- Updated `assets/wishlist-local.js` drawer item renderer to display thumbnail image or initial fallback if image is unavailable.
+- Added thumbnail/fallback/title alignment styles in `assets/theme.css`.
+- Preserved 21HP localStorage model and 21HQ stacking behavior.
+- Pushed only changed theme files with `--allow-live`.
+
+Safety confirmation:
+- No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes.
+- No artifacts committed.

@@ -10,6 +10,7 @@
     data-product-handle="{{ product.handle | escape }}"
     data-product-title="{{ product.title | escape }}"
     data-product-url="{{ product.url }}"
+    data-product-image="{% if product.featured_media and product.featured_media.preview_image %}{{ product.featured_media.preview_image | image_url: width: 120 }}{% endif %}"
     aria-pressed="false"
     aria-label="Add {{ product.title | escape }} to saved items"
   >
