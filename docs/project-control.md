@@ -109,3 +109,20 @@ Decision notes:
 
 Safety confirmation:
 - No product, price, collection, checkout/payment, app, or theme mutation was performed.
+
+## 2026-05-31 - Slice 21HL (PDP gallery arrow main-image sync)
+
+Objective:
+- Fix PDP gallery previous/next controls so main image updates correctly on desktop/mobile without changing catalogue or commerce state.
+
+Execution summary:
+- Inspected `sections/main-product-foundation.liquid`, `assets/product-gallery.js`, and `assets/product-options-preview.js`.
+- Identified root cause: gallery navigation updated `img.src` but not `img.srcset` on main image.
+- Implemented minimal fix in `assets/product-gallery.js` to sync `srcset` during gallery index changes.
+- Preserved variant-featured-image behavior by leaving thumbnail-driven variant sync unchanged.
+- Pushed only changed theme asset to live theme `#162429075681` using `--only` and `--allow-live`.
+- Verified three target PDPs still render gallery controls with five-thumbnail cap.
+
+Safety confirmation:
+- No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes were made.
+- No artifacts were committed.

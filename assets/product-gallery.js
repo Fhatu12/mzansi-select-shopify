@@ -30,6 +30,7 @@
     activeIndex = (index + media.length) % media.length;
     const item = media[activeIndex];
     mainImg.src = item.src;
+    mainImg.srcset = `${item.src} 1200w`;
     mainImg.alt = item.alt;
     if (item.width) mainImg.width = item.width;
     if (item.height) mainImg.height = item.height;
@@ -38,6 +39,9 @@
       const selected = thumbIndex === activeIndex;
       thumb.classList.toggle('is-active', selected);
       thumb.setAttribute('aria-selected', selected ? 'true' : 'false');
+      if (selected) {
+        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     });
     if (prevBtn) prevBtn.disabled = media.length < 2;
     if (nextBtn) nextBtn.disabled = media.length < 2;
