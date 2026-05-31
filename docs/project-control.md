@@ -91,3 +91,21 @@ Safety confirmation:
 - Unresolved: 0.
 - Safety: No product mutations performed; safe to retry updates using verified Admin IDs only.
 
+
+## 2026-05-31 - Slice 21HK (Product reset checkpoint before AutoDS rebuild)
+
+Objective:
+- Record Product Owner decision to replace current live catalogue with fresh AutoDS products, and archive a pre-reset product snapshot before deletion/rebuild execution.
+
+Execution summary:
+- Fetched public storefront catalogue (read-only): `https://mzansiselect.myshopify.com/products.json?limit=250`.
+- Archived raw snapshot to `artifacts/catalogue/slice-21hk-current-products-before-autods-reset.json`.
+- Snapshot count at checkpoint: **43 products**.
+- Recorded checkpoint and implications in `docs/catalogue/slice-21hk-autods-product-reset-checkpoint.md`.
+
+Decision notes:
+- 21HI/21HJ copy cleanup stream is paused/obsolete for the outgoing catalogue.
+- Product-to-department mapping must be recalculated after AutoDS import produces the new catalogue.
+
+Safety confirmation:
+- No product, price, collection, checkout/payment, app, or theme mutation was performed.
