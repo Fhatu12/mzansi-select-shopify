@@ -164,3 +164,23 @@ Safety confirmation:
 
 
 - 2026-05-31: Slice 21HO-WIN inspected top/header wishlist capture behavior on live storefront. Result: FAIL (no dedicated saved-items route/view; unstable/potentially non-persistent captured list behavior). See docs/qa/slice-21ho-top-wishlist-captured-items.md.
+
+## 2026-05-31 - Slice 21HP (Local wishlist drawer implementation)
+
+Objective:
+- Implement a reliable local browser-only saved-items wishlist with a usable header/mobile drawer.
+
+Execution summary:
+- Confirmed live theme target `Mzansi Select MVP Restored` `#162429075681`.
+- Identified 21HO failure root cause:
+  - local wishlist parsing lacked robust sanitize/migrate/merge guarantees.
+  - header/mobile saved indicators were non-interactive spans with no view/drawer action.
+- Implemented robust local storage handling in `assets/wishlist-local.js` for `mzansi-wishlist-v1` with unique-by-handle migration and stable add/remove merge behavior.
+- Added saved-items drawer/modal surface and open triggers in header/mobile/bottom navigation.
+- Added remove actions, empty state, close/backdrop/escape handling, and count/heart cross-sync.
+- Pushed only changed theme files to live theme using `--allow-live`.
+
+Safety confirmation:
+- No product, price, media, collection, app, checkout/payment, Supplier verified, or domain mutation.
+- No account/customer dependency introduced.
+- No artifacts committed.
