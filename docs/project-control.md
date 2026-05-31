@@ -144,3 +144,21 @@ Execution summary:
 Safety confirmation:
 - No mutations to products, prices, variants, product media, collections, checkout/payment, domain, apps, or Supplier verified.
 - No artifacts committed.
+
+## 2026-05-31 - Slice 21HN (Wishlist hearts/header sync)
+
+Objective:
+- Ensure product/card and PDP wishlist hearts stay in sync with top/header wishlist state and persist locally.
+
+Execution summary:
+- Confirmed live theme target: `Mzansi Select MVP Restored` `#162429075681`.
+- Found root cause: header/mobile wishlist indicators were static markup without JS state hooks.
+- Added header/mobile/bottom saved-state data hooks and live count badges.
+- Extended `assets/wishlist-local.js` to update header count/active state on init, section load, pageshow, and each toggle.
+- Kept local/browser-only wishlist storage (`mzansi-wishlist-v1`) and product-handle identity.
+- Pushed only changed theme files to live theme with `--allow-live`.
+
+Safety confirmation:
+- No product, price, media, collection, checkout/payment, domain, app, or Supplier verified changes.
+- No artifacts committed.
+

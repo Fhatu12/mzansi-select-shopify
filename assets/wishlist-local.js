@@ -19,6 +19,7 @@
       /* quota or private mode */
     }
   };
+  const getCount = () => readStore().length;
 
   const normalise = (btn) => ({
     handle: btn.dataset.productHandle,
@@ -59,16 +60,25 @@
       store.splice(idx, 1);
       writeStore(store);
       syncHandle(item.handle);
+      syncAll();
       return;
     }
     store.push({ handle: item.handle, title: item.title, url: item.url });
     writeStore(store);
     syncHandle(item.handle);
+    syncAll();
   };
 
   const syncAll = () => {
     document.querySelectorAll('[data-wishlist-toggle]').forEach((btn) => {
       syncButton(btn);
+    });
+    const count = getCount();
+    document.querySelectorAll('[data-wishlist-count]').forEach((node) => {
+      node.textContent = String(count);
+    });
+    document.querySelectorAll('[data-wishlist-header-state]').forEach((node) => {
+      node.classList.toggle('is-saved', count > 0);
     });
   };
 
