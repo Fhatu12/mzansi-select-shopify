@@ -126,3 +126,21 @@ Execution summary:
 Safety confirmation:
 - No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes were made.
 - No artifacts were committed.
+
+## 2026-05-31 - Slice 21HM (PDP colour/variant selector sync)
+
+Objective:
+- Fix PDP colour/variant selector behavior so option selection and variant media sync are reliable before AutoDS catalogue rebuild.
+
+Execution summary:
+- Inspected `assets/product-options-preview.js`, `sections/main-product-foundation.liquid`, and verified 21HL gallery logic in `assets/product-gallery.js` remained intact.
+- Identified brittle exact URL-string match for variant featured image to gallery thumbnails as root cause.
+- Added `featuredMediaId` to variant JSON payload in Liquid.
+- Updated variant gallery sync to resolve thumbnail by media ID first, with normalized URL fallback.
+- Preserved soft-fail when variant media is not part of rendered capped gallery.
+- Pushed only changed files to live theme `#162429075681`.
+- Verified target PDPs still render gallery controls and options with 5-thumbnail cap.
+
+Safety confirmation:
+- No mutations to products, prices, variants, product media, collections, checkout/payment, domain, apps, or Supplier verified.
+- No artifacts committed.

@@ -206,6 +206,7 @@
                     {
                       "id": {{ variant.id }},
                       "available": {{ variant.available | json }},
+                      "featuredMediaId": {% if variant.featured_media %}{{ variant.featured_media.id | json }}{% else %}null{% endif %},
                       "options": [
                         {% for opt in variant.options %}
                           {{ opt | json }}{% unless forloop.last %},{% endunless %}

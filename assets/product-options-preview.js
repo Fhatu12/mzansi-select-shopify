@@ -46,10 +46,27 @@
     });
   };
 
+  const normalizeImageUrl = (value) => {
+    if (!value) return '';
+    return String(value).replace(/^https?:/, '').trim();
+  };
+
   const updateGalleryForVariant = (variant) => {
     if (!gallery || !variant?.featuredSrc) return;
-    const mainImg = gallery.querySelector('[data-gallery-main-image]');
-    const matchingThumb = gallery.querySelector(`[data-gallery-thumb][data-media-src="${variant.featuredSrc}"]`);
+    const featuredMediaId = variant.featuredMediaId ? String(variant.featuredMediaId) : '';
+    let matchingThumb = null;
+
+    if (featuredMediaId) {
+      matchingThumb = gallery.querySelector(`[data-gallery-thumb][data-media-id="${featuredMediaId}"]`);
+    }
+
+    if (!matchingThumb) {
+      const wantedSrc = normalizeImageUrl(variant.featuredSrc);
+      matchingThumb = [...gallery.querySelectorAll('[data-gallery-thumb]')].find((thumb) =>
+        normalizeImageUrl(thumb.dataset.mediaSrc) === wantedSrc
+      );
+    }
+
     if (matchingThumb) {
       matchingThumb.click();
       return;
