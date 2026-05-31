@@ -184,3 +184,19 @@ Safety confirmation:
 - No product, price, media, collection, app, checkout/payment, Supplier verified, or domain mutation.
 - No account/customer dependency introduced.
 - No artifacts committed.
+
+## 2026-05-31 - Slice 21HQ (Wishlist drawer stacking fix)
+
+Objective:
+- Ensure saved-items wishlist drawer renders above top banner/header/navigation layers on desktop and mobile.
+
+Execution summary:
+- Confirmed live theme target `Mzansi Select MVP Restored` `#162429075681`.
+- Identified root cause: `.wishlist-drawer` z-index was lower than existing header/nav/overlay layers.
+- Applied minimal CSS-only fix in `assets/theme.css` by raising `.wishlist-drawer` z-index to sit above known UI layers.
+- Preserved all 21HP local wishlist storage and drawer interaction behavior.
+- Pushed only changed file to live theme with `--allow-live`.
+
+Safety confirmation:
+- No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes.
+- No artifacts committed.
