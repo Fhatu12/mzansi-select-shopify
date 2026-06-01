@@ -321,3 +321,37 @@ Safety confirmation:
 - No checkout/payment enablement.
 - No product/price/shipping/domain/app/theme/Admin mutation.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HW-B-WIN (Commerce decision finalisation, no activation)
+
+Objective:
+- Convert the 21HV readiness pack and 21HW-A decision pack into final Product Owner decision options without enabling commerce.
+
+Execution summary:
+- Performed Windows-only live storefront availability check for `https://mzansiselect.myshopify.com` and confirmed homepage `HTTP 200`.
+- Reviewed source decision docs:
+  - `docs/commerce/slice-21hv-commerce-activation-readiness-pack.md`
+  - `docs/commerce/slice-21hw-a-payment-shipping-policy-decisions.md`
+- Produced final decision finalisation doc with explicit status labels (`Approved`, `Pending Product Owner decision`, `Blocked`) across:
+  - payment options, recommended primary/backup provider
+  - shipping zones/rates
+  - delivery, returns/refunds, support wording
+  - test-order and rollback checklists
+- Recorded safest first-launch recommendation:
+  - South Africa-only shipping
+  - conservative delivery wording
+  - one primary payment provider
+  - no international shipping at launch
+  - no checkout activation until provider and policy confirmation
+- Authored:
+  - `docs/commerce/slice-21hw-b-commerce-decision-finalisation.md`
+
+Verdict:
+- **PASS WITH BLOCKERS**: decision finalisation complete; commerce activation remains blocked pending Product Owner approvals.
+
+Safety confirmation:
+- No checkout/payment enablement.
+- No shipping settings changes.
+- No policy publication.
+- No product/price/theme/domain/app/Admin mutation.
+- No artifacts committed.
