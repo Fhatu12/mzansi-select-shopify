@@ -524,3 +524,24 @@ Safety confirmation:
 
 Next recommended slice:
 - 21HW-I-WIN for payment-readiness verification-only and controlled activation planning.
+
+## 2026-06-01 - Slice 21HW-I-WIN (PayFast readiness verification only)
+
+Objective:
+- Verify storefront readiness and payment setup prerequisites for PayFast/Peach without activating any payment provider.
+
+Execution summary:
+- Ran Windows-only read-only verification against live storefront `https://mzansiselect.myshopify.com`.
+- Verified required routes returned HTTP 200: `/`, `/collections/all`, `/pages/contact`, `/policies/shipping-policy`, `/policies/refund-policy`, `/policies/contact-information`.
+- Verified one PDP route from public products feed returned HTTP 200.
+- Did not perform Shopify Admin login or any provider activation/connect action.
+- Produced readiness document: `docs/commerce/slice-21hw-i-payfast-readiness-verification.md`.
+
+Verdict:
+- Conditional go-forward readiness for a dedicated activation slice with Product Owner present.
+- Activation not performed in this slice by design.
+
+Safety confirmation:
+- No payment provider activation (PayFast, Peach, or any other).
+- No changes to products, prices, shipping, policies, domain, apps, or theme.
+- No checkout/payment collection activation by this slice.
