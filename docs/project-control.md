@@ -771,3 +771,27 @@ Safety confirmation:
 - No Payflex authorization.
 - No payment provider, shipping rate, domain, app, product, or price changes.
 - Dynamic checkout remains disabled.
+
+## 2026-06-01 - Slice 21HW-Q-WIN (Final live cart checkout QA and shipping verification)
+
+Objective:
+- Execute final focused live storefront cart-to-checkout QA for purchase flow, shipping visibility, and payment-method visibility, with strict stop before any payment authorization.
+
+Execution summary:
+- Ran Windows Playwright harness: `tools/catalogue/run-slice-21hw-o-final-checkout-qa.cjs` against `https://mzansiselect.myshopify.com`.
+- Verified key routes `/`, `/collections/all`, `/pages/faq`, `/pages/contact`, `/policies/shipping-policy`, `/policies/refund-policy` returned successfully.
+- Low-priced PDP had visible Add to Cart and cart route opened.
+- Cart checkout button visible; dynamic checkout not visible.
+- Checkout progression blocked at contact form email field interaction timeout; full shipping-step completion could not be confirmed.
+- Visibility signals captured: Free delivery over threshold detected; international shipping option not detected; Payflex and PayPal visible; PayFast and Peach not visible.
+- Mobile sanity: Add to Cart visible, cart route reachable, no horizontal overflow; checkout CTA not visible in observed mobile cart state.
+
+Verdict:
+- Status: **blocked / fail for final sign-off** pending checkout/contact-step and cart-line rendering reliability.
+
+Safety confirmation:
+- No real payment submitted.
+- No card details entered.
+- No Payflex authorization.
+- No Shopify Admin/catalogue/price/shipping/payment/theme mutation.
+- No artifacts committed.
