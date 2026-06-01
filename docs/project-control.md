@@ -795,3 +795,10 @@ Safety confirmation:
 - No Payflex authorization.
 - No Shopify Admin/catalogue/price/shipping/payment/theme mutation.
 - No artifacts committed.
+
+## 2026-06-02 Slice 21HW-R
+- Live theme confirmed: 162429075681.
+- Cart wiring inspection: template/section/snippet/CTA present and Shopify-native.
+- Updated cart copy continuity in templates/cart.json to remove deferred/illustrative messaging.
+- Automated live cart verification blocked by Cloudflare challenge from this environment.
+- No payment submitted. Dynamic checkout unchanged (disabled).
