@@ -591,3 +591,23 @@ Verdict:
 
 Safety confirmation:
 - No product, price, shipping rate, payment, checkout, domain, app, or hero-tile behavior mutation performed.
+
+## 2026-06-01 - Slice 21HY-B (Active homepage/footer support links)
+
+Objective:
+- Fix active rendered homepage and footer support links to shipping/refund policy and FAQ routes on live theme `#162429075681`.
+
+Execution summary:
+- Pre-check confirmed live theme: `Mzansi Select MVP Restored #162429075681`.
+- Identified root cause in active Liquid help links still using legacy About anchors.
+- Updated support links in:
+  - `sections/primary-navigation.liquid`
+  - `sections/site-footer.liquid`
+- Pushed only changed files with:
+  - `shopify theme push --store mzansiselect.myshopify.com --theme 162429075681 --allow-live --nodelete --only sections/primary-navigation.liquid --only sections/site-footer.liquid`
+- Verified routes return 200 for home, shipping policy, refund policy, FAQ, contact, collections/all, and one sample PDP.
+- Verified rendered homepage/footer no longer include `/pages/about#shipping|returns|faq` and now point to required live routes.
+
+Safety confirmation:
+- No product, price, shipping-rate, payment-provider, checkout, domain, app-install, or commerce enablement changes were made.
+- No decorative hero-tile click behavior was introduced.
