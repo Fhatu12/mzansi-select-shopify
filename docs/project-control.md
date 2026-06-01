@@ -611,3 +611,22 @@ Execution summary:
 Safety confirmation:
 - No product, price, shipping-rate, payment-provider, checkout, domain, app-install, or commerce enablement changes were made.
 - No decorative hero-tile click behavior was introduced.
+
+## 2026-06-01 - Slice 21HW-J (Payflex checkout verification, no payment)
+
+Objective:
+- Verify Payflex checkout readiness without submitting a real payment.
+
+Execution summary:
+- Verified required storefront routes return HTTP 200, including one department collection and one PDP.
+- Confirmed cart session add via `POST /cart/add.js` for a low-value product variant.
+- Confirmed checkout response content includes `Payflex` and excludes `PayFast`/`Peach` in sampled response text.
+- Did not submit payment and did not enter any real card details.
+
+Verdict:
+- Partial pass: platform payment activation appears ready for Payflex, but storefront UI/interactive checkout verification is still required to fully confirm customer path and shipping display.
+
+Safety confirmation:
+- No payment submission.
+- No product/price/shipping/theme mutations.
+- No activation changes performed for PayPal, PayFast, or Peach.
