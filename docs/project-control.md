@@ -722,3 +722,32 @@ Safety confirmation:
 - No PayPal/PayFast/Peach activation changes.
 - No product/price/shipping/domain/app changes.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HW-O-WIN (Final interactive add-to-cart and checkout QA, stop before payment)
+
+Objective:
+- Run final live storefront interactive customer-flow QA from PDP through checkout visibility, and stop before payment authorization.
+
+Execution summary:
+- Verified required routes (`/`, `/collections/all`, `/pages/faq`, `/pages/contact`, `/policies/shipping-policy`, `/policies/refund-policy`) return 200.
+- Covered one low-priced PDP and one higher-priced PDP from `/collections/all`.
+- Confirmed low-priced PDP Add to Cart visibility and cart checkout CTA visibility.
+- Confirmed dynamic checkout buttons remained absent.
+- Checkout transition remained unstable in this run (did not consistently present fillable contact/shipping form), blocking conclusive shipping-tier validation.
+- Payment visibility signals captured at checkout rendering layer: Payflex visible, PayPal visible, PayFast not visible, Peach not visible.
+- Mobile sanity: Add to Cart visible, cart route opens, no horizontal overflow on sampled PDP/cart.
+- Regression checks: gallery arrow swap PASS, support links PASS, no Liquid errors; wishlist trigger not detected on sampled PDP (not conclusive).
+
+Verdict:
+- **PARTIAL PASS WITH BLOCKERS**.
+
+Safety confirmation:
+- No real payment submitted.
+- No card details entered.
+- No Payflex authorization attempted.
+- No Shopify Admin mutation.
+- No product/price/shipping/theme/domain/app mutation.
+- `tools/catalogue/` remains untracked.
+
+Next recommended slice:
+- 21HW-P-WIN for checkout session/cart continuity hardening and rerun of shipping-tier + wishlist regression confirmation.
