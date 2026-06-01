@@ -252,3 +252,24 @@ Safety confirmation:
 - **Observed status:** HTTP `200` reachability confirmed, but storefront rendered responses remained password-wall content (`Please Log In`), so PDP interactive behaviour checks (navigation/back/link interactivity/spinner/gallery/price visibility/Liquid runtime signals), catalogue/search rendered checks, mobile `390x844` overflow checks, and commerce-safety rendered checks are all **blocked** in this pass.
 - **Guardrails preserved:** no publish, no password removal, no product/price/domain/app/checkout/payment changes, no live-theme touch, no theme push, no credential/session artifact storage.
 - **Publish recommendation:** **fix first / blocked** pending authenticated rendered rerun for this exact draft theme/session context.
+
+## 2026-06-01 - Slice 21HU-WIN (Live store completion readiness audit)
+
+Objective:
+- Perform a full read-only live-store completion readiness audit and identify remaining blockers before opening sales/checkout.
+
+Execution summary:
+- Audited live storefront `https://mzansiselect.myshopify.com` against live theme context `Mzansi Select MVP Restored #162429075681` with strict read-only constraints.
+- Confirmed public catalogue count: 48 products (`/products.json?limit=250`).
+- Verified key routes and department collection endpoints return `HTTP 200`; `/checkout` redirects (`302`) and checkout was not enabled.
+- Sampled 6 PDPs: gallery arrows present, Product Overview absent, Specifications visible, no spinner/navigation regressions observed.
+- Wishlist functional checks passed for add/count/drawer/mini-images; persistence/remove requires one manual confirmation rerun before launch sign-off.
+- Logged completion blockers and next-slice recommendation in:
+  - `docs/qa/slice-21hu-live-store-completion-readiness-audit.md`
+
+Verdict:
+- **PASS WITH BLOCKERS**: browse/trust baseline is stable, but commerce activation remains blocked pending policy + checkout readiness and wishlist persistence closeout.
+
+Safety confirmation:
+- No mutations to products, prices, descriptions, collections, theme files, apps, checkout/payment, domain, or Shopify Admin data.
+- No artifacts committed.
