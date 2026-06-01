@@ -650,3 +650,30 @@ Safety confirmation:
 - No real payment submission.
 - No real card entry.
 - No Shopify Admin mutations.
+
+## 2026-06-01 - Slice 21HW-L (Enable storefront purchase UI)
+
+Objective:
+- Enable storefront Add to Cart and cart-to-checkout path on live theme `#162429075681`, with dynamic checkout remaining disabled and no payment authorization.
+
+Execution summary:
+- Pre-check confirmed live theme context: `Mzansi Select MVP Restored #162429075681`.
+- Identified hard catalogue lock in `sections/main-product-foundation.liquid` force-setting commerce blocked state.
+- Re-enabled PDP purchase path by restoring product form submit (`form 'product'`, variant id, quantity default `1`, submit `name="add"`) and conditional availability state.
+- Enabled cart routing in header by replacing disabled cart spans with links to `routes.cart_url` in desktop and mobile header.
+- Enabled cart-to-checkout action by replacing disabled checkout shell with a cart form submit button (`name="checkout"`) in `sections/main-cart-foundation.liquid`.
+- Pushed only changed theme files with `--allow-live` and no publish step:
+  - `shopify theme push --store mzansiselect.myshopify.com --theme 162429075681 --allow-live --nodelete --only sections/main-product-foundation.liquid --only sections/main-cart-foundation.liquid --only sections/site-header.liquid`
+
+Verification status:
+- PDP Add to Cart visible: Yes (for available variants).
+- Product card buy/cart UI visible: No change in this slice (left on existing theme behavior).
+- Cart page reachable: Yes.
+- Checkout button from cart visible: Yes.
+- Dynamic checkout still disabled/absent: Yes.
+- Wishlist/gallery regressions: none introduced by changed files (code-path sanity).
+- Windows interactive checkout pass (shipping/payment visual confirmation, stop before authorization): pending.
+
+Safety confirmation:
+- No product, price, inventory, description, media, collection, shipping-rate, payment-provider, domain, or app-install mutations.
+- No payment submission and no card details entered.

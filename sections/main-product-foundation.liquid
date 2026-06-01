@@ -26,9 +26,6 @@
 {% if current_product_use_placeholder_price == false and current_variant.price <= 0 and current_vendor_norm == 'mzansi select preview' %}
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
-{% comment %} Slice 21FT: keep all live PDPs catalogue-only even when product tags drift. {% endcomment %}
-{% assign current_product_commerce_blocked = true %}
-{% assign current_product_use_placeholder_price = true %}
 {% assign current_product_price = current_variant.price | money_without_trailing_zeros %}
 {% assign current_product_price_was = blank %}
 {% assign current_product_price_save = blank %}
@@ -252,14 +249,18 @@
           {% if current_product_commerce_blocked %}
             Price to be confirmed. This product is being prepared for launch.
           {% elsif pilot_trust %}
-            Invite-only controlled pilot visibility. Not a public launch. Cart and checkout remain disabled until a separate Product Owner go/no-go.
+            Controlled pilot is active. Add to cart is enabled for approved checkout verification.
           {% else %}
-            Preview visibility only. Cart and checkout actions remain disabled in this slice.
+            Add to cart is enabled. Complete checkout from the cart page.
           {% endif %}
         </p>
         <div class="product-purchase-shell">
           <div class="product-action-row">
-            <button class="add-btn product-main-add" type="button" disabled aria-disabled="true"{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif pilot_trust %}Not available to buy yet{% else %}Preview only{% endif %}</button>
+            {%- form 'product', product, id: 'product-main-add-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input type="hidden" name="id" value="{{ current_variant.id }}">
+              <input type="hidden" name="quantity" value="1">
+              <button class="add-btn product-main-add" type="submit" name="add" {% if current_product_commerce_blocked or current_variant.available == false %}disabled aria-disabled="true"{% endif %}{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif current_variant.available %}Add to Cart{% else %}Sold out{% endif %}</button>
+            {%- endform -%}
             {% render 'wishlist-button', product: product %}
           </div>
         </div>

@@ -101,8 +101,10 @@
           </div>
 
           <div class="cart-summary-actions">
-            <button class="btn-dark cart-checkout-shell" type="button" disabled aria-disabled="true">{% if pilot_trust %}Checkout not available{% else %}Checkout preview{% endif %}</button>
-            <button class="btn-ghost cart-secondary-shell" type="button" disabled aria-disabled="true">Save for Later</button>
+            <form action="{{ routes.cart_url }}" method="post">
+              <button class="btn-dark cart-checkout-shell" type="submit" name="checkout">Proceed to checkout</button>
+            </form>
+            <a class="btn-ghost cart-secondary-shell" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
           </div>
 
           <div class="cart-summary-notes">
