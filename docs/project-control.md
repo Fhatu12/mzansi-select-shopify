@@ -389,3 +389,37 @@ Safety confirmation:
 - No payment connection.
 - No shipping/policy/product/price/theme/domain/app/Admin mutation.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HW-D-WIN (Approved shipping + policy setup, no payment activation)
+
+Objective:
+- Configure approved South Africa shipping and publish approved policies without enabling payment, while respecting PO-present Admin controls.
+
+Execution summary:
+- Verified live storefront availability:
+  - `/` -> `HTTP 200`
+  - `/collections/all` -> `HTTP 200`
+  - department routes -> `HTTP 200` (`home-living`, `kitchen-storage`, `office-desk`, `tech-accessories`, `retro-vault-consoles-classics`, `games-toys`)
+  - sampled PDP -> `HTTP 200`
+- Read required source docs:
+  - `docs/commerce/slice-21hv-commerce-activation-readiness-pack.md`
+  - `docs/commerce/slice-21hw-a-payment-shipping-policy-decisions.md`
+  - `docs/commerce/slice-21hw-b-commerce-decision-finalisation.md`
+  - `docs/commerce/slice-21hw-c-commerce-activation-execution-pack.md`
+- Updated decision record to replace Metro/Regional proposal with approved launch configuration:
+  - Standard South Africa delivery: R99 flat
+  - Free delivery over R1,500
+  - International shipping disabled
+  - No Metro/Regional split at launch
+- Prepared PO-present manual Shopify Admin runbook for shipping + policy publication only; no payment activation actions executed.
+- Authored:
+  - `docs/commerce/slice-21hw-d-shipping-policy-admin-setup.md`
+
+Verdict:
+- **PASS WITH MANUAL-ACTION BLOCKERS**: shipping/policy setup content is finalized; live Admin mutation requires PO-present authenticated session.
+
+Safety confirmation:
+- No payment provider enabled.
+- No checkout/payment collection enabled.
+- No product/price/description/domain/theme/app mutation.
+- `tools/catalogue/` remains untracked.
