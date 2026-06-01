@@ -296,3 +296,28 @@ Safety confirmation:
 - No checkout/payment enablement.
 - No product/price/shipping/domain/app/theme/admin mutation.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HW-A-WIN (Payment, shipping, and policy decisions pack)
+
+Objective:
+- Produce a documentation-only decision pack for payment provider selection, shipping/fulfilment posture, policy drafts, checkout activation checklist, and rollback planning while keeping checkout/payments disabled.
+
+Execution summary:
+- Performed Windows-only read-only storefront verification for `https://mzansiselect.myshopify.com`.
+- Confirmed `HTTP 200` for `/`, `/collections/all`, and active department collection routes (`home-living`, `kitchen-storage`, `office-desk`, `tech-accessories`, `retro-vault-consoles-classics`, `games-toys`).
+- Confirmed product catalogue remains visible on live storefront.
+- Documented South Africa-compatible payment option candidates without enabling or connecting any provider.
+- Drafted South Africa-first shipping/fulfilment recommendation, conservative delivery wording, AutoDS dependency note, and manual fulfilment risk checklist.
+- Drafted customer-ready policy text and internal activation disclaimer.
+- Produced full checkout activation checklist including rollback/re-disable plan and post-activation QA.
+- Classified risks into must-fix / should-fix / can-defer.
+- Authored decision pack doc:
+  - `docs/commerce/slice-21hw-a-payment-shipping-policy-decisions.md`
+
+Verdict:
+- **PASS WITH BLOCKERS**: decision pack is complete; checkout/payment activation remains blocked pending Product Owner decisions and must-fix completion.
+
+Safety confirmation:
+- No checkout/payment enablement.
+- No product/price/shipping/domain/app/theme/Admin mutation.
+- No artifacts committed.
