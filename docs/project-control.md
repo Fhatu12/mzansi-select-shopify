@@ -423,3 +423,35 @@ Safety confirmation:
 - No checkout/payment collection enabled.
 - No product/price/description/domain/theme/app mutation.
 - `tools/catalogue/` remains untracked.
+
+## 2026-06-01 - Slice 21HW-E-WIN (PO-present Admin shipping/policy apply) - BLOCKED
+
+Objective:
+- Apply approved shipping model and policies in Shopify Admin without enabling payment collection.
+
+Execution summary:
+- Verified public storefront health and required routes:
+  - `/` 200
+  - `/collections/all` 200
+  - `/pages/contact` 200
+  - Live department routes (from nav) all 200:
+    - `/collections/games-toys`
+    - `/collections/home-living`
+    - `/collections/kitchen-storage`
+    - `/collections/office-desk`
+    - `/collections/retro-vault-consoles-classics`
+    - `/collections/tech-accessories`
+  - Sample PDP 200.
+- Interactive Shopify Admin mutation steps were not executed in this pass because PO-present manual login/MFA/CAPTCHA is required.
+
+Verdict:
+- BLOCKED pending Product Owner manual interactive Admin session.
+
+Safety confirmation:
+- No payment activation performed.
+- No PayFast enablement performed.
+- No Peach Payments enablement performed.
+- No changes to products, prices, descriptions, domain, apps, or theme files.
+
+Next recommended slice:
+- 21HW-F-WIN for PO-present interactive completion of Admin shipping/policy apply and payment-status verification-only.
