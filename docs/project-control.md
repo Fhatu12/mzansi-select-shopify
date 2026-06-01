@@ -565,3 +565,29 @@ Verdict:
 
 Safety confirmation:
 - Read-only pass only; no mutation performed on theme, pages, navigation, products, prices, collections, checkout/payment, apps, or domain.
+
+## 2026-06-01 - Slice 21HY (Homepage support links and FAQ page)
+
+Objective:
+- Fix broken homepage support links, create/publish FAQ page, and keep hero decorative tiles visual-only.
+
+Execution summary:
+- Confirmed live theme context: `Mzansi Select MVP Restored #162429075681`.
+- Updated homepage support hrefs in source:
+  - `/pages/about#shipping` -> `/policies/shipping-policy`
+  - `/pages/about#returns` -> `/policies/refund-policy`
+  - `/pages/about#faq` -> `/pages/faq`
+- Updated hero secondary CTA `Shipping info` href to `/policies/shipping-policy`.
+- Kept hero decorative tiles visual-only (no new link/button behavior added).
+- Pushed only changed theme files to live theme with `--allow-live`.
+- Attempted FAQ page creation automation via Shopify CLI Admin API path, but environment lacked `shopify api graphql` command.
+- Captured exact manual Admin creation steps and approved FAQ content in QA doc.
+- Verified health routes: `/`, `/collections/all`, `/policies/shipping-policy`, `/policies/refund-policy`, `/pages/contact`, and one PDP all returned `200`.
+- `/pages/faq` remains `404` until manual page creation is completed.
+- Public homepage render still shows legacy `/pages/about#...` links after push (live-render mismatch), so final link-verification acceptance is blocked.
+
+Verdict:
+- BLOCKED / PARTIAL.
+
+Safety confirmation:
+- No product, price, shipping rate, payment, checkout, domain, app, or hero-tile behavior mutation performed.
