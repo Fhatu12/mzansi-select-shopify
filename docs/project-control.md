@@ -503,3 +503,24 @@ Safety confirmation:
 
 Next recommended slice:
 - 21HW-H-WIN to run a verified mutation transport path and complete policy publication + verification.
+
+## 2026-06-01 - Slice 21HW-H-WIN (manual policy publication verification) - PASS
+
+Objective:
+- Read-only verification that manually published shipping/refund/contact policies are publicly visible and wording-compliant.
+
+Execution summary:
+- Verified storefront routes return 200: `/`, `/collections/all`, `/pages/contact`, sample PDP.
+- Verified public policy pages return 200:
+  - `/policies/shipping-policy`
+  - `/policies/refund-policy`
+  - `/policies/contact-information`
+- Confirmed shipping policy includes required wording and shipping model values (`South Africa only`, `R99`, `R1,500`, international not available, conservative delivery/tracking wording).
+- Confirmed refund and contact/support policy content is present.
+
+Safety confirmation:
+- Read-only verification only.
+- No Shopify Admin/policy/payment/product/price/theme/shipping/domain/app mutation performed.
+
+Next recommended slice:
+- 21HW-I-WIN for payment-readiness verification-only and controlled activation planning.
