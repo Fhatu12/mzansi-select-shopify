@@ -355,3 +355,37 @@ Safety confirmation:
 - No policy publication.
 - No product/price/theme/domain/app/Admin mutation.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HW-C-WIN (Record commerce approvals and execution pack prep)
+
+Objective:
+- Record Product Owner commerce approvals and prepare the final execution runbook for controlled activation without mutating Shopify Admin in this slice.
+
+Execution summary:
+- Performed Windows-only live storefront verification for `https://mzansiselect.myshopify.com`; homepage returned `HTTP 200`.
+- Reviewed prior decision artifacts:
+  - `docs/commerce/slice-21hv-commerce-activation-readiness-pack.md`
+  - `docs/commerce/slice-21hw-a-payment-shipping-policy-decisions.md`
+  - `docs/commerce/slice-21hw-b-commerce-decision-finalisation.md`
+- Recorded Product Owner approvals:
+  - PayFast primary approved
+  - Peach backup approved
+  - South Africa-only launch approved
+  - Shipping/returns policy publishing approved
+  - Controlled activation window approved
+- Produced final execution pack including:
+  - proposed SA launch shipping rates (R99 metro, R149 regional, free over R1,500) explicitly marked pending final PO rate approval before Admin mutation
+  - approved policy publication content
+  - Admin execution checklist for policies, shipping config, payment setup, test-order/refund/cancel checks, email checks, rollback plan
+  - unavoidable manual actions list (merchant login/KYC/MFA/provider approval screens)
+- Authored:
+  - `docs/commerce/slice-21hw-c-commerce-activation-execution-pack.md`
+
+Verdict:
+- **PASS READY WITH FINAL RATE GATE**: execution pack is ready; final shipping-rate sign-off and PO-present provider onboarding remain blockers before mutation.
+
+Safety confirmation:
+- No payment enablement.
+- No payment connection.
+- No shipping/policy/product/price/theme/domain/app/Admin mutation.
+- No artifacts committed.
