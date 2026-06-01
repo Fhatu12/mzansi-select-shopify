@@ -259,6 +259,7 @@
             {%- form 'product', product, id: 'product-main-add-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
               <input type="hidden" name="id" value="{{ current_variant.id }}">
               <input type="hidden" name="quantity" value="1">
+              <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
               <button class="add-btn product-main-add" type="submit" name="add" {% if current_product_commerce_blocked or current_variant.available == false %}disabled aria-disabled="true"{% endif %}{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif current_variant.available %}Add to Cart{% else %}Sold out{% endif %}</button>
             {%- endform -%}
             {% render 'wishlist-button', product: product %}

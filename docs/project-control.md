@@ -751,3 +751,23 @@ Safety confirmation:
 
 Next recommended slice:
 - 21HW-P-WIN for checkout session/cart continuity hardening and rerun of shipping-tier + wishlist regression confirmation.
+
+## 2026-06-01 - Slice 21HW-P (Cart UI continuity + checkout progression)
+
+Objective:
+- Stabilize theme-level cart UX continuity so PDP add-to-cart, cart line visibility, and checkout progression work with real Shopify cart state.
+
+Execution summary:
+- Confirmed live theme target: `Mzansi Select MVP Restored` `#162429075681`.
+- Identified root cause: cart line controls were non-functional shell buttons and PDP add-to-cart did not force visible cart progression.
+- Added PDP add-to-cart `return_to` hidden input targeting `/cart`.
+- Wired cart line controls to Shopify cart actions using `updates[item_key]` and `cart_change` remove URL.
+- Preserved Shopify cart total/line rendering and existing checkout submit pattern (`name="checkout"`).
+- Pushed only changed theme files to live theme using `--allow-live`.
+
+Safety confirmation:
+- No payment submitted.
+- No card details entered.
+- No Payflex authorization.
+- No payment provider, shipping rate, domain, app, product, or price changes.
+- Dynamic checkout remains disabled.

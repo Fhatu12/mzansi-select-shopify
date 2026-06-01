@@ -22,12 +22,14 @@
         {% render 'price-stack', price_now: price_now, price_was: price_was, price_save: price_save %}
       </div>
       <div class="cart-line-controls">
-        <div class="cart-line-qty" aria-label="Quantity shell">
-          <button class="cart-line-qty-btn" type="button" aria-label="Decrease quantity">−</button>
-          <div class="cart-line-qty-value">{{ quantity_value }}</div>
-          <button class="cart-line-qty-btn" type="button" aria-label="Increase quantity">+</button>
-        </div>
-        <button class="cart-line-remove" type="button">Remove</button>
+        <form action="{{ routes.cart_url }}" method="post" class="cart-line-qty-form">
+          <div class="cart-line-qty" aria-label="Quantity controls">
+            <button class="cart-line-qty-btn" type="submit" name="updates[{{ item_key | escape }}]" value="{% if quantity_value > 1 %}{{ quantity_value | minus: 1 }}{% else %}0{% endif %}" aria-label="Decrease quantity">−</button>
+            <div class="cart-line-qty-value">{{ quantity_value }}</div>
+            <button class="cart-line-qty-btn" type="submit" name="updates[{{ item_key | escape }}]" value="{{ quantity_value | plus: 1 }}" aria-label="Increase quantity">+</button>
+          </div>
+        </form>
+        <a class="cart-line-remove" href="{{ routes.cart_change_url }}?id={{ item_key | url_encode }}&quantity=0">Remove</a>
       </div>
     </div>
   </div>
