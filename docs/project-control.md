@@ -696,3 +696,29 @@ Verdict:
 Safety confirmation:
 - No real payment submitted.
 - No Shopify Admin or catalog/price/shipping/payment configuration mutations.
+
+## 2026-06-01 - Slice 21HW-N (Cart persistence and checkout transition fix)
+
+Objective:
+- Restore live cart line persistence and ensure cart-to-checkout transition reaches Shopify checkout without payment authorization.
+
+Execution summary:
+- Confirmed live theme target `Mzansi Select MVP Restored #162429075681`.
+- Root cause identified:
+  - cart template was hardcoded preview content instead of `cart.items`.
+  - PDP variant selector JS did not sync selected variant ID into product form hidden input.
+- Updated `sections/main-cart-foundation.liquid` to render live `cart.items`, `cart.item_count`, and `cart.total_price`, preserving checkout form submit via `name="checkout"`.
+- Updated `assets/product-options-preview.js` to sync variant ID and add-button availability/text with current selected variant.
+- Pushed only changed files to live theme using `--allow-live` and `--only` flags.
+- Verified via live storefront session/cart endpoints:
+  - add-to-cart success (HTTP 200),
+  - cart persisted (`item_count=1` and correct line item),
+  - `/checkout` transitioned to Shopify hosted checkout URL.
+
+Safety confirmation:
+- No payment submitted.
+- No card details entered.
+- No Payflex authorization attempted.
+- No PayPal/PayFast/Peach activation changes.
+- No product/price/shipping/domain/app changes.
+- No artifacts committed.

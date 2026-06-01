@@ -17,7 +17,7 @@
       <p class="cart-intro">{{ section.settings.cart_intro }}</p>
     </div>
 
-    {% if section.settings.view_state == 'empty' %}
+    {% if cart.item_count == 0 %}
       <div class="cart-empty-wrap">
         {% render 'empty-state',
           badge: section.settings.empty_badge,
@@ -33,71 +33,45 @@
           {% render 'section-heading', title: 'Items in your bag', link_label: 'Continue shopping', link_url: routes.root_url %}
 
           <div class="cart-lines-list">
-            {% liquid
-              assign cart_line1_badge = 'Preview'
-              assign cart_line1_tone = 'preview'
-              assign cart_line2_badge = 'New'
-              assign cart_line2_tone = 'new'
-              if pilot_trust
-                assign cart_line1_badge = 'Pilot preview'
-                assign cart_line2_badge = 'Pilot preview'
-                assign cart_line2_tone = 'preview'
-              endif
-            %}
-            {% render 'cart-line-item',
-              image_src: 'headphones-premium.jpg' | asset_url,
-              image_alt: 'Premium headphones',
-              badge_label: cart_line1_badge,
-              badge_tone: cart_line1_tone,
-              product_type: 'Tech Accessories',
-              product_name: 'Premium Over-Ear Headphones',
-              option_summary: 'Matte Black · Headphones only',
-              price_now: 'R 899',
-              price_was: 'R 1 199',
-              quantity_value: '1',
-              line_total: 'R 899'
-            %}
-            {% render 'cart-line-item',
-              image_src: 'bamboo-storage-containers.jpg' | asset_url,
-              image_alt: 'Storage containers',
-              badge_label: cart_line2_badge,
-              badge_tone: cart_line2_tone,
-              product_type: 'Kitchen & Storage',
-              product_name: 'Bamboo Lid Storage Container Set',
-              option_summary: 'Set of 3 · Natural finish',
-              price_now: 'R 349',
-              quantity_value: '2',
-              line_total: 'R 698'
-            %}
+            {% for item in cart.items %}
+              {% assign item_badge = 'Live' %}
+              {% assign item_tone = 'new' %}
+              {% if pilot_trust %}
+                {% assign item_badge = 'Pilot item' %}
+                {% assign item_tone = 'preview' %}
+              {% endif %}
+              {% render 'cart-line-item',
+                image_src: item.image | image_url: width: 220,
+                image_alt: item.product.title,
+                badge_label: item_badge,
+                badge_tone: item_tone,
+                product_type: item.product.type,
+                product_name: item.product.title,
+                option_summary: item.variant.title,
+                price_now: item.final_price | money_without_trailing_zeros,
+                quantity_value: item.quantity,
+                line_total: item.final_line_price | money_without_trailing_zeros
+              %}
+            {% endfor %}
           </div>
         </div>
 
         <aside class="cart-summary-card">
           <div class="cart-summary-label">{{ section.settings.summary_label }}</div>
           <div class="cart-summary-stack">
-            {% if pilot_trust %}
-              <div class="cart-summary-row">
-                <span>Pilot note</span>
-                <span>Illustrative totals — not final pricing</span>
-              </div>
-            {% endif %}
             <div class="cart-summary-row">
               <span>Subtotal</span>
-              <strong>R 1 597</strong>
+              <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
             </div>
             <div class="cart-summary-row">
               <span>Delivery</span>
-              <span>Calculated later</span>
-            </div>
-            <div class="cart-summary-row">
-              <span>Returns</span>
-              <span>{% if pilot_trust %}To be confirmed before launch{% else %}7-day window{% endif %}</span>
+              <span>Calculated at checkout</span>
             </div>
           </div>
 
           <div class="cart-summary-total">
             <span>Estimated total</span>
-            <strong>R 1 597</strong>
+            <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
           </div>
 
           <div class="cart-summary-actions">
@@ -106,49 +80,7 @@
             </form>
             <a class="btn-ghost cart-secondary-shell" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
           </div>
-
-          <div class="cart-summary-notes">
-            <div class="cart-summary-note">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-              {% if pilot_trust %}
-                Invite-only controlled pilot: checkout and payments are not enabled. No broad public checkout is implied.
-              {% else %}
-                Checkout preview only. Payment methods launch in a later approved slice.
-              {% endif %}
-            </div>
-            <div class="cart-summary-note">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="1" y="3" width="15" height="13" rx="1"></rect>
-                <path d="M16 8h5l2 5v4h-7V8z"></path>
-                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-              </svg>
-              {% if pilot_trust %}
-                Delivery timing is not guaranteed; it will be confirmed before launch or before any order fulfilment.
-              {% else %}
-                Delivery timelines stay aligned to the accepted trust language across the storefront.
-              {% endif %}
-            </div>
-          </div>
         </aside>
-      </div>
-
-      <div class="cart-support-banner">
-        <div class="cart-support-title">{{ section.settings.support_title }}</div>
-        <p class="cart-support-copy">{{ section.settings.support_copy }}</p>
-        <div class="cart-support-pills">
-          {% if pilot_trust %}
-            <span class="cart-support-pill">Pilot fulfilment — timing not final</span>
-            <span class="cart-support-pill">Payments not enabled</span>
-            <span class="cart-support-pill">Returns — to be confirmed</span>
-          {% else %}
-            <span class="cart-support-pill">Fast fulfilment</span>
-            <span class="cart-support-pill">Payments later</span>
-            <span class="cart-support-pill">Easy returns</span>
-          {% endif %}
-        </div>
       </div>
     {% endif %}
   </div>
@@ -158,88 +90,15 @@
 {
   "name": "Cart main",
   "settings": [
-    {
-      "type": "text",
-      "id": "cart_label",
-      "label": "Cart label",
-      "default": "Cart Preview"
-    },
-    {
-      "type": "text",
-      "id": "cart_title",
-      "label": "Cart title",
-      "default": "Your"
-    },
-    {
-      "type": "text",
-      "id": "cart_accent",
-      "label": "Cart accent",
-      "default": "Basket"
-    },
-    {
-      "type": "textarea",
-      "id": "cart_intro",
-      "label": "Cart intro",
-      "default": "Invite-only controlled pilot cart shell — not a public launch. Line items are illustrative; checkout and payments stay disabled until separately approved."
-    },
-    {
-      "type": "text",
-      "id": "summary_label",
-      "label": "Summary label",
-      "default": "Order summary"
-    },
-    {
-      "type": "select",
-      "id": "view_state",
-      "label": "View state",
-      "default": "filled",
-      "options": [
-        {
-          "value": "filled",
-          "label": "Filled"
-        },
-        {
-          "value": "empty",
-          "label": "Empty"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id": "empty_badge",
-      "label": "Empty badge",
-      "default": "Cart Preview"
-    },
-    {
-      "type": "text",
-      "id": "empty_title",
-      "label": "Empty title",
-      "default": "Your basket is still empty"
-    },
-    {
-      "type": "textarea",
-      "id": "empty_description",
-      "label": "Empty description",
-      "default": "The empty-cart experience is now in place, but live cart items, totals, and checkout behaviour remain intentionally deferred until a later approved slice."
-    },
-    {
-      "type": "text",
-      "id": "empty_action_label",
-      "label": "Empty action label",
-      "default": "Continue browsing"
-    },
-    {
-      "type": "text",
-      "id": "support_title",
-      "label": "Support title",
-      "default": "Pilot support (limited)"
-    },
-    {
-      "type": "textarea",
-      "id": "support_copy",
-      "label": "Support copy",
-      "default": "This invite-only pilot is not full customer operations. Delivery and returns will be confirmed before launch or before any fulfilment; no seven-day service commitment is implied."
-    }
+    {"type":"text","id":"cart_label","label":"Cart label","default":"Cart"},
+    {"type":"text","id":"cart_title","label":"Cart title","default":"Your"},
+    {"type":"text","id":"cart_accent","label":"Cart accent","default":"Basket"},
+    {"type":"textarea","id":"cart_intro","label":"Cart intro","default":"Review your items and continue to checkout."},
+    {"type":"text","id":"summary_label","label":"Summary label","default":"Order summary"},
+    {"type":"text","id":"empty_badge","label":"Empty badge","default":"Cart"},
+    {"type":"text","id":"empty_title","label":"Empty title","default":"Your basket is still empty"},
+    {"type":"textarea","id":"empty_description","label":"Empty description","default":"Add a product to your basket to continue to checkout."},
+    {"type":"text","id":"empty_action_label","label":"Empty action label","default":"Continue browsing"}
   ]
 }
 {% endschema %}

@@ -15,6 +15,9 @@
 
   const { options = [], variants = [] } = payload;
   const selected = options.map((opt) => opt.selected || (opt.values[0] ?? ''));
+  const productForm = document.getElementById('product-main-add-form');
+  const variantInput = productForm ? productForm.querySelector('input[name="id"]') : null;
+  const addButton = productForm ? productForm.querySelector('button[name="add"]') : null;
 
   const optionGroups = [...root.querySelectorAll('[data-option-index]')];
 
@@ -76,6 +79,15 @@
     return;
   };
 
+  const syncPurchaseState = (variant) => {
+    if (variantInput && variant?.id) variantInput.value = variant.id;
+    if (!addButton) return;
+    const isAvailable = Boolean(variant && variant.available);
+    addButton.disabled = !isAvailable;
+    addButton.setAttribute('aria-disabled', isAvailable ? 'false' : 'true');
+    addButton.textContent = isAvailable ? 'Add to Cart' : 'Sold out';
+  };
+
   optionGroups.forEach((group) => {
     const optionIndex = Number(group.dataset.optionIndex);
     group.querySelectorAll('[data-option-value]').forEach((btn) => {
@@ -84,10 +96,14 @@
         selected[optionIndex] = btn.dataset.optionValue;
         syncButtons();
         const variant = findVariant();
-        if (variant) updateGalleryForVariant(variant);
+        if (variant) {
+          updateGalleryForVariant(variant);
+          syncPurchaseState(variant);
+        }
       });
     });
   });
 
   syncButtons();
+  syncPurchaseState(findVariant());
 })();
