@@ -677,3 +677,22 @@ Verification status:
 Safety confirmation:
 - No product, price, inventory, description, media, collection, shipping-rate, payment-provider, domain, or app-install mutations.
 - No payment submission and no card details entered.
+
+## 2026-06-01 - Slice 21HW-M (Interactive checkout shipping and Payflex verification)
+
+Objective:
+- Verify live customer checkout path through shipping/payment visibility and stop before authorization.
+
+Execution summary:
+- Verified required storefront routes and one PDP are reachable.
+- Confirmed PDP Add to Cart visibility and cart page checkout CTA visibility; dynamic checkout remained absent.
+- Ran interactive checkout transition from cart, but checkout did not advance to a fillable shipping step in this run (returned to storefront home).
+- Captured payment visibility signals from checkout-rendered content: Payflex present, PayPal present, PayFast absent, Peach absent.
+- Stopped before any payment authorization and entered no payment credentials.
+
+Verdict:
+- Partial pass with blocker: checkout shipping-rate UI verification remains incomplete due to checkout transition/session blocker.
+
+Safety confirmation:
+- No real payment submitted.
+- No Shopify Admin or catalog/price/shipping/payment configuration mutations.
