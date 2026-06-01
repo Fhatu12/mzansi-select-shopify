@@ -455,3 +455,28 @@ Safety confirmation:
 
 Next recommended slice:
 - 21HW-F-WIN for PO-present interactive completion of Admin shipping/policy apply and payment-status verification-only.
+
+## 2026-06-01 - Slice 21HW-F-WIN (PO-present Playwright policy publication only) - BLOCKED
+
+Objective:
+- Publish approved Shipping/Returns/Support policies in Shopify Admin via headed Playwright with Product Owner present for login.
+
+Execution summary:
+- Prepared policy text from `docs/commerce/slice-21hw-d-shipping-policy-admin-setup.md`.
+- Launched headed Playwright to `admin.shopify.com/store/sikhwarigroupdev/settings/policies`.
+- Run paused for PO manual login/MFA/CAPTCHA continuation and timed out before continuation input.
+- No confirmed policy-save action executed in this pass.
+
+Status outputs:
+- PO login completed: no
+- Shipping policy published: no
+- Returns/refunds policy published: no
+- Support/contact policy published: not verified
+
+Safety confirmation:
+- No payment provider enabled (PayFast/Peach unchanged).
+- No checkout/payment activation action performed.
+- No product/price/description/shipping-rate/domain/theme/app mutation performed.
+
+Next recommended slice:
+- 21HW-G-WIN for PO-present interactive completion and post-publication storefront policy-link verification.
