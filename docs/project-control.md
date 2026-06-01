@@ -480,3 +480,26 @@ Safety confirmation:
 
 Next recommended slice:
 - 21HW-G-WIN for PO-present interactive completion and post-publication storefront policy-link verification.
+
+## 2026-06-01 - Slice 21HW-G-WIN (policy publication via Shopify Admin GraphQL, no Playwright) - BLOCKED
+
+Objective:
+- Publish approved SHIPPING_POLICY / REFUND_POLICY / CONTACT_INFORMATION via Shopify Admin GraphQL using Shopify CLI on Windows.
+
+Execution summary:
+- Successfully authenticated store scopes `read_legal_policies,write_legal_policies` against `sikhwarigroupdev.myshopify.com`.
+- Verified Admin GraphQL connectivity with `shop { name id }`.
+- Confirmed `shopPolicyUpdate` exists in schema via introspection.
+- Mutation execution attempts failed at CLI argument parsing/syntax boundary in Windows shell (`Unexpected argument`, `Expected Name, found <EOF>`), preventing authoritative policy updates.
+
+Status:
+- Shipping policy update: blocked (not executed cleanly)
+- Refund policy update: blocked (not executed cleanly)
+- Contact information policy update: blocked (not executed cleanly)
+
+Safety confirmation:
+- No payment activation actions performed.
+- No shipping/product/price/description/domain/theme/app mutations performed.
+
+Next recommended slice:
+- 21HW-H-WIN to run a verified mutation transport path and complete policy publication + verification.
