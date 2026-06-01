@@ -545,3 +545,23 @@ Safety confirmation:
 - No payment provider activation (PayFast, Peach, or any other).
 - No changes to products, prices, shipping, policies, domain, apps, or theme.
 - No checkout/payment collection activation by this slice.
+
+## 2026-06-01 - Slice 21HX (Homepage support links and hero tile audit)
+
+Objective:
+- Assess homepage category strip support links and hero decorative tile behavior on live theme without mutating storefront or theme state.
+
+Execution summary:
+- Confirmed live theme context: `Mzansi Select MVP Restored #162429075681` on `mzansiselect.myshopify.com`.
+- Verified category strip support links currently resolve to `/pages/about#shipping`, `/pages/about#returns`, and `/pages/about#faq`.
+- Verified `/pages/about` route currently returns `404`, causing the above support links to be broken.
+- Verified policy replacements are available: `/policies/shipping-policy` (`200`) and `/policies/refund-policy` (`200`).
+- Verified `/pages/faq` currently does not exist (`404`).
+- Confirmed hero decorative collage tiles are visual-only (no anchor/button wrappers, no hrefs).
+- Produced QA audit report: `docs/qa/slice-21hx-homepage-link-and-hero-tile-audit.md`.
+
+Verdict:
+- FAIL (homepage support-link integrity) with clear safe replacement targets identified.
+
+Safety confirmation:
+- Read-only pass only; no mutation performed on theme, pages, navigation, products, prices, collections, checkout/payment, apps, or domain.
