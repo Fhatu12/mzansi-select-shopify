@@ -630,3 +630,23 @@ Safety confirmation:
 - No payment submission.
 - No product/price/shipping/theme mutations.
 - No activation changes performed for PayPal, PayFast, or Peach.
+
+## 2026-06-01 - Slice 21HW-K (Interactive checkout visual probe)
+
+Objective:
+- Visually verify checkout readiness and payment method visibility, stopping before authorization.
+
+Execution summary:
+- Ran Windows Playwright probe against live storefront routes and one PDP.
+- Confirmed Add to Cart was not visibly available on sampled PDP and product cards.
+- Reached checkout via safe backend cart-add fallback for verification continuity.
+- Confirmed Payflex and PayPal visible in checkout rendering; PayFast and Peach not visible.
+- Stopped before any final payment/authorization action.
+
+Verdict:
+- Partial pass: payment-method visibility is clearer, but storefront purchase UI enablement and conclusive shipping-rate rendering verification remain open.
+
+Safety confirmation:
+- No real payment submission.
+- No real card entry.
+- No Shopify Admin mutations.
