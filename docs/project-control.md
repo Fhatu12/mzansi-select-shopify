@@ -802,3 +802,9 @@ Safety confirmation:
 - Updated cart copy continuity in templates/cart.json to remove deferred/illustrative messaging.
 - Automated live cart verification blocked by Cloudflare challenge from this environment.
 - No payment submitted. Dynamic checkout unchanged (disabled).
+
+## 2026-06-02 Slice 21HW-R-B
+- Pushed only `templates/cart.json` to live theme `#162429075681` using `shopify theme push --store mzansiselect.myshopify.com --theme 162429075681 --allow-live --nodelete --only templates/cart.json`.
+- Push succeeded.
+- Public route checks from this runtime returned Cloudflare challenge (`HTTP 429`, "Verifying your connection...") for `/`, `/collections/all`, `/cart`, `/pages/faq`, `/policies/shipping-policy`, `/policies/refund-policy`.
+- Manual browser verification required for final cart continuity evidence.
