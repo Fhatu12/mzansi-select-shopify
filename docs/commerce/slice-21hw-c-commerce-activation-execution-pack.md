@@ -32,8 +32,10 @@ Hard-rule compliance in this slice:
 ## Proposed South Africa launch shipping rates
 Status: **Pending final Product Owner rate approval before Admin mutation**.
 
-- Metro delivery: **R99 flat rate**
-- Regional delivery: **R149 flat rate**
+- Standard South Africa delivery: **R99 flat rate**
+- Free delivery: **orders over R1,500**
+- International shipping: **disabled at launch**
+- Launch structure: **no Metro/Regional split**
 - Free delivery: **orders over R1,500**
 - Exclusions: **no international shipping at launch**
 - Delivery wording (approved draft):
@@ -42,7 +44,7 @@ Status: **Pending final Product Owner rate approval before Admin mutation**.
 ## Policy publication pack (approved content)
 
 ### Shipping policy publish content
-We currently ship within South Africa only. Metro delivery is offered at a flat rate of R99 and regional delivery at a flat rate of R149. Orders over R1,500 qualify for free delivery. Orders are processed after payment confirmation and stock confirmation. Estimated delivery timelines depend on supplier processing and courier availability. We will confirm tracking details once your order has been processed.
+We currently ship within South Africa only. Standard delivery is a flat rate of R99. Orders over R1,500 qualify for free delivery. International shipping is not available at launch. Orders are processed after payment confirmation and stock confirmation. Estimated delivery timelines depend on supplier processing and courier availability. We will confirm tracking details once your order has been processed.
 
 ### Returns and refunds policy publish content
 If your item arrives damaged, defective, or materially different from what you ordered, contact us within 7 days of delivery with your order number and supporting photos. Where approved, we will offer a replacement, store credit, or refund according to the issue type and stock availability. Items that show misuse, intentional damage, or normal wear may not qualify. Refunds are processed back to the original payment method once approved and may take additional banking days to reflect.
@@ -67,10 +69,10 @@ For order support, product questions, or delivery issues, contact our support te
 
 ### 3) Configure South Africa-only shipping zones/rates
 1. Ensure only South Africa is active for launch shipping.
-2. Configure Metro flat rate: R99.
-3. Configure Regional flat rate: R149.
-4. Configure free delivery threshold: orders over R1,500.
-5. Confirm no international shipping zones are active.
+2. Configure a single Standard South Africa flat rate: R99.
+3. Configure free delivery threshold: orders over R1,500.
+4. Confirm no international shipping zones are active.
+5. Confirm no Metro/Regional split rates are present.
 6. Validate checkout shipping totals for sample carts across threshold boundaries.
 
 ### 4) PayFast primary setup (when PO present)
@@ -120,7 +122,7 @@ For order support, product questions, or delivery issues, contact our support te
 5. Any provider-side support confirmation steps.
 
 ## Remaining blockers
-1. Final Product Owner approval of exact shipping rates for Admin entry (R99/R149/free over R1,500).
+1. Final Product Owner approval of exact shipping configuration for Admin entry (R99 flat, free over R1,500, international disabled, no Metro/Regional split).
 2. Live, PO-present PayFast login/onboarding session completion.
 3. Controlled activation window execution with successful test evidence.
 4. Verified rollback rehearsal readiness during the activation window.
