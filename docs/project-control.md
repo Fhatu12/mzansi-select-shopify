@@ -273,3 +273,26 @@ Verdict:
 Safety confirmation:
 - No mutations to products, prices, descriptions, collections, theme files, apps, checkout/payment, domain, or Shopify Admin data.
 - No artifacts committed.
+
+## 2026-06-01 - Slice 21HV-WIN (Commerce activation readiness pack)
+
+Objective:
+- Prepare the commerce activation readiness pack before any checkout/payment enablement.
+
+Execution summary:
+- Performed Windows-only read-only storefront verification on `https://mzansiselect.myshopify.com`.
+- Confirmed `/`, `/collections/all`, and live department route map (`home-living`, `kitchen-storage`, `office-desk`, `tech-accessories`, `retro-vault-consoles-classics`, `games-toys`) return `HTTP 200`.
+- Confirmed public product count remains `48` via `/products.json?limit=250`.
+- Confirmed wishlist regression evidence exists and is passing in `docs/qa/slice-21hs-live-wishlist-mini-image-qa.md`.
+- Drafted policy requirements pack (shipping/fulfilment, returns/refunds, contact/support, tracking deferred wording, payment/checkout readiness note).
+- Drafted step-by-step checkout/payment activation checklist and blocker classification.
+- Authored readiness pack doc:
+  - `docs/commerce/slice-21hv-commerce-activation-readiness-pack.md`
+
+Verdict:
+- **PASS WITH BLOCKERS**: readiness documentation is complete; checkout/payments remain blocked pending must-fix items.
+
+Safety confirmation:
+- No checkout/payment enablement.
+- No product/price/shipping/domain/app/theme/admin mutation.
+- No artifacts committed.
