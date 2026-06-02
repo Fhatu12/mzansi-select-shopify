@@ -309,6 +309,34 @@ Verification result:
 Reference:
 - `docs/commerce/slice-21hw-u-live-render-source-proof.md`
 
+## 2026-06-02 - Slice 21HW-V (Stale product render source diagnostic)
+
+Objective:
+- Determine whether the remaining stale PDP behavior is caused by broken live theme source, product template assignment drift, or stale storefront route/cache behavior.
+
+Execution summary:
+- Reconfirmed actual live theme is `Horizon` `#158396285153` and repo HEAD includes `98afd38`.
+- Re-inspected repo and pulled live theme PDP files; live theme source still matches repo for the active PDP path and does not contain `assets/pdp-catalogue-lock.js`.
+- Verified Admin GraphQL / `shopify api graphql` is unavailable in this environment, so direct `templateSuffix` inspection could not be completed programmatically.
+- Collected read-only public samples from `products.json` for five published products.
+- Re-tested public source with cache-busting URLs across homepage and several PDPs.
+- Re-tested the same live theme via a proper preview-theme cookie flow.
+
+Findings:
+- Homepage public source renders the current live marker.
+- Public PDP routes are split:
+  - some still render stale lock/script output
+  - some now render current markers and `/cart/add`
+- With a preserved preview cookie for live theme `158396285153`, sampled PDPs render the correct current source, markers, and enabled `Add to Cart`, with dynamic checkout absent.
+
+Conclusion:
+- The current live theme source is not the blocker.
+- Remaining issue is classified primarily as stale storefront product-route cache/render behavior rather than missing theme deployment.
+- Additional theme-file changes were not the minimal confirmed fix in this slice.
+
+Reference:
+- `docs/commerce/slice-21hw-v-stale-product-render-source-diagnostic.md`
+
 - 2026-05-31: Slice 21HS-WIN live QA passed for wishlist drawer mini-images (3 add, persist, remove, mobile, and safety checks documented).
 
 - 2026-05-31: Slice 21HT-WIN completed. Applied approved department organisation via collection-only mutations (audit-safe matching, publish, add/remove, counts/routes/smoke all passed).
