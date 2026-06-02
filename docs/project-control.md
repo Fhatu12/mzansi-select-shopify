@@ -279,6 +279,36 @@ Status:
 Reference:
 - `docs/commerce/slice-21hw-t-pdp-commerce-lock-cache-fix.md`
 
+## 2026-06-02 - Slice 21HW-U (Live render source proof)
+
+Objective:
+- Prove whether the public storefront is rendering the actual current live theme source, with explicit markers, before making further PDP commerce assumptions.
+
+Execution summary:
+- Re-checked current live theme and confirmed `Horizon` `#158396285153` is now live.
+- Pulled the actual live theme to a temporary folder and compared key PDP files against repo.
+- Verified the actual live theme source already reflects the intended fix:
+  - no `pdp-catalogue-lock.js` include in `layout/theme.liquid`
+  - no `assets/pdp-catalogue-lock.js` file in the pulled live theme
+  - current `sections/main-product-foundation.liquid` present in live theme
+- Added explicit non-visible render proof markers to:
+  - `layout/theme.liquid`
+  - `sections/main-product-foundation.liquid`
+- Pushed those marker changes only to the actual live theme `#158396285153`.
+- Verified:
+  - homepage source includes the live render marker
+  - PDP source does not include either marker
+  - PDP source still includes old `pdp-catalogue-lock.js`
+  - rendered PDP still shows disabled `Price to be confirmed`
+
+Verification result:
+- The homepage is rendering current live theme source.
+- The PDP is not rendering the same current live theme source.
+- This proves the remaining blocker is a stale PDP render/cache/source path rather than a missing theme-file deployment.
+
+Reference:
+- `docs/commerce/slice-21hw-u-live-render-source-proof.md`
+
 - 2026-05-31: Slice 21HS-WIN live QA passed for wishlist drawer mini-images (3 add, persist, remove, mobile, and safety checks documented).
 
 - 2026-05-31: Slice 21HT-WIN completed. Applied approved department organisation via collection-only mutations (audit-safe matching, publish, add/remove, counts/routes/smoke all passed).
