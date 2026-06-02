@@ -953,3 +953,42 @@ Safety confirmation:
 
 Reference:
 - `docs/commerce/slice-21hw-w-product-route-refresh.md`
+
+## 2026-06-02 - Slice 21HW-X-WIN (Current live product purchase-flow audit)
+
+Objective:
+- Audit only current live catalogue products and verify whether live Add to Cart, cart, and checkout paths are functioning on active product routes, while classifying truly absent old routes as non-blocking legacy handles.
+
+Execution summary:
+- Built a fresh current-product sample from the live feed and `/collections/all`.
+- Audited 8 current live PDP handles across low-price, high-price, tech, games/toys, retro, and home/kitchen/office coverage.
+- PDP results:
+  - `6/8` sampled current products showed visible Add to Cart
+  - `8/8` sampled current products still rendered a `/cart/add` form
+  - dynamic checkout remained absent/disabled on all sampled PDPs
+  - `virtual-reality-vr-glasses-imax-huge-screen-hd-3d-glasses-google-cardboard-box-vr-headset-helmet-for-5-7-phone-support-gamepad` is still a current active product route and still rendered stale lock symptoms (`pdp-catalogue-lock.js`, visible `Price to be confirmed`, no visible Add to Cart)
+  - `23-pack-desk-drawer-organizers-4-sizes-office-desk-organizer-tray-bins-office-organizer-with-non-slip-pads-for-home-organization-and-storage` also lacked visible Add to Cart in this pass despite a live cart form being present
+- Ran one safe customer-flow probe on a current live product:
+  - Add to Cart -> cart -> checkout path reached successfully
+  - cart line item, quantity, subtotal, and checkout CTA were all observed
+  - hosted Shopify checkout opened
+  - Payflex visible
+  - PayPal visible
+  - PayFast not visible
+  - Peach not visible
+  - no payment authorization attempted
+- Regression checks for home, collections/all, FAQ, contact, shipping policy, and refund policy all returned `200` with no Liquid errors detected.
+- Legacy classification changed:
+  - `32-pieses-wooden-chess-standard-tournamen-staunton-wood-chessmen-8cm-king-height-chess-pieces-only-no-board` is absent from the current feed and can be treated as legacy/non-blocking
+  - `virtual-reality-vr-glasses...` and `labubu-display-box...` still appear in the current feed and must not be dismissed as legacy
+
+Verdict:
+- Status: **partial pass with blockers**.
+
+Safety confirmation:
+- No product, price, shipping, payment-provider, theme, domain, or app mutation performed.
+- No real payment submitted.
+- No card details entered.
+
+Reference:
+- `docs/commerce/slice-21hw-x-current-live-product-purchase-flow-audit.md`
