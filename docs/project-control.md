@@ -1073,3 +1073,50 @@ Safety confirmation:
 
 Reference:
 - `docs/commerce/slice-21hw-z-live-product-availability-audit.md`
+
+## 2026-06-02 - Slice 21IA-A-WIN (Hide unavailable live product from storefront)
+
+Objective:
+- Remove the one unavailable live product from the public Online Store publication while preserving the product record and all product content.
+
+Execution summary:
+- Verified Shopify CLI auth against `sikhwarigroupdev.myshopify.com`.
+- Re-confirmed live storefront theme remained `Horizon #158396285153` from the live route response headers.
+- Read-only Admin audit matched the exact target product:
+  - `gid://shopify/Product/9503913869537`
+  - handle `23-pack-desk-drawer-organizers-4-sizes-office-desk-organizer-tray-bins-office-organizer-with-non-slip-pads-for-home-organization-and-storage`
+  - status `ACTIVE`
+  - published on Online Store before mutation
+- Resolved Online Store publication:
+  - `gid://shopify/Publication/183141630177`
+- Executed the approved storefront-only mutation:
+  - `publishableUnpublish(id, input: [{ publicationId }])`
+- Mutation result:
+  - `userErrors: []`
+  - target product publication count changed from `1` to `0`
+  - target product no longer published on Online Store
+- Public storefront verification after mutation:
+  - visible product count changed `48 -> 47`
+  - target handle removed from `/products.json?limit=250`
+  - target PDP now resolves to themed `404`
+- Known-good purchase sanity remained healthy on `happy-acrylic-pearl-charm-beaded-bracelet-set`:
+  - Add to Cart visible
+  - cart line item visible
+  - checkout opened
+  - Payflex visible
+  - PayPal visible
+  - PayFast absent
+  - Peach absent
+  - no payment submitted
+- Regression pages `/`, `/collections/all`, `/pages/faq`, `/pages/contact`, `/policies/shipping-policy`, and `/policies/refund-policy` all returned `200` with no Liquid errors in the sampled pass.
+
+Verdict:
+- Status: **pass**.
+
+Safety confirmation:
+- Only approved Admin mutation performed: storefront unpublish for the single target product.
+- No product content, price, media, inventory, variant, shipping, payment-provider, theme, or domain changes performed.
+- No payment submitted.
+
+Reference:
+- `docs/commerce/slice-21ia-a-hide-unavailable-product.md`
