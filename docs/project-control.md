@@ -1027,3 +1027,49 @@ Safety confirmation:
 
 Reference:
 - `docs/commerce/slice-21hw-y-current-pdp-render-inconsistency.md`
+
+## 2026-06-02 - Slice 21HW-Z-WIN (Live product availability and purchase-readiness audit)
+
+Objective:
+- Audit the entire current live catalogue for variant availability and confirm whether any publicly visible products should be hidden/deferred before launch.
+
+Execution summary:
+- Fetched current live catalogue from `/products.json?limit=250`.
+- Counted:
+  - total live products: `48`
+  - products with at least one available variant: `47`
+  - products with zero available variants: `1`
+  - weak/missing price-signal products: `0`
+- Unavailable product identified:
+  - `23-pack-desk-drawer-organizers-4-sizes-office-desk-organizer-tray-bins-office-organizer-with-non-slip-pads-for-home-organization-and-storage`
+  - `1` variant
+  - `0` available variants
+  - public PDP `200`
+  - no visible Add to Cart
+  - sold-out/unavailable signal visible
+  - stale lock absent
+- Sampled available products confirmed healthy purchase readiness:
+  - visible Add to Cart
+  - `/cart/add` form present
+  - stale lock absent
+  - dynamic checkout absent/disabled
+- Re-verified purchase flow on `happy-acrylic-pearl-charm-beaded-bracelet-set`:
+  - Add to Cart -> cart -> checkout path still worked
+  - Payflex visible
+  - PayPal visible
+  - PayFast absent
+  - Peach absent
+  - no payment submitted
+
+Verdict:
+- Status: **pass with one launch-readiness note**.
+
+Launch note:
+- If launch policy requires all visible live products to be purchasable, defer or hide `23-pack-desk-drawer-organizers-4-sizes-office-desk-organizer-tray-bins-office-organizer-with-non-slip-pads-for-home-organization-and-storage` before launch unless its availability is intentionally restored.
+
+Safety confirmation:
+- No Shopify Admin/product/theme/payment/shipping mutation performed.
+- No payment submitted.
+
+Reference:
+- `docs/commerce/slice-21hw-z-live-product-availability-audit.md`
