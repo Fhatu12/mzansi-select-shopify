@@ -19,6 +19,7 @@
   const enforceCatalogueLock = () => {
     const root = document.querySelector(PRODUCT_ROOT_SELECTOR);
     if (!root) return;
+    if (root.dataset.productCommerceBlocked !== 'true') return;
 
     root.querySelectorAll('.p-now').forEach((node) => {
       node.textContent = 'Price to be confirmed';

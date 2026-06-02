@@ -219,6 +219,35 @@ Safety confirmation:
 - No product, price, media, collection, app, checkout/payment, domain, or Supplier verified changes.
 - No artifacts committed.
 
+## 2026-06-02 - Slice 21HW-S (Live Add to Cart visibility)
+
+Objective:
+- Restore visible live PDP `Add to Cart` for available products on `mzansiselect.myshopify.com` and verify rendered customer output without entering payment details.
+
+Execution summary:
+- Confirmed live theme target remained `Mzansi Select MVP Restored` `#162429075681`.
+- Verified the active live product template already used `sections/main-product-foundation.liquid`.
+- Confirmed live server HTML still rendered a real `/cart/add` form with `Add to Cart`, so the issue was not an inactive template mismatch.
+- Identified actual root cause in `assets/pdp-catalogue-lock.js`: the script force-mutated PDP purchase UI back to catalogue-only text/state after render.
+- Applied a scoped fix in theme source:
+  - `sections/main-product-foundation.liquid`
+  - `assets/pdp-catalogue-lock.js`
+- Pushed only the changed live-theme files with `--allow-live`.
+- Forced a republish of the same live theme ID to encourage storefront propagation.
+- Re-ran live source and headless rendered checks against three PDPs, including a low-priced and a higher-priced product.
+
+Verification result:
+- Theme/library state reflects the intended fix.
+- Public live storefront rendering remained stale during this pass and continued serving the older catalogue-lock behavior in browser execution.
+- Dynamic checkout remained absent.
+- No payment step was entered or submitted.
+
+Status:
+- Partial completion with remaining blocker: public storefront cache/propagation still serving older rendered PDP bundle after live-theme push and republish.
+
+Reference:
+- `docs/commerce/slice-21hw-s-live-add-to-cart-visibility-fix.md`
+
 - 2026-05-31: Slice 21HS-WIN live QA passed for wishlist drawer mini-images (3 add, persist, remove, mobile, and safety checks documented).
 
 - 2026-05-31: Slice 21HT-WIN completed. Applied approved department organisation via collection-only mutations (audit-safe matching, publish, add/remove, counts/routes/smoke all passed).

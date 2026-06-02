@@ -6,11 +6,27 @@
   {% assign current_product_intro = section.settings.product_intro %}
 {% endif %}
 {% assign current_product_description = product.description | strip %}
-{% include 'product-commerce-gate', gate_product: product %}
-{% assign current_product_preview_only = gate_preview_only %}
-{% assign current_product_price_to_confirm = gate_price_to_confirm %}
-{% assign current_product_non_purchasable = gate_non_purchasable %}
-{% assign current_product_commerce_blocked = gate_commerce_blocked %}
+{% assign current_product_non_purchasable = false %}
+{% assign current_product_price_to_confirm = false %}
+{% assign current_product_preview_only = false %}
+{% if product != blank %}
+  {% for tag in product.tags %}
+    {% assign current_gate_nt = tag | downcase | strip | replace: ' ', '-' %}
+    {% if current_gate_nt == 'non-purchasable' %}
+      {% assign current_product_non_purchasable = true %}
+    {% endif %}
+    {% if current_gate_nt == 'price-to-confirm' %}
+      {% assign current_product_price_to_confirm = true %}
+    {% endif %}
+    {% if current_gate_nt == 'preview-only' %}
+      {% assign current_product_preview_only = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign current_product_commerce_blocked = false %}
+{% if current_product_non_purchasable or current_product_price_to_confirm or current_product_preview_only %}
+  {% assign current_product_commerce_blocked = true %}
+{% endif %}
 {% assign current_image_permission_confirmed = false %}
 {% for tag in product.tags %}
   {% assign current_nt = tag | downcase | strip | replace: ' ', '-' %}
@@ -23,6 +39,13 @@
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
 {% assign current_vendor_norm = product.vendor | downcase | strip %}
+{% if current_product_commerce_blocked and current_variant.available and current_variant.price > 0 and current_vendor_norm != 'mzansi select preview' %}
+  {% assign current_product_non_purchasable = false %}
+  {% assign current_product_price_to_confirm = false %}
+  {% assign current_product_preview_only = false %}
+  {% assign current_product_commerce_blocked = false %}
+  {% assign current_product_use_placeholder_price = false %}
+{% endif %}
 {% if current_product_use_placeholder_price == false and current_variant.price <= 0 and current_vendor_norm == 'mzansi select preview' %}
   {% assign current_product_use_placeholder_price = true %}
 {% endif %}
@@ -74,7 +97,10 @@
   {% assign product_price_supporting_note = 'Pilot price — not final' %}
 {% endif %}
 
-<section class="product-main-shell">
+<section
+  class="product-main-shell"
+  data-product-commerce-blocked="{% if current_product_commerce_blocked %}true{% else %}false{% endif %}"
+>
   <div class="section-inner">
     <div class="product-main">
       <div
