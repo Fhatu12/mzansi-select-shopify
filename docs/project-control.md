@@ -248,6 +248,37 @@ Status:
 Reference:
 - `docs/commerce/slice-21hw-s-live-add-to-cart-visibility-fix.md`
 
+## 2026-06-02 - Slice 21HW-T (PDP commerce lock cache fix)
+
+Objective:
+- Remove or neutralise stale live PDP catalogue-lock behavior and force the live storefront onto a state where purchasable PDPs can show `Add to Cart`.
+
+Execution summary:
+- Reconfirmed 21HW-S root cause: `assets/pdp-catalogue-lock.js` was the post-render mutator disabling PDP purchase UI.
+- Audited local and live references across layout, section, and PDP files.
+- Updated theme source to:
+  - remove the PDP lock script include from `layout/theme.liquid`
+  - add an inline PDP purchase-state guard in `layout/theme.liquid`
+  - add explicit `data-catalogue-lock` state in `sections/main-product-foundation.liquid`
+  - remove `assets/pdp-catalogue-lock.js` from theme source
+- Pushed targeted changes to live theme `Mzansi Select MVP Restored` `#162429075681` and republished it.
+- Verified theme-library state reflected the fix, but public storefront HTML still served the old `pdp-catalogue-lock.js` include and old cached asset content.
+- Performed a stronger cache-break attempt by cloning the current live theme into unpublished `Horizon` `#158396285153`, applying the same fix in the cloned theme, and publishing that clone live.
+- Re-ran source, route, and headless rendered checks after the theme switch.
+
+Verification result:
+- Public PDP source still rendered a real `/cart/add` form in HTML.
+- Rendered/headless storefront still displayed disabled `Price to be confirmed` on sampled purchasable PDPs.
+- Dynamic checkout remained absent.
+- No real payment was entered or submitted.
+
+Status:
+- Theme-side fix completed.
+- Live rendered customer verification still blocked by stale storefront/CDN bundle propagation that persisted across both live-theme republish and fresh-theme publish.
+
+Reference:
+- `docs/commerce/slice-21hw-t-pdp-commerce-lock-cache-fix.md`
+
 - 2026-05-31: Slice 21HS-WIN live QA passed for wishlist drawer mini-images (3 add, persist, remove, mobile, and safety checks documented).
 
 - 2026-05-31: Slice 21HT-WIN completed. Applied approved department organisation via collection-only mutations (audit-safe matching, publish, add/remove, counts/routes/smoke all passed).

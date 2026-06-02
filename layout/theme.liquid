@@ -64,7 +64,40 @@
     {% if template.name == 'product' %}
       <script src="{{ 'product-gallery.js' | asset_url }}" defer></script>
       <script src="{{ 'product-options-preview.js' | asset_url }}" defer></script>
-      <script src="{{ 'pdp-catalogue-lock.js' | asset_url }}" defer></script>
+      <script>
+        (() => {
+          const PRODUCT_ROOT_SELECTOR = '.product-main-shell';
+          const ENABLED_PURCHASE_NOTE = 'Add to cart is enabled. Complete checkout from the cart page.';
+
+          const syncLivePurchaseState = () => {
+            const root = document.querySelector(PRODUCT_ROOT_SELECTOR);
+            if (!root || root.dataset.catalogueLock === 'true') return;
+
+            const actionButton = root.querySelector('.product-main-add');
+            if (actionButton && /price to be confirmed/i.test(actionButton.textContent || '')) {
+              actionButton.textContent = 'Add to Cart';
+              actionButton.disabled = false;
+              actionButton.removeAttribute('disabled');
+              actionButton.removeAttribute('aria-disabled');
+              actionButton.removeAttribute('aria-label');
+            }
+
+            const purchaseNote = root.querySelector('.product-purchase-note');
+            if (purchaseNote && /price to be confirmed/i.test(purchaseNote.textContent || '')) {
+              purchaseNote.textContent = ENABLED_PURCHASE_NOTE;
+            }
+          };
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', syncLivePurchaseState, { once: true });
+          } else {
+            syncLivePurchaseState();
+          }
+
+          document.addEventListener('shopify:section:load', syncLivePurchaseState);
+          window.addEventListener('pageshow', syncLivePurchaseState);
+        })();
+      </script>
     {% endif %}
     <style>
       @font-face {
