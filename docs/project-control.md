@@ -992,3 +992,38 @@ Safety confirmation:
 
 Reference:
 - `docs/commerce/slice-21hw-x-current-live-product-purchase-flow-audit.md`
+
+## 2026-06-02 - Slice 21HW-Y-WIN (Current PDP render inconsistency isolation)
+
+Objective:
+- Isolate why two current active live products previously failed visible Add to Cart checks despite rendering live product forms.
+
+Execution summary:
+- Re-verified live baseline routes and confirmed live theme remained `Horizon #158396285153`.
+- Re-checked the two inconsistent current handles against two known-good live PDPs.
+- Findings:
+  - `virtual-reality-vr-glasses-imax-huge-screen-hd-3d-glasses-google-cardboard-box-vr-headset-helmet-for-5-7-phone-support-gamepad`
+    - current pass rendered as a healthy purchasable PDP
+    - Add to Cart visible
+    - stale lock script absent
+    - live markers present
+    - all 4 variants available in live feed
+    - best classified as prior transient QA mismatch / non-reproduced issue in 21HW-X rather than an active live blocker
+  - `23-pack-desk-drawer-organizers-4-sizes-office-desk-organizer-tray-bins-office-organizer-with-non-slip-pads-for-home-organization-and-storage`
+    - still no visible Add to Cart
+    - live markers present
+    - stale lock script absent
+    - live feed showed 1 variant with 0 available variants
+    - sold-out/unavailable signal visible on PDP
+    - best classified as product-specific availability issue, not render-cache drift
+- No product or Admin mutation performed.
+
+Verdict:
+- Status: **partial pass**.
+
+Safety confirmation:
+- No Shopify Admin/product/theme/payment/shipping mutation performed.
+- No payment submitted.
+
+Reference:
+- `docs/commerce/slice-21hw-y-current-pdp-render-inconsistency.md`
