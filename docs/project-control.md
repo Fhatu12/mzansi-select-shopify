@@ -926,3 +926,30 @@ Safety confirmation:
 - Push succeeded.
 - Public route checks from this runtime returned Cloudflare challenge (`HTTP 429`, "Verifying your connection...") for `/`, `/collections/all`, `/cart`, `/pages/faq`, `/policies/shipping-policy`, `/policies/refund-policy`.
 - Manual browser verification required for final cart continuity evidence.
+
+## 2026-06-02 - Slice 21HW-W (Product route refresh safety check)
+
+Objective:
+- Refresh stale product-route render state only if a product template assignment re-save remained clearly safe and still matched the earlier 21HW-V stale-render failure mode.
+
+Execution summary:
+- Verified Windows Shopify CLI and `shopify store execute` Admin auth on `sikhwarigroupdev.myshopify.com`.
+- Confirmed relevant source history includes `e144409`.
+- Re-checked the previously affected candidate handles from 21HW-V.
+- Read-only Admin audit matched two handles uniquely and found both already on default template state (`templateSuffix: null`):
+  - `labubu-display-box-transparent-labubu-big-leader-summer-doll-cotton-doll-blind-box-storage-cabinet`
+  - `virtual-reality-vr-glasses-imax-huge-screen-hd-3d-glasses-google-cardboard-box-vr-headset-helmet-for-5-7-phone-support-gamepad`
+- Third legacy candidate handle was no longer returned by the Admin audit query:
+  - `32-pieses-wooden-chess-standard-tournamen-staunton-wood-chessmen-8cm-king-height-chess-pieces-only-no-board`
+- Current public evidence had shifted from stale live PDP output to themed `404` pages for the two surviving candidate handles, so the originally approved no-op template refresh was no longer a clearly justified mutation.
+- No `productUpdate` mutation was executed.
+
+Verdict:
+- Status: **blocked**.
+
+Safety confirmation:
+- No product content, price, media, inventory, collection, shipping, or payment mutation performed.
+- No payment submitted.
+
+Reference:
+- `docs/commerce/slice-21hw-w-product-route-refresh.md`
