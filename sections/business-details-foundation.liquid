@@ -1,5 +1,5 @@
 {% liquid
-  assign business_page_url = '/pages/business-details'
+  assign business_page_url = '/pages/contact#business-details'
   assign support_page_url = '/pages/contact#contact'
   assign support_email = 'info@sikhwarigroup.co.za'
 %}
@@ -14,7 +14,7 @@
         Business Details
       </div>
       <h1 class="support-title">Mzansi <span class="gold">Select</span></h1>
-      <p class="support-intro">Public company details for storefront disclosure. This storefront remains catalogue-only and checkout is not currently enabled.</p>
+      <p class="support-intro">Public company details for storefront disclosure and customer support routing.</p>
     </div>
 
     <div class="support-channel-grid">
@@ -65,8 +65,8 @@
     </div>
 
     <div class="support-policy-band">
-      <div class="support-policy-title">Catalogue-only notice</div>
-      <p class="support-policy-copy">This storefront is publicly browseable as a catalogue. Checkout, payment, and customer account flows are not currently enabled.</p>
+      <div class="support-policy-title">Customer support</div>
+      <p class="support-policy-copy">For storefront support, email <a href="mailto:{{ support_email }}">{{ support_email }}</a>. Customer account features may still be introduced separately.</p>
       <p class="support-policy-copy"><a href="{{ business_page_url }}">Business Details</a> are provided here as a public disclosure surface.</p>
     </div>
   </div>

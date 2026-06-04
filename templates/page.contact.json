@@ -1,12 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "support-page-foundation",
       "settings": {
-        "support_label": "Support Preview",
+        "support_label": "Support",
         "support_title": "Contact",
         "support_accent": "Us",
-        "support_intro": "This static-safe support foundation keeps the approved Mzansi Select rhythm in place with clear help pathways, South Africa-first delivery guidance, and honest placeholder messaging while live contact handling remains deferred."
+        "support_intro": "Use this page to find current support routes, business details, and published policy links for Mzansi Select."
       }
     },
     "business_details": {
