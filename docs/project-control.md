@@ -238,6 +238,36 @@ Execution summary:
 
 Verification result:
 - Theme/library state reflects the intended fix.
+
+## 2026-06-04 - Slice 21IA-E (Live trust/contact/link fixes)
+
+Objective:
+- Repair live customer-facing trust/contact/link regressions on Horizon `#158396285153` after the AutoDS refresh, without touching products, pricing, collections, shipping, or payment/provider configuration.
+
+Execution summary:
+- Confirmed current live theme via `shopify theme list --store mzansiselect.myshopify.com`.
+- Read `docs/qa/slice-21ia-d-live-store-regression-audit.md` and pulled the live theme files for safe comparison in a temp folder.
+- Verified route targets before editing:
+  - `/policies/privacy-policy` -> `200`
+  - `/policies/contact-information` -> `200`
+  - `/pages/about` -> `404`
+- Updated/pushed only the affected live theme files:
+  - `sections/site-footer.liquid`
+  - `sections/business-details-foundation.liquid`
+  - `sections/main-product-foundation.liquid`
+  - `templates/page.contact.json`
+- Removed old customer-facing support phone/email references, replaced dead About/Privacy links, and replaced stale pilot/deferred purchase copy on the PDP purchase surface.
+- Re-verified homepage, contact page, policy routes, collection route, and one live PDP after the final push.
+
+Verification result:
+- `info@sikhwarigroup.co.za` now renders on homepage and contact/business-details surfaces.
+- `tel:+27829974112`, visible `+27 82 997 4112`, and `Fhatuwani.Sikhwari@sikhwarigroup.co.za` no longer appeared in final rendered homepage/contact checks.
+- Broken footer links to `/pages/about#about-us` and `/pages/about#privacy-policy` were removed from final rendered homepage/contact output.
+- Sampled live PDP retained visible `Add to Cart` and no longer rendered the stale `controlled pilot` / `not a public launch` purchase-area conflict copy in fetched HTML.
+- Payment/provider configuration remained unchanged.
+
+Notes:
+- Shopify briefly served stale `/pages/contact` HTML after the initial section push; repushing `templates/page.contact.json` forced the contact route to rebuild from the updated live sections.
 - Public live storefront rendering remained stale during this pass and continued serving the older catalogue-lock behavior in browser execution.
 - Dynamic checkout remained absent.
 - No payment step was entered or submitted.

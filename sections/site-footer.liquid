@@ -2,8 +2,10 @@
   assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
   assign preview_latest_url = routes.root_url | append: '#new-in'
   assign preview_picks_url = routes.root_url | append: '#deals'
-  assign about_page_url = '/pages/about'
   assign contact_page_url = '/pages/contact#contact'
+  assign business_details_url = '/pages/contact#business-details'
+  assign privacy_policy_url = '/policies/privacy-policy'
+  assign contact_policy_url = '/policies/contact-information'
 %}
 
 <footer>
@@ -12,32 +14,27 @@
       <div>
         <div class="f-logo-row">Mzansi <em>Select</em></div>
 	        <div class="f-logo-tag">{{ settings.brand_tagline }}</div>
-	        {% if settings.controlled_pilot_trust_mode %}
-	          <p class="f-desc f-desc-default">Invite-only controlled pilot — not a public launch. A narrow Gadgetgyz-focused pilot range; not a full catalogue.</p>
-	          <p class="f-desc f-desc-cautious">Hearts on product pages save items in this browser only. No account or checkout yet. Delivery, returns, and support details are not final until confirmed before launch or before any order fulfilment. Accounts and social links stay paused.</p>
-	        {% else %}
-	          <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
-	          <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
-	        {% endif %}
+	        <p class="f-desc f-desc-default">Practical home, tech, and everyday essentials for South African shoppers.</p>
+	        <p class="f-desc f-desc-cautious">Need help? Email support at <a href="mailto:info@sikhwarigroup.co.za">info@sikhwarigroup.co.za</a>.</p>
         <div class="f-socials">
-          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </span>
-          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
           </span>
-          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"></path>
             </svg>
           </span>
-          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+          <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
             <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
               <polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
@@ -65,28 +62,28 @@
           <li><a href="/pages/faq">FAQ</a></li>
           <li><a href="{{ contact_page_url }}">Contact Us</a></li>
           <li><a href="mailto:info@sikhwarigroup.co.za">info@sikhwarigroup.co.za</a></li>
-          <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(Order tracking will be available once checkout is enabled.)</span></span></li>
+          <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(Order tracking will be available after fulfilment routing is confirmed.)</span></span></li>
         </ul>
       </div>
 
       <div>
         <div class="f-col-title">Account</div>
         <ul class="f-links">
-          <li><span class="f-link-deferred">Account coming later <span class="visually-hidden">(Customer accounts paused)</span></span></li>
-          <li><span class="f-link-deferred">Orders not available in preview <span class="visually-hidden">(Customer accounts paused)</span></span></li>
+          <li><span class="f-link-deferred">Account coming later <span class="visually-hidden">(Customer account access is not active yet)</span></span></li>
+          <li><span class="f-link-deferred">Orders coming later <span class="visually-hidden">(Customer order history is not active yet)</span></span></li>
           <li><span class="f-link-deferred">Saved on this device <span class="visually-hidden">(use hearts on product pages; this device only)</span></span></li>
-          <li><span class="f-link-deferred">Addresses not available in preview <span class="visually-hidden">(no address book during preview)</span></span></li>
-          <li><span class="f-link-deferred">Customer accounts paused <span class="visually-hidden">(login and register not active)</span></span></li>
+          <li><span class="f-link-deferred">Address book coming later <span class="visually-hidden">(saved customer addresses are not active yet)</span></span></li>
+          <li><span class="f-link-deferred">Customer accounts coming later <span class="visually-hidden">(login and register are not active yet)</span></span></li>
         </ul>
       </div>
 
       <div>
         <div class="f-col-title">Company</div>
         <ul class="f-links">
-          <li><a href="{{ about_page_url }}#about-us">About Us</a></li>
+          <li><a href="{{ business_details_url }}">About Us</a></li>
           <li><a href="{{ contact_page_url | split: '#contact' | first }}#business-details">Business Details</a></li>
-          <li><a href="{{ about_page_url }}#privacy-policy">Privacy Policy</a></li>
-          <li><a href="{{ about_page_url }}#terms">Terms &amp; Conditions</a></li>
+          <li><a href="{{ privacy_policy_url }}">Privacy Policy</a></li>
+          <li><a href="{{ contact_policy_url }}">Contact Information</a></li>
           <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
           <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
         </ul>
@@ -112,32 +109,27 @@
 	    <div class="footer-brand">
 	      <div class="f-logo-row">Mzansi <em>Select</em></div>
 	      <div class="f-logo-tag">{{ settings.brand_tagline }}</div>
-	      {% if settings.controlled_pilot_trust_mode %}
-	        <p class="f-desc f-desc-default">Invite-only controlled pilot — not a public launch. A narrow Gadgetgyz-focused pilot range; not a full catalogue.</p>
-	        <p class="f-desc f-desc-cautious">Hearts on product pages save items in this browser only. No account or checkout yet. Delivery, returns, and support details are not final until confirmed before launch or before any order fulfilment. Accounts and social links stay paused.</p>
-	      {% else %}
-	        <p class="f-desc f-desc-default">Preview catalogue for practical home and everyday essentials. Carefully chosen for South African shoppers.</p>
-	        <p class="f-desc f-desc-cautious">Preview catalogue staging. Delivery coverage and fulfilment details are not final for preview items on this page.</p>
-	      {% endif %}
+	      <p class="f-desc f-desc-default">Practical home, tech, and everyday essentials for South African shoppers.</p>
+	      <p class="f-desc f-desc-cautious">Need help? Email support at <a href="mailto:info@sikhwarigroup.co.za">info@sikhwarigroup.co.za</a>.</p>
       <div class="f-socials">
-        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
           </svg>
         </span>
-        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
         </span>
-        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.83a8.27 8.27 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1.06-.21z"></path>
           </svg>
         </span>
-        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Follow links paused during preview. Social profiles to be confirmed.">
+        <span class="f-social f-social--deferred" aria-disabled="true" aria-label="Social links coming later. Social profiles to be confirmed.">
           <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
             <polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
@@ -179,7 +171,7 @@
             <li><a href="/pages/faq">FAQ</a></li>
             <li><a href="{{ contact_page_url }}">Contact Us</a></li>
             <li><a href="mailto:info@sikhwarigroup.co.za">info@sikhwarigroup.co.za</a></li>
-            <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(Order tracking will be available once checkout is enabled.)</span></span></li>
+            <li><span class="f-link-deferred">Track Order <span class="visually-hidden">(Order tracking will be available after fulfilment routing is confirmed.)</span></span></li>
           </ul>
         </div>
       </details>
@@ -193,11 +185,11 @@
         </summary>
         <div class="f-acc-body">
           <ul class="f-links">
-            <li><span class="f-link-deferred">Account coming later <span class="visually-hidden">(Customer accounts paused)</span></span></li>
-            <li><span class="f-link-deferred">Orders not available in preview <span class="visually-hidden">(Customer accounts paused)</span></span></li>
+            <li><span class="f-link-deferred">Account coming later <span class="visually-hidden">(Customer account access is not active yet)</span></span></li>
+            <li><span class="f-link-deferred">Orders coming later <span class="visually-hidden">(Customer order history is not active yet)</span></span></li>
             <li><span class="f-link-deferred">Saved on this device <span class="visually-hidden">(use hearts on product pages; this device only)</span></span></li>
-            <li><span class="f-link-deferred">Addresses not available in preview <span class="visually-hidden">(no address book during preview)</span></span></li>
-            <li><span class="f-link-deferred">Customer accounts paused <span class="visually-hidden">(login and register not active)</span></span></li>
+            <li><span class="f-link-deferred">Address book coming later <span class="visually-hidden">(saved customer addresses are not active yet)</span></span></li>
+            <li><span class="f-link-deferred">Customer accounts coming later <span class="visually-hidden">(login and register are not active yet)</span></span></li>
           </ul>
         </div>
       </details>
@@ -211,10 +203,10 @@
         </summary>
         <div class="f-acc-body">
           <ul class="f-links">
-            <li><a href="{{ about_page_url }}#about-us">About Us</a></li>
+            <li><a href="{{ business_details_url }}">About Us</a></li>
             <li><a href="{{ contact_page_url | split: '#contact' | first }}#business-details">Business Details</a></li>
-            <li><a href="{{ about_page_url }}#privacy-policy">Privacy Policy</a></li>
-            <li><a href="{{ about_page_url }}#terms">Terms &amp; Conditions</a></li>
+            <li><a href="{{ privacy_policy_url }}">Privacy Policy</a></li>
+            <li><a href="{{ contact_policy_url }}">Contact Information</a></li>
             <li><span class="f-link-deferred">Careers <span class="visually-hidden">(coming soon)</span></span></li>
             <li><span class="f-link-deferred">Affiliates <span class="visually-hidden">(coming soon)</span></span></li>
           </ul>
