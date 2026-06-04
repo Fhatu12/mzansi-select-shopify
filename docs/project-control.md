@@ -304,6 +304,39 @@ Verification result:
 
 Notes:
 - Treat 21IA-F as source/state alignment plus partial public-surface improvement, not as the final removal of all preview-era wording from every rendered storefront surface.
+
+## 2026-06-04 - Slice 21IA-G (Remove remaining preview storefront wording)
+
+Objective:
+- Remove the remaining customer-facing preview/pilot/deferred-launch wording from live storefront theme source while preserving the current purchase flow and all commerce configuration.
+
+Execution summary:
+- Confirmed live theme target remained Horizon `#158396285153`.
+- Searched customer-facing theme paths for stale terms including `pilot`, `preview`, `controlled`, `deferred`, `Cart Preview`, `Pending item`, `Price to be confirmed`, and old personal contact references.
+- Classified findings into:
+  - customer-facing stale wording to remove
+  - internal variable/comment/API references safe to keep
+  - non-live fallback/recovery surfaces safe to defer
+- Applied minimal copy fixes in:
+  - `layout/theme.liquid`
+  - `sections/announcement-topbar.liquid`
+  - `sections/trust-bar.liquid`
+  - `sections/site-header.liquid`
+  - `sections/main-cart-foundation.liquid`
+  - `snippets/live-product-card.liquid`
+  - `sections/main-product-foundation.liquid`
+- Touched and pushed `templates/index.json` to encourage homepage route rebuild after source push.
+- Pulled the changed live theme files back into a temp directory and confirmed source parity with local edits.
+
+Verification result:
+- Sampled PDP still showed visible `Add to Cart`.
+- Support email remained `info@sikhwarigroup.co.za`.
+- Old personal phone/email were removed from the edited source files.
+- Public route HTML still served stale preview-era topbar/header/trust/cart/PDP chrome on several routes despite the live pull showing the updated source files.
+- Payment/provider settings remained unchanged.
+
+Notes:
+- 21IA-G successfully cleaned the targeted live source files but did not fully clear customer-facing stale wording from fetched public HTML because of a storefront-serving/cache inconsistency outside the source files themselves.
 - Public live storefront rendering remained stale during this pass and continued serving the older catalogue-lock behavior in browser execution.
 - Dynamic checkout remained absent.
 - No payment step was entered or submitted.

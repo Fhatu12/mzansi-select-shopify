@@ -174,7 +174,7 @@
 
         <div class="product-main-badge-row">
           {% if current_product_commerce_blocked %}
-            {% render 'product-badge', label: 'Pending item', tone: 'preview' %}
+            {% render 'product-badge', label: 'Product', tone: 'preview' %}
           {% elsif current_variant.compare_at_price > current_variant.price and current_product_use_placeholder_price == false %}
             {% render 'product-badge', label: 'Sale', tone: 'sale' %}
           {% endif %}
@@ -190,10 +190,10 @@
           supporting_note: product_price_supporting_note
         %}
         {% if current_product_commerce_blocked %}
-          <p class="product-preview-note">This product is being prepared for launch. Delivery details will be confirmed before sale.</p>
+          <p class="product-preview-note">Availability and fulfilment details are shown on this product page.</p>
         {% elsif current_product_preview_only %}
-          <p class="product-preview-note">Delivery timing will be confirmed before sale. This preview item is not yet available for purchase.</p>
-          <p class="product-preview-note">Returns and warranty handling will be confirmed before sale. Statutory consumer rights are not limited by this preview page.</p>
+          <p class="product-preview-note">Availability and fulfilment details are shown on this product page.</p>
+          <p class="product-preview-note">Returns are handled under the published refund policy. Statutory consumer rights are not limited by this product page.</p>
         {% else %}
           <p class="product-preview-note">Delivery is calculated at checkout. Returns are handled under the published refund policy.</p>
         {% endif %}
@@ -263,7 +263,7 @@
 
         <p class="product-purchase-note">
           {% if current_product_commerce_blocked %}
-            Price to be confirmed. This product is being prepared for launch.
+            See product details for current availability.
           {% else %}
             Add to Cart is available for this product. Complete checkout from the cart page.
           {% endif %}
@@ -275,7 +275,7 @@
               <input type="hidden" name="id" value="{{ current_variant.id }}">
               <input type="hidden" name="quantity" value="1">
               <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
-              <button class="add-btn product-main-add" type="submit" name="add" {% if current_product_commerce_blocked or current_variant.available == false %}disabled aria-disabled="true"{% endif %}{% if current_product_commerce_blocked %} aria-label="Price to be confirmed. This product is being prepared for launch."{% endif %}>{% if current_product_commerce_blocked %}Price to be confirmed{% elsif current_variant.available %}Add to Cart{% else %}Sold out{% endif %}</button>
+              <button class="add-btn product-main-add" type="submit" name="add" {% if current_product_commerce_blocked or current_variant.available == false %}disabled aria-disabled="true"{% endif %}{% if current_product_commerce_blocked %} aria-label="See product details for current availability."{% endif %}>{% if current_product_commerce_blocked %}View availability{% elsif current_variant.available %}Add to Cart{% else %}Sold out{% endif %}</button>
             {%- endform -%}
             {% render 'wishlist-button', product: product %}
           </div>
@@ -290,9 +290,9 @@
               <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
             {% if current_product_preview_only or current_product_use_placeholder_price %}
-              Live Shopify product titles and catalog layout render in preview; price is not final until separately approved.
+              Live Shopify product titles and layout are shown for this product.
             {% else %}
-              Live Shopify product title, media, and pricing are shown for this product
+              Live Shopify product title, media, and pricing are shown for this product.
             {% endif %}
           </div>
           <div class="product-reassurance-item">

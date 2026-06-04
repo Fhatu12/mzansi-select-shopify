@@ -53,8 +53,6 @@
   {% assign card_price_percent = card_price_delta | times: 100 | divided_by: card_variant.compare_at_price %}
   {% assign card_price_save = card_price_percent | append: '% off' %}
 {% endif %}
-{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
-
 {% assign card_show_catalog_media = true %}
 {% if card_preview_only and card_image_permission_confirmed == false %}
   {% assign card_show_catalog_media = false %}
@@ -65,7 +63,7 @@
 {% endif %}
 {% assign card_price_note = blank %}
 {% if card_use_placeholder_price %}
-  {% assign card_price_note = 'Price pending confirmation' %}
+  {% assign card_price_note = 'See product details for current availability.' %}
 {% endif %}
 
 <div class="product-card product-card--live">
@@ -84,14 +82,14 @@
       {% endif %}
     </a>
     {% if card_commerce_blocked %}
-      {% render 'product-badge', label: 'Pending item', tone: 'preview' %}
+      {% render 'product-badge', label: 'Product', tone: 'preview' %}
     {% elsif card_variant.compare_at_price > card_variant.price and card_use_placeholder_price == false %}
       {% render 'product-badge', label: 'Sale', tone: 'sale' %}
     {% endif %}
     {% render 'wishlist-button', product: product %}
   </div>
   <div class="prod-info">
-    <div class="p-type">{{ product.type | default: product.vendor | default: 'Preview product' }}</div>
+    <div class="p-type">{{ product.type | default: product.vendor | default: 'Product' }}</div>
     <div class="p-name"><a href="{{ card_product_url }}">{{ product.title }}</a></div>
     {% render 'price-stack',
       price_now: card_price_now,
@@ -102,7 +100,7 @@
     %}
     <a class="add-btn add-btn--browse" href="{{ card_product_url }}">{{ cta_label | default: 'View product' }}</a>
     {% if card_commerce_blocked %}
-      <p class="p-commerce-note">Price to be confirmed. This product is being prepared for launch.</p>
+      <p class="p-commerce-note">See product details for current availability.</p>
     {% endif %}
   </div>
 </div>

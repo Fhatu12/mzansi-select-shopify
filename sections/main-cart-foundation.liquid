@@ -1,4 +1,3 @@
-{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
 <section class="cart-main-shell">
   <div class="section-inner">
     <div class="cart-hero">
@@ -34,12 +33,8 @@
 
           <div class="cart-lines-list">
             {% for item in cart.items %}
-              {% assign item_badge = 'Live' %}
+              {% assign item_badge = 'Product' %}
               {% assign item_tone = 'new' %}
-              {% if pilot_trust %}
-                {% assign item_badge = 'Cart item' %}
-                {% assign item_tone = 'new' %}
-              {% endif %}
               {% render 'cart-line-item',
                 image_src: item.image | image_url: width: 220,
                 image_alt: item.product.title,
