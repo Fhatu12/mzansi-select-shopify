@@ -1406,3 +1406,59 @@ Recommended next action:
 
 Reference:
 - `docs/qa/slice-21ia-l-final-visible-storefront-launch-qa.md`
+
+## 2026-06-04 - Slice 21IA-N (Final launch-readiness QA after local cache confirmation)
+
+Objective:
+- Run final read-only launch-readiness QA from the Windows QA workspace after Product Owner reported the stale wording no longer appears in incognito, and treat a clean browser context as the source of truth.
+
+Execution summary:
+- Used Windows QA workspace `D:\\dev\\mzansi-select-shopify-winqa` with Playwright in a fresh browser context.
+- Reconfirmed live theme `Horizon` `#158396285153`.
+- Verified route health for:
+  - `/`
+  - `/collections/all`
+  - `/pages/contact`
+  - `/pages/faq`
+  - `/policies/shipping-policy`
+  - `/policies/refund-policy`
+  - `/policies/privacy-policy`
+  - `/cart`
+  - one sampled live PDP
+- Verified catalogue and commerce behavior:
+  - `45` public product cards on `/collections/all`
+  - `0` unavailable products visible in the sampled public collection grid
+  - sampled PDP displayed image, price, and `Add to Cart`
+  - added sampled product to cart and confirmed line item, quantity, subtotal, and checkout button
+  - opened checkout and stopped before payment authorization
+- Verified mobile homepage, collection, PDP, and cart:
+  - no horizontal overflow on checked mobile routes
+  - mobile PDP `Add to Cart` visible
+  - mobile cart checkout button visible after adding the sampled product
+- Verified regressions:
+  - wishlist drawer opened successfully
+  - gallery arrows remained visible on sampled PDP
+  - FAQ/policy/support routes worked
+  - no Liquid errors observed on checked routes
+
+Launch blocker found:
+- In the clean Playwright browser context used for this slice, the homepage still rendered launch-blocking preview wording:
+  - `PREVIEW HIGHLIGHT`
+  - `Tech & Home Preview Picks`
+  - `Browse preview picks`
+  - `Modern Living Room Collection`
+- `Modern Living Collection` was not visible in this run.
+
+Payment visibility notes:
+- Checkout opened successfully.
+- Stitch, Payflex, PayPal, PayFast, and Peach were not individually visible by name on the reached checkout step.
+- No real payment was submitted.
+
+Decision:
+- Result: **NO-GO for final launch sign-off** from this QA run.
+
+Recommended next action:
+- Resolve the homepage preview-wording discrepancy between manual incognito verification and the clean automated Windows QA context, then rerun final launch-readiness QA.
+
+Reference:
+- `docs/qa/slice-21ia-n-final-launch-readiness-qa.md`
