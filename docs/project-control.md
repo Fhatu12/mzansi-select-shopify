@@ -1281,3 +1281,26 @@ Decision:
 Recommended next action:
 - Perform a Shopify Admin customizer save/section-toggle refresh on the live theme sections that own the public chrome, then verify again in a normal incognito browser.
 - If public HTML still serves the stale chrome while the pulled live theme source remains correct, escalate to Shopify support with the 21IA-H evidence pack.
+
+## 2026-06-04 - Slice 21IA-I (Clean theme candidate bypass attempt)
+
+Objective:
+- Create a fresh unpublished theme candidate from the repo, verify whether preview output bypasses the stale storefront chrome, and stop before publishing.
+
+Execution summary:
+- Confirmed live theme `Horizon` `#158396285153` and repo sync with GitHub except untracked `tools/catalogue/`.
+- Removed the last known stale customer-facing announcement-topbar source string.
+- Also removed remaining homepage `Preview Picks` promo wording from `sections/promo-banner-split.liquid`.
+- Ran a full source scan and classified remaining hits as either commerce-gating wording (`Price to be confirmed`), controlled 404 fallback copy, or internal schema/technical references.
+- Created unpublished candidate theme `Mzansi Select Clean Candidate 21IA-I` `#162643345633` from the current repo with Shopify CLI.
+- Verified candidate preview routes and compared them against current live routes.
+- Pulled the candidate theme back down and confirmed the uploaded source matches repo state for the main chrome files.
+
+Decision:
+- Result: candidate creation succeeded, but the candidate preview did **not** bypass the stale chrome issue on critical routes.
+- Preview still served stale preview-era chrome on `/`, `/cart`, `/pages/contact`, and a sampled PDP even though the candidate source itself was clean for the targeted chrome files.
+- Do not publish candidate theme `#162643345633` yet.
+
+Recommended next action:
+- Treat the stale route-specific preview/live chrome as a serving-layer or route-resolution blocker rather than a source-sync problem.
+- Escalate using the combined 21IA-H and 21IA-I evidence before any publish action.

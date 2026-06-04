@@ -1,16 +1,16 @@
 {% liquid
-  assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
+  assign featured_products_url = routes.root_url | append: '#best-sellers'
 %}
 
 <section id="deals" class="section section-no-top">
   <div class="section-inner">
     <div class="promo-banner promo-banner--homepage">
       <div class="promo-text">
-        <div class="promo-eyebrow">Preview highlight</div>
-        <div class="promo-h">Tech &amp; Home<br>Preview Picks</div>
-        <div class="promo-sub">Preview picks for the products you actually need — selected for South African homes.</div>
-        <a class="promo-cta" href="{{ preview_selected_picks_url }}">
-          Browse preview picks
+        <div class="promo-eyebrow">Featured selection</div>
+        <div class="promo-h">Tech &amp; Home<br>Featured Picks</div>
+        <div class="promo-sub">Practical picks for the products you actually need, selected for South African homes.</div>
+        <a class="promo-cta" href="{{ featured_products_url }}">
+          Browse featured picks
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -18,7 +18,7 @@
         </a>
       </div>
       <div class="promo-visual">
-        {% render 'decorative-image', asset: 'promo-tech-home-bundles.jpg', alt: 'Decorative promo preview', width: 900, height: 640 %}
+        {% render 'decorative-image', asset: 'promo-tech-home-bundles.jpg', alt: 'Decorative featured home and tech products', width: 900, height: 640 %}
       </div>
     </div>
   </div>
