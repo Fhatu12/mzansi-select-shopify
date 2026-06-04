@@ -1328,3 +1328,36 @@ Decision:
 Recommended next action:
 - Recheck the cleaned footer in a normal incognito browser across homepage, cart, PDP, and policy/content routes.
 - If route inconsistencies persist while pulled live theme source remains correct, continue the serving-layer escalation path already established in 21IA-H and 21IA-I.
+
+## 2026-06-04 - Slice 21IA-L (Final visible storefront launch-readiness QA)
+
+Objective:
+- Run final read-only/customer-flow QA against the visible live storefront after Product Owner confirmed the latest footer/header cleanup in incognito.
+
+Execution summary:
+- Verified route health for homepage, all-products collection, contact, FAQ, shipping policy, refund policy, privacy policy, cart, and one current PDP.
+- Confirmed cleaned footer/header launch items are no longer visible: standalone Help email, `Track Order`, `Careers`, `Affiliates`, footer/header account surfaces, old phone references, and old personal email references.
+- Confirmed `Contact Us` remains visible and links to `/pages/contact#contact`.
+- Counted 45 public product links on `/collections/all`.
+- Found 0 unavailable products visible on `/collections/all`.
+- Sampled 6 PDPs and confirmed images, prices, and Add to Cart visibility.
+- Added one available low-value product to cart and confirmed cart line item, quantity, subtotal, estimated total, and checkout button.
+- Opened checkout and stopped at payment visibility without submitting or authorizing payment.
+- Confirmed checkout showed generic payment copy `Pay with Apple | Google | Capitec | Card | BNPL`; Stitch, Payflex, PayPal, PayFast, and Peach were not individually visible by name.
+- Verified mobile homepage, collection, PDP, and cart with no horizontal overflow; PDP Add to Cart and cart checkout button were visible.
+- Confirmed wishlist drawer, PDP gallery arrows, FAQ/policy/support routes, and no Liquid errors on checked routes.
+
+Decision:
+- Result: **NO-GO for final launch sign-off**.
+- Commerce-critical flows passed, but remaining preview wording is still visible on the live homepage:
+  - `PREVIEW HIGHLIGHT`
+  - `Preview Picks`
+  - `Preview picks for the products you actually need - selected for South African homes.`
+  - `Browse preview picks`
+
+Recommended next action:
+- Remove the remaining homepage preview wording, then re-run final visible storefront launch-readiness QA.
+- Re-run a slower full product-link sweep after the wording fix to avoid Shopify 429 rate-limit noise from rapid repeated PDP requests.
+
+Reference:
+- `docs/qa/slice-21ia-l-final-visible-storefront-launch-qa.md`
