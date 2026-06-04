@@ -1120,3 +1120,45 @@ Safety confirmation:
 
 Reference:
 - `docs/commerce/slice-21ia-a-hide-unavailable-product.md`
+
+## 2026-06-04 - Slice 21IA-D-WIN (Live store regression audit after AutoDS refresh)
+
+Objective:
+- Run a read-only live storefront regression audit after Product Owner Shopify Admin changes, AutoDS-only product refresh, hidden/deferred section changes, and Stitch activation.
+
+Execution summary:
+- Confirmed live storefront `/` returns `200`.
+- Confirmed current live theme from public `Shopify.theme`: `Horizon #158396285153`.
+- Confirmed initial public product endpoint was reachable without Cloudflare challenge.
+- Public catalogue count: `45`.
+- Products with available variants: `45`.
+- Products with zero available variants: `0`.
+- Sampled 12 PDPs across the refreshed catalogue:
+  - Most sampled PDPs returned `200`.
+  - Add to Cart was visible on successful PDP samples.
+  - `/cart/add` form was present on successful PDP samples.
+  - stale `Price to be confirmed` blocker was absent.
+  - stale `pdp-catalogue-lock.js` was absent.
+  - dynamic checkout buttons were absent on sampled PDPs.
+  - gallery arrows updated the main image on successful PDP samples.
+- Found launch-readiness regressions:
+  - stale controlled-pilot / not-public-launch PDP language remains live while prices and Add to Cart are visible.
+  - homepage/footer still exposes old `tel:+27829974112`.
+  - homepage/footer still links `mailto:Fhatuwani.Sikhwari@sikhwarigroup.co.za` instead of the expected support email.
+  - `/pages/about#about-us` and `/pages/about#privacy-policy` return `404`.
+  - visible empty department collection routes remain: Office & Desk, Retro Vault, Games & Toys.
+- Cart/checkout/shipping/payment visibility could not be completed because Shopify verification/rate limiting interrupted scripted cart/checkout and mobile checks with:
+  - `Your connection needs to be verified before you can proceed`
+- No payment authorization was attempted.
+
+Verdict:
+- Status: **fail / blocked for launch-readiness**.
+
+Safety confirmation:
+- No Shopify Admin, product, price, collection, shipping, payment-provider, theme, or domain mutation performed.
+- No real payment submitted.
+- Repo mutation limited to docs.
+- Existing untracked `tools/catalogue/` left untouched.
+
+Reference:
+- `docs/qa/slice-21ia-d-live-store-regression-audit.md`
