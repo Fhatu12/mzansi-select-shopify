@@ -259,6 +259,51 @@ Execution summary:
 - Removed old customer-facing support phone/email references, replaced dead About/Privacy links, and replaced stale pilot/deferred purchase copy on the PDP purchase surface.
 - Re-verified homepage, contact page, policy routes, collection route, and one live PDP after the final push.
 
+## 2026-06-04 - Slice 21IA-M (Homepage preview section removal)
+
+Objective:
+- Remove the remaining homepage preview promo section and rename the New Arrivals home-living heading on live theme `Horizon` `#158396285153` without touching products, prices, inventory, collections, shipping, or payment/provider configuration.
+
+Execution summary:
+- Confirmed current live theme via `shopify theme list --store mzansiselect.myshopify.com`: `Horizon [live] #158396285153`.
+- Verified local worktree before edits: `## master...origin/master [ahead 1]`; untracked `tools/catalogue/` left untouched.
+- Located live homepage sources:
+  - `templates/index.json`
+  - `sections/promo-banner-split.liquid`
+  - `sections/feature-tile-grid.liquid`
+- Identified root cause:
+  - homepage preview wording came from the `promo_banner` section on `templates/index.json`
+  - New Arrivals heading was still hard-coded as `Modern Living Room Collection`
+- Applied minimal approved theme changes:
+  - removed `promo_banner` from `templates/index.json`
+  - renamed `Modern Living Room Collection` to `Modern Living Collection` in `sections/feature-tile-grid.liquid`
+- Pushed only changed theme files to live theme with:
+  - `shopify theme push --store mzansiselect.myshopify.com --theme 158396285153 --allow-live --nodelete --only templates/index.json --only sections/feature-tile-grid.liquid`
+- Pulled the remote live theme back to confirm the source-of-truth state:
+  - `templates/index.json` no longer includes `promo_banner`
+  - `sections/feature-tile-grid.liquid` contains `Modern Living Collection`
+- Verified live storefront routes:
+  - `/`
+  - `/collections/all`
+  - `/pages/contact`
+  - `/pages/faq`
+  - `/policies/shipping-policy`
+  - `/policies/refund-policy`
+  - sampled PDP
+  - `/cart`
+- Verified sampled PDP still rendered a real `/cart/add` form and completed a safe cart-add regression to `/cart`.
+
+Verification notes:
+- Theme source verification: pass
+- Public homepage verification at `/`: stale response still showed old preview markup during repeated live fetches, including cache-busted requests
+- Remaining blocker:
+  - Shopify storefront propagation/cache had not yet reflected the pushed homepage source at verification time
+
+Safety confirmation:
+- No product, price, inventory, collection, shipping, payment/provider, domain, or app changes were made.
+- No checkout/payment was submitted.
+- `tools/catalogue/` was not committed.
+
 Verification result:
 - Pulled live theme source matched the intended updates for:
   - `sections/site-footer.liquid`

@@ -38,10 +38,6 @@
         "content_preset": "best_sellers"
       }
     },
-    "promo_banner": {
-      "type": "promo-banner-split",
-      "settings": {}
-    },
     "new_arrivals": {
       "type": "feature-tile-grid",
       "settings": {
@@ -96,7 +92,6 @@
     "hero_collage",
     "category_strip",
     "best_sellers",
-    "promo_banner",
     "new_arrivals",
     "kitchen_storage",
     "retro_vault_showcase",
