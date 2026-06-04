@@ -1261,3 +1261,23 @@ Safety confirmation:
 
 Reference:
 - `docs/qa/slice-21ia-d-live-store-regression-audit.md`
+## 2026-06-04 - Slice 21IA-H (Stale public chrome render source)
+
+Objective:
+- Prove the source of stale preview-era public storefront chrome still appearing after prior live-source cleanup, and identify the smallest safe next step.
+
+Execution summary:
+- Confirmed live theme `Horizon` `#158396285153` with `shopify theme list`.
+- Pulled the current live theme to `/tmp/mzansi-21iah-live` without overwriting the repo.
+- Searched repo source, pulled live source, and pulled `config/settings_data.json` for the stale public strings still visible on live routes.
+- Fetched public storefront HTML for `/`, `/cart`, `/search?q=bracelet`, and a current PDP using cache-busting query strings and no-cache headers.
+- Confirmed public HTML still serves stale topbar/trust/header/footer chrome including preview-era wording and, on `/`, an old email and old phone number.
+- Confirmed the pulled current live source matches the repo for the main chrome files already updated in prior slices, and the exact stale public chrome bundle is not present in pulled `settings_data.json`.
+
+Decision:
+- Root cause classification: `C` - stale strings are being served in public HTML even though they do not match the currently pulled live theme source/settings for the main chrome surfaces.
+- No additional Shopify theme push was performed in this slice because further source edits would not be evidence-based.
+
+Recommended next action:
+- Perform a Shopify Admin customizer save/section-toggle refresh on the live theme sections that own the public chrome, then verify again in a normal incognito browser.
+- If public HTML still serves the stale chrome while the pulled live theme source remains correct, escalate to Shopify support with the 21IA-H evidence pack.
