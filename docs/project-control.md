@@ -260,14 +260,16 @@ Execution summary:
 - Re-verified homepage, contact page, policy routes, collection route, and one live PDP after the final push.
 
 Verification result:
-- `info@sikhwarigroup.co.za` now renders on homepage and contact/business-details surfaces.
-- `tel:+27829974112`, visible `+27 82 997 4112`, and `Fhatuwani.Sikhwari@sikhwarigroup.co.za` no longer appeared in final rendered homepage/contact checks.
-- Broken footer links to `/pages/about#about-us` and `/pages/about#privacy-policy` were removed from final rendered homepage/contact output.
+- Pulled live theme source matched the intended updates for:
+  - `sections/site-footer.liquid`
+  - `sections/business-details-foundation.liquid`
 - Sampled live PDP retained visible `Add to Cart` and no longer rendered the stale `controlled pilot` / `not a public launch` purchase-area conflict copy in fetched HTML.
+- Public plain-route verification for `/` and `/pages/contact` remained inconsistent and later re-served legacy footer/contact output, so trust/contact/link remediation cannot yet be declared fully complete from customer-facing fetches.
 - Payment/provider configuration remained unchanged.
 
 Notes:
-- Shopify briefly served stale `/pages/contact` HTML after the initial section push; repushing `templates/page.contact.json` forced the contact route to rebuild from the updated live sections.
+- Shopify briefly served stale `/pages/contact` HTML after the initial section push; repushing `templates/page.contact.json` forced a temporary route rebuild.
+- Subsequent plain-route fetches still showed inconsistent stale homepage/contact HTML despite the live theme source containing the updated section files.
 - Public live storefront rendering remained stale during this pass and continued serving the older catalogue-lock behavior in browser execution.
 - Dynamic checkout remained absent.
 - No payment step was entered or submitted.

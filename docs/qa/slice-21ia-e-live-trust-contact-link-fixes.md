@@ -15,7 +15,7 @@ Date: 2026-06-04
 ### Root cause
 - The live Horizon theme still served older footer/contact/PDP copy that was written for a restricted pilot phase.
 - Footer links still pointed to dead `/pages/about` anchors and legacy support contact details.
-- The contact route continued serving stale rendered output until the contact page template was repushed, which caused Shopify to rebuild that page route from the updated live section files.
+- The contact route and homepage showed inconsistent Shopify-served route HTML versus the pulled live theme files. Repushing `templates/page.contact.json` temporarily rebuilt the route, but subsequent plain-route checks still intermittently returned stale legacy footer/contact output.
 
 ### Files changed
 - `sections/site-footer.liquid`
@@ -61,15 +61,14 @@ shopify theme push --store mzansiselect.myshopify.com --theme 158396285153 --all
 - Live PDP sampled: `/products/2-inch-wireless-two-way-intercom-baby-video-monitor`
   - `Add to Cart` visible
   - no rendered `controlled pilot`, `not a public launch`, `deferred checkout`, `preview only`, `not available for purchase`, or `Invite-only pilot` copy in the fetched PDP HTML
-- Old phone/email verification after final push:
-  - no `tel:+27829974112` on `/` or `/pages/contact`
-  - no visible `+27 82 997 4112` on `/` or `/pages/contact`
-  - no `Fhatuwani.Sikhwari@sikhwarigroup.co.za` on `/` or `/pages/contact`
-  - `info@sikhwarigroup.co.za` visible in footer and business-details/contact output
-- Broken link verification after final push:
-  - no `/pages/about#about-us` in rendered homepage/contact output
-  - no `/pages/about#privacy-policy` in rendered homepage/contact output
-  - no `/pages/business-details` disclosure link in rendered contact output
+- Theme-source verification after final push:
+  - pulled live `sections/site-footer.liquid` matched the updated repo file
+  - pulled live `sections/business-details-foundation.liquid` matched the updated repo file
+- Plain public-route verification on `2026-06-04` remained inconsistent:
+  - sampled PDP fetches showed updated purchase copy and visible `Add to Cart`
+  - `/pages/contact` later re-served legacy support email/phone, `/pages/business-details`, and `/pages/about#...` links in fetched HTML
+  - `/` later re-served legacy footer pilot/contact copy in fetched HTML
+- Because the public plain routes were inconsistent, old phone/email and broken-link removal cannot be marked fully complete from the customer-facing fetches alone.
 - Liquid/runtime check:
   - no Liquid errors surfaced in fetched storefront HTML during verification
 
@@ -78,8 +77,10 @@ shopify theme push --store mzansiselect.myshopify.com --theme 158396285153 --all
 - No payment providers were activated, deactivated, configured, or tested through checkout submission in this slice.
 
 ### Remaining blockers
-- Shopify storefront page caching briefly served stale `/pages/contact` HTML after the first section push; repushing `templates/page.contact.json` resolved the route.
+- Shopify storefront route rendering/cache inconsistency remains active:
+  - pulled live theme source contains the intended fixes
+  - fetched public `/` and `/pages/contact` HTML later reverted to legacy footer/contact output during verification
 - Full checkout/payment visibility remains outside this slice and was not revalidated here.
 
 ### Verdict
-- PASS: live trust/contact/link regressions targeted by 21IA-E were corrected on the published Horizon theme without touching product or payment configuration.
+- PARTIAL: live theme source was updated safely, PDP stale pilot copy was corrected, and payment/provider state was preserved, but public homepage/contact HTML still showed inconsistent stale legacy trust/contact/link output during final verification.
