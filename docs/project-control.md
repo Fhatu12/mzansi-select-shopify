@@ -1462,3 +1462,59 @@ Recommended next action:
 
 Reference:
 - `docs/qa/slice-21ia-n-final-launch-readiness-qa.md`
+
+## 2026-06-04 - Slice 21IA-O (Homepage preview context resolution)
+
+Objective:
+- Resolve the mismatch between prior automated homepage QA reporting stale preview wording and the already-cleaned live theme source for `Horizon` `#158396285153`.
+
+Execution summary:
+- Reconfirmed live theme `Horizon` `#158396285153`.
+- Confirmed `b788dce` or newer docs baseline is present in history and the branch is newer than that baseline.
+- Searched all likely active source/settings locations in the repo for:
+  - `PREVIEW HIGHLIGHT`
+  - `Preview highlight`
+  - `Tech & Home Preview Picks`
+  - `Browse preview picks`
+  - `Modern Living Room Collection`
+  - `promo_banner`
+  - `promo-banner`
+  - `feature-tile-grid`
+  - `Modern Living Collection`
+- Pulled the current live theme into `/tmp/mzansi-21iao-live` and inspected:
+  - `templates/index.json`
+  - `config/settings_data.json`
+  - `sections/promo-banner-split.liquid`
+  - `sections/feature-tile-grid.liquid`
+  - `sections/announcement-topbar.liquid`
+  - `sections/trust-bar.liquid`
+- Findings:
+  - `promo-banner-split.liquid` still contains old preview wording as an unused section source
+  - active pulled live `templates/index.json` does **not** reference `promo_banner`
+  - active pulled live `feature-tile-grid.liquid` already uses `Modern Living Collection`
+  - no alternate active homepage context was proven in pulled `settings_data.json`
+- Compared public homepage render contexts with plain/cache-busted desktop/mobile requests and a fresh Playwright browser context.
+- Current results were consistent across all checked render contexts:
+  - no preview wording
+  - no `Modern Living Room Collection`
+  - `Modern Living Collection` visible
+  - homepage section markers matched the cleaned active template order
+- Rechecked storefront regressions:
+  - sampled PDP Add to Cart visible
+  - cart opens
+  - checkout button visible
+  - no Liquid errors on checked routes
+
+Decision:
+- Root cause classification: **C**
+  - prior stale result came from verification/request/browser context rather than an active live homepage source/settings mismatch
+- No theme edit or theme push was performed in this slice.
+
+Recommended next action:
+- Treat future homepage preview-wording regressions as cache/context artifacts unless they reproduce in:
+  - a fresh live theme pull, and
+  - a fresh plain/cache-busted request or clean browser context
+- Use a fresh incognito/private window with a cache-busting query for final manual launch sign-off.
+
+Reference:
+- `docs/qa/slice-21ia-o-homepage-preview-context-resolution.md`
