@@ -2,7 +2,6 @@
   assign preview_selected_picks_url = routes.root_url | append: '#best-sellers'
   assign preview_latest_url = routes.root_url | append: '#new-in'
   assign preview_picks_url = routes.root_url | append: '#deals'
-  assign about_page_url = '/pages/about'
   assign contact_page_url = '/pages/contact#contact'
 %}
 
@@ -153,10 +152,10 @@
   </a>
 
   <div class="drawer-account">
-    <p>Customer accounts are paused during private preview.</p>
+    <p>Customer account features are coming later.</p>
     <div class="drawer-btn-row">
-      <button class="drawer-btn drawer-btn-outline" type="button" disabled aria-disabled="true">Customer accounts paused</button>
-      <button class="drawer-btn drawer-btn-filled" type="button" disabled aria-disabled="true">Cart paused</button>
+      <button class="drawer-btn drawer-btn-outline" type="button" disabled aria-disabled="true">Accounts coming later</button>
+      <a class="drawer-btn drawer-btn-filled" href="{{ routes.cart_url }}">View cart</a>
     </div>
   </div>
 </aside>
@@ -176,21 +175,21 @@
     </svg>
     Search
   </button>
-  <span class="bb-center bb-item--deferred" aria-disabled="true" aria-label="Cart paused. Cart and checkout remain disabled during private preview.">
+  <a class="bb-center" href="{{ routes.cart_url }}" aria-label="Open cart">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <path d="M16 10a4 4 0 0 1-8 0"></path>
     </svg>
     <span class="bb-cart-badge">{{ cart.item_count }}</span>
-  </span>
+  </a>
   <button class="bb-item" type="button" data-wishlist-open data-wishlist-header-state aria-expanded="false" aria-controls="wishlistDrawer" aria-label="Open saved items drawer">
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
     </svg>
     Saved <span class="wishlist-count-badge wishlist-count-badge--bottom" data-wishlist-count>0</span>
   </button>
-  <span class="bb-item bb-item--deferred" aria-disabled="true" aria-label="Account access not active in preview. Customer accounts paused.">
+  <span class="bb-item bb-item--deferred" aria-disabled="true" aria-label="Account access is not active yet. Customer account features are coming later.">
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
       <circle cx="12" cy="7" r="4"></circle>

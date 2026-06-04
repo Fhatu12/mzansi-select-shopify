@@ -1,18 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-search-foundation",
       "settings": {
-        "search_label": "Search Preview",
+        "search_label": "Search",
         "search_title": "Search",
         "search_accent": "Results",
-        "search_intro": "Invite-only controlled pilot search — not a public launch. Live results use Shopify product data visible in preview. Final ranking, pricing, and purchase actions remain disabled.",
-        "query_label": "Preview query",
-        "results_heading": "Preview matches",
-        "empty_badge": "Search Preview",
+        "search_intro": "Search live products currently visible on Mzansi Select.",
+        "query_label": "Search query",
+        "results_heading": "Product matches",
+        "empty_badge": "Search",
         "empty_action_label": "Continue browsing",
         "browse_title": "Still exploring?",
-        "browse_copy": "Browse launch-department links for orientation only — controlled pilot does not imply the full catalogue is available."
+        "browse_copy": "Browse current department links or shop all products."
       }
     }
   },

@@ -1,20 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-cart-foundation",
       "settings": {
-        "cart_label": "Cart Preview",
+        "cart_label": "Cart",
         "cart_title": "Your",
         "cart_accent": "Basket",
-        "cart_intro": "Review your items and continue to checkout. Cart quantities, subtotal, and checkout routing are live for controlled pilot verification.",
+        "cart_intro": "Review your items and continue to checkout. Cart quantities, subtotal, and checkout routing are live.",
         "summary_label": "Order summary",
         "view_state": "filled",
-        "empty_badge": "Cart Preview",
+        "empty_badge": "Cart",
         "empty_title": "Your basket is still empty",
         "empty_description": "Your cart is currently empty. Add a product to continue to checkout.",
         "empty_action_label": "Continue browsing",
-        "support_title": "Pilot support (limited)",
-        "support_copy": "This invite-only pilot is not full customer operations. Delivery and returns will be confirmed before launch or before any fulfilment; no seven-day service commitment is implied."
+        "support_title": "Customer support",
+        "support_copy": "For storefront support, email info@sikhwarigroup.co.za. Delivery is calculated at checkout and returns are handled under the published refund policy."
       }
     }
   },

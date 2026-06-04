@@ -270,6 +270,40 @@ Verification result:
 Notes:
 - Shopify briefly served stale `/pages/contact` HTML after the initial section push; repushing `templates/page.contact.json` forced a temporary route rebuild.
 - Subsequent plain-route fetches still showed inconsistent stale homepage/contact HTML despite the live theme source containing the updated section files.
+
+## 2026-06-04 - Slice 21IA-F (Live commerce wording/navigation/cart/search state)
+
+Objective:
+- Verify, push, and commit the approved seven live-commerce wording/navigation/cart/search files on live Horizon `#158396285153` without changing products, pricing, shipping, payments, domain, or apps.
+
+Execution summary:
+- Confirmed live theme target via `shopify theme list --store mzansiselect.myshopify.com`.
+- Re-verified the exact seven tracked files only:
+  - `sections/main-cart-foundation.liquid`
+  - `sections/main-search-foundation.liquid`
+  - `sections/primary-navigation.liquid`
+  - `snippets/live-product-card.liquid`
+  - `templates/cart.json`
+  - `templates/product.json`
+  - `templates/search.json`
+- Confirmed diffs were limited to wording/trust cues, cart/search messaging, product-card wording, navigation/cart entry behaviour, and template labels/copy.
+- Tightened the approved set further before final push:
+  - removed remaining hardcoded preview wording from the main search section’s search form accessibility labels/placeholders
+  - aligned local template files with Shopify’s auto-generated JSON header format
+- Pushed only the approved seven files to live theme `#158396285153` using `--allow-live --nodelete`.
+- Pulled the same seven files back from the live theme and confirmed source parity with local files.
+
+Verification result:
+- Sampled PDP showed `Product details` and retained visible `Add to Cart`.
+- Search page core section copy updated to live-commerce wording (`Search live products currently visible on Mzansi Select`, `Search query`, `Product matches`).
+- Support email remained `info@sikhwarigroup.co.za` on checked surfaces.
+- Payment/provider configuration remained unchanged.
+- Public route HTML remained mixed on some routes during verification:
+  - `/cart` still served older `Cart Preview` / pilot-verification copy in fetched HTML despite updated pulled source.
+  - `/search?q=bracelet` still included unrelated preview phrasing in header/topbar/trust surfaces outside the approved seven-file scope.
+
+Notes:
+- Treat 21IA-F as source/state alignment plus partial public-surface improvement, not as the final removal of all preview-era wording from every rendered storefront surface.
 - Public live storefront rendering remained stale during this pass and continued serving the older catalogue-lock behavior in browser execution.
 - Dynamic checkout remained absent.
 - No payment step was entered or submitted.

@@ -1,4 +1,3 @@
-{% assign pilot_trust = settings.controlled_pilot_trust_mode %}
 {% assign search_query = search.terms | strip %}
 {% assign search_performed = search.performed %}
 {% assign search_results_count = search.results_count %}
@@ -24,11 +23,7 @@
         {% endif %}
       </h1>
       <p class="search-intro">
-        {% if pilot_trust %}
-          Invite-only preview search — not a public launch. Results show only items visible in this password-gated preview. Final pricing, delivery, and purchase remain disabled.
-        {% else %}
-          {{ section.settings.search_intro }}
-        {% endif %}
+        {{ section.settings.search_intro }}
       </p>
 
       <form
@@ -36,27 +31,25 @@
         action="{{ routes.search_url }}"
         method="get"
         role="search"
-        aria-label="Preview product search"
+        aria-label="Product search"
       >
         <div class="search-field-shell">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <label class="visually-hidden" for="SearchPageQuery">Search preview catalogue</label>
+          <label class="visually-hidden" for="SearchPageQuery">Search products</label>
           <input
             id="SearchPageQuery"
             type="search"
             name="q"
             value="{{ search_query | escape }}"
-            placeholder="{{ settings.search_placeholder | default: 'Search preview products' | escape }}"
+            placeholder="{{ settings.search_placeholder | default: 'Search products' | escape }}"
             autocomplete="off"
           >
         </div>
         <input type="hidden" name="type" value="product">
-        <button class="btn-dark search-button-shell" type="submit">
-          {% if pilot_trust %}Search preview{% else %}Search{% endif %}
-        </button>
+        <button class="btn-dark search-button-shell" type="submit">Search</button>
       </form>
     </div>
 
@@ -66,17 +59,17 @@
         {% if search_performed and search_query != blank %}
           {% if search_results_count > 0 %}
             {% if search_results_count == 1 %}
-              One preview match for “{{ search_query | escape }}”. This is not the full catalogue. Purchase actions stay unavailable; pricing and delivery are not final.
+              One product match for “{{ search_query | escape }}”.
             {% else %}
-              {{ search_results_count }} preview matches for “{{ search_query | escape }}”. This is not the full catalogue. Purchase actions stay unavailable; pricing and delivery are not final.
+              {{ search_results_count }} product matches for “{{ search_query | escape }}”.
             {% endif %}
           {% else %}
-            No preview products matched “{{ search_query | escape }}”. Try another preview search term or browse the approved departments below.
+            No products matched “{{ search_query | escape }}”. Try another search term or browse departments below.
           {% endif %}
         {% elsif search_query != blank %}
-          Press Search preview to run this query across visible preview products only.
+          Press Search to run this query across visible products.
         {% else %}
-          Enter a preview search term above. Results use live Shopify product data where published to this preview — not static demo cards.
+          Enter a search term above. Results use live Shopify product data.
         {% endif %}
       </p>
     </div>
@@ -109,8 +102,8 @@
           <div class="search-empty-wrap">
             {% render 'empty-state',
               badge: section.settings.empty_badge,
-              title: 'No preview matches',
-              description: 'Try another preview search term. This search only covers products visible in the restricted preview — not the full catalogue, final pricing, or orderability.',
+              title: 'No product matches',
+              description: 'Try another search term or browse the current departments below.',
               action_label: section.settings.empty_action_label,
               action_url: routes.root_url
             %}
@@ -120,8 +113,8 @@
         <div class="search-empty-wrap search-empty-wrap--prompt">
           {% render 'empty-state',
             badge: section.settings.empty_badge,
-            title: 'Start a preview search',
-            description: 'Use the field above to search preview catalogue products. Add to Cart, checkout, and customer account flows remain disabled.',
+            title: 'Start a product search',
+            description: 'Use the field above to search current catalogue products.',
             action_label: blank,
             action_url: routes.root_url
           %}
@@ -150,7 +143,7 @@
       "type": "text",
       "id": "search_label",
       "label": "Search label",
-      "default": "Search Preview"
+      "default": "Search"
     },
     {
       "type": "text",
@@ -168,25 +161,25 @@
       "type": "textarea",
       "id": "search_intro",
       "label": "Search intro",
-      "default": "Invite-only controlled pilot search — not a public launch. Live results use Shopify product data visible in preview. Final ranking, pricing, and purchase actions remain disabled."
+      "default": "Search live products currently visible on Mzansi Select."
     },
     {
       "type": "text",
       "id": "query_label",
       "label": "Query label",
-      "default": "Preview query"
+      "default": "Search query"
     },
     {
       "type": "text",
       "id": "results_heading",
       "label": "Results heading",
-      "default": "Preview matches"
+      "default": "Product matches"
     },
     {
       "type": "text",
       "id": "empty_badge",
       "label": "Empty badge",
-      "default": "Search Preview"
+      "default": "Search"
     },
     {
       "type": "text",
@@ -204,7 +197,7 @@
       "type": "textarea",
       "id": "browse_copy",
       "label": "Browse copy",
-      "default": "Browse launch-department links for orientation only — controlled pilot does not imply the full catalogue is available."
+      "default": "Browse current department links or shop all products."
     }
   ]
 }

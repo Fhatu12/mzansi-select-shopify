@@ -37,8 +37,8 @@
               {% assign item_badge = 'Live' %}
               {% assign item_tone = 'new' %}
               {% if pilot_trust %}
-                {% assign item_badge = 'Pilot item' %}
-                {% assign item_tone = 'preview' %}
+                {% assign item_badge = 'Cart item' %}
+                {% assign item_tone = 'new' %}
               {% endif %}
               {% render 'cart-line-item',
                 image_src: item.image | image_url: width: 220,

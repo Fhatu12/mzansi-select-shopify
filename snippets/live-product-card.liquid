@@ -54,10 +54,6 @@
   {% assign card_price_save = card_price_percent | append: '% off' %}
 {% endif %}
 {% assign pilot_trust = settings.controlled_pilot_trust_mode %}
-{% if pilot_trust %}
-  {% assign card_price_was = blank %}
-  {% assign card_price_save = blank %}
-{% endif %}
 
 {% assign card_show_catalog_media = true %}
 {% if card_preview_only and card_image_permission_confirmed == false %}
@@ -68,8 +64,8 @@
   {% assign card_show_catalog_media = false %}
 {% endif %}
 {% assign card_price_note = blank %}
-{% if pilot_trust and card_use_placeholder_price %}
-  {% assign card_price_note = 'Pilot price — not final' %}
+{% if card_use_placeholder_price %}
+  {% assign card_price_note = 'Price pending confirmation' %}
 {% endif %}
 
 <div class="product-card product-card--live">
@@ -88,15 +84,9 @@
       {% endif %}
     </a>
     {% if card_commerce_blocked %}
-      {% if pilot_trust %}
-        {% render 'product-badge', label: 'Pilot item', tone: 'preview' %}
-      {% else %}
-        {% render 'product-badge', label: 'Preview item', tone: 'preview' %}
-      {% endif %}
+      {% render 'product-badge', label: 'Pending item', tone: 'preview' %}
     {% elsif card_variant.compare_at_price > card_variant.price and card_use_placeholder_price == false %}
-      {% unless pilot_trust %}
-        {% render 'product-badge', label: 'Sale', tone: 'sale' %}
-      {% endunless %}
+      {% render 'product-badge', label: 'Sale', tone: 'sale' %}
     {% endif %}
     {% render 'wishlist-button', product: product %}
   </div>
