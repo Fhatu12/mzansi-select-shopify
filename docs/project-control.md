@@ -1304,3 +1304,27 @@ Decision:
 Recommended next action:
 - Treat the stale route-specific preview/live chrome as a serving-layer or route-resolution blocker rather than a source-sync problem.
 - Escalate using the combined 21IA-H and 21IA-I evidence before any publish action.
+
+## 2026-06-04 - Slice 21IA-K (Footer launch cleanup)
+
+Objective:
+- Remove inactive or confusing footer/account launch links while preserving working contact, policy, cart, and checkout-support routes.
+
+Execution summary:
+- Confirmed live theme `Horizon` `#158396285153`.
+- Updated `sections/site-footer.liquid` to remove the loose Help email item, `Track Order`, the footer `Account` section, and deferred `Careers` / `Affiliates`.
+- Updated `sections/primary-navigation.liquid` to remove inactive account messaging from the mobile drawer/bottom bar while keeping active cart access.
+- Updated `sections/site-header.liquid` to remove the inactive desktop header account control.
+- Pushed only the three changed theme files to the live theme with `--allow-live`.
+- Pulled the same live theme files back down and confirmed the pushed source matched local edits exactly.
+
+Decision:
+- Source update succeeded and the intended launch-safe footer state is present in the live theme source.
+- Public storefront rendering remained route-inconsistent during scripted verification:
+  - `/collections/all` reflected the cleaned footer
+  - several other routes still served the older footer bundle
+- Treat this as another route-serving inconsistency rather than a failed theme push.
+
+Recommended next action:
+- Recheck the cleaned footer in a normal incognito browser across homepage, cart, PDP, and policy/content routes.
+- If route inconsistencies persist while pulled live theme source remains correct, continue the serving-layer escalation path already established in 21IA-H and 21IA-I.
